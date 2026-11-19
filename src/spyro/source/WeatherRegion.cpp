@@ -67,7 +67,7 @@ u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     void *temp_r3_52;
 
     temp_r3_52 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r30_55 = temp_r3_52 + 0x90;
+    temp_r30_55 = ((u8 *) temp_r3_52) + 0x90;
     sp50 = M2C_FIELD(temp_r30_55, f64 *, 0) - *(temp_r3_52 + 0xD0);
     sp100 = sp50;
     sp58 = M2C_FIELD(temp_r3_52, f32 *, 0x98) - M2C_FIELD(temp_r3_52, f32 *, 0xD8);
@@ -231,7 +231,7 @@ u8 WeatherRegion::CalculateEmissionParametersConvexity(MKVector3 &arg0, MKVector
     void *temp_r5_314;
 
     temp_r3_311 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r5_314 = temp_r3_311 + 0x90;
+    temp_r5_314 = ((u8 *) temp_r3_311) + 0x90;
     sp90 = M2C_FIELD(temp_r5_314, f64 *, 0) - *(temp_r3_311 + 0xD0);
     sp190 = sp90;
     sp98 = M2C_FIELD(temp_r3_311, f32 *, 0x98) - M2C_FIELD(temp_r3_311, f32 *, 0xD8);
@@ -433,7 +433,7 @@ u8 WeatherRegion::CalculateEmissionPointSpores(MKVector3 &arg0) {
     void *temp_r3_722;
 
     temp_r3_722 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r30_725 = temp_r3_722 + 0x90;
+    temp_r30_725 = ((u8 *) temp_r3_722) + 0x90;
     sp50 = M2C_FIELD(temp_r30_725, f64 *, 0) - *(temp_r3_722 + 0xD0);
     sp100 = sp50;
     sp58 = M2C_FIELD(temp_r3_722, f32 *, 0x98) - M2C_FIELD(temp_r3_722, f32 *, 0xD8);
@@ -583,7 +583,7 @@ u8 WeatherRegion::CalculateEmissionPoint(MKVector3 &arg0) {
     void *temp_r3_978;
 
     temp_r3_978 = checked_cast<WeatherRegionDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    temp_r30_981 = temp_r3_978 + 0x90;
+    temp_r30_981 = ((u8 *) temp_r3_978) + 0x90;
     sp68 = M2C_FIELD(temp_r30_981, f64 *, 0) - *(temp_r3_978 + 0xD0);
     sp128 = sp68;
     sp70 = M2C_FIELD(temp_r3_978, f32 *, 0x98) - M2C_FIELD(temp_r3_978, f32 *, 0xD8);

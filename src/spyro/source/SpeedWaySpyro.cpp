@@ -632,7 +632,7 @@ s32 SpeedWaySpyro::IsDead() {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
 void SpeedWaySpyro::UpdateSound() {
     s32 sp8;
     f32 *temp_r31_755;
@@ -664,7 +664,7 @@ void SpeedWaySpyro::UpdateSound() {
     KDSound_SetVolume(this->unk818, (0.5f * this->unk8B4) + temp_f30_798);
     KDSound_SetVolume(this->unk840, (0.5f * this->unk8B4) + temp_f30_798);
     KDSound_SetPitch(this->unk818, (0.3f * temp_f31_797) + 0.8f);
-    KDSound_Play3d(this->unk80, this->unk8 + 0x30, 0U, 0.0f, 0U);
+    KDSound_Play3d(this->unk80, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
 }
 #endif
 
@@ -687,7 +687,7 @@ void SpeedWaySpyro::UpdateEffects() {
         ((ScreenWobbleFX *) temp_r30_844)->EnableSpeedEffect(0U, 0.0f, 1.0f);
     }
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x190), &sp10);
-    M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     sp20.unk30 = M2C_BITWISE(f32, sp10);
     sp20.unk34 = sp10.unk4;
     sp20.unk38 = sp10.unk8;
@@ -2490,7 +2490,7 @@ void SpeedWaySpyro::MoveUpdate() {
     } else {
         var_r0_4753 = this->unk2F4;
     }
-    temp_f31_4764 = gUpdateTimeDelta * M2C_FIELD((temp_r31_4745 + (var_r0_4753 * 0x38)), f32 *, 0x74);
+    temp_f31_4764 = gUpdateTimeDelta * M2C_FIELD((((u8 *) temp_r31_4745) + (var_r0_4753 * 0x38)), f32 *, 0x74);
     ((SpeedWaySpyro *) &sp28)->GetJoyDir();
     temp_f0_4768 = sp28 * (f64) temp_f31_4764;
     sp18 = temp_f0_4768;
@@ -3023,7 +3023,7 @@ void SpeedWaySpyro::Resolve() {
     temp_r3_6045 = checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
-    M2C_FIELD(this->unk398, M2C_UNK (**)(void **, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, temp_r3_6045 + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
+    M2C_FIELD(this->unk398, M2C_UNK (**)(void **, void *, M2C_UNK *, M2C_UNK, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk398, ((u8 *) temp_r3_6045) + 0x194, &sp80, 0, &this->unk70, 1, 1, 0);
     Init__31KDStateMachine<13SpeedWaySpyro>FPQ231KDStateMachine<13SpeedWaySpyro>5StateP31KDStateMachine<13SpeedWaySpyro>((KDStateMachine<SpeedWaySpyro> *) &this->unk180, (KDStateMachine<SpeedWaySpyro>::State *) SpeedWaySpyro::states, NULL);
     ((KDStateMachine<SpeedWaySpyro> *) &this->unk180)->SetState(this, 0, 1U);
     this->unk2FC.Resolve();

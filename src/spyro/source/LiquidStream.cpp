@@ -93,7 +93,7 @@ loop_3:
             var_r3_69 += 4;
             goto loop_3;
         }
-        temp_r30_79 = (s32) (var_r3_69 - temp_r4_68) / 4;
+        temp_r30_79 = (s32) (((u8 *) var_r3_69) - temp_r4_68) / 4;
         if (temp_r30_79 >= 2) {
             MKMaterial_SetMaterial(NULL);
             var_r31_85 = 0;
@@ -211,7 +211,7 @@ loop_19:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void LiquidStream::Update() {
     f64 sp108;
     f64 sp100;
@@ -301,7 +301,7 @@ void LiquidStream::Update() {
                     if ((u32) M2C_FIELD(this->unk54, u32 *, -4) != 0U) {
                         this->unk60 = 0;
                         this->unk5C = this->unk58;
-                        temp_r3_394 = this->unk54 - 4;
+                        temp_r3_394 = ((u8 *) this->unk54) - 4;
                         this->unk54 = temp_r3_394;
                         temp_r4_396 = *temp_r3_394;
                         M2C_FIELD(temp_r4_396, f64 *, 0) = (f64) this->unk68;
@@ -343,7 +343,7 @@ loop_18:
 
                 } else if (temp_r0_463 == temp_r3_445) {
                     temp_r3_452 = this->unk54;
-                    this->unk54 = temp_r3_452 + 4;
+                    this->unk54 = ((u8 *) temp_r3_452) + 4;
                     temp_r5_455 = M2C_FIELD(temp_r3_452, u32 *, 0);
                     M2C_FIELD(temp_r3_452, u32 *, 0) = (u32) *var_r4_447;
                     *var_r4_447 = temp_r5_455;
@@ -477,7 +477,7 @@ loop_18:
             temp_f0_747 = spF0 * 5.398241246e-315;
             sp20 = temp_f0_747;
             spA0 = temp_f0_747;
-            temp_r3_754 = this->unk50 + 0x10;
+            temp_r3_754 = ((u8 *) this->unk50) + 0x10;
             sp28 = (f32) spF8 * 10.0f;
             spA8 = (f64) sp28;
             M2C_FIELD(temp_r3_754, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_754, f64 *, 0) + temp_f0_747);
@@ -574,18 +574,18 @@ void LiquidStream::Init() {
     }
     this->unk54 = var_r3_907;
     var_r5_916 = this->unk54;
-    this->unk54 = var_r5_916 + 0x5A0;
+    this->unk54 = ((u8 *) var_r5_916) + 0x5A0;
     M2C_FIELD(var_r5_916, s32 *, 0x5A0) = 0;
     var_ctr_920 = 0x1E;
     do {
         temp_r3_922 = this->unk54;
-        this->unk54 = temp_r3_922 + 4;
+        this->unk54 = ((u8 *) temp_r3_922) + 4;
         M2C_FIELD(temp_r3_922, void **, 4) = var_r5_916;
         var_r5_916 += 0x30;
         var_ctr_920 -= 1;
     } while (var_ctr_920 != 0);
     temp_r3_928 = this->unk54;
-    this->unk54 = temp_r3_928 + 4;
+    this->unk54 = ((u8 *) temp_r3_928) + 4;
     M2C_FIELD(temp_r3_928, void **, 4) = NULL;
     this->unk58 = 0.1f;
     sp10 = 0.0f;

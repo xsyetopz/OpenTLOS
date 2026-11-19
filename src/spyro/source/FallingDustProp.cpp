@@ -256,7 +256,7 @@ void FallingDustProp::Update() {
             sp39C = -1;
             sp3A0 = 0;
             sp240 = (f64) spA0;
-            temp_r3_272 = this->unk8 + 0x30;
+            temp_r3_272 = ((u8 *) this->unk8) + 0x30;
             sp248 = (f64) spA8;
             temp_f5_274 = M2C_FIELD(temp_r3_272, f64 *, 0);
             sp90 = temp_f5_274 + sp240;

@@ -24,7 +24,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
     void **temp_r5_49;
     void *temp_r3_51;
@@ -32,7 +32,7 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
 
     temp_r5_45 = this->unkB0;
     if ((u32) M2C_FIELD(temp_r5_45, u32 *, -4) != 0U) {
-        temp_r5_49 = temp_r5_45 - 4;
+        temp_r5_49 = ((u8 *) temp_r5_45) - 4;
         this->unkB0 = temp_r5_49;
         temp_r3_51 = *temp_r5_49;
         if (temp_r3_51 != NULL) {
@@ -188,7 +188,7 @@ loop_10:
             M2C_FIELD(temp_r3_241, f32 *, 8) = var_f1_210;
             if (M2C_FIELD(temp_r3_241, f32 *, 8) <= 0.0f) {
                 temp_r3_229 = this->unkB0;
-                this->unkB0 = temp_r3_229 + 4;
+                this->unkB0 = ((u8 *) temp_r3_229) + 4;
                 temp_r4_232 = *temp_r3_229;
                 *temp_r3_229 = (void *) *var_r5_204;
                 *var_r5_204 = temp_r4_232;
@@ -324,18 +324,18 @@ void ElecZapCrystal::Init() {
     }
     this->unkB0 = var_r3_537;
     var_r5_546 = this->unkB0;
-    this->unkB0 = var_r5_546 + 0x60;
+    this->unkB0 = ((u8 *) var_r5_546) + 0x60;
     M2C_FIELD(var_r5_546, s32 *, 0x60) = 0;
     var_ctr_550 = 8;
     do {
         temp_r3_552 = this->unkB0;
-        this->unkB0 = temp_r3_552 + 4;
+        this->unkB0 = ((u8 *) temp_r3_552) + 4;
         M2C_FIELD(temp_r3_552, void **, 4) = var_r5_546;
         var_r5_546 += 0xC;
         var_ctr_550 -= 1;
     } while (var_ctr_550 != 0);
     temp_r3_558 = this->unkB0;
-    this->unkB0 = temp_r3_558 + 4;
+    this->unkB0 = ((u8 *) temp_r3_558) + 4;
     M2C_FIELD(temp_r3_558, void **, 4) = NULL;
     this->unkBC = 0.0f;
     this->unkB4 = 0;

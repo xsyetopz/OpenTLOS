@@ -195,7 +195,7 @@ void SpyroFallState::SetStrafeJump(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'sp40'
 void SpyroFallState::GetFallVel() {
     f64 sp38;
     f64 sp28;
@@ -216,7 +216,7 @@ void SpyroFallState::GetFallVel() {
     temp_r3_89 = M2C_FIELD(temp_r3_87, s32 *, 0x2D4);
     if (temp_r3_89 > 0) {
         if (temp_r3_89 != 0) {
-            var_r3_95 = temp_r3_87 + 0x170 + ((temp_r3_89 - 1) * 0x58);
+            var_r3_95 = ((u8 *) temp_r3_87) + 0x170 + ((temp_r3_89 - 1) * 0x58);
         } else {
             var_r3_95 = NULL;
         }
@@ -373,7 +373,7 @@ void SpyroFallState::HoverEnter() {
     this->unk4C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk14'
 u8 SpyroFallState::GlideTransition() {
     f64 sp60;
     f64 sp58;
@@ -400,7 +400,7 @@ u8 SpyroFallState::GlideTransition() {
 
     temp_r3_404 = this->unk10->unk8;
     temp_f3_405 = M2C_FIELD(temp_r3_404, f64 *, 0x30);
-    temp_r4_406 = temp_r3_404 + 0x20;
+    temp_r4_406 = ((u8 *) temp_r3_404) + 0x20;
     temp_f2_407 = M2C_FIELD(temp_r3_404, f64 *, 0x38);
     sp58 = temp_f3_405;
     sp60 = temp_f2_407;
@@ -609,7 +609,7 @@ void SpyroFallState::LongFallEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk14'
 void SpyroFallState::FallTransition() {
     f64 sp10;
     f64 sp8;
@@ -642,7 +642,7 @@ void SpyroFallState::FallTransition() {
         temp_r3_832 = M2C_FIELD(temp_r3_830, s32 *, 0x2D4);
         if (((u32) (-temp_r3_832 & ~temp_r3_832) >> 0x1FU) != 0) {
             if (temp_r3_832 != 0) {
-                var_r3_841 = temp_r6_831 + ((temp_r3_832 - 1) * 0x58);
+                var_r3_841 = ((u8 *) temp_r6_831) + ((temp_r3_832 - 1) * 0x58);
             } else {
                 var_r3_841 = NULL;
             }
@@ -653,7 +653,7 @@ void SpyroFallState::FallTransition() {
         if (var_r5_829 == 0) {
             temp_r3_853 = M2C_FIELD(temp_r6_831, s32 *, 0x164);
             if (temp_r3_853 != 0) {
-                var_r3_858 = temp_r6_831 + ((temp_r3_853 - 1) * 0x58);
+                var_r3_858 = ((u8 *) temp_r6_831) + ((temp_r3_853 - 1) * 0x58);
             } else {
                 var_r3_858 = NULL;
             }

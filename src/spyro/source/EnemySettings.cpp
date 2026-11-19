@@ -201,8 +201,8 @@ void EnemySettings_InitModule() {
     void *var_r3_447;
 
     temp_r4_405 = &lit_618 - 4;
-    M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) temp_r4_405 + 4, 0x10);
-    M2C_FIELD((&sp4 + 0x10), u16 *, 4) = (u16) M2C_FIELD((temp_r4_405 + 0x10), u16 *, 4);
+    M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) ((u8 *) temp_r4_405) + 4, 0x10);
+    M2C_FIELD((&sp4 + 0x10), u16 *, 4) = (u16) M2C_FIELD((((u8 *) temp_r4_405) + 0x10), u16 *, 4);
     iLevels = lit_618.GetLevelCount();
     pLevelSettings = NULL;
     memset(baselineSettings, 0, 0x24U);

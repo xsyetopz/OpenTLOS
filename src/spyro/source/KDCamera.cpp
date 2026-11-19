@@ -182,7 +182,7 @@ void KDCamera::GetIdealSource(const MKVector3 &arg0, const MKVector3 &arg1, MKVe
     } else {
         temp_r3_269 = M2C_FIELD(&arg0, void **, 0x54);
         temp_f31_270 = M2C_FIELD(temp_r3_269, f32 *, 0x28);
-        var_f31_266 = ((KDCameraDeltaStagesEx *) (temp_r3_269 + 0x14))->GetZDelta() + temp_f31_270;
+        var_f31_266 = ((KDCameraDeltaStagesEx *) (((u8 *) temp_r3_269) + 0x14))->GetZDelta() + temp_f31_270;
     }
     if (temp_r31_171 != NULL) {
         var_f1_277 = M2C_FIELD(temp_r31_171, f32 *, 4);
@@ -203,7 +203,7 @@ f32 KDCamera::GetUpdatedSourceY(const MKVector3 &arg0, const MKVector3 &arg1, in
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void KDCamera::GetUpdatedSource(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 *arg2, float arg3) {
     f64 spE0;
     f64 spD8;
@@ -240,7 +240,7 @@ void KDCamera::GetUpdatedSource(const MKVector3 &arg0, const MKVector3 &arg1, co
     temp_r4_332 = M2C_FIELD(&arg0, void **, 0x54);
     temp_f29_336 = M2C_FIELD(temp_r4_332, f32 *, 0x28);
     temp_r31_337 = M2C_ERROR(/* Read from unset register $r7 */);
-    temp_f28_341 = ((KDCameraDeltaStagesEx *) (temp_r4_332 + 0x14))->GetZDelta() + temp_f29_336;
+    temp_f28_341 = ((KDCameraDeltaStagesEx *) (((u8 *) temp_r4_332) + 0x14))->GetZDelta() + temp_f29_336;
     if (temp_r31_337 != NULL) {
         MKVector(M2C_FIELD(temp_r31_337, f32 *, 0), 0.0f, M2C_FIELD(temp_r31_337, f32 *, 8));
         Normalise(spA8);
@@ -432,7 +432,7 @@ loop_13:
             }
         }
         if (var_r5_616 == 0) {
-            temp_r6_639 = this->unk210 - 4;
+            temp_r6_639 = ((u8 *) this->unk210) - 4;
             this->unk210 = temp_r6_639;
             temp_r6_641 = *temp_r6_639;
             M2C_FIELD(temp_r6_641, u32 *, 0) = (u32) M2C_FIELD(temp_r3_614, u32 *, 8);
@@ -454,7 +454,7 @@ loop_21:
             }
             if ((u32) *temp_r4_678 == (u32) M2C_FIELD(temp_r3_657, u32 *, 8)) {
                 temp_r3_665 = this->unk210;
-                this->unk210 = temp_r3_665 + 4;
+                this->unk210 = ((u8 *) temp_r3_665) + 4;
                 temp_r4_668 = *temp_r3_665;
                 *temp_r3_665 = (u32 *) *var_r5_658;
                 *var_r5_658 = temp_r4_668;
@@ -510,14 +510,14 @@ loop_21:
             sp28 = -M2C_FIELD(temp_r3_745, f32 *, 0x20);
             sp40 = (f64) sp20;
             sp48 = (f64) sp28;
-            M2C_FIELD(temp_r3_745, u8 *, 0x48) = GetForceSnapPos(*((MKVector3 *) &sp40), *(temp_r3_745 + 8), temp_r3_745 + 0x28, temp_r3_745 + 0x38);
+            M2C_FIELD(temp_r3_745, u8 *, 0x48) = GetForceSnapPos(*((MKVector3 *) &sp40), *(temp_r3_745 + 8), ((u8 *) temp_r3_745) + 0x28, ((u8 *) temp_r3_745) + 0x38);
         } else {
             sp10 = -M2C_FIELD(temp_r3_745, f32 *, 0x18);
             sp14 = -M2C_FIELD(temp_r3_745, f32 *, 0x1C);
             sp18 = -M2C_FIELD(temp_r3_745, f32 *, 0x20);
             sp30 = (f64) sp10;
             sp38 = (f64) sp18;
-            M2C_FIELD(temp_r3_745, u8 *, 0x48) = GetSnapPos(*((MKVector3 *) &sp30), *(temp_r3_745 + 8), temp_r3_745 + 0x28, temp_r3_745 + 0x38);
+            M2C_FIELD(temp_r3_745, u8 *, 0x48) = GetSnapPos(*((MKVector3 *) &sp30), *(temp_r3_745 + 8), ((u8 *) temp_r3_745) + 0x28, ((u8 *) temp_r3_745) + 0x38);
         }
         if (sp8 != NULL) {
             M2C_FIELD(sp8, u8 *, 4) = spC;
@@ -2470,7 +2470,7 @@ KDCamera::KDCamera() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void KDCamera::Use() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -2480,7 +2480,7 @@ void KDCamera::Use() {
     f64 sp10;
     Frustum *temp_r3_4795;
 
-    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     sp10 = sp30.unk30 + M2C_FIELD(this, f64 *, 0x188);
     sp20 = sp10;
     sp18 = sp30.unk38 + this->unk190;
@@ -2994,21 +2994,21 @@ void KDCamera::Init() {
         }
         this->unk210 = var_r3_5622;
         var_r5_5634 = this->unk210;
-        temp_r3_5635 = var_r5_5634 + (temp_r30_5604 * 8);
+        temp_r3_5635 = ((u8 *) var_r5_5634) + (temp_r30_5604 * 8);
         this->unk210 = temp_r3_5635;
         *temp_r3_5635 = 0;
         var_ctr_5638 = temp_r30_5604;
         if (temp_r30_5604 > 0) {
             do {
                 temp_r3_5642 = this->unk210;
-                this->unk210 = temp_r3_5642 + 4;
+                this->unk210 = ((u8 *) temp_r3_5642) + 4;
                 M2C_FIELD(temp_r3_5642, void **, 4) = var_r5_5634;
                 var_r5_5634 += 8;
                 var_ctr_5638 -= 1;
             } while (var_ctr_5638 != 0);
         }
         temp_r3_5649 = this->unk210;
-        this->unk210 = temp_r3_5649 + 4;
+        this->unk210 = ((u8 *) temp_r3_5649) + 4;
         M2C_FIELD(temp_r3_5649, void **, 4) = NULL;
     }
     this->unk204 = 0;

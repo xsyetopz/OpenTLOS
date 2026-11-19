@@ -760,7 +760,7 @@ void Translation_InitModule() {
     var_r29_559 = 0;
     do {
         temp_r27_561 = gLanguageInfo + var_r29_559;
-        if (MKArchive_Exists(M2C_FIELD(temp_r27_561, s8 **, 0xC), temp_r27_561 + 0x10) == 0) {
+        if (MKArchive_Exists(M2C_FIELD(temp_r27_561, s8 **, 0xC), ((u8 *) temp_r27_561) + 0x10) == 0) {
             M2C_FIELD(temp_r27_561, s32 *, 0x10) = 0;
         } else {
             temp_r5_571 = M2C_FIELD(temp_r27_561, s32 *, 0x10);

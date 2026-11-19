@@ -376,13 +376,13 @@ loop_12:
             if (var_r22_726 != NULL) {
                 temp_r21_735 = var_r22_726->GetFieldName();
                 if (stricmp("SpyroMaxSpeed") == 0) {
-                    var_r22_726->AsFloat(0, temp_r4_725 + 0x60);
+                    var_r22_726->AsFloat(0, ((u8 *) temp_r4_725) + 0x60);
                     M2C_FIELD(temp_r4_725, f32 *, 0x60) = (f32) (M2C_FIELD(temp_r4_725, f32 *, 0x60) * 100.0f);
                 } else if (stricmp(temp_r21_735, "TrainMaxSpeed") == 0) {
-                    var_r22_726->AsFloat(0, temp_r4_725 + 0x64);
+                    var_r22_726->AsFloat(0, ((u8 *) temp_r4_725) + 0x64);
                     M2C_FIELD(temp_r4_725, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r4_725, f32 *, 0x64) * 100.0f);
                 } else if (stricmp(temp_r21_735, "DestroyCaboose") == 0) {
-                    var_r22_726->AsFloat(0, temp_r4_725 + 0x68);
+                    var_r22_726->AsFloat(0, ((u8 *) temp_r4_725) + 0x68);
                 }
                 var_r22_726 = var_r22_726->unkC->GetNextLine(var_r22_726);
                 goto loop_12;

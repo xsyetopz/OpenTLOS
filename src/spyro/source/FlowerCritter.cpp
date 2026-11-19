@@ -43,7 +43,7 @@ void FlowerCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void FlowerCritter::Draw() {
     Matrix sp50;
     M2C_UNK sp4C;
@@ -66,10 +66,10 @@ void FlowerCritter::Draw() {
     var_r31_94 = 0;
 loop_6:
     if (var_r29_93 < (s32) this->unk90) {
-        temp_r28_101 = this->unk170 + var_r31_94;
+        temp_r28_101 = ((u8 *) this->unk170) + var_r31_94;
         this->unk80->SetAnim(M2C_FIELD(temp_r28_101, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r28_101, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (temp_r28_101 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp4C + 4, (s32) (((u8 *) temp_r28_101) - 4) + 4, 0x40);
         temp_r0_120 = M2C_FIELD(temp_r28_101, s32 *, 0x60);
         if ((temp_r0_120 == 3) || (temp_r0_120 == 4) || (temp_r0_120 == 5)) {
             temp_f1_132 = 300.0f * _table_sinf(M2C_FIELD(temp_r28_101, f32 *, 0x68));
@@ -96,7 +96,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void FlowerCritter::Update() {
     s8 sp278;
     s32 sp274;
@@ -208,7 +208,7 @@ void FlowerCritter::Update() {
     var_r28_192 = 0;
 loop_26:
     if (var_r31_191 < (s32) this->unk90) {
-        temp_r30_197 = this->unk170 + var_r28_192;
+        temp_r30_197 = ((u8 *) this->unk170) + var_r28_192;
         M2C_FIELD(temp_r30_197, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_197, f32 *, 0x64) - gUpdateTimeDelta);
         temp_r0_201 = M2C_FIELD(temp_r30_197, s32 *, 0x60);
         if (temp_r0_201 < 3) {
@@ -379,7 +379,7 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void FlowerCritter::LoadDone() {
     s8 sp1C8;
     s32 sp1C4;
@@ -447,7 +447,7 @@ void FlowerCritter::LoadDone() {
     var_r29_647 = 0;
 loop_13:
     if (var_r31_645 < (s32) this->unk90) {
-        temp_r26_657 = this->unk170 + var_r29_647;
+        temp_r26_657 = ((u8 *) this->unk170) + var_r29_647;
         if ((u8) this->unk174 != 0) {
             M2C_FIELD(temp_r26_657, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 2);
             M2C_FIELD(temp_r26_657, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));

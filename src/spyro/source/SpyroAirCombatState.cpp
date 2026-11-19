@@ -633,7 +633,7 @@ void SpyroAirCombatState::HornDiveHitEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk14'
 u8 SpyroAirCombatState::HornDiveAttackTransition() {
     s8 sp2D;
     s8 sp2C;
@@ -688,7 +688,7 @@ u8 SpyroAirCombatState::HornDiveAttackTransition() {
     if (temp_r4_1146 > 0) {
         var_r29_1131 = 1;
         if (temp_r4_1146 != 0) {
-            var_r9_1123 = temp_r10_1135 + ((temp_r4_1146 - 1) * 0x58);
+            var_r9_1123 = ((u8 *) temp_r10_1135) + ((temp_r4_1146 - 1) * 0x58);
         }
         if (((u8) M2C_FIELD(var_r9_1123, u8 *, 0x50) != 0) && (temp_r5_1158 = M2C_FIELD(var_r9_1123, void **, 0x48), ((temp_r5_1158 == NULL) == 0)) && (var_r0_1161 = M2C_FIELD(temp_r5_1158, u32 *, 8), ((var_r0_1161 == 0U) == 0))) {
 
@@ -697,7 +697,7 @@ u8 SpyroAirCombatState::HornDiveAttackTransition() {
         }
         if (var_r0_1161 != 0U) {
             if (temp_r4_1146 != 0) {
-                var_r4_1174 = temp_r10_1135 + ((temp_r4_1146 - 1) * 0x58);
+                var_r4_1174 = ((u8 *) temp_r10_1135) + ((temp_r4_1146 - 1) * 0x58);
             } else {
                 var_r4_1174 = NULL;
             }
@@ -719,7 +719,7 @@ block_18:
         if (temp_r4_1203 > 0) {
             var_r29_1131 = 1;
             if (temp_r4_1203 != 0) {
-                var_r9_1123 = temp_r5_1202 + ((temp_r4_1203 - 1) * 0x58);
+                var_r9_1123 = ((u8 *) temp_r5_1202) + ((temp_r4_1203 - 1) * 0x58);
             }
             if (((u8) M2C_FIELD(var_r9_1123, u8 *, 0x50) != 0) && (temp_r6_1215 = M2C_FIELD(var_r9_1123, void **, 0x48), ((temp_r6_1215 == NULL) == 0)) && (var_r0_1218 = M2C_FIELD(temp_r6_1215, u32 *, 8), ((var_r0_1218 == 0U) == 0))) {
 
@@ -728,7 +728,7 @@ block_18:
             }
             if (var_r0_1218 != 0U) {
                 if (temp_r4_1203 != 0) {
-                    var_r4_1231 = temp_r5_1202 + ((temp_r4_1203 - 1) * 0x58);
+                    var_r4_1231 = ((u8 *) temp_r5_1202) + ((temp_r4_1203 - 1) * 0x58);
                 } else {
                     var_r4_1231 = NULL;
                 }

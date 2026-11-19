@@ -205,7 +205,7 @@ inline void *MKDistanceLevelChunk::ChunkCreator(const char *arg0) {
     if (temp_r31_1737 != NULL) {
         M2C_FIELD(temp_r31_1737, M2C_UNK **, 8) = &__vt;
         M2C_FIELD(temp_r31_1737, M2C_UNK **, 8) = &__vt;
-        __construct_array(temp_r31_1737 + 0x16C, &MKProp::MKProp, &MKProp::~MKProp, 0x4C, 2);
+        __construct_array(((u8 *) temp_r31_1737) + 0x16C, &MKProp::MKProp, &MKProp::~MKProp, 0x4C, 2);
         M2C_FIELD(temp_r31_1737, M2C_UNK **, 0x2A24) = &__vt;
         M2C_FIELD(temp_r31_1737, M2C_UNK **, 0x2A70) = &__vt;
         M2C_FIELD(temp_r31_1737, M2C_UNK **, 0x2ABC) = &__vt;

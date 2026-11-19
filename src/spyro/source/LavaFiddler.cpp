@@ -43,7 +43,7 @@ void LavaFiddlerCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void LavaFiddlerCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -55,10 +55,10 @@ void LavaFiddlerCritter::Draw() {
     var_r31_93 = 0;
 loop_2:
     if (var_r30_92 < (s32) this->unk90) {
-        temp_r29_100 = this->unk170 + var_r31_93;
+        temp_r29_100 = ((u8 *) this->unk170) + var_r31_93;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_100, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_100, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_100 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_100) - 4) + 4, 0x40);
         MKModel_SetWorldMatrix(this->unk4, sp10);
         MKModel_Draw(this->unk4, NULL);
         var_r30_92 += 1;
@@ -612,7 +612,7 @@ void LavaFiddlerCritter::SetHideState(LavaFiddler *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void LavaFiddlerCritter::Update() {
     s8 sp168;
     s32 sp164;
@@ -692,7 +692,7 @@ void LavaFiddlerCritter::Update() {
     var_r28_952 = 0;
 loop_35:
     if (var_r31_951 < (s32) this->unk90) {
-        temp_r30_957 = this->unk170 + var_r28_952;
+        temp_r30_957 = ((u8 *) this->unk170) + var_r28_952;
         temp_r30_957->unk64 -= gUpdateTimeDelta;
         temp_r30_957->unk54 += temp_r30_957->unk58 * gUpdateTimeDelta;
         temp_r0_966 = temp_r30_957->unk60;
@@ -834,7 +834,7 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void LavaFiddlerCritter::Resolve() {
     s8 sp190;
     s32 sp18C;
@@ -894,7 +894,7 @@ void LavaFiddlerCritter::Resolve() {
     var_r28_1313 = 0;
 loop_24:
     if (var_r31_1311 < (s32) this->unk90) {
-        temp_r30_1323 = this->unk170 + var_r28_1313;
+        temp_r30_1323 = ((u8 *) this->unk170) + var_r28_1313;
         SetIdleState(temp_r30_1323);
         sp100.GetRandPos();
         sp88 = 0.0f;

@@ -1036,7 +1036,7 @@ void MKMat_MK2_Standard::UsePass() {
         switch (temp_r0_1936) {                     /* switch 2; irregular */
         case 5:                                     /* switch 2 */
         case 2:                                     /* switch 2 */
-            sp90.Multiply(&spD0, temp_r5_1935 + 0x40);
+            sp90.Multiply(&spD0, ((u8 *) temp_r5_1935) + 0x40);
             sp90.Transpose(&sp90);
             GXLoadTexMtxImm((f32 (*)[4]) &sp90, 0x40U, GX_MTX3x4);
             if ((s32) M2C_FIELD(M2C_FIELD(this, void **, 0x24), s32 *, 0x28) == 5) {
@@ -1062,7 +1062,7 @@ void MKMat_MK2_Standard::UsePass() {
             temp_r31_1783->Use();
             break;
         default:                                    /* switch 2 */
-            temp_r30_2031 = temp_r5_1935 + 0x40;
+            temp_r30_2031 = ((u8 *) temp_r5_1935) + 0x40;
             if (memcmp(temp_r30_2031, &Matrix::identity, 0x40U) != 0) {
                 M2C_STRUCT_COPY((s32) &sp28 + 4, (s32) (&lit_610 - 4) + 4, 0x20);
                 sp2C = M2C_FIELD(temp_r5_1935, f32 *, 0x40);

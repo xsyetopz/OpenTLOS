@@ -95,7 +95,7 @@ void Collectable2::Collect() {
         spB8 = temp_f0_91;
         sp50 = (f32) spB0 * 600.0f;
         spC0 = (f64) sp50;
-        temp_r30_104 = this->unk8 + 0x30;
+        temp_r30_104 = ((u8 *) this->unk8) + 0x30;
         temp_f28_106 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f27_111 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         sp38 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);

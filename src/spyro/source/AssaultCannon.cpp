@@ -377,7 +377,7 @@ void AssaultCannon::EmitShootingFX() {
         sp70 = M2C_FIELD(temp_r3_378, f64 *, 0x30);
         sp70.unk8 = M2C_FIELD(temp_r3_378, f64 *, 0x38);
     }
-    temp_r3_385 = this->unk8 + 0x30;
+    temp_r3_385 = ((u8 *) this->unk8) + 0x30;
     sp30 = M2C_BITWISE(f64, sp70) - M2C_FIELD(temp_r3_385, f64 *, 0);
     sp60 = sp30;
     sp38 = sp70.unk8 - M2C_FIELD(temp_r3_385, f32 *, 8);
@@ -551,7 +551,7 @@ void AssaultCannon::StateDeadUpdate() {
         temp_f0_694 = spC0 * 5.51933903e-315;
         sp50 = temp_f0_694;
         spD0 = temp_f0_694;
-        temp_r3_701 = this->unk8 + 0x30;
+        temp_r3_701 = ((u8 *) this->unk8) + 0x30;
         sp58 = spC0.unk8 * 75.0f;
         spD8 = (f64) sp58;
         temp_f0_707 = M2C_FIELD(temp_r3_701, f64 *, 0) + temp_f0_694;
@@ -998,7 +998,7 @@ void AssaultCannon::StateFireUpdate() {
         }
         if (gb.unk0->GetTargetable() != 0U) {
             temp_r4_973 = this->unk8;
-            temp_r30_976 = temp_r4_973 + 0x30;
+            temp_r30_976 = ((u8 *) temp_r4_973) + 0x30;
             temp_r3_980 = gb.unk0->GetTargetable(temp_r4_973);
             M2C_FIELD(*temp_r3_980, M2C_UNK (**)(f64 *, void **), 0x30)(&sp480, temp_r3_980);
             temp_r3_994 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
@@ -1073,7 +1073,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f2_1119 = 0.0f;
                 }
                 temp_r4_1135 = this->unk8;
-                temp_r30_1139 = temp_r4_1135 + 0x30;
+                temp_r30_1139 = ((u8 *) temp_r4_1135) + 0x30;
                 temp_r3_1148 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1135, 0.05f), void **, 8);
                 temp_f1_1149 = M2C_FIELD(temp_r3_1148, f64 *, 0x30);
                 sp450 = temp_f1_1149;
@@ -1135,7 +1135,7 @@ void AssaultCannon::StateFireUpdate() {
                     M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_1260, f64 *, 0x30);
                     M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_1260, f64 *, 0x38);
                 }
-                temp_r3_1268 = this->unk8 + 0x30;
+                temp_r3_1268 = ((u8 *) this->unk8) + 0x30;
                 temp_f0_1271 = M2C_FIELD(this, f64 *, 0x230) - M2C_FIELD(temp_r3_1268, f64 *, 0);
                 sp1B0 = temp_f0_1271;
                 var_f4_1277 = 0.0f;
@@ -1203,7 +1203,7 @@ void AssaultCannon::StateFireUpdate() {
             return;
         }
         temp_r4_1403 = this->unk8;
-        temp_r30_1406 = temp_r4_1403 + 0x30;
+        temp_r30_1406 = ((u8 *) temp_r4_1403) + 0x30;
         temp_r3_1410 = gb.unk0->GetTargetable(temp_r4_1403);
         M2C_FIELD(*temp_r3_1410, M2C_UNK (**)(f64 *, void **), 0x30)(&sp3F0, temp_r3_1410);
         temp_r3_1424 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
@@ -1278,7 +1278,7 @@ void AssaultCannon::StateFireUpdate() {
             if (temp_r3_1566 != 0) {
                 M2C_FIELD(temp_r3_1566, AssaultCannon **, 0x130) = this;
                 temp_r4_1573 = this->unk8;
-                temp_r30_1575 = temp_r4_1573 + 0x30;
+                temp_r30_1575 = ((u8 *) temp_r4_1573) + 0x30;
                 temp_r3_1579 = M2C_FIELD(gb.unk0->GetProp(temp_r4_1573), void **, 8);
                 temp_f1_1580 = M2C_FIELD(temp_r3_1579, f64 *, 0x30);
                 sp3C0 = temp_f1_1580;
@@ -1340,7 +1340,7 @@ void AssaultCannon::StateFireUpdate() {
                     M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_1691, f64 *, 0x30);
                     M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_1691, f64 *, 0x38);
                 }
-                temp_r3_1699 = this->unk8 + 0x30;
+                temp_r3_1699 = ((u8 *) this->unk8) + 0x30;
                 temp_f0_1702 = M2C_FIELD(this, f64 *, 0x230) - M2C_FIELD(temp_r3_1699, f64 *, 0);
                 sp170 = temp_f0_1702;
                 var_f4_1708 = 0.0f;
@@ -1405,7 +1405,7 @@ void AssaultCannon::StateFireUpdate() {
                 this->unk230.unk8 = temp_f2_1835 + (f32) sp398;
                 temp_r3_1842 = this->unk2C8;
                 M2C_FIELD(M2C_FIELD(temp_r3_1842, void **, 0x44), M2C_UNK (**)(u32, MKVector3 *, f64 *, AssaultCannon *, M2C_UNK, M2C_UNK, f32, f32), 0x4C)(temp_r3_1842, &this->unk230, &this->unk240, this, 0, 0, 2000.0f, temp_f2_1835);
-                KDSound_Play3d(GS_EarthTurrentFire, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_EarthTurrentFire, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 temp_r3_1855 = this->unk2C8;
                 M2C_FIELD(M2C_FIELD(temp_r3_1855, void **, 0x44), M2C_UNK (**)(u32), 0x24)(temp_r3_1855);
                 EmitShootingFX();
@@ -1420,7 +1420,7 @@ void AssaultCannon::StateFireUpdate() {
             return;
         }
         temp_r4_1881 = this->unk8;
-        temp_r30_1884 = temp_r4_1881 + 0x30;
+        temp_r30_1884 = ((u8 *) temp_r4_1881) + 0x30;
         temp_r3_1888 = gb.unk0->GetTargetable(temp_r4_1881);
         M2C_FIELD(*temp_r3_1888, M2C_UNK (**)(f64 *, void **), 0x30)(&sp360, temp_r3_1888);
         temp_r3_1902 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
@@ -1510,7 +1510,7 @@ void AssaultCannon::StateFireUpdate() {
         }
         if (gb.unk0->GetTargetable() != 0U) {
             temp_r4_2095 = this->unk8;
-            temp_r30_2098 = temp_r4_2095 + 0x30;
+            temp_r30_2098 = ((u8 *) temp_r4_2095) + 0x30;
             temp_r3_2102 = gb.unk0->GetTargetable(temp_r4_2095);
             M2C_FIELD(*temp_r3_2102, M2C_UNK (**)(f64 *, void **), 0x30)(&sp2F0, temp_r3_2102);
             temp_r3_2116 = M2C_FIELD(gb.unk0->GetProp(), void **, 8);
@@ -1585,7 +1585,7 @@ void AssaultCannon::StateFireUpdate() {
                     var_f2_2241 = 0.0f;
                 }
                 temp_r4_2257 = this->unk8;
-                temp_r30_2261 = temp_r4_2257 + 0x30;
+                temp_r30_2261 = ((u8 *) temp_r4_2257) + 0x30;
                 temp_r3_2270 = M2C_FIELD(gb.unk0->GetProp(temp_r4_2257, 0.05f), void **, 8);
                 temp_f1_2271 = M2C_FIELD(temp_r3_2270, f64 *, 0x30);
                 sp2C0 = temp_f1_2271;
@@ -1647,7 +1647,7 @@ void AssaultCannon::StateFireUpdate() {
                     M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_2382, f64 *, 0x30);
                     M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_2382, f64 *, 0x38);
                 }
-                temp_r3_2390 = this->unk8 + 0x30;
+                temp_r3_2390 = ((u8 *) this->unk8) + 0x30;
                 temp_f0_2393 = M2C_FIELD(this, f64 *, 0x230) - M2C_FIELD(temp_r3_2390, f64 *, 0);
                 sp110 = temp_f0_2393;
                 var_f4_2399 = 0.0f;
@@ -1716,7 +1716,7 @@ void AssaultCannon::StateFireUpdate() {
         break;
     case 4:                                         /* switch 1 */
         temp_r4_2534 = this->unk8;
-        temp_r30_2537 = temp_r4_2534 + 0x30;
+        temp_r30_2537 = ((u8 *) temp_r4_2534) + 0x30;
         temp_r3_2542 = M2C_FIELD(gb.unk0->GetProp(temp_r4_2534), void **, 8);
         temp_f1_2543 = M2C_FIELD(temp_r3_2542, f64 *, 0x30);
         sp260 = temp_f1_2543;
@@ -1769,7 +1769,7 @@ void AssaultCannon::StateFireUpdate() {
         gb.unk0->Message(&sp540, M2C_FIELD(&MKVector3::zero, f64 *, 0));
         this->unk240 = sp550;
         M2C_FIELD(this, f64 *, 0x248) = sp558;
-        temp_r3_2657 = this->unk8 + 0x30;
+        temp_r3_2657 = ((u8 *) this->unk8) + 0x30;
         spF0 = this->unk240 - M2C_FIELD(temp_r3_2657, f64 *, 0);
         sp250 = spF0;
         spF8 = this->unk230.unk0 - M2C_FIELD(temp_r3_2657, f32 *, 8);
@@ -1808,7 +1808,7 @@ void AssaultCannon::StateFireUpdate() {
                 var_f31_2677 = __float_nan;
             }
         }
-        temp_r3_2742 = this->unk8 + 0x30;
+        temp_r3_2742 = ((u8 *) this->unk8) + 0x30;
         temp_f0_2745 = this->unk240 - M2C_FIELD(temp_r3_2742, f64 *, 0);
         spE0 = temp_f0_2745;
         var_f4_2751 = 0.0f;
@@ -2149,7 +2149,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f2_3115 = 0.0f;
             }
             temp_r4_3130 = this->unk8;
-            temp_r30_3134 = temp_r4_3130 + 0x30;
+            temp_r30_3134 = ((u8 *) temp_r4_3130) + 0x30;
             temp_r3_3143 = M2C_FIELD(gb.unk0->GetProp(temp_r4_3130, 0.05f), void **, 8);
             temp_f1_3144 = M2C_FIELD(temp_r3_3143, f64 *, 0x30);
             sp1D0 = temp_f1_3144;
@@ -2211,7 +2211,7 @@ void AssaultCannon::StateFireEnter() {
                 M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_3255, f64 *, 0x30);
                 M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_3255, f64 *, 0x38);
             }
-            temp_r3_3263 = this->unk8 + 0x30;
+            temp_r3_3263 = ((u8 *) this->unk8) + 0x30;
             temp_f0_3266 = M2C_FIELD(this, f64 *, 0x230) - M2C_FIELD(temp_r3_3263, f64 *, 0);
             spC0 = temp_f0_3266;
             var_f4_3272 = 0.0f;
@@ -2297,7 +2297,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f1_3419 = 0.0f;
             }
             temp_r4_3436 = this->unk8;
-            temp_r30_3440 = temp_r4_3436 + 0x30;
+            temp_r30_3440 = ((u8 *) temp_r4_3436) + 0x30;
             temp_r3_3448 = M2C_FIELD(gb.unk0->GetProp(temp_r4_3436, 1.0f, 0.05f), void **, 8);
             temp_f1_3449 = M2C_FIELD(temp_r3_3448, f64 *, 0x30);
             sp180 = temp_f1_3449;
@@ -2359,7 +2359,7 @@ void AssaultCannon::StateFireEnter() {
                 M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_3560, f64 *, 0x30);
                 M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_3560, f64 *, 0x38);
             }
-            temp_r3_3568 = this->unk8 + 0x30;
+            temp_r3_3568 = ((u8 *) this->unk8) + 0x30;
             temp_f0_3571 = M2C_FIELD(this, f64 *, 0x230) - M2C_FIELD(temp_r3_3568, f64 *, 0);
             spA0 = temp_f0_3571;
             var_f4_3577 = 0.0f;
@@ -2472,7 +2472,7 @@ void AssaultCannon::StateFireEnter() {
                 var_f2_3772 = 0.0f;
             }
             temp_r4_3787 = this->unk8;
-            temp_r30_3791 = temp_r4_3787 + 0x30;
+            temp_r30_3791 = ((u8 *) temp_r4_3787) + 0x30;
             temp_r3_3800 = M2C_FIELD(gb.unk0->GetProp(temp_r4_3787, 0.05f), void **, 8);
             temp_f1_3801 = M2C_FIELD(temp_r3_3800, f64 *, 0x30);
             sp120 = temp_f1_3801;
@@ -2534,7 +2534,7 @@ void AssaultCannon::StateFireEnter() {
                 M2C_FIELD(this, f64 *, 0x230) = (f64) M2C_FIELD(temp_r3_3912, f64 *, 0x30);
                 M2C_FIELD(this, f64 *, 0x238) = (f64) M2C_FIELD(temp_r3_3912, f64 *, 0x38);
             }
-            temp_r3_3920 = this->unk8 + 0x30;
+            temp_r3_3920 = ((u8 *) this->unk8) + 0x30;
             temp_f0_3923 = M2C_FIELD(this, f64 *, 0x230) - M2C_FIELD(temp_r3_3920, f64 *, 0);
             sp70 = temp_f0_3923;
             var_f4_3929 = 0.0f;
@@ -2666,7 +2666,7 @@ void AssaultCannon::StateTurnToFaceUpdate() {
         sp98 = sp78;
     }
     temp_r4_4135 = this->unk8;
-    temp_r30_4138 = temp_r4_4135 + 0x30;
+    temp_r30_4138 = ((u8 *) temp_r4_4135) + 0x30;
     temp_r3_4143 = M2C_FIELD(gb.unk0->GetProp(temp_r4_4135), void **, 8);
     temp_f1_4144 = M2C_FIELD(temp_r3_4143, f64 *, 0x30);
     sp50 = temp_f1_4144;
@@ -2847,7 +2847,7 @@ void AssaultCannon::StateIdleUpdate() {
     }
     if (var_r5_4420 != 0) {
         temp_r4_4480 = this->unk8;
-        temp_r31_4483 = temp_r4_4480 + 0x30;
+        temp_r31_4483 = ((u8 *) temp_r4_4480) + 0x30;
         temp_r3_4488 = M2C_FIELD(gb.unk0->GetProp(temp_r4_4480), void **, 8);
         temp_f1_4489 = M2C_FIELD(temp_r3_4488, f64 *, 0x30);
         sp18 = temp_f1_4489;
@@ -3054,7 +3054,7 @@ s32 AssaultCannon::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     void *temp_r4_4848;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    temp_r4_4848 = this->unk8 + 0x30;
+    temp_r4_4848 = ((u8 *) this->unk8) + 0x30;
     sp8 = M2C_FIELD(temp_r4_4848, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = M2C_FIELD(temp_r4_4848, f32 *, 8) + sp20;
@@ -3075,7 +3075,7 @@ s32 AssaultCannon::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     void *temp_r4_4886;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    temp_r4_4886 = this->unk8 + 0x30;
+    temp_r4_4886 = ((u8 *) this->unk8) + 0x30;
     sp8 = M2C_FIELD(temp_r4_4886, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = M2C_FIELD(temp_r4_4886, f32 *, 8) + sp20;
@@ -3125,7 +3125,7 @@ void AssaultCannon::TakeDamage(float arg0, const MKVector3 &arg1) {
         var_f31_4968 = 0.0f;
     }
     if (((s32) checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk100 != 0) && (arg0 != 0.0f) && (M2C_BITWISE(f32, this->unk2C4) > 0.0f)) {
-        temp_r31_4996 = this->unk8 + 0x30;
+        temp_r31_4996 = ((u8 *) this->unk8) + 0x30;
         M2C_FIELD(this, s32 *, 0x268) = KDSound_Play3d(checked_cast<P23AssaultCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk100, temp_r31_4996, 0U, -1, 0.0f, 0U);
     }
     ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.6f, 0.4f, 0.1f, 0, 4.0f, 0U);
@@ -3314,7 +3314,7 @@ void AssaultCannon::Message(MKMessage *arg0) {
             temp_f0_5208 = sp218 * 5.5769738e-315;
             sp128 = temp_f0_5208;
             sp228 = temp_f0_5208;
-            temp_r3_5215 = this->unk8 + 0x30;
+            temp_r3_5215 = ((u8 *) this->unk8) + 0x30;
             sp130 = sp220 * 200.0f;
             sp230 = (f64) sp130;
             temp_f0_5221 = M2C_FIELD(temp_r3_5215, f64 *, 0) + temp_f0_5208;
@@ -3364,7 +3364,7 @@ block_35:
                 M2C_FIELD(arg0, s8 *, 0x3E) = 1;
                 spC0 = 0.0f;
                 spB8 = 0.0f;
-                temp_r3_5292 = this->unk8 + 0x30;
+                temp_r3_5292 = ((u8 *) this->unk8) + 0x30;
                 spBC = 200.0f;
                 sp1C0 = (f64) spC0;
                 sp1B8 = (f64) spB8;
@@ -3417,7 +3417,7 @@ block_35:
                 temp_f0_5396 = sp1D8 * 5.5769738e-315;
                 spD8 = temp_f0_5396;
                 sp1E8 = temp_f0_5396;
-                temp_r3_5403 = this->unk8 + 0x30;
+                temp_r3_5403 = ((u8 *) this->unk8) + 0x30;
                 spE0 = (f32) sp1E0 * 200.0f;
                 sp1F0 = (f64) spE0;
                 temp_f0_5409 = M2C_FIELD(temp_r3_5403, f64 *, 0) + temp_f0_5396;
@@ -3440,7 +3440,7 @@ block_35:
             temp_r5_5444 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
             sp88 = 0.0f;
             sp8C = 400.0f;
-            temp_r4_5449 = this->unk8 + 0x30;
+            temp_r4_5449 = ((u8 *) this->unk8) + 0x30;
             sp90 = 0.0f;
             sp198 = (f64) sp88;
             sp1A0 = (f64) sp90;
@@ -3458,7 +3458,7 @@ block_35:
             temp_r5_5480 = checked_cast<ExplodeMsg *, MKMessage>(arg0);
             sp68 = 0.0f;
             sp6C = 400.0f;
-            temp_r4_5485 = this->unk8 + 0x30;
+            temp_r4_5485 = ((u8 *) this->unk8) + 0x30;
             sp70 = 0.0f;
             sp178 = (f64) sp68;
             sp180 = (f64) sp70;
@@ -3475,7 +3475,7 @@ block_35:
         temp_r29_5512 = checked_cast<BallHitMessage *, MKMessage>(arg0);
         sp48 = 0.0f;
         sp4C = 400.0f;
-        temp_r4_5517 = this->unk8 + 0x30;
+        temp_r4_5517 = ((u8 *) this->unk8) + 0x30;
         sp50 = 0.0f;
         sp158 = (f64) sp48;
         sp160 = (f64) sp50;
@@ -3493,7 +3493,7 @@ block_91:
     case 224:                                       /* switch 1 */
         sp28 = 0.0f;
         sp2C = 400.0f;
-        temp_r4_5548 = this->unk8 + 0x30;
+        temp_r4_5548 = ((u8 *) this->unk8) + 0x30;
         sp30 = 0.0f;
         sp138 = (f64) sp28;
         sp140 = (f64) sp30;

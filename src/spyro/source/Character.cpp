@@ -2025,7 +2025,7 @@ s32 Character::Spawn(const Matrix *arg0) {
     if (temp_r28_3513 != NULL) {
         temp_r3_3516 = M2C_FIELD(temp_r28_3513, KDSynkerPlayer3 **, 0x78);
         var_r29_3517 = 0;
-        if (((temp_r3_3516 != NULL) && (temp_r3_3516->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_3513, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r28_3513 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_3516 != NULL) && (temp_r3_3516->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_3513, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r28_3513) + 0x24))->GetState() == 2))) {
             var_r29_3517 = 1;
         }
         if (var_r29_3517 != 0) {
@@ -2282,7 +2282,7 @@ void Character::Message(MKMessage *arg0) {
             UpdateModel();
             goto block_88;
         case 91:
-            temp_r31_4086 = this->unk8 + 0x30;
+            temp_r31_4086 = ((u8 *) this->unk8) + 0x30;
             M2C_FIELD(checked_cast<GetPosMsg *, MKMessage>(arg0), void **, 8) = temp_r31_4086;
             goto block_88;
         case 245:
@@ -2314,7 +2314,7 @@ void Character::Draw() {
             var_r30_4124 = 0;
             temp_r28_4126 = M2C_FIELD(&gb, void **, 0xC);
             temp_r3_4127 = M2C_FIELD(temp_r28_4126, KDSynkerPlayer3 **, 0x78);
-            if (((temp_r3_4127 != NULL) && (temp_r3_4127->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_4126, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r28_4126 + 0x24))->GetState() == 2))) {
+            if (((temp_r3_4127 != NULL) && (temp_r3_4127->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_4126, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r28_4126) + 0x24))->GetState() == 2))) {
                 var_r30_4124 = 1;
             }
             if ((var_r30_4124 == 0) || ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) != 0)) {
@@ -2377,7 +2377,7 @@ void Character::Update() {
             var_r30_4225 = 0;
             temp_r28_4227 = M2C_FIELD(&gb, void **, 0xC);
             temp_r3_4228 = M2C_FIELD(temp_r28_4227, KDSynkerPlayer3 **, 0x78);
-            if (((temp_r3_4228 != NULL) && (temp_r3_4228->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_4227, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r28_4227 + 0x24))->GetState() == 2))) {
+            if (((temp_r3_4228 != NULL) && (temp_r3_4228->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_4227, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r28_4227) + 0x24))->GetState() == 2))) {
                 var_r30_4225 = 1;
             }
             if ((var_r30_4225 == 0) || ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) != 0)) {
@@ -2554,7 +2554,7 @@ void Character::LoadDone() {
     temp_r3_4560 = checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
-    this->unk110.Init(temp_r3_4560 + 0x7C, this->unk5B8, M2C_FIELD(temp_r30_4558, u8 *, 0x76), this->unk634, 0, 1, 0);
+    this->unk110.Init(((u8 *) temp_r3_4560) + 0x7C, this->unk5B8, M2C_FIELD(temp_r30_4558, u8 *, 0x76), this->unk634, 0, 1, 0);
     ((MovementObject *) &this->unk588)->Init(checked_cast<P19CharacterDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0xC8, &this->unk110);
     M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *), 0x4C)(&sp20, &this->unk110);
     M2C_FIELD(this, f64 *, 0x5B8) = sp20;

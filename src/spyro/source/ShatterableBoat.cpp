@@ -69,7 +69,7 @@ s32 ShatterableBoat::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     void *temp_r4_191;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    temp_r4_191 = this->unk8 + 0x30;
+    temp_r4_191 = ((u8 *) this->unk8) + 0x30;
     sp8 = M2C_FIELD(temp_r4_191, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = M2C_FIELD(temp_r4_191, f32 *, 8) + sp20;
@@ -90,7 +90,7 @@ s32 ShatterableBoat::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     void *temp_r4_229;
 
     MKVector(0.0f, 100.0f, 0.0f);
-    temp_r4_229 = this->unk8 + 0x30;
+    temp_r4_229 = ((u8 *) this->unk8) + 0x30;
     sp8 = M2C_FIELD(temp_r4_229, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = M2C_FIELD(temp_r4_229, f32 *, 8) + sp20;
@@ -158,7 +158,7 @@ void ShatterableBoat::Draw() {
 
     Shatterable::Draw();
     if ((MKProp *) this->unk170 < (s32) (M2C_FIELD(checked_cast<ShatterableBoatDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160) - 1)) {
-        M2C_STRUCT_COPY((s32) &spEC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spEC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
         var_r28_318 = 0;
         var_r30_319 = 0;
         do {
@@ -174,7 +174,7 @@ void ShatterableBoat::Draw() {
             var_r30_319 += 0x10;
         } while (var_r28_318 < 0xA);
     }
-    M2C_STRUCT_COPY((s32) &spA0.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spA0.unkC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     sp18 = 0.0f;
     sp90 = spD0;
     sp70 = spB0;
@@ -263,7 +263,7 @@ block_23:
         this->unk234 = 1;
         return;
     case 0x5:
-        KDSound_Play3d(GS_ShipExtra2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_ShipExtra2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         goto block_23;
     case 0xBA:
         temp_r3_539 = this->unk220;
@@ -1046,8 +1046,8 @@ void ShatterableBoat::Update() {
         ((MKAnimScript *) this->unk240)->Animate(MKModel_GetAnimation((MKModel *) temp_r3_1655->unk8), -1, NULL);
     }
     if (IsDead() == 0) {
-        KDSound_Play3d((MKAnimScript *) this->unk234, this->unk8 + 0x30, 0U, 0.0f, 0U);
-        KDSound_Play3d((MKAnimScript *) this->unk240, this->unk8 + 0x30, 0U, 0.0f, 0U);
+        KDSound_Play3d((MKAnimScript *) this->unk234, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
+        KDSound_Play3d((MKAnimScript *) this->unk240, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
     }
     ShatterablePlatform::Update();
     ((MKProp *) &sp230)->GetPos();
@@ -1057,7 +1057,7 @@ void ShatterableBoat::Update() {
     sp240 = sp90;
     M2C_FIELD(this, f64 *, 0x320) = (f64) sp98;
     sp248 = (f64) sp98;
-    M2C_STRUCT_COPY((s32) &unksp2EC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &unksp2EC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     if (((MKAnimScript *) this->unk234)->CheckEvent(0) != 0) {
         var_r27_1728 = 5;
         var_r30_1729 = 0x50;

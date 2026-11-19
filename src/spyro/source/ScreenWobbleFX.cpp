@@ -94,7 +94,7 @@ loop_2:
         sp40 = (f64) sp20;
         KDRand_Vector(sp48, *((MKVector3 *) &sp38));
         __ml(gUpdateTimeDelta, sp58);
-        temp_r3_141 = this->unk0 + (((var_r29_113 + var_r31_111) * 0x38) + 0x20);
+        temp_r3_141 = ((u8 *) this->unk0) + (((var_r29_113 + var_r31_111) * 0x38) + 0x20);
         M2C_FIELD(temp_r3_141, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_141, f64 *, 0) + M2C_BITWISE(f64, sp58));
         var_r29_113 += 1;
         M2C_FIELD(temp_r3_141, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_141, f32 *, 8) + sp58.unk8);
@@ -135,7 +135,7 @@ void ScreenWobbleFX::InitWobbleNodes() {
         var_ctr_185 = 0xF;
 loop_2:
         temp_r11_190 = (var_r31_184 + var_r4_176) * 0x38;
-        temp_r8_195 = this->unk0 + temp_r11_190;
+        temp_r8_195 = ((u8 *) this->unk0) + temp_r11_190;
         sp20 = 0.0f;
         sp10 = 0.0f;
         sp8 = 0.0f;
@@ -148,10 +148,10 @@ loop_2:
         M2C_FIELD(temp_r8_195, f64 *, 0) = (f64) sp18;
         M2C_FIELD(temp_r8_195, f64 *, 8) = (f64) sp20;
         sp38 = (f64) sp18;
-        temp_r8_224 = this->unk0 + temp_r11_190;
+        temp_r8_224 = ((u8 *) this->unk0) + temp_r11_190;
         M2C_FIELD(temp_r8_224, f64 *, 0x10) = (f64) M2C_FIELD(temp_r8_224, f64 *, 0);
         M2C_FIELD(temp_r8_224, f64 *, 0x18) = (f64) M2C_FIELD(temp_r8_224, f64 *, 8);
-        temp_r6_230 = this->unk0 + (temp_r11_190 + 0x20);
+        temp_r6_230 = ((u8 *) this->unk0) + (temp_r11_190 + 0x20);
         M2C_FIELD(temp_r6_230, f64 *, 0) = (f64) sp8;
         M2C_FIELD(temp_r6_230, f64 *, 8) = (f64) sp10;
         *(this->unk0 + (temp_r11_190 + 0x30)) = 0;
@@ -241,9 +241,9 @@ void ScreenWobbleFX::Draw() {
 loop_5:
             temp_r26_380 = (var_r29_375 + var_r27_370) * 0x38;
             MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * *(this->unk0 + (temp_r26_380 + 0x34)));
-            temp_r3_390 = this->unk0 + temp_r26_380;
+            temp_r3_390 = ((u8 *) this->unk0) + temp_r26_380;
             MKSetTexCoord1F(M2C_FIELD(temp_r3_390, f32 *, 0), M2C_FIELD(temp_r3_390, f32 *, 4));
-            temp_r4_397 = this->unk0 + (temp_r26_380 + 0x10);
+            temp_r4_397 = ((u8 *) this->unk0) + (temp_r26_380 + 0x10);
             sp10 = M2C_FIELD(temp_r4_397, f64 *, 0);
             sp18 = M2C_FIELD(temp_r4_397, f64 *, 8);
             sp18 = 0.0f;
@@ -252,9 +252,9 @@ loop_5:
             MKSetPositionV(*((MKVector3 *) &sp10));
             temp_r26_412 = (var_r29_375 + ((var_r30_368 + 1) * 0xF)) * 0x38;
             MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * *(this->unk0 + (temp_r26_412 + 0x34)));
-            temp_r3_422 = this->unk0 + temp_r26_412;
+            temp_r3_422 = ((u8 *) this->unk0) + temp_r26_412;
             MKSetTexCoord1F(M2C_FIELD(temp_r3_422, f32 *, 0), M2C_FIELD(temp_r3_422, f32 *, 4));
-            temp_r4_429 = this->unk0 + (temp_r26_412 + 0x10);
+            temp_r4_429 = ((u8 *) this->unk0) + (temp_r26_412 + 0x10);
             sp10 = M2C_FIELD(temp_r4_429, f64 *, 0);
             sp18 = M2C_FIELD(temp_r4_429, f64 *, 8);
             sp18 = 0.0f;
@@ -446,26 +446,26 @@ void ScreenWobbleFX::Update() {
 loop_22:
             temp_r7_639 = this->unk0;
             temp_r4_640 = (var_r6_635 + var_r3_630) * 0x38;
-            temp_r8_641 = temp_r7_639 + temp_r4_640;
+            temp_r8_641 = ((u8 *) temp_r7_639) + temp_r4_640;
             if ((u8) M2C_FIELD(temp_r8_641, u8 *, 0x30) == 0) {
                 temp_r0_645 = this->unk14;
                 var_f1_646 = 1.0f;
                 switch (temp_r0_645) {              /* switch 1; irregular */
                 case 0:                             /* switch 1 */
-                    temp_r9_655 = temp_r8_641 + 0x20;
+                    temp_r9_655 = ((u8 *) temp_r8_641) + 0x20;
                     temp_f0_658 = M2C_FIELD(temp_r9_655, f64 *, 0) * (f64) gUpdateTimeDelta;
                     sp50 = temp_f0_658;
-                    temp_r8_662 = temp_r7_639 + (temp_r4_640 + 0x10);
+                    temp_r8_662 = ((u8 *) temp_r7_639) + (temp_r4_640 + 0x10);
                     spB0 = temp_f0_658;
                     sp58 = M2C_FIELD(temp_r9_655, f32 *, 8) * gUpdateTimeDelta;
                     spB8 = (f64) sp58;
                     M2C_FIELD(temp_r8_662, f64 *, 0) = (f64) (M2C_FIELD(temp_r8_662, f64 *, 0) + temp_f0_658);
                     M2C_FIELD(temp_r8_662, f32 *, 8) = (f32) (M2C_FIELD(temp_r8_662, f32 *, 8) + (f32) spB8);
                     temp_r0_677 = this->unk0;
-                    temp_r9_678 = temp_r0_677 + temp_r4_640;
+                    temp_r9_678 = ((u8 *) temp_r0_677) + temp_r4_640;
                     temp_f0_682 = M2C_FIELD(temp_r9_678, f64 *, 0) - *(temp_r9_678 + 0x10);
                     sp40 = temp_f0_682;
-                    temp_r7_686 = temp_r0_677 + (temp_r4_640 + 0x20);
+                    temp_r7_686 = ((u8 *) temp_r0_677) + (temp_r4_640 + 0x20);
                     spD0 = temp_f0_682;
                     spA0 = temp_f0_682;
                     sp48 = M2C_FIELD(temp_r9_678, f32 *, 8) - M2C_FIELD(temp_r9_678, f32 *, 0x18);
@@ -474,10 +474,10 @@ loop_22:
                     M2C_FIELD(temp_r7_686, f64 *, 0) = (f64) (M2C_FIELD(temp_r7_686, f64 *, 0) + temp_f0_682);
                     M2C_FIELD(temp_r7_686, f32 *, 8) = (f32) (M2C_FIELD(temp_r7_686, f32 *, 8) + (f32) spD8);
                     temp_f31_706 = this->unk10;
-                    temp_r8_707 = this->unk0 + (temp_r4_640 + 0x20);
+                    temp_r8_707 = ((u8 *) this->unk0) + (temp_r4_640 + 0x20);
                     M2C_FIELD(temp_r8_707, f64 *, 0) = (f64) (M2C_FIELD(temp_r8_707, f64 *, 0) * (f64) temp_f31_706);
                     M2C_FIELD(temp_r8_707, f32 *, 8) = (f32) (M2C_FIELD(temp_r8_707, f32 *, 8) * temp_f31_706);
-                    temp_r7_717 = this->unk0 + (temp_r4_640 + 0x20);
+                    temp_r7_717 = ((u8 *) this->unk0) + (temp_r4_640 + 0x20);
                     temp_f2_718 = M2C_FIELD(temp_r7_717, f32 *, 0);
                     temp_f1_719 = M2C_FIELD(temp_r7_717, f32 *, 4);
                     temp_f3_720 = M2C_FIELD(temp_r7_717, f32 *, 8);
@@ -528,31 +528,31 @@ loop_22:
                     var_f1_646 = var_f4_725;
                     break;
                 case 1:                             /* switch 1 */
-                    temp_r9_806 = temp_r8_641 + 0x20;
+                    temp_r9_806 = ((u8 *) temp_r8_641) + 0x20;
                     temp_f0_809 = M2C_FIELD(temp_r9_806, f64 *, 0) * (f64) gUpdateTimeDelta;
                     sp30 = temp_f0_809;
-                    temp_r8_813 = temp_r7_639 + (temp_r4_640 + 0x10);
+                    temp_r8_813 = ((u8 *) temp_r7_639) + (temp_r4_640 + 0x10);
                     sp90 = temp_f0_809;
                     sp38 = M2C_FIELD(temp_r9_806, f32 *, 8) * gUpdateTimeDelta;
                     sp98 = (f64) sp38;
                     M2C_FIELD(temp_r8_813, f64 *, 0) = (f64) (M2C_FIELD(temp_r8_813, f64 *, 0) + temp_f0_809);
                     M2C_FIELD(temp_r8_813, f32 *, 8) = (f32) (M2C_FIELD(temp_r8_813, f32 *, 8) + (f32) sp98);
                     temp_r0_828 = this->unk0;
-                    temp_r9_829 = temp_r0_828 + temp_r4_640;
+                    temp_r9_829 = ((u8 *) temp_r0_828) + temp_r4_640;
                     temp_f0_833 = M2C_FIELD(temp_r9_829, f64 *, 0) - *(temp_r9_829 + 0x10);
                     sp60 = temp_f0_833;
-                    temp_r8_837 = temp_r0_828 + (temp_r4_640 + 0x20);
+                    temp_r8_837 = ((u8 *) temp_r0_828) + (temp_r4_640 + 0x20);
                     spC0 = temp_f0_833;
                     sp68 = M2C_FIELD(temp_r9_829, f32 *, 8) - M2C_FIELD(temp_r9_829, f32 *, 0x18);
                     spC8 = (f64) sp68;
                     M2C_FIELD(temp_r8_837, f64 *, 0) = (f64) (M2C_FIELD(temp_r8_837, f64 *, 0) + temp_f0_833);
                     M2C_FIELD(temp_r8_837, f32 *, 8) = (f32) (M2C_FIELD(temp_r8_837, f32 *, 8) + (f32) spC8);
                     temp_f30_855 = this->unk10;
-                    temp_r7_856 = this->unk0 + (temp_r4_640 + 0x20);
+                    temp_r7_856 = ((u8 *) this->unk0) + (temp_r4_640 + 0x20);
                     M2C_FIELD(temp_r7_856, f64 *, 0) = (f64) (M2C_FIELD(temp_r7_856, f64 *, 0) * (f64) temp_f30_855);
                     M2C_FIELD(temp_r7_856, f32 *, 8) = (f32) (M2C_FIELD(temp_r7_856, f32 *, 8) * temp_f30_855);
                     temp_r0_863 = this->unk0;
-                    temp_r8_864 = temp_r0_863 + temp_r4_640;
+                    temp_r8_864 = ((u8 *) temp_r0_863) + temp_r4_640;
                     temp_f0_868 = M2C_FIELD(temp_r8_864, f64 *, 0) - *(temp_r8_864 + 0x10);
                     sp20 = temp_f0_868;
                     spC0 = temp_f0_868;
@@ -562,7 +562,7 @@ loop_22:
                     spC8 = (f64) sp28;
                     temp_f0_883 = temp_f0_868 * (f64) gUpdateTimeDelta;
                     sp10 = temp_f0_883;
-                    temp_r7_887 = temp_r0_863 + (temp_r4_640 + 0x10);
+                    temp_r7_887 = ((u8 *) temp_r0_863) + (temp_r4_640 + 0x10);
                     sp70 = temp_f0_883;
                     sp18 = (f32) spC8 * gUpdateTimeDelta;
                     sp78 = (f64) sp18;

@@ -259,7 +259,7 @@ void IceBossGoal_IceBreath::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 IceBossGoal_IceBreath::Update() {
     MKCollisionResult sp300;
     Matrix sp2C0;
@@ -404,7 +404,7 @@ u8 IceBossGoal_IceBreath::Update() {
         }
         this->unk14 += 1;
         temp_r5_589 = this->unkC;
-        temp_r29_592 = this->unk1C + (var_r0_579 << 6);
+        temp_r29_592 = ((u8 *) this->unk1C) + (var_r0_579 << 6);
         MKModel_GetRefPointMatrix(temp_r5_589->unk4, M2C_FIELD(temp_r5_589->unkA20, s32 *, 0x284), temp_r29_592, 1U);
         if (((IceBoss *) this->unkC)->IsIceKing() != 0) {
             ((CharacterBreathFX *) this->unkC->unk9E8.unk10)->EmitConeBreathFx(3, 4000.0f, 0.5f, 1.5f, 0.0f, 0.5235987f);
@@ -515,11 +515,11 @@ u8 IceBossGoal_IceBreath::Update() {
     }
     if (((var_r30_849 != 0) && (((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 4U) & 1) && ((s32) this->unk14 >= (s32) this->unk10)) || (!(((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 4U) & 1) && ((s32) this->unk14 != 0))) {
         if ((s32) this->unk14 > 0) {
-            var_r3_885 = this->unk1C + (this->unk18 << 6);
+            var_r3_885 = ((u8 *) this->unk1C) + (this->unk18 << 6);
         } else {
             var_r3_885 = NULL;
         }
-        M2C_STRUCT_COPY((s32) &sp27C + 4, (s32) (var_r3_885 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp27C + 4, (s32) (((u8 *) var_r3_885) - 4) + 4, 0x40);
         if ((s32) this->unk14 > 0) {
             this->unk18 += 1;
             temp_r0_906 = this->unk18;

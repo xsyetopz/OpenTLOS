@@ -117,9 +117,9 @@ u8 EnemyGoal_AttackFlying::Update() {
         temp_r3_160 = this->unkC;
         temp_r4_162 = temp_r3_160->unkA08->__vptr;
         if ((u32) M2C_FIELD(temp_r4_162, u32 *, 0x20) != 0U) {
-            temp_r3_160->SetAnim((AnimSequence *) temp_r4_162, temp_r4_162 + 0x20, 0.15f, 0U);
+            temp_r3_160->SetAnim((AnimSequence *) temp_r4_162, ((u8 *) temp_r4_162) + 0x20, 0.15f, 0U);
         } else if ((u32) M2C_FIELD(temp_r4_162, u32 *, 0x40) != 0U) {
-            temp_r3_160->SetAnim((AnimSequence *) temp_r4_162, temp_r4_162 + 0x40, 0.15f, 0U);
+            temp_r3_160->SetAnim((AnimSequence *) temp_r4_162, ((u8 *) temp_r4_162) + 0x40, 0.15f, 0U);
         } else {
             this->unk8 = 2;
         }
@@ -134,7 +134,7 @@ u8 EnemyGoal_AttackFlying::Update() {
             if (((Character *) temp_r29_185)->HasAnimFinished() != 0) {
                 temp_r3_203 = this->unkC;
                 temp_r4_207 = temp_r3_203->unkA08->__vptr;
-                temp_r3_203->SetAnim((AnimSequence *) temp_r4_207, temp_r4_207 + 0x40, 0.15f, 0U);
+                temp_r3_203->SetAnim((AnimSequence *) temp_r4_207, ((u8 *) temp_r4_207) + 0x40, 0.15f, 0U);
             }
         } else {
             var_r30_213 = 0;

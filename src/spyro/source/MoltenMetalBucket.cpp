@@ -256,7 +256,7 @@ void MoltenMetalBucket::Message(MKMessage *arg0) {
     ((KDSoundPlayer *) &this->unk13C)->Message(arg0);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: ')' expected
 void MoltenMetalBucket::Update() {
     s8 sp1A8;
     s32 sp1A4;
@@ -345,7 +345,7 @@ void MoltenMetalBucket::Update() {
     void *temp_r4_575;
 
     GameProp::Update();
-    temp_r3_225 = this->unk8 + 0x30;
+    temp_r3_225 = ((u8 *) this->unk8) + 0x30;
     sp18 = M2C_FIELD(temp_r3_225, f64 *, 0) - this->unkC8;
     this->unkD8 = sp18;
     sp20 = M2C_FIELD(temp_r3_225, f32 *, 8) - this->unkD0;

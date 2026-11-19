@@ -412,7 +412,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *arg3) {
     MKIniLine *temp_r28_706;
     MKIniLine *temp_r3_729;
@@ -431,7 +431,7 @@ void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *
         if (temp_r0_709 != 0) {
             temp_r5_714 = arg0->unkC;
             temp_r3_716 = arg0->unk14 - 1;
-            arg0->unkC = temp_r5_714 + (((temp_r0_709 * 0x138) + temp_r3_716) & ~temp_r3_716);
+            arg0->unkC = ((u8 *) temp_r5_714) + (((temp_r0_709 * 0x138) + temp_r3_716) & ~temp_r3_716);
             this->unk4 = (s32) temp_r5_714;
             memset((void *) this->unk4, 0, this->unk0 * 0x138);
             var_r27_726 = this->unk4;

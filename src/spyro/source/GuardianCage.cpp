@@ -270,7 +270,7 @@ void GuardianCage::StateDeadEnter() {
         temp_f0_136 = spF8 * 5.61841903e-315;
         sp68 = temp_f0_136;
         sp108 = temp_f0_136;
-        temp_r4_143 = this->unk8 + 0x30;
+        temp_r4_143 = ((u8 *) this->unk8) + 0x30;
         sp70 = (f32) sp100 * 400.0f;
         sp110 = (f64) sp70;
         temp_f0_149 = M2C_FIELD(temp_r4_143, f64 *, 0) + temp_f0_136;
@@ -312,12 +312,12 @@ void GuardianCage::StateDeadEnter() {
         ((FlyingChunkPS *) gb.unkA0)->Emit(*((MKVector3 *) &sp118), *((MKVector3 *) &sp138), *((MKVector3 *) &spE8), *((MKVector3 *) &spC8), temp_f1_226, *((MKVector4 *) &spA8), 0, NULL);
         var_r30_78 += 1;
     } while (var_r30_78 < 0xF);
-    KDSound_Play3d(GS_PrisonBallShatter, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_PrisonBallShatter, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     this->unk148.Send(NULL);
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void GuardianCage::StateDyingExit() {
     f64 sp88;
     f64 sp80;
@@ -350,7 +350,7 @@ void GuardianCage::StateDyingExit() {
     do {
         sp40 = 0.0f;
         sp44 = 25.0f;
-        temp_r4_306 = this->unk8 + 0x30;
+        temp_r4_306 = ((u8 *) this->unk8) + 0x30;
         sp48 = 0.0f;
         sp70 = (f64) sp40;
         sp78 = (f64) sp48;
@@ -516,7 +516,7 @@ void GuardianCage::StateDyingEnter() {
     void *temp_r4_569;
 
     MKVector(0.0f, 800.0f, 0.0f);
-    temp_r4_569 = this->unk8 + 0x30;
+    temp_r4_569 = ((u8 *) this->unk8) + 0x30;
     sp18 = M2C_FIELD(temp_r4_569, f64 *, 0) - sp78;
     M2C_FIELD(this, f64 *, 0x108) = sp18;
     sp20 = M2C_FIELD(temp_r4_569, f32 *, 8) - sp80;
@@ -546,7 +546,7 @@ void GuardianCage::StateDyingEnter() {
     spE4 = -1;
     spE8 = 0;
     sp58 = (f64) sp38;
-    temp_r3_616 = this->unk8 + 0x30;
+    temp_r3_616 = ((u8 *) this->unk8) + 0x30;
     sp88 = sp18;
     sp90 = (f64) sp20;
     sp60 = (f64) sp40;
@@ -720,7 +720,7 @@ void GuardianCage::Update() {
     GameProp::Update();
     ((KDStateMachine<GuardianCage> *) &this->unk14C)->Update(this, 0);
     if ((Guardian *) this->unk144 != NULL) {
-        M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp10.unkC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkD0, &sp10);
         sp20.unk30 = M2C_BITWISE(f32, sp10);
         sp20.unk34 = sp10.unk4;

@@ -31,7 +31,7 @@ void OptionsScreen::OnExit() {
     var_r31_46 = 0;
     temp_r30_48 = M2C_FIELD(&gb, void **, 0xC);
     temp_r3_49 = M2C_FIELD(temp_r30_48, KDSynkerPlayer3 **, 0x78);
-    if (((temp_r3_49 != NULL) && (temp_r3_49->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_48, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r30_48 + 0x24))->GetState() == 2))) {
+    if (((temp_r3_49 != NULL) && (temp_r3_49->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_48, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r30_48) + 0x24))->GetState() == 2))) {
         var_r31_46 = 1;
     }
     KDSound_PauseMusic(1U, var_r31_46);
@@ -73,7 +73,7 @@ void OptionsScreen::Update() {
             var_r30_144 = 0;
             temp_r29_145 = M2C_FIELD(&gb, void **, 0xC);
             temp_r3_146 = M2C_FIELD(temp_r29_145, KDSynkerPlayer3 **, 0x78);
-            if (((temp_r3_146 != NULL) && (temp_r3_146->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_145, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_145 + 0x24))->GetState() == 2))) {
+            if (((temp_r3_146 != NULL) && (temp_r3_146->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_145, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r29_145) + 0x24))->GetState() == 2))) {
                 var_r30_144 = 1;
             }
             if ((var_r30_144 == 0) && (KDSound_IsChronoSoundWarpActive() == 0)) {

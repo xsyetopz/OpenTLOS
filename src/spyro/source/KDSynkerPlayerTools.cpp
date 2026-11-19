@@ -51,7 +51,7 @@ void KDSP_EnvelopeList::Deinit() {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_EnvelopeList::Parse(KDSynkerHeap *arg0, MKIni *arg1) {
     KDBasicEnvelope *temp_r5_120;
     MKIniLine *temp_r6_95;
@@ -68,7 +68,7 @@ void KDSP_EnvelopeList::Parse(KDSynkerHeap *arg0, MKIni *arg1) {
             temp_r5_103 = arg0->unk18;
             var_r31_104 = 0;
             temp_r3_105 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r5_103 + (((temp_r0_98 * 0x5C) + temp_r3_105) & ~temp_r3_105);
+            arg0->unk18 = ((u8 *) temp_r5_103) + (((temp_r0_98 * 0x5C) + temp_r3_105) & ~temp_r3_105);
             this->unk4 = (s32) temp_r5_103;
             var_r30_114 = temp_r6_95->unkC->GetSubLine(temp_r6_95);
 loop_4:

@@ -140,7 +140,7 @@ void NPCGoal_Rescue::Terminate() {
     temp_r7_175 = temp_r6_169->unk8;
     sp8 = M2C_FIELD(temp_r7_175, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r7_175, f64 *, 0x38);
-    ((EnemyDeathFX *) (M2C_FIELD(&gb, EnemyDeathFX **, 0x98)))->Trigger(temp_r4_173 + 0x108, *((MKVector3 *) &sp8), M2C_FIELD(M2C_FIELD(temp_r4_173, void **, 0x1C), f32 *, 0xC) / 200.0f, 0);
+    ((EnemyDeathFX *) (M2C_FIELD(&gb, EnemyDeathFX **, 0x98)))->Trigger(((u8 *) temp_r4_173) + 0x108, *((MKVector3 *) &sp8), M2C_FIELD(M2C_FIELD(temp_r4_173, void **, 0x1C), f32 *, 0xC) / 200.0f, 0);
 }
 #endif
 

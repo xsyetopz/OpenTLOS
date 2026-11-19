@@ -944,7 +944,7 @@ void IceBossStalactite::MeltFX() {
         temp_r3_1570 = M2C_FIELD(this, u8 *, 0x244);
         if (((temp_r3_1570 >> 1U) & 1) && !((temp_r3_1570 >> 2U) & 1)) {
             M2C_FIELD(this, u8 *, 0x244) = (u8) (temp_r3_1570 & ~2);
-            KDSound_Play3d(GS_IceBossIceMelt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_IceBossIceMelt, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         var_f0_1591 = -((0.125f * gUpdateTimeDelta) - M2C_BITWISE(f32, this->unk21C));
         if (var_f0_1591 > 0.0f) {
@@ -1320,7 +1320,7 @@ block_6:
                 this->unk1A8 += temp_f0_2003;
                 M2C_FIELD(this, f32 *, 0x1C0) = (f32) (M2C_FIELD(this, f32 *, 0x1C0) + (f32) sp3C0);
                 MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk230, &sp408);
-                temp_r4_2029 = this->unk158 + (((s32) this->unk170 << 7) + 0x68);
+                temp_r4_2029 = ((u8 *) this->unk158) + (((s32) this->unk170 << 7) + 0x68);
                 sp1C = temp_r4_2029;
                 if (temp_r4_2029 != NULL) {
                     sp20 = M2C_FIELD(temp_r4_2029, u8 *, 4);

@@ -421,10 +421,10 @@ s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
         if ((temp_r3_787 != NULL) && (M2C_FIELD(temp_r3_787, s32 *, 4) & 0x100000)) {
             M2C_STRUCT_COPY((s32) &spDC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
             temp_r4_805 = this->unk8;
-            temp_r3_807 = temp_r4_805 + 0x20;
+            temp_r3_807 = ((u8 *) temp_r4_805) + 0x20;
             temp_f0_809 = M2C_FIELD(temp_r3_807, f64 *, 0) * 5.5769738e-315;
             sp68 = temp_f0_809;
-            temp_r4_811 = temp_r4_805 + 0x30;
+            temp_r4_811 = ((u8 *) temp_r4_805) + 0x30;
             spB8 = temp_f0_809;
             sp70 = M2C_FIELD(temp_r3_807, f32 *, 8) * 200.0f;
             spC0 = (f64) sp70;

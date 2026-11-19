@@ -84,7 +84,7 @@ loop_10:
             temp_r5_136 = this->unk10;
             if (var_r7_72 < temp_r5_136) {
                 temp_r6_88 = (var_r7_72 + (this->unk68 * temp_r5_136)) * 0x30;
-                temp_r5_90 = this->unk0 + (temp_r6_88 + 0x20);
+                temp_r5_90 = ((u8 *) this->unk0) + (temp_r6_88 + 0x20);
                 temp_f13_91 = M2C_FIELD(temp_r5_90, f32 *, 4);
                 temp_f28_92 = M2C_FIELD(temp_r5_90, f32 *, 0);
                 temp_f27_94 = M2C_FIELD(temp_r5_90, f32 *, 8);
@@ -96,7 +96,7 @@ loop_10:
                 temp_f13_114 = sp50 * 5.811479333e-315;
                 sp30 = temp_f13_114;
                 sp60 = temp_f13_114;
-                temp_r4_122 = this->unk4 + (temp_r6_88 + 0x20);
+                temp_r4_122 = ((u8 *) this->unk4) + (temp_r6_88 + 0x20);
                 sp38 = (f32) sp58 * 10000.0f;
                 sp68 = (f64) sp38;
                 M2C_FIELD(temp_r4_122, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_122, f64 *, 0) + temp_f13_114);
@@ -111,22 +111,22 @@ loop_10:
         if (temp_r0_144 > 0) {
             do {
                 temp_r0_150 = this->unk4;
-                temp_r6_152 = temp_r0_150 + (var_r4_141 + 0x20);
+                temp_r6_152 = ((u8 *) temp_r0_150) + (var_r4_141 + 0x20);
                 temp_f0_154 = M2C_FIELD(temp_r6_152, f64 *, 0) * (f64) gUpdateTimeDelta;
                 sp20 = temp_f0_154;
-                temp_r5_158 = temp_r0_150 + (var_r4_141 + 0x10);
+                temp_r5_158 = ((u8 *) temp_r0_150) + (var_r4_141 + 0x10);
                 sp40 = temp_f0_154;
                 sp28 = M2C_FIELD(temp_r6_152, f32 *, 8) * gUpdateTimeDelta;
                 sp48 = (f64) sp28;
                 M2C_FIELD(temp_r5_158, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_158, f64 *, 0) + temp_f0_154);
                 M2C_FIELD(temp_r5_158, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_158, f32 *, 8) + (f32) sp48);
-                temp_r6_176 = this->unk4 + (var_r4_141 + 0x10);
+                temp_r6_176 = ((u8 *) this->unk4) + (var_r4_141 + 0x10);
                 M2C_FIELD(temp_r6_176, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_176, f64 *, 0) * 5.180653787e-315);
                 M2C_FIELD(temp_r6_176, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_176, f32 *, 8) * 0.25f);
-                temp_r5_186 = this->unk4 + (var_r4_141 + 0x20);
+                temp_r5_186 = ((u8 *) this->unk4) + (var_r4_141 + 0x20);
                 M2C_FIELD(temp_r5_186, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_186, f64 *, 0) * 5.24282163e-315);
                 M2C_FIELD(temp_r5_186, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_186, f32 *, 8) * 0.75f);
-                temp_r6_195 = this->unk4 + (var_r4_141 + 0x20);
+                temp_r6_195 = ((u8 *) this->unk4) + (var_r4_141 + 0x20);
                 temp_f5_196 = M2C_FIELD(temp_r6_195, f32 *, 0);
                 temp_f0_197 = M2C_FIELD(temp_r6_195, f32 *, 4);
                 temp_f6_198 = M2C_FIELD(temp_r6_195, f32 *, 8);
@@ -171,9 +171,9 @@ void ExplosionWarpFX::StartWarp(Matrix *arg0) {
         do {
             temp_r7_253 = var_r5_245 + 0x10;
             temp_r8_255 = var_r5_245 + 0x20;
-            temp_r9_256 = this->unk0 + var_r5_245;
+            temp_r9_256 = ((u8 *) this->unk0) + var_r5_245;
             temp_f4_258 = M2C_FIELD(temp_r9_256, f32 *, 4);
-            temp_r6_259 = this->unk4 + var_r5_245;
+            temp_r6_259 = ((u8 *) this->unk4) + var_r5_245;
             var_r5_245 += 0x30;
             temp_f7_265 = M2C_FIELD(temp_r9_256, f32 *, 0);
             temp_f8_271 = M2C_FIELD(temp_r9_256, f32 *, 8);
@@ -183,12 +183,12 @@ void ExplosionWarpFX::StartWarp(Matrix *arg0) {
             M2C_FIELD(temp_r6_259, f64 *, 0) = (f64) sp8;
             M2C_FIELD(temp_r6_259, f64 *, 8) = (f64) sp10;
             sp18 = (f64) sp8;
-            temp_r7_295 = this->unk4 + temp_r7_253;
+            temp_r7_295 = ((u8 *) this->unk4) + temp_r7_253;
             M2C_FIELD(temp_r7_295, f32 *, 0) = 0.0f;
             M2C_FIELD(temp_r7_295, f32 *, 4) = 0.0f;
             M2C_FIELD(temp_r7_295, f32 *, 8) = 0.0f;
             sp20 = (f64) sp10;
-            temp_r8_301 = this->unk4 + temp_r8_255;
+            temp_r8_301 = ((u8 *) this->unk4) + temp_r8_255;
             M2C_FIELD(temp_r8_301, f32 *, 0) = 0.0f;
             M2C_FIELD(temp_r8_301, f32 *, 4) = 0.0f;
             M2C_FIELD(temp_r8_301, f32 *, 8) = 0.0f;
@@ -254,15 +254,15 @@ loop_23:
             sp14 = temp_f21_402;
             temp_r5_412 = (var_r29_379 + (var_r30_347 * temp_r27_520)) * 0x30;
             sp28 = (f64) sp18;
-            temp_r3_415 = this->unk0 + temp_r5_412;
+            temp_r3_415 = ((u8 *) this->unk0) + temp_r5_412;
             M2C_FIELD(temp_r3_415, f64 *, 0) = (f64) sp10;
             M2C_FIELD(temp_r3_415, f64 *, 8) = (f64) sp18;
             sp20 = (f64) sp10;
-            temp_r3_422 = this->unk0 + temp_r5_412;
+            temp_r3_422 = ((u8 *) this->unk0) + temp_r5_412;
             M2C_FIELD(temp_r3_422, f64 *, 0x20) = (f64) M2C_FIELD(temp_r3_422, f64 *, 0);
             M2C_FIELD(temp_r3_422, f64 *, 0x28) = (f64) M2C_FIELD(temp_r3_422, f64 *, 8);
             *(this->unk0 + (temp_r5_412 + 0x28)) = 0.0f;
-            temp_r4_430 = this->unk0 + (temp_r5_412 + 0x20);
+            temp_r4_430 = ((u8 *) this->unk0) + (temp_r5_412 + 0x20);
             temp_f1_431 = M2C_FIELD(temp_r4_430, f32 *, 0);
             temp_f0_432 = M2C_FIELD(temp_r4_430, f32 *, 4);
             temp_f2_433 = M2C_FIELD(temp_r4_430, f32 *, 8);
@@ -463,9 +463,9 @@ loop_24:
                 temp_r27_752 = var_r30_746 + (var_r31_722 * temp_r0_807);
                 temp_r26_753 = var_r30_746 + ((var_r31_722 + 1) * temp_r0_807);
                 MKSetColorV(*((MKVector4 *) &sp60));
-                temp_r3_757 = this->unk8 + (temp_r27_752 * 8);
+                temp_r3_757 = ((u8 *) this->unk8) + (temp_r27_752 * 8);
                 MKSetTexCoord1F(M2C_FIELD(temp_r3_757, f32 *, 0), M2C_FIELD(temp_r3_757, f32 *, 4));
-                temp_r5_763 = this->unk4 + (temp_r27_752 * 0x30);
+                temp_r5_763 = ((u8 *) this->unk4) + (temp_r27_752 * 0x30);
                 temp_f0_767 = M2C_FIELD(temp_r5_763, f64 *, 0) + *(temp_r5_763 + 0x10);
                 sp20 = temp_f0_767;
                 sp50 = temp_f0_767;
@@ -473,9 +473,9 @@ loop_24:
                 sp58 = (f64) sp28;
                 MKSetPositionV(*((MKVector3 *) &sp50));
                 MKSetColorV(*((MKVector4 *) &sp60));
-                temp_r3_783 = this->unk8 + (temp_r26_753 * 8);
+                temp_r3_783 = ((u8 *) this->unk8) + (temp_r26_753 * 8);
                 MKSetTexCoord1F(M2C_FIELD(temp_r3_783, f32 *, 0), M2C_FIELD(temp_r3_783, f32 *, 4));
-                temp_r5_789 = this->unk4 + (temp_r26_753 * 0x30);
+                temp_r5_789 = ((u8 *) this->unk4) + (temp_r26_753 * 0x30);
                 temp_f0_793 = M2C_FIELD(temp_r5_789, f64 *, 0) + *(temp_r5_789 + 0x10);
                 sp10 = temp_f0_793;
                 sp40 = temp_f0_793;

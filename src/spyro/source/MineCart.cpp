@@ -337,7 +337,7 @@ void MineCart::UpdateEffects() {
         } while (var_r30_436 < 5);
         temp_f1_529 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_r4_530 = this->unk8;
-        temp_r5_531 = temp_r4_530 + 0x20;
+        temp_r5_531 = ((u8 *) temp_r4_530) + 0x20;
         temp_f0_534 = (f64) M2C_FIELD(temp_r4_530, f32 *, 0) + M2C_FIELD(temp_r5_531, f64 *, 0);
         sp10 = temp_f0_534;
         spB0 = temp_f0_534;
@@ -401,7 +401,7 @@ void MineCart::Update() {
             temp_r27_625 = M2C_FIELD(&gb, void **, 0xC);
             var_r29_626 = 0;
             temp_r3_627 = M2C_FIELD(temp_r27_625, KDSynkerPlayer3 **, 0x78);
-            if (((temp_r3_627 != NULL) && (temp_r3_627->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r27_625, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r27_625 + 0x24))->GetState() == 2))) {
+            if (((temp_r3_627 != NULL) && (temp_r3_627->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r27_625, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r27_625) + 0x24))->GetState() == 2))) {
                 var_r29_626 = 1;
             }
             if ((var_r29_626 != 0) && ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) == 0)) {
@@ -425,7 +425,7 @@ void MineCart::Update() {
         ((KDSoundFader *) (this + 0x17C))->Update(M2C_FIELD(temp_r4_676, s32 *, 0xE4), 1U, var_r31_666, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     }
     if ((void *) M2C_FIELD(this, void **, 0x178) != NULL) {
-        temp_r3_692 = this->unk8 + 0x30;
+        temp_r3_692 = ((u8 *) this->unk8) + 0x30;
         sp10 = M2C_FIELD(temp_r3_692, f64 *, 0) - this->unkC8;
         var_r3_699 = 0;
         this->unkD8 = sp10;
@@ -478,7 +478,7 @@ void MineCart::Resolve() {
             temp_r29_798 = this + var_r31_778;
             M2C_FIELD(temp_r29_798, f64 *, 0x120) = M2C_BITWISE(f64, sp8);
             M2C_FIELD(temp_r29_798, f64 *, 0x128) = sp8.unk8;
-            MKDynamicBone_SetUpdater(MKDynamicBone_GetDynamicBone(this->unk4, (s32) temp_r26_791), (void (*)(MKDynamicBone *, void *)) &MineCart::UpdateWheelBone, temp_r29_798 + 0x120);
+            MKDynamicBone_SetUpdater(MKDynamicBone_GetDynamicBone(this->unk4, (s32) temp_r26_791), (void (*)(MKDynamicBone *, void *)) &MineCart::UpdateWheelBone, ((u8 *) temp_r29_798) + 0x120);
             var_r27_776 += 1;
             var_r31_778 += 0x18;
         } while (var_r27_776 < 3);

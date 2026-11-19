@@ -153,7 +153,7 @@ void FightElevator::ClearAnchors() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'FightElevator' to
 void FightElevator::FindAnchors() {
     f64 sp30;
     f64 sp28;
@@ -182,7 +182,7 @@ loop_12:
     if ((var_r3_231 != NULL) && (var_r29_233 < 6)) {
         temp_r5_237 = M2C_FIELD(var_r3_231, void **, 8);
         temp_f1_239 = M2C_FIELD(temp_r5_237, f64 *, 0x30);
-        temp_r4_241 = this->unk8 + 0x30;
+        temp_r4_241 = ((u8 *) this->unk8) + 0x30;
         sp28 = temp_f1_239;
         sp30 = M2C_FIELD(temp_r5_237, f64 *, 0x38);
         temp_f0_246 = temp_f1_239 - M2C_FIELD(temp_r4_241, f64 *, 0);
@@ -312,7 +312,7 @@ void FightElevator::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'FightElevator' to
 void FightElevator::Message(MKMessage *arg0) {
     u8 sp84;
     PlatformObject *sp80;
@@ -365,9 +365,9 @@ void FightElevator::Message(MKMessage *arg0) {
             sp80 = &this->unk108;
             sp84 = 0;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, M2C_UNK, M2C_UNK), 0xC)(gb, 0x25, 0), void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp78);
-            if ((sp84 != 0) || (temp_r4_535 = this->unk8, temp_r29_538 = temp_r4_535 + 0x30, temp_r3_543 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *), 0xC)(gb, temp_r4_535), void **, 8), temp_f1_544 = M2C_FIELD(temp_r3_543, f64 *, 0x30), sp28 = temp_f1_544, sp30 = M2C_FIELD(temp_r3_543, f64 *, 0x38), sp18 = temp_f1_544 - M2C_FIELD(temp_r29_538, f64 *, 0), sp38 = sp18, sp20 = (f32) sp30 - M2C_FIELD(temp_r29_538, f32 *, 8), sp40 = (f64) sp20, (((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) >= FIGHT_ELEVATOR_HERO_DETACH_DIST_SQ) == 0))) {
+            if ((sp84 != 0) || (temp_r4_535 = this->unk8, temp_r29_538 = ((u8 *) temp_r4_535) + 0x30, temp_r3_543 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *), 0xC)(gb, temp_r4_535), void **, 8), temp_f1_544 = M2C_FIELD(temp_r3_543, f64 *, 0x30), sp28 = temp_f1_544, sp30 = M2C_FIELD(temp_r3_543, f64 *, 0x38), sp18 = temp_f1_544 - M2C_FIELD(temp_r29_538, f64 *, 0), sp38 = sp18, sp20 = (f32) sp30 - M2C_FIELD(temp_r29_538, f32 *, 8), sp40 = (f64) sp20, (((((f32) sp40 * (f32) sp40) + (((f32) sp38 * (f32) sp38) + ((*(f32 *) ((u8 *) &sp38 + 0x4)) * (*(f32 *) ((u8 *) &sp38 + 0x4))))) >= FIGHT_ELEVATOR_HERO_DETACH_DIST_SQ) == 0))) {
                 temp_r4_574 = M2C_FIELD(arg0->unk4, void **, 8);
-                temp_r3_575 = this->unk8 + 0x30;
+                temp_r3_575 = ((u8 *) this->unk8) + 0x30;
                 temp_f1_576 = M2C_FIELD(temp_r4_574, f64 *, 0x30);
                 sp68 = temp_f1_576;
                 sp70 = M2C_FIELD(temp_r4_574, f64 *, 0x38);
@@ -573,7 +573,7 @@ void FightElevator::Update() {
                 this->unk1AC = 0.125f;
             } else if (((temp_r0_872 == 1) || (temp_r0_872 == 2)) && ((temp_r3_873 == 0) || (temp_r3_873 == 3))) {
                 if (this->unk1AC <= 0.0f) {
-                    temp_r31_907 = this->unk8 + 0x30;
+                    temp_r31_907 = ((u8 *) this->unk8) + 0x30;
                     KDSound_Play3d(M2C_FIELD(checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x128), temp_r31_907, 0U, -1, 0.0f, 0U);
                 } else {
                     this->unk1AC = 0.0f;
@@ -586,7 +586,7 @@ void FightElevator::Update() {
     if (temp_f2_920 > 0.0f) {
         this->unk1AC = temp_f2_920 - gUpdateTimeDelta;
         if (this->unk1AC <= 0.0f) {
-            temp_r31_933 = this->unk8 + 0x30;
+            temp_r31_933 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<FightElevatorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x124), temp_r31_933, 0U, -1, 0.0f, 0U);
         }
     }

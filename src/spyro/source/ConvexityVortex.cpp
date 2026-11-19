@@ -287,7 +287,7 @@ loop_39:
     if (var_r30_451 != NULL) {
         temp_r31_693 = *var_r30_451;
         if (temp_r31_693 != NULL) {
-            temp_r3_457 = this->unk8 + 0x30;
+            temp_r3_457 = ((u8 *) this->unk8) + 0x30;
             temp_f0_460 = M2C_FIELD(temp_r3_457, f64 *, 0) - M2C_FIELD(temp_r31_693, f64 *, 0);
             sp48 = temp_f0_460;
             spD8 = temp_f0_460;

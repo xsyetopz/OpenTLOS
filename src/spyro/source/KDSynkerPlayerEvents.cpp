@@ -275,7 +275,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSP_Events::UpdateSfx(KDSP_ActorList *arg0, int arg1, float arg2) {
     MKVector3 sp10;
     s32 sp8;
@@ -299,7 +299,7 @@ void KDSP_Events::UpdateSfx(KDSP_ActorList *arg0, int arg1, float arg2) {
     var_r24_404 = 0;
 loop_26:
     if (var_r30_403 < (s32) this->unk1C) {
-        temp_r4_408 = this->unk20 + var_r24_404;
+        temp_r4_408 = ((u8 *) this->unk20) + var_r24_404;
         temp_r5_409 = M2C_FIELD(temp_r4_408, s32 *, 0x14);
         if (!(temp_r5_409 & 1)) {
             temp_r3_412 = M2C_FIELD(temp_r4_408, s32 *, 0);
@@ -328,15 +328,15 @@ loop_26:
                 }
             }
             var_r5_460 = 0;
-            temp_r6_461 = this->unk20 + var_r24_404;
+            temp_r6_461 = ((u8 *) this->unk20) + var_r24_404;
             sp8 = ((u32) M2C_FIELD(temp_r6_461, u32 *, 0x14) >> 1U) & 1;
             temp_r23_468 = M2C_FIELD(temp_r6_461, s32 *, 0x10) != 0;
             if ((var_r28_424 != NULL) || (var_r8_425 != NULL)) {
                 var_r5_460 = 1;
             }
-            ((KDSoundPlayer *) (temp_r6_461 + 0x10))->Update(M2C_FIELD(temp_r6_461, s32 *, 0xC), var_r5_460, var_r31_413, var_r28_424, var_r8_425, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundPlayer *) (((u8 *) temp_r6_461) + 0x10))->Update(M2C_FIELD(temp_r6_461, s32 *, 0xC), var_r5_460, var_r31_413, var_r28_424, var_r8_425, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             if ((var_r31_413 != 0) && (temp_r23_468 != 0)) {
-                temp_r3_486 = this->unk20 + var_r24_404;
+                temp_r3_486 = ((u8 *) this->unk20) + var_r24_404;
                 if ((s32) M2C_FIELD(temp_r3_486, s32 *, 0x10) == 0) {
                     var_r29_423 = 0;
                     M2C_FIELD(temp_r3_486, s32 *, 0x14) = (s32) (M2C_FIELD(temp_r3_486, s32 *, 0x14) | 1);
@@ -353,7 +353,7 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void KDSP_Events::StopSfx() {
     s32 var_r30_529;
     s32 var_r31_530;
@@ -362,7 +362,7 @@ void KDSP_Events::StopSfx() {
     var_r31_530 = 0;
 loop_2:
     if (var_r30_529 < (s32) this->unk1C) {
-        KDSound_Stop(this->unk20 + (var_r31_530 + 0x10));
+        KDSound_Stop(((u8 *) this->unk20) + (var_r31_530 + 0x10));
         var_r30_529 += 1;
         var_r31_530 += 0x20;
         goto loop_2;
@@ -370,7 +370,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDSP_Events::SkipToEnd() {
     s32 temp_r4_564;
     s32 var_r30_558;
@@ -382,7 +381,7 @@ void KDSP_Events::SkipToEnd() {
     var_r31_559 = 0;
 loop_9:
     if (var_r30_558 < (s32) this->unkC) {
-        temp_r5_563 = this->unk10 + var_r31_559;
+        temp_r5_563 = ((u8 *) this->unk10) + var_r31_559;
         temp_r4_564 = M2C_FIELD(temp_r5_563, s32 *, 0xC);
         temp_r29_567 = M2C_FIELD(M2C_FIELD(temp_r5_563, void **, 8), void ***, 8);
         if (temp_r4_564 & 1) {
@@ -403,7 +402,6 @@ loop_9:
         goto loop_9;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void KDSP_Events::Deinit() {
@@ -494,7 +492,7 @@ loop_5:
         return NULL;
     }
     if (((u32) *(this->unk8 + var_r31_786) != 0U) && (stricmp(arg0) == 0)) {
-        return this->unk8 + var_r31_786;
+        return ((u8 *) this->unk8) + var_r31_786;
     }
     var_r30_785 += 1;
     var_r31_786 += 0x10;
@@ -502,7 +500,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDSP_Events::UpdateTweenAnims(int arg0, KDSP_EnvelopeList *arg1) {
     Animation *temp_r25_905;
     f32 var_f31_872;
@@ -518,7 +515,7 @@ void KDSP_Events::UpdateTweenAnims(int arg0, KDSP_EnvelopeList *arg1) {
 loop_15:
     if (var_r31_828 < (s32) this->unk14) {
         var_r3_833 = 0;
-        temp_r30_834 = this->unk18 + var_r26_829;
+        temp_r30_834 = ((u8 *) this->unk18) + var_r26_829;
         temp_r6_835 = M2C_FIELD(temp_r30_834, s32 *, 0);
         if ((arg0 >= temp_r6_835) && (arg0 < (s32) (temp_r6_835 + M2C_FIELD(temp_r30_834, s32 *, 4)))) {
             var_r3_833 = 1;
@@ -545,7 +542,6 @@ loop_15:
         goto loop_15;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void KDSP_Events::Update(KDSynkerPlayer3 *arg0, float arg1, bool arg2) {
@@ -576,7 +572,7 @@ void KDSP_Events::Update(KDSynkerPlayer3 *arg0, float arg1, bool arg2) {
     M2C_FIELD(&KDSynkerPlayerEvent::updateData, s32 *, 8) = 0;
 loop_41:
     if (var_r28_949 < (s32) this->unkC) {
-        temp_r27_959 = this->unk10 + var_r31_943;
+        temp_r27_959 = ((u8 *) this->unk10) + var_r31_943;
         temp_r3_960 = M2C_FIELD(temp_r27_959, s32 *, 0xC);
         if (temp_r3_960 & 1) {
             var_r3_964 = 0;
@@ -657,7 +653,6 @@ loop_41:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDSP_Events::Draw() {
     s32 var_r30_1150;
     s32 var_r31_1151;
@@ -668,7 +663,7 @@ void KDSP_Events::Draw() {
     var_r31_1151 = 0;
 loop_5:
     if (var_r30_1150 < (s32) this->unkC) {
-        temp_r4_1155 = this->unk10 + var_r31_1151;
+        temp_r4_1155 = ((u8 *) this->unk10) + var_r31_1151;
         temp_r3_1157 = M2C_FIELD(M2C_FIELD(temp_r4_1155, void **, 8), void ***, 8);
         if ((temp_r3_1157 != NULL) && (M2C_FIELD(temp_r4_1155, s32 *, 0xC) & 4)) {
             M2C_FIELD(*temp_r3_1157, M2C_UNK (**)(), 0x24)();
@@ -678,7 +673,6 @@ loop_5:
         goto loop_5;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void KDSP_Events::Parse(KDSynkerPlayer3 *arg0, KDSynkerHeap *arg1, const char *arg2, MKIni *arg3, bool arg4, KDSP_ActorList *arg5) {
@@ -735,7 +729,7 @@ void KDSP_Events::Parse(KDSynkerPlayer3 *arg0, KDSynkerHeap *arg1, const char *a
         if (temp_r0_1197 != 0) {
             temp_r5_1202 = arg1->unkC;
             temp_r3_1203 = arg1->unk14 - 1;
-            arg1->unkC = temp_r5_1202 + (((temp_r0_1197 * 0x10) + temp_r3_1203) & ~temp_r3_1203);
+            arg1->unkC = ((u8 *) temp_r5_1202) + (((temp_r0_1197 * 0x10) + temp_r3_1203) & ~temp_r3_1203);
             this->unk8 = temp_r5_1202;
             var_r21_1209 = this->unk8;
             var_r22_1213 = temp_r4_1194->unkC->GetSubLine(temp_r4_1194);
@@ -757,7 +751,7 @@ loop_4:
             if (temp_r0_1243 != 0) {
                 temp_r4_1248 = arg1->unk18;
                 temp_r3_1249 = arg1->unk20 - 1;
-                arg1->unk18 = temp_r4_1248 + (((temp_r0_1243 << 5) + temp_r3_1249) & ~temp_r3_1249);
+                arg1->unk18 = ((u8 *) temp_r4_1248) + (((temp_r0_1243 << 5) + temp_r3_1249) & ~temp_r3_1249);
                 this->unk20 = temp_r4_1248;
             }
         }
@@ -765,14 +759,14 @@ loop_4:
         if (temp_r0_1256 != 0) {
             temp_r4_1261 = arg1->unk18;
             temp_r3_1262 = arg1->unk20 - 1;
-            arg1->unk18 = temp_r4_1261 + (((temp_r0_1256 * 0x14) + temp_r3_1262) & ~temp_r3_1262);
+            arg1->unk18 = ((u8 *) temp_r4_1261) + (((temp_r0_1256 * 0x14) + temp_r3_1262) & ~temp_r3_1262);
             this->unk10 = temp_r4_1261;
         }
         temp_r0_1269 = this->unk14;
         if (temp_r0_1269 != 0) {
             temp_r4_1274 = arg1->unk18;
             temp_r3_1275 = arg1->unk20 - 1;
-            arg1->unk18 = temp_r4_1274 + (((temp_r0_1269 * 0x1C) + temp_r3_1275) & ~temp_r3_1275);
+            arg1->unk18 = ((u8 *) temp_r4_1274) + (((temp_r0_1269 * 0x1C) + temp_r3_1275) & ~temp_r3_1275);
             this->unk18 = temp_r4_1274;
         }
         var_r27_1282 = this->unk10;
@@ -824,7 +818,7 @@ loop_34:
                                 goto loop_34;
                             }
                             temp_r4_1432 = M2C_FIELD(var_r29_1286, s32 *, 0);
-                            ((KDSP_Actor *) (M2C_FIELD(var_r29_1286, KDSP_Actor **, 8)))->GetTweenAnimParams(temp_r4_1432, temp_r4_1432 + M2C_FIELD(var_r29_1286, s32 *, 4), var_r29_1286 + 0x10, var_r29_1286 + 0x14, var_r29_1286 + 0xC);
+                            ((KDSP_Actor *) (M2C_FIELD(var_r29_1286, KDSP_Actor **, 8)))->GetTweenAnimParams(temp_r4_1432, temp_r4_1432 + M2C_FIELD(var_r29_1286, s32 *, 4), ((u8 *) var_r29_1286) + 0x10, ((u8 *) var_r29_1286) + 0x14, ((u8 *) var_r29_1286) + 0xC);
                             var_r29_1286 += 0x1C;
                         } else if (IsSoundEvent(sp14) != 0) {
                             if (arg4 != 0) {
@@ -844,7 +838,7 @@ loop_46:
                                     if (var_r18_1467->IsField("") != 0) {
                                         M2C_FIELD(var_r31_1284, s32 *, 0x18) = arg5->GetActorId(var_r18_1467->GetString(0));
                                     }
-                                    if (NodeLoadLine2(arg5, var_r18_1467, "", var_r31_1284 + 0x18, var_r31_1284 + 0x1C) != 0) {
+                                    if (NodeLoadLine2(arg5, var_r18_1467, "", ((u8 *) var_r31_1284) + 0x18, ((u8 *) var_r31_1284) + 0x1C) != 0) {
                                         M2C_FIELD(var_r31_1284, s32 *, 0x14) = (s32) (M2C_FIELD(var_r31_1284, s32 *, 0x14) | 8);
                                     }
                                     var_r18_1467 = var_r18_1467->unkC->GetNextLine(var_r18_1467);
@@ -885,7 +879,7 @@ loop_46:
     var_r18_1580 = 0;
 loop_67:
     if (var_r20_1579 < (s32) this->unk4) {
-        temp_r21_1584 = this->unk8 + var_r18_1580;
+        temp_r21_1584 = ((u8 *) this->unk8) + var_r18_1580;
         temp_r4_1585 = M2C_FIELD(temp_r21_1584, MKIniLine **, 4);
         temp_r19_1589 = temp_r4_1585->unkC->GetSubLine(temp_r4_1585);
         if (((s32) M2C_FIELD(temp_r21_1584, s32 *, 0xC) > 0) && (IsSoundEvent(M2C_FIELD(temp_r21_1584, s8 **, 0)) == 0) && (IsTweenAnimEvent(M2C_FIELD(temp_r21_1584, s8 **, 0)) == 0)) {

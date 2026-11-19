@@ -683,34 +683,34 @@ block_199:
                         switch (temp_r26_817) {     /* switch 4 */
                         case 0:                     /* switch 4 */
                         case 14:                    /* switch 4 */
-                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.4f, 0.2f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.4f, 0.2f, 0.1f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
                             break;
                         case 1:                     /* switch 4 */
-                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
                             break;
                         case 2:                     /* switch 4 */
-                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.6f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.6f, 0.15f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
                             break;
                         case 3:                     /* switch 4 */
                         case 8:                     /* switch 4 */
                             if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == gb.unk0->GetProp())) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
-                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 1U);
                             } else {
-                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
                             }
                             break;
                         case 9:                     /* switch 4 */
                             if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == gb.unk0->GetProp())) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
-                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 1U);
                             } else {
-                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.6f, 0.4f, 0.1f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
                             }
                             break;
                         case 10:                    /* switch 4 */
                             if ((((u32) arg0->unk4 == 0) || ((u32) arg0->unk4 == gb.unk0->GetProp())) && (KDSound_IsChronoSoundWarpEnabled() != 0) && (gb.unk2D0 != 1.0f)) {
-                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 1U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 1U);
                             } else {
-                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+                                ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.99f, 0.8f, 0.15f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
                             }
                             break;
                         }
@@ -742,11 +742,11 @@ block_199:
                         temp_r4_1353 = this->unkA20;
                         temp_r3_1354 = M2C_FIELD(temp_r4_1353, s32 *, 0x188);
                         if ((temp_r3_1354 != 0) && ((u32) M2C_FIELD(temp_r3_812, u32 *, 0x30) == 0x1000)) {
-                            KDSound_Play3d(temp_r3_1354, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                            KDSound_Play3d(temp_r3_1354, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                         } else {
                             temp_r3_1369 = M2C_FIELD(temp_r4_1353, s32 *, 0x184);
                             if ((temp_r3_1369 != 0) && (var_r27_1286 == 0) && ((u32) M2C_FIELD(temp_r3_812, u32 *, 0x30) == 0x1000)) {
-                                KDSound_Play3d(temp_r3_1369, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                                KDSound_Play3d(temp_r3_1369, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                             } else if ((temp_r3_1369 != 0) && (var_r27_1286 == 0)) {
                                 KDSound_Play(temp_r3_1369, 0U, -1);
                             } else {
@@ -917,7 +917,7 @@ block_199:
             temp_f1_1757 = M2C_FIELD(temp_r6_1756, f64 *, 0x30);
             sp168 = temp_f1_1757;
             sp170 = M2C_FIELD(temp_r6_1756, f64 *, 0x38);
-            GetAimPoint(sp168, temp_r3_1748 + 8, temp_r6_1756, temp_f1_1757);
+            GetAimPoint(sp168, ((u8 *) temp_r3_1748) + 8, temp_r6_1756, temp_f1_1757);
             return;
         }
         goto block_409;

@@ -504,7 +504,7 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
         sp40 = (f64) sp20;
         temp_f0_820 = 100.0f * M2C_FIELD(arg1, f32 *, 0xC);
         if (((temp_f3_814 * temp_f3_814) + ((temp_f1_812 * temp_f1_812) + (temp_f0_813 * temp_f0_813))) >= (temp_f0_820 * temp_f0_820)) {
-            temp_r0_827 = temp_r3_785 + 0x30;
+            temp_r0_827 = ((u8 *) temp_r3_785) + 0x30;
             *temp_r0_827 *= (f64) temp_f31_776;
             M2C_FIELD(temp_r3_785, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r3_785, f32 *, 0x38) * temp_f31_776);
         }
@@ -615,7 +615,7 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void EnergyBeam::Update() {
     f64 spA0;
     f64 sp98;
@@ -678,7 +678,7 @@ loop_11:
                         temp_r29_1086 = temp_r30_1204 + var_r31_1061;
                         temp_f0_1090 = M2C_FIELD(temp_r29_1086, f64 *, 0x50) * (f64) gUpdateTimeDelta;
                         sp38 = temp_f0_1090;
-                        temp_r28_1092 = temp_r29_1086 + 0x30;
+                        temp_r28_1092 = ((u8 *) temp_r29_1086) + 0x30;
                         sp88 = temp_f0_1090;
                         sp40 = M2C_FIELD(temp_r29_1086, f32 *, 0x58) * gUpdateTimeDelta;
                         sp90 = (f64) sp40;
@@ -686,7 +686,7 @@ loop_11:
                         M2C_FIELD(temp_r29_1086, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r29_1086, f32 *, 0x38) + (f32) sp90);
                         temp_f0_1111 = *temp_r28_1092 * (f64) gUpdateTimeDelta;
                         sp28 = temp_f0_1111;
-                        temp_r0_1113 = temp_r29_1086 + 0x20;
+                        temp_r0_1113 = ((u8 *) temp_r29_1086) + 0x20;
                         sp78 = temp_f0_1111;
                         sp30 = M2C_FIELD(temp_r29_1086, f32 *, 0x38) * gUpdateTimeDelta;
                         sp80 = (f64) sp30;

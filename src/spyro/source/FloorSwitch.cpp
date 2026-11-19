@@ -288,7 +288,7 @@ void FloorSwitch::Update() {
     temp_f0_507 = spB8 * 5.53552857e-315;
     sp58 = temp_f0_507;
     spC8 = temp_f0_507;
-    temp_r4_514 = this->unk8 + 0x30;
+    temp_r4_514 = ((u8 *) this->unk8) + 0x30;
     sp60 = (f32) spC0 * 100.0f;
     spD0 = (f64) sp60;
     temp_f0_520 = M2C_FIELD(temp_r4_514, f64 *, 0) + temp_f0_507;
@@ -326,7 +326,7 @@ void FloorSwitch::Update() {
         if (var_r4_584 != 0) {
             this->unk110 &= ~0x80;
             if ((s32) M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8) != 0) {
-                temp_r30_609 = this->unk8 + 0x30;
+                temp_r30_609 = ((u8 *) this->unk8) + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<FloorSwitchDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), temp_r30_609, 0U, -1, 0.0f, 0U);
             }
             this->unk110 |= 0x40;

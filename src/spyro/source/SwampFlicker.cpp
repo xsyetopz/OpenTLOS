@@ -42,7 +42,7 @@ void SwampFlicker::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampFlicker::Draw() {
     Matrix *temp_r29_97;
     s32 var_r30_89;
@@ -52,7 +52,7 @@ void SwampFlicker::Draw() {
     var_r31_90 = 0;
 loop_2:
     if (var_r30_89 < (s32) this->unk90) {
-        temp_r29_97 = this->unk170 + var_r31_90;
+        temp_r29_97 = ((u8 *) this->unk170) + var_r31_90;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
         MKModel_SetWorldMatrix(this->unk4, *temp_r29_97);
@@ -64,7 +64,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampFlicker::Update() {
     s8 sp208;
     s32 sp204;
@@ -160,7 +160,7 @@ void SwampFlicker::Update() {
     var_r28_136 = 0;
 loop_16:
     if (var_r31_135 < (s32) this->unk90) {
-        temp_r30_141 = this->unk170 + var_r28_136;
+        temp_r30_141 = ((u8 *) this->unk170) + var_r28_136;
         M2C_FIELD(temp_r30_141, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_141, f32 *, 0x64) - gUpdateTimeDelta);
         temp_r0_145 = M2C_FIELD(temp_r30_141, s32 *, 0x60);
         if (temp_r0_145 != 2) {
@@ -297,7 +297,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampFlicker::LoadDone() {
     s8 sp190;
     s32 sp18C;
@@ -370,7 +370,7 @@ void SwampFlicker::LoadDone() {
     var_r28_519 = 0;
 loop_27:
     if (var_r31_517 < (s32) this->unk90) {
-        temp_r30_536 = this->unk170 + var_r28_519;
+        temp_r30_536 = ((u8 *) this->unk170) + var_r28_519;
         M2C_FIELD(temp_r30_536, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
         temp_r26_539 = M2C_FIELD(temp_r30_536, s32 *, 0x60);
         M2C_FIELD(temp_r30_536, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_539 * 4) + 0x70));

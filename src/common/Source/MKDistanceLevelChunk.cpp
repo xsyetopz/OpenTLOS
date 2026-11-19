@@ -232,7 +232,6 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 f32 MKDistanceLevelChunk::GetDistanceFromPoint(const MKVector3 &arg0) {
     f64 sp20;
     f64 sp18;
@@ -263,7 +262,7 @@ f32 MKDistanceLevelChunk::GetDistanceFromPoint(const MKVector3 &arg0) {
         temp_r3_439 = this + var_r31_435;
         var_r28_440 = M2C_FIELD(temp_r3_439, void **, 0x2AC4);
 loop_5:
-        if (var_r28_440 != (void *) (temp_r3_439 + 0x2AC4)) {
+        if (var_r28_440 != (void *) (((u8 *) temp_r3_439) + 0x2AC4)) {
             temp_r3_447 = MKModel_GetBoundingVolume(M2C_FIELD(var_r28_440, MKModel **, 4), (SubObjectType) 0, -1);
             sp8 = (0.5f * M2C_FIELD(temp_r3_447, f32 *, 0x10)) + M2C_FIELD(temp_r3_447, f32 *, 0);
             spC = (0.5f * M2C_FIELD(temp_r3_447, f32 *, 0x14)) + M2C_FIELD(temp_r3_447, f32 *, 4);
@@ -285,9 +284,8 @@ loop_5:
     } while (var_r29_433 < 8);
     return var_f30_430;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
 void MKDistanceLevelChunk::SetTerrainUserData(const char *arg0, void *arg1) {
     s32 var_r29_515;
     s32 var_r31_516;
@@ -300,7 +298,7 @@ loop_1:
     temp_r3_518 = this + var_r31_516;
     var_r28_519 = M2C_FIELD(temp_r3_518, void **, 0x2AC4);
 loop_5:
-    if (var_r28_519 == (void *) (temp_r3_518 + 0x2AC4)) {
+    if (var_r28_519 == (void *) (((u8 *) temp_r3_518) + 0x2AC4)) {
         var_r29_515 += 1;
         var_r31_516 += 0x50;
         if (var_r29_515 >= 8) {
@@ -324,7 +322,7 @@ void MKDistanceLevelChunk::SetTerrainDrawCallback(void (*arg0)(MKModel *, unsign
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
 void MKDistanceLevelChunk::EnableTerrainModel(const char *arg0, bool arg1) {
     s32 var_r29_565;
     s32 var_r31_566;
@@ -337,7 +335,7 @@ loop_1:
     temp_r3_568 = this + var_r31_566;
     var_r28_569 = M2C_FIELD(temp_r3_568, void **, 0x2AC4);
 loop_7:
-    if (var_r28_569 == (void *) (temp_r3_568 + 0x2AC4)) {
+    if (var_r28_569 == (void *) (((u8 *) temp_r3_568) + 0x2AC4)) {
         var_r29_565 += 1;
         var_r31_566 += 0x50;
         if (var_r29_565 >= 8) {
@@ -2250,12 +2248,12 @@ loop_10:
             var_r29_3887 = 0;
             do {
                 temp_r28_3889 = this + var_r29_3887;
-                temp_r27_3890 = temp_r28_3889 + 0x2AC4;
+                temp_r27_3890 = ((u8 *) temp_r28_3889) + 0x2AC4;
                 var_r25_3891 = M2C_FIELD(temp_r28_3889, void **, 0x2AC4);
 loop_28:
                 if (var_r25_3891 != temp_r27_3890) {
                     if (this->unk138 & 0x400000) {
-                        ((SMTree *) (var_r25_3891 + 0x10))->Deinit();
+                        ((SMTree *) (((u8 *) var_r25_3891) + 0x10))->Deinit();
                     }
                     MKModel_Destroy(M2C_FIELD(var_r25_3891, MKModel **, 4));
                     temp_r24_3902 = M2C_FIELD(var_r25_3891, void **, 0);
@@ -2309,7 +2307,7 @@ s32 MKDistanceLevelChunk::InitChunk() {
         do {
             temp_r4_3967 = this + var_r3_3964;
             var_r3_3964 += 0x50;
-            temp_r0_3969 = temp_r4_3967 + 0x2AC4;
+            temp_r0_3969 = ((u8 *) temp_r4_3967) + 0x2AC4;
             M2C_FIELD(temp_r4_3967, void **, 0x2AC4) = temp_r0_3969;
             M2C_FIELD(temp_r4_3967, void **, 0x2AD0) = temp_r0_3969;
             var_ctr_3965 -= 1;
@@ -2373,7 +2371,7 @@ void MKDistanceLevelChunk::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'MKProp *' to
 void MKDistanceLevelChunk::Init(MKLevelChunk::MKLevelChunkInit *arg1) {
     M2C_UNK *temp_r0_4086;
     M2C_UNK *temp_r6_4080;
@@ -2394,7 +2392,7 @@ void MKDistanceLevelChunk::Init(MKLevelChunk::MKLevelChunkInit *arg1) {
     do {
         temp_r4_4073 = this + var_r3_4066;
         var_r3_4066 += 0x50;
-        temp_r0_4075 = temp_r4_4073 + 0x2AC4;
+        temp_r0_4075 = ((u8 *) temp_r4_4073) + 0x2AC4;
         M2C_FIELD(temp_r4_4073, void **, 0x2AC4) = temp_r0_4075;
         M2C_FIELD(temp_r4_4073, void **, 0x2AD0) = temp_r0_4075;
         var_ctr_4071 -= 1;

@@ -103,8 +103,8 @@ loop_49:
                     var_r25_166 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_35:
                     if (var_r25_166 != NULL) {
-                        if ((var_r25_166->LoadInt("spawnPointProp", this->unk10 + var_r30_34, 0) == 0) && (var_r25_166->LoadInt("doorProp", this->unk10 + (var_r30_34 + 4), 0) == 0) && (var_r25_166->LoadString("doorRefPt", this->unk10 + (var_r30_34 + 8), 0) == 0) && (var_r25_166->LoadString("spawnRefPt", this->unk10 + (var_r30_34 + 0xC), 0) == 0) && (var_r25_166->LoadString("openingScript", this->unk10 + (var_r30_34 + 0x10), 0) == 0) && (var_r25_166->LoadString("closingScript", this->unk10 + (var_r30_34 + 0x14), 0) == 0) && (var_r25_166->LoadString("openScript", this->unk10 + (var_r30_34 + 0x18), 0) == 0) && (var_r25_166->LoadString("closedScript", this->unk10 + (var_r30_34 + 0x1C), 0) == 0)) {
-                            var_r25_166->LoadBool("bAnimate", this->unk10 + (var_r30_34 + 0x20), 0);
+                        if ((var_r25_166->LoadInt("spawnPointProp", ((u8 *) this->unk10) + var_r30_34, 0) == 0) && (var_r25_166->LoadInt("doorProp", ((u8 *) this->unk10) + (var_r30_34 + 4), 0) == 0) && (var_r25_166->LoadString("doorRefPt", ((u8 *) this->unk10) + (var_r30_34 + 8), 0) == 0) && (var_r25_166->LoadString("spawnRefPt", ((u8 *) this->unk10) + (var_r30_34 + 0xC), 0) == 0) && (var_r25_166->LoadString("openingScript", ((u8 *) this->unk10) + (var_r30_34 + 0x10), 0) == 0) && (var_r25_166->LoadString("closingScript", ((u8 *) this->unk10) + (var_r30_34 + 0x14), 0) == 0) && (var_r25_166->LoadString("openScript", ((u8 *) this->unk10) + (var_r30_34 + 0x18), 0) == 0) && (var_r25_166->LoadString("closedScript", ((u8 *) this->unk10) + (var_r30_34 + 0x1C), 0) == 0)) {
+                            var_r25_166->LoadBool("bAnimate", ((u8 *) this->unk10) + (var_r30_34 + 0x20), 0);
                         }
                         var_r25_166 = var_r25_166->unkC->GetNextLine(var_r25_166);
                         goto loop_35;
@@ -114,8 +114,8 @@ loop_35:
                     var_r25_286 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_46:
                     if (var_r25_286 != NULL) {
-                        if ((var_r25_286->LoadInt("iMaxSpawnAmount", this->unk14 + var_r29_29, 0) == 0) && (var_r25_286->LoadInt("iMaxActive", this->unk14 + (var_r29_29 + 4), 0) == 0) && (var_r25_286->LoadFloat("fSpawnDelay", this->unk14 + (var_r29_29 + 0xC), 0) == 0) && (var_r25_286->LoadFloat("fDelayBetweenSpawns", this->unk14 + (var_r29_29 + 0x10), 0) == 0) && (var_r25_286->LoadString("iEnemyType", &sp8, 0) != 0)) {
-                            *(var_r29_29 + (this->unk14 + 8)) = DataMap_GetValue(&enemyTypeDataMap, sp8);
+                        if ((var_r25_286->LoadInt("iMaxSpawnAmount", ((u8 *) this->unk14) + var_r29_29, 0) == 0) && (var_r25_286->LoadInt("iMaxActive", ((u8 *) this->unk14) + (var_r29_29 + 4), 0) == 0) && (var_r25_286->LoadFloat("fSpawnDelay", ((u8 *) this->unk14) + (var_r29_29 + 0xC), 0) == 0) && (var_r25_286->LoadFloat("fDelayBetweenSpawns", ((u8 *) this->unk14) + (var_r29_29 + 0x10), 0) == 0) && (var_r25_286->LoadString("iEnemyType", &sp8, 0) != 0)) {
+                            *(var_r29_29 + (((u8 *) this->unk14) + 8)) = DataMap_GetValue(&enemyTypeDataMap, sp8);
                         }
                         var_r25_286 = var_r25_286->unkC->GetNextLine(var_r25_286);
                         goto loop_46;
@@ -517,7 +517,7 @@ void EnemyGenerator::DespawnAll() {
     DespawnAll();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal operand
 void *EnemyGenerator::GetDoor(SpawnPointObject *arg0) {
     s32 temp_r7_1164;
     s32 var_ctr_1166;
@@ -529,7 +529,7 @@ void *EnemyGenerator::GetDoor(SpawnPointObject *arg0) {
     var_ctr_1166 = temp_r7_1164;
     if (temp_r7_1164 > 0) {
 loop_1:
-        temp_r6_1171 = this->unk54 + var_r5_1165;
+        temp_r6_1171 = ((u8 *) this->unk54) + var_r5_1165;
         if ((u32) M2C_FIELD(temp_r6_1171, u32 *, 0x18) == arg0) {
             return temp_r6_1171;
         }
@@ -580,7 +580,7 @@ void EnemyGenerator::Update() {
         var_r30_1251 = 0;
         temp_r29_1253 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_1254 = M2C_FIELD(temp_r29_1253, KDSynkerPlayer3 **, 0x78);
-        if (((temp_r3_1254 != NULL) && (temp_r3_1254->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1253, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_1253 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_1254 != NULL) && (temp_r3_1254->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1253, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r29_1253) + 0x24))->GetState() == 2))) {
             var_r30_1251 = 1;
         }
         if (var_r30_1251 == 0) {
@@ -735,7 +735,7 @@ loop_54:
         } else {
             var_r6_1459 = this->unk60;
         }
-        ((EnemyGeneratorDoor *) (this->unk54 + var_r28_1433))->Init(this, temp_r5_1437->unk10 + (var_r8_1438 * 0x24), var_r6_1459, var_r7_1439);
+        ((EnemyGeneratorDoor *) (((u8 *) this->unk54) + var_r28_1433))->Init(this, temp_r5_1437->unk10 + (var_r8_1438 * 0x24), var_r6_1459, var_r7_1439);
         if ((s32) this->unk80 == 0) {
             sp80.GetSpawnPos();
             spB0 = M2C_BITWISE(f64, sp80);
@@ -871,14 +871,14 @@ loop_9:
             }
             return var_r31_1781;
         }
-        if (arg0->LoadInt(Str_Printf("spawnPointID%d", var_r27_1752 + 1), this->unk5C + var_r31_1754, 0) != 0) {
+        if (arg0->LoadInt(Str_Printf("spawnPointID%d", var_r27_1752 + 1), ((u8 *) this->unk5C) + var_r31_1754, 0) != 0) {
             return 1;
         }
         var_r27_1752 += 1;
         var_r31_1754 += 4;
         goto loop_9;
     }
-    if (arg0->LoadInt(Str_Printf("doorID%d", var_r27_1724 + 1), this->unk58 + var_r31_1726, 0) != 0) {
+    if (arg0->LoadInt(Str_Printf("doorID%d", var_r27_1724 + 1), ((u8 *) this->unk58) + var_r31_1726, 0) != 0) {
         return 1;
     }
     var_r27_1724 += 1;
@@ -887,7 +887,6 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void EnemyGenerator::Deinit() {
     MKHeap *temp_r3_1867;
     MKHeap *temp_r3_1883;
@@ -904,7 +903,7 @@ void EnemyGenerator::Deinit() {
         var_r31_1854 = 0;
 loop_3:
         if (var_r30_1853 < (s32) this->unk70) {
-            ((EnemyGeneratorDoor *) (this->unk54 + var_r31_1854))->Deinit();
+            ((EnemyGeneratorDoor *) (((u8 *) this->unk54) + var_r31_1854))->Deinit();
             var_r30_1853 += 1;
             var_r31_1854 += 0x30;
             goto loop_3;
@@ -937,7 +936,6 @@ loop_3:
     }
     Deinit();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
 void EnemyGenerator::Init(EnemyGeneratorDescriptor *arg0, MKProp *arg1) {

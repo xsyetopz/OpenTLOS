@@ -60,7 +60,7 @@ void ExplosiveBarrel::Explode() {
         spC = NULL;
         sp8 = 0x162;
         spC = this;
-        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp8, 0, 0, this->unk8 + 0x30, 1, 500.0f);
+        M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, f32), 0x94)(gMK, &sp8, 0, 0, ((u8 *) this->unk8) + 0x30, 1, 500.0f);
     }
 }
 #endif
@@ -337,7 +337,7 @@ void ExplosiveBarrel::Message(MKMessage *arg0) {
                     this->unk1B4 = 2;
                 } else if (temp_r3_677 & 0x400) {
                     ((KDInput *) (gb.unk0->GetInput()))->RumblePlay(0.12f, 0.4f, 0.1f, 0, 4.0f, 0U);
-                    KDSound_Play3d(M2C_FIELD(temp_r30_674, s32 *, 0x2C), this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(M2C_FIELD(temp_r30_674, s32 *, 0x2C), ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 }
                 goto block_50;
             }

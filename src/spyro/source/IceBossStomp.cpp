@@ -410,7 +410,7 @@ loop_20:
             temp_r30_917->unk20 = temp_f0_348;
             if ((u32) temp_r30_917->unk2C != 0U) {
                 M2C_STRUCT_COPY((s32) &sp3BC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                M2C_STRUCT_COPY((s32) &sp3BC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &sp3BC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
                 temp_r6_378 = this->unk8;
                 temp_f3_380 = M2C_BITWISE(f32, temp_r30_917->unk4);
                 temp_f6_388 = M2C_BITWISE(f32, temp_r30_917->unk0);
@@ -1028,9 +1028,9 @@ void IceBossStomp::Update() {
     if (this->unk140 <= 0.0f) {
         this->unk140 = 0.0f;
         if ((s32) M2C_FIELD(checked_cast<IceBossStompDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xFC) == 2) {
-            KDSound_Play3d(GS_IceBossAttack1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_IceBossAttack1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         } else {
-            KDSound_Play3d(GS_ElecBossStrikeEnd, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_ElecBossStrikeEnd, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         ShatterIceShards();
         Disable();
@@ -1207,9 +1207,9 @@ block_22:
             sp220 = (f64) sp70;
             if (MKCollision_RayCollide(*((MKVector3 *) &sp218), *((MKVector3 *) &sp1F8), (MKCollisionResult *) &sp348, (MKCollisionMode) 7, 0x0C000000) == 0) {
                 if ((s32) M2C_FIELD(checked_cast<IceBossStompDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xFC) == 2) {
-                    KDSound_Play3d(GS_IceBossAttack1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_IceBossAttack1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 } else {
-                    KDSound_Play3d(GS_ElecBossStrikeEnd, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_ElecBossStrikeEnd, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 }
                 ShatterIceShards();
                 Disable();
@@ -1218,7 +1218,7 @@ block_22:
     }
     if ((ManagedLight *) this->unk160 != NULL) {
         MKVector(0.0f, 500.0f, 0.0f);
-        temp_r3_1813 = this->unk8 + 0x30;
+        temp_r3_1813 = ((u8 *) this->unk8) + 0x30;
         sp28 = M2C_FIELD(temp_r3_1813, f64 *, 0) + sp1C8;
         temp_r3_1822 = this->unk160;
         sp1D8 = sp28;
@@ -1245,7 +1245,7 @@ block_22:
     UpdateIceCrystals();
     this->unk168 += 300.0f * gUpdateTimeDelta;
     temp_r4_1867 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
-    temp_r3_1868 = this->unk8 + 0x30;
+    temp_r3_1868 = ((u8 *) this->unk8) + 0x30;
     sp2B8 = M2C_FIELD(temp_r4_1867, f64 *, 0x30);
     sp2C0 = M2C_FIELD(temp_r4_1867, f64 *, 0x38);
     sp38 = M2C_FIELD(temp_r3_1868, f64 *, 0) - sp2B8;
@@ -1586,7 +1586,7 @@ loop_8:
     MKModel_SetWorldMatrix(this->unk4, sp120);
     this->unk140 = 2.0f;
     EmitSnowRing();
-    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.8f, 0.04f, this->unk8 + 0x30, 50.0f, 0, 4.0f, 0U);
+    ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.8f, 0.04f, ((u8 *) this->unk8) + 0x30, 50.0f, 0, 4.0f, 0U);
     var_r23_2410 = 0;
     sp30 = 0.0f;
     sp2C = 0.0f;

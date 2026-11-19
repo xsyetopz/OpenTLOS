@@ -53,7 +53,7 @@ void RopeBridge::DetachBridgeEnthusiasts() {
 loop_5:
     if (var_r27_58 < (s32) this->unk188) {
 loop_3:
-        if (M2C_FIELD(var_r28_61, void **, 0x40) != (void *) (var_r28_61 + 0x20)) {
+        if (M2C_FIELD(var_r28_61, void **, 0x40) != (void *) (((u8 *) var_r28_61) + 0x20)) {
             temp_r3_68 = M2C_FIELD(M2C_FIELD(var_r28_61, void **, 0x40), void **, 0x18);
             spC = 0;
             sp8 = 0x9C;
@@ -150,12 +150,12 @@ u8 RopeBridge::Attach(RopeBridgeAttachment *arg0, MKCollisionInfo *arg1) {
     var_ctr_226 = temp_r0_224;
     if (temp_r0_224 > 0) {
 loop_5:
-        if (arg1 == (void *) (this->unk184 + (var_r3_225 + 0x10))) {
+        if (arg1 == (void *) (((u8 *) this->unk184) + (var_r3_225 + 0x10))) {
             arg0->unk24->unk20 = arg0->unk20;
             arg0->unk20->unk24 = arg0->unk24;
             arg0->unk24 = arg0;
             arg0->unk20 = arg0;
-            temp_r5_246 = this->unk184 + (var_r3_225 + 0x20);
+            temp_r5_246 = ((u8 *) this->unk184) + (var_r3_225 + 0x20);
             arg0->unk20 = temp_r5_246;
             arg0->unk24 = temp_r5_246->unk24;
             temp_r5_246->unk24 = arg0;
@@ -311,7 +311,7 @@ void RopeBridge::Draw() {
             var_f30_426 = __float_nan;
         }
     }
-    MKModel_CalculateCentre(M2C_FIELD((this->unk184 + (this->unk188 * 0x50)), MKModel **, -8), &sp50);
+    MKModel_CalculateCentre(M2C_FIELD((((u8 *) this->unk184) + (this->unk188 * 0x50)), MKModel **, -8), &sp50);
     sp10 = sp60 - M2C_BITWISE(f64, sp50);
     sp30 = sp10;
     sp18 = (f32) sp68 - sp50.unk8;
@@ -566,7 +566,7 @@ loop_4:
         var_r29_746 = 0x48;
 loop_10:
         if (var_r31_744 < (s32) (this->unk188 - 1)) {
-            temp_r5_751 = this->unk180 + var_r29_746;
+            temp_r5_751 = ((u8 *) this->unk180) + var_r29_746;
             if (M2C_FIELD(&gb, f32 *, 0x30C) >= M2C_FIELD(temp_r5_751, f32 *, 0x40)) {
                 M2C_FIELD(temp_r5_751, f64 *, 0) = (f64) M2C_FIELD(temp_r5_751, f64 *, 0x10);
                 M2C_FIELD(temp_r5_751, f64 *, 8) = (f64) M2C_FIELD(temp_r5_751, f64 *, 0x18);
@@ -575,7 +575,7 @@ loop_10:
                 temp_f0_769 = sp1A8 * (f64) temp_f31_764;
                 spB8 = temp_f0_769;
                 sp1B8 = temp_f0_769;
-                temp_r3_777 = this->unk180 + (var_r29_746 + 0x20);
+                temp_r3_777 = ((u8 *) this->unk180) + (var_r29_746 + 0x20);
                 spC0 = sp1A8.unk8 * temp_f31_764;
                 sp1C0 = (f64) spC0;
                 M2C_FIELD(temp_r3_777, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_777, f64 *, 0) - temp_f0_769);
@@ -584,10 +584,10 @@ loop_10:
                 temp_r3_792 = this->unk180;
                 *(temp_r3_792 + temp_r0_785) = -((980.0f * gUpdateTimeDelta) - *(temp_r3_792 + temp_r0_785));
                 temp_r0_798 = this->unk180;
-                temp_r4_800 = temp_r0_798 + (var_r29_746 + 0x20);
+                temp_r4_800 = ((u8 *) temp_r0_798) + (var_r29_746 + 0x20);
                 temp_f0_802 = M2C_FIELD(temp_r4_800, f64 *, 0) * (f64) gUpdateTimeDelta;
                 spA8 = temp_f0_802;
-                temp_r3_806 = temp_r0_798 + (var_r29_746 + 0x10);
+                temp_r3_806 = ((u8 *) temp_r0_798) + (var_r29_746 + 0x10);
                 sp198 = temp_f0_802;
                 spB0 = M2C_FIELD(temp_r4_800, f32 *, 8) * gUpdateTimeDelta;
                 sp1A0 = (f64) spB0;
@@ -606,16 +606,16 @@ loop_10:
 loop_15:
         if (var_r6_835 < (s32) (this->unk188 - 1)) {
             temp_r0_840 = var_r3_836 + 0x24;
-            temp_r4_843 = this->unk180 + var_r3_836;
+            temp_r4_843 = ((u8 *) this->unk180) + var_r3_836;
             M2C_FIELD(temp_r4_843, f64 *, 0) = (f64) M2C_FIELD(temp_r4_843, f64 *, 0x10);
             M2C_FIELD(temp_r4_843, f64 *, 8) = (f64) M2C_FIELD(temp_r4_843, f64 *, 0x18);
             temp_r4_848 = this->unk180;
             *(temp_r4_848 + temp_r0_840) = *(temp_r4_848 + temp_r0_840) - 32.666668f;
             temp_r0_852 = this->unk180;
-            temp_r5_853 = temp_r0_852 + (var_r3_836 + 0x20);
+            temp_r5_853 = ((u8 *) temp_r0_852) + (var_r3_836 + 0x20);
             temp_f0_855 = M2C_FIELD(temp_r5_853, f64 *, 0) * 5.059081113e-315;
             sp98 = temp_f0_855;
-            temp_r4_859 = temp_r0_852 + (var_r3_836 + 0x10);
+            temp_r4_859 = ((u8 *) temp_r0_852) + (var_r3_836 + 0x10);
             sp188 = temp_f0_855;
             spA0 = M2C_FIELD(temp_r5_853, f32 *, 8) * 0.033333335f;
             sp190 = (f64) spA0;
@@ -636,8 +636,8 @@ loop_27:
                 if (var_r4_897 < (s32) this->unk188) {
                     if (var_r4_897 < (s32) this->unk1A4) {
                         temp_r8_905 = this->unk180;
-                        temp_r7_908 = temp_r8_905 + (var_r5_898 + 0x10);
-                        temp_r6_910 = temp_r8_905 + (((var_r4_897 - 1) * 0x48) + 0x10);
+                        temp_r7_908 = ((u8 *) temp_r8_905) + (var_r5_898 + 0x10);
+                        temp_r6_910 = ((u8 *) temp_r8_905) + (((var_r4_897 - 1) * 0x48) + 0x10);
                         sp88 = M2C_FIELD(temp_r6_910, f64 *, 0) - M2C_FIELD(temp_r7_908, f64 *, 0);
                         sp178 = sp88;
                         sp90 = M2C_FIELD(temp_r6_910, f32 *, 8) - M2C_FIELD(temp_r7_908, f32 *, 8);
@@ -646,8 +646,8 @@ loop_27:
                         sp1E0 = (f64) sp90;
                     } else {
                         temp_r8_928 = this->unk180;
-                        temp_r7_931 = temp_r8_928 + (var_r5_898 + 0x10);
-                        temp_r6_933 = temp_r8_928 + (((var_r4_897 + 1) * 0x48) + 0x10);
+                        temp_r7_931 = ((u8 *) temp_r8_928) + (var_r5_898 + 0x10);
+                        temp_r6_933 = ((u8 *) temp_r8_928) + (((var_r4_897 + 1) * 0x48) + 0x10);
                         sp78 = M2C_FIELD(temp_r6_933, f64 *, 0) - M2C_FIELD(temp_r7_931, f64 *, 0);
                         sp168 = sp78;
                         sp80 = M2C_FIELD(temp_r6_933, f32 *, 8) - M2C_FIELD(temp_r7_931, f32 *, 8);
@@ -660,29 +660,29 @@ loop_27:
                     temp_f8_963 = sp1D8 * (f64) temp_f3_961;
                     sp1D8 = temp_f8_963;
                     temp_f7_968 = (f32) sp1E0 * temp_f3_961;
-                    temp_r6_969 = this->unk180 + (var_r5_898 + 0x10);
+                    temp_r6_969 = ((u8 *) this->unk180) + (var_r5_898 + 0x10);
                     sp1E0 = temp_f7_968;
                     M2C_FIELD(temp_r6_969, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_969, f64 *, 0) + temp_f8_963);
                     M2C_FIELD(temp_r6_969, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_969, f32 *, 8) + temp_f7_968);
                     temp_r0_977 = this->unk1A4;
                     if (var_r4_897 < temp_r0_977) {
-                        temp_r6_984 = this->unk180 + (((var_r4_897 - 1) * 0x48) + 0x10);
+                        temp_r6_984 = ((u8 *) this->unk180) + (((var_r4_897 - 1) * 0x48) + 0x10);
                         M2C_FIELD(temp_r6_984, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_984, f64 *, 0) - temp_f8_963);
                         M2C_FIELD(temp_r6_984, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_984, f32 *, 8) - temp_f7_968);
                     } else if (var_r4_897 == temp_r0_977) {
                         temp_f4_997 = M2C_FIELD(&MKVector3::up, f64 *, 0) * (f64) temp_f3_961;
                         sp68 = temp_f4_997;
                         sp158 = temp_f4_997;
-                        temp_r7_1007 = this->unk180 + (((var_r4_897 - 1) * 0x48) + 0x10);
+                        temp_r7_1007 = ((u8 *) this->unk180) + (((var_r4_897 - 1) * 0x48) + 0x10);
                         sp70 = MKVector3::up.unk8 * temp_f3_961;
                         sp160 = (f64) sp70;
                         M2C_FIELD(temp_r7_1007, f64 *, 0) = (f64) (M2C_FIELD(temp_r7_1007, f64 *, 0) - temp_f4_997);
                         M2C_FIELD(temp_r7_1007, f32 *, 8) = (f32) (M2C_FIELD(temp_r7_1007, f32 *, 8) - (f32) sp160);
-                        temp_r6_1023 = this->unk180 + (((var_r4_897 + 1) * 0x48) + 0x10);
+                        temp_r6_1023 = ((u8 *) this->unk180) + (((var_r4_897 + 1) * 0x48) + 0x10);
                         M2C_FIELD(temp_r6_1023, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_1023, f64 *, 0) - temp_f8_963);
                         M2C_FIELD(temp_r6_1023, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_1023, f32 *, 8) - temp_f7_968);
                     } else {
-                        temp_r6_1036 = this->unk180 + (((var_r4_897 + 1) * 0x48) + 0x10);
+                        temp_r6_1036 = ((u8 *) this->unk180) + (((var_r4_897 + 1) * 0x48) + 0x10);
                         M2C_FIELD(temp_r6_1036, f64 *, 0) = (f64) (M2C_FIELD(temp_r6_1036, f64 *, 0) - temp_f8_963);
                         M2C_FIELD(temp_r6_1036, f32 *, 8) = (f32) (M2C_FIELD(temp_r6_1036, f32 *, 8) - temp_f7_968);
                     }
@@ -694,7 +694,7 @@ loop_27:
                 M2C_FIELD(temp_r4_1050, f32 *, 0x10) = 0.0f;
                 M2C_FIELD(temp_r4_1050, f32 *, 0x14) = 0.0f;
                 M2C_FIELD(temp_r4_1050, f32 *, 0x18) = 0.0f;
-                temp_r4_1060 = this->unk180 + ((this->unk188 * 0x48) + 0x10);
+                temp_r4_1060 = ((u8 *) this->unk180) + ((this->unk188 * 0x48) + 0x10);
                 M2C_FIELD(temp_r4_1060, f64 *, 0) = (f64) this->unk170;
                 M2C_FIELD(temp_r4_1060, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x178);
                 var_ctr_893 -= 1;
@@ -704,7 +704,7 @@ loop_27:
         var_r29_1067 = 0;
 loop_31:
         if (var_r27_1066 < (s32) this->unk188) {
-            temp_r5_1071 = this->unk180 + var_r29_1067;
+            temp_r5_1071 = ((u8 *) this->unk180) + var_r29_1067;
             temp_f0_1075 = *(temp_r5_1071 + 0x10) - M2C_FIELD(temp_r5_1071, f64 *, 0);
             sp18 = temp_f0_1075;
             sp128 = temp_f0_1075;
@@ -715,7 +715,7 @@ loop_31:
             temp_r0_1093 = var_r29_1067 + 0x20;
             var_r27_1066 += 1;
             var_r29_1067 += 0x48;
-            temp_r3_1100 = this->unk180 + temp_r0_1093;
+            temp_r3_1100 = ((u8 *) this->unk180) + temp_r0_1093;
             M2C_FIELD(temp_r3_1100, f64 *, 0) = sp58;
             sp60 = sp138.unk8 * 29.999998f;
             sp148 = sp58;
@@ -729,14 +729,14 @@ loop_31:
     var_r29_1116 = 0x48;
 loop_35:
     if (var_r27_1115 < (s32) (this->unk188 - 1)) {
-        temp_r5_1124 = this->unk180 + var_r29_1116;
+        temp_r5_1124 = ((u8 *) this->unk180) + var_r29_1116;
         M2C_FIELD(temp_r5_1124, f64 *, 0) = (f64) M2C_FIELD(temp_r5_1124, f64 *, 0x10);
         M2C_FIELD(temp_r5_1124, f64 *, 8) = (f64) M2C_FIELD(temp_r5_1124, f64 *, 0x18);
         sp108.operator*(arg2);
         temp_f0_1133 = sp108 * (f64) arg1;
         sp48 = temp_f0_1133;
         sp118 = temp_f0_1133;
-        temp_r3_1141 = this->unk180 + (var_r29_1116 + 0x20);
+        temp_r3_1141 = ((u8 *) this->unk180) + (var_r29_1116 + 0x20);
         sp50 = sp108.unk8 * arg1;
         sp120 = (f64) sp50;
         M2C_FIELD(temp_r3_1141, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1141, f64 *, 0) - temp_f0_1133);
@@ -745,10 +745,10 @@ loop_35:
         temp_r3_1155 = this->unk180;
         *(temp_r3_1155 + temp_r0_1149) = *(temp_r3_1155 + temp_r0_1149) - (980.0f * arg1);
         temp_r0_1159 = this->unk180;
-        temp_r4_1160 = temp_r0_1159 + (var_r29_1116 + 0x20);
+        temp_r4_1160 = ((u8 *) temp_r0_1159) + (var_r29_1116 + 0x20);
         temp_f0_1162 = M2C_FIELD(temp_r4_1160, f64 *, 0) * (f64) arg1;
         sp38 = temp_f0_1162;
-        temp_r3_1166 = temp_r0_1159 + (var_r29_1116 + 0x10);
+        temp_r3_1166 = ((u8 *) temp_r0_1159) + (var_r29_1116 + 0x10);
         spF8 = temp_f0_1162;
         sp40 = M2C_FIELD(temp_r4_1160, f32 *, 8) * arg1;
         sp100 = (f64) sp40;
@@ -769,8 +769,8 @@ loop_39:
             if (var_r8_1202 < (s32) this->unk188) {
                 temp_r6_1207 = this->unk180;
                 temp_r7_1208 = (var_r8_1202 + 1) * 0x48;
-                temp_r5_1210 = temp_r6_1207 + (var_r3_1203 + 0x10);
-                temp_r4_1212 = temp_r6_1207 + (temp_r7_1208 + 0x10);
+                temp_r5_1210 = ((u8 *) temp_r6_1207) + (var_r3_1203 + 0x10);
+                temp_r4_1212 = ((u8 *) temp_r6_1207) + (temp_r7_1208 + 0x10);
                 spC8 = M2C_FIELD(temp_r4_1212, f64 *, 0) - M2C_FIELD(temp_r5_1210, f64 *, 0);
                 sp1C8 = spC8;
                 spD0 = M2C_FIELD(temp_r4_1212, f32 *, 8) - M2C_FIELD(temp_r5_1210, f32 *, 8);
@@ -779,12 +779,12 @@ loop_39:
                 temp_f29_1237 = (0.4f * (temp_f3_1234 - this->unk18C)) / temp_f3_1234;
                 temp_f6_1239 = sp1C8 * (f64) temp_f29_1237;
                 sp1C8 = temp_f6_1239;
-                temp_r4_1243 = temp_r6_1207 + (var_r3_1203 + 0x10);
+                temp_r4_1243 = ((u8 *) temp_r6_1207) + (var_r3_1203 + 0x10);
                 temp_f3_1244 = (f32) sp1D0 * temp_f29_1237;
                 sp1D0 = temp_f3_1244;
                 M2C_FIELD(temp_r4_1243, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_1243, f64 *, 0) + temp_f6_1239);
                 M2C_FIELD(temp_r4_1243, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_1243, f32 *, 8) + temp_f3_1244);
-                temp_r5_1254 = this->unk180 + (temp_r7_1208 + 0x10);
+                temp_r5_1254 = ((u8 *) this->unk180) + (temp_r7_1208 + 0x10);
                 M2C_FIELD(temp_r5_1254, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_1254, f64 *, 0) - temp_f6_1239);
                 var_r8_1202 += 1;
                 var_r3_1203 += 0x48;
@@ -795,7 +795,7 @@ loop_39:
             M2C_FIELD(temp_r3_1267, f32 *, 0x10) = 0.0f;
             M2C_FIELD(temp_r3_1267, f32 *, 0x14) = 0.0f;
             M2C_FIELD(temp_r3_1267, f32 *, 0x18) = 0.0f;
-            temp_r3_1277 = this->unk180 + ((this->unk188 * 0x48) + 0x10);
+            temp_r3_1277 = ((u8 *) this->unk180) + ((this->unk188 * 0x48) + 0x10);
             M2C_FIELD(temp_r3_1277, f64 *, 0) = (f64) this->unk170;
             M2C_FIELD(temp_r3_1277, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x178);
             var_ctr_1198 -= 1;
@@ -807,14 +807,14 @@ loop_39:
 loop_43:
     if (var_r7_1283 < (s32) this->unk188) {
         temp_r4_1288 = this->unk180;
-        temp_r6_1289 = temp_r4_1288 + var_r3_1284;
+        temp_r6_1289 = ((u8 *) temp_r4_1288) + var_r3_1284;
         temp_f0_1293 = *(temp_r6_1289 + 0x10) - M2C_FIELD(temp_r6_1289, f64 *, 0);
         sp8 = temp_f0_1293;
         spD8 = temp_f0_1293;
         sp10 = M2C_FIELD(temp_r6_1289, f32 *, 0x18) - M2C_FIELD(temp_r6_1289, f32 *, 8);
         spE0 = (f64) sp10;
         sp28 = temp_f0_1293 * (f64) temp_f3_1285;
-        temp_r4_1309 = temp_r4_1288 + (var_r3_1284 + 0x20);
+        temp_r4_1309 = ((u8 *) temp_r4_1288) + (var_r3_1284 + 0x20);
         var_r7_1283 += 1;
         var_r3_1284 += 0x48;
         M2C_FIELD(temp_r4_1309, f64 *, 0) = sp28;
@@ -827,7 +827,7 @@ loop_43:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal operand
 void RopeBridge::UpdatePlankMatrices() {
     MKCollisionResult sp330;
     Matrix sp2F0;
@@ -991,8 +991,8 @@ void RopeBridge::UpdatePlankMatrices() {
     var_r24_1369 = 0;
 loop_40:
     if (var_r28_1367 < (s32) this->unk188) {
-        temp_r4_1373 = this->unk184 + var_r24_1369;
-        if ((u32) M2C_FIELD(temp_r4_1373, u32 *, 0x40) != (void *) (temp_r4_1373 + 0x20)) {
+        temp_r4_1373 = ((u8 *) this->unk184) + var_r24_1369;
+        if ((u32) M2C_FIELD(temp_r4_1373, u32 *, 0x40) != (void *) (((u8 *) temp_r4_1373) + 0x20)) {
             sp2F0.InverseSimple(MKModel_GetWorldMatrix(M2C_FIELD(temp_r4_1373, MKModel **, 0x48)));
         }
         M2C_STRUCT_COPY((s32) &sp2AC + 4, MKModel_GetWorldMatrix(*(this->unk184 + (var_r24_1369 + 0x48))) - 4 + 4, 0x40);
@@ -1007,8 +1007,8 @@ loop_40:
         sp2BC = 0.0f;
         if (var_r28_1367 == (s32) (this->unk1A4 - 1)) {
             temp_r5_1419 = this->unk180;
-            temp_r4_1423 = temp_r5_1419 + (((var_r28_1367 - 2) * 0x48) + 0x10);
-            temp_r3_1424 = temp_r5_1419 + (((var_r28_1367 - 1) * 0x48) + 0x10);
+            temp_r4_1423 = ((u8 *) temp_r5_1419) + (((var_r28_1367 - 2) * 0x48) + 0x10);
+            temp_r3_1424 = ((u8 *) temp_r5_1419) + (((var_r28_1367 - 1) * 0x48) + 0x10);
             spE8 = M2C_FIELD(temp_r3_1424, f64 *, 0) - M2C_FIELD(temp_r4_1423, f64 *, 0);
             sp248 = spE8;
             spF0 = M2C_FIELD(temp_r3_1424, f32 *, 8) - M2C_FIELD(temp_r4_1423, f32 *, 8);
@@ -1017,8 +1017,8 @@ loop_40:
             sp2A0 = (f64) spF0;
         } else {
             temp_r5_1442 = this->unk180;
-            temp_r4_1445 = temp_r5_1442 + (var_r25_1368 + 0x10);
-            temp_r3_1447 = temp_r5_1442 + (((var_r28_1367 + 1) * 0x48) + 0x10);
+            temp_r4_1445 = ((u8 *) temp_r5_1442) + (var_r25_1368 + 0x10);
+            temp_r3_1447 = ((u8 *) temp_r5_1442) + (((var_r28_1367 + 1) * 0x48) + 0x10);
             spD8 = M2C_FIELD(temp_r3_1447, f64 *, 0) - M2C_FIELD(temp_r4_1445, f64 *, 0);
             sp238 = spD8;
             spE0 = M2C_FIELD(temp_r3_1447, f32 *, 8) - M2C_FIELD(temp_r4_1445, f32 *, 8);
@@ -1104,7 +1104,7 @@ loop_40:
             sp2E0.unkC = 1.0f;
             temp_r3_1633 = this->unk180;
             sp58 = -MKVector3::up.unk0;
-            temp_r4_1635 = temp_r3_1633 + (var_r25_1368 + 0x20);
+            temp_r4_1635 = ((u8 *) temp_r3_1633) + (var_r25_1368 + 0x20);
             sp5C = -MKVector3::up.unk4;
             sp60 = -MKVector3::up.unk8;
             sp50 = -M2C_FIELD(temp_r4_1635, f32 *, 8);
@@ -1116,7 +1116,7 @@ loop_40:
             sp1E0 = (f64) sp50;
             temp_f0_1657 = (f64) sp48 * sp1C8;
             sp98 = temp_f0_1657;
-            temp_r3_1661 = temp_r3_1633 + (var_r25_1368 + 0x20);
+            temp_r3_1661 = ((u8 *) temp_r3_1633) + (var_r25_1368 + 0x20);
             M2C_FIELD(temp_r3_1661, f64 *, 0) = temp_f0_1657;
             sp1E8 = temp_f0_1657;
             spA0 = (f32) sp1E0 * (f32) sp1D0;
@@ -1125,8 +1125,8 @@ loop_40:
         }
         if ((var_r28_1367 == 0) || (var_r28_1367 == (s32) (this->unk188 - 1)) || (temp_r3_1678 = this->unk1A4, ((var_r28_1367 == temp_r3_1678) != 0))) {
             temp_r6_1683 = this->unk180;
-            temp_r5_1686 = temp_r6_1683 + (var_r25_1368 + 0x10);
-            temp_r4_1688 = temp_r6_1683 + (((var_r28_1367 + 1) * 0x48) + 0x10);
+            temp_r5_1686 = ((u8 *) temp_r6_1683) + (var_r25_1368 + 0x10);
+            temp_r4_1688 = ((u8 *) temp_r6_1683) + (((var_r28_1367 + 1) * 0x48) + 0x10);
             temp_f0_1691 = M2C_FIELD(temp_r4_1688, f64 *, 0) + M2C_FIELD(temp_r5_1686, f64 *, 0);
             sp38 = temp_f0_1691;
             sp198 = temp_f0_1691;
@@ -1145,8 +1145,8 @@ loop_40:
             sp2E0.unk8 = (f32) sp1C0;
         } else if (var_r28_1367 == (s32) (temp_r3_1678 - 1)) {
             temp_r6_1755 = this->unk180;
-            temp_r5_1759 = temp_r6_1755 + (((var_r28_1367 - 2) * 0x48) + 0x10);
-            temp_r4_1760 = temp_r6_1755 + (((var_r28_1367 - 1) * 0x48) + 0x10);
+            temp_r5_1759 = ((u8 *) temp_r6_1755) + (((var_r28_1367 - 2) * 0x48) + 0x10);
+            temp_r4_1760 = ((u8 *) temp_r6_1755) + (((var_r28_1367 - 1) * 0x48) + 0x10);
             temp_f0_1763 = M2C_FIELD(temp_r4_1760, f64 *, 0) + M2C_FIELD(temp_r5_1759, f64 *, 0);
             sp28 = temp_f0_1763;
             sp168 = temp_f0_1763;
@@ -1165,8 +1165,8 @@ loop_40:
             sp2E0.unk8 = (f32) sp190;
         } else {
             temp_r6_1824 = this->unk180;
-            temp_r5_1828 = temp_r6_1824 + (((var_r28_1367 - 1) * 0x48) + 0x10);
-            temp_r4_1829 = temp_r6_1824 + (((var_r28_1367 + 1) * 0x48) + 0x10);
+            temp_r5_1828 = ((u8 *) temp_r6_1824) + (((var_r28_1367 - 1) * 0x48) + 0x10);
+            temp_r4_1829 = ((u8 *) temp_r6_1824) + (((var_r28_1367 + 1) * 0x48) + 0x10);
             temp_f0_1832 = M2C_FIELD(temp_r4_1829, f64 *, 0) + M2C_FIELD(temp_r5_1828, f64 *, 0);
             sp18 = temp_f0_1832;
             sp138 = temp_f0_1832;
@@ -1187,7 +1187,7 @@ loop_40:
         MKModel_SetWorldMatrix(*(this->unk184 + (var_r24_1369 + 0x48)), *((Matrix *) &sp2B0));
         var_r27_1897 = *(this->unk184 + (var_r24_1369 + 0x40));
 loop_38:
-        if (var_r27_1897 != (void *) (this->unk184 + (var_r24_1369 + 0x20))) {
+        if (var_r27_1897 != (void *) (((u8 *) this->unk184) + (var_r24_1369 + 0x20))) {
             temp_r4_1902 = M2C_FIELD(M2C_FIELD(var_r27_1897, void **, 0x18), void **, 8);
             sp128 = M2C_FIELD(temp_r4_1902, f64 *, 0x30);
             sp130 = M2C_FIELD(temp_r4_1902, f64 *, 0x38);
@@ -1196,7 +1196,7 @@ loop_38:
             sp120 = sp2F0.unk38 + (((f32) sp130 * sp2F0.unk28) + (((f32) sp128 * sp2F0.unk8) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * sp2F0.unk18)));
             sp288 = (f64) sp118;
             sp290 = (f64) sp120;
-            temp_r3_1943 = MKModel_GetWorldMatrix(*(var_r24_1369 + (this->unk184 + 0x48)));
+            temp_r3_1943 = MKModel_GetWorldMatrix(*(var_r24_1369 + (((u8 *) this->unk184) + 0x48)));
             temp_f5_1966 = M2C_FIELD(temp_r3_1943, f32 *, 0x30);
             temp_f3_1968 = M2C_FIELD(temp_r3_1943, f32 *, 0x34);
             temp_f0_1969 = ((f32) sp290 * M2C_FIELD(temp_r3_1943, f32 *, 0x28)) + (((f32) sp288 * M2C_FIELD(temp_r3_1943, f32 *, 8)) + ((*(f32 *) ((u8 *) &sp288 + 0x4)) * M2C_FIELD(temp_r3_1943, f32 *, 0x18)));
@@ -1224,7 +1224,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
@@ -1306,7 +1306,7 @@ void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     sp70 = (f64) sp30;
     if (!((f32) sp80 < M2C_FIELD(temp_r6_2061, f32 *, 0x18)) && (temp_r0_2090 = this->unk188, var_r7_2091 = 0, var_r4_2092 = 0, var_ctr_2093 = temp_r0_2090, ((temp_r0_2090 > 0) != 0))) {
 loop_2:
-        temp_r5_2097 = temp_r6_2061 + var_r4_2092;
+        temp_r5_2097 = ((u8 *) temp_r6_2061) + var_r4_2092;
         temp_f2_2098 = M2C_FIELD(temp_r5_2097, f32 *, 0x60);
         if (temp_f2_2098 >= (f32) sp80) {
             temp_f5_2102 = M2C_FIELD(temp_r5_2097, f32 *, 0x18);
@@ -1317,7 +1317,7 @@ loop_2:
             sp70 = temp_f2_2113;
             temp_f1_2117 = (f64) sp68 * (f64) temp_f4_2112;
             sp18 = temp_f1_2117;
-            temp_r4_2120 = temp_r5_2097 + 0x20;
+            temp_r4_2120 = ((u8 *) temp_r5_2097) + 0x20;
             sp20 = temp_f2_2113 * temp_f4_2112;
             sp58 = temp_f1_2117;
             sp60 = (f64) sp20;
@@ -1326,13 +1326,13 @@ loop_2:
             sp8 = (f64) sp68 * (f64) temp_f3_2110;
             sp10 = temp_f2_2113 * temp_f3_2110;
             sp48 = sp8;
-            temp_r4_2146 = this->unk180 + (((var_r7_2091 + 1) * 0x48) + 0x20);
+            temp_r4_2146 = ((u8 *) this->unk180) + (((var_r7_2091 + 1) * 0x48) + 0x20);
             sp50 = (f64) sp10;
             M2C_FIELD(temp_r4_2146, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_2146, f64 *, 0) + sp48);
             M2C_FIELD(temp_r4_2146, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_2146, f32 *, 8) + (f32) sp50);
             if ((var_r7_2091 != 0) && (var_r7_2091 != (s32) (this->unk188 - 1))) {
                 temp_r5_2162 = var_r7_2091 * 0x50;
-                temp_r4_2166 = this->unk184 + temp_r5_2162;
+                temp_r4_2166 = ((u8 *) this->unk184) + temp_r5_2162;
                 M2C_FIELD(temp_r4_2166, f32 *, 0x4C) = (f32) ((0.02f * (f32) sp78) + M2C_FIELD(temp_r4_2166, f32 *, 0x4C));
                 temp_r3_2171 = this->unk184;
                 var_f0_2173 = *(temp_r3_2171 + (temp_r5_2162 + 0x4C));
@@ -1346,7 +1346,7 @@ loop_2:
                 } else {
                     var_f0_2173 = -10.0f;
                 }
-                M2C_FIELD((temp_r3_2171 + temp_r5_2162), f32 *, 0x4C) = var_f0_2173;
+                M2C_FIELD((((u8 *) temp_r3_2171) + temp_r5_2162), f32 *, 0x4C) = var_f0_2173;
             }
         } else {
             var_r7_2091 += 1;
@@ -1373,7 +1373,7 @@ void RopeBridge::HighDetailUpdate() {
     UpdatePlanks(0x1E, 0.033333335f, 0.0f);
     var_r4_2224 = 1;
     temp_f5_2226 = -ROPEBRIDGE_MAXROLL;
-    var_r5_2229 = this->unk184 + 0x50;
+    var_r5_2229 = ((u8 *) this->unk184) + 0x50;
 loop_10:
     if (var_r4_2224 < (s32) (this->unk188 - 1)) {
         temp_f2_2232 = M2C_FIELD(var_r5_2229, f32 *, 0x4C);
@@ -1421,7 +1421,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void RopeBridge::Update() {
     f64 sp38;
     f64 sp30;
@@ -1468,7 +1468,7 @@ void RopeBridge::Update() {
             this->unk10 = temp_r3_2346 & 0xFFFFBFFF;
         }
     }
-    temp_r4_2356 = this->unk8 + 0x30;
+    temp_r4_2356 = ((u8 *) this->unk8) + 0x30;
     temp_r3_2357 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     temp_f1_2358 = M2C_FIELD(temp_r3_2357, f64 *, 0x30);
     sp20 = temp_f1_2358;
@@ -1884,18 +1884,18 @@ loop_5:
         temp_r4_2964 = var_r28_2908 + 0x20;
         temp_r5_2966 = var_r28_2908 + 0x30;
         var_r30_2906 += 1;
-        temp_r3_2971 = this->unk180 + (var_r28_2908 + 0x10);
+        temp_r3_2971 = ((u8 *) this->unk180) + (var_r28_2908 + 0x10);
         var_r28_2908 += 0x48;
         M2C_FIELD(temp_r3_2971, f64 *, 0) = sp8;
         sp10 = sp38.unk8 - sp20;
         sp48 = sp8;
         M2C_FIELD(temp_r3_2971, f64 *, 8) = (f64) sp10;
         sp50 = (f64) sp10;
-        temp_r4_2980 = this->unk180 + temp_r4_2964;
+        temp_r4_2980 = ((u8 *) this->unk180) + temp_r4_2964;
         M2C_FIELD(temp_r4_2980, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r4_2980, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r4_2980, f32 *, 8) = 0.0f;
-        temp_r5_2985 = this->unk180 + temp_r5_2966;
+        temp_r5_2985 = ((u8 *) this->unk180) + temp_r5_2966;
         M2C_FIELD(temp_r5_2985, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r5_2985, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r5_2985, f32 *, 8) = 0.0f;
@@ -1908,10 +1908,10 @@ loop_8:
     if (var_r27_2995 < (s32) this->unk188) {
         KDMath_GetYaw((Matrix *) &this->unk50);
         sp5C = M2C_ERROR(/* Read from unset register $f1 */);
-        temp_r3_3004 = this->unk180 + var_r31_2997;
+        temp_r3_3004 = ((u8 *) this->unk180) + var_r31_2997;
         sp60 = 0.0f;
         temp_r0_3014 = var_r30_2996 + 0x4C;
-        temp_r3_3015 = this->unk184 + var_r30_2996;
+        temp_r3_3015 = ((u8 *) this->unk184) + var_r30_2996;
         var_r30_2996 += 0x50;
         sp58 = (f32) atan2(temp_r3_3004, M2C_FIELD(temp_r3_3004, f32 *, 0x5C) - M2C_FIELD(temp_r3_3004, f32 *, 0x14), this->unk18C);
         var_r27_2995 += 1;
@@ -2149,7 +2149,7 @@ loop_22:
     if (var_r31_3448 < (s32) this->unk188) {
         temp_r0_3458 = var_r29_3449 + 0x48;
         *(this->unk184 + temp_r0_3458) = MKModel_Create(this->unk198, NULL, 2, NULL);
-        temp_r6_3469 = this->unk184 + (var_r29_3449 + 0x10);
+        temp_r6_3469 = ((u8 *) this->unk184) + (var_r29_3449 + 0x10);
         temp_r25_3470 = MKModel_GetSubObjectIndex(*(this->unk184 + temp_r0_3458), (SubObjectType) 0, "C_Collide");
         M2C_FIELD(temp_r6_3469, s32 *, 0) = 0;
         M2C_FIELD(temp_r6_3469, s8 *, 4) = 1;
@@ -2157,8 +2157,8 @@ loop_22:
         M2C_FIELD(temp_r6_3469, s32 *, 0xC) = 0;
         *(this->unk184 + (var_r29_3449 + 0x14)) = 0;
         temp_r28_3480 = checked_cast<RopeBridgeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        temp_r26_3484 = this->unk184 + var_r29_3449;
-        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r26_3484, MKModel **, 0x48), temp_r25_3470, (MKCollisionMode) 7, temp_r26_3484 + 0x10, M2C_FIELD(temp_r28_3480, u32 *, 0x60));
+        temp_r26_3484 = ((u8 *) this->unk184) + var_r29_3449;
+        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r26_3484, MKModel **, 0x48), temp_r25_3470, (MKCollisionMode) 7, ((u8 *) temp_r26_3484) + 0x10, M2C_FIELD(temp_r28_3480, u32 *, 0x60));
         MKModel_EnableSubObject(*(this->unk184 + (var_r29_3449 + 0x48)), (SubObjectType) 0, temp_r25_3470, 0U, 1U);
         var_r31_3448 += 1;
         var_r29_3449 += 0x50;
@@ -2173,18 +2173,18 @@ loop_22:
     var_r3_3526 = 0x48;
 loop_25:
     if (var_r6_3525 < (s32) (this->unk188 - 1)) {
-        temp_r4_3531 = this->unk180 + var_r3_3526;
+        temp_r4_3531 = ((u8 *) this->unk180) + var_r3_3526;
         M2C_FIELD(temp_r4_3531, f64 *, 0) = (f64) M2C_FIELD(temp_r4_3531, f64 *, 0x10);
         M2C_FIELD(temp_r4_3531, f64 *, 8) = (f64) M2C_FIELD(temp_r4_3531, f64 *, 0x18);
-        temp_r5_3537 = this->unk180 + (var_r3_3526 + 0x20);
+        temp_r5_3537 = ((u8 *) this->unk180) + (var_r3_3526 + 0x20);
         M2C_FIELD(temp_r5_3537, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_3537, f64 *, 0) - M2C_FIELD(temp_r5_3537, f64 *, 0));
         temp_r0_3542 = var_r3_3526 + 0x24;
         M2C_FIELD(temp_r5_3537, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_3537, f32 *, 8) - M2C_FIELD(temp_r5_3537, f32 *, 8));
         temp_r4_3547 = this->unk180;
         *(temp_r4_3547 + temp_r0_3542) = *(temp_r4_3547 + temp_r0_3542) - 686.0f;
-        temp_r4_3552 = this->unk180 + var_r3_3526;
-        temp_r5_3553 = temp_r4_3552 + 0x20;
-        temp_r4_3554 = temp_r4_3552 + 0x10;
+        temp_r4_3552 = ((u8 *) this->unk180) + var_r3_3526;
+        temp_r5_3553 = ((u8 *) temp_r4_3552) + 0x20;
+        temp_r4_3554 = ((u8 *) temp_r4_3552) + 0x10;
         M2C_FIELD(temp_r4_3554, f64 *, 0) = (f64) (M2C_FIELD(temp_r4_3554, f64 *, 0) + M2C_FIELD(temp_r5_3553, f64 *, 0));
         var_r6_3525 += 1;
         var_r3_3526 += 0x48;
@@ -2253,7 +2253,7 @@ void RopeBridge::Deinit() {
 loop_8:
         if (var_r26_3761 < (s32) temp_r31_3756->unk188) {
 loop_4:
-            if (M2C_FIELD(var_r27_3760, void **, 0x40) != (void *) (var_r27_3760 + 0x20)) {
+            if (M2C_FIELD(var_r27_3760, void **, 0x40) != (void *) (((u8 *) var_r27_3760) + 0x20)) {
                 temp_r3_3770 = M2C_FIELD(M2C_FIELD(var_r27_3760, void **, 0x40), void **, 0x18);
                 spC = 0;
                 sp8 = 0x9C;

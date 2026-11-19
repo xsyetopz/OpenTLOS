@@ -130,7 +130,7 @@ void CheckPoint::Update() {
         if (((u32) temp_r3_282->unk20 == (u32) M2C_FIELD(temp_r30_259, u32 *, 0x74)) && (temp_r3_282->unk2C & 1)) {
             temp_r3_282->SetAnim(M2C_FIELD(temp_r30_259, MKAnim **, 0x78), 1.0f, 0.0f, 0, -1);
         }
-        this->unk1BC = KDSound_Play3d(this->unk80, this->unk8 + 0x30, 0U, 0.0f, 0U);
+        this->unk1BC = KDSound_Play3d(this->unk80, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
     }
     if ((u8) this->unk1C0 == 0) {
         M2C_FIELD(M2C_FIELD(this, void **, 0x100), M2C_UNK (**)(u8 *), 0x24)(&this->unk100);
@@ -180,8 +180,8 @@ void CheckPoint::LoadDone() {
     }
     KDProp::LoadDone();
     temp_r4_383 = &MKProp::loadInfo - 4;
-    M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) temp_r4_383 + 4, 0x40);
-    var_r4_386 = temp_r4_383 + 0x40;
+    M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) ((u8 *) temp_r4_383) + 4, 0x40);
+    var_r4_386 = ((u8 *) temp_r4_383) + 0x40;
     temp_r3_391 = this->unk4;
     if (temp_r3_391 != NULL) {
         var_r4_386 = this->unk0;

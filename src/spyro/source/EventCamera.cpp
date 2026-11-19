@@ -1521,12 +1521,12 @@ void EventCamera::Update() {
             temp_f0_2323 = this->unkC0;
             if (temp_f1_2322 < temp_f0_2323) {
                 sp2C = 0.0f;
-                ((KDUniformSpline *) &sp470)->GetMeasure(temp_f1_2322 / temp_f0_2323, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp470)->GetMeasure(temp_f1_2322 / temp_f0_2323, ((u8 *) temp_r4_2319) + 0x7C, KDSpline_PositionMixer);
                 M2C_FIELD(this, f64 *, 0x60) = sp470;
                 M2C_FIELD(this, f64 *, 0x68) = sp478;
             } else {
                 sp28 = 0.0f;
-                ((KDUniformSpline *) &sp460)->GetMeasure(1.0f, temp_r4_2319 + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp460)->GetMeasure(1.0f, ((u8 *) temp_r4_2319) + 0x7C, KDSpline_PositionMixer);
                 M2C_FIELD(this, f64 *, 0x60) = sp460;
                 M2C_FIELD(this, f64 *, 0x68) = sp468;
             }
@@ -1572,7 +1572,7 @@ void EventCamera::Update() {
                     sp3D0.GetVelocity(this->unkC4 / this->unkBC);
                     ((MKVector3 *) &sp3D0.unk10)->operator*(temp_f30_2445);
                     sp1C = 0.0f;
-                    sp3F0.GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                    sp3F0.GetMeasure(this->unkC4 / this->unkBC, ((u8 *) this->unkB0) + 0x7C, KDSpline_PositionMixer);
                     spA0 = M2C_BITWISE(f64, sp3F0) + M2C_BITWISE(f64, sp3D0.unk10);
                     M2C_FIELD(this, f64 *, 0x60) = spA0;
                     spA8 = sp3F0.unk8 + sp3E8;
@@ -1582,7 +1582,7 @@ void EventCamera::Update() {
                 } else {
                     sp3A0.GetVelocity(temp_f1_2411 / temp_f0_2412);
                     sp18 = 0.0f;
-                    ((KDUniformSpline *) &sp3A0.unk10)->GetMeasure(this->unkC4 / this->unkBC, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp3A0.unk10)->GetMeasure(this->unkC4 / this->unkBC, ((u8 *) this->unkB0) + 0x7C, KDSpline_PositionMixer);
                     sp90 = M2C_BITWISE(f64, sp3A0.unk10) + M2C_BITWISE(f64, sp3A0);
                     M2C_FIELD(this, f64 *, 0x60) = sp90;
                     sp98 = sp3B8 + sp3A0.unk8;
@@ -1602,7 +1602,7 @@ void EventCamera::Update() {
                 sp330.GetVelocity(1.0f);
                 ((MKVector3 *) &sp330.unk10)->operator*(temp_f30_2537);
                 sp14 = 0.0f;
-                sp350.GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                sp350.GetMeasure(1.0f, ((u8 *) this->unkB0) + 0x7C, KDSpline_PositionMixer);
                 sp80 = M2C_BITWISE(f64, sp350) + M2C_BITWISE(f64, sp330.unk10);
                 M2C_FIELD(this, f64 *, 0x60) = sp80;
                 sp88 = sp350.unk8 + sp348;
@@ -1612,7 +1612,7 @@ void EventCamera::Update() {
             } else {
                 sp300.GetVelocity(1.0f);
                 sp10 = 0.0f;
-                ((KDUniformSpline *) &sp300.unk10)->GetMeasure(1.0f, this->unkB0 + 0x7C, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp300.unk10)->GetMeasure(1.0f, ((u8 *) this->unkB0) + 0x7C, KDSpline_PositionMixer);
                 sp70 = M2C_BITWISE(f64, sp300.unk10) + M2C_BITWISE(f64, sp300);
                 M2C_FIELD(this, f64 *, 0x60) = sp70;
                 sp78 = sp318 + sp300.unk8;
@@ -1664,12 +1664,12 @@ void EventCamera::Update() {
                 temp_f0_2709 = this->unkBC;
                 if (temp_f1_2708 < temp_f0_2709) {
                     sp24 = 0.0f;
-                    ((KDUniformSpline *) &sp2C0)->GetMeasure(temp_f1_2708 / temp_f0_2709, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp2C0)->GetMeasure(temp_f1_2708 / temp_f0_2709, ((u8 *) temp_r4_2705) + 0x7C, KDSpline_PositionMixer);
                     this->unk50 = sp2C0;
                     this->unk58 = sp2C8;
                 } else {
                     sp20 = 0.0f;
-                    ((KDUniformSpline *) &sp2B0)->GetMeasure(1.0f, temp_r4_2705 + 0x7C, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp2B0)->GetMeasure(1.0f, ((u8 *) temp_r4_2705) + 0x7C, KDSpline_PositionMixer);
                     this->unk50 = sp2B0;
                     this->unk58 = sp2B8;
                 }

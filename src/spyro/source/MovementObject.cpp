@@ -64,7 +64,7 @@ void MovementObject::UpdateCollisions(MKVector3 &arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void MovementObject::Update(bool arg0) {
     MKCollisionResult spB8;
     f64 spB0;
@@ -121,7 +121,7 @@ void MovementObject::Update(bool arg0) {
     spA8 = sp48;
     if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) < 1.0f) {
         temp_r3_177 = M2C_FIELD(arg0, void **, 0x54);
-        temp_r5_178 = temp_r3_177 + 8;
+        temp_r5_178 = ((u8 *) temp_r3_177) + 8;
         temp_r3_179 = M2C_FIELD(temp_r3_177, s32 *, 0x16C);
         if (temp_r3_179 > 0) {
             if (temp_r3_179 != 0) {

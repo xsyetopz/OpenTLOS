@@ -5,7 +5,7 @@
 #include "spyro/source/GameConsole.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 
@@ -20,7 +20,7 @@ void ConsoleProp::LoadDone() {
     var_r29_48 = 0;
 loop_2:
     if (var_r29_48 < (s32) this->unk50) {
-        temp_r3_53 = this->unk4C + var_r31_47;
+        temp_r3_53 = ((u8 *) this->unk4C) + var_r31_47;
         Console_AddMacro(temp_r3_53, M2C_FIELD(temp_r3_53, s8 **, 0x20));
         temp_r0_57 = var_r31_47 + 0x20;
         var_r29_48 += 1;
@@ -31,7 +31,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, long)' does not match
 s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_100;
     MKIniLine *temp_r27_137;
@@ -68,9 +68,9 @@ loop_16:
 loop_14:
                     if (temp_r27_137 != NULL) {
                         if (temp_r27_137->IsField("MacroName") != 0) {
-                            strcpy(this->unk4C + var_r30_125, temp_r27_137->GetString(0));
+                            strcpy(((u8 *) this->unk4C) + var_r30_125, temp_r27_137->GetString(0));
                         } else if (temp_r27_137->IsField("ScriptCommand") != 0) {
-                            *(var_r30_125 + (this->unk4C + 0x20)) = temp_r27_137->GetString(0);
+                            *(var_r30_125 + (((u8 *) this->unk4C) + 0x20)) = temp_r27_137->GetString(0);
                         }
                         goto loop_14;
                     }
@@ -86,7 +86,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'Console_RemoveMacro(unsigned char *)' does not match
 void ConsoleProp::Deinit() {
     MKHeap *temp_r3_218;
     s32 var_r30_204;
@@ -98,7 +98,7 @@ void ConsoleProp::Deinit() {
         var_r31_205 = 0;
 loop_3:
         if (var_r30_204 < (s32) this->unk50) {
-            Console_RemoveMacro(this->unk4C + var_r31_205);
+            Console_RemoveMacro(((u8 *) this->unk4C) + var_r31_205);
             var_r30_204 += 1;
             var_r31_205 += 0x24;
             goto loop_3;

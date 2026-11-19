@@ -2300,7 +2300,7 @@ loop_11:
             }
             if ((var_r3_4353 == NULL) && ((u32) this->unk9E8.unk4 != 0)) {
                 temp_r30_4375 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                KDSound_Play3d(GS_DojoDummy01Extra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DojoDummy01Extra1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 var_r29_4383 = 0;
                 do {
                     temp_r3_4385 = M2C_FIELD(temp_r30_4375, void **, 0x2C0);

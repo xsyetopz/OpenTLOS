@@ -78,7 +78,7 @@ void AnimationData::UnpackTemplatePointers(bool arg0) {
     }
     temp_r0_76 = this->unk14;
     if (temp_r0_76 > 0) {
-        this->unk14 = temp_r0_76 + var_r30_72;
+        this->unk14 = ((u8 *) temp_r0_76) + var_r30_72;
     } else {
         this->unk14 = NULL;
     }
@@ -89,13 +89,13 @@ loop_13:
         temp_r6_92 = this + var_r3_86;
         temp_r0_93 = M2C_FIELD(temp_r6_92, void **, 0x30);
         if (temp_r0_93 > 0) {
-            M2C_FIELD(temp_r6_92, void **, 0x30) = (void *) (temp_r0_93 + var_r30_72);
+            M2C_FIELD(temp_r6_92, void **, 0x30) = (void *) (((u8 *) temp_r0_93) + var_r30_72);
         } else {
             M2C_FIELD(temp_r6_92, void **, 0x30) = NULL;
         }
         temp_r0_102 = M2C_FIELD(temp_r6_92, void **, 0x38);
         if (temp_r0_102 > 0) {
-            M2C_FIELD(temp_r6_92, void **, 0x38) = (void *) (temp_r0_102 + var_r30_72);
+            M2C_FIELD(temp_r6_92, void **, 0x38) = (void *) (((u8 *) temp_r0_102) + var_r30_72);
         } else {
             M2C_FIELD(temp_r6_92, void **, 0x38) = NULL;
         }
@@ -777,7 +777,7 @@ void Animation::CalculateFrame(Animation::FrameInstance *arg1, AnimationData::No
         temp_r4_1258 = M2C_FIELD(arg2, s16 *, 0x1C);
         if (temp_r4_1258 != -1) {
             if (M2C_FIELD(arg1, f32 *, 0x3C) == 1.0f) {
-                CalculateBlendShape((s32) temp_r4_1258, this->unk1C + (temp_r4_1258 * 0x48));
+                CalculateBlendShape((s32) temp_r4_1258, ((u8 *) this->unk1C) + (temp_r4_1258 * 0x48));
             } else {
                 CalculateBlendShape((s32) temp_r4_1258, &sp8);
                 var_r7_1277 = 0;
@@ -794,7 +794,7 @@ loop_10:
                     *(temp_r6_1286 + temp_r0_1291) = (temp_f3_1288 * temp_f4_1283) + ((1.0f - temp_f4_1283) * *(temp_r6_1286 + temp_r0_1291));
                     goto loop_10;
                 }
-                M2C_FIELD((this->unk1C + (M2C_FIELD(arg2, s16 *, 0x1C) * 0x48)), s32 *, 4) = sp8.unk4;
+                M2C_FIELD((((u8 *) this->unk1C) + (M2C_FIELD(arg2, s16 *, 0x1C) * 0x48)), s32 *, 4) = sp8.unk4;
             }
         }
     }
@@ -802,7 +802,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: pointer/array required
 void Animation::GetPositionalOffset(float arg0) {
     f32 spA8;
     f32 spA4;
@@ -867,7 +867,7 @@ void Animation::GetPositionalOffset(float arg0) {
         var_f31_1326 = M2C_FIELD((temp_r27_1327 + ((temp_r0_1331 * 0x48) + 0x30)), f32 *, 0x38);
     }
     temp_r30_1353 = M2C_FIELD(temp_r3_1330, void **, 0x28);
-    temp_r27_1356 = temp_r30_1353 + ((temp_r0_1331 << 5) + 0x20);
+    temp_r27_1356 = ((u8 *) temp_r30_1353) + ((temp_r0_1331 << 5) + 0x20);
     var_r5_1357 = 0;
     var_r6_1360 = M2C_FIELD(temp_r27_1356, u16 *, 0x14) - 1;
 loop_8:
@@ -1276,7 +1276,7 @@ void Animation::Tween(float arg0, float arg1) {
             var_f31_2406 = 0.0f;
         }
         var_r30_2418 = this + 0x30;
-        var_r29_2419 = temp_r3_2400 + 0x20;
+        var_r29_2419 = ((u8 *) temp_r3_2400) + 0x20;
         var_r28_2420 = 0;
 loop_13:
         if (var_r28_2420 < (s8) M2C_FIELD(M2C_FIELD(temp_r3_2397, void **, 0x28), u8 *, 4)) {
@@ -1368,7 +1368,7 @@ loop_3:
         temp_r5_2584 = var_r31_2554 * 0x10;
         M2C_FIELD((M2C_FIELD(M2C_FIELD(this->unk0, void **, 0x28), s32 *, 0x1C) + temp_r5_2584), s8 *, 8) = GetNodeIndex(arg1);
         temp_r4_2590 = M2C_FIELD(this->unk0, void **, 0x28);
-        M2C_FIELD((temp_r4_2590 + (M2C_FIELD((M2C_FIELD(temp_r4_2590, s32 *, 0x1C) + temp_r5_2584), u8 *, 8) << 5)), s16 *, 0x3C) = var_r31_2554;
+        M2C_FIELD((((u8 *) temp_r4_2590) + (M2C_FIELD((M2C_FIELD(temp_r4_2590, s32 *, 0x1C) + temp_r5_2584), u8 *, 8) << 5)), s16 *, 0x3C) = var_r31_2554;
     }
 }
 #endif

@@ -506,8 +506,8 @@ u8 MKCollision_SweepSphereTest(const MKCollisionRay &arg0, MKVector3 *arg1, MKCo
     }
     if (arg3 == 3) {
         temp_r4_688 = &lit_736 - 4;
-        M2C_STRUCT_COPY((s32) &unksp15C + 4, (s32) temp_r4_688 + 4, 0x10);
-        M2C_FIELD((&unksp15C + 0x10), s32 *, 4) = (s32) M2C_FIELD((temp_r4_688 + 0x10), s32 *, 4);
+        M2C_STRUCT_COPY((s32) &unksp15C + 4, (s32) ((u8 *) temp_r4_688) + 4, 0x10);
+        M2C_FIELD((&unksp15C + 0x10), s32 *, 4) = (s32) M2C_FIELD((((u8 *) temp_r4_688) + 0x10), s32 *, 4);
         sp100 = sp150;
         var_f2_702 = (f32) sp100;
         sp108 = (f64) sp158;

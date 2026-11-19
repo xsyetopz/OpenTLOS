@@ -163,7 +163,7 @@ void WobbleProp::Update() {
                 if (KDSound_IsVoicePlaying(this->unkD8) != 0) {
                     KDSound_Stop(&this->unkD8);
                 }
-                temp_r30_287 = this->unk8 + 0x30;
+                temp_r30_287 = ((u8 *) this->unk8) + 0x30;
                 this->unkD8 = KDSound_Play3d(M2C_FIELD(checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r30_287, 0U, -1, 0.0f, 0U);
                 this->unkE8 = KDSound_GetVolume(this->unkD8);
                 this->unkE4 = 0.5f;

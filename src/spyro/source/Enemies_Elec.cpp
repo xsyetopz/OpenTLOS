@@ -291,7 +291,7 @@ void ElecTier3::UpdateScan() {
             ((AITargetData *) &sp70)->GetPos();
             M2C_FIELD(this, u8 *, 0xB55) = (u8) (Tools_CylinderTest(*((MKVector3 *) &this->unkB10.unk18), *((MKVector3 *) &sp90), 525.0f, *((MKVector3 *) &sp70)) > 0.0f);
             if ((u8) M2C_FIELD(this, u8 *, 0xB55) != 0) {
-                KDSound_Play3d(GS_ConduitAlert, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_ConduitAlert, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             }
         }
     }

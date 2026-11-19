@@ -443,7 +443,7 @@ void EarthBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollis
     var_r26_539 = 0;
 loop_18:
     if ((f32) var_r26_539 < (30.0f * var_f25_372)) {
-        temp_r27_547 = this->unk8 + 0x30;
+        temp_r27_547 = ((u8 *) this->unk8) + 0x30;
         temp_f19_549 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f20_554 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
         sp170 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -478,7 +478,7 @@ loop_18:
     if (temp_r3_629 != NULL) {
         temp_r26_634 = M2C_FIELD(temp_r3_629, void **, 0x2C);
         MKVector(0.0f, 100.0f, 0.0f);
-        temp_r4_639 = this->unk8 + 0x30;
+        temp_r4_639 = ((u8 *) this->unk8) + 0x30;
         sp80 = M2C_FIELD(temp_r4_639, f64 *, 0) + sp2B0;
         M2C_FIELD(temp_r3_629, f64 *, 0) = sp80;
         sp88 = M2C_FIELD(temp_r4_639, f32 *, 8) + sp2B8;
@@ -503,7 +503,7 @@ loop_18:
     var_r27_687 = 0;
     do {
         MKVector(0.0f, 100.0f, 0.0f);
-        temp_r4_697 = this->unk8 + 0x30;
+        temp_r4_697 = ((u8 *) this->unk8) + 0x30;
         sp60 = M2C_FIELD(temp_r4_697, f64 *, 0) + sp280;
         sp48 = 1.0f;
         sp58 = -1.0f;
@@ -537,7 +537,7 @@ loop_18:
     temp_r4_766 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp124 = 200.0f;
     sp128 = 0.0f;
-    temp_r3_771 = this->unk8 + 0x30;
+    temp_r3_771 = ((u8 *) this->unk8) + 0x30;
     sp210 = (f64) sp120;
     sp340 = M2C_FIELD(temp_r4_766, f64 *, 0x30);
     sp348 = M2C_FIELD(temp_r4_766, f64 *, 0x38);
@@ -602,7 +602,7 @@ loop_18:
     KDMath_BuildMatrixFromFwd(&sp3A0, *((MKVector3 *) &sp330), (MKVector3 *) &sp320);
     sp3A0.Scale3x3(&sp3A0, var_f27_375);
     MKVector(0.0f, 100.0f * var_f27_375, 0.0f);
-    temp_r4_925 = this->unk8 + 0x30;
+    temp_r4_925 = ((u8 *) this->unk8) + 0x30;
     sp30 = M2C_FIELD(temp_r4_925, f64 *, 0) + sp1F0;
     sp200 = sp30;
     sp38 = M2C_FIELD(temp_r4_925, f32 *, 8) + sp1F8;
@@ -893,7 +893,7 @@ void EarthBombFX::Update() {
         temp_f0_1222 = sp298 * 5.49408334e-315;
         sp178 = temp_f0_1222;
         sp2A8 = temp_f0_1222;
-        temp_r4_1229 = this->unk8 + 0x30;
+        temp_r4_1229 = ((u8 *) this->unk8) + 0x30;
         sp180 = sp298.unk8 * 50.0f;
         sp2B0 = (f64) sp180;
         temp_f0_1235 = M2C_FIELD(temp_r4_1229, f64 *, 0) + temp_f0_1222;

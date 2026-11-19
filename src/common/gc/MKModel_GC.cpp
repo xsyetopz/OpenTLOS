@@ -379,8 +379,8 @@ loop_131:
                                 temp_r4_859 = var_r26_538->unk1C;
                                 if (temp_r4_859 != NULL) {
                                     spC0 = 3;
-                                    temp_r3_865 = temp_r4_859 + (temp_r0_856 * 0x48);
-                                    MKModel_pBlendShapeWeights = temp_r3_865 + 8;
+                                    temp_r3_865 = ((u8 *) temp_r4_859) + (temp_r0_856 * 0x48);
+                                    MKModel_pBlendShapeWeights = ((u8 *) temp_r3_865) + 8;
                                     MKModel_BlendShapeTargets = M2C_FIELD(temp_r3_865, s32 *, 4);
                                 }
                             }
@@ -519,12 +519,12 @@ void Model_DrawShockwave(MeshChunkGC *arg0, int arg1, GeometryTransformationInfo
     temp_r30_1129 = arg0 + (arg0->unk10 + 0x20);
     GXSetArray(GX_VA_CLR0, temp_r30_1129, 4U);
     var_r5_1135 = 0x14;
-    temp_r30_1137 = temp_r30_1129 + arg0->unk14;
+    temp_r30_1137 = ((u8 *) temp_r30_1129) + arg0->unk14;
     if ((s32) arg2.unk0 == 1) {
         var_r5_1135 = 0xC;
     }
     GXSetArray(GX_VA_POS, temp_r30_1137, var_r5_1135);
-    GXSetArray(GX_VA_TEX0, temp_r30_1137 + arg0->unk18, 4U);
+    GXSetArray(GX_VA_TEX0, ((u8 *) temp_r30_1137) + arg0->unk18, 4U);
     MK_SetVDMode((MK_VertexDescriptorMode) 7);
     GXFlush();
     var_r5_1156 = arg0 + 0x20;
@@ -532,7 +532,7 @@ void Model_DrawShockwave(MeshChunkGC *arg0, int arg1, GeometryTransformationInfo
     var_r3_1160 = 0;
 loop_20:
     if (var_r3_1160 < (s32) arg0->unk6) {
-        var_r4_1168 = var_r5_1156 + 3;
+        var_r4_1168 = ((u8 *) var_r5_1156) + 3;
         temp_r0_1169 = M2C_FIELD(var_r5_1156, u16 *, 1);
         var_r5_1170 = 0;
         *(u8 *)0xCC008000 = M2C_FIELD(var_r5_1156, u8 *, 0);
@@ -542,7 +542,7 @@ loop_18:
         if (var_r5_1170 < (s32) temp_r0_1169) {
             temp_r11_1180 = M2C_FIELD(var_r4_1168, u16 *, 0);
             var_f4_1181 = 0.0f;
-            temp_r6_1184 = temp_r12_1177 + (temp_r11_1180 * temp_r10_1158 * 4);
+            temp_r6_1184 = ((u8 *) temp_r12_1177) + (temp_r11_1180 * temp_r10_1158 * 4);
             temp_f7_1187 = M2C_FIELD(temp_r6_1184, f32 *, 4) - M2C_FIELD(&gShockWaveData, f32 *, 0x54);
             temp_f6_1189 = M2C_FIELD(temp_r6_1184, f32 *, 0) - M2C_FIELD(&gShockWaveData, f32 *, 0x50);
             temp_f8_1190 = M2C_FIELD(temp_r6_1184, f32 *, 8) - M2C_FIELD(&gShockWaveData, f32 *, 0x58);

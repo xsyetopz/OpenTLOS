@@ -770,7 +770,7 @@ void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void TeslaTower::LoadDone() {
     Matrix sp1A0;
     f64 sp198;
@@ -848,7 +848,7 @@ void TeslaTower::LoadDone() {
     this->unkD0 = M2C_FIELD(temp_r3_1429, f64 *, 0);
     this->unkD8 = M2C_FIELD(temp_r3_1429, f64 *, 8);
     temp_r5_1435 = M2C_FIELD(this->unk0, void **, 0x1C);
-    temp_r3_1436 = temp_r5_1435 + 0x10;
+    temp_r3_1436 = ((u8 *) temp_r5_1435) + 0x10;
     sp90 = M2C_FIELD(temp_r5_1435, f64 *, 0) + M2C_FIELD(temp_r3_1436, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xE0) = sp90;
     sp98 = M2C_FIELD(temp_r5_1435, f32 *, 8) + M2C_FIELD(temp_r3_1436, f32 *, 8);
@@ -910,7 +910,7 @@ loop_2:
     sp108 = (f64) sp68;
     M2C_FIELD(this, f64 *, 0xE0) = (f64) (M2C_FIELD(this, f64 *, 0xE0) + sp100);
     this->unkE0.unk8 += (f32) sp108;
-    M2C_STRUCT_COPY((s32) &unksp19C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &unksp19C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     sp1A0.Inverse(&sp1A0);
     temp_f3_1598 = M2C_FIELD(this, f32 *, 0xD4);
     temp_f6_1607 = (f32) M2C_FIELD(this, f64 *, 0xD0);

@@ -121,7 +121,7 @@ void CollapsibleProp::Update() {
     }
     temp_r3_269 = this->unk80;
     if (temp_r3_269 != NULL) {
-        this->unkC8 = KDSound_Play3d(temp_r3_269, this->unk8 + 0x30, 0U, 0.0f, 0U);
+        this->unkC8 = KDSound_Play3d(temp_r3_269, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
     }
 }
 #endif

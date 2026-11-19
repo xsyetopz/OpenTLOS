@@ -2191,7 +2191,7 @@ u8 EnemyGoal_HitKnockdown::Update() {
             temp_r3_3644 = M2C_FIELD(temp_r4_3643, s32 *, 0x164);
             if (temp_r3_3644 > 0) {
                 if (temp_r3_3644 != 0) {
-                    var_r3_3650 = temp_r4_3643 + ((temp_r3_3644 - 1) * 0x58);
+                    var_r3_3650 = ((u8 *) temp_r4_3643) + ((temp_r3_3644 - 1) * 0x58);
                 } else {
                     var_r3_3650 = NULL;
                 }
@@ -3464,7 +3464,7 @@ loop_5:
             temp_r3_6172 = &sp80 + var_r4_6165;
             temp_f4_6175 = M2C_FIELD(temp_r3_6172, f64 *, 0) - sp60;
             sp20 = temp_f4_6175;
-            temp_r5_6177 = temp_r3_6172 + 0x10;
+            temp_r5_6177 = ((u8 *) temp_r3_6172) + 0x10;
             sp50 = temp_f4_6175;
             sp28 = M2C_FIELD(temp_r3_6172, f32 *, 8) - (f32) sp68;
             sp58 = (f64) sp28;

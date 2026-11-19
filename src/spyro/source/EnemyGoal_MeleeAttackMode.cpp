@@ -1058,7 +1058,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void EnemyGoal_AttackMelee::Terminate() {
     AttackerManager *var_r3_1935;
     Enemy *temp_r3_1880;
@@ -1074,7 +1074,7 @@ void EnemyGoal_AttackMelee::Terminate() {
     M2C_FIELD(temp_r3_1880, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_1880, u8 *, 0xB08) & ~0x10);
     if ((CharacterFireFX *) this->unkC->unkA08 != NULL) {
         temp_r3_1888 = this->unk10;
-        if (((u8) M2C_FIELD(temp_r3_1888, u8 *, 0x48) == 2) || (((TargetContext *) (temp_r3_1888 + 0x40))->Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_1888, u8 *, 0x48) == 2) || (((TargetContext *) (((u8 *) temp_r3_1888) + 0x40))->Get() != NULL)) {
             var_r30_1879 = 1;
         }
         if (var_r30_1879 != 0) {

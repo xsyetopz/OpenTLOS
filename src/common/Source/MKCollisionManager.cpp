@@ -2065,7 +2065,7 @@ loop_26:
         temp_r4_3226 = this->unk2C + var_r3_3222;
         var_r3_3222 += 0x18;
         M2C_FIELD(temp_r4_3226, void **, 4) = temp_r4_3226;
-        temp_r0_3229 = temp_r4_3226 + 0xC;
+        temp_r0_3229 = ((u8 *) temp_r4_3226) + 0xC;
         M2C_FIELD(temp_r4_3226, void **, 0) = temp_r4_3226;
         M2C_FIELD(temp_r4_3226, void **, 0x10) = temp_r0_3229;
         M2C_FIELD(temp_r4_3226, void **, 0xC) = temp_r0_3229;

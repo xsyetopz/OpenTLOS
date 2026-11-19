@@ -943,7 +943,6 @@ s32 MKMemoryCard_CalculateFileSize() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void *LoadIconFile(const char *arg0, int *arg1, int *arg2, unsigned long *arg3) {
     M2C_UNK spC;
     void *sp8;
@@ -1029,7 +1028,7 @@ loop_10:
 loop_18:
     if (var_r24_1997 < var_r30_1912) {
         temp_r25_2004 = &spC + var_r31_1999;
-        memcpy(var_r3_1989 + var_r23_1996, M2C_FIELD(temp_r25_2004, void **, 8), M2C_FIELD(temp_r25_2004, u32 *, 0x10));
+        memcpy(((u8 *) var_r3_1989) + var_r23_1996, M2C_FIELD(temp_r25_2004, void **, 8), M2C_FIELD(temp_r25_2004, u32 *, 0x10));
         var_r24_1997 += 1;
         var_r31_1999 += 0x14;
         *(arg3 + var_r27_1998) = M2C_FIELD(temp_r25_2004, s32 *, 0);
@@ -1041,7 +1040,6 @@ loop_18:
     TEXReleasePalette(&sp8);
     return var_r3_1989;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'CardTemplate'
 void Proccess_GetDirInfo(bool arg0) {

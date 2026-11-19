@@ -92,7 +92,6 @@ block_34:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void *Util_BinarySearch(const void *arg0, void *arg1, int arg2, int arg3, int (*arg4)(const void *, const void *)) {
     s32 temp_r29_146;
     s32 temp_r3_152;
@@ -107,7 +106,7 @@ loop_6:
         return NULL;
     }
     temp_r29_146 = (s32) (var_r31_141 + var_r30_140) >> 1;
-    temp_r28_149 = arg1 + (temp_r29_146 * arg3);
+    temp_r28_149 = ((u8 *) arg1) + (temp_r29_146 * arg3);
     temp_r3_152 = arg4(arg0, temp_r28_149);
     if (temp_r3_152 == 0) {
         return temp_r28_149;
@@ -119,4 +118,3 @@ loop_6:
     }
     goto loop_6;
 }
-#endif

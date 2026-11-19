@@ -52,7 +52,7 @@ void SkiffterCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SkiffterCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -64,11 +64,11 @@ void SkiffterCritter::Draw() {
     var_r31_113 = 0;
 loop_4:
     if (var_r30_112 < (s32) this->unk90) {
-        temp_r29_117 = this->unk170 + var_r31_113;
+        temp_r29_117 = ((u8 *) this->unk170) + var_r31_113;
         if ((s32) M2C_FIELD(temp_r29_117, s32 *, 0x60) != 0) {
             this->unk80->SetAnim(M2C_FIELD(temp_r29_117, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
             this->unk80->JumpToPos(M2C_FIELD(temp_r29_117, f32 *, 0x54), -1);
-            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_117 - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_117) - 4) + 4, 0x40);
             MKModel_SetWorldMatrix(this->unk4, sp10);
             MKModel_Draw(this->unk4, NULL);
         }
@@ -1180,7 +1180,7 @@ void SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1864;
     MKIniLine *var_r28_1883;
@@ -1207,7 +1207,7 @@ s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
         var_r28_1883 = arg0->unkC->GetSubLine(arg0);
 loop_8:
         if (var_r28_1883 != NULL) {
-            var_r28_1883->LoadVector3("waypoint", this->unk174 + var_r30_1879, 0);
+            var_r28_1883->LoadVector3("waypoint", ((u8 *) this->unk174) + var_r30_1879, 0);
             var_r30_1879 += 0x10;
             var_r28_1883 = var_r28_1883->unkC->GetNextLine(var_r28_1883);
             goto loop_8;

@@ -41,7 +41,7 @@ void GrubbleCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void GrubbleCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -53,11 +53,11 @@ void GrubbleCritter::Draw() {
     var_r31_93 = 0;
 loop_4:
     if (var_r30_92 < (s32) this->unk90) {
-        temp_r29_97 = this->unk170 + var_r31_93;
+        temp_r29_97 = ((u8 *) this->unk170) + var_r31_93;
         if ((s32) M2C_FIELD(temp_r29_97, s32 *, 0x60) != 0) {
             this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
             this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
-            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_97 - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_97) - 4) + 4, 0x40);
             MKModel_SetWorldMatrix(this->unk4, sp10);
             MKModel_Draw(this->unk4, NULL);
         }
@@ -413,7 +413,7 @@ void GrubbleCritter::SetHideState(Grubble *arg0) {
     }
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void GrubbleCritter::Update() {
     s8 sp2E8;
     s32 sp2E4;
@@ -543,7 +543,7 @@ void GrubbleCritter::Update() {
     var_r28_600 = 0;
 loop_50:
     if (var_r31_599 < (s32) this->unk90) {
-        temp_r30_605 = this->unk170 + var_r28_600;
+        temp_r30_605 = ((u8 *) this->unk170) + var_r28_600;
         M2C_FIELD(temp_r30_605, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_605, f32 *, 0x64) - gUpdateTimeDelta);
         M2C_FIELD(temp_r30_605, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_605, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_605, f32 *, 0x54));
         temp_r0_614 = M2C_FIELD(temp_r30_605, s32 *, 0x60);

@@ -141,7 +141,7 @@ void Dynamite::Collided(MKCollisionResult &arg0) {
             M2C_FIELD(this, f32 *, 0xD0) = (f32) (M2C_FIELD(this, f32 *, 0xD0) * 0.5f);
             this->unk170 = 0.75f * -this->unk170;
             this->unk180 += 1;
-            KDSound_Play3d(GS_TNTBounce, this->unk8 + 0x30, (u32) arg0.unk44, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_TNTBounce, ((u8 *) this->unk8) + 0x30, (u32) arg0.unk44, -1, 0.0f, 0U);
         }
     }
 }
@@ -373,7 +373,7 @@ void Dynamite::Update() {
         }
     }
     if (((u8) this->unk14C >> 7U) & 1) {
-        if ((((u8) this->unk184 >> 6U) & 1) && ((this->unk168 -= gUpdateTimeDelta, ((this->unk168 <= 0.0f) != 0)) || (temp_r4_595 = this->unk8, temp_r30_598 = temp_r4_595 + 0x30, temp_r3_603 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_595), void **, 8), temp_f1_604 = M2C_FIELD(temp_r3_603, f64 *, 0x30), sp198 = temp_f1_604, sp1A0 = M2C_FIELD(temp_r3_603, f64 *, 0x38), temp_f0_610 = temp_f1_604 - M2C_FIELD(temp_r30_598, f64 *, 0), spC8 = temp_f0_610, temp_f2_616 = this->unk174, sp1A8 = temp_f0_610, spD0 = (f32) sp1A0 - M2C_FIELD(temp_r30_598, f32 *, 8), sp1B0 = (f64) spD0, (((((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + ((*(f32 *) ((u8 *) &sp1A8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A8 + 0x4))))) <= (temp_f2_616 * temp_f2_616)) != 0)))) {
+        if ((((u8) this->unk184 >> 6U) & 1) && ((this->unk168 -= gUpdateTimeDelta, ((this->unk168 <= 0.0f) != 0)) || (temp_r4_595 = this->unk8, temp_r30_598 = ((u8 *) temp_r4_595) + 0x30, temp_r3_603 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_595), void **, 8), temp_f1_604 = M2C_FIELD(temp_r3_603, f64 *, 0x30), sp198 = temp_f1_604, sp1A0 = M2C_FIELD(temp_r3_603, f64 *, 0x38), temp_f0_610 = temp_f1_604 - M2C_FIELD(temp_r30_598, f64 *, 0), spC8 = temp_f0_610, temp_f2_616 = this->unk174, sp1A8 = temp_f0_610, spD0 = (f32) sp1A0 - M2C_FIELD(temp_r30_598, f32 *, 8), sp1B0 = (f64) spD0, (((((f32) sp1B0 * (f32) sp1B0) + (((f32) sp1A8 * (f32) sp1A8) + ((*(f32 *) ((u8 *) &sp1A8 + 0x4)) * (*(f32 *) ((u8 *) &sp1A8 + 0x4))))) <= (temp_f2_616 * temp_f2_616)) != 0)))) {
             this->unk14C &= ~0x40;
             this->unk168 = 0.0f;
         }
@@ -817,7 +817,7 @@ block_16:
             Reset(temp_f1_1484, (f32) sp60, temp_f3_1471, temp_f4_1469);
             FireAtTarget(sp78, sp88, this->unk130, 0, 0, 1500.0f);
             M2C_FIELD(temp_r3_1325, s8 *, 0x3E) = 1;
-            KDSound_Play3d(GS_TNTKickAway, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_TNTKickAway, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             goto block_39;
         }
         break;

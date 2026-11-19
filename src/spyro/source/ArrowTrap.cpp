@@ -33,9 +33,9 @@ void ArrowTrap::Message(MKMessage *arg0) {
         ((Arrow *) (((MKPropDescriptor *) (M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "Arrow")))->CreateInstance()))->Fire(*((Matrix *) this->unk8), 1000.0f, 4.0f);
         var_r29_67 = 0;
         do {
-            temp_r30_74 = this->unk8 + 0x30;
+            temp_r30_74 = ((u8 *) this->unk8) + 0x30;
             temp_f1_75 = MKRand_Float(&gViewSeed, -700.0f, -300.0f);
-            temp_r4_78 = this->unk8 + 0x20;
+            temp_r4_78 = ((u8 *) this->unk8) + 0x20;
             temp_f0_80 = M2C_FIELD(temp_r4_78, f64 *, 0) * temp_f1_75;
             sp10 = temp_f0_80;
             sp20 = temp_f0_80;

@@ -347,7 +347,7 @@ void CrashSparkPS::Draw() {
     temp_f31_459 = sp398;
     temp_f29_462 = sp3A8;
     do {
-        temp_r3_479 = this->unk4C + var_r30_443;
+        temp_r3_479 = ((u8 *) this->unk4C) + var_r30_443;
         if ((u8) M2C_FIELD(temp_r3_479, u8 *, 0x34) != 0) {
             temp_f1_488 = 1.0f - (M2C_FIELD(temp_r3_479, f32 *, 0x38) / M2C_FIELD(temp_r3_479, f32 *, 0x48));
             temp_f15_489 = temp_f1_488 * M2C_FIELD(temp_r3_479, f32 *, 0x30);
@@ -447,7 +447,7 @@ void CrashSparkPS::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void CrashSparkPS::Update() {
     f64 sp58;
     f64 sp50;
@@ -473,10 +473,10 @@ void CrashSparkPS::Update() {
     sp8 = 0;
 loop_6:
     if (sp8 < 0xC8) {
-        temp_r3_826 = this->unk4C + (sp8 * 0x50);
+        temp_r3_826 = ((u8 *) this->unk4C) + (sp8 * 0x50);
         if ((u8) M2C_FIELD(temp_r3_826, u8 *, 0x34) != 0) {
             M2C_FIELD(temp_r3_826, f32 *, 0x38) = (f32) (M2C_FIELD(temp_r3_826, f32 *, 0x38) + gUpdateTimeDelta);
-            temp_r3_837 = this->unk4C + (sp8 * 0x50);
+            temp_r3_837 = ((u8 *) this->unk4C) + (sp8 * 0x50);
             if (M2C_FIELD(temp_r3_837, f32 *, 0x38) >= M2C_FIELD(temp_r3_837, f32 *, 0x48)) {
                 M2C_FIELD(temp_r3_837, s8 *, 0x34) = 0;
             }
@@ -486,16 +486,16 @@ loop_6:
             sp20 = temp_f0_854;
             sp50 = temp_f0_854;
             sp28 = sp48 * temp_f31_848;
-            temp_r3_865 = this->unk4C + ((sp8 * 0x50) + 0x20);
+            temp_r3_865 = ((u8 *) this->unk4C) + ((sp8 * 0x50) + 0x20);
             sp58 = (f64) sp28;
             M2C_FIELD(temp_r3_865, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_865, f64 *, 0) + temp_f0_854);
             M2C_FIELD(temp_r3_865, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_865, f32 *, 8) + (f32) sp58);
             temp_r3_878 = sp8 * 0x50;
             temp_r0_879 = this->unk4C;
-            temp_r4_882 = temp_r0_879 + (temp_r3_878 + 0x20);
+            temp_r4_882 = ((u8 *) temp_r0_879) + (temp_r3_878 + 0x20);
             temp_f0_884 = M2C_FIELD(temp_r4_882, f64 *, 0) * (f64) gUpdateTimeDelta;
             sp10 = temp_f0_884;
-            temp_r5_886 = temp_r0_879 + temp_r3_878;
+            temp_r5_886 = ((u8 *) temp_r0_879) + temp_r3_878;
             sp30 = temp_f0_884;
             sp18 = M2C_FIELD(temp_r4_882, f32 *, 8) * gUpdateTimeDelta;
             sp38 = (f64) sp18;
@@ -636,8 +636,8 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
     void *temp_r5_1057;
     void *temp_r5_1155;
 
-    temp_r4_944 = this->unk4C + (&arg0 * 0x50);
-    temp_r3_945 = temp_r4_944 + 0x10;
+    temp_r4_944 = ((u8 *) this->unk4C) + (&arg0 * 0x50);
+    temp_r3_945 = ((u8 *) temp_r4_944) + 0x10;
     temp_f5_947 = M2C_FIELD(temp_r4_944, f64 *, 0);
     temp_f1_948 = M2C_FIELD(temp_r3_945, f64 *, 0) - temp_f5_947;
     sp98 = temp_f1_948;
@@ -647,7 +647,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
     sp130 = (f64) spA0;
     temp_f29_966 = ((f32) sp130 * (f32) sp130) + (((f32) sp128 * (f32) sp128) + ((*(f32 *) ((u8 *) &sp128 + 0x4)) * (*(f32 *) ((u8 *) &sp128 + 0x4))));
     if (((u8) M2C_FIELD(temp_r4_944, u8 *, 0x40) != 0) && (temp_f29_966 >= M2C_FIELD(temp_r4_944, f32 *, 0x44))) {
-        temp_r4_977 = temp_r4_944 + 0x20;
+        temp_r4_977 = ((u8 *) temp_r4_944) + 0x20;
         sp158 = 0.0f;
         sp15C = 0.0f;
         sp160 = 0.0f;
@@ -692,8 +692,8 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
         sp100 = (f64) sp60;
         if (MKCollision_RayCollide(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8), (MKCollisionResult *) &sp158, (MKCollisionMode) 7, 0) != 0) {
             temp_r4_1051 = &arg0 * 0x50;
-            M2C_FIELD((this->unk4C + temp_r4_1051), s8 *, 0x40) = 0;
-            temp_r5_1057 = this->unk4C + (temp_r4_1051 + 0x20);
+            M2C_FIELD((((u8 *) this->unk4C) + temp_r4_1051), s8 *, 0x40) = 0;
+            temp_r5_1057 = ((u8 *) this->unk4C) + (temp_r4_1051 + 0x20);
             temp_f2_1058 = M2C_FIELD(temp_r5_1057, f32 *, 0);
             temp_f1_1059 = M2C_FIELD(temp_r5_1057, f32 *, 4);
             temp_f3_1061 = M2C_FIELD(temp_r5_1057, f32 *, 8);
@@ -742,14 +742,14 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
             M2C_FIELD(temp_r5_1057, f32 *, 8) = (f32) (M2C_FIELD(temp_r5_1057, f32 *, 8) * var_f2_1132);
             spC8.operator*(2.0f);
             temp_r3_1153 = &arg0 * 0x50;
-            temp_r5_1155 = this->unk4C + (temp_r3_1153 + 0x20);
+            temp_r5_1155 = ((u8 *) this->unk4C) + (temp_r3_1153 + 0x20);
             sp18 = M2C_FIELD(temp_r5_1155, f64 *, 0) + M2C_BITWISE(f64, spC8);
             M2C_FIELD(temp_r5_1155, f64 *, 0) = sp18;
             sp20 = M2C_FIELD(temp_r5_1155, f32 *, 8) + spC8.unk8;
             spD8 = sp18;
             M2C_FIELD(temp_r5_1155, f32 *, 8) = (f64) sp20;
             spE0 = (f64) sp20;
-            temp_r4_1173 = this->unk4C + (temp_r3_1153 + 0x20);
+            temp_r4_1173 = ((u8 *) this->unk4C) + (temp_r3_1153 + 0x20);
             temp_f2_1174 = M2C_FIELD(temp_r4_1173, f32 *, 0);
             temp_f1_1175 = M2C_FIELD(temp_r4_1173, f32 *, 4);
             temp_f3_1176 = M2C_FIELD(temp_r4_1173, f32 *, 8);
@@ -796,7 +796,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
             M2C_FIELD(temp_r4_1173, f32 *, 0) = (f32) (M2C_FIELD(temp_r4_1173, f32 *, 0) * var_f2_1248);
             M2C_FIELD(temp_r4_1173, f32 *, 4) = (f32) (M2C_FIELD(temp_r4_1173, f32 *, 4) * var_f2_1248);
             M2C_FIELD(temp_r4_1173, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_1173, f32 *, 8) * var_f2_1248);
-            temp_r3_1269 = this->unk4C + ((&arg0 * 0x50) + 0x20);
+            temp_r3_1269 = ((u8 *) this->unk4C) + ((&arg0 * 0x50) + 0x20);
             M2C_FIELD(temp_r3_1269, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_1269, f64 *, 0) * (f64) temp_f3_1258);
             M2C_FIELD(temp_r3_1269, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_1269, f32 *, 8) * temp_f3_1258);
         }
@@ -824,7 +824,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
         sp1A0 = 0;
         sp1A4 = -1;
         sp1A8 = 0;
-        temp_r3_1311 = this->unk4C + (&arg0 * 0x50);
+        temp_r3_1311 = ((u8 *) this->unk4C) + (&arg0 * 0x50);
         sp148 = M2C_FIELD(temp_r3_1311, f64 *, 0x20);
         sp150 = M2C_FIELD(temp_r3_1311, f64 *, 0x28);
         var_f5_1323 = ((f32) sp150 * (f32) sp150) + (((f32) sp148 * (f32) sp148) + ((*(f32 *) ((u8 *) &sp140 + 0xc)) * (*(f32 *) ((u8 *) &sp140 + 0xc))));
@@ -906,7 +906,7 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
         sp48 = temp_f0_1467;
         spA8 = temp_f0_1467;
         sp50 = sp150 * var_f30_1419;
-        temp_r3_1477 = this->unk4C + (&arg0 * 0x50);
+        temp_r3_1477 = ((u8 *) this->unk4C) + (&arg0 * 0x50);
         spB0 = (f64) sp50;
         temp_f0_1482 = M2C_FIELD(temp_r3_1477, f64 *, 0) + temp_f0_1467;
         sp38 = temp_f0_1482;
@@ -915,18 +915,18 @@ void CrashSparkPS::UpdateCollision(const int &arg0) {
         spC0 = (f64) sp40;
         if (MKCollision_RayCollide(*temp_r3_1477, *((MKVector3 *) &spB8), (MKCollisionResult *) &sp158, (MKCollisionMode) 7, 0) != 0) {
             temp_r4_1501 = &arg0 * 0x50;
-            temp_r3_1502 = this->unk4C + temp_r4_1501;
+            temp_r3_1502 = ((u8 *) this->unk4C) + temp_r4_1501;
             temp_f0_1505 = (f64) sp158 - M2C_FIELD(temp_r3_1502, f64 *, 0);
             sp28 = temp_f0_1505;
             M2C_FIELD(temp_r3_1502, s8 *, 0x40) = 1;
             sp138 = temp_f0_1505;
             sp30 = sp160 - M2C_FIELD(temp_r3_1502, f32 *, 8);
             sp140 = (f64) sp30;
-            M2C_FIELD((this->unk4C + temp_r4_1501), f32 *, 0x44) = (f32) (((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4)))));
+            M2C_FIELD((((u8 *) this->unk4C) + temp_r4_1501), f32 *, 0x44) = (f32) (((f32) sp140 * (f32) sp140) + (((f32) sp138 * (f32) sp138) + ((*(f32 *) ((u8 *) &sp138 + 0x4)) * (*(f32 *) ((u8 *) &sp138 + 0x4)))));
         } else {
-            M2C_FIELD((this->unk4C + (&arg0 * 0x50)), s8 *, 0x40) = 0;
+            M2C_FIELD((((u8 *) this->unk4C) + (&arg0 * 0x50)), s8 *, 0x40) = 0;
         }
-        temp_r3_1539 = this->unk4C + (&arg0 * 0x50);
+        temp_r3_1539 = ((u8 *) this->unk4C) + (&arg0 * 0x50);
         M2C_FIELD(temp_r3_1539, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_1539, f64 *, 0);
         M2C_FIELD(temp_r3_1539, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_1539, f64 *, 8);
     }

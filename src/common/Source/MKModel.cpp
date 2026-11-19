@@ -711,7 +711,7 @@ s32 MKModel_GetRefPointMatrix(const MKModel *arg0, int arg1, Matrix *arg2, bool 
     }
     arg2->SetIdentity();
     if ((u8) M2C_FIELD(temp_r30_1449, u8 *, 0x16) != 0) {
-        arg2->CopyRotation(temp_r30_1449 + 0x20);
+        arg2->CopyRotation(((u8 *) temp_r30_1449) + 0x20);
         arg2->unk30 = M2C_FIELD(temp_r30_1449, f32 *, 0);
         arg2->unk34 = M2C_FIELD(temp_r30_1449, f32 *, 4);
         arg2->unk38 = M2C_FIELD(temp_r30_1449, f32 *, 8);
@@ -1836,7 +1836,7 @@ void MKModelTemplateData::UnpackTemplatePointers(bool arg0) {
     if (arg0 == 0) {
         temp_r0_3259 = this->unk50;
         if (temp_r0_3259 != NULL) {
-            this->unk50 = temp_r0_3259 + var_r30_3253;
+            this->unk50 = ((u8 *) temp_r0_3259) + var_r30_3253;
         }
     }
     var_r6_3265 = 0;
@@ -1862,13 +1862,13 @@ loop_11:
     if (arg0 != 0) {
         temp_r0_3293 = this->unk50;
         if (temp_r0_3293 != NULL) {
-            this->unk50 = temp_r0_3293 + var_r30_3253;
+            this->unk50 = ((u8 *) temp_r0_3293) + var_r30_3253;
         }
     }
     if (arg0 == 0) {
         temp_r0_3301 = this->unk54;
         if (temp_r0_3301 != NULL) {
-            this->unk54 = temp_r0_3301 + var_r30_3253;
+            this->unk54 = ((u8 *) temp_r0_3301) + var_r30_3253;
         }
     }
     var_r5_3307 = 0;
@@ -1887,13 +1887,13 @@ loop_22:
     if (arg0 != 0) {
         temp_r0_3326 = this->unk54;
         if (temp_r0_3326 != NULL) {
-            this->unk54 = temp_r0_3326 + var_r30_3253;
+            this->unk54 = ((u8 *) temp_r0_3326) + var_r30_3253;
         }
     }
     if (arg0 == 0) {
         temp_r0_3334 = this->unk58;
         if (temp_r0_3334 != NULL) {
-            this->unk58 = temp_r0_3334 + var_r30_3253;
+            this->unk58 = ((u8 *) temp_r0_3334) + var_r30_3253;
         }
     }
     var_r6_3341 = 0;
@@ -1910,7 +1910,7 @@ loop_39:
         temp_r4_3355 = *(this->unk58 + var_r3_3342);
         temp_r0_3356 = M2C_FIELD(temp_r4_3355, void **, 0x10);
         if (temp_r0_3356 != NULL) {
-            M2C_FIELD(temp_r4_3355, void **, 0x10) = (void *) (temp_r0_3356 + var_r30_3253);
+            M2C_FIELD(temp_r4_3355, void **, 0x10) = (void *) (((u8 *) temp_r0_3356) + var_r30_3253);
         }
         if (arg0 != 0) {
             temp_r4_3364 = this->unk58;
@@ -1926,24 +1926,24 @@ loop_39:
     if (arg0 != 0) {
         temp_r0_3379 = this->unk58;
         if (temp_r0_3379 != NULL) {
-            this->unk58 = temp_r0_3379 + var_r30_3253;
+            this->unk58 = ((u8 *) temp_r0_3379) + var_r30_3253;
         }
     }
     temp_r0_3385 = this->unk5C;
     if (temp_r0_3385 != NULL) {
-        this->unk5C = temp_r0_3385 + var_r30_3253;
+        this->unk5C = ((u8 *) temp_r0_3385) + var_r30_3253;
     }
     if (arg0 == 0) {
         temp_r0_3393 = this->unk60;
         if (temp_r0_3393 != NULL) {
-            this->unk60 = temp_r0_3393 + var_r30_3253;
+            this->unk60 = ((u8 *) temp_r0_3393) + var_r30_3253;
         }
     }
     var_r31_3399 = 0;
     var_r27_3400 = 0;
 loop_71:
     if (var_r31_3399 < (s16) this->unkC) {
-        temp_r3_3404 = this->unk60 + var_r27_3400;
+        temp_r3_3404 = ((u8 *) this->unk60) + var_r27_3400;
         temp_r0_3405 = M2C_FIELD(temp_r3_3404, u16 *, 0);
         switch ((s32) temp_r0_3405) {               /* irregular */
         case 2:
@@ -1956,7 +1956,7 @@ loop_71:
             if (arg0 == 0) {
                 temp_r0_3429 = M2C_FIELD(temp_r3_3404, void **, 4);
                 if (temp_r0_3429 != NULL) {
-                    M2C_FIELD(temp_r3_3404, void **, 4) = (void *) (temp_r0_3429 + var_r30_3253);
+                    M2C_FIELD(temp_r3_3404, void **, 4) = (void *) (((u8 *) temp_r0_3429) + var_r30_3253);
                 }
             }
             var_r6_3437 = 0;
@@ -1964,7 +1964,7 @@ loop_71:
             temp_r5_3439 = *(this->unk60 + (var_r27_3400 + 4));
 loop_64:
             temp_r4_3451 = this->unk60;
-            if (var_r6_3437 < (s32) *(var_r27_3400 + (temp_r4_3451 + 8))) {
+            if (var_r6_3437 < (s32) *(var_r27_3400 + (((u8 *) temp_r4_3451) + 8))) {
                 temp_r0_3442 = *(temp_r5_3439 + var_r3_3438);
                 if (temp_r0_3442 != 0U) {
                     *(temp_r5_3439 + var_r3_3438) = temp_r0_3442 + var_r30_3253;
@@ -1984,7 +1984,7 @@ loop_64:
         default:
             temp_r0_3466 = M2C_FIELD(temp_r3_3404, void **, 4);
             if (temp_r0_3466 != NULL) {
-                M2C_FIELD(temp_r3_3404, void **, 4) = (void *) (temp_r0_3466 + var_r30_3253);
+                M2C_FIELD(temp_r3_3404, void **, 4) = (void *) (((u8 *) temp_r0_3466) + var_r30_3253);
             }
             break;
         }
@@ -1995,16 +1995,16 @@ loop_64:
     if (arg0 != 0) {
         temp_r0_3480 = this->unk60;
         if (temp_r0_3480 != NULL) {
-            this->unk60 = temp_r0_3480 + var_r30_3253;
+            this->unk60 = ((u8 *) temp_r0_3480) + var_r30_3253;
         }
     }
     temp_r0_3486 = this->unk64;
     if (temp_r0_3486 != NULL) {
-        this->unk64 = temp_r0_3486 + var_r30_3253;
+        this->unk64 = ((u8 *) temp_r0_3486) + var_r30_3253;
     }
     temp_r0_3492 = this->unk68;
     if (temp_r0_3492 != NULL) {
-        this->unk68 = temp_r0_3492 + var_r30_3253;
+        this->unk68 = ((u8 *) temp_r0_3492) + var_r30_3253;
     }
 }
 #endif

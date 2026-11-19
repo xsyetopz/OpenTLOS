@@ -648,7 +648,7 @@ void DragonBust::ActivatingAEnter() {
     sp60.unk34 = (*(f32 *) ((u8 *) &sp50 + 0x4));
     sp60.unk38 = (f32) sp58;
     sp60.unk3C = 1.0f;
-    KDSound_Play3d(GS_StatueLightBurst, temp_r3_743 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_StatueLightBurst, ((u8 *) temp_r3_743) + 0x30, 0U, -1, 0.0f, 0U);
     MKModel_SetWorldMatrix(this->unk11C, sp60);
     temp_r4_766 = this->unk118;
     if (temp_r4_766 != NULL) {

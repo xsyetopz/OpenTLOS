@@ -513,7 +513,7 @@ void Catapult::FireUpdate() {
         sp48 = (f64) sp18;
         ((Ball *) (M2C_FIELD(this, Ball **, 0x12C)))->Fire(*((MKVector3 *) &spB0));
         M2C_FIELD(this, Ball **, 0x12C) = NULL;
-        ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.0f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+        ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.8f, 0.0f, 0.3f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
     }
     if (this->unk80->unk2C & 1) {
         SetState((Catapult::State) 4);
@@ -532,7 +532,7 @@ void Catapult::FireEnter() {
     }
     this->unk10C.Send((MKProp *) this);
     if ((s32) M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80) != 0) {
-        temp_r31_742 = this->unk8 + 0x30;
+        temp_r31_742 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80), temp_r31_742, 0U, -1, 0.0f, 0U);
     }
 }
@@ -594,7 +594,7 @@ void Catapult::IdleEnter() {
 
     this->unk80->SetAnim(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x78), 1.0f, 0.0f, 0, -1);
     if (this->unkF8.GetLastState() == 4) {
-        temp_r31_870 = this->unk8 + 0x30;
+        temp_r31_870 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<CatapultDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x88), temp_r31_870, 0U, -1, 0.0f, 0U);
     }
 }

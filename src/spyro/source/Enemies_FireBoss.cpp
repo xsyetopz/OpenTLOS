@@ -352,7 +352,7 @@ void FireBoss::InsideEdgeChange() {
     if ((u8) var_r30_538->unk1D == 2) {
         this->unkC41 = 0;
         var_r31_509 = 1;
-        KDSound_Play3d(GS_TrainTurnSqueal2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_TrainTurnSqueal2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     }
     if ((var_r31_509 != 0) && (this->unkF64->IsCharging() != 0)) {
         this->unkF64->ChargeExit();
@@ -572,7 +572,7 @@ void FireBoss::SquashHero() {
             temp_r3_879 = M2C_FIELD(temp_r3_877, s32 *, 0x16C);
             if (((u32) (-temp_r3_879 & ~temp_r3_879) >> 0x1FU) != 0) {
                 if (temp_r3_879 != 0) {
-                    var_r3_888 = temp_r3_877 + 8 + ((temp_r3_879 - 1) * 0x58);
+                    var_r3_888 = ((u8 *) temp_r3_877) + 8 + ((temp_r3_879 - 1) * 0x58);
                 } else {
                     var_r3_888 = NULL;
                 }
@@ -644,7 +644,7 @@ void FireBoss::SquashHero() {
                     this->unkC41 = 0;
                 }
                 if (KDSound_IsVoicePlaying(this->unk106C) == 0) {
-                    this->unk106C = KDSound_Play3d(GS_Train2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    this->unk106C = KDSound_Play3d(GS_Train2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 }
             }
         }
@@ -787,7 +787,7 @@ void FireBoss::HurtHero() {
                 this->unkC41 = 0;
             }
             if (KDSound_IsVoicePlaying(this->unk106C) == 0) {
-                this->unk106C = KDSound_Play3d(GS_Train2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                this->unk106C = KDSound_Play3d(GS_Train2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             }
         }
     }
@@ -1741,7 +1741,7 @@ void FireBoss::CreateInsideSplines() {
             var_f21_3125 = 0.0f;
         }
         temp_r26_3198 = this + var_r29_3076;
-        temp_r25_3200 = temp_r26_3198 + 0xC70;
+        temp_r25_3200 = ((u8 *) temp_r26_3198) + 0xC70;
         temp_f5_3201 = (f32) sp268 * var_f2_3191;
         temp_f4_3203 = (*(f32 *) ((u8 *) &sp260 + 0xc)) * var_f2_3191;
         temp_f3_3205 = (f32) sp270 * var_f2_3191;
@@ -2748,7 +2748,7 @@ loop_29:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
 void FireBossDescriptor::Init() {
     s32 var_r28_5224;
     s32 var_r30_5219;
@@ -2761,7 +2761,7 @@ void FireBossDescriptor::Init() {
     this->unk3D4 = 1.0f;
     do {
         temp_r29_5228 = this + var_r30_5219;
-        strcpy(temp_r29_5228 + 0x2B4, "");
+        strcpy(((u8 *) temp_r29_5228) + 0x2B4, "");
         var_r28_5224 += 1;
         M2C_FIELD(temp_r29_5228, f32 *, 0x2D4) = 0.0f;
         var_r30_5219 += 0x24;

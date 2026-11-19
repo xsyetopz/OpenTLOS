@@ -1162,7 +1162,7 @@ void KDUniformSpline::GetMatrix(int arg0, Matrix *arg1) const {
     temp_r8_1731 = arg0 << 5;
     temp_r7_1733 = temp_r6_1730 + temp_r8_1731;
     temp_f1_1734 = M2C_FIELD(temp_r7_1733, f32 *, 0x1C);
-    temp_r3_1735 = temp_r7_1733 + 0x10;
+    temp_r3_1735 = ((u8 *) temp_r7_1733) + 0x10;
     sp18 = M2C_FIELD(temp_r3_1735, f64 *, 0) * (f64) temp_f1_1734;
     temp_r4_1749 = temp_r6_1730 + (((arg0 + 1) << 5) + 0x10);
     sp20 = M2C_FIELD(temp_r3_1735, f32 *, 8) * temp_f1_1734;

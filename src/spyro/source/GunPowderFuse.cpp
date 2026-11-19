@@ -201,7 +201,7 @@ BurnPoint *GunPowderFuse::GetNextPositive(BurnPoint *arg0) {
             } else {
                 var_f0_309 = temp_f4_306;
             }
-            if ((var_f0_309 < var_f5_283) && ((void *) (temp_r5_291 + 0xC4) != arg0)) {
+            if ((var_f0_309 < var_f5_283) && ((void *) (((u8 *) temp_r5_291) + 0xC4) != arg0)) {
                 if (temp_f4_306 < 0.0f) {
                     var_f5_283 = -temp_f4_306;
                 } else {
@@ -221,7 +221,7 @@ BurnPoint *GunPowderFuse::GetNextPositive(BurnPoint *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void GunPowderFuse::UpdatePartners() {
     f32 temp_f0_361;
     s32 var_r29_357;
@@ -234,7 +234,7 @@ void GunPowderFuse::UpdatePartners() {
         temp_r30_360 = this + var_r31_358;
         temp_f0_361 = M2C_FIELD(temp_r30_360, f32 *, 0xCC);
         if ((temp_f0_361 <= 1.0f) && (temp_f0_361 >= 0.0f)) {
-            M2C_FIELD(temp_r30_360, s32 *, 0xD4) = GetPartner(temp_r30_360 + 0xC4);
+            M2C_FIELD(temp_r30_360, s32 *, 0xD4) = GetPartner(((u8 *) temp_r30_360) + 0xC4);
         }
         var_r29_357 += 1;
         var_r31_358 += 0x3C;
@@ -281,7 +281,7 @@ s32 GunPowderFuse::GetPartner(BurnPoint *arg0) {
                     } else {
                         var_f0_421 = temp_f1_418;
                     }
-                    if ((var_f0_421 < var_f5_391) && ((void *) (temp_r6_402 + 0xC4) != arg0)) {
+                    if ((var_f0_421 < var_f5_391) && ((void *) (((u8 *) temp_r6_402) + 0xC4) != arg0)) {
                         if (temp_f1_418 < 0.0f) {
                             var_f5_391 = -temp_f1_418;
                         } else {
@@ -312,7 +312,7 @@ s32 GunPowderFuse::GetPartner(BurnPoint *arg0) {
                     } else {
                         var_f0_471 = temp_f3_468;
                     }
-                    if ((var_f0_471 < var_f5_391) && ((void *) (temp_r6_453 + 0xC4) != arg0)) {
+                    if ((var_f0_471 < var_f5_391) && ((void *) (((u8 *) temp_r6_453) + 0xC4) != arg0)) {
                         if (temp_f3_468 < 0.0f) {
                             var_f5_391 = -temp_f3_468;
                         } else {
@@ -1184,7 +1184,7 @@ loop_30:
                     var_r25_1871 = 0;
                     var_r28_1872 = 0;
                     do {
-                        temp_r31_1874 = var_r26_1868 + var_r28_1872;
+                        temp_r31_1874 = ((u8 *) var_r26_1868) + var_r28_1872;
                         if (((u8) M2C_FIELD(temp_r31_1874, u8 *, 0x159) != 0) && ((u8) M2C_FIELD(temp_r31_1874, u8 *, 0x158) != 0)) {
                             sp120 = M2C_FIELD(temp_r31_1874, f64 *, 0xC8);
                             sp128 = M2C_FIELD(temp_r31_1874, f64 *, 0xD0);
@@ -1330,9 +1330,9 @@ loop_33:
         temp_r8_2249 = M2C_FIELD(temp_r28_2248, MKVector3 **, 0xC4);
         if (temp_r8_2249 != NULL) {
             sp8 = 1;
-            ((KDSoundFader *) (temp_r28_2248 + 0xD8))->Update(GS_GunpowderBurnLP, 1U, ((u8) M2C_FIELD(temp_r8_2249, u8 *, 0x31) >> 6U) & 1, NULL, temp_r8_2249, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            ((KDSoundFader *) (((u8 *) temp_r28_2248) + 0xD8))->Update(GS_GunpowderBurnLP, 1U, ((u8) M2C_FIELD(temp_r8_2249, u8 *, 0x31) >> 6U) & 1, NULL, temp_r8_2249, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         } else if (KDSound_IsVoicePlaying(M2C_FIELD(temp_r28_2248, s32 *, 0xD8)) != 0) {
-            KDSound_Stop(temp_r28_2248 + 0xD8);
+            KDSound_Stop(((u8 *) temp_r28_2248) + 0xD8);
         }
         var_r25_2245 += 1;
         var_r30_2246 += 0x3C;
@@ -1563,7 +1563,7 @@ s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void GunPowderFuse::Deinit() {
     Corona *temp_r4_2752;
     MKMaterial *temp_r3_2739;
@@ -1579,7 +1579,7 @@ void GunPowderFuse::Deinit() {
     var_r31_2747 = 0;
     do {
         temp_r29_2749 = this + var_r31_2747;
-        KDSound_Stop(temp_r29_2749 + 0xD8);
+        KDSound_Stop(((u8 *) temp_r29_2749) + 0xD8);
         temp_r4_2752 = M2C_FIELD(temp_r29_2749, Corona **, 0xC4);
         if (temp_r4_2752 != NULL) {
             ((Coronas *) gb.unk64)->Free(temp_r4_2752);
@@ -1591,7 +1591,6 @@ void GunPowderFuse::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void GunPowderFuse::Init() {
     s32 var_r29_2789;
     s32 var_r31_2787;
@@ -1611,13 +1610,12 @@ void GunPowderFuse::Init() {
         M2C_FIELD(temp_r4_2798, f32 *, 0xCC) = 100.0f;
         M2C_FIELD(temp_r4_2798, f32 *, 0xC8) = 0.0f;
         M2C_FIELD(temp_r4_2798, s32 *, 0xC4) = 0;
-        ((KDSoundFader *) (temp_r4_2798 + 0xD8))->Init(0.25f, 0.25f);
+        ((KDSoundFader *) (((u8 *) temp_r4_2798) + 0xD8))->Init(0.25f, 0.25f);
         var_r29_2789 += 1;
         var_r31_2787 += 0x3C;
     } while (var_r29_2789 < 8);
     this->unk2A4 = NULL;
 }
-#endif
 
 void GunPowderFuse_cpp::__sinit() {
     f32 temp_f0_2858;

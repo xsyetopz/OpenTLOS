@@ -337,7 +337,7 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void CollisionObject::SortResults() {
     M2C_UNK sp14;
     ContextInfo *sp10;
@@ -387,11 +387,11 @@ void CollisionObject::SortResults() {
                     var_ctr_766 -= 1;
                 } while (var_ctr_766 != 0);
             }
-            M2C_STRUCT_COPY((s32) &sp14 + 4, (s32) ((temp_r10_758 + ((temp_r8_761 * 0x58) - 0x58)) - 4) + 4, 0x58);
+            M2C_STRUCT_COPY((s32) &sp14 + 4, (s32) ((((u8 *) temp_r10_758) + ((temp_r8_761 * 0x58) - 0x58)) - 4) + 4, 0x58);
             temp_r7_796 = var_r9_759 * 0x58;
-            temp_r8_800 = temp_r10_758 + temp_r7_796;
+            temp_r8_800 = ((u8 *) temp_r10_758) + temp_r7_796;
             temp_r9_802 = *(&sp8 + var_r5_751) + temp_r7_796;
-            temp_r7_804 = temp_r10_758 + ((M2C_FIELD(temp_r10_758, s32 *, 0x164) - 1) * 0x58);
+            temp_r7_804 = ((u8 *) temp_r10_758) + ((M2C_FIELD(temp_r10_758, s32 *, 0x164) - 1) * 0x58);
             M2C_FIELD(temp_r7_804, f64 *, 0) = (f64) M2C_FIELD(temp_r8_800, f64 *, 0);
             M2C_FIELD(temp_r7_804, f64 *, 8) = (f64) M2C_FIELD(temp_r8_800, f64 *, 8);
             M2C_FIELD(temp_r7_804, f64 *, 0x10) = (f64) M2C_FIELD(temp_r8_800, f64 *, 0x10);

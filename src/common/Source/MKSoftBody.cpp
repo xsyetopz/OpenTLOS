@@ -3454,7 +3454,7 @@ void MKCloth::Init() {
     SetIterations(3);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ModelCloth::Draw() {
     MKCloth *temp_r3_5615;
     s32 var_r30_5610;
@@ -3467,7 +3467,7 @@ void ModelCloth::Draw() {
         var_r31_5611 = 0;
 loop_5:
         if (var_r30_5610 < (s32) this->unk4) {
-            temp_r3_5615 = this->unk8 + var_r31_5611;
+            temp_r3_5615 = ((u8 *) this->unk8) + var_r31_5611;
             if ((u8) temp_r3_5615->unk8 == 0) {
                 temp_r3_5615->Create();
             }
@@ -3480,9 +3480,9 @@ loop_5:
 loop_11:
         if (var_r30_5627 < (s32) this->unk4) {
             if (((u8) this->unk30 == 0) && ((s32) this->unk0 < (s32) (gFrameCounter - 1))) {
-                ((MKCloth *) (this->unk8 + var_r31_5628))->Reset();
+                ((MKCloth *) (((u8 *) this->unk8) + var_r31_5628))->Reset();
             }
-            ((MKCloth *) (this->unk8 + var_r31_5628))->Draw();
+            ((MKCloth *) (((u8 *) this->unk8) + var_r31_5628))->Draw();
             var_r30_5627 += 1;
             var_r31_5628 += 0xF8;
             this->unk0 = gFrameCounter;
@@ -3492,7 +3492,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ModelCloth::Update() {
     Matrix sp160;
     f64 sp150;
@@ -3574,7 +3574,7 @@ void ModelCloth::Update() {
         var_r29_5689 = 0;
 loop_6:
         if (var_r28_5688 < (s32) this->unk4) {
-            temp_r3_5693 = this->unk8 + var_r29_5689;
+            temp_r3_5693 = ((u8 *) this->unk8) + var_r29_5689;
             if ((u8) temp_r3_5693->unk8 == 0) {
                 temp_r3_5693->Create();
             }
@@ -3629,11 +3629,11 @@ loop_9:
         var_r29_5804 = 0;
 loop_15:
         if (var_r28_5803 < (s32) this->unk4) {
-            ((MKCloth *) (this->unk8 + var_r29_5804))->UpdateInternal(var_r31_5682);
+            ((MKCloth *) (((u8 *) this->unk8) + var_r29_5804))->UpdateInternal(var_r31_5682);
             temp_r0_5811 = this->unk8;
-            temp_r4_5815 = temp_r0_5811 + (var_r29_5804 + 0x10);
+            temp_r4_5815 = ((u8 *) temp_r0_5811) + (var_r29_5804 + 0x10);
             temp_f2_5817 = M2C_FIELD(temp_r4_5815, f32 *, 4);
-            temp_r6_5818 = temp_r0_5811 + (var_r29_5804 + 0x20);
+            temp_r6_5818 = ((u8 *) temp_r0_5811) + (var_r29_5804 + 0x20);
             temp_f6_5822 = M2C_FIELD(temp_r4_5815, f32 *, 0);
             temp_f0_5823 = M2C_BITWISE(f32, sp160);
             temp_f8_5830 = M2C_FIELD(temp_r4_5815, f32 *, 8);
@@ -3825,7 +3825,6 @@ void SoftBody_Deinit() {
 
 }
 
-#if 0 // DRAFT: illegal type
 void SoftBody_Init() {
     f64 sp20;
     f64 sp18;
@@ -3880,7 +3879,7 @@ void SoftBody_Init() {
     var_ctr_6217 = 0xA;
     do {
         temp_r4_6219 = &MKCloth::sweepSpheres + var_r3_6216;
-        temp_r4_6220 = temp_r4_6219 + 0x38;
+        temp_r4_6220 = ((u8 *) temp_r4_6219) + 0x38;
         temp_r0_6221 = M2C_FIELD(temp_r4_6219, u8 *, 0x38) & ~0x80;
         var_r3_6216 += 0x40;
         *temp_r4_6220 = temp_r0_6221;
@@ -3892,7 +3891,7 @@ void SoftBody_Init() {
     var_ctr_6236 = 0x1E;
     do {
         temp_r4_6238 = &MKCloth::spheres + var_r3_6235;
-        temp_r4_6239 = temp_r4_6238 + 0x10;
+        temp_r4_6239 = ((u8 *) temp_r4_6238) + 0x10;
         temp_r0_6240 = M2C_FIELD(temp_r4_6238, u8 *, 0x10) & ~0x80;
         var_r3_6235 += 0x18;
         *temp_r4_6239 = temp_r0_6240;
@@ -3904,7 +3903,7 @@ void SoftBody_Init() {
     var_ctr_6255 = 0xA;
     do {
         temp_r4_6257 = &MKCloth::planes + var_r3_6254;
-        temp_r4_6258 = temp_r4_6257 + 0x24;
+        temp_r4_6258 = ((u8 *) temp_r4_6257) + 0x24;
         temp_r0_6259 = M2C_FIELD(temp_r4_6257, u8 *, 0x24) & ~0x80;
         var_r3_6254 += 0x28;
         *temp_r4_6258 = temp_r0_6259;
@@ -3916,7 +3915,7 @@ void SoftBody_Init() {
     var_ctr_6274 = 0x1E;
     do {
         temp_r4_6276 = &MKCloth::capsules + var_r3_6273;
-        temp_r4_6277 = temp_r4_6276 + 0x4C;
+        temp_r4_6277 = ((u8 *) temp_r4_6276) + 0x4C;
         temp_r0_6278 = M2C_FIELD(temp_r4_6276, u8 *, 0x4C) & ~0x80;
         var_r3_6273 += 0x50;
         *temp_r4_6277 = temp_r0_6278;
@@ -3929,4 +3928,3 @@ void SoftBody_Init() {
     *MKCloth::includedPlaneCount = 0;
     *MKCloth::includedCapsuleCount = 0;
 }
-#endif

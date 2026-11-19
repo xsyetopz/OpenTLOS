@@ -583,7 +583,7 @@ void ElectricBeam::UpdateWiggleBones() {
             spA0 = (f64) sp20;
             spA8 = (f64) sp28;
             sp250.Translate(&sp250, *((MKVector3 *) &spA0));
-            M2C_STRUCT_COPY((s32) (temp_r26_1006 + 0x6C) + 4, (s32) &sp210.unk3C + 4, 0x40);
+            M2C_STRUCT_COPY((s32) (((u8 *) temp_r26_1006) + 0x6C) + 4, (s32) &sp210.unk3C + 4, 0x40);
             var_r29_859 += 1;
             sp150 = sp160;
             var_r27_861 += 0x50;
@@ -642,10 +642,10 @@ void ElectricBeam::Init() {
         temp_r26_1339 = this + var_r30_1322;
         M2C_FIELD(temp_r26_1339, f64 *, 0x60) = M2C_BITWISE(f64, sp8);
         M2C_FIELD(temp_r26_1339, f64 *, 0x68) = sp8.unk8;
-        MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk44, (s32) temp_r24_1331), (void (*)(MKDynamicBone *, void *)) &ElectricBeam::UpdateWiggleBone, temp_r26_1339 + 0x60);
-        temp_r5_1350 = temp_r26_1339 + 0x6C;
-        M2C_STRUCT_COPY((s32) temp_r5_1350 + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-        var_r5_1315 = temp_r5_1350 + 0x40;
+        MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk44, (s32) temp_r24_1331), (void (*)(MKDynamicBone *, void *)) &ElectricBeam::UpdateWiggleBone, ((u8 *) temp_r26_1339) + 0x60);
+        temp_r5_1350 = ((u8 *) temp_r26_1339) + 0x6C;
+        M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_1350) + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
+        var_r5_1315 = ((u8 *) temp_r5_1350) + 0x40;
         var_r25_1318 += 1;
         var_r30_1322 += 0x50;
     } while (var_r25_1318 < 4);

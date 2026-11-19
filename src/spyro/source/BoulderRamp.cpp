@@ -221,7 +221,7 @@ void BoulderRamp::BoulderSinkingUpdate() {
     if (this->unkEC < 0.0f) {
         SetState((BoulderRamp::State) 3);
         if ((s32) M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC) != 0) {
-            temp_r31_154 = this->unk8 + 0x30;
+            temp_r31_154 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC), temp_r31_154, 0U, -1, 0.0f, 0U);
         }
     }
@@ -274,7 +274,7 @@ void BoulderRamp::ReceivingBoulderUpdate() {
     if (this->unkE8 == 1.0f) {
         SetState((BoulderRamp::State) 2);
         if ((s32) M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8) != 0) {
-            temp_r31_253 = this->unk8 + 0x30;
+            temp_r31_253 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), temp_r31_253, 0U, -1, 0.0f, 0U);
         }
     }
@@ -370,7 +370,7 @@ void BoulderRamp::SetBoulder(Ball *arg0) {
     this->unkF0 = arg0;
     SetState((BoulderRamp::State) 1);
     if ((s32) M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
-        temp_r31_397 = this->unk8 + 0x30;
+        temp_r31_397 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<BoulderRampDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r31_397, 0U, -1, 0.0f, 0U);
     }
 }

@@ -296,7 +296,7 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
         sp1B0 = (f64) sp80;
         temp_f3_240 = M2C_BITWISE(f64, sp1E8.unk60.unk10) + temp_f0_229;
         sp1E8.unk60.unk10 = temp_f3_240;
-        temp_r4_242 = temp_r3_227 + 0x10;
+        temp_r4_242 = ((u8 *) temp_r3_227) + 0x10;
         temp_f2_245 = M2C_BITWISE(f32, sp1E8.unk74.unk4) + (f32) sp1B0;
         sp1E8.unk74.unk4 = temp_f2_245;
         temp_f0_248 = *temp_r4_242 * 0.0;
@@ -306,7 +306,7 @@ u8 TrainChaseSpyroFX::TriggerFire(SpyroEffectsUpdateData *arg0) {
         sp1A0 = (f64) sp70;
         temp_f3_258 = temp_f3_240 + temp_f0_248;
         sp1E8.unk60.unk10 = temp_f3_258;
-        temp_r3_260 = temp_r3_227 + 0x20;
+        temp_r3_260 = ((u8 *) temp_r3_227) + 0x20;
         temp_f2_262 = temp_f2_245 + (f32) sp1A0;
         sp1E8.unk74.unk4 = temp_f2_262;
         temp_f0_265 = M2C_FIELD(temp_r3_260, f64 *, 0) * 1.6170763213e-314;
@@ -611,7 +611,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
         if (this->unk260.GetState() == 1) {
             Hurt(5.0f);
         }
-        KDSound_Play3d(GS_TrainBossFlinch, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_TrainBossFlinch, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         break;
     case 0x1:                                       /* switch 1 */
         temp_r3_905 = checked_cast<ExplodeMsg *, MKMessage>(arg0);
@@ -738,7 +738,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
         break;
     case 0xC7:                                      /* switch 1 */
         if (this->unkD4 >= 4500.0f) {
-            KDSound_Play3d(GS_SPCartDip, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_SPCartDip, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         break;
     case 0x57:                                      /* switch 1 */
@@ -762,7 +762,7 @@ void TrainChaseSpyro::Message(MKMessage *arg0) {
         } else {
             temp_r3_1295 = checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(this, MKSceneManager **, 0x1FC)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             if ((temp_r3_1295 != NULL) && (KDSound_IsVoicePlaying(this->unk160) == 0) && ((M2C_FIELD(temp_r3_1295, f32 *, 0x110) - this->unkE0) < 500.0f)) {
-                this->unk160 = KDSound_Play3d(GS_SpyroCartTrackJoin, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                this->unk160 = KDSound_Play3d(GS_SpyroCartTrackJoin, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             }
         }
         break;
@@ -1294,7 +1294,7 @@ void TrainChaseSpyro::UpdateCameraInfo() {
 
     sp630.unk4 = 0;
     sp630.ClearData();
-    M2C_STRUCT_COPY((s32) &sp5EC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp5EC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     sp630.Init(&sp5F0);
     sp630.unk94 = 0;
     sp630.unk98 = 400.0f;
@@ -1747,10 +1747,10 @@ block_64:
         EmitBrakingEffects();
     }
     if ((Idling() != 0) && ((temp_r30_3041 != 0) || (temp_r31_3045 != 0))) {
-        KDSound_Play3d(GS_CartClang, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_CartClang, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     }
     if (((LeaningLeft() != 0) && (temp_r30_3041 == 0)) || ((LeaningRight() != 0) && (temp_r31_3045 == 0))) {
-        KDSound_Play3d(GS_CartLeanLP1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_CartLeanLP1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     }
 }
 #endif
@@ -2472,7 +2472,7 @@ void TrainChaseSpyro::StateDeathEnter() {
     SetAnim(0xA, 0.17f, 0);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: expression syntax error
 void TrainChaseSpyro::StateFlinchUpdate() {
     f32 sp3C;
     f32 sp38;
@@ -2512,7 +2512,7 @@ void TrainChaseSpyro::StateFlinchUpdate() {
     sp18 = 9;
     sp20 = 0;
     sp24 = this;
-    sp28 = this->unk8 + 0x30;
+    sp28 = ((u8 *) this->unk8) + 0x30;
     sp2C = 200.0f;
     sp30 = 200.0f;
     sp34 = 1.0f;
@@ -2577,7 +2577,7 @@ void TrainChaseSpyro::StateChaseUpdate() {
         sp18 = 9;
         sp20 = 0;
         sp24 = this;
-        sp28 = this->unk8 + 0x30;
+        sp28 = ((u8 *) this->unk8) + 0x30;
         sp2C = 200.0f;
         sp30 = 200.0f;
         sp34 = 1.0f;

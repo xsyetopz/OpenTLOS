@@ -239,7 +239,7 @@ void Cynder::UpdateFuryPowerUp() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
     f32 temp_r3_490;
     f32 temp_r3_500;
@@ -257,7 +257,7 @@ void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
     this->unkF64 = M2C_FIELD(temp_r3_458, f32 *, 0x34);
     this->unkF68 = M2C_FIELD(temp_r3_458, f32 *, 0x38);
     this->unkF6C = 1.0f;
-    KDSound_Play3d(GS_CynderFuryBuildUp, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_CynderFuryBuildUp, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     temp_r3_470 = this->unkF10.unk0;
     M2C_FIELD(M2C_FIELD(temp_r3_470, void **, 0x44), M2C_UNK (**)(s32), 0x20)(temp_r3_470);
     temp_r3_475 = this->unkF10.unk0;
@@ -1508,8 +1508,8 @@ loop_6:
             temp_r4_2703 = this + 0xDC4;
             M2C_FIELD(this, f64 *, 0x800) = (f64) M2C_FIELD(this, f64 *, 0xDB8);
             M2C_FIELD(this, f64 *, 0x808) = (f64) this->unkDC0;
-            M2C_STRUCT_COPY((s32) temp_r5_2702 + 4, (s32) temp_r4_2703 + 4, 0x18);
-            M2C_FIELD((temp_r5_2702 + 0x18), s32 *, 4) = (s32) M2C_FIELD((temp_r4_2703 + 0x18), s32 *, 4);
+            M2C_STRUCT_COPY((s32) temp_r5_2702 + 4, (s32) ((u8 *) temp_r4_2703) + 4, 0x18);
+            M2C_FIELD((temp_r5_2702 + 0x18), s32 *, 4) = (s32) M2C_FIELD((((u8 *) temp_r4_2703) + 0x18), s32 *, 4);
             this->unk800.unk1C = this->unkDE4;
             M2C_FIELD(this, u8 *, 0x830) = (u8) this->unkDE8;
             M2C_FIELD(this, u8 *, 0x831) = (u8) this->unkDE9;
@@ -2263,7 +2263,7 @@ loop_3:
             if (M2C_FIELD(*temp_r3_3992, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3992, 0xAC) == 0) {
                 temp_r3_4000 = this->unkA28;
                 if (M2C_FIELD(*temp_r3_4000, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_4000, 0xC2) == 0) {
-                    temp_r30_4010 = this->unk8 + 0x30;
+                    temp_r30_4010 = ((u8 *) this->unk8) + 0x30;
                     M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x3B0), temp_r30_4010, 0U, -1, 0.0f, 0U);
                 }
             }
@@ -2271,13 +2271,13 @@ loop_3:
     }
     if (((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) || (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) || (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x14) != 0)) && (KDSound_IsVoicePlaying(M2C_FIELD(this, s32 *, 0xD5C)) == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0) && ((temp_f1_4045 = M2C_FIELD(this, f32 *, 0xD68), ((temp_f1_4045 == 0.0f) != 0)) || (temp_f1_4045 > 0.85f))) {
         if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
-            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderTaunt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderTaunt, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) {
-            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderMelee2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderMelee2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x14) != 0) {
-            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderExtra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderExtra1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
     }
     M2C_FIELD(this, f32 *, 0xD64) = temp_f31_3866;
@@ -3038,7 +3038,7 @@ void Cynder::LoadDone() {
         M2C_FIELD(temp_r6_5551, void **, 0xB50) = (void *) (this + (((var_r7_5546 - 1) * 0x48) + 0xB10));
         temp_r4_5562 = M2C_FIELD(temp_r6_5551, void **, 0xB50);
         if (temp_r4_5562 != NULL) {
-            M2C_FIELD(temp_r4_5562, void **, 0x44) = (void *) (temp_r6_5551 + 0xB10);
+            M2C_FIELD(temp_r4_5562, void **, 0x44) = (void *) (((u8 *) temp_r6_5551) + 0xB10);
         }
         var_r7_5546 += 1;
         var_r3_5547 += 0x48;
@@ -3319,7 +3319,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
 void CynderDescriptor::Init() {
     s32 var_r28_6409;
     s32 var_r30_6403;
@@ -3335,7 +3335,7 @@ void CynderDescriptor::Init() {
     this->unk3B0 = GS_CynderFlinch1;
     do {
         temp_r29_6416 = this + var_r30_6403;
-        strcpy(temp_r29_6416 + 0x2B4, "");
+        strcpy(((u8 *) temp_r29_6416) + 0x2B4, "");
         var_r28_6409 += 1;
         M2C_FIELD(temp_r29_6416, f32 *, 0x2D4) = 0.0f;
         var_r30_6403 += 0x24;

@@ -225,11 +225,11 @@ void SolidSlug::Collided(MKCollisionResult &arg0) {
     }
     if ((var_r31_224 != NULL) && (M2C_FIELD(M2C_FIELD(var_r31_224, void **, 0), s32 *, 0xC) & 0x4C)) {
         if (((u8) M2C_FIELD(checked_cast<SolidSlugDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0xF0) != 0) && ((s32) M2C_FIELD(checked_cast<SolidSlugDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC) != 0)) {
-            temp_r31_348 = this->unk8 + 0x30;
+            temp_r31_348 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<SolidSlugDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC), temp_r31_348, (u32) arg0.unk44, -1, 0.0f, 0U);
         }
     } else if (((u8) M2C_FIELD(checked_cast<SolidSlugDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0xF0) != 0) && ((s32) M2C_FIELD(checked_cast<SolidSlugDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF4) != 0)) {
-        temp_r31_371 = this->unk8 + 0x30;
+        temp_r31_371 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<SolidSlugDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xF4), temp_r31_371, (u32) arg0.unk44, -1, 0.0f, 0U);
     }
     Disable();

@@ -209,7 +209,7 @@ loop_7:
             if ((u8) M2C_FIELD(temp_r3_324, u8 *, 0xC) != 0) {
                 M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, MKModel_GetWorldMatrix(this->unkC8->unk8) - 4 + 4, 0x40);
             } else {
-                M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) (temp_r31_427 - 4) + 4, 0x40);
+                M2C_STRUCT_COPY((s32) &sp50.unk3C + 4, (s32) (((u8 *) temp_r31_427) - 4) + 4, 0x40);
             }
             if ((u8) M2C_FIELD(temp_r31_427, u8 *, 0x5C) != 0) {
                 sp90.Scale3x3(&sp90, ((1.0f - temp_f29_327) * M2C_FIELD(temp_r31_427, f32 *, 0x50)) + 1.0f);

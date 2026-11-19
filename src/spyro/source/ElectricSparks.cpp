@@ -14,7 +14,7 @@ void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, bool arg3) {
     void **temp_r7_45;
     void *temp_r3_47;
@@ -22,7 +22,7 @@ void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float ar
 
     temp_r7_41 = this->unk4C;
     if ((u32) M2C_FIELD(temp_r7_41, u32 *, -4) != 0U) {
-        temp_r7_45 = temp_r7_41 - 4;
+        temp_r7_45 = ((u8 *) temp_r7_41) - 4;
         this->unk4C = temp_r7_45;
         temp_r3_47 = *temp_r7_45;
         if (temp_r3_47 != NULL) {
@@ -252,7 +252,7 @@ loop_11:
             M2C_FIELD(temp_r4_439, f32 *, 0x34) = var_f0_373;
             if (M2C_FIELD(temp_r4_439, f32 *, 0x34) == 0.0f) {
                 temp_r4_391 = this->unk4C;
-                this->unk4C = temp_r4_391 + 4;
+                this->unk4C = ((u8 *) temp_r4_391) + 4;
                 temp_r5_394 = *temp_r4_391;
                 *temp_r4_391 = (void *) *var_r6_367;
                 *var_r6_367 = temp_r5_394;
@@ -296,18 +296,18 @@ void ElectricSparks::Init() {
     }
     this->unk4C = var_r3_463;
     var_r5_472 = this->unk4C;
-    this->unk4C = var_r5_472 + 0x1900;
+    this->unk4C = ((u8 *) var_r5_472) + 0x1900;
     M2C_FIELD(var_r5_472, s32 *, 0x1900) = 0;
     var_ctr_476 = 0x64;
     do {
         temp_r3_478 = this->unk4C;
-        this->unk4C = temp_r3_478 + 4;
+        this->unk4C = ((u8 *) temp_r3_478) + 4;
         M2C_FIELD(temp_r3_478, void **, 4) = var_r5_472;
         var_r5_472 += 0x40;
         var_ctr_476 -= 1;
     } while (var_ctr_476 != 0);
     temp_r4_484 = this->unk4C;
-    this->unk4C = temp_r4_484 + 4;
+    this->unk4C = ((u8 *) temp_r4_484) + 4;
     M2C_FIELD(temp_r4_484, void **, 4) = NULL;
     this->unk50 = MKMaterial_Create("fx_363");
     this->unk54 = MKModel_Create("FX0017_Spark", NULL, 2, NULL);

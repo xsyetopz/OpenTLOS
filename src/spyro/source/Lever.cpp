@@ -153,7 +153,7 @@ void Lever::Update() {
     temp_r28_352 = M2C_FIELD(&gb, void **, 0xC);
     var_r30_353 = 0;
     temp_r3_354 = M2C_FIELD(temp_r28_352, KDSynkerPlayer3 **, 0x78);
-    if (((temp_r3_354 != NULL) && (temp_r3_354->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_352, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r28_352 + 0x24))->GetState() == 2))) {
+    if (((temp_r3_354 != NULL) && (temp_r3_354->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_352, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r28_352) + 0x24))->GetState() == 2))) {
         var_r30_353 = 1;
     }
     if ((var_r30_353 != 0) && ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) == 0)) {

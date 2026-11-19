@@ -79,7 +79,7 @@ void ConveyorBucket::DirtParticles() {
         sp100.operator*(140.0f);
         sp110.operator*(MKRand_Float(&gViewSeed, -1.0f, 1.0f));
         sp120.operator*(200.0f);
-        temp_r3_96 = this->unk8 + 0x30;
+        temp_r3_96 = ((u8 *) this->unk8) + 0x30;
         temp_f0_99 = M2C_FIELD(temp_r3_96, f64 *, 0) + M2C_BITWISE(f64, sp120);
         sp30 = temp_f0_99;
         sp130 = temp_f0_99;
@@ -105,7 +105,7 @@ void ConveyorBucket::DirtParticles() {
         temp_f30_151 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f1_158 = 0.5f * MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         sp84 = 0.0f;
-        temp_r3_162 = this->unk8 + 0x10;
+        temp_r3_162 = ((u8 *) this->unk8) + 0x10;
         sp80 = temp_f1_158;
         sp88 = 0.5f * temp_f30_151;
         spA0 = (f64) sp80;
@@ -195,7 +195,6 @@ void ConveyorBucket::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void ConveyorBucket::Update() {
     f64 sp20;
     f64 sp18;
@@ -205,7 +204,7 @@ void ConveyorBucket::Update() {
     void *temp_r4_355;
 
     GameProp::Update();
-    temp_r4_339 = this->unk8 + 0x30;
+    temp_r4_339 = ((u8 *) this->unk8) + 0x30;
     sp8 = M2C_FIELD(temp_r4_339, f64 *, 0) - this->unkC8;
     this->unkD8 = sp8;
     sp10 = M2C_FIELD(temp_r4_339, f32 *, 8) - this->unkD0;
@@ -217,7 +216,6 @@ void ConveyorBucket::Update() {
     M2C_FIELD(this, f32 *, 0xD0) = (f64) M2C_FIELD(temp_r4_355, f64 *, 0x38);
     DirtParticles();
 }
-#endif
 
 void ConveyorBucket::Resolve() {
     KDPropEx::Resolve();

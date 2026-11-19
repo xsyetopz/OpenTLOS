@@ -170,7 +170,7 @@ loop_8:
         temp_r3_222 = var_r26_211->unk0;
         temp_r3_222->Message(&spA8);
         temp_f3_229 = M2C_FIELD(spB0, f32 *, 4);
-        temp_r3_231 = sp1B0 + var_r28_213;
+        temp_r3_231 = ((u8 *) sp1B0) + var_r28_213;
         temp_f6_235 = M2C_FIELD(spB0, f32 *, 0);
         temp_f7_244 = M2C_FIELD(spB0, f32 *, 8);
         sp38 = this->unk90.unk30 + ((temp_f7_244 * this->unk90.unk20) + ((temp_f6_235 * this->unk90.unk0) + (temp_f3_229 * this->unk90.unk10)));
@@ -179,7 +179,7 @@ loop_8:
         M2C_FIELD(temp_r3_231, f64 *, 0) = (f64) sp38;
         M2C_FIELD(temp_r3_231, f64 *, 8) = (f64) sp40;
         sp78 = (f64) sp38;
-        temp_r3_266 = sp1B0 + var_r28_213;
+        temp_r3_266 = ((u8 *) sp1B0) + var_r28_213;
         sp80 = (f64) sp40;
         sp1A0 += M2C_FIELD(temp_r3_266, f64 *, 0);
         var_r28_213 += 0x10;
@@ -238,7 +238,7 @@ loop_8:
         M2C_FIELD(this, f32 *, 0xE0) = (f64) this->unkD0;
         M2C_FIELD(this, f32 *, 0xE8) = (f64) this->unkD8;
     }
-    M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &spCC + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     spD0.SetRotationPitch((f32) M2C_FIELD(this, f64 *, 0xD0));
     sp110.SetRotationRoll((f32) M2C_FIELD(this, f64 *, 0xD8));
     spD0.Multiply3x3(&spD0, &sp110);
@@ -257,7 +257,7 @@ loop_8:
 loop_24:
     if (var_r26_488 != &this->unk118) {
         temp_r7_496 = this->unk8;
-        temp_r6_498 = sp1B0 + var_r30_477;
+        temp_r6_498 = ((u8 *) sp1B0) + var_r30_477;
         temp_f3_500 = M2C_FIELD(temp_r6_498, f32 *, 4);
         temp_f6_506 = M2C_FIELD(temp_r6_498, f32 *, 0);
         temp_f7_512 = M2C_FIELD(temp_r6_498, f32 *, 8);
@@ -274,7 +274,7 @@ loop_24:
         temp_r6_536 = this->unk8;
         sp48 = (f64) sp18;
         spB4 = 0x22;
-        spBC = sp1B0 + var_r30_477;
+        spBC = ((u8 *) sp1B0) + var_r30_477;
         spC0 = &sp88;
         spC4 = &sp150;
         spC8 = temp_r6_536;

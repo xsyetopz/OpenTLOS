@@ -143,7 +143,7 @@ void SpyroEffects::TriggerConvexity(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
     f64 sp118;
     f64 sp110;
@@ -207,7 +207,7 @@ u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
         if (temp_r3_195 != 0) {
             sp110 = M2C_FIELD(arg0, f64 *, 0x10);
             sp118 = M2C_FIELD(arg0, f64 *, 0x18);
-            ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &sp110, GS_Rumble1, 7.5f, 2000.0f);
+            ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &sp110, GS_Rumble1, 7.5f, 2000.0f);
         }
     } else {
         temp_r0_212 = arg0->unk24;
@@ -225,7 +225,7 @@ u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
                 KDSound_Play3d(GS_SpyroFuryStartSound, &arg0->unk10, 0U, -1, 0.0f, 0U);
                 spF0 = M2C_FIELD(arg0, f64 *, 0x10);
                 spF8 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &spF0, GS_Rumble1, 5.0f, 2000.0f);
+                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &spF0, GS_Rumble1, 5.0f, 2000.0f);
             }
             break;
         case 1:
@@ -249,7 +249,7 @@ u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
                 ((CharacterZapFX *) (M2C_FIELD(this->unk4, CharacterZapFX **, 0xB4)))->Enable(1U, var_f1_290, 1U);
                 spD0 = M2C_FIELD(arg0, f64 *, 0x10);
                 spD8 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &spD0, GS_Rumble1, 8.0f, 2000.0f);
+                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &spD0, GS_Rumble1, 8.0f, 2000.0f);
             }
             break;
         case 2:
@@ -263,7 +263,7 @@ u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
             if (temp_r3_340 != 0) {
                 spB0 = M2C_FIELD(arg0, f64 *, 0x10);
                 spB8 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &spB0, GS_Rumble1, 7.5f, 2000.0f);
+                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &spB0, GS_Rumble1, 7.5f, 2000.0f);
                 sp30 = 0.5f;
                 sp34 = 0.5f;
                 sp38 = 1.0f;
@@ -284,7 +284,7 @@ u8 SpyroEffects::TriggerFury(SpyroEffectsUpdateData *arg0) {
             if (temp_r3_389 != 0) {
                 sp80 = M2C_FIELD(arg0, f64 *, 0x10);
                 sp88 = M2C_FIELD(arg0, f64 *, 0x18);
-                ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &sp80, GS_Rumble1, 7.5f, 2000.0f);
+                ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &sp80, GS_Rumble1, 7.5f, 2000.0f);
                 sp10 = 0.25f;
                 sp14 = 1.0f;
                 sp18 = 0.25f;
@@ -662,7 +662,7 @@ u8 SpyroEffects::TriggerFire(SpyroEffectsUpdateData *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
     f64 sp20;
     f64 sp18;
@@ -715,7 +715,7 @@ void SpyroEffects::UpdateFury(SpyroEffectsUpdateData *arg0) {
                         }
                         sp8 = M2C_FIELD(arg0, f64 *, 0x10);
                         sp10 = M2C_FIELD(arg0, f64 *, 0x18);
-                        ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Trigger((MKVector3) &sp8, GS_Rumble1, 7.5f, 2000.0f);
+                        ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Trigger((MKVector3) &sp8, GS_Rumble1, 7.5f, 2000.0f);
                     }
                 }
             } else if (M2C_FIELD(GameData::gameData, f32 *, 0xBC) <= M2C_FIELD(GameData::gameData, f32 *, 0xB8)) {
@@ -1143,7 +1143,7 @@ block_190:
 block_192:
             var_r28_1503 = 1;
         }
-        ((KDSound_AfterRumble *) (this->unk4 + 0x40))->Update();
+        ((KDSound_AfterRumble *) (((u8 *) this->unk4) + 0x40))->Update();
         var_f30_1938 = 0.0f;
         *arg0->unk30 = 0;
         var_r24_1941 = 0;
@@ -1197,7 +1197,7 @@ block_192:
             var_r24_2221 = 0;
             temp_r25_2223 = M2C_FIELD(&gb, void **, 0xC);
             temp_r3_2224 = M2C_FIELD(temp_r25_2223, KDSynkerPlayer3 **, 0x78);
-            if (((temp_r3_2224 != NULL) && (temp_r3_2224->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r25_2223, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r25_2223 + 0x24))->GetState() == 2))) {
+            if (((temp_r3_2224 != NULL) && (temp_r3_2224->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r25_2223, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r25_2223) + 0x24))->GetState() == 2))) {
                 var_r24_2221 = 1;
             }
             if (var_r24_2221 != 0) {

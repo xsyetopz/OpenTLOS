@@ -1253,7 +1253,7 @@ void EnemyGoal_FollowPath::Reset() {
     this->unk10 = NULL;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'sp30'
 u8 EnemyGoal_Strafe::Update() {
     f64 sp40;
     f64 sp38;
@@ -1274,7 +1274,7 @@ u8 EnemyGoal_Strafe::Update() {
     temp_r3_2455 = this->unk10;
     if (temp_r3_2455 != NULL) {
         var_r30_2459 = 0;
-        if (((u8) M2C_FIELD(temp_r3_2455, u8 *, 0x48) == 2) || (((TargetContext *) (temp_r3_2455 + 0x40))->Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_2455, u8 *, 0x48) == 2) || (((TargetContext *) (((u8 *) temp_r3_2455) + 0x40))->Get() != NULL)) {
             var_r30_2459 = 1;
         }
         if (var_r30_2459 == 0) {

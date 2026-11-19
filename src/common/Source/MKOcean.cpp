@@ -211,7 +211,7 @@ loop_11:
             }
             M2C_FIELD(&areaList, void **, 4) = (void *) (M2C_FIELD(&areaList, void **, 4) + 0x14);
         }
-        var_r4_361 = var_r6_336 + 0x14;
+        var_r4_361 = ((u8 *) var_r6_336) + 0x14;
         if (var_r4_361 >= (u32) M2C_FIELD(&areaList, u32 *, 8)) {
             var_r4_361 = NULL;
         }

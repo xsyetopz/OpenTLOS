@@ -158,15 +158,15 @@ s32 MKPackage_QLoadDynamic(const char *arg0, int arg1, const char *arg2) {
     } else {
         var_r4_155 = "<Dynamic>";
     }
-    strcpy(temp_r31_139 + 4, var_r4_155);
-    M2C_FIELD(temp_r31_139, MKHeap **, 0x124) = ((MKHeap *) (strncpy(temp_r31_139 + 0x24, arg0, 0xFFU)))->Current();
+    strcpy(((u8 *) temp_r31_139) + 4, var_r4_155);
+    M2C_FIELD(temp_r31_139, MKHeap **, 0x124) = ((MKHeap *) (strncpy(((u8 *) temp_r31_139) + 0x24, arg0, 0xFFU)))->Current();
     M2C_FIELD(temp_r31_139, s8 *, 0x128) = (s8) (*MKHeap::tempMemOverride > 0);
     ProcessQueue();
     return M2C_FIELD(temp_r31_139, s32 *, 0);
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char *)' does not match
 s32 MKPackage_QLoad(const char *arg0, int arg1) {
     s32 temp_r0_193;
     s32 temp_r3_200;
@@ -182,7 +182,7 @@ s32 MKPackage_QLoad(const char *arg0, int arg1) {
     if ((s32) nextQueueHandle == 0) {
         nextQueueHandle += 1;
     }
-    M2C_FIELD(temp_r31_197, MKHeap **, 0x124) = ((MKHeap *) (strcpy(temp_r31_197 + 4, arg0)))->Current();
+    M2C_FIELD(temp_r31_197, MKHeap **, 0x124) = ((MKHeap *) (strcpy(((u8 *) temp_r31_197) + 4, arg0)))->Current();
     M2C_FIELD(temp_r31_197, s8 *, 0x128) = (s8) (*MKHeap::tempMemOverride > 0);
     ProcessQueue();
     return M2C_FIELD(temp_r31_197, s32 *, 0);

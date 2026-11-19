@@ -93,7 +93,7 @@ s8 PlatformObject::Attach(PlatformAttachment *arg0) {
     return 1;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void PlatformObject::UpdateAttached() {
     u8 sp70;
     void *sp6C;
@@ -136,7 +136,7 @@ void PlatformObject::UpdateAttached() {
 
     temp_r3_145 = this->unk3C;
     if (temp_r3_145 != NULL) {
-        temp_r3_148 = temp_r3_145 + 0x40;
+        temp_r3_148 = ((u8 *) temp_r3_145) + 0x40;
         sp18 = M2C_FIELD(this, f64 *, 8) - M2C_FIELD(temp_r3_148, f64 *, 0);
         var_r29_154 = 0;
         sp48 = sp18;
@@ -150,8 +150,8 @@ loop_3:
             temp_r6_171 = var_r29_154 + 0x60;
             temp_r3_172 = this->unk3C;
             temp_r8_174 = this->unk40->unk8;
-            temp_r6_176 = temp_r3_172 + temp_r6_171;
-            temp_r5_177 = temp_r3_172 + temp_r6_171;
+            temp_r6_176 = ((u8 *) temp_r3_172) + temp_r6_171;
+            temp_r5_177 = ((u8 *) temp_r3_172) + temp_r6_171;
             temp_f3_178 = M2C_FIELD(temp_r6_176, f32 *, 4);
             temp_f6_185 = M2C_FIELD(temp_r6_176, f32 *, 0);
             temp_f7_194 = M2C_FIELD(temp_r6_176, f32 *, 8);
@@ -170,7 +170,7 @@ loop_3:
             temp_r5_219 = this->unk40->unk8;
             sp28 = (f64) sp8;
             sp58 = 0x22;
-            sp60 = temp_r8_217 + temp_r6_171;
+            sp60 = ((u8 *) temp_r8_217) + temp_r6_171;
             sp64 = &sp48;
             sp68 = temp_r8_217;
             sp6C = temp_r5_219;
@@ -365,7 +365,7 @@ void PlatformObject::BeginUpdate() {
         }
         this->unk3C = var_r3_589;
         sp40.Inverse(MKModel_GetWorldMatrix(this->unk40->unk4));
-        M2C_STRUCT_COPY((s32) (this->unk3C - 4) + 4, (s32) &sp3C + 4, 0x40);
+        M2C_STRUCT_COPY((s32) (((u8 *) this->unk3C) - 4) + 4, (s32) &sp3C + 4, 0x40);
         temp_r3_613 = this->unk3C;
         var_r28_616 = 0;
         var_r30_618 = 0;
@@ -385,7 +385,7 @@ loop_6:
             temp_r3_635->Message(&sp30);
             temp_r0_641 = var_r30_618 + 0x60;
             temp_f3_643 = M2C_FIELD(sp38, f32 *, 4);
-            temp_r3_645 = this->unk3C + temp_r0_641;
+            temp_r3_645 = ((u8 *) this->unk3C) + temp_r0_641;
             temp_f6_649 = M2C_FIELD(sp38, f32 *, 0);
             temp_f7_658 = M2C_FIELD(sp38, f32 *, 8);
             sp10 = sp40.unk30 + ((temp_f7_658 * sp40.unk20) + ((temp_f6_649 * M2C_BITWISE(f32, sp40)) + (temp_f3_643 * sp40.unk10)));
@@ -395,8 +395,8 @@ loop_6:
             M2C_FIELD(temp_r3_645, f64 *, 8) = (f64) sp18;
             temp_r3_678 = this->unk3C;
             sp20 = (f64) sp10;
-            temp_r4_680 = temp_r3_678 + temp_r0_641;
-            temp_r3_681 = temp_r3_678 + 0x50;
+            temp_r4_680 = ((u8 *) temp_r3_678) + temp_r0_641;
+            temp_r3_681 = ((u8 *) temp_r3_678) + 0x50;
             sp28 = (f64) sp18;
             M2C_FIELD(temp_r3_681, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_681, f64 *, 0) + M2C_FIELD(temp_r4_680, f64 *, 0));
             var_r28_616 += 1;
@@ -405,7 +405,7 @@ loop_6:
             var_r27_626 = var_r27_626->unk8;
             goto loop_6;
         }
-        temp_r3_703 = this->unk3C + 0x50;
+        temp_r3_703 = ((u8 *) this->unk3C) + 0x50;
         temp_f1_707 = 1.0f / (f32) var_r28_616;
         M2C_FIELD(temp_r3_703, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_703, f64 *, 0) * (f64) temp_f1_707);
         M2C_FIELD(temp_r3_703, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_703, f32 *, 8) * temp_f1_707);

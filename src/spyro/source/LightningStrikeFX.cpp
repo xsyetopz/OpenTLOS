@@ -706,7 +706,7 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
         M2C_FIELD(temp_r31_955, f64 *, 0x40) = (f64) sp28;
         M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
         if (arg2 == 2.0f) {
-            KDSound_Play3d(GS_Lightning3, temp_r31_955 + 0x38, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_Lightning3, ((u8 *) temp_r31_955) + 0x38, 0U, -1, 0.0f, 0U);
             return;
         }
         if (arg2 >= 5.0f) {
@@ -756,10 +756,10 @@ void LightningStrikeFXDescriptor::SpawnStrikeArc(const MKVector3 &arg0, const MK
                 M2C_FIELD(temp_r31_955, f64 *, 0x38) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x28);
                 M2C_FIELD(temp_r31_955, f64 *, 0x40) = (f64) M2C_FIELD(temp_r31_955, f64 *, 0x30);
             }
-            KDSound_Play3d(GS_Lightning1, temp_r31_955 + 0x38, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_Lightning1, ((u8 *) temp_r31_955) + 0x38, 0U, -1, 0.0f, 0U);
             return;
         }
-        KDSound_Play3d(GS_Lightning2, temp_r31_955 + 0x38, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_Lightning2, ((u8 *) temp_r31_955) + 0x38, 0U, -1, 0.0f, 0U);
     }
 }
 #endif

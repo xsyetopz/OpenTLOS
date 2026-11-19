@@ -243,7 +243,7 @@ void SteamFireBall::Update() {
     temp_f0_373 = sp150.unk10 * 5.53552857e-315;
     sp48 = temp_f0_373;
     spC8 = temp_f0_373;
-    temp_r3_380 = this->unk8 + 0x30;
+    temp_r3_380 = ((u8 *) this->unk8) + 0x30;
     sp50 = sp150.unk18 * 100.0f;
     spD0 = (f64) sp50;
     temp_f0_386 = M2C_FIELD(temp_r3_380, f64 *, 0) + temp_f0_373;

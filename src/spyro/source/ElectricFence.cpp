@@ -71,7 +71,7 @@ void ElectricFence::AllocBeams() {
     var_r31_87 = 0;
     do {
         temp_r30_95 = this + var_r31_87;
-        temp_r4_100 = this->unk4C + ((MKRand_Int(&gViewSeed, 0, this->unk50) * 0x70) + 0x30);
+        temp_r4_100 = ((u8 *) this->unk4C) + ((MKRand_Int(&gViewSeed, 0, this->unk50) * 0x70) + 0x30);
         M2C_FIELD(temp_r30_95, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r4_100, f64 *, 0);
         M2C_FIELD(temp_r30_95, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_100, f64 *, 8);
         var_r28_86 += 1;
@@ -84,7 +84,7 @@ void ElectricFence::AllocBeams() {
     do {
         temp_r29_119 = this + var_r31_117;
         if ((u32) M2C_FIELD(temp_r29_119, u32 *, 0xD0) == 0U) {
-            ((EnergyBeam *) (M2C_FIELD(temp_r30_115, EnergyBeam **, 0x80)))->SpawnEnergyBeam((MKVector3 *) &this->unk100, temp_r29_119 + 0xD8, 2.0f);
+            ((EnergyBeam *) (M2C_FIELD(temp_r30_115, EnergyBeam **, 0x80)))->SpawnEnergyBeam((MKVector3 *) &this->unk100, ((u8 *) temp_r29_119) + 0xD8, 2.0f);
             M2C_FIELD(temp_r29_119, u32 *, 0xD0) = (u32) M2C_ERROR(/* Read from unset register $r3 */);
         }
         var_r28_116 += 1;
@@ -228,7 +228,7 @@ block_25:
         return;
     case 180:
         if (((s32) M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x88) != 0) && ((u8) this->unk54 != 0)) {
-            temp_r30_356 = this->unk8 + 0x30;
+            temp_r30_356 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<ElectricFenceDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x88), temp_r30_356, 0U, -1, 0.0f, 0U);
         }
         this->unk54 = 0;
@@ -302,7 +302,7 @@ void ElectricFence::Update() {
         var_r31_464 = 0;
         do {
             temp_r30_472 = this + var_r31_464;
-            temp_r4_477 = this->unk4C + ((MKRand_Int(&gViewSeed, 0, this->unk50) * 0x70) + 0x30);
+            temp_r4_477 = ((u8 *) this->unk4C) + ((MKRand_Int(&gViewSeed, 0, this->unk50) * 0x70) + 0x30);
             M2C_FIELD(temp_r30_472, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r4_477, f64 *, 0);
             M2C_FIELD(temp_r30_472, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_477, f64 *, 8);
             var_r29_463 += 1;
@@ -479,8 +479,8 @@ loop_22:
     temp_r0_696 = temp_r3_695 - 1;
     if (var_r30_564 < temp_r0_696) {
         temp_r5_571 = this->unk4C;
-        temp_r4_574 = temp_r5_571 + (var_r27_566 + 0x30);
-        temp_r3_576 = temp_r5_571 + (((var_r30_564 + 1) * 0x70) + 0x30);
+        temp_r4_574 = ((u8 *) temp_r5_571) + (var_r27_566 + 0x30);
+        temp_r3_576 = ((u8 *) temp_r5_571) + (((var_r30_564 + 1) * 0x70) + 0x30);
         temp_f0_579 = M2C_FIELD(temp_r3_576, f64 *, 0) - M2C_FIELD(temp_r4_574, f64 *, 0);
         sp108 = temp_f0_579;
         sp100 = 0.0f;
@@ -535,20 +535,20 @@ loop_22:
         (*(f32 *) ((u8 *) &sp280 + 0xc)) *= var_f3_669;
         sp290 = (f32) sp290 * var_f3_669;
         *(this->unk4C + (var_r27_566 + 0x68)) = var_f4_601;
-        KDMath_BuildMatrixFromFwd(this->unk4C + var_r27_566, *((MKVector3 *) &sp288), (MKVector3 *) &sp278);
+        KDMath_BuildMatrixFromFwd(((u8 *) this->unk4C) + var_r27_566, *((MKVector3 *) &sp288), (MKVector3 *) &sp278);
         var_r30_564 += 1;
         var_r27_566 += 0x70;
         goto loop_22;
     }
     temp_r5_699 = temp_r0_696 * 0x70;
     temp_r6_700 = this->unk4C;
-    temp_r4_704 = temp_r6_700 + (temp_r5_699 + 0x30);
+    temp_r4_704 = ((u8 *) temp_r6_700) + (temp_r5_699 + 0x30);
     sp268 = M2C_FIELD(temp_r4_704, f64 *, 0);
     sp270 = M2C_FIELD(temp_r4_704, f64 *, 8);
-    M2C_STRUCT_COPY(temp_r6_700 + temp_r5_699, temp_r6_700 + ((temp_r3_695 - 2) * 0x70), 0x40);
+    M2C_STRUCT_COPY(((u8 *) temp_r6_700) + temp_r5_699, ((u8 *) temp_r6_700) + ((temp_r3_695 - 2) * 0x70), 0x40);
     var_r30_730 = 0;
     var_r27_732 = 0;
-    temp_r3_733 = this->unk4C + ((this->unk50 - 1) * 0x70);
+    temp_r3_733 = ((u8 *) this->unk4C) + ((this->unk50 - 1) * 0x70);
     M2C_FIELD(temp_r3_733, f32 *, 0x30) = (f32) sp268;
     M2C_FIELD(temp_r3_733, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp268 + 0x4));
     M2C_FIELD(temp_r3_733, f32 *, 0x38) = (f32) sp270;
@@ -557,27 +557,27 @@ loop_27:
     if (var_r30_730 < (s32) this->unk50) {
         temp_r7_746 = var_r27_732 + 0x40;
         *(this->unk4C + temp_r7_746) = MKModel_Create("FX0034_ElectricFencePost", NULL, 2, NULL);
-        temp_r8_754 = this->unk4C + (var_r27_732 + 0x44);
+        temp_r8_754 = ((u8 *) this->unk4C) + (var_r27_732 + 0x44);
         M2C_FIELD(temp_r8_754, s32 *, 0) = 0;
         M2C_FIELD(temp_r8_754, s8 *, 4) = 1;
         M2C_FIELD(temp_r8_754, ElectricFence **, 8) = this;
         M2C_FIELD(temp_r8_754, s32 *, 0xC) = 0;
         temp_r26_763 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r7_746), "c_collide");
-        temp_r4_764 = this->unk4C + var_r27_732;
+        temp_r4_764 = ((u8 *) this->unk4C) + var_r27_732;
         MKModel_SetWorldMatrix(M2C_FIELD(temp_r4_764, MKModel **, 0x40), *temp_r4_764);
-        temp_r29_770 = this->unk4C + var_r27_732;
-        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r29_770, MKModel **, 0x40), (s32) temp_r26_763, (MKCollisionMode) 1, temp_r29_770 + 0x44, 0U);
+        temp_r29_770 = ((u8 *) this->unk4C) + var_r27_732;
+        ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r29_770, MKModel **, 0x40), (s32) temp_r26_763, (MKCollisionMode) 1, ((u8 *) temp_r29_770) + 0x44, 0U);
         *(this->unk4C + (var_r27_732 + 0x48)) = 1;
         if (var_r30_730 < (s32) (this->unk50 - 1)) {
             temp_r0_796 = var_r27_732 + 0x54;
             *(this->unk4C + temp_r0_796) = MKModel_Create("FX0033_CollideBox", NULL, 2, NULL);
             temp_r3_804 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r0_796), "c_collide");
-            temp_r7_809 = this->unk4C + (var_r27_732 + 0x58);
+            temp_r7_809 = ((u8 *) this->unk4C) + (var_r27_732 + 0x58);
             M2C_FIELD(temp_r7_809, s32 *, 0) = 0;
             M2C_FIELD(temp_r7_809, s8 *, 4) = 1;
             M2C_FIELD(temp_r7_809, ElectricFence **, 8) = this;
             M2C_FIELD(temp_r7_809, s32 *, 0xC) = 0;
-            M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, (s32) ((this->unk4C + var_r27_732) - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &sp2A0.unk3C + 4, (s32) ((((u8 *) this->unk4C) + var_r27_732) - 4) + 4, 0x40);
             MKVector(0.0f, 400.0f, 0.0f);
             sp38 = -sp2E0.unk20;
             sp3C = -sp2E0.unk24;
@@ -599,12 +599,12 @@ loop_27:
             sp1F0 = (f64) spE0;
             sp2E0.Scale3x3(&sp2E0, *((MKVector3 *) &sp1E8));
             MKModel_SetWorldMatrix(*(this->unk4C + (var_r27_732 + 0x54)), sp2E0);
-            temp_r26_896 = this->unk4C + var_r27_732;
-            ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r26_896, MKModel **, 0x54), (s32) temp_r3_804, (MKCollisionMode) 1, temp_r26_896 + 0x58, 0x100U);
+            temp_r26_896 = ((u8 *) this->unk4C) + var_r27_732;
+            ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r26_896, MKModel **, 0x54), (s32) temp_r3_804, (MKCollisionMode) 1, ((u8 *) temp_r26_896) + 0x58, 0x100U);
             *(this->unk4C + (var_r27_732 + 0x5C)) = 1;
             temp_r6_914 = this->unk4C;
-            temp_r7_916 = temp_r6_914 + (var_r27_732 + 0x20);
-            temp_r5_917 = temp_r6_914 + (var_r27_732 + 0x30);
+            temp_r7_916 = ((u8 *) temp_r6_914) + (var_r27_732 + 0x20);
+            temp_r5_917 = ((u8 *) temp_r6_914) + (var_r27_732 + 0x30);
             sp28 = -M2C_FIELD(temp_r7_916, f32 *, 0);
             sp2C = -M2C_FIELD(temp_r7_916, f32 *, 4);
             sp30 = -M2C_FIELD(temp_r7_916, f32 *, 8);
@@ -648,7 +648,7 @@ loop_27:
     this->unkC8 = (f64) sp90;
 loop_30:
     if (var_r26_972 < (s32) this->unk50) {
-        temp_r6_1000 = this->unk4C + (var_r29_974 + 0x30);
+        temp_r6_1000 = ((u8 *) this->unk4C) + (var_r29_974 + 0x30);
         sp248 = M2C_FIELD(temp_r6_1000, f64 *, 0);
         sp250 = M2C_FIELD(temp_r6_1000, f64 *, 8);
         Min(sp188, *((MKVector3 *) &this->unkB0));
@@ -709,7 +709,7 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKHeap *temp_r3_1215;
@@ -743,7 +743,7 @@ loop_8:
         if (var_r27_1234 != NULL) {
             var_r27_1234->LoadVector3("waypoint", &sp8, 0);
             temp_r3_1245 = var_r29_1235 + 0x40;
-            temp_r5_1248 = this->unk4C + var_r29_1235;
+            temp_r5_1248 = ((u8 *) this->unk4C) + var_r29_1235;
             temp_r0_1249 = var_r29_1235 + 0x54;
             M2C_FIELD(temp_r5_1248, f32 *, 0x30) = M2C_BITWISE(f32, sp8);
             var_r29_1235 += 0x70;

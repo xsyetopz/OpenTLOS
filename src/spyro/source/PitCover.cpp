@@ -101,7 +101,7 @@ block_4:
         sp130 = sp50;
         sp160.unk8 = (f64) sp58;
         sp138 = (f64) sp58;
-        KDSound_Play3d(GS_PitTrapFall, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_PitTrapFall, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         var_r30_121 = 0;
         do {
             __ml(MKRand_Float(&gViewSeed, 0.0f, 1.0f), spF0);

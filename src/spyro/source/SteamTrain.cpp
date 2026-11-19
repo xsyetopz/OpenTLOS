@@ -1261,7 +1261,7 @@ block_30:
     case 0x7:
         if (this->unk114 <= 0.0f) {
             this->unk114 = 0.75f;
-            KDSound_Play3d(GS_TrainHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_TrainHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **), 0x40)(gb)))->RumblePlay(0.99f, 0.8f, 0.15f, 0, 4.0f, 0U);
             temp_f1_1913 = this->unk3E4;
             this->unk3E4 = temp_f1_1913 - 1.0f;
@@ -1404,7 +1404,7 @@ void SteamTrain::TriggerDamageFX(const MKVector3 &arg0, float arg1) {
         sp138 = sp78;
         sp140 = (f64) sp80;
         spF8 = (f64) sp68;
-        temp_r4_2111 = this->unk8 + 0x30;
+        temp_r4_2111 = ((u8 *) this->unk8) + 0x30;
         sp100 = (f64) sp70;
         temp_f0_2115 = M2C_FIELD(temp_r4_2111, f64 *, 0) + spF8;
         sp58 = temp_f0_2115;
@@ -1485,7 +1485,7 @@ void SteamTrain::Update() {
         temp_f1_2291 = this->unk3E4;
         if (temp_f1_2291 >= 15.0f) {
             this->unk3E4 = 0.0f;
-            KDSound_Play3d(GS_Train4, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_Train4, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         } else {
             this->unk3E4 = temp_f1_2291 + gUpdateTimeDelta;
         }
@@ -1727,10 +1727,10 @@ void SteamTrainEffects::DrawEffects() {
     do {
         MKModel_GetRefPointMatrix(this->unk4, *(this + (var_r30_2892 + 0x1F0)), &sp10, 0U);
         sp10.Multiply(&sp10, this->unk0);
-        temp_r5_2907 = this->unk1D8 + 0x5C;
-        M2C_STRUCT_COPY((s32) temp_r5_2907 + 4, (s32) &spC + 4, 0x40);
+        temp_r5_2907 = ((u8 *) this->unk1D8) + 0x5C;
+        M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_2907) + 4, (s32) &spC + 4, 0x40);
         temp_r3_2915 = this->unk1D8;
-        M2C_FIELD(M2C_FIELD(temp_r3_2915, void **, 0x44), M2C_UNK (**)(void *, void *, void *), 0x28)(temp_r3_2915, &spC + 0x40, temp_r5_2907 + 0x40);
+        M2C_FIELD(M2C_FIELD(temp_r3_2915, void **, 0x44), M2C_UNK (**)(void *, void *, void *), 0x28)(temp_r3_2915, &spC + 0x40, ((u8 *) temp_r5_2907) + 0x40);
         var_r29_2891 += 1;
         var_r30_2892 += 4;
     } while (var_r29_2891 < 4);
@@ -1739,10 +1739,10 @@ void SteamTrainEffects::DrawEffects() {
     do {
         MKModel_GetRefPointMatrix(this->unk4, *(this + (var_r30_2925 + 0x218)), &sp10, 0U);
         sp10.Multiply(&sp10, this->unk0);
-        temp_r5_2940 = this->unk1E4 + 0x5C;
-        M2C_STRUCT_COPY((s32) temp_r5_2940 + 4, (s32) &spC + 4, 0x40);
+        temp_r5_2940 = ((u8 *) this->unk1E4) + 0x5C;
+        M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_2940) + 4, (s32) &spC + 4, 0x40);
         temp_r3_2948 = this->unk1E4;
-        M2C_FIELD(M2C_FIELD(temp_r3_2948, void **, 0x44), M2C_UNK (**)(void *, void *, void *), 0x28)(temp_r3_2948, &spC + 0x40, temp_r5_2940 + 0x40);
+        M2C_FIELD(M2C_FIELD(temp_r3_2948, void **, 0x44), M2C_UNK (**)(void *, void *, void *), 0x28)(temp_r3_2948, &spC + 0x40, ((u8 *) temp_r5_2940) + 0x40);
         var_r29_2924 += 1;
         var_r30_2925 += 4;
     } while (var_r29_2924 < 2);
@@ -2084,7 +2084,7 @@ void SteamTrainEffects::Resolve() {
         temp_r27_3577 = this + var_r30_3560;
         M2C_FIELD(temp_r27_3577, f64 *, 0x18) = M2C_BITWISE(f64, sp28);
         M2C_FIELD(temp_r27_3577, f64 *, 0x20) = sp28.unk8;
-        MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r25_3569), (void (*)(MKDynamicBone *, void *)) &SteamTrainEffects::UpdateWheelBone, temp_r27_3577 + 0x18);
+        MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) temp_r25_3569), (void (*)(MKDynamicBone *, void *)) &SteamTrainEffects::UpdateWheelBone, ((u8 *) temp_r27_3577) + 0x18);
         var_r26_3557 += 1;
         var_r30_3560 += 0x18;
     } while (var_r26_3557 < 5);
@@ -2122,7 +2122,7 @@ void SteamTrainEffects::Resolve() {
         ((Animation *) &sp8)->GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         M2C_FIELD(temp_r27_3677, f64 *, 0xB8) = sp8;
         M2C_FIELD(temp_r27_3677, f64 *, 0xC0) = sp10;
-        MKDynamicBone_SetUpdater(MKDynamicBone_GetDynamicBone(this->unk4, M2C_FIELD(temp_r27_3677, s32 *, 0x98)), UpdateLookAtBone, temp_r27_3677 + 0x98);
+        MKDynamicBone_SetUpdater(MKDynamicBone_GetDynamicBone(this->unk4, M2C_FIELD(temp_r27_3677, s32 *, 0x98)), UpdateLookAtBone, ((u8 *) temp_r27_3677) + 0x98);
         var_r25_3650 += 1;
         var_r30_3652 += 0x50;
     } while (var_r25_3650 < 4);

@@ -650,8 +650,8 @@ loop_40:
                             } while (var_ctr_507 != 0);
                         }
                         temp_r9_527 = var_r6_488 * 8;
-                        M2C_FIELD((this->unk4 + temp_r9_527), f32 *, 0x6C) = sp1C;
-                        M2C_FIELD((this->unk4 + temp_r9_527), f32 *, 0x68) = sp18;
+                        M2C_FIELD((((u8 *) this->unk4) + temp_r9_527), f32 *, 0x6C) = sp1C;
+                        M2C_FIELD((((u8 *) this->unk4) + temp_r9_527), f32 *, 0x68) = sp18;
                         this->unk28 = var_r6_488;
                         this->unk30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
                         M2C_FIELD(this, f32 *, 0x38) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -795,7 +795,7 @@ block_110:
                 var_f2_791 = var_f1_786;
             }
             M2C_FIELD((temp_r5_769 + (temp_r4_770 * 8)), f32 *, 0x6C) = var_f2_791;
-            M2C_FIELD((this->unk4 + (this->unk28 * 8)), f32 *, 0x68) = sp10;
+            M2C_FIELD((((u8 *) this->unk4) + (this->unk28 * 8)), f32 *, 0x68) = sp10;
             spB0 = this;
             spB4 = 1;
             spB6 = 0;
@@ -811,7 +811,7 @@ block_110:
         return M2C_FIELD(this->unk4, s32 *, 0xE8);
     case 0x65:                                      /* switch 1 */
         if (arg1 != 0) {
-            *arg1 = (s32) (this->unk4 + 0x68);
+            *arg1 = (s32) (((u8 *) this->unk4) + 0x68);
         }
         return M2C_FIELD(this->unk4, s32 *, 0xE8);
     case 0x66:                                      /* switch 1 */
@@ -902,13 +902,13 @@ void MKWidgetEnvelope_GetEnvelopePos(MKWidgetEnvelope *arg0, int arg1, MKWidgetB
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 MKWidgetEnvelope::MKWidgetEnvelope(MKWidgetDescriptor *arg0) {
     this->unk28 = -1;
     this->unk30 = M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
     if ((u8) this->unk8 == 0) {
-        memset(this->unk4 + 0x68, 0, 0x80U);
+        memset(((u8 *) this->unk4) + 0x68, 0, 0x80U);
         M2C_FIELD(this->unk4, f32 *, 0x70) = 1.0f;
         M2C_FIELD(this->unk4, f32 *, 0x74) = 1.0f;
         M2C_FIELD(this->unk4, s32 *, 0xE8) = 2;
@@ -1091,7 +1091,7 @@ block_66:
             sp38 = this;
             sp3C = 1;
             sp3E = 0;
-            sp40 = this->unk4 + 0x68;
+            sp40 = ((u8 *) this->unk4) + 0x68;
             sp44 = 0;
             MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp38);
         }
@@ -1110,7 +1110,7 @@ block_66:
             } else {
                 MKWidget_Show(&this->unkC8, 1);
             }
-            MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (this->unk4 + 0x38));
+            MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (((u8 *) this->unk4) + 0x38));
         }
         goto block_66;
     case 0x40:
@@ -1940,7 +1940,7 @@ block_20:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     f64 sp240;
     f64 sp238;
@@ -2057,7 +2057,7 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp208 = (f64) spE8;
     sp210 = (f64) spF0;
     sp218 = (f64) sp108;
-    temp_r6_3295 = this->unk4 + 0x38;
+    temp_r6_3295 = ((u8 *) this->unk4) + 0x38;
     sp220 = (f64) sp110;
     spF8 = M2C_FIELD(temp_r6_3295, f64 *, 0) + sp218;
     sp120 = 0.0f;
@@ -2096,7 +2096,7 @@ void MKWidgetEditable::Render(MKWidgetRenderContext *arg0) {
     sp188 = (f64) sp68;
     sp190 = (f64) sp70;
     sp198 = (f64) sp88;
-    temp_r3_3369 = this->unk4 + 0x38;
+    temp_r3_3369 = ((u8 *) this->unk4) + 0x38;
     sp1A0 = (f64) sp90;
     temp_f5_3371 = M2C_FIELD(temp_r3_3369, f64 *, 0);
     sp78 = temp_f5_3371 - sp198;
@@ -2522,7 +2522,7 @@ s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
         sp8 = this;
         spC = 1;
         spE = 0;
-        sp10 = this->unk4 + 0x68;
+        sp10 = ((u8 *) this->unk4) + 0x68;
         sp14 = 0;
         MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp8);
         break;
@@ -2533,7 +2533,7 @@ s32 MKWidgetColor::MessageHandler(unsigned int arg0, unsigned int arg1) {
         break;
     case 0x33:
         if (IsFlagSet(0x100U) != 0) {
-            gColorEditor.Show(*(MKVector4 *) (this->unk4 + 0x68), (MKWidget *) this);
+            gColorEditor.Show(*(MKVector4 *) (((u8 *) this->unk4) + 0x68), (MKWidget *) this);
         }
         break;
     }
@@ -2779,7 +2779,7 @@ loop_22:
             spCC = 26.0f;
             spD0 = 0.0f;
             MKVector(0.0f, 26.0f, 0.0f);
-            temp_r3_4575 = this->unk4 + 0x38;
+            temp_r3_4575 = ((u8 *) this->unk4) + 0x38;
             sp8 = M2C_FIELD(temp_r3_4575, f64 *, 0) - sp98;
             spA8 = sp8;
             sp10 = M2C_FIELD(temp_r3_4575, f32 *, 8) - spA0;
@@ -2813,7 +2813,7 @@ loop_26:
         if (var_r24_4661 < temp_r26_4664) {
             sp48 = 0.0f;
             sp4C = 26.0f;
-            temp_r4_4677 = this->unk4 + 0x38;
+            temp_r4_4677 = ((u8 *) this->unk4) + 0x38;
             sp50 = 0.0f;
             sp78 = (f64) sp48;
             sp80 = (f64) sp50;
@@ -4693,7 +4693,7 @@ block_87:
             SortChildren();
         }
         ArrangeChildren();
-        MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (this->unk4 + 0x38));
+        MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (((u8 *) this->unk4) + 0x38));
         if ((s32) this->unk3A0 == -1) {
             MKWidget_SendMessage((MKWidget *) this, 0x6AU, 0U);
         }
@@ -4705,7 +4705,7 @@ block_87:
         }
         temp_r28_7947 = MKWidgetScrollableFrame::MessageHandler(arg0, arg1);
         ArrangeChildren();
-        MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (this->unk4 + 0x38));
+        MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (((u8 *) this->unk4) + 0x38));
         return temp_r28_7947;
     case 0x6A:                                      /* switch 1 */
         var_r3_7962 = arg1;
@@ -4746,7 +4746,7 @@ block_87:
         temp_r4_8034 = this->unk4;
         M2C_FIELD(temp_r4_8034, u32 *, 0x80) = arg1;
         M2C_FIELD(this->__vptr, M2C_UNK (**)(s8 **), 0x3C)(temp_r4_8034);
-        MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (this->unk4 + 0x38));
+        MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (((u8 *) this->unk4) + 0x38));
         if (IsFlagSet(0x200000U) != 0) {
             SortChildren();
         }
@@ -5141,7 +5141,7 @@ s32 MKWidgetScrollableFrame::MessageHandler(unsigned int arg0, unsigned int arg1
         default:
             temp_r31_8995 = MKWidgetFrame::MessageHandler(arg0, arg1);
             if (arg1 & 0x78000) {
-                MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (this->unk4 + 0x38));
+                MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (((u8 *) this->unk4) + 0x38));
             }
             return (s32) temp_r31_8995;
         case 0x35:
@@ -5523,7 +5523,7 @@ void MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
         sp1C = 1.0f;
         sp60 = (f64) sp10;
         sp68 = (f64) sp18;
-        WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (this->unk4 + 0x38), *((MKVector4 *) &sp60));
+        WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (((u8 *) this->unk4) + 0x38), *((MKVector4 *) &sp60));
     }
     MKEndPrimitive();
     M2C_STRUCT_COPY((s32) &sp14C + 4, (s32) (arg0 - 4) + 4, 0x50);
@@ -5535,7 +5535,7 @@ void MKWidgetScrollBar::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MKWidgetScrollBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp180;
     f64 sp178;
@@ -5654,7 +5654,7 @@ s32 MKWidgetScrollBar::MessageHandler(unsigned int arg0, unsigned int arg1) {
 
     switch (arg0) {                                 /* switch 1 */
     case 0x47:                                      /* switch 1 */
-        MessageHandler(5, this->unk4 + 0x38);
+        MessageHandler(5, ((u8 *) this->unk4) + 0x38);
         GetThumbFromValue();
     default:                                        /* switch 1 */
 block_139:
@@ -5853,7 +5853,7 @@ block_139:
             sp168 = this;
             sp16C = 1;
             sp16E = 0;
-            sp170 = this->unk4 + 0x68;
+            sp170 = ((u8 *) this->unk4) + 0x68;
             sp174 = 0;
             MKWidget_SendMessage((MKWidget *) this, 0x39U, (u32) &sp168);
         }
@@ -5868,7 +5868,7 @@ block_139:
             MKWidget_SendMessage((MKWidget *) this, 0x64U, (u32) (temp_r4_10267 + 0x6C));
         }
         if (IsFlagSet(0x200U) != 0) {
-            MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (this->unk4 + 0x38));
+            MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (((u8 *) this->unk4) + 0x38));
         }
         GetThumbFromValue();
         return 0;
@@ -5879,7 +5879,7 @@ block_139:
             MKWidget_SendMessage((MKWidget *) this, 0x64U, (u32) (temp_r4_10295 + 0x70));
         }
         if (IsFlagSet(0x200U) != 0) {
-            MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (this->unk4 + 0x38));
+            MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (((u8 *) this->unk4) + 0x38));
         }
         GetThumbFromValue();
         return 0;
@@ -5888,7 +5888,7 @@ block_139:
         return 0;
     case 0x6B:                                      /* switch 1 */
         M2C_FIELD(this->unk4, f32 *, 0x78) = (f32) M2C_FIELD(arg1, f32 *, 0);
-        MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (this->unk4 + 0x38));
+        MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (((u8 *) this->unk4) + 0x38));
         return 0;
     case 0x1B:                                      /* switch 1 */
     case 0x1D:                                      /* switch 1 */
@@ -5903,7 +5903,7 @@ block_139:
             MKWidget_DisableFlag(&this->unkB0, 4U);
             MKWidget_DisableFlag(&this->unk138, 4U);
         }
-        MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (this->unk4 + 0x38));
+        MKWidget_SendMessage((MKWidget *) this, 5U, (u32) (((u8 *) this->unk4) + 0x38));
         return temp_r28_10342;
     case 0x35:                                      /* switch 1 */
         if (M2C_FIELD(arg1, f32 *, 0) > 0.0f) {
@@ -6070,7 +6070,7 @@ void MKWidgetThumb::BuildMetaData(int arg0) {
 
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKVector4 *temp_r31_10768;
     s8 **temp_r30_10765;
@@ -6080,7 +6080,7 @@ void MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
     MKPrimitive(4, 0);
     MKSetBaseColorV(arg0->unk40);
     MKSetMatrix(*((Matrix *) arg0));
-    WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (this->unk4 + 0x38), 0x1A);
+    WidgetDrawBox(MKVector3::zero, *(MKVector3 *) (((u8 *) this->unk4) + 0x38), 0x1A);
     temp_r30_10765 = this->unk4;
     temp_r31_10768 = MKWidget_GetMetric(1);
     WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (temp_r30_10765 + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r31_10768, 0U, 0U);
@@ -6088,7 +6088,7 @@ void MKWidgetThumb::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
     f64 sp1F0;                                      /* compiler-managed */
     f64 sp1E8;
@@ -6176,7 +6176,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         M2C_FIELD(this, f64 *, 0x28) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk30 = M2C_FIELD(arg1, f64 *, 8);
         sp168.operator*(0.5f);
-        temp_r4_10829 = this->unk4 + 8;
+        temp_r4_10829 = ((u8 *) this->unk4) + 8;
         sp78 = M2C_FIELD(temp_r4_10829, f64 *, 0) + M2C_BITWISE(f64, sp168);
         sp178 = sp78;
         sp80 = M2C_FIELD(temp_r4_10829, f32 *, 8) + sp168.unk8;
@@ -6188,7 +6188,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         temp_f1_10852 = M2C_BITWISE(f64, sp158);
         sp1E8 = temp_f1_10852;
         sp1F0 = (f64) sp158.unk8;
-        temp_r3_10858 = this->unk4 + 0x38;
+        temp_r3_10858 = ((u8 *) this->unk4) + 0x38;
         temp_f0_10860 = M2C_FIELD(temp_r3_10858, f64 *, 0) * 5.222099017e-315;
         sp68 = temp_f0_10860;
         sp138 = temp_f0_10860;
@@ -6202,7 +6202,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         M2C_FIELD(this, f64 *, 0x38) = (f64) M2C_FIELD(arg1, f64 *, 0);
         this->unk40 = M2C_FIELD(arg1, f64 *, 8);
         sp118.operator*(0.5f);
-        temp_r4_10893 = this->unk4 + 8;
+        temp_r4_10893 = ((u8 *) this->unk4) + 8;
         sp58 = M2C_FIELD(temp_r4_10893, f64 *, 0) + M2C_BITWISE(f64, sp118);
         sp128 = sp58;
         sp60 = M2C_FIELD(temp_r4_10893, f32 *, 8) + sp118.unk8;
@@ -6214,7 +6214,7 @@ s32 MKWidgetThumb::MessageHandler(unsigned int arg0, unsigned int arg1) {
         temp_f1_10916 = M2C_BITWISE(f64, sp108);
         sp1D8 = temp_f1_10916;
         sp1E0 = (f64) sp108.unk8;
-        temp_r3_10922 = this->unk4 + 0x38;
+        temp_r3_10922 = ((u8 *) this->unk4) + 0x38;
         temp_f0_10924 = M2C_FIELD(temp_r3_10922, f64 *, 0) * 5.222099017e-315;
         sp48 = temp_f0_10924;
         spE8 = temp_f0_10924;
@@ -6546,7 +6546,7 @@ void MKWidgetCheckMark::Render(MKWidgetRenderContext *arg0) {
     }
     sp18 = 1.0f;
     sp1C = 1.0f;
-    temp_r4_11558 = this->unk4 + 0x38;
+    temp_r4_11558 = ((u8 *) this->unk4) + 0x38;
     sp20 = 0.0f;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
@@ -6733,14 +6733,14 @@ void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
         var_r28_11872 = 1;
     }
     temp_r29_11883 = MKWidget_GetMetric(1);
-    WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (this->unk4 + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r29_11883, var_r28_11872, 0U);
+    WidgetDrawBevel(MKVector3::zero, *(MKVector3 *) (((u8 *) this->unk4) + 0x38), 1.0f, *(MKWidget_GetMetric(0)), *temp_r29_11883, var_r28_11872, 0U);
     var_r5_11897 = 0x1A;
     if ((s32) this->unk80 > 1) {
         var_r5_11897 = 0x1E;
     }
     sp30 = 1.0f;
     sp34 = 1.0f;
-    temp_r3_11907 = this->unk4 + 0x38;
+    temp_r3_11907 = ((u8 *) this->unk4) + 0x38;
     sp38 = 0.0f;
     sp60 = (f64) sp30;
     sp68 = (f64) sp38;
@@ -6778,7 +6778,7 @@ void MKWidgetButton::Render(MKWidgetRenderContext *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
     s32 sp1C4;
     u32 sp1C0;
@@ -6890,7 +6890,7 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
                         MKWidget_Move(&this->unk54, *((MKVector3 *) &sp158));
                         sp98 = 2.0f;
                         sp9C = 2.0f;
-                        temp_r4_12131 = this->unk4 + 0x38;
+                        temp_r4_12131 = ((u8 *) this->unk4) + 0x38;
                         spA0 = 0.0f;
                         sp138 = (f64) sp98;
                         sp140 = (f64) spA0;
@@ -6911,7 +6911,7 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
                         MKWidget_Move(&this->unk28, *((MKVector3 *) &sp128));
                         sp70 = 0.0f;
                         sp6C = 6.0f;
-                        temp_r4_12187 = this->unk4 + 0x38;
+                        temp_r4_12187 = ((u8 *) this->unk4) + 0x38;
                         sp68 = 2.0f + (6.0f + temp_f30_12166);
                         sp110 = (f64) sp70;
                         sp108 = (f64) sp68;
@@ -6942,7 +6942,7 @@ s32 MKWidgetButton::MessageHandler(unsigned int arg0, unsigned int arg1) {
                         MKWidget_Move(&this->unk28, *((MKVector3 *) &spD8));
                         sp18 = 6.0f;
                         sp1C = 6.0f;
-                        temp_r4_12254 = this->unk4 + 0x38;
+                        temp_r4_12254 = ((u8 *) this->unk4) + 0x38;
                         sp20 = 0.0f;
                         spB8 = (f64) sp18;
                         spC0 = (f64) sp20;
@@ -6970,7 +6970,7 @@ block_40:
                                 return MKWidget_SendMessage(&this->unk28, arg0, arg1);
                             }
                             temp_r30_12292 = MKWidget::MessageHandler(arg0, arg1);
-                            MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (this->unk4 + 0x38));
+                            MKWidget_Resize((MKWidget *) this, *(MKVector3 *) (((u8 *) this->unk4) + 0x38));
                             return temp_r30_12292;
                         }
                         goto block_71;
@@ -9666,10 +9666,10 @@ void MKWidget_LoadHierarchy(const char *arg0, MKWidgetContainer *arg1) {
     M2C_FIELD(temp_r1_17584, s32 *, 0xC) = 0;
     M2C_FIELD(temp_r1_17584, s32 *, 8) = 0;
     temp_ret_17615 = Str_Printf("", temp_r3_17597, "MKWidgetContainer", temp_f1_17605);
-    MKMetadata_Open(Str_Printf("", temp_r3_17597, M2C_BITWISE(f32, temp_ret_17615)), temp_ret_17615, temp_r1_17584 + 0xC);
+    MKMetadata_Open(Str_Printf("", temp_r3_17597, M2C_BITWISE(f32, temp_ret_17615)), temp_ret_17615, ((u8 *) temp_r1_17584) + 0xC);
     *MKWidgetSerialise::pHierarchyFile = M2C_ERROR(/* Read from unset register $r3 */);
     temp_ret_17632 = Str_Printf("", temp_r3_17605);
-    MKMetadata_Open(Str_Printf("", temp_r3_17605, M2C_BITWISE(f32, temp_ret_17632)), temp_ret_17632, temp_r1_17584 + 8);
+    MKMetadata_Open(Str_Printf("", temp_r3_17605, M2C_BITWISE(f32, temp_ret_17632)), temp_ret_17632, ((u8 *) temp_r1_17584) + 8);
     *MKWidgetSerialise::pMetaDataFile = M2C_ERROR(/* Read from unset register $r3 */);
     ((MKWidgetSerialise *) (M2C_ERROR(/* Read from unset register $r3 */)))->SerialiseVersion();
     *MKWidgetSerialise::metaDataResolveIndex = 1;

@@ -186,7 +186,7 @@ void ZapArcFX::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, const float
         sp190 = M2C_FIELD(&arg1, f64 *, 8);
 loop_25:
         if (var_r31_177 >= 0) {
-            temp_r3_196 = this->unkC8 + var_r27_187;
+            temp_r3_196 = ((u8 *) this->unkC8) + var_r27_187;
             if ((u8) M2C_FIELD(temp_r3_196, u8 *, 0x48) == 0) {
                 if (var_r31_177 < 2) {
                     temp_f26_206 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -323,43 +323,43 @@ loop_25:
                     sp158 = temp_f0_495;
                     sp40 = arg0.unk8 + (f32) sp120;
                     sp160 = (f64) sp40;
-                    ((Matrix *) (this->unkC8 + var_r27_187))->SetIdentity();
-                    KDMath_BuildMatrixFromFwd(this->unkC8 + var_r27_187, *((MKVector3 *) &sp168), (MKVector3 *) &sp178);
+                    ((Matrix *) (((u8 *) this->unkC8) + var_r27_187))->SetIdentity();
+                    KDMath_BuildMatrixFromFwd(((u8 *) this->unkC8) + var_r27_187, *((MKVector3 *) &sp168), (MKVector3 *) &sp178);
                     temp_f1_519 = temp_f31_453 * MKRand_Float(&gViewSeed, 0.2f, 0.5f);
                     sp30 = temp_f1_519;
                     sp28 = temp_f1_519;
                     sp2C = temp_f1_519;
                     spF0 = (f64) sp30;
                     spE8 = (f64) sp28;
-                    temp_r3_528 = this->unkC8 + var_r27_187;
+                    temp_r3_528 = ((u8 *) this->unkC8) + var_r27_187;
                     temp_r3_528->Scale3x3(temp_r3_528, *((MKVector3 *) &spE8));
-                    temp_r4_535 = this->unkC8 + var_r27_187;
+                    temp_r4_535 = ((u8 *) this->unkC8) + var_r27_187;
                     M2C_FIELD(temp_r4_535, f32 *, 0x30) = (f32) sp158;
                     M2C_FIELD(temp_r4_535, f32 *, 0x34) = (*(f32 *) ((u8 *) &sp158 + 0x4));
                     M2C_FIELD(temp_r4_535, f32 *, 0x38) = (f32) sp160;
                     M2C_FIELD(temp_r4_535, f32 *, 0x3C) = 1.0f;
                     *(this->unkC8 + (var_r27_187 + 0x40)) = 1.0f;
-                    temp_r3_548 = this->unkC8 + (var_r27_187 + 0x50);
+                    temp_r3_548 = ((u8 *) this->unkC8) + (var_r27_187 + 0x50);
                     M2C_FIELD(temp_r3_548, f64 *, 0) = (f64) M2C_FIELD(arg4, f64 *, 0);
                     M2C_FIELD(temp_r3_548, f64 *, 8) = (f64) M2C_FIELD(arg4, f64 *, 8);
                 } else {
                     temp_r3_196->SetIdentity();
-                    KDMath_BuildMatrixFromFwd(this->unkC8 + var_r27_187, *((MKVector3 *) &sp188), (MKVector3 *) &sp198);
+                    KDMath_BuildMatrixFromFwd(((u8 *) this->unkC8) + var_r27_187, *((MKVector3 *) &sp188), (MKVector3 *) &sp198);
                     temp_f1_559 = &arg2;
                     sp20 = temp_f1_559;
                     sp18 = temp_f1_559;
                     sp1C = temp_f1_559;
                     spE0 = (f64) sp20;
                     spD8 = (f64) sp18;
-                    temp_r3_569 = this->unkC8 + var_r27_187;
+                    temp_r3_569 = ((u8 *) this->unkC8) + var_r27_187;
                     temp_r3_569->Scale3x3(temp_r3_569, *((MKVector3 *) &spD8));
-                    temp_r4_576 = this->unkC8 + var_r27_187;
+                    temp_r4_576 = ((u8 *) this->unkC8) + var_r27_187;
                     M2C_FIELD(temp_r4_576, f32 *, 0x30) = (f32) arg0.unk0;
                     M2C_FIELD(temp_r4_576, f32 *, 0x34) = (f32) arg0.unk4;
                     M2C_FIELD(temp_r4_576, f32 *, 0x38) = (f32) arg0.unk8;
                     M2C_FIELD(temp_r4_576, f32 *, 0x3C) = 1.0f;
                     *(this->unkC8 + (var_r27_187 + 0x40)) = 1.0f;
-                    temp_r3_589 = this->unkC8 + (var_r27_187 + 0x50);
+                    temp_r3_589 = ((u8 *) this->unkC8) + (var_r27_187 + 0x50);
                     M2C_FIELD(temp_r3_589, f64 *, 0) = (f64) M2C_FIELD(arg4, f64 *, 0);
                     M2C_FIELD(temp_r3_589, f64 *, 8) = (f64) M2C_FIELD(arg4, f64 *, 8);
                 }
@@ -418,14 +418,14 @@ void ZapArcFX::Draw() {
     var_r28_684 = 0;
     var_r31_685 = 0;
     do {
-        temp_r5_688 = this->unkC8 + var_r31_685;
+        temp_r5_688 = ((u8 *) this->unkC8) + var_r31_685;
         if ((u8) M2C_FIELD(temp_r5_688, u8 *, 0x48) != 0) {
             temp_f31_701 = 1.0f - (M2C_FIELD(temp_r5_688, f32 *, 0x44) / 0.25f);
             MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r5_688, s32 *, 0x4C), 1U, 1U);
             MKModel_SetWorldMatrix(this->unk4, *(this->unkC8 + var_r31_685));
             sp18 = temp_f31_701;
             sp1C = temp_f31_701;
-            temp_r3_712 = this->unkC8 + (var_r31_685 + 0x50);
+            temp_r3_712 = ((u8 *) this->unkC8) + (var_r31_685 + 0x50);
             sp20 = temp_f31_701;
             sp24 = 1.0f;
             sp28 = (f64) sp18;
@@ -464,13 +464,13 @@ void ZapArcFX::Update() {
     var_r31_761 = 0;
     this->unkCC += gUpdateTimeDelta;
     do {
-        temp_r3_768 = this->unkC8 + var_r31_761;
+        temp_r3_768 = ((u8 *) this->unkC8) + var_r31_761;
         if ((u8) M2C_FIELD(temp_r3_768, u8 *, 0x48) != 0) {
             sp10 = 1.0f;
             M2C_FIELD(temp_r3_768, f32 *, 0x40) = (f32) ((0.35f * gUpdateTimeDelta) + M2C_FIELD(temp_r3_768, f32 *, 0x40));
             temp_r3_782 = this->unkC8;
             temp_f1_783 = *(temp_r3_782 + (var_r31_761 + 0x40));
-            temp_r3_784 = temp_r3_782 + var_r31_761;
+            temp_r3_784 = ((u8 *) temp_r3_782) + var_r31_761;
             sp8 = temp_f1_783;
             spC = temp_f1_783;
             sp20 = (f64) sp10;

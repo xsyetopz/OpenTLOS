@@ -168,7 +168,7 @@ void Leviathan::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void Leviathan::Draw() {
     f64 sp78;
     f64 sp70;
@@ -187,7 +187,7 @@ void Leviathan::Draw() {
     u8 temp_r31_135;
 
     GameProp::Draw();
-    M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &sp3C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
     sp30 = sp70;
     temp_f3_120 = this->unk1BC;
     sp38 = sp78;

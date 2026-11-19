@@ -789,7 +789,7 @@ u32 GetBreathAttackDesc() {
 
     if (HasAttack(selectionElement, selectionAttack) != 0) {
         temp_r3_1626 = GameData::gameData + (selectionElement << 5);
-        temp_r4_1627 = temp_r3_1626 + 0xD4;
+        temp_r4_1627 = ((u8 *) temp_r3_1626) + 0xD4;
         if ((s32) selectionAttack == 3) {
             var_r3_1630 = 0;
             if (((s32) M2C_FIELD(temp_r3_1626, s32 *, 0xD4) == 3) && ((s32) M2C_FIELD(temp_r4_1627, s32 *, 4) == 3)) {
@@ -817,7 +817,7 @@ u32 GetBreathAttackName() {
 
     if (HasAttack(selectionElement, selectionAttack) != 0) {
         temp_r3_1686 = GameData::gameData + (selectionElement << 5);
-        temp_r4_1687 = temp_r3_1686 + 0xD4;
+        temp_r4_1687 = ((u8 *) temp_r3_1686) + 0xD4;
         if ((s32) selectionAttack == 3) {
             var_r3_1690 = 0;
             if (((s32) M2C_FIELD(temp_r3_1686, s32 *, 0xD4) == 3) && ((s32) M2C_FIELD(temp_r4_1687, s32 *, 4) == 3)) {

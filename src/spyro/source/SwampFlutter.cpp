@@ -37,7 +37,7 @@ void SwampFlutterCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void SwampFlutterCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -49,10 +49,10 @@ void SwampFlutterCritter::Draw() {
     var_r31_93 = 0;
 loop_2:
     if (var_r30_92 < (s32) this->unk90) {
-        temp_r29_100 = this->unk170 + var_r31_93;
+        temp_r29_100 = ((u8 *) this->unk170) + var_r31_93;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_100, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_100, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_100 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_100) - 4) + 4, 0x40);
         MKModel_SetWorldMatrix(this->unk4, sp10);
         MKModel_Draw(this->unk4, NULL);
         var_r30_92 += 1;
@@ -250,7 +250,7 @@ void SwampFlutterCritter::FindNewFlyParameters(SwampFlutter *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampFlutterCritter::Update() {
     f64 sp60;
     f64 sp58;
@@ -276,7 +276,7 @@ void SwampFlutterCritter::Update() {
     var_r31_434 = 0;
 loop_8:
     if (var_r30_433 < (s32) this->unk90) {
-        temp_r4_439 = this->unk170 + var_r31_434;
+        temp_r4_439 = ((u8 *) this->unk170) + var_r31_434;
         temp_r4_439->unk64 -= gUpdateTimeDelta;
         temp_r4_439->unk54 += temp_r4_439->unk58 * gUpdateTimeDelta;
         if ((s32) temp_r4_439->unk60 != 0) {
@@ -316,7 +316,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SwampFlutterCritter::Resolve() {
     Volume sp8;
     SwampFlutter *temp_r30_560;
@@ -329,7 +329,7 @@ void SwampFlutterCritter::Resolve() {
     var_r28_553 = 0;
 loop_2:
     if (var_r31_551 < (s32) this->unk90) {
-        temp_r30_560 = this->unk170 + var_r28_553;
+        temp_r30_560 = ((u8 *) this->unk170) + var_r28_553;
         sp8.GetRandPos();
         sp8.unk10 = M2C_BITWISE(f64, sp8);
         sp8.unk18 = sp8.unk8;

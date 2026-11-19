@@ -41,7 +41,7 @@ loop_10:
         var_r30_70 = checked_cast<KDWaterVolume *, MKProp>(M2C_FIELD(var_r31_65, MKProp **, 0x28));
 loop_8:
         if (var_r30_70 != NULL) {
-            if ((M2C_FIELD(M2C_FIELD(var_r30_70, void **, 0x44), u8 (**)(void *), 0x38)(var_r30_70) != 0) && (((KDVolume *) (var_r30_70 + 0x50))->IsWithinXZ(*((MKVector3 *) this), &sp8) != 0)) {
+            if ((M2C_FIELD(M2C_FIELD(var_r30_70, void **, 0x44), u8 (**)(void *), 0x38)(var_r30_70) != 0) && (((KDVolume *) (((u8 *) var_r30_70) + 0x50))->IsWithinXZ(*((MKVector3 *) this), &sp8) != 0)) {
                 var_f0_86 = sp8;
                 if (var_f31_63 > var_f0_86) {
                     var_f0_86 = var_f31_63;
@@ -167,7 +167,7 @@ loop_15:
         var_r29_246 = checked_cast<KDWaterVolume *, MKProp>(M2C_FIELD(var_r30_241, MKProp **, 0x28));
 loop_13:
         if (var_r29_246 != NULL) {
-            if ((M2C_FIELD(M2C_FIELD(var_r29_246, void **, 0x44), u8 (**)(void *), 0x38)(var_r29_246) != 0) && (((KDVolume *) (var_r29_246 + 0x50))->IsWithin(*((MKVector3 *) this), &sp8) != 0)) {
+            if ((M2C_FIELD(M2C_FIELD(var_r29_246, void **, 0x44), u8 (**)(void *), 0x38)(var_r29_246) != 0) && (((KDVolume *) (((u8 *) var_r29_246) + 0x50))->IsWithin(*((MKVector3 *) this), &sp8) != 0)) {
                 var_f0_262 = sp8;
                 var_r31_236 = 1;
                 if (var_f31_233 > var_f0_262) {

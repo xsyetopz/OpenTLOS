@@ -89,7 +89,7 @@ void MKMetadata_OpenFromBuffer(const void *arg0, const void *arg1, int *arg2) {
     var_r4_126 = 0;
     M2C_FIELD(var_r3_118, void **, 4) = arg1;
     temp_r9_128 = M2C_FIELD(var_r3_118, void **, 0);
-    temp_r7_129 = temp_r9_128 + 0x10;
+    temp_r7_129 = ((u8 *) temp_r9_128) + 0x10;
 loop_5:
     temp_r0_139 = M2C_FIELD(temp_r9_128, u32 *, 4);
     if (var_r6_125 < temp_r0_139) {

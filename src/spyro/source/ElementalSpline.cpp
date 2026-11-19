@@ -134,10 +134,10 @@ void ElementalSpline::StateESTurningOffUpdate() {
         temp_r3_134 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(), 0xC)(), void **, 8);
         sp60 = M2C_FIELD(temp_r3_134, f64 *, 0x30);
         sp68 = M2C_FIELD(temp_r3_134, f64 *, 0x38);
-        Tools_GetClosestSplineTime(this->unkB0 + 0x30, *((MKVector3 *) &sp60), this->unk114);
+        Tools_GetClosestSplineTime(((u8 *) this->unkB0) + 0x30, *((MKVector3 *) &sp60), this->unk114);
         if (M2C_ERROR(/* Read from unset register $f1 */) > (this->unk10C / this->unk100)) {
             spC = 0.0f;
-            sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unkB0 + 0x30, KDSpline_PositionMixer);
+            sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             sp50 = M2C_BITWISE(f64, sp30);
             sp58 = (f64) sp30.unk8;
             sp20 = sp60 - sp50;
@@ -272,9 +272,9 @@ void ElementalSpline::StateESOnUpdate() {
         temp_r3_383 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(), 0xC)(), void **, 8);
         sp60 = M2C_FIELD(temp_r3_383, f64 *, 0x30);
         sp68 = M2C_FIELD(temp_r3_383, f64 *, 0x38);
-        Tools_GetClosestSplineTime(this->unkB0 + 0x30, *((MKVector3 *) &sp60), this->unk114);
+        Tools_GetClosestSplineTime(((u8 *) this->unkB0) + 0x30, *((MKVector3 *) &sp60), this->unk114);
         spC = 0.0f;
-        sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unkB0 + 0x30, KDSpline_PositionMixer);
+        sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         sp50 = M2C_BITWISE(f64, sp30);
         sp58 = (f64) sp30.unk8;
         sp20 = sp60 - sp50;
@@ -409,10 +409,10 @@ void ElementalSpline::StateESTurningOnUpdate() {
         temp_r3_632 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(), 0xC)(), void **, 8);
         sp60 = M2C_FIELD(temp_r3_632, f64 *, 0x30);
         sp68 = M2C_FIELD(temp_r3_632, f64 *, 0x38);
-        Tools_GetClosestSplineTime(this->unkB0 + 0x30, *((MKVector3 *) &sp60), this->unk114);
+        Tools_GetClosestSplineTime(((u8 *) this->unkB0) + 0x30, *((MKVector3 *) &sp60), this->unk114);
         if (M2C_ERROR(/* Read from unset register $f1 */) < (this->unk10C / this->unk100)) {
             spC = 0.0f;
-            sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unkB0 + 0x30, KDSpline_PositionMixer);
+            sp30.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             sp50 = M2C_BITWISE(f64, sp30);
             sp58 = (f64) sp30.unk8;
             sp20 = sp60 - sp50;
@@ -548,7 +548,7 @@ loop_2:
     if (var_r27_862 < var_r0_934) {
         temp_f1_871 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
-        spF8.GetMeasure(temp_f1_871, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        spF8.GetMeasure(temp_f1_871, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         sp118 = M2C_BITWISE(f64, spF8);
         sp120 = (f64) spF8.unk8;
         temp_f30_884 = this->unkB4;
@@ -577,7 +577,7 @@ loop_7:
     if (var_r26_949 < var_r0_1055) {
         temp_f1_956 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
-        ((KDUniformSpline *) &spC8)->GetMeasure(temp_f1_956, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &spC8)->GetMeasure(temp_f1_956, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         sp118 = spC8;
         sp120 = spD0;
         KDRand_UnitVectorXZ();
@@ -592,7 +592,7 @@ loop_7:
         gb.EmitSmallRocks(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp18);
         temp_f1_1000 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        sp88.GetMeasure(temp_f1_1000, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        sp88.GetMeasure(temp_f1_1000, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         sp118 = M2C_BITWISE(f64, sp88);
         sp120 = (f64) sp88.unk8;
         KDRand_UnitVectorXZ();
@@ -640,7 +640,7 @@ void ElementalSpline::EmitIceParticles(float arg0, float arg1) {
         temp_r28_1127 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
         temp_f1_1130 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
-        sp50.GetMeasure(temp_f1_1130, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        sp50.GetMeasure(temp_f1_1130, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         sp70 = M2C_BITWISE(f64, sp50);
         sp78 = (f64) sp50.unk8;
         temp_r3_1145 = checked_cast<PooledShatterProp *, MKProp>(temp_r28_1127->CreateInstance());
@@ -662,7 +662,7 @@ loop_8:
     if (var_r27_1187 < var_r0_1267) {
         temp_f1_1195 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        ((KDUniformSpline *) &sp40)->GetMeasure(temp_f1_1195, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp40)->GetMeasure(temp_f1_1195, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         sp70 = sp40;
         sp78 = sp48;
         temp_f30_1208 = this->unkB4;
@@ -751,7 +751,7 @@ loop_3:
         if (var_r27_1330 < var_r0_1390) {
             temp_f1_1339 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp10 = 0.0f;
-            spC8.GetMeasure(temp_f1_1339, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            spC8.GetMeasure(temp_f1_1339, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             spE8 = M2C_BITWISE(f64, spC8);
             spF0 = (f64) spC8.unk8;
             KDRand_UnitVector();
@@ -768,7 +768,7 @@ loop_3:
         }
         temp_f1_1400 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
-        ((KDUniformSpline *) &sp98)->GetMeasure(temp_f1_1400, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        ((KDUniformSpline *) &sp98)->GetMeasure(temp_f1_1400, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         spE8 = sp98;
         spF0 = spA0;
         temp_f30_1416 = this->unkB4;
@@ -889,7 +889,7 @@ void ElementalSpline::EmitFireParticles(float arg0, float arg1) {
     if (gb.unk30C >= this->unkF0) {
         temp_f1_1635 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
-        spD0.GetMeasure(temp_f1_1635, this->unkB0 + 0x30, KDSpline_PositionMixer);
+        spD0.GetMeasure(temp_f1_1635, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
         spF0 = M2C_BITWISE(f64, spD0);
         spF8 = (f64) spD0.unk8;
         temp_f24_1649 = this->unkB4;
@@ -912,7 +912,7 @@ loop_3:
         if (var_r25_1688 < var_r0_1798) {
             temp_f1_1696 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            ((KDUniformSpline *) &spA0)->GetMeasure(temp_f1_1696, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &spA0)->GetMeasure(temp_f1_1696, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             spF0 = spA0;
             spF8 = spA8;
             temp_f24_1710 = this->unkB4;
@@ -929,7 +929,7 @@ loop_3:
             ((CrashFirePS *) gb.unk68)->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &spD0.unk10), sp18);
             temp_f1_1743 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
-            ((KDUniformSpline *) &sp70)->GetMeasure(temp_f1_1743, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp70)->GetMeasure(temp_f1_1743, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             spF0 = sp70;
             spF8 = sp78;
             temp_f29_1756 = this->unkB4;
@@ -1105,7 +1105,7 @@ loop_65:
                 var_f1_1978 = arg1;
             }
             sp20 = 0.0f;
-            sp188.GetMeasure(var_f1_1978, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            sp188.GetMeasure(var_f1_1978, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_1991 = 1.0f;
             sp1D8 = M2C_BITWISE(f64, sp188);
             sp1E0 = (f64) sp188.unk8;
@@ -1121,7 +1121,7 @@ loop_65:
                 var_f1_2011 = arg0;
             }
             sp1C = 0.0f;
-            ((KDUniformSpline *) &sp168)->GetMeasure(var_f1_2011, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp168)->GetMeasure(var_f1_2011, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_2024 = 1.0f;
             sp1D8 = sp168;
             sp1E0 = sp170;
@@ -1139,7 +1139,7 @@ loop_65:
                 var_f1_2051 = 1.0f;
             }
             sp18 = 0.0f;
-            ((KDUniformSpline *) &sp148)->GetMeasure(var_f1_2051, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp148)->GetMeasure(var_f1_2051, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             sp1D8 = sp148;
             var_f1_2078 = ((f32) var_r30_1969 * this->unkFC) + arg0;
             sp1E0 = sp150;
@@ -1442,7 +1442,7 @@ loop_65:
                 var_f1_2570 = arg1;
             }
             sp20 = 0.0f;
-            sp188.GetMeasure(var_f1_2570, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            sp188.GetMeasure(var_f1_2570, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_2583 = 1.0f;
             sp1D8 = M2C_BITWISE(f64, sp188);
             sp1E0 = (f64) sp188.unk8;
@@ -1458,7 +1458,7 @@ loop_65:
                 var_f1_2603 = arg0;
             }
             sp1C = 0.0f;
-            ((KDUniformSpline *) &sp168)->GetMeasure(var_f1_2603, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp168)->GetMeasure(var_f1_2603, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_2616 = 1.0f;
             sp1D8 = sp168;
             sp1E0 = sp170;
@@ -1476,7 +1476,7 @@ loop_65:
                 var_f1_2643 = 1.0f;
             }
             sp18 = 0.0f;
-            ((KDUniformSpline *) &sp148)->GetMeasure(var_f1_2643, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp148)->GetMeasure(var_f1_2643, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             sp1D8 = sp148;
             var_f1_2670 = ((f32) var_r30_2561 * this->unkFC) + arg0;
             sp1E0 = sp150;
@@ -1763,7 +1763,7 @@ loop_65:
                 var_f1_3158 = arg1;
             }
             sp1C = 0.0f;
-            sp140.GetMeasure(var_f1_3158, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            sp140.GetMeasure(var_f1_3158, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_3171 = 1.0f;
             sp190 = M2C_BITWISE(f64, sp140);
             sp198 = (f64) sp140.unk8;
@@ -1779,7 +1779,7 @@ loop_65:
                 var_f1_3191 = arg0;
             }
             sp18 = 0.0f;
-            ((KDUniformSpline *) &sp120)->GetMeasure(var_f1_3191, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp120)->GetMeasure(var_f1_3191, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_3204 = 1.0f;
             sp190 = sp120;
             sp198 = sp128;
@@ -2129,7 +2129,7 @@ loop_73:
                 var_f1_3727 = arg1;
             }
             sp20 = 0.0f;
-            sp248.GetMeasure(var_f1_3727, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            sp248.GetMeasure(var_f1_3727, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_3740 = 1.0f;
             sp298 = M2C_BITWISE(f64, sp248);
             sp2A0 = (f64) sp248.unk8;
@@ -2145,7 +2145,7 @@ loop_73:
                 var_f1_3760 = arg0;
             }
             sp1C = 0.0f;
-            ((KDUniformSpline *) &sp228)->GetMeasure(var_f1_3760, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp228)->GetMeasure(var_f1_3760, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             var_f1_3773 = 1.0f;
             sp298 = sp228;
             sp2A0 = sp230;
@@ -2163,7 +2163,7 @@ loop_73:
                 var_f1_3800 = 1.0f;
             }
             sp18 = 0.0f;
-            ((KDUniformSpline *) &sp208)->GetMeasure(var_f1_3800, this->unkB0 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp208)->GetMeasure(var_f1_3800, ((u8 *) this->unkB0) + 0x30, KDSpline_PositionMixer);
             sp298 = sp208;
             var_f1_3827 = ((f32) var_r30_3717 * this->unkFC) + arg0;
             sp2A0 = sp210;
@@ -2486,7 +2486,7 @@ void ElementalSpline::Resolve() {
     case 0:
         this->unkF4 = MKMaterial_Create"FX_ElementalFlameWall";
         this->unkF8 = MKMaterial_Create"FX_ElementalFlameWall1";
-        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 100.0f;
         }
@@ -2503,7 +2503,7 @@ void ElementalSpline::Resolve() {
         break;
     case 1:
         this->unkF4 = MKMaterial_Create"FX_ElementalElectricityWall";
-        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 25.0f;
         }
@@ -2520,7 +2520,7 @@ void ElementalSpline::Resolve() {
         break;
     case 2:
         this->unkF4 = MKMaterial_Create"FX_ElementalEarthSpline";
-        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 300.0f;
         }
@@ -2537,7 +2537,7 @@ void ElementalSpline::Resolve() {
         break;
     case 3:
         this->unkF4 = MKMaterial_Create"FX_ElementalEarthSpline";
-        ((KDSound_SoundWall *) &this->unk120)->Init(this->unkB0 + 0x30, this->unkB4, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
+        ((KDSound_SoundWall *) &this->unk120)->Init(((u8 *) this->unkB0) + 0x30, this->unkB4, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 1.0f);
         if (this->unkB4 == 0.0f) {
             this->unkB4 = 100.0f;
         }

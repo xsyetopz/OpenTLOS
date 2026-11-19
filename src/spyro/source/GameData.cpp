@@ -447,7 +447,7 @@ loop_15:
                                         sp68 = "Attack1";
 loop_13:
                                         if (var_r15_808 != NULL) {
-                                            if (var_r15_808->LoadFloat(sp68 + 0x5B, sp5C + var_r25_810, 0) != 0) {
+                                            if (var_r15_808->LoadFloat(sp68 + 0x5B, ((u8 *) sp5C) + var_r25_810, 0) != 0) {
                                                 var_r25_810 += 4;
                                             }
                                             var_r15_808 = var_r15_808->unkC->GetNextLine(var_r15_808);

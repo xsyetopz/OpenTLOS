@@ -91,7 +91,7 @@ void SwayProperty::Update() {
         }
         M2C_FIELD(temp_r3_130, f32 *, 0x80) = var_f0_141;
         temp_r3_149 = *KDProperty::pInstanceMem + this->unk8;
-        temp_r30_151 = temp_r3_149 + 0x40;
+        temp_r30_151 = ((u8 *) temp_r3_149) + 0x40;
         sp40.operator*(_table_sinf(M2C_FIELD(temp_r3_149, f32 *, 0x80)));
         sp20 = sp40 + M2C_FIELD(temp_r30_151, f64 *, 0);
         sp28 = sp40.unk8 + M2C_FIELD(temp_r30_151, f32 *, 8);

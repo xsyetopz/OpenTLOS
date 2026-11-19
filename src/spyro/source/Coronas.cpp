@@ -30,12 +30,12 @@ void Coronas::Free(Corona *arg0) {
     var_r31_47 = 0;
     var_ctr_48 = 0x46;
 loop_1:
-    temp_r3_51 = this->unk4C + var_r31_47;
+    temp_r3_51 = ((u8 *) this->unk4C) + var_r31_47;
     if (temp_r3_51 == arg0) {
         temp_r3_54 = M2C_FIELD(temp_r3_51, MKZRequest **, 0x20);
         if (temp_r3_54 != NULL) {
             MKZRequest_Destroy(temp_r3_54);
-            M2C_FIELD((this->unk4C + var_r31_47), s32 *, 0x20) = 0;
+            M2C_FIELD((((u8 *) this->unk4C) + var_r31_47), s32 *, 0x20) = 0;
         }
         temp_r4_63 = this->unk4C;
         temp_r3_64 = var_r31_47 + 0x31;
@@ -51,7 +51,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'const bool *' to
 void *Coronas::Alloc(const MKVector3 &arg0, const MKVector4 &arg1, const float &arg2, const int &arg3, const bool &arg4) {
     s32 temp_r3_150;
     s32 temp_r3_163;
@@ -70,26 +70,26 @@ void *Coronas::Alloc(const MKVector3 &arg0, const MKVector4 &arg1, const float &
     var_r29_91 = 0;
     var_ctr_92 = 0x46;
 loop_1:
-    temp_r3_95 = this->unk4C + var_r29_91;
+    temp_r3_95 = ((u8 *) this->unk4C) + var_r29_91;
     if (!(((u8) M2C_FIELD(temp_r3_95, u8 *, 0x31) >> 7U) & 1)) {
         temp_r7_102 = var_r29_91 + 0x31;
         M2C_FIELD(temp_r3_95, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         temp_r4_106 = &arg4;
         M2C_FIELD(temp_r3_95, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        temp_r3_112 = this->unk4C + (var_r29_91 + 0x10);
+        temp_r3_112 = ((u8 *) this->unk4C) + (var_r29_91 + 0x10);
         M2C_FIELD(temp_r3_112, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r3_112, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD((this->unk4C + var_r29_91), f32 *, 0x24) = (f32) &arg2;
-        M2C_FIELD((this->unk4C + var_r29_91), s8 *, 0x30) = (s8) &arg3;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), f32 *, 0x24) = (f32) &arg2;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), s8 *, 0x30) = (s8) &arg3;
         temp_r3_123 = this->unk4C;
         *(temp_r3_123 + temp_r7_102) = *(temp_r3_123 + temp_r7_102) | 0x40;
-        M2C_FIELD((this->unk4C + var_r29_91), f32 *, 0x2C) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), f32 *, 0x2C) = 0.0f;
         temp_r3_130 = this->unk4C;
         *(temp_r3_130 + temp_r7_102) = (*(temp_r3_130 + temp_r7_102) & ~0x20) | ((temp_r4_106 << 5) & 0x20);
         if (temp_r4_106 != 0) {
-            M2C_FIELD((this->unk4C + var_r29_91), void **, 0x20) = MKZRequest_Create();
+            M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), void **, 0x20) = MKZRequest_Create();
             temp_r5_139 = this->unk4C;
-            temp_r3_141 = M2C_FIELD((temp_r5_139 + var_r29_91), void **, 0x20);
+            temp_r3_141 = M2C_FIELD((((u8 *) temp_r5_139) + var_r29_91), void **, 0x20);
             if (temp_r3_141 != NULL) {
                 M2C_FIELD(temp_r3_141, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
                 M2C_FIELD(temp_r3_141, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
@@ -98,12 +98,12 @@ loop_1:
                 *(temp_r5_139 + temp_r3_150) = *(temp_r5_139 + temp_r3_150) & ~0x20;
             }
         } else {
-            M2C_FIELD((this->unk4C + var_r29_91), s32 *, 0x20) = 0;
+            M2C_FIELD((((u8 *) this->unk4C) + var_r29_91), s32 *, 0x20) = 0;
         }
         temp_r4_162 = this->unk4C;
         temp_r3_163 = var_r29_91 + 0x31;
         *(temp_r4_162 + temp_r3_163) = *(temp_r4_162 + temp_r3_163) | 0x80;
-        return this->unk4C + var_r29_91;
+        return ((u8 *) this->unk4C) + var_r29_91;
     }
     var_r29_91 += 0x38;
     var_ctr_92 -= 1;
@@ -133,7 +133,7 @@ void Coronas::Draw() {
     var_r29_222 = 0;
     var_r31_223 = 0;
     do {
-        temp_r4_226 = this->unk4C + var_r31_223;
+        temp_r4_226 = ((u8 *) this->unk4C) + var_r31_223;
         temp_r3_227 = temp_r4_226->unk31;
         if (((temp_r3_227 >> 7U) & 1) && ((temp_r3_227 >> 6U) & 1) && ((temp_r30_209 == 0) || ((temp_r3_227 >> 4U) & 1))) {
             DrawCorona(temp_r4_226, &sp10);

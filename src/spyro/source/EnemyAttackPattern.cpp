@@ -74,8 +74,8 @@ void EAPItem::LoadLine(MKIniLine *arg0) {
     var_r31_113 = 0;
 loop_7:
     if (var_r29_112 < (s32) this->unk8) {
-        ((EAPCondition *) (this->unk4 + var_r31_113))->Init();
-        ((EAPCondition *) (this->unk4 + var_r31_113))->LoadLine(var_r30_83);
+        ((EAPCondition *) (((u8 *) this->unk4) + var_r31_113))->Init();
+        ((EAPCondition *) (((u8 *) this->unk4) + var_r31_113))->LoadLine(var_r30_83);
         var_r30_83 = var_r30_83->unkC->GetNextLine(var_r30_83);
         var_r29_112 += 1;
         var_r31_113 += 0x10;
@@ -110,7 +110,6 @@ void EAPItem::Init() {
     this->unk8 = 0;
 }
 
-#if 0 // DRAFT: illegal type
 void EnemyAttackPattern::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_205;
     MKIniLine *var_r30_198;
@@ -139,17 +138,15 @@ void EnemyAttackPattern::LoadLine(MKIniLine *arg0) {
     var_r31_221 = 0;
 loop_7:
     if (var_r29_220 < (s32) this->unk4) {
-        ((EAPItem *) (this->unk0 + var_r31_221))->Init();
-        ((EAPItem *) (this->unk0 + var_r31_221))->LoadLine(var_r30_198);
+        ((EAPItem *) (((u8 *) this->unk0) + var_r31_221))->Init();
+        ((EAPItem *) (((u8 *) this->unk0) + var_r31_221))->LoadLine(var_r30_198);
         var_r30_198 = var_r30_198->unkC->GetNextLine(var_r30_198);
         var_r29_220 += 1;
         var_r31_221 += 0xC;
         goto loop_7;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void EnemyAttackPattern::Deinit() {
     MKHeap *temp_r3_273;
     s32 var_r30_259;
@@ -161,7 +158,7 @@ void EnemyAttackPattern::Deinit() {
         var_r31_260 = 0;
 loop_3:
         if (var_r30_259 < (s32) this->unk4) {
-            ((EAPItem *) (this->unk0 + var_r31_260))->Deinit();
+            ((EAPItem *) (((u8 *) this->unk0) + var_r31_260))->Deinit();
             var_r30_259 += 1;
             var_r31_260 += 0xC;
             goto loop_3;
@@ -177,14 +174,12 @@ loop_3:
     this->unk0 = NULL;
     this->unk4 = 0;
 }
-#endif
 
 void EnemyAttackPattern::Init() {
     this->unk0 = NULL;
     this->unk4 = 0;
 }
 
-#if 0 // DRAFT: illegal type
 void EAPManagerDescriptor::LoadLine(EnemyDescriptor *arg0, MKIniLine *arg1) {
     MKHeap *temp_r3_328;
     MKIniLine *temp_r0_318;
@@ -216,8 +211,8 @@ void EAPManagerDescriptor::LoadLine(EnemyDescriptor *arg0, MKIniLine *arg1) {
     var_r31_344 = 0;
 loop_7:
     if (var_r29_343 < (s32) this->unk4) {
-        ((EnemyAttackPattern *) (this->unk0 + var_r31_344))->Init();
-        ((EnemyAttackPattern *) (this->unk0 + var_r31_344))->LoadLine(var_r30_321);
+        ((EnemyAttackPattern *) (((u8 *) this->unk0) + var_r31_344))->Init();
+        ((EnemyAttackPattern *) (((u8 *) this->unk0) + var_r31_344))->LoadLine(var_r30_321);
         var_r30_321 = var_r30_321->unkC->GetNextLine(var_r30_321);
         var_r29_343 += 1;
         var_r31_344 += 8;
@@ -225,9 +220,7 @@ loop_7:
     }
     pCurrEnemyDescriptor = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void EAPManagerDescriptor::Deinit() {
     MKHeap *temp_r3_398;
     s32 var_r30_384;
@@ -239,7 +232,7 @@ void EAPManagerDescriptor::Deinit() {
         var_r31_385 = 0;
 loop_3:
         if (var_r30_384 < (s32) this->unk4) {
-            ((EnemyAttackPattern *) (this->unk0 + var_r31_385))->Deinit();
+            ((EnemyAttackPattern *) (((u8 *) this->unk0) + var_r31_385))->Deinit();
             var_r30_384 += 1;
             var_r31_385 += 8;
             goto loop_3;
@@ -255,7 +248,6 @@ loop_3:
     this->unk0 = NULL;
     this->unk4 = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of keyword
 u32 EAPManager::EvaluateCondition(EAPItem *arg0, EAPCondition *arg1, Enemy *arg2, AITargetData *arg3) {

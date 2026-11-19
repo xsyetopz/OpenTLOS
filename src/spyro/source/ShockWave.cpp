@@ -231,7 +231,7 @@ loop_1:
     M2C_FIELD(temp_r3_435, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_435, f64 *, 0) * sp20);
     M2C_FIELD(temp_r3_435, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_435, f32 *, 8) * (f32) sp28);
     temp_r3_446 = M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C);
-    temp_r5_447 = temp_r3_446 + 0x10;
+    temp_r5_447 = ((u8 *) temp_r3_446) + 0x10;
     M2C_FIELD(temp_r5_447, f64 *, 0) = (f64) (M2C_FIELD(temp_r5_447, f64 *, 0) * sp20);
     temp_r25_452 = var_r31_387 * 0x28;
     M2C_FIELD(temp_r5_447, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_446, f32 *, 0x18) * (f32) sp28);

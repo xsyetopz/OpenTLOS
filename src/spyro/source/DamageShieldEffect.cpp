@@ -271,7 +271,7 @@ void DamageShieldEffect::DrawRipples() {
             sp110 = (f32) sp310 * temp_f24_349;
             sp198 = sp108;
             sp1A0 = (f64) sp110;
-            temp_r30_376 = temp_r29_336 + 0xA0;
+            temp_r30_376 = ((u8 *) temp_r29_336) + 0xA0;
             temp_f0_378 = sp108 + *temp_r30_376;
             spF8 = temp_f0_378;
             sp1A8 = temp_f0_378;

@@ -41,7 +41,7 @@ void IceSnoatCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void IceSnoatCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -53,10 +53,10 @@ void IceSnoatCritter::Draw() {
     var_r31_93 = 0;
 loop_2:
     if (var_r30_92 < (s32) this->unk90) {
-        temp_r29_100 = this->unk170 + var_r31_93;
+        temp_r29_100 = ((u8 *) this->unk170) + var_r31_93;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_100, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_100, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_100 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_100) - 4) + 4, 0x40);
         MKModel_SetWorldMatrix(this->unk4, sp10);
         MKModel_Draw(this->unk4, NULL);
         var_r30_92 += 1;
@@ -397,7 +397,7 @@ void IceSnoatCritter::FindNewBounceParameters(IceSnoat *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void IceSnoatCritter::Update() {
     f64 spD0;
     f64 spC8;
@@ -445,7 +445,7 @@ void IceSnoatCritter::Update() {
     var_r31_636 = 0;
 loop_24:
     if (var_r29_635 < (s32) this->unk90) {
-        temp_r28_641 = this->unk170 + var_r31_636;
+        temp_r28_641 = ((u8 *) this->unk170) + var_r31_636;
         temp_r28_641->unk64 -= gUpdateTimeDelta;
         temp_r28_641->unk54 += temp_r28_641->unk58 * gUpdateTimeDelta;
         temp_r0_650 = temp_r28_641->unk60;
@@ -868,7 +868,7 @@ void IceSnoatCritter::SetBounceState(IceSnoat *arg0) {
     FindNewBounceParameters(arg0);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void IceSnoatCritter::Resolve() {
     Volume sp88;
     f64 sp80;
@@ -899,7 +899,7 @@ void IceSnoatCritter::Resolve() {
     var_r31_1391 = 0;
 loop_4:
     if (var_r29_1389 < (s32) this->unk90) {
-        temp_r28_1398 = this->unk170 + var_r31_1391;
+        temp_r28_1398 = ((u8 *) this->unk170) + var_r31_1391;
         sp88.GetRandPos();
         sp20 = 0.0f;
         sp88.unk10 = M2C_BITWISE(f64, sp88);

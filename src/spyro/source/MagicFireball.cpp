@@ -444,7 +444,7 @@ void MagicFireball::Collided(MKCollisionResult &arg0) {
     sp2A9 = 0;
     this->unk18C = 0;
     KDSound_Stop(&this->unk164);
-    KDSound_Play3d(GS_IceOrgeMagicExplode, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_IceOrgeMagicExplode, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     if (((u8) arg0.unk50 != 0) && (temp_r3_687 = arg0.unk48, ((temp_r3_687 == NULL) == 0)) && (var_r3_690 = M2C_FIELD(temp_r3_687, void **, 8), ((var_r3_690 == NULL) == 0))) {
 
     } else {

@@ -57,7 +57,7 @@ void FuryFXEarth2::ResetFury() {
 loop_2:
     if ((var_r5_55 != NULL) && ((u32) *var_r5_55 != 0U)) {
         temp_r3_58 = this->unkC0;
-        this->unkC0 = temp_r3_58 + 4;
+        this->unkC0 = ((u8 *) temp_r3_58) + 4;
         temp_r4_61 = *temp_r3_58;
         *temp_r3_58 = (u32) *var_r5_55;
         *var_r5_55 = temp_r4_61;
@@ -319,7 +319,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void FuryFXEarth2::SpawnVortexElement() {
     Matrix spF0;
     M2C_UNK spEC;
@@ -355,7 +355,7 @@ void FuryFXEarth2::SpawnVortexElement() {
         this->unkC8 = 0.01f;
         temp_r3_515 = this->unkC0;
         if ((u32) M2C_FIELD(temp_r3_515, u32 *, -4) != 0U) {
-            temp_r3_519 = temp_r3_515 - 4;
+            temp_r3_519 = ((u8 *) temp_r3_515) - 4;
             this->unkC0 = temp_r3_519;
             temp_r31_521 = *temp_r3_519;
             if (temp_r31_521 != NULL) {
@@ -523,7 +523,7 @@ loop_24:
                 M2C_FIELD(temp_r29_892, f32 *, 0x30) = (f32) ((3000.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r29_892, f32 *, 0x30));
                 if (M2C_FIELD(temp_r29_892, f32 *, 0x30) >= 40000.0f) {
                     temp_r3_860 = this->unkC0;
-                    this->unkC0 = temp_r3_860 + 4;
+                    this->unkC0 = ((u8 *) temp_r3_860) + 4;
                     temp_r4_863 = *temp_r3_860;
                     *temp_r3_860 = (void *) *var_r31_711;
                     *var_r31_711 = temp_r4_863;
@@ -632,7 +632,7 @@ s32 FuryFXEarth2::Trigger(const MKVector3 &arg0) {
 loop_4:
     if ((var_r5_1053 != NULL) && ((u32) *var_r5_1053 != 0U)) {
         temp_r3_1056 = this->unkC0;
-        this->unkC0 = temp_r3_1056 + 4;
+        this->unkC0 = ((u8 *) temp_r3_1056) + 4;
         temp_r4_1059 = *temp_r3_1056;
         *temp_r3_1056 = (u32) *var_r5_1053;
         *var_r5_1053 = temp_r4_1059;
@@ -1232,7 +1232,7 @@ void FuryFXEarth2::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void FuryFXEarth2::LoadDone() {
     void **temp_r6_2089;
     void *temp_r31_2091;
@@ -1240,7 +1240,7 @@ void FuryFXEarth2::LoadDone() {
     KDProp::LoadDone();
 loop_2:
     if ((u32) M2C_FIELD(this->unkC0, u32 *, -4) != 0U) {
-        temp_r6_2089 = this->unkC0 - 4;
+        temp_r6_2089 = ((u8 *) this->unkC0) - 4;
         this->unkC0 = temp_r6_2089;
         temp_r31_2091 = *temp_r6_2089;
         M2C_FIELD(temp_r31_2091, s32 *, 0x40) = MKRand_Int(&gViewSeed, 0, 4);
@@ -1280,18 +1280,18 @@ void FuryFXEarth2::Init() {
     }
     this->unkC0 = var_r3_2172;
     var_r5_2181 = this->unkC0;
-    this->unkC0 = var_r5_2181 + 0xFA0;
+    this->unkC0 = ((u8 *) var_r5_2181) + 0xFA0;
     M2C_FIELD(var_r5_2181, s32 *, 0xFA0) = 0;
     var_ctr_2185 = 0x32;
     do {
         temp_r3_2187 = this->unkC0;
-        this->unkC0 = temp_r3_2187 + 4;
+        this->unkC0 = ((u8 *) temp_r3_2187) + 4;
         M2C_FIELD(temp_r3_2187, void **, 4) = var_r5_2181;
         var_r5_2181 += 0x50;
         var_ctr_2185 -= 1;
     } while (var_ctr_2185 != 0);
     temp_r3_2193 = this->unkC0;
-    this->unkC0 = temp_r3_2193 + 4;
+    this->unkC0 = ((u8 *) temp_r3_2193) + 4;
     M2C_FIELD(temp_r3_2193, void **, 4) = NULL;
 }
 #endif

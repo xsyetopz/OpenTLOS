@@ -40,7 +40,7 @@ void ShwimmaCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ShwimmaCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -52,11 +52,11 @@ void ShwimmaCritter::Draw() {
     var_r31_93 = 0;
 loop_4:
     if (var_r30_92 < (s32) this->unk90) {
-        temp_r29_97 = this->unk170 + var_r31_93;
+        temp_r29_97 = ((u8 *) this->unk170) + var_r31_93;
         if ((s32) M2C_FIELD(temp_r29_97, s32 *, 0x60) != 0) {
             this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
             this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
-            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_97 - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_97) - 4) + 4, 0x40);
             MKModel_SetWorldMatrix(this->unk4, sp10);
             MKModel_Draw(this->unk4, NULL);
         }
@@ -67,7 +67,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ShwimmaCritter::Update() {
     s8 sp1B8;
     s32 sp1B4;
@@ -135,7 +135,7 @@ void ShwimmaCritter::Update() {
     var_r28_160 = 0;
 loop_38:
     if (var_r31_159 < (s32) this->unk90) {
-        temp_r30_165 = this->unk170 + var_r28_160;
+        temp_r30_165 = ((u8 *) this->unk170) + var_r28_160;
         temp_r30_165->unk30.unk34 -= gUpdateTimeDelta;
         temp_r30_165->unk30.unk24 += temp_r30_165->unk30.unk28 * gUpdateTimeDelta;
         temp_r0_174 = temp_r30_165->unk30.unk30;

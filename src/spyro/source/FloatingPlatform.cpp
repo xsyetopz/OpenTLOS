@@ -147,7 +147,7 @@ void FloatingPlatform::PropUpdate() {
         }
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk190, &sp50);
         if (MKRand_Int(&gViewSeed, 0, 3) == 0) {
-            temp_r4_263 = this->unk8 + 0x10;
+            temp_r4_263 = ((u8 *) this->unk8) + 0x10;
             temp_f0_265 = M2C_FIELD(temp_r4_263, f64 *, 0) * 5.56078426e-315;
             sp20 = temp_f0_265;
             sp40 = temp_f0_265;
@@ -157,7 +157,7 @@ void FloatingPlatform::PropUpdate() {
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(sp50, *((MKVector3 *) &sp40), spC);
         }
         if ((s32) this->unk108.unk38 > 0) {
-            temp_r4_292 = this->unk8 + 0x10;
+            temp_r4_292 = ((u8 *) this->unk8) + 0x10;
             temp_f0_294 = M2C_FIELD(temp_r4_292, f64 *, 0) * 1.628603276e-314;
             sp10 = temp_f0_294;
             sp30 = temp_f0_294;

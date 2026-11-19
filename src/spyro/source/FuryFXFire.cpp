@@ -90,8 +90,8 @@ void FuryFXFire::ResetFury() {
         M2C_FIELD(temp_r5_102, u8 *, 0xA0) = (u8) ((M2C_FIELD(temp_r5_102, u8 *, 0xA0) & ~0x80) | ((lit_1163 << 7) & 0x80));
         temp_r4_107 = M2C_FIELD(temp_r28_100, void **, 0x130);
         M2C_FIELD(temp_r4_107, u8 *, 0xA0) = (u8) (M2C_FIELD(temp_r4_107, u8 *, 0xA0) & ~0x40);
-        KDSound_Stop(temp_r28_100 + 0x134);
-        KDSound_Stop(temp_r28_100 + 0x15C);
+        KDSound_Stop(((u8 *) temp_r28_100) + 0x134);
+        KDSound_Stop(((u8 *) temp_r28_100) + 0x15C);
         var_r27_97 += 1;
         var_r30_96 += 0x80;
     } while (var_r27_97 < 3);
@@ -247,7 +247,7 @@ void FuryFXFire::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void FuryFXFire::Deinit() {
     Corona *temp_r4_396;
     MKMaterial *temp_r3_417;
@@ -260,8 +260,8 @@ void FuryFXFire::Deinit() {
     var_r31_369 = 0;
     do {
         temp_r30_371 = this + var_r31_369;
-        KDSound_Stop(temp_r30_371 + 0x134);
-        KDSound_Stop(temp_r30_371 + 0x15C);
+        KDSound_Stop(((u8 *) temp_r30_371) + 0x134);
+        KDSound_Stop(((u8 *) temp_r30_371) + 0x15C);
         var_r29_368 += 1;
         var_r31_369 += 0x80;
     } while (var_r29_368 < 3);
@@ -425,15 +425,15 @@ void FuryFXFire::UpdateDragons() {
         if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
             var_r4_654 = GS_CynderFuryLP;
         }
-        temp_r25_660 = temp_r30_570 + 0x120;
+        temp_r25_660 = ((u8 *) temp_r30_570) + 0x120;
         sp8 = 1;
-        ((KDSoundFader *) (temp_r30_570 + 0x134))->Update(var_r4_654, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) (((u8 *) temp_r30_570) + 0x134))->Update(var_r4_654, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         sp8 = 1;
         var_r4_676 = GS_SpyroFuryAttack3;
         if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
             var_r4_676 = GS_CynderFuryExtra1;
         }
-        ((KDSoundFader *) (temp_r30_570 + 0x15C))->Update(var_r4_676, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+        ((KDSoundFader *) (((u8 *) temp_r30_570) + 0x15C))->Update(var_r4_676, 1U, ((u8) M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unkA0 >> 6U) & 1, NULL, temp_r25_660, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         var_r28_563 += 1;
         var_r26_565 += 0x80;
     } while (var_r28_563 < 3);
@@ -489,8 +489,8 @@ void FuryFXFire::Message(MKMessage *arg0) {
     var_r31_796 = 0;
     do {
         temp_r30_798 = this + var_r31_796;
-        ((KDSoundPlayer *) (temp_r30_798 + 0x134))->Message(arg0);
-        ((KDSoundPlayer *) (temp_r30_798 + 0x15C))->Message(arg0);
+        ((KDSoundPlayer *) (((u8 *) temp_r30_798) + 0x134))->Message(arg0);
+        ((KDSoundPlayer *) (((u8 *) temp_r30_798) + 0x15C))->Message(arg0);
         var_r29_795 += 1;
         var_r31_796 += 0x80;
     } while (var_r29_795 < 3);
@@ -1324,8 +1324,8 @@ loop_87:
                     M2C_FIELD(temp_r5_2082, u8 *, 0xA0) = (u8) ((M2C_FIELD(temp_r5_2082, u8 *, 0xA0) & ~0x80) | ((lit_910 << 7) & 0x80));
                     temp_r4_2087 = M2C_FIELD(temp_r26_2080, void **, 0x130);
                     M2C_FIELD(temp_r4_2087, u8 *, 0xA0) = (u8) (M2C_FIELD(temp_r4_2087, u8 *, 0xA0) & ~0x40);
-                    KDSound_Stop(temp_r26_2080 + 0x134);
-                    KDSound_Stop(temp_r26_2080 + 0x15C);
+                    KDSound_Stop(((u8 *) temp_r26_2080) + 0x134);
+                    KDSound_Stop(((u8 *) temp_r26_2080) + 0x15C);
                     var_r28_2072 += 1;
                     var_r31_2073 += 0x80;
                 } while (var_r28_2072 < 3);
@@ -1428,7 +1428,7 @@ loop_87:
                 var_r27_2370 = 0;
                 temp_r28_2371 = gb.unkC;
                 temp_r3_2372 = M2C_FIELD(temp_r28_2371, KDSynkerPlayer3 **, 0x78);
-                if (((temp_r3_2372 != NULL) && (temp_r3_2372->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_2371, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r28_2371 + 0x24))->GetState() == 2))) {
+                if (((temp_r3_2372 != NULL) && (temp_r3_2372->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r28_2371, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r28_2371) + 0x24))->GetState() == 2))) {
                     var_r27_2370 = 1;
                 }
                 if ((var_r27_2370 == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
@@ -1726,8 +1726,8 @@ void FuryFXFire::Resolve() {
         sp68 = (f64) sp8;
         sp70 = (f64) sp10;
         ((ShapedTrailFX *) (M2C_FIELD(temp_r29_3025, ShapedTrailFX **, 0x130)))->InitData(this->unkEC, lit_774, "FX_367", lit_775, *((MKVector4 *) &sp68), 2.5f, 0U, 1.0f);
-        ((KDSoundFader *) (temp_r29_3025 + 0x134))->Init(0.25f, 0.25f);
-        ((KDSoundFader *) (temp_r29_3025 + 0x15C))->Init(0.25f, 0.25f);
+        ((KDSoundFader *) (((u8 *) temp_r29_3025) + 0x134))->Init(0.25f, 0.25f);
+        ((KDSoundFader *) (((u8 *) temp_r29_3025) + 0x15C))->Init(0.25f, 0.25f);
         M2C_FIELD(temp_r29_3025, f32 *, 0x110) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
         M2C_FIELD(temp_r29_3025, f32 *, 0x114) = MKRand_Float(&gViewSeed, 3.1415927f, 6.2831855f);
         M2C_FIELD(temp_r29_3025, f32 *, 0x118) = MKRand_Float(&gViewSeed, 0.0f, 100.0f);

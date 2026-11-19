@@ -651,7 +651,6 @@ void EnemyRegion::Init() {
     this->unk30 = 0;
 }
 
-#if 0 // DRAFT: illegal type
 u8 PolygonWindingOrderIsClockWise(KDPathSegment *arg0) {
     f32 temp_f3_1186;
     f32 temp_f4_1185;
@@ -669,7 +668,7 @@ u8 PolygonWindingOrderIsClockWise(KDPathSegment *arg0) {
         } while (var_ctr_1148 != 0);
     }
     temp_r4_1174 = arg0->unk24;
-    temp_r3_1180 = temp_r4_1174 + ((temp_r5_1145 - 1) * arg0->unk1C);
+    temp_r3_1180 = ((u8 *) temp_r4_1174) + ((temp_r5_1145 - 1) * arg0->unk1C);
     temp_f5_1183 = M2C_FIELD(temp_r3_1180, f32 *, 4) - M2C_FIELD(temp_r4_1174, f32 *, 4);
     temp_f4_1185 = M2C_FIELD(temp_r3_1180, f32 *, 0) - M2C_FIELD(temp_r4_1174, f32 *, 0);
     temp_f3_1186 = M2C_FIELD(temp_r3_1180, f32 *, 8) - M2C_FIELD(temp_r4_1174, f32 *, 8);
@@ -678,7 +677,6 @@ u8 PolygonWindingOrderIsClockWise(KDPathSegment *arg0) {
     }
     return (u8) ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void PolygonCentroid(KDPathSegment *arg0) {
@@ -732,10 +730,10 @@ void PolygonCentroid(KDPathSegment *arg0) {
             temp_r0_1237 = (temp_r3_1231 / temp_r5_1223) * temp_r5_1223;
             temp_r4_1238 = var_r9_1222 * temp_r7_1232;
             var_r9_1222 += 1;
-            temp_r6_1242 = temp_r8_1234 + temp_r4_1238;
+            temp_r6_1242 = ((u8 *) temp_r8_1234) + temp_r4_1238;
             temp_f8_1244 = M2C_FIELD(temp_r6_1242, f32 *, 8);
             temp_f7_1246 = M2C_FIELD(temp_r6_1242, f32 *, 0);
-            temp_r3_1247 = temp_r8_1234 + ((temp_r3_1231 - temp_r0_1237) * temp_r7_1232);
+            temp_r3_1247 = ((u8 *) temp_r8_1234) + ((temp_r3_1231 - temp_r0_1237) * temp_r7_1232);
             var_f0_1221 += *(temp_r8_1234 + (temp_r4_1238 + 4));
             temp_f2_1249 = M2C_FIELD(temp_r3_1247, f32 *, 0);
             temp_f9_1250 = M2C_FIELD(temp_r3_1247, f32 *, 8);
@@ -746,7 +744,7 @@ void PolygonCentroid(KDPathSegment *arg0) {
         } while (var_ctr_1227 != 0);
     }
     temp_r4_1263 = temp_r30_1217->unk24;
-    temp_r3_1269 = temp_r4_1263 + ((temp_r5_1223 - 1) * temp_r30_1217->unk1C);
+    temp_r3_1269 = ((u8 *) temp_r4_1263) + ((temp_r5_1223 - 1) * temp_r30_1217->unk1C);
     temp_f7_1272 = M2C_FIELD(temp_r3_1269, f32 *, 4) - M2C_FIELD(temp_r4_1263, f32 *, 4);
     temp_f6_1274 = M2C_FIELD(temp_r3_1269, f32 *, 0) - M2C_FIELD(temp_r4_1263, f32 *, 0);
     temp_f5_1275 = M2C_FIELD(temp_r3_1269, f32 *, 8) - M2C_FIELD(temp_r4_1263, f32 *, 8);
@@ -768,7 +766,6 @@ void PolygonCentroid(KDPathSegment *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 f32 PolygonArea(KDPathSegment *arg0) {
     f32 temp_f4_1374;
     f32 temp_f5_1373;
@@ -797,14 +794,14 @@ f32 PolygonArea(KDPathSegment *arg0) {
             temp_r0_1345 = (var_r8_1334 + 1) % temp_r5_1333;
             temp_r4_1346 = var_r8_1334 * temp_r6_1341;
             var_r8_1334 += 1;
-            temp_r4_1348 = temp_r7_1343 + temp_r4_1346;
-            temp_r4_1352 = temp_r7_1343 + (temp_r0_1345 * temp_r6_1341);
+            temp_r4_1348 = ((u8 *) temp_r7_1343) + temp_r4_1346;
+            temp_r4_1352 = ((u8 *) temp_r7_1343) + (temp_r0_1345 * temp_r6_1341);
             var_f1_1335 = -((M2C_FIELD(temp_r4_1348, f32 *, 8) * M2C_FIELD(temp_r4_1352, f32 *, 0)) - (var_f1_1335 + (M2C_FIELD(temp_r4_1348, f32 *, 0) * M2C_FIELD(temp_r4_1352, f32 *, 8))));
             var_ctr_1336 -= 1;
         } while (var_ctr_1336 != 0);
     }
     temp_r4_1362 = arg0->unk24;
-    temp_r3_1368 = temp_r4_1362 + ((temp_r5_1333 - 1) * arg0->unk1C);
+    temp_r3_1368 = ((u8 *) temp_r4_1362) + ((temp_r5_1333 - 1) * arg0->unk1C);
     temp_f6_1371 = M2C_FIELD(temp_r3_1368, f32 *, 4) - M2C_FIELD(temp_r4_1362, f32 *, 4);
     temp_f5_1373 = M2C_FIELD(temp_r3_1368, f32 *, 0) - M2C_FIELD(temp_r4_1362, f32 *, 0);
     temp_f4_1374 = M2C_FIELD(temp_r3_1368, f32 *, 8) - M2C_FIELD(temp_r4_1362, f32 *, 8);
@@ -813,4 +810,3 @@ f32 PolygonArea(KDPathSegment *arg0) {
     }
     return var_f1_1335 * 0.5f;
 }
-#endif

@@ -67,7 +67,7 @@ void IceBreathFX::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void IceBreathFX::DrawWallIceShards() {
     Matrix sp10;
     M2C_UNK spC;
@@ -84,7 +84,7 @@ loop_4:
             if (var_f0_97 < 0.0f) {
                 var_f0_97 = -var_f0_97;
             }
-            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r6_128 - 4) + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r6_128) - 4) + 4, 0x40);
             sp10.Scale3x3(&sp10, M2C_FIELD(temp_r6_128, f32 *, 0x44) * (1.0f - var_f0_97));
             MKModel_SetWorldMatrix(this->unkB4, sp10);
             MKModel_Draw(this->unkB4, NULL);

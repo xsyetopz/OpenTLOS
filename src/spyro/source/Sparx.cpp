@@ -72,7 +72,7 @@ void Sparx::StateAction_StrafeTargetUpdate() {
     void *temp_r31_59;
     void *temp_r3_81;
 
-    ((SpyroTargetList *) (this->unk94 + 0xB90))->GetCurrentTarget();
+    ((SpyroTargetList *) (((u8 *) this->unk94) + 0xB90))->GetCurrentTarget();
     temp_r30_49 = M2C_ERROR(/* Read from unset register $r3 */);
     if ((temp_r30_49 != NULL) && (M2C_FIELD(*M2C_ERROR(/* Read from unset register $r3 */), u32 (**)(), 8)() != 0U)) {
         temp_r31_59 = checked_cast<SparxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);

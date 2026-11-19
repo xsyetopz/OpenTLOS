@@ -313,7 +313,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         this->unk1D4 = 0.0f;
         this->unk1D4 = 10000.0f / M2C_BITWISE(f32, this->unk1C4);
         if (((s32) M2C_FIELD(this, s32 *, 0x1BC) == 2) && (gb.unk0->GetHeroType() == 0)) {
-            KDSound_Play3d(GS_CynderBreathStart2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_CynderBreathStart2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         break;
     }
@@ -1126,7 +1126,7 @@ void FireBombFX::Update() {
         temp_f0_1566 = sp458 * 5.49408334e-315;
         sp278 = temp_f0_1566;
         sp468 = temp_f0_1566;
-        temp_r4_1573 = this->unk8 + 0x30;
+        temp_r4_1573 = ((u8 *) this->unk8) + 0x30;
         sp280 = sp458.unk8 * 50.0f;
         sp470 = (f64) sp280;
         temp_f0_1579 = M2C_FIELD(temp_r4_1573, f64 *, 0) + temp_f0_1566;

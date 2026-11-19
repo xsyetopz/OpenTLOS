@@ -111,9 +111,9 @@ s32 File_Seek(int arg0, int arg1, int arg2) {
         if ((s32) M2C_FIELD(temp_r31_185, s32 *, 0x3C) != -1) {
             temp_r7_190 = &semaJobCount + 0x1A20;
             *(temp_r7_190 + (jobListHead * 0x4C)) = 4;
-            M2C_FIELD((temp_r7_190 + (jobListHead * 0x4C)), s32 *, 4) = arg0;
-            M2C_FIELD((temp_r7_190 + (jobListHead * 0x4C)), s32 *, 8) = arg1;
-            M2C_FIELD((temp_r7_190 + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
+            M2C_FIELD((((u8 *) temp_r7_190) + (jobListHead * 0x4C)), s32 *, 4) = arg0;
+            M2C_FIELD((((u8 *) temp_r7_190) + (jobListHead * 0x4C)), s32 *, 8) = arg1;
+            M2C_FIELD((((u8 *) temp_r7_190) + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
             M2C_FIELD(temp_r31_185, s32 *, 0x48) = 0;
             M2C_FIELD(temp_r31_185, s32 *, 0x44) = (s32) (M2C_FIELD(temp_r31_185, s32 *, 0x44) + 1);
             temp_r4_213 = jobListHead + 1;
@@ -147,10 +147,10 @@ s32 File_Write(int arg0, const void *arg1, int arg2) {
         if ((s32) M2C_FIELD(temp_r31_255, s32 *, 0x3C) != -1) {
             temp_r7_260 = &semaJobCount + 0x1A20;
             *(temp_r7_260 + (jobListHead * 0x4C)) = 3;
-            M2C_FIELD((temp_r7_260 + (jobListHead * 0x4C)), s32 *, 4) = arg0;
-            M2C_FIELD((temp_r7_260 + (jobListHead * 0x4C)), void **, 8) = arg1;
-            M2C_FIELD((temp_r7_260 + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
-            M2C_FIELD((temp_r7_260 + (jobListHead * 0x4C)), s32 *, 0x10) = arg2;
+            M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), s32 *, 4) = arg0;
+            M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), void **, 8) = arg1;
+            M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
+            M2C_FIELD((((u8 *) temp_r7_260) + (jobListHead * 0x4C)), s32 *, 0x10) = arg2;
             M2C_FIELD(temp_r31_255, s32 *, 0x48) = 0;
             M2C_FIELD(temp_r31_255, s32 *, 0x44) = (s32) (M2C_FIELD(temp_r31_255, s32 *, 0x44) + 1);
             temp_r4_287 = jobListHead + 1;
@@ -187,9 +187,9 @@ s32 File_Read(int arg0, void *arg1, int arg2, int arg3) {
         if ((s32) M2C_FIELD(temp_r31_332, s32 *, 0x3C) != -1) {
             temp_r8_337 = &semaJobCount + 0x1A20;
             *(temp_r8_337 + (jobListHead * 0x4C)) = 2;
-            M2C_FIELD((temp_r8_337 + (jobListHead * 0x4C)), s32 *, 4) = arg0;
-            M2C_FIELD((temp_r8_337 + (jobListHead * 0x4C)), void **, 8) = arg1;
-            M2C_FIELD((temp_r8_337 + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
+            M2C_FIELD((((u8 *) temp_r8_337) + (jobListHead * 0x4C)), s32 *, 4) = arg0;
+            M2C_FIELD((((u8 *) temp_r8_337) + (jobListHead * 0x4C)), void **, 8) = arg1;
+            M2C_FIELD((((u8 *) temp_r8_337) + (jobListHead * 0x4C)), s32 *, 0xC) = arg2;
             if (var_r6_0 < arg2) {
                 var_r6_0 = arg2;
             }
@@ -226,7 +226,7 @@ s32 File_Close(int arg0) {
     if ((arg0 != -1) && (arg0 < 0x14) && ((s32) *(&semaJobCount + 0x1340 + ((arg0 * 0x58) + 0x3C)) != -1)) {
         temp_r4_421 = &semaJobCount + 0x1A20;
         *(temp_r4_421 + (jobListHead * 0x4C)) = 1;
-        M2C_FIELD((temp_r4_421 + (jobListHead * 0x4C)), s32 *, 4) = arg0;
+        M2C_FIELD((((u8 *) temp_r4_421) + (jobListHead * 0x4C)), s32 *, 4) = arg0;
         temp_r4_431 = jobListHead + 1;
         temp_r4_433 = temp_r4_431 >> 0x1FU;
         temp_r0_434 = (temp_r4_431 << 0x1C) - temp_r4_433;
@@ -275,8 +275,8 @@ loop_1:
     M2C_FIELD(temp_r8_480, s32 *, 0x44) = 0;
     M2C_FIELD(temp_r8_480, s32 *, 0x3C) = 1;
     *(temp_r6_483 + (jobListHead * 0x4C)) = 0;
-    M2C_FIELD((temp_r6_483 + (jobListHead * 0x4C)), s32 *, 4) = var_r29_458;
-    strncpy(temp_r6_483 + ((jobListHead * 0x4C) + 8), arg0, 0x3FU);
+    M2C_FIELD((((u8 *) temp_r6_483) + (jobListHead * 0x4C)), s32 *, 4) = var_r29_458;
+    strncpy(((u8 *) temp_r6_483) + ((jobListHead * 0x4C) + 8), arg0, 0x3FU);
     temp_r5_507 = &semaJobCount + 0x1340 + temp_r30_476;
     M2C_FIELD((&semaJobCount + 0x1A20 + (jobListHead * 0x4C)), s32 *, 0x48) = arg1;
     M2C_FIELD(temp_r5_507, s32 *, 0x48) = 0;
@@ -366,7 +366,7 @@ void *File_JobThread(void *arg0) {
 loop_1:
     OSWaitSemaphore(&semaJobCount);
     if ((s32) *(temp_r31_617 + (jobListTail * 0x4C)) != 5) {
-        temp_r29_629 = temp_r31_617 + (jobListTail * 0x4C);
+        temp_r29_629 = ((u8 *) temp_r31_617) + (jobListTail * 0x4C);
         temp_r28_634 = &semaJobCount + 0x1340 + (M2C_FIELD(temp_r29_629, s32 *, 4) * 0x58);
         if (((s32) M2C_FIELD(temp_r29_629, s32 *, 0) != 0) && (((DVDFileInfo *) M2C_FIELD(temp_r28_634, DVDFileInfo **, 0x3C) == (DVDFileInfo *)-1) || ((DVDFileInfo *) M2C_FIELD(temp_r28_634, DVDFileInfo **, 0x3C) == (DVDFileInfo *)1))) {
             M2C_FIELD(temp_r28_634, s32 *, 0x48) = -1;
@@ -375,7 +375,7 @@ loop_1:
             switch (temp_r0_647) {                  /* switch 1; irregular */
             case 0:                                 /* switch 1 */
                 M2C_STRUCT_COPY((s32) &sp4 + 4, (s32) (&lit_438 - 4) + 4, 0x200);
-                strcpy(&sp8, temp_r29_629 + 8);
+                strcpy(&sp8, ((u8 *) temp_r29_629) + 8);
                 var_r5_675 = &sp8;
 loop_17:
                 temp_r4_686 = (u8) *var_r5_675;

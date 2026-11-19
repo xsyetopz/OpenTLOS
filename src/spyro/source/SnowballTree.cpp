@@ -43,14 +43,14 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void SnowballTree::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 4) {
 
     } else {
         DropABall();
         if (KDSound_IsVoicePlaying(this->unkB4) == 0) {
-            this->unkB4 = KDSound_Play3d(GS_SnowTreeHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            this->unkB4 = KDSound_Play3d(GS_SnowTreeHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
         this->unk80->SetAnim(M2C_FIELD(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x8C), 1.0f, 0.0f, 0, -1);
         this->unkC4 = 1;

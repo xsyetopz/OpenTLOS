@@ -622,7 +622,7 @@ void CutsceneSystem::Location::Update() {
         if (!(M2C_FIELD(this, f32 *, 0xC) <= 0.0f)) {
             temp_r3_1338 = M2C_FIELD(this, void **, 0x18);
             var_r31_1339 = 0;
-            if ((((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (temp_r3_1338 + 0x24))->GetState() != NULL)) {
+            if ((((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(temp_r3_1338, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r3_1338) + 0x24))->GetState() != NULL)) {
                 var_r31_1339 = 1;
             }
             if (var_r31_1339 != 0) {

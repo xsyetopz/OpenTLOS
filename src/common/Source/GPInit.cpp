@@ -178,7 +178,7 @@ Physical Memory Size = %dMB
     temp_r3_361 = OSInitAlloc(temp_r31_354, temp_r3_355, 1);
     OSSetArenaLo(temp_r3_361);
     temp_r31_365 = (s32) temp_r3_355 & 0xFFFFFFE0;
-    OSSetCurrentHeap(OSCreateHeap((void *) ((s32) (temp_r3_361 + 0x1F) & 0xFFFFFFE0), (void *) temp_r31_365));
+    OSSetCurrentHeap(OSCreateHeap((void *) ((s32) (((u8 *) temp_r3_361) + 0x1F) & 0xFFFFFFE0), (void *) temp_r31_365));
     OSSetArenaLo((void *) temp_r31_365);
     memset(&pBuffer, 0, 0xA9600U);
     DCStoreRange(&pBuffer, 0xA9600U);
@@ -274,7 +274,7 @@ loop_5:
         if (var_r28_564 < 0x180U) {
             temp_r0_567 = *var_r30_561;
             var_r30_561 += 1;
-            temp_r6_572 = temp_r31_560 + ((temp_r0_567 * 4) & 0x3FC);
+            temp_r6_572 = ((u8 *) temp_r31_560) + ((temp_r0_567 * 4) & 0x3FC);
             GXPokeARGB(var_r28_564, var_r29_559, M2C_FIELD(temp_r6_572, u8 *, 0) | ((M2C_FIELD(temp_r6_572, u8 *, 2) << 0x10) | 0xFF000000 | (M2C_FIELD(temp_r6_572, u8 *, 1) << 8)));
             var_r28_564 += 1;
             goto loop_5;

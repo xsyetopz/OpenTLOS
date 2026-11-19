@@ -270,7 +270,7 @@ u8 EnemyGoal_Dying::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__21CompositeGoal'
 void EnemyGoal_Dying::Activate() {
     f64 sp28;
     f64 sp20;
@@ -307,7 +307,7 @@ void EnemyGoal_Dying::Activate() {
     sp28 = temp_f0_454;
     sp1C = 0;
     sp10 = temp_f0_454;
-    M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, void *, M2C_UNK, f32, f64), 0x94)(gMK, &sp18, 8, 0, temp_r9_451 + 0x30, 1, temp_r9_451, 0, 1000.0f, temp_f2_452);
+    M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, void *, M2C_UNK, f32, f64), 0x94)(gMK, &sp18, 8, 0, ((u8 *) temp_r9_451) + 0x30, 1, temp_r9_451, 0, 1000.0f, temp_f2_452);
     temp_r3_465 = this->unkC;
     if (!(((u8) M2C_FIELD(temp_r3_465, u8 *, 0x6B5) >> 4U) & 1)) {
         ((Character *) temp_r3_465)->StopMovement(1U);

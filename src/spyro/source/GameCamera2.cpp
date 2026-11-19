@@ -535,7 +535,7 @@ loop_10:
             }
         }
         if (var_r6_896 == NULL) {
-            temp_r4_917 = this->unk2A8 - 4;
+            temp_r4_917 = ((u8 *) this->unk2A8) - 4;
             this->unk2A8 = temp_r4_917;
             var_r6_896 = *temp_r4_917;
         }
@@ -558,7 +558,7 @@ loop_19:
             }
             if ((u32) *temp_r4_958 == (u32) M2C_FIELD(temp_r3_937, u32 *, 8)) {
                 temp_r3_945 = this->unk2A8;
-                this->unk2A8 = temp_r3_945 + 4;
+                this->unk2A8 = ((u8 *) temp_r3_945) + 4;
                 temp_r4_948 = *temp_r3_945;
                 *temp_r3_945 = (u32 *) *var_r5_938;
                 *var_r5_938 = temp_r4_948;
@@ -2564,21 +2564,21 @@ void GameCamera2::Init() {
     }
     this->unk2A8 = var_r3_5042;
     var_r5_5054 = this->unk2A8;
-    temp_r3_5055 = var_r5_5054 + (temp_r30_5024 * 0x14);
+    temp_r3_5055 = ((u8 *) var_r5_5054) + (temp_r30_5024 * 0x14);
     this->unk2A8 = temp_r3_5055;
     *temp_r3_5055 = 0;
     var_ctr_5058 = temp_r30_5024;
     if (temp_r30_5024 > 0) {
         do {
             temp_r3_5062 = this->unk2A8;
-            this->unk2A8 = temp_r3_5062 + 4;
+            this->unk2A8 = ((u8 *) temp_r3_5062) + 4;
             M2C_FIELD(temp_r3_5062, void **, 4) = var_r5_5054;
             var_r5_5054 += 0x14;
             var_ctr_5058 -= 1;
         } while (var_ctr_5058 != 0);
     }
     temp_r3_5069 = this->unk2A8;
-    this->unk2A8 = temp_r3_5069 + 4;
+    this->unk2A8 = ((u8 *) temp_r3_5069) + 4;
     M2C_FIELD(temp_r3_5069, void **, 4) = NULL;
 }
 #endif

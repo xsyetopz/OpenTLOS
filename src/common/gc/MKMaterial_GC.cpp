@@ -245,7 +245,7 @@ void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
     temp_r29_387 = arg0 + (arg0->unk10 + 0x20);
     GXSetArray(GX_VA_CLR0, temp_r29_387, 4U);
     var_r5_393 = 0;
-    temp_r29_395 = temp_r29_387 + arg0->unk14;
+    temp_r29_395 = ((u8 *) temp_r29_387) + arg0->unk14;
     if (((s32) TransformInfo == 1) && ((u8) MKMaterialGC_bForceSkinnedVertexFormat == 0)) {
         var_r5_393 = 1;
     }
@@ -272,7 +272,7 @@ void MKMaterial_RenderMeshChunk(MeshChunk *arg0) {
         return;
     case 3:
         MK_SetVDMode((MK_VertexDescriptorMode) 4);
-        Model_DrawWeightedBlendShape((MeshChunkGC *) arg0, temp_r29_395, (u32) arg0->unk6, pAnimMats, temp_r30_412 + arg0->unk1C);
+        Model_DrawWeightedBlendShape((MeshChunkGC *) arg0, temp_r29_395, (u32) arg0->unk6, pAnimMats, ((u8 *) temp_r30_412) + arg0->unk1C);
         return;
     }
 }

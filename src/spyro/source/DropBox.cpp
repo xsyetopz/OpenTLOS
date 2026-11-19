@@ -49,7 +49,7 @@ void DropBox::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'MKCollisionResult' to
 void DropBox::Drop() {
     MKCollisionResult sp170;
     Matrix sp130;
@@ -115,7 +115,7 @@ void DropBox::Drop() {
     SetAnim(0);
     sp58 = 0.0f;
     sp5C = -8000.0f;
-    temp_r3_123 = this->unk8 + 0x30;
+    temp_r3_123 = ((u8 *) this->unk8) + 0x30;
     sp60 = 0.0f;
     spC8 = (f64) sp58;
     spD0 = (f64) sp60;
@@ -607,7 +607,7 @@ void DropBox::Update() {
         sp148 = (f64) sp48;
         M2C_FIELD(this, f64 *, 0x1A8) = (f64) (M2C_FIELD(this, f64 *, 0x1A8) + temp_f0_933);
         M2C_FIELD(this, f32 *, 0x1B0) = (f32) (M2C_FIELD(this, f32 *, 0x1B0) + (f32) sp148);
-        M2C_STRUCT_COPY((s32) &sp1A0.unk3C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp1A0.unk3C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
         temp_f0_966 = M2C_FIELD(this, f64 *, 0x1A8) * (f64) gUpdateTimeDelta;
         sp90 = temp_f0_966;
         sp120 = temp_f0_966;
@@ -619,7 +619,7 @@ void DropBox::Update() {
         sp88 = sp1E0.unk38 + (f32) sp128;
         sp178 = (f64) sp88;
         if ((M2C_BITWISE(s32, this->unk200.unk8) == 0) && ((temp_cr0_eq_992 = (u8) M2C_FIELD(this, u8 *, 0x1C0) == 0, (temp_cr0_eq_992 != 0)) || ((temp_cr0_eq_992 == 0) && (temp_r3_995 = this->unk8, sp110 = M2C_FIELD(temp_r3_995, f64 *, 0x30), sp118 = M2C_FIELD(temp_r3_995, f64 *, 0x38), (((*(f32 *) ((u8 *) &sp110 + 0x4)) <= this->unk1A8) != 0))))) {
-            this->unk200.unk8 = M2C_BITWISE(f32, KDSound_Play3d(GS_DreadwingScream1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U));
+            this->unk200.unk8 = M2C_BITWISE(f32, KDSound_Play3d(GS_DreadwingScream1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U));
         }
         temp_f0_1019 = this->unk1AC - 25.0f;
         if ((*(f32 *) ((u8 *) &sp170 + 0x4)) <= temp_f0_1019) {
@@ -647,7 +647,7 @@ void DropBox::Update() {
             temp_r3_1079 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             sp8 = 1;
             ((Explosion4 *) (M2C_FIELD(temp_r3_1079, Explosion4 **, 0x16C)))->Trigger(*((MKVector3 *) &spE0), 0.66f, 1U, NULL, 0, 1U, 0U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-            KDSound_Play3d(GS_DBIceShake, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_DBIceShake, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             KDSound_Stop((s32 *) &this->unk200.unk8);
             this->unkD0.Show(0U);
             sp28 = 0;

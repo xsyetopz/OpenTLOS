@@ -877,7 +877,7 @@ void EarthBoss::Draw() {
     Enemy::Draw();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void EarthBoss::CheckAnimEvents() {
     s8 sp90;
     f64 sp88;
@@ -904,7 +904,7 @@ void EarthBoss::CheckAnimEvents() {
     void *temp_r3_1509;
 
     if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(4) != 0) {
-        temp_f31_1466 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.025f, 0.2f, 0.2f, this->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
+        temp_f31_1466 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.025f, 0.2f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U);
         sp7C = 0;
         MKVector(0.025f, 0.4f, 0.025f);
         sp48.operator*(500.0f);
@@ -1262,7 +1262,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
 void EarthBossDescriptor::Init() {
     s32 var_r28_2276;
     s32 var_r30_2270;
@@ -1277,7 +1277,7 @@ void EarthBossDescriptor::Init() {
     this->unk2FC = 1.0f;
     do {
         temp_r29_2281 = this + var_r30_2270;
-        strcpy(temp_r29_2281 + 0x2B4, "");
+        strcpy(((u8 *) temp_r29_2281) + 0x2B4, "");
         var_r28_2276 += 1;
         M2C_FIELD(temp_r29_2281, f32 *, 0x2D4) = 0.0f;
         var_r30_2270 += 0x24;
@@ -1851,7 +1851,7 @@ void EarthBossArm::Retract() {
         } while (var_ctr_3234 != 0);
         this->unk38C = 1;
         this->unk390 = 0;
-        KDSound_Play3d(GS_SSAlert, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_SSAlert, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     }
 }
 #endif
@@ -2247,7 +2247,7 @@ void EarthBossArm::UpdateExtension() {
             if ((M2C_FIELD(temp_r3_3926, f32 *, 0xD4) >= 1.0f) || ((f32) fabs(M2C_FIELD(temp_r3_3926, f32 *, 0xCC) - M2C_FIELD(temp_r3_3926, f32 *, 0xC8)) < 0.01f)) {
                 M2C_FIELD(temp_r3_3926, u8 *, 0xD8) = 1U;
                 if (((s32) this->unk38C == 4) && ((u8) this->unk390 != 0)) {
-                    temp_f31_3987 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
+                    temp_f31_3987 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, ((u8 *) this->unk8) + 0x30, 80.0f, 0, 4.0f, 0U);
                     sp74 = 0;
                     MKVector(0.05f, 0.8f, 0.05f);
                     sp50.operator*(500.0f);
@@ -2260,7 +2260,7 @@ void EarthBossArm::UpdateExtension() {
                     sp60 = sp10;
                     sp68 = (f64) sp18;
                     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp70, sp10);
-                    KDSound_Play3d(GS_SSAttack3, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_SSAttack3, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                     MKModel_CalculateNodeWorldMatrix(this->unk4, this->unk344, (Matrix *) &sp90);
                     sp20 = 0.0f;
                     sp24 = 1.0f;

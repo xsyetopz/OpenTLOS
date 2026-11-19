@@ -640,7 +640,7 @@ void KDSP_Actor::UpdateLookatNode(MKAnimScript *arg0, int arg1, int arg2, int ar
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: pointer/array required
 void KDSP_Actor::UpdateLipAnim(float arg0) {
     s32 sp34;
     s32 sp30;
@@ -673,7 +673,7 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
     void *temp_r31_1014;
 
     temp_r3_1006 = this->unkBC;
-    if ((temp_r3_1006 != -1) && ((s32) this->unk80 != -1) && (temp_r31_1014 = this->unk9C + (temp_r3_1006 * 0x18), temp_r4_1015 = M2C_FIELD(temp_r31_1014, MKAnim **, 8), ((temp_r4_1015 == NULL) == 0))) {
+    if ((temp_r3_1006 != -1) && ((s32) this->unk80 != -1) && (temp_r31_1014 = ((u8 *) this->unk9C) + (temp_r3_1006 * 0x18), temp_r4_1015 = M2C_FIELD(temp_r31_1014, MKAnim **, 8), ((temp_r4_1015 == NULL) == 0))) {
         this->unk38->GetStartAndEnd(temp_r4_1015, &spA, &sp8);
         temp_r0_1024 = sp8 - spA;
         if (temp_r0_1024 == 0) {
@@ -690,7 +690,7 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
         }
         temp_r0_1061 = this->unkB8;
         if (temp_r0_1061 != -1) {
-            temp_r29_1068 = this->unk58 + (temp_r0_1061 * 0x24);
+            temp_r29_1068 = ((u8 *) this->unk58) + (temp_r0_1061 * 0x24);
             temp_r5_1072 = M2C_FIELD(temp_r29_1068, s32 *, 0x14) - 1;
             var_r4_1074 = (s32) arg0 - M2C_FIELD(temp_r29_1068, s32 *, 0);
             if (temp_r5_1072 < var_r4_1074) {
@@ -823,7 +823,6 @@ void KDSP_Actor::UpdateSoundAnimEvents(const MKVector3 &arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDSP_Actor::UpdateHeadAnim(float arg0) {
     s32 sp24;
     s32 sp20;
@@ -839,7 +838,7 @@ void KDSP_Actor::UpdateHeadAnim(float arg0) {
     void *temp_r31_1409;
 
     temp_r3_1401 = this->unkC0;
-    if ((temp_r3_1401 != -1) && ((s32) this->unk7C != -1) && (temp_r31_1409 = this->unkA4 + (temp_r3_1401 * 0x18), temp_r4_1410 = M2C_FIELD(temp_r31_1409, MKAnim **, 8), ((temp_r4_1410 == NULL) == 0))) {
+    if ((temp_r3_1401 != -1) && ((s32) this->unk7C != -1) && (temp_r31_1409 = ((u8 *) this->unkA4) + (temp_r3_1401 * 0x18), temp_r4_1410 = M2C_FIELD(temp_r31_1409, MKAnim **, 8), ((temp_r4_1410 == NULL) == 0))) {
         this->unk38->GetStartAndEnd(temp_r4_1410, &spA, &sp8);
         temp_r0_1419 = sp8 - spA;
         if (temp_r0_1419 == 0) {
@@ -871,9 +870,8 @@ void KDSP_Actor::UpdateHeadAnim(float arg0) {
         ((Animation *) (MKModel_GetAnimation(this->unk38->unk8)))->TweenNode(var_f31_1492, M2C_FIELD(temp_r31_1409, f32 *, 0xC), this->unk7C, 0U, 0U);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unk4'
 void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
     KDS_Message_PropBodyAnimUpdate spC;
     s16 spA;
@@ -897,7 +895,7 @@ void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
 
     temp_r0_1532 = this->unkC8;
     if (temp_r0_1532 != -1) {
-        temp_r31_1538 = this->unkAC + (temp_r0_1532 * 0x18);
+        temp_r31_1538 = ((u8 *) this->unkAC) + (temp_r0_1532 * 0x18);
         temp_r3_1539 = M2C_FIELD(temp_r31_1538, MKAnim **, 8);
         if (temp_r3_1539 != NULL) {
             temp_r0_1542 = this->unk128;
@@ -964,7 +962,7 @@ void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     s8 sp280;
     s32 sp27C;
@@ -1044,7 +1042,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     *arg1 = 0;
     temp_r0_1753 = this->unkCC;
     if (temp_r0_1753 != -1) {
-        temp_r27_1758 = this->unkB4 + (temp_r0_1753 * 0x10);
+        temp_r27_1758 = ((u8 *) this->unkB4) + (temp_r0_1753 * 0x10);
         temp_r31_1759 = temp_r27_1758->unk8;
         temp_r27_1758->unkC->GetEnvelope((s32) arg1);
         temp_r26_1765 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -1070,13 +1068,13 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             var_f31_1802 = var_f1_1794;
         }
         sp14 = 0.0f;
-        sp80.GetMeasure(var_f31_1802, temp_r31_1759 + 8, KDSpline_PositionMixer);
+        sp80.GetMeasure(var_f31_1802, ((u8 *) temp_r31_1759) + 8, KDSpline_PositionMixer);
         spF0 = M2C_BITWISE(f64, sp80);
         spF8 = (f64) sp80.unk8;
         *arg1 = M2C_FIELD(temp_r31_1759, u8 *, 5);
         sp1C = 0;
         sp18 = 0.0f;
-        if (KDSP_ToolsGetSplinePercent(temp_r27_1758, temp_r31_1759 + 8, temp_r26_1765, arg0, sp1C, sp18) != 0) {
+        if (KDSP_ToolsGetSplinePercent(temp_r27_1758, ((u8 *) temp_r31_1759) + 8, temp_r26_1765, arg0, sp1C, sp18) != 0) {
             var_f0_1834 = 0.0f;
             if (var_f0_1834 > sp18) {
 
@@ -1091,8 +1089,8 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
             }
             sp18 = var_f3_1842;
             temp_r5_1851 = M2C_FIELD(temp_r31_1759, void **, 0x28);
-            temp_r4_1854 = temp_r5_1851 + (sp1C << 5);
-            temp_r3_1858 = temp_r5_1851 + ((sp1C + 1) << 5);
+            temp_r4_1854 = ((u8 *) temp_r5_1851) + (sp1C << 5);
+            temp_r3_1858 = ((u8 *) temp_r5_1851) + ((sp1C + 1) << 5);
             temp_f7_1863 = 1.0f - var_f3_1842;
             spD0 = M2C_FIELD(temp_r4_1854, f64 *, 0);
             spD8 = M2C_FIELD(temp_r4_1854, f64 *, 8);
@@ -1131,7 +1129,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
                 var_f1_1932 = 1.0f;
             }
             sp10 = 0.0f;
-            ((KDUniformSpline *) &sp70)->GetMeasure(var_f1_1932, temp_r31_1759 + 8, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp70)->GetMeasure(var_f1_1932, ((u8 *) temp_r31_1759) + 8, KDSpline_PositionMixer);
             spB0 = sp70;
             spB8 = sp78;
             sp20 = sp70 - spF0;
@@ -1255,7 +1253,7 @@ s32 KDSP_Actor::GetTweenAnimParams(int arg0, int arg1, float *arg2, float *arg3,
     if (temp_r31_2214 > 0) {
 loop_1:
         var_r11_2220 = 0;
-        temp_r10_2221 = this->unkA4 + var_r9_2210;
+        temp_r10_2221 = ((u8 *) this->unkA4) + var_r9_2210;
         temp_r12_2222 = M2C_FIELD(temp_r10_2221, s32 *, 0);
         if ((arg0 >= temp_r12_2222) && (arg0 < (s32) (temp_r12_2222 + M2C_FIELD(temp_r10_2221, s32 *, 4)))) {
             var_r11_2220 = 1;
@@ -1277,7 +1275,7 @@ loop_1:
     if (temp_r31_2214 > 0) {
 loop_8:
         var_r10_2247 = 0;
-        temp_r9_2248 = this->unkA4 + var_r4_2241;
+        temp_r9_2248 = ((u8 *) this->unkA4) + var_r4_2241;
         temp_r11_2249 = M2C_FIELD(temp_r9_2248, s32 *, 0);
         if ((arg1 >= temp_r11_2249) && (arg1 < (s32) (temp_r11_2249 + M2C_FIELD(temp_r9_2248, s32 *, 4)))) {
             var_r10_2247 = 1;
@@ -1294,7 +1292,7 @@ loop_8:
         }
     }
     if ((var_r30_2212 != -1) && (var_r0_2209 != -1)) {
-        temp_r5_2273 = this->unkA4 + 8;
+        temp_r5_2273 = ((u8 *) this->unkA4) + 8;
         temp_r4_2275 = *(temp_r5_2273 + (var_r30_2212 * 0x18));
         temp_r5_2277 = *(temp_r5_2273 + (var_r0_2209 * 0x18));
         if ((temp_r4_2275 != NULL) && (temp_r5_2277 != NULL)) {
@@ -1308,7 +1306,6 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDSP_Actor::UpdateCurrentBars(int arg0) {
     s32 temp_r0_2351;
     s32 temp_r0_2381;
@@ -1365,7 +1362,7 @@ void KDSP_Actor::UpdateCurrentBars(int arg0) {
 loop_7:
     if (var_r9_2313 < (s32) this->unkB0) {
         var_r6_2319 = 0;
-        temp_r7_2320 = this->unkB4 + var_r5_2315;
+        temp_r7_2320 = ((u8 *) this->unkB4) + var_r5_2315;
         temp_r8_2321 = M2C_FIELD(temp_r7_2320, s32 *, 0);
         if ((arg0 >= temp_r8_2321) && (arg0 < (s32) (temp_r8_2321 + M2C_FIELD(temp_r7_2320, s32 *, 4)))) {
             var_r6_2319 = 1;
@@ -1390,7 +1387,7 @@ loop_7:
         if (temp_r0_2351 > 0) {
 loop_12:
             var_r6_2357 = 0;
-            temp_r7_2358 = this->unk58 + var_r5_2350;
+            temp_r7_2358 = ((u8 *) this->unk58) + var_r5_2350;
             temp_r8_2359 = M2C_FIELD(temp_r7_2358, s32 *, 0);
             if ((arg0 >= temp_r8_2359) && (arg0 < (s32) (temp_r8_2359 + M2C_FIELD(temp_r7_2358, s32 *, 4)))) {
                 var_r6_2357 = 1;
@@ -1414,7 +1411,7 @@ loop_12:
         if (temp_r0_2381 > 0) {
 loop_19:
             var_r6_2387 = 0;
-            temp_r7_2388 = this->unk9C + var_r5_2380;
+            temp_r7_2388 = ((u8 *) this->unk9C) + var_r5_2380;
             temp_r8_2389 = M2C_FIELD(temp_r7_2388, s32 *, 0);
             if ((arg0 >= temp_r8_2389) && (arg0 < (s32) (temp_r8_2389 + M2C_FIELD(temp_r7_2388, s32 *, 4)))) {
                 var_r6_2387 = 1;
@@ -1438,7 +1435,7 @@ loop_19:
         if (temp_r0_2411 > 0) {
 loop_26:
             var_r6_2417 = 0;
-            temp_r7_2418 = this->unkA4 + var_r5_2410;
+            temp_r7_2418 = ((u8 *) this->unkA4) + var_r5_2410;
             temp_r8_2419 = M2C_FIELD(temp_r7_2418, s32 *, 0);
             if ((arg0 >= temp_r8_2419) && (arg0 < (s32) (temp_r8_2419 + M2C_FIELD(temp_r7_2418, s32 *, 4)))) {
                 var_r6_2417 = 1;
@@ -1462,7 +1459,7 @@ loop_26:
         if (temp_r0_2441 > 0) {
 loop_33:
             var_r6_2447 = 0;
-            temp_r7_2448 = this->unkAC + var_r5_2440;
+            temp_r7_2448 = ((u8 *) this->unkAC) + var_r5_2440;
             temp_r8_2449 = M2C_FIELD(temp_r7_2448, s32 *, 0);
             if ((arg0 >= temp_r8_2449) && (arg0 < (s32) (temp_r8_2449 + M2C_FIELD(temp_r7_2448, s32 *, 4)))) {
                 var_r6_2447 = 1;
@@ -1486,7 +1483,7 @@ loop_33:
         if (temp_r0_2471 > 0) {
 loop_40:
             var_r6_2477 = 0;
-            temp_r7_2478 = this->unk48 + var_r5_2470;
+            temp_r7_2478 = ((u8 *) this->unk48) + var_r5_2470;
             temp_r8_2479 = M2C_FIELD(temp_r7_2478, s32 *, 0);
             if ((arg0 >= temp_r8_2479) && (arg0 < (s32) (temp_r8_2479 + M2C_FIELD(temp_r7_2478, s32 *, 4)))) {
                 var_r6_2477 = 1;
@@ -1510,7 +1507,7 @@ loop_40:
         if (temp_r0_2501 > 0) {
 loop_47:
             var_r6_2507 = 0;
-            temp_r7_2508 = this->unk50 + var_r5_2500;
+            temp_r7_2508 = ((u8 *) this->unk50) + var_r5_2500;
             temp_r8_2509 = M2C_FIELD(temp_r7_2508, s32 *, 0);
             if ((arg0 >= temp_r8_2509) && (arg0 < (s32) (temp_r8_2509 + M2C_FIELD(temp_r7_2508, s32 *, 4)))) {
                 var_r6_2507 = 1;
@@ -1529,7 +1526,6 @@ loop_47:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'ModelSubObjectHide'
 void KDSP_Actor::Update(float arg0, const MKVector3 &arg1, bool arg2) {
@@ -1577,7 +1573,7 @@ loop_4:
         return NULL;
     }
     if (stricmp(*(this->unk6C + var_r31_2608), arg0) == 0) {
-        return this->unk6C + var_r31_2608;
+        return ((u8 *) this->unk6C) + var_r31_2608;
     }
     var_r30_2607 += 1;
     var_r31_2608 += 0x30;
@@ -1645,13 +1641,13 @@ loop_3:
             var_r3_2727 = var_r3_2727->unkC->GetNextLine(var_r3_2727);
             goto loop_3;
         }
-        temp_r31_2742 = this->unk58 + (arg2 * 0x24);
+        temp_r31_2742 = ((u8 *) this->unk58) + (arg2 * 0x24);
         M2C_FIELD(temp_r31_2742, s32 *, 0x14) = var_r27_2726;
         if (var_r27_2726 != 0) {
             temp_r5_2747 = arg0->unk18;
             var_r30_2748 = 0;
             temp_r3_2749 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r5_2747 + ((var_r27_2726 + temp_r3_2749) & ~temp_r3_2749);
+            arg0->unk18 = ((u8 *) temp_r5_2747) + ((var_r27_2726 + temp_r3_2749) & ~temp_r3_2749);
             M2C_FIELD(temp_r31_2742, void **, 0x18) = temp_r5_2747;
             var_r28_2757 = arg1->unkC->GetSubLine(arg1);
 loop_10:
@@ -1685,7 +1681,7 @@ void KDSP_Actor::ResolveLookEyesBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, i
         if (arg3 != 0) {
             temp_r9_2801 = arg0->unk18;
             temp_r7_2802 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r9_2801 + (((arg3 * 0x14) + temp_r7_2802) & ~temp_r7_2802);
+            arg0->unk18 = ((u8 *) temp_r9_2801) + (((arg3 * 0x14) + temp_r7_2802) & ~temp_r7_2802);
             this->unk50 = temp_r9_2801;
         }
     }
@@ -1693,10 +1689,10 @@ void KDSP_Actor::ResolveLookEyesBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, i
     if (temp_r8_2809 != NULL) {
         temp_r9_2812 = arg2 * 0x14;
         *(temp_r8_2809 + temp_r9_2812) = arg1->unkC;
-        M2C_FIELD((this->unk50 + temp_r9_2812), s32 *, 4) = (s32) arg1->unk10;
-        M2C_FIELD((this->unk50 + temp_r9_2812), s32 *, 0xC) = 0;
-        M2C_FIELD((this->unk50 + temp_r9_2812), s8 **, 8) = (s8 *) arg1->unk0;
-        M2C_FIELD((this->unk50 + temp_r9_2812), s32 *, 0x10) = 0xFFFF;
+        M2C_FIELD((((u8 *) this->unk50) + temp_r9_2812), s32 *, 4) = (s32) arg1->unk10;
+        M2C_FIELD((((u8 *) this->unk50) + temp_r9_2812), s32 *, 0xC) = 0;
+        M2C_FIELD((((u8 *) this->unk50) + temp_r9_2812), s8 **, 8) = (s8 *) arg1->unk0;
+        M2C_FIELD((((u8 *) this->unk50) + temp_r9_2812), s32 *, 0x10) = 0xFFFF;
     }
 }
 #endif
@@ -1713,7 +1709,7 @@ void KDSP_Actor::ResolveLookHeadBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, i
         if (arg3 != 0) {
             temp_r9_2846 = arg0->unk18;
             temp_r7_2847 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r9_2846 + (((arg3 * 0x14) + temp_r7_2847) & ~temp_r7_2847);
+            arg0->unk18 = ((u8 *) temp_r9_2846) + (((arg3 * 0x14) + temp_r7_2847) & ~temp_r7_2847);
             this->unk48 = temp_r9_2846;
         }
     }
@@ -1721,10 +1717,10 @@ void KDSP_Actor::ResolveLookHeadBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, i
     if (temp_r8_2854 != NULL) {
         temp_r9_2857 = arg2 * 0x14;
         *(temp_r8_2854 + temp_r9_2857) = arg1->unkC;
-        M2C_FIELD((this->unk48 + temp_r9_2857), s32 *, 4) = (s32) arg1->unk10;
-        M2C_FIELD((this->unk48 + temp_r9_2857), s32 *, 0xC) = 0;
-        M2C_FIELD((this->unk48 + temp_r9_2857), s8 **, 8) = (s8 *) arg1->unk0;
-        M2C_FIELD((this->unk48 + temp_r9_2857), s32 *, 0x10) = 0xFFFF;
+        M2C_FIELD((((u8 *) this->unk48) + temp_r9_2857), s32 *, 4) = (s32) arg1->unk10;
+        M2C_FIELD((((u8 *) this->unk48) + temp_r9_2857), s32 *, 0xC) = 0;
+        M2C_FIELD((((u8 *) this->unk48) + temp_r9_2857), s8 **, 8) = (s8 *) arg1->unk0;
+        M2C_FIELD((((u8 *) this->unk48) + temp_r9_2857), s32 *, 0x10) = 0xFFFF;
     }
 }
 #endif
@@ -1741,7 +1737,7 @@ void KDSP_Actor::ResolvePosBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int ar
         if (arg3 != 0) {
             temp_r5_2897 = arg0->unk18;
             temp_r3_2898 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r5_2897 + (((arg3 * 0x10) + temp_r3_2898) & ~temp_r3_2898);
+            arg0->unk18 = ((u8 *) temp_r5_2897) + (((arg3 * 0x10) + temp_r3_2898) & ~temp_r3_2898);
             this->unkB4 = temp_r5_2897;
         }
     }
@@ -1749,16 +1745,16 @@ void KDSP_Actor::ResolvePosBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int ar
     if (temp_r4_2905 != NULL) {
         temp_r31_2909 = arg2 * 0x10;
         *(temp_r4_2905 + temp_r31_2909) = arg1->unkC;
-        M2C_FIELD((this->unkB4 + temp_r31_2909), s32 *, 4) = (s32) arg1->unk10;
-        M2C_FIELD((this->unkB4 + temp_r31_2909), void **, 8) = FindActorPath(arg1->unk0);
-        M2C_FIELD((this->unkB4 + temp_r31_2909), s32 *, 0xC) = (s32) arg1->unk14;
+        M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), s32 *, 4) = (s32) arg1->unk10;
+        M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), void **, 8) = FindActorPath(arg1->unk0);
+        M2C_FIELD((((u8 *) this->unkB4) + temp_r31_2909), s32 *, 0xC) = (s32) arg1->unk14;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void KDSP_Actor::ResolveBodyBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
-    ResolveAnim(this->unkAC + (arg2 * 0x18), arg1->unk0);
+    ResolveAnim(((u8 *) this->unkAC) + (arg2 * 0x18), arg1->unk0);
 }
 #endif
 
@@ -1777,7 +1773,7 @@ void KDSP_Actor::ResolveBodyBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
         if (arg3 != 0) {
             temp_r9_2961 = arg0->unk18;
             temp_r7_2962 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r9_2961 + (((arg3 * 0x18) + temp_r7_2962) & ~temp_r7_2962);
+            arg0->unk18 = ((u8 *) temp_r9_2961) + (((arg3 * 0x18) + temp_r7_2962) & ~temp_r7_2962);
             this->unkAC = temp_r9_2961;
         }
     }
@@ -1785,25 +1781,25 @@ void KDSP_Actor::ResolveBodyBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
     if (temp_r4_2969 != NULL) {
         temp_r9_2972 = arg2 * 0x18;
         *(temp_r4_2969 + temp_r9_2972) = arg1->unkC;
-        M2C_FIELD((this->unkAC + temp_r9_2972), s32 *, 4) = (s32) arg1->unk10;
+        M2C_FIELD((((u8 *) this->unkAC) + temp_r9_2972), s32 *, 4) = (s32) arg1->unk10;
         if ((u8) arg1->unk8 != 0) {
             var_f0_2982 = 0.5f;
         } else {
             var_f0_2982 = 0.9f;
         }
         temp_r4_2988 = temp_r9_2972 + 0x10;
-        M2C_FIELD((this->unkAC + temp_r9_2972), f32 *, 0xC) = var_f0_2982;
+        M2C_FIELD((((u8 *) this->unkAC) + temp_r9_2972), f32 *, 0xC) = var_f0_2982;
         temp_r7_2992 = this->unkAC;
         *(temp_r7_2992 + temp_r4_2988) = (*(temp_r7_2992 + temp_r4_2988) & ~0x80) | ((arg1->unk8 << 7) & 0x80);
-        M2C_FIELD((this->unkAC + temp_r9_2972), s32 *, 8) = 0;
-        M2C_FIELD((this->unkAC + temp_r9_2972), s32 *, 0x14) = (s32) arg1->unk14;
+        M2C_FIELD((((u8 *) this->unkAC) + temp_r9_2972), s32 *, 8) = 0;
+        M2C_FIELD((((u8 *) this->unkAC) + temp_r9_2972), s32 *, 0x14) = (s32) arg1->unk14;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void KDSP_Actor::ResolveHeadBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
-    ResolveAnim(this->unkA4 + (arg2 * 0x18), arg1->unk0);
+    ResolveAnim(((u8 *) this->unkA4) + (arg2 * 0x18), arg1->unk0);
 }
 #endif
 
@@ -1822,7 +1818,7 @@ void KDSP_Actor::ResolveHeadBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
         if (arg3 != 0) {
             temp_r9_3035 = arg0->unk18;
             temp_r7_3036 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r9_3035 + (((arg3 * 0x18) + temp_r7_3036) & ~temp_r7_3036);
+            arg0->unk18 = ((u8 *) temp_r9_3035) + (((arg3 * 0x18) + temp_r7_3036) & ~temp_r7_3036);
             this->unkA4 = temp_r9_3035;
         }
     }
@@ -1831,7 +1827,7 @@ void KDSP_Actor::ResolveHeadBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
         temp_r8_3046 = arg2 * 0x18;
         *(temp_r4_3043 + temp_r8_3046) = arg1->unkC;
         temp_r4_3049 = temp_r8_3046 + 0x10;
-        M2C_FIELD((this->unkA4 + temp_r8_3046), s32 *, 4) = (s32) arg1->unk10;
+        M2C_FIELD((((u8 *) this->unkA4) + temp_r8_3046), s32 *, 4) = (s32) arg1->unk10;
         temp_r6_3054 = this->unkA4;
         *(temp_r6_3054 + temp_r4_3049) = (*(temp_r6_3054 + temp_r4_3049) & ~0x80) | ((arg1->unk8 << 7) & 0x80);
         if ((u8) arg1->unk8 != 0) {
@@ -1839,16 +1835,16 @@ void KDSP_Actor::ResolveHeadBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
         } else {
             var_f0_3062 = 0.5f;
         }
-        M2C_FIELD((this->unkA4 + temp_r8_3046), f32 *, 0xC) = var_f0_3062;
-        M2C_FIELD((this->unkA4 + temp_r8_3046), s32 *, 0x14) = (s32) arg1->unk14;
-        M2C_FIELD((this->unkA4 + temp_r8_3046), s32 *, 8) = 0;
+        M2C_FIELD((((u8 *) this->unkA4) + temp_r8_3046), f32 *, 0xC) = var_f0_3062;
+        M2C_FIELD((((u8 *) this->unkA4) + temp_r8_3046), s32 *, 0x14) = (s32) arg1->unk14;
+        M2C_FIELD((((u8 *) this->unkA4) + temp_r8_3046), s32 *, 8) = 0;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void KDSP_Actor::ResolveLipsBarAnim(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
-    ResolveAnim(this->unk9C + (arg2 * 0x18), arg1->unk0);
+    ResolveAnim(((u8 *) this->unk9C) + (arg2 * 0x18), arg1->unk0);
 }
 #endif
 
@@ -1895,7 +1891,7 @@ void KDSP_Actor::ResolveLipsBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
         if (arg3 != 0) {
             temp_r9_3162 = arg0->unk18;
             temp_r7_3163 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r9_3162 + (((arg3 * 0x18) + temp_r7_3163) & ~temp_r7_3163);
+            arg0->unk18 = ((u8 *) temp_r9_3162) + (((arg3 * 0x18) + temp_r7_3163) & ~temp_r7_3163);
             this->unk9C = temp_r9_3162;
         }
     }
@@ -1903,18 +1899,18 @@ void KDSP_Actor::ResolveLipsBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
     if (temp_r4_3170 != NULL) {
         temp_r9_3173 = arg2 * 0x18;
         *(temp_r4_3170 + temp_r9_3173) = arg1->unkC;
-        M2C_FIELD((this->unk9C + temp_r9_3173), s32 *, 4) = (s32) arg1->unk10;
+        M2C_FIELD((((u8 *) this->unk9C) + temp_r9_3173), s32 *, 4) = (s32) arg1->unk10;
         if ((u8) arg1->unk8 != 0) {
             var_f0_3183 = 0.25f;
         } else {
             var_f0_3183 = 0.5f;
         }
         temp_r6_3189 = temp_r9_3173 + 0x10;
-        M2C_FIELD((this->unk9C + temp_r9_3173), f32 *, 0xC) = var_f0_3183;
+        M2C_FIELD((((u8 *) this->unk9C) + temp_r9_3173), f32 *, 0xC) = var_f0_3183;
         temp_r7_3193 = this->unk9C;
         *(temp_r7_3193 + temp_r6_3189) = (*(temp_r7_3193 + temp_r6_3189) & ~0x80) | ((arg1->unk8 << 7) & 0x80);
-        M2C_FIELD((this->unk9C + temp_r9_3173), s32 *, 0x14) = (s32) arg1->unk14;
-        M2C_FIELD((this->unk9C + temp_r9_3173), s32 *, 8) = 0;
+        M2C_FIELD((((u8 *) this->unk9C) + temp_r9_3173), s32 *, 0x14) = (s32) arg1->unk14;
+        M2C_FIELD((((u8 *) this->unk9C) + temp_r9_3173), s32 *, 8) = 0;
     }
 }
 #endif
@@ -1932,7 +1928,7 @@ void KDSP_Actor::ResolveVoiceBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int 
         if (arg3 != 0) {
             temp_r5_3225 = arg0->unk18;
             temp_r3_3226 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r5_3225 + (((arg3 * 0x24) + temp_r3_3226) & ~temp_r3_3226);
+            arg0->unk18 = ((u8 *) temp_r5_3225) + (((arg3 * 0x24) + temp_r3_3226) & ~temp_r3_3226);
             this->unk58 = temp_r5_3225;
         }
     }
@@ -1941,14 +1937,14 @@ void KDSP_Actor::ResolveVoiceBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int 
         temp_r31_3236 = arg2 * 0x24;
         *(temp_r3_3233 + temp_r31_3236) = arg1->unkC;
         temp_r4_3240 = arg1->unk10;
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 4) = temp_r4_3240;
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 8) = atoi(arg1->unk0, temp_r4_3240);
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 0xC) = (s32) arg1->unk4;
-        M2C_FIELD((this->unk58 + temp_r31_3236), u8 *, 0x10) = (u8) arg1->unk8;
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 0x14) = 0;
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 0x18) = 0;
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 0x1C) = -1;
-        M2C_FIELD((this->unk58 + temp_r31_3236), s32 *, 0x20) = (s32) arg1->unk14;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 4) = temp_r4_3240;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 8) = atoi(arg1->unk0, temp_r4_3240);
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 0xC) = (s32) arg1->unk4;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), u8 *, 0x10) = (u8) arg1->unk8;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 0x14) = 0;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 0x18) = 0;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 0x1C) = -1;
+        M2C_FIELD((((u8 *) this->unk58) + temp_r31_3236), s32 *, 0x20) = (s32) arg1->unk14;
     }
 }
 #endif
@@ -2591,7 +2587,7 @@ s32 KDSP_Actor::LoadADSPaths(KDSynkerHeap *arg0, MKIniLine *arg1) {
         if (temp_r0_4618 != 0) {
             temp_r5_4623 = arg0->unk18;
             temp_r3_4625 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r5_4623 + (((temp_r0_4618 * 0x30) + temp_r3_4625) & ~temp_r3_4625);
+            arg0->unk18 = ((u8 *) temp_r5_4623) + (((temp_r0_4618 * 0x30) + temp_r3_4625) & ~temp_r3_4625);
             this->unk6C = temp_r5_4623;
             var_r29_4631 = this->unk6C;
             var_r28_4635 = arg1->unkC->GetSubLine(arg1);
@@ -2612,12 +2608,12 @@ loop_7:
                     temp_r26_4666 = var_r27_4643 << 5;
                     temp_r4_4667 = arg0->unkC;
                     temp_r6_4669 = arg0->unk14 - 1;
-                    arg0->unkC = temp_r4_4667 + ((temp_r26_4666 + temp_r6_4669) & ~temp_r6_4669);
-                    ((KDUniformSpline *) (var_r29_4631 + 8))->Init(temp_r4_4667, var_r27_4643, 0U);
+                    arg0->unkC = ((u8 *) temp_r4_4667) + ((temp_r26_4666 + temp_r6_4669) & ~temp_r6_4669);
+                    ((KDUniformSpline *) (((u8 *) var_r29_4631) + 8))->Init(temp_r4_4667, var_r27_4643, 0U);
                     temp_r4_4679 = arg0->unkC;
                     temp_r7_4681 = arg0->unk14 - 1;
-                    arg0->unkC = temp_r4_4679 + ((temp_r26_4666 + temp_r7_4681) & ~temp_r7_4681);
-                    ((KDUniformSpline *) (var_r29_4631 + 0x1C))->Init(temp_r4_4679, var_r27_4643, 0U);
+                    arg0->unkC = ((u8 *) temp_r4_4679) + ((temp_r26_4666 + temp_r7_4681) & ~temp_r7_4681);
+                    ((KDUniformSpline *) (((u8 *) var_r29_4631) + 0x1C))->Init(temp_r4_4679, var_r27_4643, 0U);
                 }
                 var_r26_4692 = var_r28_4635->unkC->GetSubLine(var_r28_4635);
 loop_20:
@@ -2628,10 +2624,10 @@ loop_20:
                         M2C_FIELD(var_r29_4631, s8 *, 4) = var_r26_4692->GetBool(0);
                     } else if (var_r26_4692->IsField("pos") != 0) {
                         sp18.GetVector3((s32) var_r26_4692);
-                        ((KDUniformSpline *) (var_r29_4631 + 8))->AddNode(*((MKVector3 *) &sp18));
+                        ((KDUniformSpline *) (((u8 *) var_r29_4631) + 8))->AddNode(*((MKVector3 *) &sp18));
                     } else if (var_r26_4692->IsField("rot") != 0) {
                         sp8.GetVector3((s32) var_r26_4692);
-                        ((KDUniformSpline *) (var_r29_4631 + 0x1C))->AddNode(*((MKVector3 *) &sp8));
+                        ((KDUniformSpline *) (((u8 *) var_r29_4631) + 0x1C))->AddNode(*((MKVector3 *) &sp8));
                     }
                     var_r26_4692 = var_r26_4692->unkC->GetNextLine(var_r26_4692);
                     goto loop_20;

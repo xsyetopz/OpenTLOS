@@ -46,7 +46,7 @@ void SteamValve::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void SteamValve::Update() {
     u8 sp280;
     s32 sp27C;
@@ -175,11 +175,11 @@ void SteamValve::Update() {
             this->unkD8 = this->unkD4;
         } else {
             this->unkD8 = this->unkD0;
-            KDSound_Play3d(GS_Steam1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_Steam1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1C8);
             var_r30_136 = 0;
             do {
-                temp_r4_140 = this->unk8 + 0x20;
+                temp_r4_140 = ((u8 *) this->unk8) + 0x20;
                 temp_f0_142 = M2C_FIELD(temp_r4_140, f64 *, 0) * 1.628603276e-314;
                 spD8 = temp_f0_142;
                 sp198 = temp_f0_142;
@@ -200,7 +200,7 @@ void SteamValve::Update() {
         }
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1B8);
         temp_f1_194 = MKRand_Float(&gViewSeed, -1500.0f, -1000.0f);
-        temp_r3_197 = this->unk8 + 0x20;
+        temp_r3_197 = ((u8 *) this->unk8) + 0x20;
         temp_f0_199 = M2C_FIELD(temp_r3_197, f64 *, 0) * temp_f1_194;
         spC8 = temp_f0_199;
         sp178 = temp_f0_199;
@@ -316,7 +316,7 @@ void SteamValve::Update() {
     } else {
         MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(checked_cast<SteamValveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), &sp1A8);
         temp_f1_421 = MKRand_Float(&gViewSeed, -300.0f, -100.0f);
-        temp_r4_424 = this->unk8 + 0x20;
+        temp_r4_424 = ((u8 *) this->unk8) + 0x20;
         temp_f0_426 = M2C_FIELD(temp_r4_424, f64 *, 0) * temp_f1_421;
         sp28 = temp_f0_426;
         spE8 = temp_f0_426;

@@ -212,7 +212,7 @@ void Gem::CollectEffects() {
         sp1D0 = temp_f0_305;
         spE8 = (f32) sp1C8 * 600.0f;
         sp1D8 = (f64) spE8;
-        temp_r30_318 = this->unk8 + 0x30;
+        temp_r30_318 = ((u8 *) this->unk8) + 0x30;
         temp_f27_320 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         temp_f26_325 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
         spD0 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);

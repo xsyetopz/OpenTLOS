@@ -43,11 +43,11 @@ void ElementalShield::Disable() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void ElementalShield::Trigger(MKVector3 *arg0, float arg1, bool arg2) {
     if ((s32) this->unk90 == 0) {
         this->unk90 = 1;
-        KDSound_Play3d(this->unkB4, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(this->unkB4, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         this->unk98 = arg1;
         this->unk9C = 0.0f;
         this->unk94 = 1.0f;
@@ -254,7 +254,7 @@ block_29:
         this->unk9C = this->unk94;
         if (this->unk94 <= 0.0f) {
             this->unk90 = 0;
-            KDSound_Play3d(this->unkB8, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(this->unkB8, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             this->unkAC = NULL;
         }
         goto block_29;

@@ -46,7 +46,7 @@ void BigBeetleHive::EmitGoopDrips() {
     if (!(this->unk1E8 > 0.0f)) {
         this->unk1E8 = 1.0f;
         temp_r31_58 = checked_cast<BigBeetleHiveDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD((temp_r31_58 + (MKRand_Int(&gViewSeed, 0, 5) * 4)), s32 *, 0x170), &sp28);
+        MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD((((u8 *) temp_r31_58) + (MKRand_Int(&gViewSeed, 0, 5) * 4)), s32 *, 0x170), &sp28);
         temp_f1_73 = MKRand_Float(&gViewSeed, 0.2f, 0.5f);
         sp10 = 0.0f;
         sp8 = 0.0f;
@@ -58,7 +58,7 @@ void BigBeetleHive::EmitGoopDrips() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void BigBeetleHive::Message(MKMessage *arg0) {
     f64 spC8;
     f64 spC0;
@@ -149,7 +149,7 @@ block_14:
                 *temp_r4_145 = this;
             }
         }
-        temp_r4_150 = this->unk8 + 0x30;
+        temp_r4_150 = ((u8 *) this->unk8) + 0x30;
         sp60 = M2C_FIELD(temp_r4_150, f64 *, 0) - M2C_FIELD(temp_r3_118, f64 *, 0x10);
         spA0 = sp60;
         sp68 = M2C_FIELD(temp_r4_150, f32 *, 8) - M2C_FIELD(temp_r3_118, f32 *, 0x18);
@@ -207,13 +207,13 @@ block_14:
         *M2C_BITWISE(void *, temp_r4_261) = (f64) (*M2C_BITWISE(f64 *, temp_r4_261) + temp_f0_256);
         M2C_FIELD(temp_r4_261, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_261, f32 *, 8) + (f32) sp98);
         M2C_FIELD(temp_r3_118, s8 *, 0x3E) = 1;
-        KDSound_Play3d(GS_OBBigHiveHit1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-        KDSound_Play3d(GS_OBBigHiveHit2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-        KDSound_Play3d(GS_OBBigHiveHit3, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_OBBigHiveHit1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_OBBigHiveHit2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_OBBigHiveHit3, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         return;
     case 5:                                         /* switch 1 */
         temp_r3_304 = checked_cast<BreathHitMessage *, MKMessage>(arg0);
-        temp_r4_306 = this->unk8 + 0x30;
+        temp_r4_306 = ((u8 *) this->unk8) + 0x30;
         sp40 = M2C_FIELD(temp_r4_306, f64 *, 0) - M2C_FIELD(temp_r3_304, f64 *, 0x10);
         sp80 = sp40;
         sp48 = M2C_FIELD(temp_r4_306, f32 *, 8) - M2C_FIELD(temp_r3_304, f32 *, 0x18);
@@ -271,8 +271,8 @@ block_14:
         *M2C_BITWISE(void *, temp_r4_417) = (f64) (*M2C_BITWISE(f64 *, temp_r4_417) + temp_f0_412);
         M2C_FIELD(temp_r4_417, f32 *, 8) = (f32) (M2C_FIELD(temp_r4_417, f32 *, 8) + (f32) sp78);
         if ((s32) M2C_FIELD(temp_r3_304, s32 *, 0x38) != 3) {
-            KDSound_Play3d(GS_OBBigHiveHit4, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-            KDSound_Play3d(GS_OBBigHiveHit5, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_OBBigHiveHit4, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_OBBigHiveHit5, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             return;
         }
     default:                                        /* switch 1 */
@@ -282,10 +282,10 @@ block_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void BigBeetleHive::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
-    KDSound_Play3d(GS_OBBigHiveSmash1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-    KDSound_Play3d(GS_OBBigHiveSmash2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_OBBigHiveSmash1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_OBBigHiveSmash2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     Shatterable::Shatter(arg0, arg1, arg2, arg3, 1U, 0U);
 }
 #endif

@@ -154,7 +154,7 @@ void DartTrap::Shoot() {
         }
         temp_r3_271 = this->unk90;
         M2C_FIELD(M2C_FIELD(temp_r3_271, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *, f64 *, DartTrap *, M2C_UNK, M2C_UNK, f32), 0x4C)(temp_r3_271, &spB0, &spA0, this, 0, 0, 2000.0f);
-        KDSound_Play3d(GS_DartTrapFire, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_DartTrapFire, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         temp_r3_290 = this->unk90;
         M2C_FIELD(M2C_FIELD(temp_r3_290, void **, 0x44), M2C_UNK (**)(void *), 0x24)(temp_r3_290);
         temp_f0_297 = (f64) sp90 * 5.60222949e-315;
@@ -197,7 +197,7 @@ void DartTrap::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
 void DartTrap::Update() {
     s32 temp_r0_401;
 
@@ -243,7 +243,7 @@ void DartTrap::Update() {
         }
         break;
     }
-    KDSound_Play3d(this->unk80, this->unk8 + 0x30, 0U, 0.0f, 0U);
+    KDSound_Play3d(this->unk80, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
 }
 #endif
 

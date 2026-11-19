@@ -205,7 +205,7 @@ void GameProp::Message(MKMessage *arg0) {
         M2C_FIELD(temp_r29_187, s32 *, 8) = (s32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xDC);
         break;
     case 0x5B:
-        temp_r29_196 = this->unk8 + 0x30;
+        temp_r29_196 = ((u8 *) this->unk8) + 0x30;
         M2C_FIELD(checked_cast<GetPosMsg *, MKMessage>(arg0), void **, 8) = temp_r29_196;
         break;
     case 0xF5:
@@ -326,8 +326,8 @@ void GameProp::Update() {
         PropUpdate(temp_f1_433);
         temp_r3_442 = this->unk80;
         if (temp_r3_442 != NULL) {
-            this->unkBC = KDSound_Play3d(temp_r3_442, this->unk8 + 0x30, 0U, 0.0f, 0U);
-            this->unk90.Update(this->unk8 + 0x30, 0U);
+            this->unkBC = KDSound_Play3d(temp_r3_442, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
+            this->unk90.Update(((u8 *) this->unk8) + 0x30, 0U);
         }
         if (M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0xCC) != 0.0f) {
             temp_r5_466 = this->unk8;

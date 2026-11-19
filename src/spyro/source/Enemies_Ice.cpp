@@ -315,7 +315,7 @@ void IceTier1::Spawn(EnemyGeneratorDoor *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void IceTier1::Update() {
     Matrix spC0;
     MKVector3 spA8;
@@ -352,7 +352,7 @@ void IceTier1::Update() {
 
     Enemy::Update();
     if (!(((u8) M2C_FIELD(this, u8 *, 0xB08) >> 1U) & 1) && (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(2) != 0)) {
-        KDSound_Play3d(GS_IceTrollHitGround, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_IceTrollHitGround, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         temp_r30_731 = Tools_GetMatchingNodeIndex(this->unk4, "r_hand");
         temp_r31_734 = MKModel_GetWorldMatrix(this->unk4);
         temp_r3_736 = MKModel_GetAnimation(this->unk4);

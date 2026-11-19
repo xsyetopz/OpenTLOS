@@ -68,7 +68,7 @@ s32 Shatterable::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     void *temp_r4_23;
 
     MKVector(0.0f, 150.0f, 0.0f);
-    temp_r4_23 = this->unk8 + 0x30;
+    temp_r4_23 = ((u8 *) this->unk8) + 0x30;
     sp8 = M2C_FIELD(temp_r4_23, f64 *, 0) + sp18;
     M2C_FIELD(arg1, f64 *, 0) = sp8;
     sp10 = M2C_FIELD(temp_r4_23, f32 *, 8) + sp20;
@@ -1109,7 +1109,7 @@ loop_151:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Shatterable::SpawnGems(int arg0) {
     f64 sp50;
     f64 sp48;
@@ -1146,7 +1146,7 @@ void Shatterable::SpawnGems(int arg0) {
         sp10 = (f32) sp40 + (f32) sp30;
         sp50 = (f64) sp10;
         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk10C != 0) {
-            temp_r29_1519 = this->unk8 + 0x30;
+            temp_r29_1519 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk10C, temp_r29_1519, 0U, -1, 0.0f, 0U);
         }
         var_r27_1530 = 0;
@@ -1385,10 +1385,10 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
         temp_r5_2099 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C;
         sp20 = 0.0f;
         sp18 = 0.0f;
-        sp1C = M2C_FIELD((temp_r5_2099 + ((s32) temp_r4_2095 * 0x17C)), f32 *, 0x15C);
+        sp1C = M2C_FIELD((((u8 *) temp_r5_2099) + ((s32) temp_r4_2095 * 0x17C)), f32 *, 0x15C);
         sp50 = (f64) sp20;
         sp48 = (f64) sp18;
-        temp_r4_2112 = this->unk158 + (((s32) temp_r4_2095 << 7) + 0x20);
+        temp_r4_2112 = ((u8 *) this->unk158) + (((s32) temp_r4_2095 << 7) + 0x20);
         if (arg3 != NULL) {
             var_r3_2114 = arg3;
         } else {
@@ -1401,22 +1401,22 @@ void Shatterable::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3,
         } else {
             var_f0_2125 = 1.0f;
         }
-        M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), f32 *, 0x38) = var_f0_2125;
+        M2C_FIELD((((u8 *) this->unk158) + ((s32) this->unk170 << 7)), f32 *, 0x38) = var_f0_2125;
         *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 0;
         if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk108 != 0) && (temp_r4_2148 = this->unk170, (((void *) (temp_r4_2148 + 1) < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) != 0))) {
-            ((KDShatter2 *) (this->unk158 + ((s32) temp_r4_2148 << 7)))->Shatter(0, this->unk8 + 0x30);
+            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) temp_r4_2148 << 7)))->Shatter(0, ((u8 *) this->unk8) + 0x30);
         } else {
             if (arg1 != NULL) {
                 var_r26_2164 = arg1;
             } else {
-                var_r26_2164 = this->unk8 + 0x30;
+                var_r26_2164 = ((u8 *) this->unk8) + 0x30;
             }
             if (arg2 == -1) {
                 var_r4_2174 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk15C;
             } else {
                 var_r4_2174 = arg2;
             }
-            ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->Shatter(var_r4_2174, var_r26_2164);
+            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->Shatter(var_r4_2174, var_r26_2164);
         }
         *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 1;
         temp_r0_2196 = *(this->unk158 + (((s32) this->unk170 << 7) + 0x44));
@@ -1440,7 +1440,7 @@ loop_32:
                 this->unk15C.unk0 = 2;
                 SetStateAnim(1);
                 if ((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk154 > 0.0f) && (arg4 != 0)) {
-                    temp_r29_2254 = this->unk8 + 0x30;
+                    temp_r29_2254 = ((u8 *) this->unk8) + 0x30;
                     temp_r28_2256 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     temp_r27_2259 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     temp_r26_2263 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
@@ -1452,22 +1452,22 @@ loop_32:
                 SetStateAnim(2);
             }
             ((EventMessage *) &this->unk150)->Send((MKProp *) this);
-            if ((u32) M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), u32 *, 0x78) != 0U) {
+            if ((u32) M2C_FIELD((((u8 *) this->unk158) + ((s32) this->unk170 << 7)), u32 *, 0x78) != 0U) {
                 temp_r26_2301 = *KDProperty::pInstanceMem;
                 *KDProperty::pInstanceMem = this;
-                temp_r3_2307 = M2C_FIELD((this->unk158 + ((s32) this->unk170 << 7)), void ***, 0x78);
+                temp_r3_2307 = M2C_FIELD((((u8 *) this->unk158) + ((s32) this->unk170 << 7)), void ***, 0x78);
                 M2C_FIELD(*temp_r3_2307, M2C_UNK (**)(void **), 0x4C)(temp_r3_2307);
                 *KDProperty::pInstanceMem = temp_r26_2301;
             }
         }
-        ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->ClearVisible();
+        ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->ClearVisible();
         this->unk170 += 1;
         if (!(this->unk10 & 0x100000)) {
             DisableCollision();
         }
         temp_r4_2330 = this->unk170;
         if (temp_r4_2330 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) {
-            ((KDShatter2 *) (this->unk158 + ((s32) temp_r4_2330 << 7)))->SetVisibleUnshattered();
+            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) temp_r4_2330 << 7)))->SetVisibleUnshattered();
         }
         if (((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk114 != 0) && (((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160 == 0) || ((MKProp *) this->unk170 == (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) || ((u8) M2C_FIELD((checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk11C + ((s32) this->unk170 * 0x17C)), u8 *, 0x178) == 0))) {
             this->unkC8.UnregisterTargetable();
@@ -1753,12 +1753,12 @@ block_84:
                         M2C_FIELD(this, u8 *, 0x1A1) = (u8) (M2C_FIELD(this, u8 *, 0x1A1) | 0x80);
                         M2C_FIELD(temp_r31_2713, s8 *, 0x3E) = 1;
                         if ((s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk100 != 0) {
-                            temp_r28_2803 = this->unk8 + 0x30;
+                            temp_r28_2803 = ((u8 *) this->unk8) + 0x30;
                             KDSound_Play3d(checked_cast<P21ShatterableDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0)->unk100, temp_r28_2803, 0U, -1, 0.0f, 0U);
                         } else {
                             temp_r3_2814 = M2C_FIELD(temp_r31_2713, s32 *, 0x2C);
                             if ((temp_r3_2814 > 0) && (M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x400)) {
-                                KDSound_Play3d(temp_r3_2814, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                                KDSound_Play3d(temp_r3_2814, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                             }
                         }
                         if (M2C_BITWISE(f32, this->unk168) > 0.0f) {
@@ -1943,7 +1943,7 @@ block_84:
                             }
                             var_f6_3197 = 0.0f;
                             sp60 = 0.0f;
-                            temp_r3_3209 = this->unk8 + 0x30;
+                            temp_r3_3209 = ((u8 *) this->unk8) + 0x30;
                             sp58 = 0.0f;
                             temp_f31_3211 = 0.5f * (0.333333f * (var_f0_2904 + (var_f1_2977 + var_f6_3049)) * var_f5_3124);
                             sp5C = 200.0f;
@@ -2000,7 +2000,7 @@ block_84:
                             temp_f0_3317 = spC8 * (f64) temp_f31_3211;
                             sp78 = temp_f0_3317;
                             spD8 = temp_f0_3317;
-                            temp_r3_3324 = this->unk8 + 0x30;
+                            temp_r3_3324 = ((u8 *) this->unk8) + 0x30;
                             sp80 = (f32) spD0 * temp_f31_3211;
                             spE0 = (f64) sp80;
                             temp_f0_3330 = M2C_FIELD(temp_r3_3324, f64 *, 0) + temp_f0_3317;
@@ -2023,7 +2023,7 @@ block_84:
                         goto block_296;
                     }
                     if ((M2C_FIELD(temp_r31_2713, s32 *, 0x30) & 0x400) && !(((u8) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk118 >> 5U) & 1)) {
-                        KDSound_Play3d(GS_SpyroStompLand, temp_r31_2713 + 0x10, 0U, -1, 0.0f, 0U);
+                        KDSound_Play3d(GS_SpyroStompLand, ((u8 *) temp_r31_2713) + 0x10, 0U, -1, 0.0f, 0U);
                         ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **), 0x40)(gb)))->RumblePlay(0.5f, 0.7f, 0.1f, 0, 4.0f, 0U);
                         return;
                     }
@@ -2173,7 +2173,7 @@ loop_223:
         goto block_296;
     case -4:                                        /* switch 1 */
         if ((s32) this->unk15C.unk0 == 3) {
-            ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->Finish();
+            ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->Finish();
         }
         goto block_296;
     case -3:                                        /* switch 1 */
@@ -2308,7 +2308,7 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void Shatterable::Update() {
     s32 sp8;
     ShatterableDescriptor *temp_r29_4050;
@@ -2322,7 +2322,7 @@ void Shatterable::Update() {
     var_r30_4052 = 0;
 loop_2:
     if (var_r28_4051 < (s32) temp_r29_4050->unk160) {
-        ((KDShatter2 *) (this->unk158 + var_r30_4052))->Update();
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4052))->Update();
         var_r28_4051 += 1;
         var_r30_4052 += 0x80;
         goto loop_2;
@@ -2401,7 +2401,7 @@ void Shatterable::Draw() {
 loop_15:
     if (var_r28_4230 < (s32) temp_r29_4189->unk160) {
         if (var_r28_4230 == var_r27_4206) {
-            ((KDShatter2 *) (this->unk158 + var_r30_4231))->Draw(1U);
+            ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4231))->Draw(1U);
         }
         var_r28_4230 += 1;
         var_r30_4231 += 0x80;
@@ -2411,7 +2411,7 @@ loop_15:
     var_r30_4248 = 0;
 loop_18:
     if (var_r28_4247 < (s32) temp_r29_4189->unk160) {
-        ((KDShatter2 *) (this->unk158 + var_r30_4248))->Draw(0U);
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4248))->Draw(0U);
         var_r28_4247 += 1;
         var_r30_4248 += 0x80;
         goto loop_18;
@@ -2454,14 +2454,14 @@ void Shatterable::Reset() {
 loop_2:
     if (var_r29_4329 < (s32) checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0)->unk160) {
         *(this->unk158 + (var_r30_4328 + 0x3C)) = M2C_FIELD(this->unk0, f32 *, 0x20);
-        ((KDShatter2 *) (this->unk158 + var_r30_4328))->Reset();
-        ((KDShatter2 *) (this->unk158 + var_r30_4328))->ClearVisible();
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4328))->Reset();
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4328))->ClearVisible();
         var_r29_4329 += 1;
         var_r30_4328 += 0x80;
         goto loop_2;
     }
     ResetPercentageShattered();
-    ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
+    ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
     EnableCollision();
     this->unk70.unk4 = 0;
     if ((u8) M2C_FIELD(this, u8 *, 0x19F) == 0) {
@@ -2533,7 +2533,7 @@ void Shatterable::LoadDone() {
 loop_19:
     if (var_r30_4475 < (s32) temp_r31_4474->unk160) {
         var_r25_4482 = 0;
-        temp_r4_4484 = this->unk158 + (var_r27_4477 + 0x68);
+        temp_r4_4484 = ((u8 *) this->unk158) + (var_r27_4477 + 0x68);
         var_r26_4485 = 0;
         M2C_FIELD(temp_r4_4484, s32 *, 0) = 0;
         M2C_FIELD(temp_r4_4484, s8 *, 4) = 1;
@@ -2542,7 +2542,7 @@ loop_19:
 loop_15:
         temp_r4_4503 = var_r28_4476 + temp_r31_4474->unk11C;
         if (var_r26_4485 < (s32) M2C_FIELD(temp_r4_4503, u16 *, 0x110)) {
-            AddCollisionSubObject((s32) *(temp_r4_4503 + (var_r25_4482 + 0x112)), this->unk158 + (var_r27_4477 + 0x68));
+            AddCollisionSubObject((s32) *(temp_r4_4503 + (var_r25_4482 + 0x112)), ((u8 *) this->unk158) + (var_r27_4477 + 0x68));
             var_r26_4485 += 1;
             var_r25_4482 += 2;
             goto loop_15;
@@ -2555,12 +2555,12 @@ loop_15:
         *(this->unk158 + (var_r27_4477 + 0x14)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x174));
         *(this->unk158 + (var_r27_4477 + 0x18)) = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x160));
         temp_r4_4549 = temp_r31_4474->unk11C + var_r28_4476;
-        temp_r3_4550 = this->unk158 + var_r27_4477;
+        temp_r3_4550 = ((u8 *) this->unk158) + var_r27_4477;
         M2C_FIELD(temp_r3_4550, void **, 0x54) = temp_r4_4549;
-        M2C_FIELD(temp_r3_4550, void **, 0x58) = (void *) (temp_r4_4549 + 0x44);
-        M2C_FIELD(temp_r3_4550, void **, 0x5C) = (void *) (temp_r4_4549 + 0x88);
-        ((KDShatter2 *) (this->unk158 + var_r27_4477))->LoadDone(this->unk4, temp_r31_4474->unk11C + (var_r28_4476 + 0xCC));
-        ((KDShatter2 *) (this->unk158 + var_r27_4477))->ClearVisible();
+        M2C_FIELD(temp_r3_4550, void **, 0x58) = (void *) (((u8 *) temp_r4_4549) + 0x44);
+        M2C_FIELD(temp_r3_4550, void **, 0x5C) = (void *) (((u8 *) temp_r4_4549) + 0x88);
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r27_4477))->LoadDone(this->unk4, temp_r31_4474->unk11C + (var_r28_4476 + 0xCC));
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r27_4477))->ClearVisible();
         *(this->unk158 + (var_r27_4477 + 0x30)) = temp_r31_4474->unk158;
         *(this->unk158 + (var_r27_4477 + 0x60)) = temp_r31_4474->unk165;
         temp_r4_4575 = *(temp_r31_4474->unk11C + (var_r28_4476 + 0x158));
@@ -2572,7 +2572,7 @@ loop_15:
         var_r27_4477 += 0x80;
         goto loop_19;
     }
-    ((KDShatter2 *) (this->unk158 + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
+    ((KDShatter2 *) (((u8 *) this->unk158) + ((s32) this->unk170 << 7)))->SetVisibleUnshattered();
     *(this->unk158 + (((s32) this->unk170 << 7) + 0x6C)) = 1;
     M2C_FIELD(this, f64 *, 0x130) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     this->unk138 = M2C_FIELD(&MKVector3::zero, f64 *, 8);
@@ -2641,7 +2641,7 @@ loop_3:
 loop_11:
     temp_r3_4816 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     if (var_r30_4805 < (s32) temp_r3_4816->unk160) {
-        ((KDShatter2 *) (this->unk158 + var_r31_4806))->Deinit();
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r31_4806))->Deinit();
         var_r30_4805 += 1;
         var_r31_4806 += 0x80;
         goto loop_11;
@@ -2707,7 +2707,7 @@ void Shatterable::Init() {
     this->unk158 = var_r3_4919;
     var_r28_4928 = 0;
     do {
-        ((KDShatter2 *) (this->unk158 + var_r30_4925))->Init();
+        ((KDShatter2 *) (((u8 *) this->unk158) + var_r30_4925))->Init();
         var_r28_4928 += 1;
         temp_r0_4935 = var_r30_4925 + 0x78;
         var_r30_4925 += 0x80;
@@ -2832,12 +2832,12 @@ loop_16:
                 gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + var_r25_5021 + var_r28_5033), &sp18);
                 var_r23_5030 += 1;
                 var_r28_5033 += 4;
-                temp_r3_5046 = this->unk11C + var_r26_5032;
+                temp_r3_5046 = ((u8 *) this->unk11C) + var_r26_5032;
                 var_r26_5032 += 2;
-                *(var_r24_5022 + (temp_r3_5046 + 2)) = (s16) sp18;
+                *(var_r24_5022 + (((u8 *) temp_r3_5046) + 2)) = (s16) sp18;
                 goto loop_16;
             }
-            temp_r5_5055 = temp_r3_5051 + var_r24_5022;
+            temp_r5_5055 = ((u8 *) temp_r3_5051) + var_r24_5022;
             *(temp_r5_5055 + ((*temp_r5_5055 * 2) + 2)) = 0xFFFF;
         }
         if ((u16) *(this->unk11C + (var_r24_5022 + 0x44)) != 0) {
@@ -2846,16 +2846,16 @@ loop_16:
             var_r28_5072 = 0;
 loop_21:
             temp_r3_5090 = this->unk11C;
-            if (var_r23_5069 < (s32) *(var_r24_5022 + (temp_r3_5090 + 0x44))) {
+            if (var_r23_5069 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5090) + 0x44))) {
                 gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0x500 + var_r25_5021 + var_r28_5072), &sp14);
                 var_r23_5069 += 1;
                 var_r28_5072 += 4;
-                temp_r3_5085 = this->unk11C + var_r26_5071;
+                temp_r3_5085 = ((u8 *) this->unk11C) + var_r26_5071;
                 var_r26_5071 += 2;
-                *(var_r24_5022 + (temp_r3_5085 + 0x46)) = (s16) sp14;
+                *(var_r24_5022 + (((u8 *) temp_r3_5085) + 0x46)) = (s16) sp14;
                 goto loop_21;
             }
-            temp_r5_5095 = temp_r3_5090 + var_r24_5022;
+            temp_r5_5095 = ((u8 *) temp_r3_5090) + var_r24_5022;
             *(temp_r5_5095 + ((M2C_FIELD(temp_r5_5095, u16 *, 0x44) * 2) + 0x46)) = 0xFFFF;
         }
         if ((u16) *(this->unk11C + (var_r24_5022 + 0x88)) != 0) {
@@ -2864,19 +2864,19 @@ loop_21:
             var_r28_5112 = 0;
 loop_26:
             temp_r3_5130 = this->unk11C;
-            if (var_r23_5109 < (s32) *(var_r24_5022 + (temp_r3_5130 + 0x88))) {
+            if (var_r23_5109 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5130) + 0x88))) {
                 gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0xA00 + var_r25_5021 + var_r28_5112), &sp10);
                 var_r23_5109 += 1;
                 var_r28_5112 += 4;
-                temp_r3_5125 = this->unk11C + var_r26_5111;
+                temp_r3_5125 = ((u8 *) this->unk11C) + var_r26_5111;
                 var_r26_5111 += 2;
-                *(var_r24_5022 + (temp_r3_5125 + 0x8A)) = (s16) sp10;
+                *(var_r24_5022 + (((u8 *) temp_r3_5125) + 0x8A)) = (s16) sp10;
                 goto loop_26;
             }
-            temp_r5_5135 = temp_r3_5130 + var_r24_5022;
+            temp_r5_5135 = ((u8 *) temp_r3_5130) + var_r24_5022;
             *(temp_r5_5135 + ((M2C_FIELD(temp_r5_5135, u16 *, 0x88) * 2) + 0x8A)) = 0xFFFF;
         }
-        temp_r3_5144 = this->unk11C + var_r24_5022;
+        temp_r3_5144 = ((u8 *) this->unk11C) + var_r24_5022;
         if (((u16) M2C_FIELD(temp_r3_5144, u16 *, 0xCC) != 0) || ((s8 *) M2C_FIELD(temp_r3_5144, s8 **, 0x154) != NULL)) {
             temp_r3_5152 = M2C_FIELD(temp_r3_5144, s8 **, 0x154);
             if (temp_r3_5152 != NULL) {
@@ -2892,8 +2892,8 @@ loop_37:
                     strcpy(&sp3C, temp_r3_5179);
                     strlwr(&sp3C);
                     if ((strstr(&sp1C) != 0U) && ((temp_r0_5191 = (u8) *temp_r3_5179, (((s8) temp_r0_5191 == 0x66) != 0)) || ((s8) temp_r0_5191 == 0x46))) {
-                        *(&unshatteredNames + 0xF00 + var_r25_5021 + (*(var_r24_5022 + (this->unk11C + 0xCC)) * 4)) = temp_r3_5179;
-                        temp_r4_5204 = this->unk11C + 0xCC;
+                        *(&unshatteredNames + 0xF00 + var_r25_5021 + (*(var_r24_5022 + (((u8 *) this->unk11C) + 0xCC)) * 4)) = temp_r3_5179;
+                        temp_r4_5204 = ((u8 *) this->unk11C) + 0xCC;
                         *(var_r24_5022 + temp_r4_5204) = *(var_r24_5022 + temp_r4_5204) + 1;
                     }
                     var_r26_5173 += 1;
@@ -2905,16 +2905,16 @@ loop_37:
             var_r28_5218 = 0;
 loop_40:
             temp_r3_5236 = this->unk11C;
-            if (var_r23_5215 < (s32) *(var_r24_5022 + (temp_r3_5236 + 0xCC))) {
+            if (var_r23_5215 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5236) + 0xCC))) {
                 gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0xF00 + var_r25_5021 + var_r28_5218), &spC);
                 var_r23_5215 += 1;
                 var_r28_5218 += 4;
-                temp_r3_5231 = this->unk11C + var_r26_5217;
+                temp_r3_5231 = ((u8 *) this->unk11C) + var_r26_5217;
                 var_r26_5217 += 2;
-                *(var_r24_5022 + (temp_r3_5231 + 0xCE)) = (s16) spC;
+                *(var_r24_5022 + (((u8 *) temp_r3_5231) + 0xCE)) = (s16) spC;
                 goto loop_40;
             }
-            temp_r5_5241 = temp_r3_5236 + var_r24_5022;
+            temp_r5_5241 = ((u8 *) temp_r3_5236) + var_r24_5022;
             *(temp_r5_5241 + ((M2C_FIELD(temp_r5_5241, u16 *, 0xCC) * 2) + 0xCE)) = 0xFFFF;
         }
         if ((u16) *(this->unk11C + (var_r24_5022 + 0x110)) != 0) {
@@ -2923,16 +2923,16 @@ loop_40:
             var_r28_5258 = 0;
 loop_45:
             temp_r3_5276 = this->unk11C;
-            if (var_r23_5255 < (s32) *(var_r24_5022 + (temp_r3_5276 + 0x110))) {
+            if (var_r23_5255 < (s32) *(var_r24_5022 + (((u8 *) temp_r3_5276) + 0x110))) {
                 gAssertBool = MKModel_SubObjectExists(this->unk2C, (SubObjectType) 0, *(&unshatteredNames + 0x1400 + var_r25_5021 + var_r28_5258), &sp8);
                 var_r23_5255 += 1;
                 var_r28_5258 += 4;
-                temp_r3_5271 = this->unk11C + var_r26_5257;
+                temp_r3_5271 = ((u8 *) this->unk11C) + var_r26_5257;
                 var_r26_5257 += 2;
-                *(var_r24_5022 + (temp_r3_5271 + 0x112)) = (s16) sp8;
+                *(var_r24_5022 + (((u8 *) temp_r3_5271) + 0x112)) = (s16) sp8;
                 goto loop_45;
             }
-            temp_r5_5281 = temp_r3_5276 + var_r24_5022;
+            temp_r5_5281 = ((u8 *) temp_r3_5276) + var_r24_5022;
             *(temp_r5_5281 + ((M2C_FIELD(temp_r5_5281, u16 *, 0x110) * 2) + 0x112)) = 0xFFFF;
         }
         var_r27_5020 += 1;
@@ -2954,7 +2954,7 @@ loop_45:
         } while (var_r23_5299 < 3);
     }
     var_r4_5315 = this->unk160;
-    if ((u8) M2C_FIELD((this->unk11C + (var_r4_5315 * 0x17C)), u8 *, -4) != 0) {
+    if ((u8) M2C_FIELD((((u8 *) this->unk11C) + (var_r4_5315 * 0x17C)), u8 *, -4) != 0) {
 
     } else {
         temp_r0_5324 = var_r4_5315 - 1;
@@ -3089,7 +3089,7 @@ loop_30:
                     *(this->unk11C + (var_r4_5809 + 0x154)) = 0;
                     *(this->unk11C + (var_r4_5809 + 0x158)) = 0;
                     *(this->unk11C + (var_r4_5809 + 0x179)) = 1;
-                    temp_r3_5859 = this->unk11C + var_r4_5809;
+                    temp_r3_5859 = ((u8 *) this->unk11C) + var_r4_5809;
                     var_r4_5809 += 0x17C;
                     M2C_FIELD(temp_r3_5859, f32 *, 0x15C) = (f32) this->unk130;
                     M2C_FIELD(temp_r3_5859, f32 *, 0x160) = (f32) this->unk134;
@@ -3179,12 +3179,12 @@ loop_87:
                         *(this->unk11C + ((this->unk160 * 0x17C) + 0x179)) = var_r29_5889->GetBool(0);
                     } else {
                         var_r26_6158 = 0;
-                        temp_r25_6159 = this->unk11C + (this->unk160 * 0x17C);
-                        if ((var_r29_5889->LoadFloat("upVel", temp_r25_6159 + 0x15C, 0) != 0) || (var_r29_5889->LoadFloat("power", temp_r25_6159 + 0x160, 0) != 0) || (var_r29_5889->LoadFloat("bounce", temp_r25_6159 + 0x164, 0) != 0) || (var_r29_5889->LoadFloat("gravity", temp_r25_6159 + 0x168, 0) != 0) || (var_r29_5889->LoadFloat("life", temp_r25_6159 + 0x16C, 0) != 0) || (var_r29_5889->LoadFloat("airResistance", temp_r25_6159 + 0x170, 0) != 0)) {
+                        temp_r25_6159 = ((u8 *) this->unk11C) + (this->unk160 * 0x17C);
+                        if ((var_r29_5889->LoadFloat("upVel", ((u8 *) temp_r25_6159) + 0x15C, 0) != 0) || (var_r29_5889->LoadFloat("power", ((u8 *) temp_r25_6159) + 0x160, 0) != 0) || (var_r29_5889->LoadFloat("bounce", ((u8 *) temp_r25_6159) + 0x164, 0) != 0) || (var_r29_5889->LoadFloat("gravity", ((u8 *) temp_r25_6159) + 0x168, 0) != 0) || (var_r29_5889->LoadFloat("life", ((u8 *) temp_r25_6159) + 0x16C, 0) != 0) || (var_r29_5889->LoadFloat("airResistance", ((u8 *) temp_r25_6159) + 0x170, 0) != 0)) {
                             var_r26_6158 = 1;
                         }
                         if (var_r26_6158 == 0) {
-                            var_r29_5889->LoadFloat("spinRate", temp_r25_6159 + 0x174, 0);
+                            var_r29_5889->LoadFloat("spinRate", ((u8 *) temp_r25_6159) + 0x174, 0);
                         }
                     }
                     var_r29_5889 = var_r29_5889->unkC->GetNextLine(var_r29_5889);

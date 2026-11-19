@@ -661,7 +661,7 @@ loop_11:
                         temp_r8_1074 = &spA0 + var_r4_1070;
                         if (M2C_FIELD(temp_r8_1074, f32 *, 0) < M2C_FIELD(temp_r8_1074, f32 *, 4)) {
                             temp_r9_1079 = var_r30_987 + var_r3_1069;
-                            M2C_STRUCT_COPY((s32) &unksp5C + 4, (s32) (temp_r9_1079 - 4) + 4, 0x30);
+                            M2C_STRUCT_COPY((s32) &unksp5C + 4, (s32) (((u8 *) temp_r9_1079) - 4) + 4, 0x30);
                             var_r11_1068 -= 1;
                             var_r3_1069 -= 0x30;
                             temp_f3_1094 = M2C_FIELD(temp_r8_1074, f32 *, 0);

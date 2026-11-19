@@ -198,7 +198,7 @@ void SB2::Arbitrate() {
     this->unk68 = M2C_FIELD(temp_r3_214, f64 *, 0x100);
     this->unk70 = M2C_FIELD(temp_r3_214, f64 *, 0x108);
     this->unk78 = M2C_FIELD(temp_r3_214, f32 *, 0x110);
-    M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (temp_r3_214 + 0x114) + 4, 0x28);
+    M2C_STRUCT_COPY((s32) &this->unk7C + 4, (s32) (((u8 *) temp_r3_214) + 0x114) + 4, 0x28);
     M2C_STRUCT_COPY((s32) &this->unkA4 + 4, (s32) (this + temp_r31_82 + 0x13C) + 4, 0x28);
     M2C_STRUCT_COPY((s32) &this->unkCC + 4, (s32) (this + temp_r31_82 + 0x164) + 4, 0x28);
     this->unkF8 = M2C_FIELD((this + temp_r31_82), u8 *, 0x190);

@@ -94,7 +94,7 @@ void MKStringCache::Optimise() {
     } else {
         var_r3_172 = realloc(this, temp_r3_162 + 2);
     }
-    M2C_FIELD((var_r3_172 + temp_r3_162), s8 *, 1) = 0;
+    M2C_FIELD((((u8 *) var_r3_172) + temp_r3_162), s8 *, 1) = 0;
 }
 #endif
 

@@ -160,7 +160,7 @@ block_14:
                 temp_f0_229 = this->unkC8 * (f64) gUpdateTimeDelta;
                 sp88 = temp_f0_229;
                 sp118 = temp_f0_229;
-                temp_r3_236 = this->unk8 + 0x30;
+                temp_r3_236 = ((u8 *) this->unk8) + 0x30;
                 sp90 = M2C_FIELD(this, f32 *, 0xD0) * gUpdateTimeDelta;
                 sp120 = (f64) sp90;
                 temp_f0_242 = M2C_FIELD(temp_r3_236, f64 *, 0) + temp_f0_229;

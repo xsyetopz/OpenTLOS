@@ -953,7 +953,6 @@ loop_42:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void MKFont::RenderChars(TextCharStrip **arg0, int arg1, const Matrix &arg2) {
     s32 var_r24_1713;
     s32 var_r26_1700;
@@ -976,7 +975,7 @@ loop_4:
         var_r24_1713 = 0;
         var_r30_1714 = 0;
         do {
-            temp_r23_1716 = temp_r25_1704 + var_r30_1714;
+            temp_r23_1716 = ((u8 *) temp_r25_1704) + var_r30_1714;
             MKMaterial_SetVertex4F(M2C_ERROR(/* Read from unset register $r3 */), M2C_FIELD(temp_r23_1716, f32 *, 0x10), M2C_FIELD(temp_r23_1716, f32 *, 0x14), 0.0f, 1.0f);
             MKMaterial_SetVertex4F(M2C_ERROR(/* Read from unset register $r3 */), M2C_FIELD(temp_r23_1716, f32 *, 0), M2C_FIELD(temp_r23_1716, f32 *, 4), M2C_FIELD(temp_r23_1716, f32 *, 8), 1.0f);
             var_r24_1713 += 1;
@@ -989,7 +988,6 @@ loop_4:
     }
     MKMaterial_RenderImmediateEnd();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char' to
 void MKFont::DeinitModule() {
@@ -1265,7 +1263,7 @@ loop_4:
     if (temp_r3_2180 == NULL) {
         return NULL;
     }
-    if (stricmp(temp_r3_2180 + 0xC, this) == 0) {
+    if (stricmp(((u8 *) temp_r3_2180) + 0xC, this) == 0) {
         return *var_r31_2167;
     }
     var_r31_2167 += 4;
@@ -1306,7 +1304,7 @@ void *MKFont::Create(const char *arg0) {
     } else {
         temp_r4_2208 = *MKFont::fontList;
         var_r30_2211 = 0;
-        *MKFont::fontList = temp_r4_2208 - 4;
+        *MKFont::fontList = ((u8 *) temp_r4_2208) - 4;
         var_r31_2201 = M2C_FIELD(temp_r4_2208, void **, -4);
 loop_4:
         temp_ret_2226 = MKArchive_Exists(Str_Printf("%s%d%s", this, var_r30_2211, ".fnt", var_f1_2200), NULL);
@@ -1358,7 +1356,7 @@ loop_13:
         }
         M2C_FIELD(var_r31_2201, s32 *, 0x2C) = 1;
         M2C_FIELD(var_r31_2201, u32 *, 8) = var_r30_2211;
-        strcpy(var_r31_2201 + 0xC, (s8 *) this);
+        strcpy(((u8 *) var_r31_2201) + 0xC, (s8 *) this);
     }
     return var_r31_2201;
 }

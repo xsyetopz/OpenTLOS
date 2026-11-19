@@ -616,7 +616,7 @@ u8 EnemyGoal_GraphSummonWall::Update() {
             this->unk8 = 2;
         } else {
             temp_r3_1198 = this->unkC;
-            if (((u32) M2C_FIELD(M2C_FIELD(temp_r3_1198, void **, 0x630), u32 *, 0x20) == M2C_BITWISE(u32, temp_r3_1198->unkA38->unk20)) && (((KDStateMachine<ElementalSpline> *) (this->unk10 + 0xC0))->GetState() >= 2)) {
+            if (((u32) M2C_FIELD(M2C_FIELD(temp_r3_1198, void **, 0x630), u32 *, 0x20) == M2C_BITWISE(u32, temp_r3_1198->unkA38->unk20)) && (((KDStateMachine<ElementalSpline> *) (((u8 *) this->unk10) + 0xC0))->GetState() >= 2)) {
                 this->unkC->SetAnim((AnimSequenceType) 1, 0xA8, 2, 0.15f, 0U, 0U);
             }
         }
@@ -4862,7 +4862,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     } else {
         var_f1_9512 = temp_f30_9506 - 1.0f;
     }
-    sp1C0.GetMeasure(var_f1_9512, temp_r4_9500 + 0x30, KDSpline_PositionMixer);
+    sp1C0.GetMeasure(var_f1_9512, ((u8 *) temp_r4_9500) + 0x30, KDSpline_PositionMixer);
     sp220 = M2C_BITWISE(f64, sp1C0);
     sp228 = (f64) sp1C0.unk8;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
@@ -4951,7 +4951,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 temp_r4_9723 = this->unkC;
                 if (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r4_9723->unkA6C)))->GetLinkInfo(M2C_BITWISE(CharacterGraphNode *, temp_r4_9723->unkA68)) != 7) {
                     sp1C = 0.0f;
-                    ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp190;
                     sp228 = sp198;
                     ((KDSplinePathSegment *) &sp180)->GetVelocity(0.0f);
@@ -4963,7 +4963,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                     }
                 } else {
                     sp18 = 0.0f;
-                    ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_9705, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_9705, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp170;
                     sp228 = sp178;
                     ((KDSplinePathSegment *) &sp160)->GetVelocity(var_f30_9705);
@@ -4982,7 +4982,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
                 } else {
                     var_f1_9821 = var_f2_9753;
                 }
-                ((KDUniformSpline *) &sp150)->GetMeasure(var_f1_9821, this->unk10 + 0x30, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp150)->GetMeasure(var_f1_9821, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                 spA0 = sp150 - sp220;
                 sp140 = spA0;
                 spA8 = sp158 - (f32) sp228;
@@ -5085,7 +5085,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
             } else {
                 var_f1_10070 = var_f2_10055;
             }
-            ((KDUniformSpline *) &sp110)->GetMeasure(var_f1_10070, this->unk10 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp110)->GetMeasure(var_f1_10070, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
             sp90 = sp110 - sp220;
             sp100 = sp90;
             sp98 = sp118 - (f32) sp228;
@@ -5192,7 +5192,7 @@ u8 EnemyGoal_GraphGlidePath::Update() {
     } else {
         var_f1_10335 = var_f2_10320;
     }
-    ((KDUniformSpline *) &spE0)->GetMeasure(var_f1_10335, this->unk10 + 0x30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spE0)->GetMeasure(var_f1_10335, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
     sp80 = spE0 - sp220;
     spD0 = sp80;
     sp88 = spE8 - (f32) sp228;
@@ -5506,7 +5506,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     } else {
         var_f1_10719 = temp_f30_10713 - (f32) (s32) temp_f30_10713;
     }
-    sp1C0.GetMeasure(var_f1_10719, temp_r4_10707 + 0x30, KDSpline_PositionMixer);
+    sp1C0.GetMeasure(var_f1_10719, ((u8 *) temp_r4_10707) + 0x30, KDSpline_PositionMixer);
     sp220 = M2C_BITWISE(f64, sp1C0);
     sp228 = (f64) sp1C0.unk8;
     M2C_ERROR(/* unknown instruction: cror 0x2, 0x0, 0x2 */);
@@ -5558,7 +5558,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 temp_r4_10877 = this->unkC;
                 if (((CharacterGraphNode *) (M2C_BITWISE(CharacterGraphNode *, temp_r4_10877->unkA6C)))->GetLinkInfo(M2C_BITWISE(CharacterGraphNode *, temp_r4_10877->unkA68)) != 4) {
                     sp1C = 0.0f;
-                    ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp190)->GetMeasure(0.0f, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp190;
                     sp228 = sp198;
                     ((KDSplinePathSegment *) &sp180)->GetVelocity(0.0f);
@@ -5570,7 +5570,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                     }
                 } else {
                     sp18 = 0.0f;
-                    ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_10859, this->unk10 + 0x30, KDSpline_PositionMixer);
+                    ((KDUniformSpline *) &sp170)->GetMeasure(var_f30_10859, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                     sp220 = sp170;
                     sp228 = sp178;
                     ((KDSplinePathSegment *) &sp160)->GetVelocity(var_f30_10859);
@@ -5589,7 +5589,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
                 } else {
                     var_f1_10971 = var_f2_10907;
                 }
-                ((KDUniformSpline *) &sp150)->GetMeasure(var_f1_10971, this->unk10 + 0x30, KDSpline_PositionMixer);
+                ((KDUniformSpline *) &sp150)->GetMeasure(var_f1_10971, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
                 spA0 = sp150 - sp220;
                 sp140 = spA0;
                 spA8 = sp158 - (f32) sp228;
@@ -5692,7 +5692,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
             } else {
                 var_f1_11218 = var_f2_11205;
             }
-            ((KDUniformSpline *) &sp110)->GetMeasure(var_f1_11218, this->unk10 + 0x30, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp110)->GetMeasure(var_f1_11218, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
             sp90 = sp110 - sp220;
             sp100 = sp90;
             sp98 = sp118 - (f32) sp228;
@@ -5799,7 +5799,7 @@ u8 EnemyGoal_GraphFlyPath::Update() {
     } else {
         var_f1_11481 = var_f2_11468;
     }
-    ((KDUniformSpline *) &spE0)->GetMeasure(var_f1_11481, this->unk10 + 0x30, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &spE0)->GetMeasure(var_f1_11481, ((u8 *) this->unk10) + 0x30, KDSpline_PositionMixer);
     sp80 = spE0 - sp220;
     spD0 = sp80;
     sp88 = spE8 - (f32) sp228;

@@ -395,7 +395,7 @@ void Crate::UpdateShadow(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'double *' to
 void Crate::Shatter(bool arg0) {
     s32 sp78;
     f32 sp74;
@@ -470,7 +470,7 @@ void Crate::Shatter(bool arg0) {
                 sp74 = 5.0f;
                 sp78 = 0;
                 sp30 = temp_f2_859;
-                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, M2C_UNK, s32, f32, f64, f64), 0x94)(gMK, &sp48, 0, 1, temp_r8_853 + 0x30, 1, 0, temp_r10_861, temp_f1_855, temp_f2_859, temp_f3_857);
+                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, M2C_UNK, s32, f32, f64, f64), 0x94)(gMK, &sp48, 0, 1, ((u8 *) temp_r8_853) + 0x30, 1, 0, temp_r10_861, temp_f1_855, temp_f2_859, temp_f3_857);
             }
             temp_r3_880 = this->unk1D8;
             if (temp_r3_880 != NULL) {
@@ -695,7 +695,7 @@ block_38:
         if (M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x10C) > 0.0f) {
             temp_f31_1310 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
             temp_r3_1311 = ((HeroInterface *) gb)->GetPosPtr();
-            temp_r4_1313 = this->unk8 + 0x30;
+            temp_r4_1313 = ((u8 *) this->unk8) + 0x30;
             sp8 = M2C_FIELD(temp_r4_1313, f64 *, 0) - M2C_FIELD(temp_r3_1311, f64 *, 0);
             sp18 = sp8;
             sp10 = M2C_FIELD(temp_r4_1313, f32 *, 8) - M2C_FIELD(temp_r3_1311, f32 *, 8);
@@ -776,7 +776,7 @@ void Crate::Update() {
                 this->unk70.unk4 = 0;
                 temp_f31_1509 = 1.5f * M2C_FIELD(M2C_FIELD(checked_cast<CrateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x1C), f32 *, 0xC);
                 temp_r3_1510 = ((HeroInterface *) M2C_FIELD(&gb, void ***, 0))->GetPosPtr();
-                temp_r4_1512 = this->unk8 + 0x30;
+                temp_r4_1512 = ((u8 *) this->unk8) + 0x30;
                 sp10 = M2C_FIELD(temp_r4_1512, f64 *, 0) - M2C_FIELD(temp_r3_1510, f64 *, 0);
                 sp30 = sp10;
                 sp18 = M2C_FIELD(temp_r4_1512, f32 *, 8) - M2C_FIELD(temp_r3_1510, f32 *, 8);

@@ -509,8 +509,8 @@ block_15:
             if (M2C_BITWISE(u32, temp_r3_899) != 0U) {
                 M2C_FIELD(M2C_FIELD(temp_r3_899, void **, 0x44), M2C_UNK (**)(M2C_UNK *), 0x2C)(&this->unk200);
             }
-            KDSound_Play3d(GS_SpyroEarthFurySmash, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.3f, 0.1f, 0.3f, this->unk8 + 0x30, 37.0f, 0, 4.0f, 0U);
+            KDSound_Play3d(GS_SpyroEarthFurySmash, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.3f, 0.1f, 0.3f, ((u8 *) this->unk8) + 0x30, 37.0f, 0, 4.0f, 0U);
             EmitLandingEffects();
         }
         goto block_15;

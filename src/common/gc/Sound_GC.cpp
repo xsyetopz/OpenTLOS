@@ -502,7 +502,7 @@ void StreamingBuffer_Start(int arg0, bool arg1) {
     M2C_FIELD(gStreamingBuffer, u8 *, 0x20069) = arg1;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'AXSetVoiceAdpcmLoop(void *, unsigned short *, unsigned
 void StreamingBuffer_Update() {
     s16 spC;
     s16 spA;
@@ -538,7 +538,7 @@ void StreamingBuffer_Update() {
                 do {
                     temp_r3_310 = gStreamingBuffer + var_r25_307;
                     if ((s32) M2C_FIELD(temp_r3_310, s32 *, 0x20010) == 1) {
-                        M2C_FIELD((temp_r3_310 + 0x20000), s32 *, 0x10) = 2;
+                        M2C_FIELD((((u8 *) temp_r3_310) + 0x20000), s32 *, 0x10) = 2;
                         DCFlushRange(gStreamingBuffer + (var_r28_305 << 0x10), 0x10000U);
                     }
                     var_r28_305 += 1;
@@ -563,7 +563,7 @@ block_17:
                             File_Read(gStreamingBuffer[0x8001], gStreamingBuffer + (var_r26_332 << 0x10), 0x10000, 0x10000);
                             temp_r6_372 = 1 - var_r26_332;
                             gStreamingBuffer[0x8002] += 0x10000;
-                            M2C_FIELD((temp_r3_336 + 0x20000), s32 *, 0x10) = 1;
+                            M2C_FIELD((((u8 *) temp_r3_336) + 0x20000), s32 *, 0x10) = 1;
                             if ((s32) M2C_FIELD(&gStreamingBuffer[temp_r6_372], s32 *, 0x20010) == 0) {
                                 gStreamingBuffer[0x8003] = var_r26_332;
                             } else {
@@ -1329,7 +1329,7 @@ loop_32:
                             strcpy(pTemporarySoundInfoStructures + (temp_r29_1859 + 0xC), &var_r27_1850->unk0);
                             *(pTemporarySoundInfoStructures + (temp_r29_1859 + 0x2C)) = 0;
                             temp_r6_1903 = pTemporarySoundInfoStructures + (temp_r29_1859 + 0x3A);
-                            M2C_STRUCT_COPY((s32) (temp_r6_1903 - 4) + 4, (s32) &var_r27_1850->unk2E + 4, 0x20);
+                            M2C_STRUCT_COPY((s32) (((u8 *) temp_r6_1903) - 4) + 4, (s32) &var_r27_1850->unk2E + 4, 0x20);
                             M2C_FIELD(temp_r6_1903, u16 *, 0x20) = (u16) var_r27_1850->unk52;
                             M2C_FIELD(temp_r6_1903, u16 *, 0x22) = (u16) var_r27_1850->unk54;
                             M2C_FIELD(temp_r6_1903, s16 *, 0x24) = (s16) var_r27_1850->unk56;
@@ -1529,7 +1529,7 @@ s32 Sound_LoadBank(const char *arg0, bool arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[1120]' to
 s32 Sound_ReserveMemory(int arg0, int arg1) {
     s32 temp_r31_2348;
     s32 temp_r3_2373;
@@ -1540,7 +1540,7 @@ s32 Sound_ReserveMemory(int arg0, int arg1) {
     M2C_FIELD(temp_r7_2355, s32 *, 0) = (s32) (numSoundsLoaded + 1);
     M2C_FIELD(temp_r7_2355, s32 *, 4) = arg0;
     M2C_FIELD(temp_r7_2355, s32 *, 8) = temp_r31_2348;
-    memset(temp_r7_2355 + 0xC, 0, 0x80U);
+    memset(((u8 *) temp_r7_2355) + 0xC, 0, 0x80U);
     numSoundsLoaded += arg0;
     soundMemoryCurrentAddress += temp_r31_2348;
     temp_r3_2373 = *(&reservedBankIDs + (numReservedAreas * 0x8C));
@@ -1608,7 +1608,7 @@ loop_8:
         strcpy(soundList + (temp_r31_2441 + 0xC), temp_r26_2443);
         *(soundList + (temp_r31_2441 + 0x2C)) = 0;
         temp_r6_2481 = soundList + (temp_r31_2441 + 0x3A);
-        M2C_STRUCT_COPY((s32) (temp_r6_2481 - 4) + 4, (s32) (temp_r26_2443 + 0x2E) + 4, 0x20);
+        M2C_STRUCT_COPY((s32) (((u8 *) temp_r6_2481) - 4) + 4, (s32) (temp_r26_2443 + 0x2E) + 4, 0x20);
         M2C_FIELD(temp_r6_2481, u16 *, 0x20) = (u16) M2C_FIELD(temp_r26_2443, u16 *, 0x52);
         M2C_FIELD(temp_r6_2481, u16 *, 0x22) = (u16) M2C_FIELD(temp_r26_2443, u16 *, 0x54);
         M2C_FIELD(temp_r6_2481, s16 *, 0x24) = (s16) M2C_FIELD(temp_r26_2443, s16 *, 0x56);
@@ -1712,7 +1712,7 @@ void callbackVoiceDropped(void *arg0) {
         temp_r29_2680 = voiceList + var_r31_2678;
         if ((u32) M2C_FIELD(temp_r29_2680, u32 *, 4) == arg0) {
             if ((u8) M2C_FIELD(temp_r29_2680, u8 *, 0x13) != 0) {
-                AXARTRemoveSound(temp_r29_2680 + 0x38);
+                AXARTRemoveSound(((u8 *) temp_r29_2680) + 0x38);
             } else {
                 MIXReleaseChannel();
             }
@@ -2112,7 +2112,7 @@ loop_14:
         strcpy(&sp14, arg0);
         temp_r3_3428 = BinarySearch(&sp8, soundList + (M2C_FIELD(temp_r28_3411, s32 *, 0) * 0x68), M2C_FIELD(temp_r28_3411, s32 *, 0x10), 0x68, (s32 (*)(void *, void *)) EntryCompare);
         if (temp_r3_3428 != NULL) {
-            return (s32) (temp_r3_3428 - soundList) / 104;
+            return (s32) (((u8 *) temp_r3_3428) - soundList) / 104;
         }
         goto block_13;
     }
@@ -2312,7 +2312,7 @@ loop_10:
         M2C_FIELD(temp_r6_3725, s32 *, 0) = -1;
         M2C_FIELD(temp_r6_3725, s32 *, 4) = 0;
         M2C_FIELD(temp_r6_3725, s32 *, 8) = 0;
-        memset(temp_r6_3725 + 0xC, 0, 0x80U);
+        memset(((u8 *) temp_r6_3725) + 0xC, 0, 0x80U);
         var_r26_3720 += 1;
         var_r30_3722 += 0x8C;
     } while (var_r26_3720 < 8);
@@ -2486,7 +2486,6 @@ void ARAMTransferCallback(unsigned long arg0) {
     transferComplete = 1;
 }
 
-#if 0 // DRAFT: illegal type
 void *BinarySearch(void *arg0, void *arg1, int arg2, int arg3, int (*arg4)(const void *, const void *)) {
     s32 temp_r29_4082;
     s32 temp_r3_4088;
@@ -2501,7 +2500,7 @@ loop_6:
         return NULL;
     }
     temp_r29_4082 = (s32) (var_r31_4077 + var_r30_4076) >> 1;
-    temp_r28_4085 = arg1 + (temp_r29_4082 * arg3);
+    temp_r28_4085 = ((u8 *) arg1) + (temp_r29_4082 * arg3);
     temp_r3_4088 = arg4(arg0, temp_r28_4085);
     if (temp_r3_4088 == 0) {
         return temp_r28_4085;
@@ -2513,11 +2512,10 @@ loop_6:
     }
     goto loop_6;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'Str_CompareIgnoreCase(unsigned char *, unsigned char *)'
 void EntryCompare(const void *arg0, const void *arg1) {
-    Str_CompareIgnoreCase(arg0 + 0xC, arg1 + 0xC);
+    Str_CompareIgnoreCase(((u8 *) arg0) + 0xC, ((u8 *) arg1) + 0xC);
 }
 #endif
 

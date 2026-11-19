@@ -6130,8 +6130,8 @@ block_67:
                 } else {
                     M2C_FIELD(M2C_FIELD(temp_r16_11902, void **, 0x84), s32 *, 0x24) = 0;
                 }
-                this->unk2C0.AddSpawnPoint(temp_r16_11902 + 0x80);
-                temp_r15_11925 = temp_r16_11902 + 0x90;
+                this->unk2C0.AddSpawnPoint(((u8 *) temp_r16_11902) + 0x80);
+                temp_r15_11925 = ((u8 *) temp_r16_11902) + 0x90;
                 temp_r15_11925->SetIdentity();
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC0) = (f32) spD8;
                 M2C_FIELD(temp_r16_11902, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
@@ -6186,8 +6186,8 @@ loop_82:
             } else {
                 M2C_FIELD(M2C_FIELD(temp_r16_12006, void **, 0x84), s32 *, 0x24) = 0;
             }
-            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(temp_r16_12006 + 0x80);
-            temp_r15_12029 = temp_r16_12006 + 0x90;
+            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(((u8 *) temp_r16_12006) + 0x80);
+            temp_r15_12029 = ((u8 *) temp_r16_12006) + 0x90;
             temp_r15_12029->SetIdentity();
             M2C_FIELD(temp_r16_12006, f32 *, 0xC0) = (f32) spD8;
             M2C_FIELD(temp_r16_12006, f32 *, 0xC4) = (*(f32 *) ((u8 *) &spD8 + 0x4));
@@ -6332,8 +6332,8 @@ loop_19:
                 spB0 = (f64) sp20;
                 (*(f32 *) ((u8 *) &sp148 + 0x4)) = temp_f0_12305;
                 M2C_FIELD(M2C_FIELD(temp_r21_12294, void **, 0x84), u32 *, 4) = arg7;
-                this->unk2C0.AddSpawnPoint(temp_r21_12294 + 0x80);
-                temp_r20_12311 = temp_r21_12294 + 0x90;
+                this->unk2C0.AddSpawnPoint(((u8 *) temp_r21_12294) + 0x80);
+                temp_r20_12311 = ((u8 *) temp_r21_12294) + 0x90;
                 temp_r20_12311->SetIdentity();
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC0) = (f32) sp148;
                 M2C_FIELD(temp_r21_12294, f32 *, 0xC4) = temp_f0_12305;
@@ -6403,8 +6403,8 @@ loop_39:
             sp150 = (f64) sp10;
             sp40 = (f64) sp10;
             M2C_FIELD(M2C_FIELD(temp_r20_12506, void **, 0x84), u32 *, 4) = arg7;
-            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(temp_r20_12506 + 0x80);
-            temp_r21_12521 = temp_r20_12506 + 0x90;
+            ((SpawnerObject *) &this->unk310)->AddSpawnPoint(((u8 *) temp_r20_12506) + 0x80);
+            temp_r21_12521 = ((u8 *) temp_r20_12506) + 0x90;
             temp_r21_12521->SetIdentity();
             M2C_FIELD(temp_r20_12506, f32 *, 0xC0) = (f32) sp148;
             M2C_FIELD(temp_r20_12506, f32 *, 0xC4) = (*(f32 *) ((u8 *) &sp148 + 0x4));

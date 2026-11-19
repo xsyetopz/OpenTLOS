@@ -191,11 +191,11 @@ void PuddleSplash::Draw() {
             MKMaterial_SetMaterial(*(this->unk4C + (var_r26_251 + 0x1C)));
             MKPrimitive(0xC, 0);
             M2C_STRUCT_COPY((s32) &unksp1FC + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-            temp_r5_290 = this->unk4C + var_r26_251;
+            temp_r5_290 = ((u8 *) this->unk4C) + var_r26_251;
             temp_f3_293 = M2C_FIELD(temp_r5_290, f32 *, 0x10);
             temp_f31_295 = 1.0f - (M2C_FIELD(temp_r5_290, f32 *, 0x14) / M2C_FIELD(temp_r5_290, f32 *, 0x18));
             sp200.Scale3x3(&sp200, (temp_f31_295 * temp_f3_293) + temp_f3_293);
-            temp_r4_301 = this->unk4C + var_r26_251;
+            temp_r4_301 = ((u8 *) this->unk4C) + var_r26_251;
             sp200.unk30 = M2C_FIELD(temp_r4_301, f32 *, 0);
             sp200.unk34 = M2C_FIELD(temp_r4_301, f32 *, 4);
             sp200.unk38 = M2C_FIELD(temp_r4_301, f32 *, 8);
@@ -246,21 +246,21 @@ void PuddleSplash::Emit(const MKVector3 &arg0, const float &arg1, bool arg2) {
 loop_1:
     temp_r3_383 = this->unk4C;
     if ((u8) *(temp_r3_383 + (var_r30_380 + 0x20)) == 0) {
-        M2C_FIELD((temp_r3_383 + var_r30_380), s8 *, 0x20) = 1;
-        M2C_FIELD((this->unk4C + var_r30_380), f32 *, 0x10) = (f32) &arg1;
-        temp_r3_399 = this->unk4C + var_r30_380;
+        M2C_FIELD((((u8 *) temp_r3_383) + var_r30_380), s8 *, 0x20) = 1;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x10) = (f32) &arg1;
+        temp_r3_399 = ((u8 *) this->unk4C) + var_r30_380;
         M2C_FIELD(temp_r3_399, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r3_399, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
         if (arg2 != 0) {
-            M2C_FIELD((this->unk4C + var_r30_380), f32 *, 0x18) = 3.0f;
-            M2C_FIELD((this->unk4C + var_r30_380), f32 *, 0x14) = 3.0f;
-            M2C_FIELD((this->unk4C + var_r30_380), s32 *, 0x1C) = (s32) M2C_FIELD(checked_cast<PuddleSplashDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x6C);
+            M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x18) = 3.0f;
+            M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x14) = 3.0f;
+            M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), s32 *, 0x1C) = (s32) M2C_FIELD(checked_cast<PuddleSplashDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x6C);
             return;
         }
-        M2C_FIELD((this->unk4C + var_r30_380), f32 *, 0x18) = 0.35f;
-        M2C_FIELD((this->unk4C + var_r30_380), f32 *, 0x14) = 0.35f;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x18) = 0.35f;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), f32 *, 0x14) = 0.35f;
         temp_r29_429 = MKRand_Int(&gViewSeed, 0, 3);
-        M2C_FIELD((this->unk4C + var_r30_380), s32 *, 0x1C) = (s32) M2C_FIELD((checked_cast<PuddleSplashDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r29_429 * 4)), s32 *, 0x60);
+        M2C_FIELD((((u8 *) this->unk4C) + var_r30_380), s32 *, 0x1C) = (s32) M2C_FIELD((checked_cast<PuddleSplashDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r29_429 * 4)), s32 *, 0x60);
         return;
     }
     var_r30_380 += 0x28;
@@ -272,7 +272,6 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void PuddleSplash::Update() {
     s32 var_ctr_457;
     s32 var_r4_453;
@@ -282,10 +281,10 @@ void PuddleSplash::Update() {
     var_r4_453 = 0;
     var_ctr_457 = 0x64;
     do {
-        temp_r6_460 = this->unk4C + var_r4_453;
+        temp_r6_460 = ((u8 *) this->unk4C) + var_r4_453;
         if ((u8) M2C_FIELD(temp_r6_460, u8 *, 0x20) != 0) {
             M2C_FIELD(temp_r6_460, f32 *, 0x14) = (f32) (M2C_FIELD(temp_r6_460, f32 *, 0x14) - gUpdateTimeDelta);
-            temp_r6_469 = this->unk4C + var_r4_453;
+            temp_r6_469 = ((u8 *) this->unk4C) + var_r4_453;
             if (M2C_FIELD(temp_r6_469, f32 *, 0x14) <= 0.0f) {
                 M2C_FIELD(temp_r6_469, s8 *, 0x20) = 0;
             }
@@ -294,7 +293,6 @@ void PuddleSplash::Update() {
         var_ctr_457 -= 1;
     } while (var_ctr_457 != 0);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void PuddleSplash::LoadDone() {

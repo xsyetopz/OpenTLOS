@@ -38,7 +38,7 @@ void MudGutsCritter::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void MudGutsCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -50,10 +50,10 @@ void MudGutsCritter::Draw() {
     var_r31_93 = 0;
 loop_2:
     if (var_r30_92 < (s32) this->unk90) {
-        temp_r29_100 = this->unk170 + var_r31_93;
+        temp_r29_100 = ((u8 *) this->unk170) + var_r31_93;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_100, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_100, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_100 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_100) - 4) + 4, 0x40);
         MKModel_SetWorldMatrix(this->unk4, sp10);
         MKModel_Draw(this->unk4, NULL);
         var_r30_92 += 1;
@@ -168,7 +168,7 @@ void MudGutsCritter::FindNewSwimParameters(MudGuts *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void MudGutsCritter::Update() {
     f64 sp50;
     f64 sp48;
@@ -191,7 +191,7 @@ void MudGutsCritter::Update() {
     var_r31_334 = 0;
 loop_15:
     if (var_r30_333 < (s32) this->unk90) {
-        temp_r29_339 = this->unk170 + var_r31_334;
+        temp_r29_339 = ((u8 *) this->unk170) + var_r31_334;
         temp_r29_339->unk64 -= gUpdateTimeDelta;
         temp_r29_339->unk54 += temp_r29_339->unk58 * gUpdateTimeDelta;
         temp_r0_348 = temp_r29_339->unk60;
@@ -235,7 +235,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void MudGutsCritter::Resolve() {
     f32 sp8;
     MudGuts *temp_r28_471;
@@ -247,7 +247,7 @@ void MudGutsCritter::Resolve() {
     var_r31_465 = 0;
 loop_2:
     if (var_r29_464 < (s32) this->unk90) {
-        temp_r28_471 = this->unk170 + var_r31_465;
+        temp_r28_471 = ((u8 *) this->unk170) + var_r31_465;
         M2C_STRUCT_COPY(temp_r28_471, &Matrix::identity, 0x40);
         ((Volume *) &sp8)->GetRandPos();
         M2C_FIELD(temp_r28_471, f32 *, 0x30) = sp8;

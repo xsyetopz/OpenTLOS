@@ -344,7 +344,7 @@ block_34:
                 temp_f30_554 = MKRand_Float(&gViewSeed, -50.0f, 50.0f);
                 temp_f29_560 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
                 temp_r4_569 = this->unk8;
-                temp_r3_542->InitData(*((Matrix *) temp_r4_569), temp_r4_569 + 0x30, M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), s32 *, 8) + 0x30, temp_f29_560, temp_f30_554, temp_f31_549);
+                temp_r3_542->InitData(*((Matrix *) temp_r4_569), ((u8 *) temp_r4_569) + 0x30, M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), s32 *, 8) + 0x30, temp_f29_560, temp_f30_554, temp_f31_549);
             }
             var_r28_532 += 1;
         } while (var_r28_532 < 5);
@@ -392,7 +392,7 @@ block_34:
         if ((temp_r0_661 != 3) && (temp_r0_661 != 2) && ((u8) this->unkD8 == 0)) {
             SetState((SteamTrainCabooseState) 2);
         }
-        KDSound_Play3d(GS_TrainHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_TrainHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **), 0x40)(gb)))->RumblePlay(0.99f, 0.8f, 0.15f, 0, 4.0f, 0U);
         var_r27_696 = 0;
         do {
@@ -402,7 +402,7 @@ block_34:
                 temp_f30_718 = MKRand_Float(&gViewSeed, -50.0f, 50.0f);
                 temp_f31_724 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
                 temp_r4_733 = this->unk8;
-                temp_r3_706->InitData(*((Matrix *) temp_r4_733), temp_r4_733 + 0x30, M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), s32 *, 8) + 0x30, temp_f31_724, temp_f30_718, temp_f29_713);
+                temp_r3_706->InitData(*((Matrix *) temp_r4_733), ((u8 *) temp_r4_733) + 0x30, M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), s32 *, 8) + 0x30, temp_f31_724, temp_f30_718, temp_f29_713);
             }
             var_r27_696 += 1;
         } while (var_r27_696 < 5);
@@ -693,7 +693,7 @@ block_20:
                     temp_f0_956 = sp270 * 5.60222949e-315;
                     spD0 = temp_f0_956;
                     sp280 = temp_f0_956;
-                    temp_r4_963 = this->unk8 + 0x30;
+                    temp_r4_963 = ((u8 *) this->unk8) + 0x30;
                     spD8 = (f32) sp278 * 300.0f;
                     sp288 = (f64) spD8;
                     temp_f0_969 = M2C_FIELD(temp_r4_963, f64 *, 0) + temp_f0_956;
@@ -734,7 +734,7 @@ block_20:
                         ((GameGlobals *) &gb)->EmitDust(*((MKVector3 *) &sp320), *((MKVector3 *) &sp230), sp10, 0.0f);
                     }
                     if (this->unk80->unk2C & 1) {
-                        KDSound_Play3d(GS_TrainCrash, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                        KDSound_Play3d(GS_TrainCrash, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                         sp70 = -0.5f;
                         sp74 = 0.5f;
                         sp78 = 0.0f;

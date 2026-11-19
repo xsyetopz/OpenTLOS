@@ -131,7 +131,7 @@ loop_1:
             if ((u32) M2C_FIELD(temp_r3_158, u32 *, -4) == 0U) {
                 return NULL;
             }
-            temp_r3_165 = temp_r3_158 - 4;
+            temp_r3_165 = ((u8 *) temp_r3_158) - 4;
             *(pSpawnPools + temp_r4_157) = temp_r3_165;
             return **temp_r3_165;
         }

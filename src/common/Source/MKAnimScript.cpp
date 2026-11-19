@@ -25,7 +25,7 @@ extern M2C_UNK gEmptyPtrList;
 extern f32 gUpdateTimeDelta;
 extern MKResource **mkAnimScriptTemplates;
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 pSoundEventKeyWord__19MKAnimScriptedEvent[4];    /* unable to generate initializer: cannot parse "MKSound" as integer; const */
 u8 pSubObjectEnableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DAA8 as integer; const */
 u8 pSubObjectDisableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DABA as integer; const */
@@ -49,7 +49,7 @@ void MKAnimScriptTemplate::DeinitMKAnimScriptData() {
 loop_5:
     temp_r3_44 = this->unk34;
     if (var_r29_16 < (s32) M2C_FIELD(temp_r3_44, u16 *, 8)) {
-        temp_r30_22 = temp_r3_44 + (var_r31_17 + 0x10);
+        temp_r30_22 = ((u8 *) temp_r3_44) + (var_r31_17 + 0x10);
         var_r28_27 = temp_r30_22->GetFirstEvent((MKAnimScriptedEvent::EventType) 6);
         temp_r30_30 = temp_r30_22->GetNumberOfEvents((MKAnimScriptedEvent::EventType) 6);
         var_r27_31 = 0;
@@ -948,7 +948,7 @@ loop_10:
         var_r31_1881 = 0;
 loop_8:
         if (var_r25_1880 < (s32) M2C_FIELD(temp_r26_1877, u16 *, 8)) {
-            temp_r29_1884 = temp_r26_1877 + var_r31_1881;
+            temp_r29_1884 = ((u8 *) temp_r26_1877) + var_r31_1881;
             var_r24_1885 = 0;
             var_r30_1886 = 0;
 loop_6:
@@ -1082,7 +1082,7 @@ loop_7:
     if (var_r28_2041 >= (s32) M2C_FIELD(temp_r29_2044, u16 *, 8)) {
         return NULL;
     }
-    temp_r30_2049 = temp_r29_2044 + (var_r31_2042 + 0x10);
+    temp_r30_2049 = ((u8 *) temp_r29_2044) + (var_r31_2042 + 0x10);
     var_r27_2054 = temp_r30_2049->GetFirstEvent(arg2);
     temp_r30_2057 = temp_r30_2049->GetNumberOfEvents(arg2);
     var_r26_2058 = 0;
@@ -1253,7 +1253,7 @@ void MKAnimScript::ReadBinary(const char *arg0) {
     temp_r3_2327 = M2C_FIELD(temp_r4_2326, void ***, 0x34);
     temp_r0_2328 = M2C_FIELD(temp_r3_2327, void **, 4);
     if (temp_r0_2328 > 0) {
-        M2C_FIELD(temp_r3_2327, void **, 4) = (void *) (temp_r0_2328 + temp_r4_2326);
+        M2C_FIELD(temp_r3_2327, void **, 4) = (void *) (((u8 *) temp_r0_2328) + temp_r4_2326);
     } else {
         M2C_FIELD(temp_r3_2327, void **, 4) = NULL;
     }
@@ -1261,7 +1261,7 @@ void MKAnimScript::ReadBinary(const char *arg0) {
     temp_r3_2339 = M2C_FIELD(temp_r4_2338, void ***, 0x34);
     temp_r0_2340 = *temp_r3_2339;
     if (temp_r0_2340 > 0) {
-        *temp_r3_2339 = temp_r0_2340 + temp_r4_2338;
+        *temp_r3_2339 = ((u8 *) temp_r0_2340) + temp_r4_2338;
     } else {
         *temp_r3_2339 = NULL;
     }
@@ -1274,31 +1274,31 @@ loop_53:
         temp_r4_2355 = temp_r6_2528 + (var_r5_2351 + 0x10);
         temp_r0_2356 = M2C_FIELD(temp_r4_2355, void **, 0);
         if (temp_r0_2356 > 0) {
-            M2C_FIELD(temp_r4_2355, void **, 0) = (void *) (temp_r0_2356 + temp_r7_2527);
+            M2C_FIELD(temp_r4_2355, void **, 0) = (void *) (((u8 *) temp_r0_2356) + temp_r7_2527);
         } else {
             M2C_FIELD(temp_r4_2355, void **, 0) = NULL;
         }
         temp_r6_2366 = M2C_FIELD(temp_r4_2355, void **, 0x28);
         if (temp_r6_2366 > 0) {
-            M2C_FIELD(temp_r4_2355, void **, 0x28) = (void *) (temp_r6_2366 + this->unk4);
+            M2C_FIELD(temp_r4_2355, void **, 0x28) = (void *) (((u8 *) temp_r6_2366) + this->unk4);
         } else {
             M2C_FIELD(temp_r4_2355, void **, 0x28) = NULL;
         }
         temp_r6_2377 = M2C_FIELD(temp_r4_2355, void **, 0x10);
         if (temp_r6_2377 > 0) {
-            M2C_FIELD(temp_r4_2355, void **, 0x10) = (void *) (temp_r6_2377 + this->unk4);
+            M2C_FIELD(temp_r4_2355, void **, 0x10) = (void *) (((u8 *) temp_r6_2377) + this->unk4);
         } else {
             M2C_FIELD(temp_r4_2355, void **, 0x10) = NULL;
         }
         temp_r6_2388 = M2C_FIELD(temp_r4_2355, void **, 0x18);
         if (temp_r6_2388 > 0) {
-            M2C_FIELD(temp_r4_2355, void **, 0x18) = (void *) (temp_r6_2388 + this->unk4);
+            M2C_FIELD(temp_r4_2355, void **, 0x18) = (void *) (((u8 *) temp_r6_2388) + this->unk4);
         } else {
             M2C_FIELD(temp_r4_2355, void **, 0x18) = NULL;
         }
         temp_r6_2399 = M2C_FIELD(temp_r4_2355, void **, 0x20);
         if (temp_r6_2399 > 0) {
-            M2C_FIELD(temp_r4_2355, void **, 0x20) = (void *) (temp_r6_2399 + this->unk4);
+            M2C_FIELD(temp_r4_2355, void **, 0x20) = (void *) (((u8 *) temp_r6_2399) + this->unk4);
         } else {
             M2C_FIELD(temp_r4_2355, void **, 0x20) = NULL;
         }
@@ -1491,17 +1491,15 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void *MKAnimScript::GetAnim(int arg0) {
     void *temp_r5_2734;
 
     temp_r5_2734 = M2C_FIELD(this->unk4, void **, 0x34);
     if (arg0 < (s32) M2C_FIELD(temp_r5_2734, u16 *, 8)) {
-        return temp_r5_2734 + ((arg0 * 0x30) + 0x10);
+        return ((u8 *) temp_r5_2734) + ((arg0 * 0x30) + 0x10);
     }
     return NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void *MKAnimScript::GetAnim(const char *arg0) {
@@ -1826,7 +1824,7 @@ loop_99:
             temp_r6_3275 = M2C_FIELD(var_r23_3234, void **, 0x34);
             temp_r5_3277 = M2C_FIELD(temp_r6_3275, u16 *, 8);
             M2C_FIELD(temp_r6_3275, u16 *, 8) = (u16) (temp_r5_3277 + 1);
-            var_r30_3261 = temp_r6_3275 + ((temp_r5_3277 * 0x30) + 0x10);
+            var_r30_3261 = ((u8 *) temp_r6_3275) + ((temp_r5_3277 * 0x30) + 0x10);
             *var_r30_3261 = AddToStringTable(temp_r29_3262, var_r26_3268->GetSectionName());
         } else if (var_r26_3268->GetFieldName() != NULL) {
             if (var_r26_3268->IsField("mesh") != 0) {
@@ -1847,7 +1845,7 @@ loop_99:
                 temp_r7_3383 = M2C_FIELD(var_r23_3234, void **, 0x34);
                 temp_r6_3386 = M2C_FIELD(temp_r7_3383, u16 *, 8);
                 M2C_FIELD(temp_r7_3383, u16 *, 8) = (u16) (temp_r6_3386 + 1);
-                var_r30_3261 = temp_r7_3383 + ((temp_r6_3386 * 0x30) + 0x10);
+                var_r30_3261 = ((u8 *) temp_r7_3383) + ((temp_r6_3386 * 0x30) + 0x10);
                 M2C_FIELD(var_r30_3261, MKAnim **, 0) = AddToStringTable(temp_r29_3262, var_r26_3268->GetString(0));
                 var_r30_3261->unk8 = 0;
                 var_r30_3261->unk4 = 0;

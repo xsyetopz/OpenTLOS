@@ -48,7 +48,7 @@ void FireTier3::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void FireTier3::DoDeadFx() {
     f64 sp140;
     f64 sp138;
@@ -111,7 +111,7 @@ void FireTier3::DoDeadFx() {
 
     Enemy::DoDeadFx();
     temp_r29_102 = checked_cast<FireTier3Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    KDSound_Play3d(GS_OBHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_OBHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     var_r28_115 = 0;
     do {
         temp_f19_130 = 6.2831855f * ((f32) var_r28_115 / 39.0f);
@@ -119,7 +119,7 @@ void FireTier3::DoDeadFx() {
         temp_f1_135 = _table_sinf(temp_f19_130);
         sp88 = 0.0f;
         sp8C = 25.0f;
-        temp_r3_139 = this->unk8 + 0x30;
+        temp_r3_139 = ((u8 *) this->unk8) + 0x30;
         spA0 = temp_f20_133;
         sp90 = 0.0f;
         sp98 = temp_f1_135;
@@ -141,7 +141,7 @@ void FireTier3::DoDeadFx() {
         ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp108), 10.0f);
         sp58 = 0.0f;
         sp5C = 20.0f;
-        temp_r3_183 = this->unk8 + 0x30;
+        temp_r3_183 = ((u8 *) this->unk8) + 0x30;
         sp60 = 0.0f;
         spE8 = (f64) sp58;
         spF0 = (f64) sp60;
@@ -211,7 +211,7 @@ void FireTier3Descriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void FireTier2::DoDeadFx() {
     f64 sp140;
     f64 sp138;
@@ -274,7 +274,7 @@ void FireTier2::DoDeadFx() {
 
     Enemy::DoDeadFx();
     temp_r29_400 = checked_cast<FireTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    KDSound_Play3d(GS_OBHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_OBHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     var_r28_413 = 0;
     do {
         temp_f19_428 = 6.2831855f * ((f32) var_r28_413 / 19.0f);
@@ -282,7 +282,7 @@ void FireTier2::DoDeadFx() {
         temp_f1_433 = _table_sinf(temp_f19_428);
         sp88 = 0.0f;
         sp8C = 25.0f;
-        temp_r3_437 = this->unk8 + 0x30;
+        temp_r3_437 = ((u8 *) this->unk8) + 0x30;
         spA0 = temp_f20_431;
         sp90 = 0.0f;
         sp98 = temp_f1_433;
@@ -304,7 +304,7 @@ void FireTier2::DoDeadFx() {
         ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp108), 10.0f);
         sp58 = 0.0f;
         sp5C = 20.0f;
-        temp_r3_481 = this->unk8 + 0x30;
+        temp_r3_481 = ((u8 *) this->unk8) + 0x30;
         sp60 = 0.0f;
         spE8 = (f64) sp58;
         spF0 = (f64) sp60;
@@ -348,7 +348,7 @@ void FireTier2::UpdateMovementCustom() {
     UpdateModel();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void FireTier2::CheckAnimEvents() {
     f64 sp140;
     f64 sp138;
@@ -418,7 +418,7 @@ void FireTier2::CheckAnimEvents() {
             temp_f1_686 = _table_sinf(temp_f18_681);
             sp88 = 0.0f;
             sp8C = 25.0f;
-            temp_r3_690 = this->unk8 + 0x30;
+            temp_r3_690 = ((u8 *) this->unk8) + 0x30;
             spA0 = temp_f19_684;
             sp90 = 0.0f;
             sp98 = temp_f1_686;
@@ -440,7 +440,7 @@ void FireTier2::CheckAnimEvents() {
             ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp108), 10.0f);
             sp58 = 0.0f;
             sp5C = 20.0f;
-            temp_r3_734 = this->unk8 + 0x30;
+            temp_r3_734 = ((u8 *) this->unk8) + 0x30;
             sp60 = 0.0f;
             spE8 = (f64) sp58;
             spF0 = (f64) sp60;
@@ -958,7 +958,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void FireTier1::DoDeadFx() {
     f64 sp140;
     f64 sp138;
@@ -1021,7 +1021,7 @@ void FireTier1::DoDeadFx() {
 
     Enemy::DoDeadFx();
     temp_r29_1726 = checked_cast<FireTier1Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    KDSound_Play3d(GS_OBHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_OBHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     var_r28_1739 = 0;
     do {
         temp_f19_1754 = 6.2831855f * ((f32) var_r28_1739 / 9.0f);
@@ -1029,7 +1029,7 @@ void FireTier1::DoDeadFx() {
         temp_f1_1759 = _table_sinf(temp_f19_1754);
         sp88 = 0.0f;
         sp8C = 25.0f;
-        temp_r3_1763 = this->unk8 + 0x30;
+        temp_r3_1763 = ((u8 *) this->unk8) + 0x30;
         spA0 = temp_f20_1757;
         sp90 = 0.0f;
         sp98 = temp_f1_1759;
@@ -1051,7 +1051,7 @@ void FireTier1::DoDeadFx() {
         ((CrashFirePS *) (M2C_FIELD(&gb, CrashFirePS **, 0x68)))->Emit(*((MKVector3 *) &sp128), *((MKVector3 *) &sp108), 10.0f);
         sp58 = 0.0f;
         sp5C = 20.0f;
-        temp_r3_1807 = this->unk8 + 0x30;
+        temp_r3_1807 = ((u8 *) this->unk8) + 0x30;
         sp60 = 0.0f;
         spE8 = (f64) sp58;
         spF0 = (f64) sp60;

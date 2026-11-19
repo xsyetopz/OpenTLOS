@@ -434,7 +434,7 @@ u8 Ball::MeleeHit(MKProp *arg0, float arg1, bool &arg2) {
         spC = this;
         arg0->Message(&sp8, 0x5F, 0, temp_r7_680);
         if ((sp1D != 0) && ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x104) != 0)) {
-            temp_r31_709 = this->unk8 + 0x30;
+            temp_r31_709 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x104), temp_r31_709, 0U, -1, 0.0f, 0U);
         }
         &arg2 = sp1C;
@@ -598,7 +598,7 @@ block_4:
         } while (var_r28_877 < 0x14);
     }
     if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
-        temp_r29_982 = this->unk8 + 0x30;
+        temp_r29_982 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r29_982, 0U, -1, 0.0f, 0U);
     }
     if ((Catapult *) this->unk228 != NULL) {
@@ -841,7 +841,7 @@ loop_15:
                     temp_f3_1404 = 100.0f * (2.5f * this->unk27C);
                     if ((((f32) sp80 * (f32) sp80) + (((f32) sp78 * (f32) sp78) + ((*(f32 *) ((u8 *) &sp78 + 0x4)) * (*(f32 *) ((u8 *) &sp78 + 0x4))))) < (temp_f3_1404 * temp_f3_1404)) {
                         if ((s32) M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC) != 0) {
-                            temp_r29_1418 = this->unk8 + 0x30;
+                            temp_r29_1418 = ((u8 *) this->unk8) + 0x30;
                             KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xEC), temp_r29_1418, 0U, -1, 0.0f, 0U);
                         }
                         this->unk228 = temp_r3_1335;
@@ -1439,7 +1439,7 @@ void Ball::UpdateOrientation() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Ball::UpdateMeltingGrowing() {
     f64 sp140;
     f64 sp138;
@@ -1512,7 +1512,7 @@ void Ball::UpdateMeltingGrowing() {
             return;
         }
         if (((s32) M2C_FIELD(temp_r31_2480, s32 *, 0xE8) != 0) && (KDSound_IsVoicePlaying(this->unk290) == 0)) {
-            temp_r29_2502 = this->unk8 + 0x30;
+            temp_r29_2502 = ((u8 *) this->unk8) + 0x30;
             this->unk290 = KDSound_Play3d(M2C_FIELD(checked_cast<BallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE8), temp_r29_2502, 0U, -1, 0.0f, 0U);
         }
         spA0 = -1.0f;
@@ -3171,7 +3171,7 @@ void Ball::LoadDone() {
     sp14 = 1.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64, f32), 0x84)(gMK, (f64) sp8, 0.55f)))->AddSphere(this->unk8 + 0x30, M2C_BITWISE(f32, this->unk270), 0.0f, *((MKVector4 *) &sp18), (MKCollisionMode) 2, &this->unk70, 0x10002U);
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64, f32), 0x84)(gMK, (f64) sp8, 0.55f)))->AddSphere(((u8 *) this->unk8) + 0x30, M2C_BITWISE(f32, this->unk270), 0.0f, *((MKVector4 *) &sp18), (MKCollisionMode) 2, &this->unk70, 0x10002U);
 }
 #endif
 

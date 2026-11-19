@@ -11,7 +11,7 @@ extern f32 *KDSpline_VelocityMixer;
 static s32 lit_603 = 0;
 static s32 lit_606 = 0;
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 Matrix **SplitPath::GetPathData(float arg0, float *arg1) {
     f32 temp_f0_23;
     f32 temp_f3_19;
@@ -26,7 +26,7 @@ Matrix **SplitPath::GetPathData(float arg0, float *arg1) {
     var_ctr_13 = temp_r0_11;
     if (temp_r0_11 > 0) {
 loop_1:
-        temp_r6_18 = this->unk0 + var_r5_12;
+        temp_r6_18 = ((u8 *) this->unk0) + var_r5_12;
         temp_f3_19 = M2C_FIELD(temp_r6_18, f32 *, 0xC);
         if (arg0 >= temp_f3_19) {
             temp_f0_23 = M2C_FIELD(temp_r6_18, f32 *, 0x10);
@@ -35,7 +35,7 @@ loop_1:
                     temp_f4_30 = M2C_FIELD(temp_r6_18, f32 *, 4);
                     *arg1 = (((arg0 - temp_f3_19) / (temp_f0_23 - temp_f3_19)) * (M2C_FIELD(temp_r6_18, f32 *, 8) - temp_f4_30)) + temp_f4_30;
                 }
-                return this->unk0 + var_r5_12;
+                return ((u8 *) this->unk0) + var_r5_12;
             }
         }
         var_r5_12 += 0x14;

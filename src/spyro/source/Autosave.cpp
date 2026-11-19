@@ -83,7 +83,7 @@ void Autosave_ConfirmCard() {
         Autosave_Abort();
         return;
     }
-    Timer_GetDifference(&sp8, &autosaveTimeStamp, temp_r5_139 + 0x80);
+    Timer_GetDifference(&sp8, &autosaveTimeStamp, ((u8 *) temp_r5_139) + 0x80);
     if ((sp8.unk18 != 0) || (sp8.unk14 != 0) || (sp8.unk10 != 0) || ((s32) sp8 != 0) || (sp8.unk4 != 0) || (sp8.unk8 != 0) || (sp8.unkC != 0)) {
         Autosave_Abort();
         return;

@@ -1398,7 +1398,7 @@ loop_62:
                 sp708 = (f64) sp148;
                 sp718 = (f64) sp3D8;
                 sp130 = (f64) sp3D0 * (f64) (f32) spA10;
-                temp_r17_1881 = temp_r14_1650 + 0xC8;
+                temp_r17_1881 = ((u8 *) temp_r14_1650) + 0xC8;
                 sp720 = sp130;
                 sp138 = (f32) sp718 * (f32) spA10;
                 sp728 = (f64) sp138;
@@ -1886,12 +1886,12 @@ void LiquidFX::Update() {
                     MKVector(0.0f, -3000.0f * M2C_FIELD(temp_r27_2717, f32 *, 0xFC), 0.0f);
                     temp_f0_2734 = sp288 * (f64) temp_f29_2729;
                     spE8 = temp_f0_2734;
-                    temp_r26_2736 = temp_r27_2717 + 0xD8;
+                    temp_r26_2736 = ((u8 *) temp_r27_2717) + 0xD8;
                     sp298 = temp_f0_2734;
                     spF0 = sp290 * temp_f29_2729;
                     sp2A0 = (f64) spF0;
                     *temp_r26_2736 += temp_f0_2734;
-                    temp_r25_2748 = temp_r27_2717 + 0xC8;
+                    temp_r25_2748 = ((u8 *) temp_r27_2717) + 0xC8;
                     M2C_FIELD(temp_r27_2717, f32 *, 0xE0) = (f32) (M2C_FIELD(temp_r27_2717, f32 *, 0xE0) + (f32) sp2A0);
                     sp2B8 = M2C_FIELD(temp_r27_2717, f64 *, 0xC8);
                     sp2C0 = M2C_FIELD(temp_r27_2717, f64 *, 0xD0);
@@ -1904,7 +1904,7 @@ void LiquidFX::Update() {
                     M2C_FIELD(temp_r27_2717, f64 *, 0xD0) = (f32) ((f32) M2C_FIELD(temp_r27_2717, f64 *, 0xD0) + (f32) sp280);
                     temp_f0_2781 = M2C_FIELD(temp_r27_2717, f64 *, 0x118) * (f64) gUpdateTimeDelta;
                     spC8 = temp_f0_2781;
-                    temp_r0_2783 = temp_r27_2717 + 0x108;
+                    temp_r0_2783 = ((u8 *) temp_r27_2717) + 0x108;
                     sp268 = temp_f0_2781;
                     spD0 = M2C_FIELD(temp_r27_2717, f32 *, 0x120) * gUpdateTimeDelta;
                     sp270 = (f64) spD0;
@@ -2022,7 +2022,7 @@ void LiquidFX::Update() {
                         var_f6_2986 = 1.0f;
                     }
                     temp_f4_2993 = M2C_FIELD(temp_r27_2717, f32 *, 0xF0);
-                    temp_r24_2994 = temp_r27_2717 + 0xC8;
+                    temp_r24_2994 = ((u8 *) temp_r27_2717) + 0xC8;
                     temp_f4_3003 = (var_f6_2986 * (var_f5_2966 - temp_f4_2993)) + temp_f4_2993;
                     M2C_FIELD(temp_r27_2717, f32 *, 0xF0) = (f32) ((var_f6_2986 * (var_f5_2966 - temp_f4_3003)) + temp_f4_3003);
                     sp310 = 0.0f;
@@ -2170,7 +2170,7 @@ void LiquidFX::Update() {
                             }
                         }
                         SpawnGroundCollisionFX((LFX_Blob *) temp_r24_2994);
-                        temp_r24_3267 = temp_r27_2717 + 0x138;
+                        temp_r24_3267 = ((u8 *) temp_r27_2717) + 0x138;
                         M2C_FIELD(temp_r27_2717, f32 *, 0x138) = 0.0f;
                         M2C_FIELD(temp_r27_2717, f32 *, 0x13C) = 0.0f;
                         M2C_FIELD(temp_r27_2717, f32 *, 0x140) = 0.0f;
@@ -2269,7 +2269,7 @@ void LiquidFX::Update() {
                 if ((u8) M2C_FIELD(temp_r27_2717, u8 *, 0x159) != 0) {
                     temp_f0_3480 = (f64) M2C_FIELD(temp_r27_2717, f32 *, 0x138) * (f64) gUpdateTimeDelta;
                     sp38 = temp_f0_3480;
-                    temp_r0_3482 = temp_r27_2717 + 0xC8;
+                    temp_r0_3482 = ((u8 *) temp_r27_2717) + 0xC8;
                     sp1A8 = temp_f0_3480;
                     sp40 = M2C_FIELD(temp_r27_2717, f32 *, 0x140) * gUpdateTimeDelta;
                     sp1B0 = (f64) sp40;
@@ -2376,7 +2376,7 @@ void LiquidFX::Update() {
                         if (M2C_FIELD(temp_r27_2717, f32 *, 0x160) >= MKRand_Float(&gViewSeed, 0.01f, 0.135f)) {
                             M2C_FIELD(temp_r27_2717, f32 *, 0x160) = 0.0f;
                         }
-                        temp_r24_3701 = temp_r27_2717 + 0xC8;
+                        temp_r24_3701 = ((u8 *) temp_r27_2717) + 0xC8;
                         if ((temp_r24_3701->IsWithin(sp24, &sp20, M2C_ERROR(/* Read from unset register $r6 */)) != 0) && (M2C_BITWISE(s32, sp20) == 0)) {
                             temp_f24_3715 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
                             temp_f25_3720 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);

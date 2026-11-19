@@ -96,7 +96,7 @@ void BeetleNestSmall::Update() {
         var_r30_134 = 0;
         temp_r29_136 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_137 = M2C_FIELD(temp_r29_136, KDSynkerPlayer3 **, 0x78);
-        if (((temp_r3_137 != NULL) && (temp_r3_137->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_136, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_136 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_137 != NULL) && (temp_r3_137->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_136, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r29_136) + 0x24))->GetState() == 2))) {
             var_r30_134 = 1;
         }
         if ((var_r30_134 == 0) && ((u32 *) this->unk1A8.unk44 > 0)) {
@@ -105,7 +105,7 @@ void BeetleNestSmall::Update() {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x174), 1.0f, 0.0f, 0, -1);
                 MKModel_CalculateRefPointWorldPosition(this->unk4, this->unk208, &sp98);
                 temp_r3_187 = checked_cast<BeetleNestSmallDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-                temp_r4_190 = this->unk8 + 0x10;
+                temp_r4_190 = ((u8 *) this->unk8) + 0x10;
                 temp_f0_192 = M2C_FIELD(temp_r4_190, f64 *, 0) * 5.53552857e-315;
                 sp38 = temp_f0_192;
                 temp_f3_194 = M2C_FIELD(temp_r4_190, f32 *, 8);

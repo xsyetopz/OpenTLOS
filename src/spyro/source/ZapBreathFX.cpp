@@ -94,7 +94,6 @@ void ZapBreathFX::ButtonReleased() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 u8 ZapBreathFX::LightActiveOnMissiles() {
     s32 var_ctr_93;
     s32 var_r4_92;
@@ -103,7 +102,7 @@ u8 ZapBreathFX::LightActiveOnMissiles() {
     var_r4_92 = 0;
     var_ctr_93 = 0xA;
 loop_1:
-    temp_r5_96 = this->unkAC + var_r4_92;
+    temp_r5_96 = ((u8 *) this->unkAC) + var_r4_92;
     if (((u8) M2C_FIELD(temp_r5_96, u8 *, 0x60) != 0) && ((u32) M2C_FIELD(temp_r5_96, u32 *, 0x5C) != 0U)) {
         return 1U;
     }
@@ -114,9 +113,7 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void ZapBreathFX::DisableMissileLight(ZapMissile *arg0) {
     s32 var_ctr_118;
     s32 var_r5_115;
@@ -125,7 +122,7 @@ void ZapBreathFX::DisableMissileLight(ZapMissile *arg0) {
     var_r5_115 = 0;
     var_ctr_118 = 0xA;
     do {
-        temp_r7_121 = this->unkAC + var_r5_115;
+        temp_r7_121 = ((u8 *) this->unkAC) + var_r5_115;
         if (((u8) M2C_FIELD(temp_r7_121, u8 *, 0x60) != 0) && (temp_r7_121 != arg0) && ((u32) M2C_FIELD(temp_r7_121, u32 *, 0x5C) != 0U)) {
             M2C_FIELD(temp_r7_121, u32 *, 0x5C) = 0U;
         }
@@ -133,7 +130,6 @@ void ZapBreathFX::DisableMissileLight(ZapMissile *arg0) {
         var_ctr_118 -= 1;
     } while (var_ctr_118 != 0);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk0'
 u8 ZapBreathFX::ShootZapMissile(const MKVector3 &arg0, const MKVector3 &arg1) {
@@ -367,7 +363,7 @@ block_45:
     var_r29_434 = 0;
     var_ctr_435 = 0xA;
 loop_49:
-    temp_r4_438 = this->unkAC + var_r29_434;
+    temp_r4_438 = ((u8 *) this->unkAC) + var_r29_434;
     if ((u8) M2C_FIELD(temp_r4_438, u8 *, 0x60) == 0) {
         M2C_FIELD(temp_r4_438, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
         M2C_FIELD(temp_r4_438, f64 *, 8) = (f64) M2C_FIELD(&arg0, f32 *, 8);
@@ -385,43 +381,43 @@ loop_49:
         spF8 = (f64) sp38;
         Normalise(sp100);
         temp_f2_484 = M2C_BITWISE(f64, sp100);
-        temp_r3_487 = this->unkAC + (var_r29_434 + 0x10);
+        temp_r3_487 = ((u8 *) this->unkAC) + (var_r29_434 + 0x10);
         M2C_FIELD(temp_r3_487, f64 *, 0) = temp_f2_484;
         M2C_FIELD(temp_r3_487, f64 *, 8) = (f64) sp100.unk8;
-        M2C_FIELD((this->unkAC + var_r29_434), f32 *, 0x40) = 4.0f;
-        M2C_FIELD((this->unkAC + var_r29_434), TargetManager ***, 0x50) = var_r30_157;
-        M2C_FIELD((this->unkAC + var_r29_434), s8 *, 0x60) = 1;
-        temp_r3_502 = M2C_FIELD((this->unkAC + var_r29_434), void **, 0x54);
+        M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), f32 *, 0x40) = 4.0f;
+        M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), TargetManager ***, 0x50) = var_r30_157;
+        M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), s8 *, 0x60) = 1;
+        temp_r3_502 = M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), void **, 0x54);
         M2C_FIELD(M2C_FIELD(temp_r3_502, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, f64, f64), 0x20)(temp_r3_502, 1, (f64) sp100.unk8, temp_f2_484);
-        temp_r6_513 = M2C_FIELD((this->unkAC + var_r29_434), void **, 0x54);
+        temp_r6_513 = M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), void **, 0x54);
         M2C_FIELD(temp_r6_513, u8 *, 0xA0) = (u8) ((M2C_FIELD(temp_r6_513, u8 *, 0xA0) & ~0x80) | ((lit_1631 << 7) & 0x80));
-        temp_r4_521 = M2C_FIELD((this->unkAC + var_r29_434), void **, 0x54);
+        temp_r4_521 = M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), void **, 0x54);
         M2C_FIELD(temp_r4_521, u8 *, 0xA0) = (u8) (M2C_FIELD(temp_r4_521, u8 *, 0xA0) | 0x40);
-        M2C_FIELD((this->unkAC + var_r29_434), ManagedLight **, 0x5C) = (ManagedLight *) this->unkB0;
-        M2C_FIELD((this->unkAC + var_r29_434), f32 *, 0x4C) = 0.5f;
-        temp_r3_533 = this->unkAC + (var_r29_434 + 0x20);
+        M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), ManagedLight **, 0x5C) = (ManagedLight *) this->unkB0;
+        M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), f32 *, 0x4C) = 0.5f;
+        temp_r3_533 = ((u8 *) this->unkAC) + (var_r29_434 + 0x20);
         M2C_FIELD(temp_r3_533, f64 *, 0) = (f64) M2C_FIELD(&arg1, f32 *, 0);
         M2C_FIELD(temp_r3_533, f64 *, 8) = (f64) M2C_FIELD(&arg1, f32 *, 8);
-        temp_r3_538 = M2C_FIELD((this->unkAC + var_r29_434), void ***, 0x50);
+        temp_r3_538 = M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), void ***, 0x50);
         if (temp_r3_538 != NULL) {
             temp_r4_545 = M2C_FIELD(M2C_FIELD(*temp_r3_538, void *(**)(), 8)(), void **, 8);
             temp_f1_548 = M2C_FIELD(temp_r4_545, f64 *, 0x30);
             temp_f0_549 = M2C_FIELD(temp_r4_545, f64 *, 0x38);
-            temp_r3_550 = this->unkAC + (var_r29_434 + 0x30);
+            temp_r3_550 = ((u8 *) this->unkAC) + (var_r29_434 + 0x30);
             spD0 = temp_f1_548;
             M2C_FIELD(temp_r3_550, f64 *, 0) = temp_f1_548;
             spD8 = temp_f0_549;
             M2C_FIELD(temp_r3_550, f64 *, 8) = temp_f0_549;
         }
-        DisableMissileLight(this->unkAC + var_r29_434);
-        if ((u32) M2C_FIELD((this->unkAC + var_r29_434), u32 *, 0x5C) != 0U) {
+        DisableMissileLight(((u8 *) this->unkAC) + var_r29_434);
+        if ((u32) M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), u32 *, 0x5C) != 0U) {
             sp20 = 1.0f;
             sp24 = 1.0f;
             sp28 = 0.0f;
             sp2C = 1.0f;
             this->unkE8 = (f64) sp20;
             this->unkF0 = (f64) sp28;
-            temp_r3_579 = M2C_FIELD((this->unkAC + var_r29_434), void **, 0x5C);
+            temp_r3_579 = M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), void **, 0x5C);
             spC0 = (f64) sp20;
             M2C_FIELD(temp_r3_579, f64 *, 0x20) = (f64) this->unkE8;
             M2C_FIELD(temp_r3_579, f64 *, 0x28) = (f64) this->unkF0;
@@ -431,7 +427,7 @@ loop_49:
                 M2C_FIELD(temp_r3_583, f64 *, 0) = (f64) this->unkE8;
                 M2C_FIELD(temp_r3_583, f64 *, 8) = (f64) this->unkF0;
             }
-            ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(M2C_FIELD((this->unkAC + var_r29_434), ManagedLight **, 0x5C), 1U);
+            ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(M2C_FIELD((((u8 *) this->unkAC) + var_r29_434), ManagedLight **, 0x5C), 1U);
         }
         sp50 = 1.0f;
         sp54 = 1.0f;
@@ -469,7 +465,7 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void ZapBreathFX::UpdateZapMissiles() {
     u8 sp4D0;
     s32 sp4CC;
@@ -763,16 +759,16 @@ void ZapBreathFX::UpdateZapMissiles() {
     var_r27_718 = 0;
     this->unkD0 -= gUpdateTimeDelta;
     do {
-        temp_r3_723 = this->unkAC + var_r27_718;
+        temp_r3_723 = ((u8 *) this->unkAC) + var_r27_718;
         if ((u8) M2C_FIELD(temp_r3_723, u8 *, 0x60) != 0) {
             M2C_FIELD(temp_r3_723, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r3_723, f32 *, 0x40) - gUpdateTimeDelta);
             sp8 = 1;
-            temp_r8_738 = this->unkAC + var_r27_718;
+            temp_r8_738 = ((u8 *) this->unkAC) + var_r27_718;
             ((KDSoundFader *) (temp_r8_738 + 0x64))->Update(GS_SpyroSpare1, 1U, M2C_FIELD(temp_r8_738, u8 *, 0x60), NULL, temp_r8_738, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-            temp_r26_745 = this->unkAC + var_r27_718;
+            temp_r26_745 = ((u8 *) this->unkAC) + var_r27_718;
             if (M2C_FIELD(temp_r26_745, f32 *, 0x40) <= 0.0f) {
                 M2C_FIELD(temp_r26_745, s8 *, 0x60) = 0;
-                KDSound_Stop(this->unkAC + (var_r27_718 + 0x64));
+                KDSound_Stop(((u8 *) this->unkAC) + (var_r27_718 + 0x64));
                 temp_r3_758 = *(this->unkAC + (var_r27_718 + 0x54));
                 M2C_FIELD(M2C_FIELD(temp_r3_758, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r3_758);
                 temp_r6_764 = var_r27_718 + 0x54;
@@ -832,7 +828,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     temp_r3_889 = this->unkAC;
                     temp_f1_890 = M2C_FIELD(temp_r4_887, f64 *, 0x30);
                     temp_f0_891 = M2C_FIELD(temp_r4_887, f64 *, 0x38);
-                    temp_r5_892 = temp_r3_889 + (var_r27_718 + 0x30);
+                    temp_r5_892 = ((u8 *) temp_r3_889) + (var_r27_718 + 0x30);
                     sp420 = temp_f1_890;
                     sp428 = temp_f0_891;
                     sp190 = sp420 - M2C_FIELD(temp_r5_892, f64 *, 0);
@@ -847,12 +843,12 @@ void ZapBreathFX::UpdateZapMissiles() {
                     sp378 = (f64) sp188;
                     temp_f3_917 = sp420 + sp370;
                     sp170 = temp_f3_917;
-                    temp_r4_919 = temp_r3_889 + var_r27_718;
+                    temp_r4_919 = ((u8 *) temp_r3_889) + var_r27_718;
                     sp400 = temp_f3_917;
                     sp178 = (f32) sp428 + (f32) sp378;
                     sp408 = (f64) sp178;
                     sp70 = sp400 - M2C_FIELD(temp_r4_919, f64 *, 0);
-                    temp_r3_933 = temp_r3_889 + (var_r27_718 + 0x30);
+                    temp_r3_933 = ((u8 *) temp_r3_889) + (var_r27_718 + 0x30);
                     sp430 = sp70;
                     sp78 = (f32) sp408 - M2C_FIELD(temp_r4_919, f32 *, 8);
                     sp360 = sp70;
@@ -903,14 +899,14 @@ void ZapBreathFX::UpdateZapMissiles() {
                     (*(f32 *) ((u8 *) &sp428 + 0xc)) *= var_f2_899;
                     sp438 = (f32) sp438 * var_f2_899;
                     if (var_f25_953 > 5.0f) {
-                        temp_r26_1038 = this->unkAC + var_r27_718;
+                        temp_r26_1038 = ((u8 *) this->unkAC) + var_r27_718;
                         Normalise(sp340);
                         KDMath_Slerp(sp350, sp340, 0.5f * -((M2C_FIELD(temp_r26_1038, f32 *, 0x40) * 0.25f) - 1.0f));
                         temp_r4_1052 = var_r27_718 + 0x10;
-                        temp_r3_1055 = this->unkAC + temp_r4_1052;
+                        temp_r3_1055 = ((u8 *) this->unkAC) + temp_r4_1052;
                         M2C_FIELD(temp_r3_1055, f64 *, 0) = M2C_BITWISE(f64, sp350);
                         M2C_FIELD(temp_r3_1055, f64 *, 8) = (f64) sp350.unk8;
-                        temp_r3_1066 = this->unkAC + temp_r4_1052;
+                        temp_r3_1066 = ((u8 *) this->unkAC) + temp_r4_1052;
                         var_f6_1072 = ((f32) sp418 * (f32) sp418) + (((f32) sp410 * (f32) sp410) + ((*(f32 *) ((u8 *) &sp410 + 0x4)) * (*(f32 *) ((u8 *) &sp410 + 0x4))));
                         var_f4_1078 = (sp438 * M2C_FIELD(temp_r3_1066, f32 *, 8)) + ((sp430 * M2C_FIELD(temp_r3_1066, f32 *, 0)) + ((*(f32 *) ((u8 *) &sp428 + 0xc)) * M2C_FIELD(temp_r3_1066, f32 *, 4)));
                         if (var_f6_1072 > 0.0f) {
@@ -963,7 +959,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                             }
                         }
                         M2C_FIELD(this, u8 *, 0x1B0) = 0U;
-                        temp_r3_1199 = this->unkAC + var_r27_718;
+                        temp_r3_1199 = ((u8 *) this->unkAC) + var_r27_718;
                         temp_f1_1200 = M2C_FIELD(temp_r3_1199, f64 *, 0);
                         M2C_FIELD(this, f64 *, 0x170) = temp_f1_1200;
                         M2C_FIELD(this, f64 *, 0x178) = (f64) M2C_FIELD(temp_r3_1199, f64 *, 8);
@@ -981,7 +977,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                         temp_r3_1268 = M2C_FIELD(M2C_FIELD(temp_r3_1264, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_1264);
                         if (temp_r3_1268 != NULL) {
                             temp_r25_1273 = M2C_FIELD(temp_r3_1268, void **, 0x2C);
-                            temp_r4_1274 = this->unkAC + var_r27_718;
+                            temp_r4_1274 = ((u8 *) this->unkAC) + var_r27_718;
                             M2C_FIELD(temp_r3_1268, f64 *, 0) = (f64) M2C_FIELD(temp_r4_1274, f64 *, 0);
                             M2C_FIELD(temp_r3_1268, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1274, f64 *, 8);
                             M2C_FIELD(temp_r3_1268, f32 *, 0x20) = 0.0f;
@@ -1020,10 +1016,10 @@ void ZapBreathFX::UpdateZapMissiles() {
                 } else {
                     Normalise(sp300);
                     KDMath_Slerp(sp310, sp300, 0.075f);
-                    temp_r3_1368 = this->unkAC + (var_r27_718 + 0x10);
+                    temp_r3_1368 = ((u8 *) this->unkAC) + (var_r27_718 + 0x10);
                     M2C_FIELD(temp_r3_1368, f64 *, 0) = M2C_BITWISE(f64, sp310);
                     M2C_FIELD(temp_r3_1368, f64 *, 8) = (f64) sp310.unk8;
-                    temp_r3_1374 = this->unkAC + var_r27_718;
+                    temp_r3_1374 = ((u8 *) this->unkAC) + var_r27_718;
                     var_f2_1383 = (M2C_FIELD(temp_r3_1374, f32 *, 0x28) * M2C_FIELD(temp_r3_1374, f32 *, 0x18)) + ((M2C_FIELD(temp_r3_1374, f32 *, 0x20) * M2C_FIELD(temp_r3_1374, f32 *, 0x10)) + (M2C_FIELD(temp_r3_1374, f32 *, 0x24) * M2C_FIELD(temp_r3_1374, f32 *, 0x14)));
                     if (var_f2_1383 < 0.0f) {
                         var_f2_1383 = -var_f2_1383;
@@ -1031,7 +1027,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     M2C_FIELD(temp_r3_1374, f32 *, 0x48) = (f32) (0.25f + var_f2_1383);
                 }
                 temp_f29_1393 = gUpdateTimeDelta;
-                temp_r5_1394 = this->unkAC + var_r27_718;
+                temp_r5_1394 = ((u8 *) this->unkAC) + var_r27_718;
                 sp3E0 = M2C_FIELD(temp_r5_1394, f64 *, 0);
                 sp3E8 = M2C_FIELD(temp_r5_1394, f64 *, 8);
                 sp2D0.operator*(M2C_FIELD(temp_r5_1394, f32 *, 0x48));
@@ -1039,7 +1035,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                 temp_f0_1408 = sp2E0 * (f64) temp_f29_1393;
                 sp50 = temp_f0_1408;
                 sp2F0 = temp_f0_1408;
-                temp_r9_1415 = this->unkAC + var_r27_718;
+                temp_r9_1415 = ((u8 *) this->unkAC) + var_r27_718;
                 sp58 = sp2E0.unk8 * temp_f29_1393;
                 sp2F8 = (f64) sp58;
                 M2C_FIELD(temp_r9_1415, f64 *, 0) = (f64) (M2C_FIELD(temp_r9_1415, f64 *, 0) + temp_f0_1408);
@@ -1128,13 +1124,13 @@ void ZapBreathFX::UpdateZapMissiles() {
                     }
                 }
                 M2C_STRUCT_COPY((s32) &unksp43C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                temp_r3_1620 = this->unkAC + var_r27_718;
+                temp_r3_1620 = ((u8 *) this->unkAC) + var_r27_718;
                 sp440.unk30 = M2C_FIELD(temp_r3_1620, f32 *, 0);
                 sp440.unk34 = M2C_FIELD(temp_r3_1620, f32 *, 4);
                 sp440.unk38 = M2C_FIELD(temp_r3_1620, f32 *, 8);
                 sp440.unk3C = 1.0f;
                 MKModel_SetWorldMatrix(this->unkE0, sp440);
-                temp_r3_1631 = this->unkAC + var_r27_718;
+                temp_r3_1631 = ((u8 *) this->unkAC) + var_r27_718;
                 temp_r4_1632 = M2C_FIELD(temp_r3_1631, void **, 0x5C);
                 if (temp_r4_1632 != NULL) {
                     M2C_FIELD(temp_r4_1632, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_1631, f64 *, 0);
@@ -1159,7 +1155,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     sp278 = (f64) sp38;
                     M2C_FIELD(temp_r4_1663, f64 *, 0x18) = (f64) sp38;
                     M2C_FIELD(*(this->unkAC + (var_r27_718 + 0x58)), f32 *, 0x24) = MKRand_Float(&gViewSeed, 2.0f, 2.5f);
-                    temp_r4_1681 = this->unkAC + var_r27_718;
+                    temp_r4_1681 = ((u8 *) this->unkAC) + var_r27_718;
                     temp_r3_1682 = M2C_FIELD(temp_r4_1681, void **, 0x58);
                     M2C_FIELD(temp_r3_1682, f64 *, 0) = (f64) M2C_FIELD(temp_r4_1681, f64 *, 0);
                     M2C_FIELD(temp_r3_1682, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1681, f64 *, 8);
@@ -1179,7 +1175,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     temp_f0_1726 = sp250 * 5.439686476e-315;
                     spF0 = temp_f0_1726;
                     sp260 = temp_f0_1726;
-                    temp_r4_1733 = this->unkAC + var_r27_718;
+                    temp_r4_1733 = ((u8 *) this->unkAC) + var_r27_718;
                     spF8 = (f32) sp258 * 20.0f;
                     sp268 = (f64) spF8;
                     temp_f0_1739 = M2C_FIELD(temp_r4_1733, f64 *, 0) + temp_f0_1726;
@@ -2328,7 +2324,7 @@ loop_208:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void ZapBreathFX::Deinit() {
     Corona *temp_r4_4552;
     MKHeap *temp_r3_4515;
@@ -2346,7 +2342,7 @@ void ZapBreathFX::Deinit() {
     var_r30_4504 = 0;
     var_r31_4505 = 0;
     do {
-        ((Zap *) (this->unkA8 + var_r31_4505))->Deinit();
+        ((Zap *) (((u8 *) this->unkA8) + var_r31_4505))->Deinit();
         var_r30_4504 += 1;
         var_r31_4505 += 0x1D0;
     } while (var_r30_4504 < 3);
@@ -2377,7 +2373,7 @@ void ZapBreathFX::Deinit() {
     var_r30_4560 = 0;
     var_r31_4561 = 0;
     do {
-        KDSound_Stop(this->unkAC + (var_r31_4561 + 0x64));
+        KDSound_Stop(((u8 *) this->unkAC) + (var_r31_4561 + 0x64));
         var_r30_4560 += 1;
         var_r31_4561 += 0x90;
     } while (var_r30_4560 < 0xA);
@@ -2421,7 +2417,7 @@ void ZapBreathFX::Message(MKMessage *arg0) {
     var_r30_4638 = 0;
     var_r31_4639 = 0;
     do {
-        ((KDSoundPlayer *) (this->unkAC + (var_r31_4639 + 0x64)))->Message(arg0);
+        ((KDSoundPlayer *) (((u8 *) this->unkAC) + (var_r31_4639 + 0x64)))->Message(arg0);
         var_r30_4638 += 1;
         var_r31_4639 += 0x90;
     } while (var_r30_4638 < 0xA);
@@ -3118,7 +3114,7 @@ void ZapBreathFX::Resolve() {
     var_r27_5689 = 0;
     var_r30_5690 = 0;
     do {
-        ((Zap *) (this->unkA8 + var_r30_5690))->Resolve();
+        ((Zap *) (((u8 *) this->unkA8) + var_r30_5690))->Resolve();
         var_r27_5689 += 1;
         var_r30_5690 += 0x1D0;
     } while (var_r27_5689 < 3);
@@ -3185,7 +3181,7 @@ void ZapBreathFX::Init() {
     var_r30_5816 = 0;
     var_r28_5817 = 0;
     do {
-        ((Zap *) (this->unkA8 + var_r28_5817))->Init();
+        ((Zap *) (((u8 *) this->unkA8) + var_r28_5817))->Init();
         var_r30_5816 += 1;
         temp_r0_5824 = var_r28_5817 + 0x1B4;
         var_r28_5817 += 0x1D0;
@@ -3212,22 +3208,22 @@ void ZapBreathFX::Init() {
     var_r30_5875 = 0;
     var_r28_5876 = 0;
     do {
-        ((MKSceneManager *) gMK)->CreatePropDeferred("ShapedTrailFX", this->unkAC + (var_r28_5876 + 0x54));
+        ((MKSceneManager *) gMK)->CreatePropDeferred("ShapedTrailFX", ((u8 *) this->unkAC) + (var_r28_5876 + 0x54));
         *(this->unkAC + (var_r28_5876 + 0x60)) = 0;
         *(this->unkAC + (var_r28_5876 + 0x40)) = 0.0f;
         *(this->unkAC + (var_r28_5876 + 0x50)) = 0;
-        temp_r6_5902 = this->unkAC + var_r28_5876;
+        temp_r6_5902 = ((u8 *) this->unkAC) + var_r28_5876;
         M2C_FIELD(temp_r6_5902, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r6_5902, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r6_5902, f32 *, 8) = 0.0f;
-        temp_r9_5907 = this->unkAC + (var_r28_5876 + 0x10);
+        temp_r9_5907 = ((u8 *) this->unkAC) + (var_r28_5876 + 0x10);
         M2C_FIELD(temp_r9_5907, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r9_5907, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r9_5907, f32 *, 8) = 0.0f;
         *(this->unkAC + (var_r28_5876 + 0x44)) = 0.0f;
         *(this->unkAC + (var_r28_5876 + 0x48)) = 1.0f;
         *(this->unkAC + (var_r28_5876 + 0x5C)) = 0;
-        ((KDSoundFader *) (this->unkAC + (var_r28_5876 + 0x64)))->Init(0.25f, 0.25f);
+        ((KDSoundFader *) (((u8 *) this->unkAC) + (var_r28_5876 + 0x64)))->Init(0.25f, 0.25f);
         var_r30_5875 += 1;
         var_r28_5876 += 0x90;
     } while (var_r30_5875 < 0xA);

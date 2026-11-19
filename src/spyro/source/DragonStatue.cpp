@@ -352,11 +352,11 @@ void DragonStatue::Message(MKMessage *arg0) {
         if (temp_r0_674 == 0) {
             this->unk100 = 3;
             this->unk90.Send(NULL);
-            KDSound_Play3d(GS_DragonStatueStart, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_DragonStatueStart, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         } else if (temp_r0_674 == 1) {
             this->unk100 = 2;
             this->unk98.Send(NULL);
-            KDSound_Play3d(GS_DragonStatueStart, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_DragonStatueStart, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             sp18 = -this->unkB8;
             sp1C = -this->unkBC;
             sp20 = -this->unkC0;
@@ -648,7 +648,7 @@ void DragonStatue::Update() {
             } else {
                 var_f30_892 = 50.0f;
             }
-            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.5f, 0.05f, 0.05f, this->unk8 + 0x30, var_f30_892, 0, 4.0f, 0U);
+            ((KDInput *) (gb.unk0->GetInput()))->RumblePlay3D(0.5f, 0.05f, 0.05f, ((u8 *) this->unk8) + 0x30, var_f30_892, 0, 4.0f, 0U);
         }
         temp_f1_915 = this->unk154;
         if (temp_f1_915 > 2.5f) {
@@ -844,7 +844,7 @@ void DragonStatue::Update() {
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp3C);
             this->unk100 = 1;
             this->unk94.Send(NULL);
-            KDSound_Play3d(GS_DragonStatueEnd, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_DragonStatueEnd, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             this->unk154 = 0.0f;
             this->unkA8 = 0.0f;
             this->unkAC = -2000.0f;
@@ -1088,7 +1088,7 @@ void DragonStatue::Update() {
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp34);
             this->unk100 = 0;
             this->unk9C.Send(NULL);
-            KDSound_Play3d(GS_DragonStatueEnd, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_DragonStatueEnd, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             this->unk154 = 0.0f;
             this->unkA8 = 0.0f;
             this->unkAC = 0.0f;

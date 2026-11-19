@@ -45,7 +45,7 @@ void BirdCritter::Deinit() {
     var_r31_69 = 0;
 loop_5:
     if (var_r30_68 < (s32) this->unk90) {
-        ((KDUniformSpline *) (this->unk170 + (var_r31_69 + 0x68)))->Deinit();
+        ((KDUniformSpline *) (((u8 *) this->unk170) + (var_r31_69 + 0x68)))->Deinit();
         var_r30_68 += 1;
         var_r31_69 += 0x90;
         goto loop_5;
@@ -64,7 +64,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void BirdCritter::Draw() {
     Matrix sp10;
     M2C_UNK spC;
@@ -76,10 +76,10 @@ void BirdCritter::Draw() {
     var_r31_121 = 0;
 loop_2:
     if (var_r30_120 < (s32) this->unk90) {
-        temp_r29_128 = this->unk170 + var_r31_121;
+        temp_r29_128 = ((u8 *) this->unk170) + var_r31_121;
         this->unk80->SetAnim(M2C_FIELD(temp_r29_128, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
         this->unk80->JumpToPos(M2C_FIELD(temp_r29_128, f32 *, 0x54), -1);
-        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (temp_r29_128 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &spC + 4, (s32) (((u8 *) temp_r29_128) - 4) + 4, 0x40);
         MKModel_SetWorldMatrix(this->unk4, sp10);
         MKModel_Draw(this->unk4, NULL);
         var_r30_120 += 1;
@@ -172,7 +172,7 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     sp178.unk30 = M2C_BITWISE(f64, sp178);
     sp178.unk38 = sp178.unk8;
     if ((arg1 != 0) && (temp_r5_196 = this->unk178, ((temp_r5_196 == 0) == 0))) {
-        temp_r3_205 = this->unk174 + (MKRand_Int(&gViewSeed, 0, temp_r5_196) * 0x10);
+        temp_r3_205 = ((u8 *) this->unk174) + (MKRand_Int(&gViewSeed, 0, temp_r5_196) * 0x10);
         temp_f1_206 = M2C_FIELD(temp_r3_205, f64 *, 0);
         sp18 = temp_f1_206;
         sp20 = M2C_FIELD(temp_r3_205, f64 *, 8);
@@ -499,7 +499,7 @@ void BirdCritter::SetIdleState(Bird *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void BirdCritter::Update() {
     f64 sp108;                                      /* compiler-managed */
     f64 sp100;                                      /* compiler-managed */
@@ -569,7 +569,7 @@ void BirdCritter::Update() {
     var_r28_1063 = 0;
 loop_63:
     if (var_r31_1062 < (s32) this->unk90) {
-        temp_r30_1068 = this->unk170 + var_r28_1063;
+        temp_r30_1068 = ((u8 *) this->unk170) + var_r28_1063;
         temp_r30_1068->unk64 -= gUpdateTimeDelta;
         temp_r30_1068->unk54 += temp_r30_1068->unk58 * gUpdateTimeDelta;
         if ((s32) M2C_FIELD(checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x90) != 0) {
@@ -759,7 +759,7 @@ loop_63:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void BirdCritter::Resolve() {
     f64 sp20;
     f64 sp18;
@@ -776,7 +776,7 @@ void BirdCritter::Resolve() {
     var_r28_1496 = 0;
 loop_7:
     if (var_r31_1495 < (s32) this->unk90) {
-        temp_r30_1502 = this->unk170 + var_r28_1496;
+        temp_r30_1502 = ((u8 *) this->unk170) + var_r28_1496;
         temp_r30_1502->unk7C = 0.0f;
         temp_r30_1502->unk80 = 0.0f;
         ((KDUniformSpline *) (temp_r30_1502 + 0x68))->Init(5, 0U);
@@ -789,7 +789,7 @@ loop_7:
         sp18 = sp8;
         sp20 = sp10;
         if (temp_r5_1526 != 0) {
-            temp_r4_1540 = this->unk174 + (MKRand_Int(&gViewSeed, 0, temp_r5_1526) * 0x10);
+            temp_r4_1540 = ((u8 *) this->unk174) + (MKRand_Int(&gViewSeed, 0, temp_r5_1526) * 0x10);
             sp18 = M2C_FIELD(temp_r4_1540, f64 *, 0);
             sp20 = M2C_FIELD(temp_r4_1540, f64 *, 8);
             M2C_STRUCT_COPY(temp_r30_1502, &Matrix::identity, 0x40);
@@ -830,7 +830,7 @@ void BirdCritter::LoadDone() {
     this->unk170 = var_r3_1631;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1671;
     MKIniLine *var_r30_1689;
@@ -857,7 +857,7 @@ s32 BirdCritter::LoadLine(MKIniLine *arg0) {
         var_r30_1689 = arg0->unkC->GetSubLine(arg0);
 loop_8:
         if (var_r30_1689 != NULL) {
-            var_r30_1689->AsVector3(0, this->unk174 + var_r31_1688);
+            var_r30_1689->AsVector3(0, ((u8 *) this->unk174) + var_r31_1688);
             var_r31_1688 += 0x10;
             var_r30_1689 = var_r30_1689->unkC->GetNextLine(var_r30_1689);
             goto loop_8;

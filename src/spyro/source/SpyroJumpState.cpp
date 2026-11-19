@@ -1002,7 +1002,7 @@ block_6:
                     temp_r3_1809 = this->unk10->unk26C.unk8 + 0x2D8;
                     temp_r4_1810 = M2C_FIELD(temp_r3_1809, s32 *, 0x164);
                     if (temp_r4_1810 != 0) {
-                        var_r3_1815 = temp_r3_1809 + ((temp_r4_1810 - 1) * 0x58);
+                        var_r3_1815 = ((u8 *) temp_r3_1809) + ((temp_r4_1810 - 1) * 0x58);
                     } else {
                         var_r3_1815 = NULL;
                     }

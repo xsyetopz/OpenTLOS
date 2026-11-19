@@ -13,7 +13,6 @@ void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal type
 s32 Wake::GetWakeLength(int arg0) {
     s32 temp_r5_58;
     s32 temp_r6_41;
@@ -37,7 +36,7 @@ loop_1:
             if (var_r0_59 >= temp_r5_58) {
                 var_r0_59 -= temp_r5_58;
             }
-            var_r5_54 = this->unk5C + (var_r0_59 * 0x88);
+            var_r5_54 = ((u8 *) this->unk5C) + (var_r0_59 * 0x88);
         }
         if ((u8) *var_r5_54 != 0) {
             if (var_r7_43 > 0) {
@@ -57,9 +56,8 @@ block_11:
     }
     return var_r8_42 - arg0;
 }
-#endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal operand
 void Wake::Draw() {
     f32 var_f30_148;
     s32 temp_r28_114;
@@ -92,7 +90,7 @@ loop_14:
                         if (var_r0_133 >= temp_r3_132) {
                             var_r0_133 -= temp_r3_132;
                         }
-                        var_r29_128 = this->unk5C + (var_r0_133 * 0x88);
+                        var_r29_128 = ((u8 *) this->unk5C) + (var_r0_133 * 0x88);
                     }
                     temp_r3_143 = this->unkC0;
                     var_f30_148 = (f32) var_r26_118;
@@ -118,7 +116,7 @@ loop_14:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void Wake::Update() {
     f64 spD8;
     f64 spD0;
@@ -179,7 +177,7 @@ loop_41:
                 if (var_r0_229 >= temp_r3_228) {
                     var_r0_229 -= temp_r3_228;
                 }
-                var_r28_224 = this->unk5C + (var_r0_229 * 0x88);
+                var_r28_224 = ((u8 *) this->unk5C) + (var_r0_229 * 0x88);
             }
             if (M2C_FIELD(var_r28_224, f32 *, 4) < M2C_FIELD(&gb, f32 *, 0x30C)) {
                 if (temp_r4_474 > 0) {
@@ -192,7 +190,7 @@ loop_41:
                     this->unk54 -= 1;
                 }
                 if ((s32) this->unk54 > 0) {
-                    var_r3_264 = this->unk5C + (this->unk58 * 0x88);
+                    var_r3_264 = ((u8 *) this->unk5C) + (this->unk58 * 0x88);
                 } else {
                     var_r3_264 = NULL;
                 }

@@ -807,7 +807,7 @@ void Tools_PropCreatorObject::Init(const char *arg0, int arg1) {
         var_r31_1454 = 0;
 loop_6:
         if (var_r30_1453 < (s32) this->unk0) {
-            gMK->CreatePropDeferred(arg0, this->unk4 + var_r31_1454);
+            gMK->CreatePropDeferred(arg0, ((u8 *) this->unk4) + var_r31_1454);
             var_r30_1453 += 1;
             var_r31_1454 += 4;
             goto loop_6;
@@ -1439,7 +1439,6 @@ void Tools_TestFloor(const MKVector3 &arg0, MKCollisionResult *arg1, float arg2,
     MKCollision_RayCollide(arg0, *((MKVector3 *) &sp18), var_r4_0, arg3, 0);
 }
 
-#if 0 // DRAFT: illegal type
 void Tools_GroundColor(MKCollisionResult *arg0) {
     f64 sp48;
     f64 sp40;
@@ -1476,7 +1475,7 @@ void Tools_GroundColor(MKCollisionResult *arg0) {
     } else {
         var_r31_2710 = NULL;
     }
-    if ((var_r31_2710 != NULL) && ((u32) (var_r31_2710 + 0x10000) != -1U) && (temp_r3_2722 = M2C_FIELD(var_r31_2710, MKModel **, 4), ((temp_r3_2722 == NULL) == 0))) {
+    if ((var_r31_2710 != NULL) && ((u32) (((u8 *) var_r31_2710) + 0x10000) != -1U) && (temp_r3_2722 = M2C_FIELD(var_r31_2710, MKModel **, 4), ((temp_r3_2722 == NULL) == 0))) {
         temp_r3_2725 = MKModel_GetColor(temp_r3_2722);
         sp3C = 0;
         temp_f1_2730 = M2C_FIELD(temp_r3_2725, f64 *, 0);
@@ -1506,7 +1505,6 @@ void Tools_GroundColor(MKCollisionResult *arg0) {
     M2C_FIELD(arg0, f64 *, 0) = (f64) sp28;
     M2C_FIELD(arg0, f64 *, 8) = (f64) sp30;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Tools_GetGradient(const MKVector3 &arg0) {

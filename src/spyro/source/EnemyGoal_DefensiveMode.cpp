@@ -275,7 +275,7 @@ void EnemyGoal_ShieldBlock::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'unkAB8'
 u8 EnemyGoal_ShieldBlock::Update() {
     f64 sp98;
     f64 sp90;
@@ -326,7 +326,7 @@ u8 EnemyGoal_ShieldBlock::Update() {
     temp_r3_520 = this->unk10;
     if (temp_r3_520 != NULL) {
         var_r30_524 = 0;
-        if (((u8) M2C_FIELD(temp_r3_520, u8 *, 0x48) == 2) || (((TargetContext *) (temp_r3_520 + 0x40))->Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_520, u8 *, 0x48) == 2) || (((TargetContext *) (((u8 *) temp_r3_520) + 0x40))->Get() != NULL)) {
             var_r30_524 = 1;
         }
         if (var_r30_524 == 0) {
@@ -353,7 +353,7 @@ u8 EnemyGoal_ShieldBlock::Update() {
             temp_r29_591 = this->unkC;
             if (temp_r28_590 != NULL) {
                 var_r30_595 = 0;
-                if (((u8) M2C_FIELD(temp_r28_590, u8 *, 0x48) == 2) || (((TargetContext *) (temp_r28_590 + 0x40))->Get() != NULL)) {
+                if (((u8) M2C_FIELD(temp_r28_590, u8 *, 0x48) == 2) || (((TargetContext *) (((u8 *) temp_r28_590) + 0x40))->Get() != NULL)) {
                     var_r30_595 = 1;
                 }
                 if (var_r30_595 != 0) {

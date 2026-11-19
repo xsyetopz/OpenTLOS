@@ -56,7 +56,7 @@ loop_4:
             if ((s32) M2C_FIELD(temp_r30_100, s32 *, 0x44) != 2) {
                 sp10 = M2C_FIELD(temp_r30_100, f64 *, 0x30);
                 sp18 = M2C_FIELD(temp_r30_100, f64 *, 0x38);
-                KDSound_Stop(temp_r30_100 + 0x48);
+                KDSound_Stop(((u8 *) temp_r30_100) + 0x48);
                 temp_r6_75 = gb.unk0->GetProp();
                 sp8 = 1;
                 ((Explosion4 *) this->unk150)->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_75, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
@@ -264,7 +264,7 @@ loop_9:
                 temp_f1_391 = M2C_FIELD(temp_r31_433, f32 *, 0x40);
                 if ((*(f32 *) ((u8 *) &sp10 + 0x4)) <= temp_f1_391) {
                     (*(f32 *) ((u8 *) &sp10 + 0x4)) = temp_f1_391;
-                    KDSound_Stop(temp_r31_433 + 0x48);
+                    KDSound_Stop(((u8 *) temp_r31_433) + 0x48);
                     temp_r6_406 = gb.unk0->GetProp();
                     sp8 = 1;
                     ((Explosion4 *) this->unk150)->Trigger(*((MKVector3 *) &sp10), 0.4f, 1U, temp_r6_406, 0, 1U, 1U, 1U, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));

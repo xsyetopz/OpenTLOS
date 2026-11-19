@@ -523,7 +523,7 @@ void SwampTier1Goal_Think::Arbitrate() {
             if (((u8) M2C_FIELD(temp_r4_990, u8 *, 0xB01) >> 4U) & 1) {
                 temp_r3_999 = temp_r4_990->unkA2C;
                 if (temp_r3_999 != NULL) {
-                    ((EventMessage *) (temp_r3_999 + 8))->Send((MKProp *) temp_r4_990);
+                    ((EventMessage *) (((u8 *) temp_r3_999) + 8))->Send((MKProp *) temp_r4_990);
                 }
             } else {
                 AddGoal_Death(&sp8);

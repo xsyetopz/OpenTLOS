@@ -34,7 +34,7 @@ void WaterDripPS::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0xA1) {
 
     } else {
-        temp_r3_58 = this->unk4C + (M2C_FIELD(checked_cast<PathDestroyedMsg *, MKMessage>(arg0), s32 *, 8) * 0x58);
+        temp_r3_58 = ((u8 *) this->unk4C) + (M2C_FIELD(checked_cast<PathDestroyedMsg *, MKMessage>(arg0), s32 *, 8) * 0x58);
         M2C_FIELD(temp_r3_58, s8 *, 0x3C) = 0;
         temp_r4_60 = M2C_FIELD(temp_r3_58, void **, 0x38);
         if (temp_r4_60 != NULL) {
@@ -46,7 +46,7 @@ void WaterDripPS::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp' to
 void WaterDripPS::Draw() {
     f64 sp288;                                      /* compiler-managed */
     f64 sp280;
@@ -176,7 +176,7 @@ void WaterDripPS::Draw() {
     var_r25_113 = 0;
     do {
         sp1F0.GetPos();
-        temp_r4_119 = this->unk4C + var_r25_113;
+        temp_r4_119 = ((u8 *) this->unk4C) + var_r25_113;
         spB0 = M2C_FIELD(temp_r4_119, f64 *, 0) - M2C_BITWISE(f64, sp1F0);
         sp1F0.unk10 = spB0;
         spB8 = M2C_FIELD(temp_r4_119, f32 *, 8) - M2C_BITWISE(f32, sp1F0.unk8);
@@ -196,7 +196,7 @@ void WaterDripPS::Draw() {
                 sp248 = (f64) spA8;
                 sp240 = (f64) spA0;
                 sp1E0 = (f64) spA0;
-                temp_r3_171 = this->unk4C + (var_r25_113 + 0x20);
+                temp_r3_171 = ((u8 *) this->unk4C) + (var_r25_113 + 0x20);
                 sp1E8 = (f64) spA8;
                 sp1F0.unk40 = M2C_FIELD(temp_r3_171, f64 *, 0);
                 temp_f2_176 = M2C_BITWISE(f32, sp1F0.unk40);
@@ -370,7 +370,7 @@ void WaterDripPS::Draw() {
                 sp100 = sp50;
                 sp288 = (f64) sp58;
                 sp108 = (f64) sp58;
-                temp_r3_538 = this->unk4C + var_r25_113;
+                temp_r3_538 = ((u8 *) this->unk4C) + var_r25_113;
                 temp_f2_540 = M2C_FIELD(temp_r3_538, f64 *, 0);
                 sp250 += temp_f2_540;
                 temp_f1_544 = M2C_FIELD(temp_r3_538, f32 *, 8);
@@ -405,7 +405,7 @@ void WaterDripPS::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void WaterDripPS::Update() {
     MKVector3 spB0;
     f64 spA8;                                       /* compiler-managed */
@@ -472,12 +472,12 @@ void WaterDripPS::Update() {
     spC = 0;
 loop_48:
     if (spC < 0x14) {
-        temp_r4_638 = this->unk4C + (spC * 0x58);
+        temp_r4_638 = ((u8 *) this->unk4C) + (spC * 0x58);
         if ((u8) M2C_FIELD(temp_r4_638, u8 *, 0x3C) != 0) {
             temp_r3_642 = M2C_FIELD(temp_r4_638, void **, 0x38);
             if (temp_r3_642 == NULL) {
                 M2C_FIELD(temp_r4_638, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r4_638, f32 *, 0x40) + gUpdateTimeDelta);
-                temp_r3_653 = this->unk4C + (spC * 0x58);
+                temp_r3_653 = ((u8 *) this->unk4C) + (spC * 0x58);
                 if (M2C_FIELD(temp_r3_653, f32 *, 0x40) >= 3.0f) {
                     M2C_FIELD(temp_r3_653, s8 *, 0x3C) = 0;
                     temp_r4_660 = M2C_FIELD(temp_r3_653, void **, 0x38);
@@ -492,16 +492,16 @@ loop_48:
                 sp30 = temp_f0_675;
                 sp80 = temp_f0_675;
                 sp38 = sp78 * temp_f30_669;
-                temp_r3_686 = this->unk4C + ((spC * 0x58) + 0x20);
+                temp_r3_686 = ((u8 *) this->unk4C) + ((spC * 0x58) + 0x20);
                 sp88 = (f64) sp38;
                 M2C_FIELD(temp_r3_686, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_686, f64 *, 0) + temp_f0_675);
                 M2C_FIELD(temp_r3_686, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_686, f32 *, 8) + (f32) sp88);
                 temp_r3_699 = spC * 0x58;
                 temp_r0_700 = this->unk4C;
-                temp_r4_703 = temp_r0_700 + (temp_r3_699 + 0x20);
+                temp_r4_703 = ((u8 *) temp_r0_700) + (temp_r3_699 + 0x20);
                 temp_f0_705 = M2C_FIELD(temp_r4_703, f64 *, 0) * (f64) gUpdateTimeDelta;
                 sp20 = temp_f0_705;
-                temp_r5_707 = temp_r0_700 + temp_r3_699;
+                temp_r5_707 = ((u8 *) temp_r0_700) + temp_r3_699;
                 sp60 = temp_f0_705;
                 sp28 = M2C_FIELD(temp_r4_703, f32 *, 8) * gUpdateTimeDelta;
                 sp68 = (f64) sp28;
@@ -521,7 +521,7 @@ loop_48:
                     var_f0_736 = 0.0f;
                 }
                 M2C_FIELD(temp_r4_638, f32 *, 0x40) = var_f0_736;
-                temp_r4_755 = this->unk4C + (spC * 0x58);
+                temp_r4_755 = ((u8 *) this->unk4C) + (spC * 0x58);
                 temp_f1_756 = M2C_FIELD(temp_r4_755, f32 *, 0x40);
                 if (temp_f1_756 == 1.0f) {
                     ((KDPathSegment *) (M2C_FIELD(temp_r4_755, KDPathSegment **, 0x38)))->GetPositionAlongPath(temp_f1_756, *temp_r4_755);
@@ -535,10 +535,10 @@ loop_48:
                     *(this->unk4C + ((spC * 0x58) + 0x34)) = 1;
                     temp_r4_796 = this->unk4C;
                     temp_r3_797 = spC * 0x58;
-                    temp_r5_798 = temp_r4_796 + temp_r3_797;
-                    temp_r6_799 = temp_r5_798 + 0x20;
+                    temp_r5_798 = ((u8 *) temp_r4_796) + temp_r3_797;
+                    temp_r6_799 = ((u8 *) temp_r5_798) + 0x20;
                     sp10 = M2C_FIELD(temp_r5_798, f64 *, 0) - M2C_FIELD(temp_r6_799, f64 *, 0);
-                    temp_r5_806 = temp_r4_796 + (temp_r3_797 + 0x10);
+                    temp_r5_806 = ((u8 *) temp_r4_796) + (temp_r3_797 + 0x10);
                     M2C_FIELD(temp_r5_806, f64 *, 0) = sp10;
                     sp18 = M2C_FIELD(temp_r5_798, f32 *, 8) - M2C_FIELD(temp_r6_799, f32 *, 8);
                     sp50 = sp10;
@@ -547,10 +547,10 @@ loop_48:
                     UpdateCollision(spC);
                 } else {
                     ((KDPathSegment *) (M2C_FIELD(temp_r4_755, KDPathSegment **, 0x38)))->GetPositionAlongPath(temp_f1_756, spB0);
-                    temp_r3_829 = this->unk4C + (spC * 0x58);
+                    temp_r3_829 = ((u8 *) this->unk4C) + (spC * 0x58);
                     M2C_FIELD(temp_r3_829, f64 *, 0) = M2C_BITWISE(f64, spB0);
                     M2C_FIELD(temp_r3_829, f64 *, 8) = (f64) spB0.unk8;
-                    temp_r4_835 = this->unk4C + (spC * 0x58);
+                    temp_r4_835 = ((u8 *) this->unk4C) + (spC * 0x58);
                     sp40 = M2C_FIELD(temp_r4_835, f64 *, 0) - *(temp_r4_835 + 0x10);
                     temp_f3_844 = 1.0f / gUpdateTimeDelta;
                     spA0 = sp40;
@@ -596,7 +596,7 @@ loop_48:
                             var_f4_871 = __float_nan;
                         }
                     }
-                    temp_r3_941 = this->unk4C + ((spC * 0x58) + 0x20);
+                    temp_r3_941 = ((u8 *) this->unk4C) + ((spC * 0x58) + 0x20);
                     M2C_FIELD(temp_r3_941, f64 *, 0) = spA0;
                     M2C_FIELD(temp_r3_941, f64 *, 8) = (f64) spA8;
                     temp_r4_945 = this->unk4C;
@@ -627,7 +627,7 @@ loop_48:
                         var_f0_977 = 10.0f;
                     }
                     *(temp_r4_970 + temp_r0_973) = var_f0_977;
-                    temp_r3_995 = this->unk4C + (spC * 0x58);
+                    temp_r3_995 = ((u8 *) this->unk4C) + (spC * 0x58);
                     M2C_FIELD(temp_r3_995, f64 *, 0x10) = (f64) M2C_FIELD(temp_r3_995, f64 *, 0);
                     M2C_FIELD(temp_r3_995, f64 *, 0x18) = (f64) M2C_FIELD(temp_r3_995, f64 *, 8);
                 }
@@ -780,8 +780,8 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
     void *temp_r4_1333;
     void *var_r3_1052;
 
-    temp_r4_1051 = this->unk4C + (&arg0 * 0x58);
-    var_r3_1052 = temp_r4_1051 + 0x10;
+    temp_r4_1051 = ((u8 *) this->unk4C) + (&arg0 * 0x58);
+    var_r3_1052 = ((u8 *) temp_r4_1051) + 0x10;
     temp_f1_1054 = M2C_FIELD(temp_r4_1051, f64 *, 0);
     sp108 = M2C_FIELD(var_r3_1052, f64 *, 0) - temp_f1_1054;
     temp_f0_1058 = M2C_FIELD(temp_r4_1051, f32 *, 8);
@@ -790,7 +790,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
     sp1F0 = (f64) sp110;
     temp_f28_1073 = ((f32) sp1F0 * (f32) sp1F0) + (((f32) sp1E8 * (f32) sp1E8) + ((*(f32 *) ((u8 *) &sp1E8 + 0x4)) * (*(f32 *) ((u8 *) &sp1E8 + 0x4))));
     if (((u8) M2C_FIELD(temp_r4_1051, u8 *, 0x48) != 0) && (temp_f28_1073 >= M2C_FIELD(temp_r4_1051, f32 *, 0x4C))) {
-        temp_r4_1084 = temp_r4_1051 + 0x20;
+        temp_r4_1084 = ((u8 *) temp_r4_1051) + 0x20;
         sp228 = 0.0f;
         sp22C = 0.0f;
         sp230 = 0.0f;
@@ -846,7 +846,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
                 spC0 = 0.0f;
                 spB8 = 0.0f;
                 spBC = 0.05f;
-                sp14 = M2C_FIELD((this->unk4C + temp_r6_1181), f32 *, 0x30) * temp_f1_1178;
+                sp14 = M2C_FIELD((((u8 *) this->unk4C) + temp_r6_1181), f32 *, 0x30) * temp_f1_1178;
                 sp188 = (f64) spB8;
                 sp190 = (f64) spC0;
                 temp_f0_1197 = (f64) sp228 + sp188;
@@ -854,11 +854,11 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
                 sp198 = temp_f0_1197;
                 spB0 = sp230 + (f32) sp190;
                 sp1A0 = (f64) spB0;
-                ((PuddleSplash *) (M2C_FIELD(&gb, PuddleSplash **, 0x70)))->Emit(*((MKVector3 *) &sp198), sp14, M2C_FIELD((this->unk4C + temp_r6_1181), u8 *, 0x50));
+                ((PuddleSplash *) (M2C_FIELD(&gb, PuddleSplash **, 0x70)))->Emit(*((MKVector3 *) &sp198), sp14, M2C_FIELD((((u8 *) this->unk4C) + temp_r6_1181), u8 *, 0x50));
                 KDSound_Play3d(GS_WaterDrop, (MKVector3 *) &sp228, sp26C, -1, 0.0f, 0U);
             }
             temp_r4_1226 = &arg0 * 0x58;
-            if ((u8) M2C_FIELD((this->unk4C + temp_r4_1226), u8 *, 0x34) != 0) {
+            if ((u8) M2C_FIELD((((u8 *) this->unk4C) + temp_r4_1226), u8 *, 0x34) != 0) {
                 var_r27_1234 = 0;
                 do {
                     temp_f0_1239 = sp238 * 5.5769738e-315;
@@ -898,7 +898,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
                     var_r27_1234 += 1;
                 } while (var_r27_1234 < 3);
             }
-            var_r3_1052 = this->unk4C + (&arg0 * 0x58);
+            var_r3_1052 = ((u8 *) this->unk4C) + (&arg0 * 0x58);
             M2C_FIELD(var_r3_1052, s8 *, 0x3C) = 0;
             temp_r4_1333 = M2C_FIELD(var_r3_1052, void **, 0x38);
             if (temp_r4_1333 != NULL) {
@@ -931,7 +931,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
         sp270 = NULL;
         sp274 = -1;
         sp278 = 0;
-        temp_r3_1374 = this->unk4C + (&arg0 * 0x58);
+        temp_r3_1374 = ((u8 *) this->unk4C) + (&arg0 * 0x58);
         sp208 = M2C_FIELD(temp_r3_1374, f64 *, 0x20);
         sp210 = M2C_FIELD(temp_r3_1374, f64 *, 0x28);
         var_f5_1386 = ((f32) sp210 * (f32) sp210) + (((f32) sp208 * (f32) sp208) + ((*(f32 *) ((u8 *) &sp200 + 0xc)) * (*(f32 *) ((u8 *) &sp200 + 0xc))));
@@ -1013,7 +1013,7 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
         sp38 = temp_f0_1530;
         sp118 = temp_f0_1530;
         sp40 = sp210 * var_f29_1482;
-        temp_r3_1540 = this->unk4C + (&arg0 * 0x58);
+        temp_r3_1540 = ((u8 *) this->unk4C) + (&arg0 * 0x58);
         sp120 = (f64) sp40;
         temp_f0_1545 = M2C_FIELD(temp_r3_1540, f64 *, 0) + temp_f0_1530;
         sp28 = temp_f0_1545;
@@ -1022,18 +1022,18 @@ f64 WaterDripPS::UpdateCollision(const int &arg0) {
         sp130 = (f64) sp30;
         if (MKCollision_RayCollide(*temp_r3_1540, *((MKVector3 *) &sp128), (MKCollisionResult *) &sp228, (MKCollisionMode) 7, 0) != 0) {
             temp_r4_1564 = &arg0 * 0x58;
-            temp_r3_1565 = this->unk4C + temp_r4_1564;
+            temp_r3_1565 = ((u8 *) this->unk4C) + temp_r4_1564;
             temp_f0_1568 = (f64) sp228 - M2C_FIELD(temp_r3_1565, f64 *, 0);
             sp18 = temp_f0_1568;
             M2C_FIELD(temp_r3_1565, s8 *, 0x48) = 1;
             sp1F8 = temp_f0_1568;
             sp20 = sp230 - M2C_FIELD(temp_r3_1565, f32 *, 8);
             sp200 = (f64) sp20;
-            M2C_FIELD((this->unk4C + temp_r4_1564), f32 *, 0x4C) = (f32) (((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F8 + 0x4)) * (*(f32 *) ((u8 *) &sp1F8 + 0x4)))));
+            M2C_FIELD((((u8 *) this->unk4C) + temp_r4_1564), f32 *, 0x4C) = (f32) (((f32) sp200 * (f32) sp200) + (((f32) sp1F8 * (f32) sp1F8) + ((*(f32 *) ((u8 *) &sp1F8 + 0x4)) * (*(f32 *) ((u8 *) &sp1F8 + 0x4)))));
         } else {
-            M2C_FIELD((this->unk4C + (&arg0 * 0x58)), s8 *, 0x48) = 0;
+            M2C_FIELD((((u8 *) this->unk4C) + (&arg0 * 0x58)), s8 *, 0x48) = 0;
         }
-        var_r3_1052 = this->unk4C + (&arg0 * 0x58);
+        var_r3_1052 = ((u8 *) this->unk4C) + (&arg0 * 0x58);
         M2C_FIELD(var_r3_1052, f64 *, 0x10) = (f64) M2C_FIELD(var_r3_1052, f64 *, 0);
         M2C_FIELD(var_r3_1052, f64 *, 0x18) = (f64) M2C_FIELD(var_r3_1052, f64 *, 8);
     }
@@ -1060,28 +1060,28 @@ void WaterDripPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float
 loop_1:
     temp_r9_1647 = this->unk4C;
     if ((u8) *(temp_r9_1647 + (var_r3_1644 + 0x3C)) == 0) {
-        M2C_FIELD((temp_r9_1647 + var_r3_1644), s8 *, 0x3C) = 1;
+        M2C_FIELD((((u8 *) temp_r9_1647) + var_r3_1644), s8 *, 0x3C) = 1;
         temp_f3_1663 = M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD((this->unk4C + var_r3_1644), u8 *, 0x34) = arg3;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), u8 *, 0x34) = arg3;
         temp_f2_1665 = M2C_FIELD(&arg0, f64 *, 8);
-        M2C_FIELD((this->unk4C + var_r3_1644), f32 *, 0x40) = 0.0f;
-        M2C_FIELD((this->unk4C + var_r3_1644), f32 *, 0x30) = (f32) &arg2;
-        M2C_FIELD((this->unk4C + var_r3_1644), KDPathSegment **, 0x38) = arg5;
-        temp_r4_1678 = this->unk4C + var_r3_1644;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), f32 *, 0x40) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), f32 *, 0x30) = (f32) &arg2;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), KDPathSegment **, 0x38) = arg5;
+        temp_r4_1678 = ((u8 *) this->unk4C) + var_r3_1644;
         M2C_FIELD(temp_r4_1678, f64 *, 0) = temp_f3_1663;
         M2C_FIELD(temp_r4_1678, f64 *, 8) = temp_f2_1665;
-        temp_r4_1682 = this->unk4C + (var_r3_1644 + 0x10);
+        temp_r4_1682 = ((u8 *) this->unk4C) + (var_r3_1644 + 0x10);
         M2C_FIELD(temp_r4_1682, f64 *, 0) = temp_f3_1663;
         M2C_FIELD(temp_r4_1682, f64 *, 8) = temp_f2_1665;
-        temp_r4_1686 = this->unk4C + (var_r3_1644 + 0x20);
+        temp_r4_1686 = ((u8 *) this->unk4C) + (var_r3_1644 + 0x20);
         M2C_FIELD(temp_r4_1686, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
         M2C_FIELD(temp_r4_1686, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD((this->unk4C + var_r3_1644), f32 *, 0x44) = 0.0f;
-        M2C_FIELD((this->unk4C + var_r3_1644), s8 *, 0x48) = 0;
-        M2C_FIELD((this->unk4C + var_r3_1644), f32 *, 0x4C) = 0.0f;
-        M2C_FIELD((this->unk4C + var_r3_1644), u8 *, 0x50) = arg4;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), f32 *, 0x44) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), s8 *, 0x48) = 0;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), f32 *, 0x4C) = 0.0f;
+        M2C_FIELD((((u8 *) this->unk4C) + var_r3_1644), u8 *, 0x50) = arg4;
         if (arg5 != NULL) {
-            temp_r4_1703 = this->unk4C + var_r3_1644;
+            temp_r4_1703 = ((u8 *) this->unk4C) + var_r3_1644;
             ((KDPathSegment *) (M2C_FIELD(temp_r4_1703, KDPathSegment **, 0x38)))->GetPositionAlongPath(M2C_FIELD(temp_r4_1703, f32 *, 0x40), *temp_r4_1703);
             arg5->unk10 = (MKHeap *) this;
             arg5->unk14 = var_r31_1643;

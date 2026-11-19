@@ -82,7 +82,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcmpi(const char[6])' does not match
 void KDSP_Camera::ParseCAD(KDSynkerHeap *arg0, const char *arg1) {
     MKIniLine *temp_r3_159;
     MKIniLine *var_r28_175;
@@ -94,7 +94,7 @@ void KDSP_Camera::ParseCAD(KDSynkerHeap *arg0, const char *arg1) {
     if ((MKIni *) this->unk80 != NULL) {
         temp_r8_148 = arg0->unk18;
         temp_r7_149 = arg0->unk20 - 1;
-        arg0->unk18 = temp_r8_148 + (((this->unk7C * 0xC) + temp_r7_149) & ~temp_r7_149);
+        arg0->unk18 = ((u8 *) temp_r8_148) + (((this->unk7C * 0xC) + temp_r7_149) & ~temp_r7_149);
         this->unk84 = (s32 *) temp_r8_148;
         var_r29_157 = this->unk84;
         temp_r3_159 = this->unk80->GotoLine("Camera", NULL);
@@ -150,7 +150,7 @@ void KDSP_Camera::HeapAddSizeCAD(KDSynkerHeap *arg0, const char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &arg3) {
     MKIniLine sp18;
     MKIniLine sp8;
@@ -187,7 +187,7 @@ void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &
         if (temp_r3_331 != NULL) {
             temp_r5_337 = arg0->unk20 - 1;
             temp_r6_338 = arg0->unk18;
-            arg0->unk18 = temp_r6_338 + (((this->unk74 << 6) + temp_r5_337) & ~temp_r5_337);
+            arg0->unk18 = ((u8 *) temp_r6_338) + (((this->unk74 << 6) + temp_r5_337) & ~temp_r5_337);
             this->unk78 = (s32 *) temp_r6_338;
             var_r30_345 = this->unk78;
             var_r25_351 = temp_r3_331->unkC->GetSubLine(temp_r3_331);
@@ -210,7 +210,7 @@ loop_9:
                 if (var_r23_358 > 0) {
                     temp_r4_391 = arg0->unk18;
                     temp_r3_392 = arg0->unk20 - 1;
-                    arg0->unk18 = temp_r4_391 + (((var_r23_358 * 4) + temp_r3_392) & ~temp_r3_392);
+                    arg0->unk18 = ((u8 *) temp_r4_391) + (((var_r23_358 * 4) + temp_r3_392) & ~temp_r3_392);
                     M2C_FIELD(var_r30_345, void **, 0x14) = temp_r4_391;
                 } else {
                     M2C_FIELD(var_r30_345, void **, 0x14) = NULL;
@@ -219,13 +219,13 @@ loop_9:
                 if (var_r23_358 > 0) {
                     temp_r4_410 = arg0->unkC;
                     temp_r6_412 = arg0->unk14 - 1;
-                    arg0->unkC = temp_r4_410 + (((var_r23_358 << 5) + temp_r6_412) & ~temp_r6_412);
+                    arg0->unkC = ((u8 *) temp_r4_410) + (((var_r23_358 << 5) + temp_r6_412) & ~temp_r6_412);
                     ((KDUniformSpline *) (var_r30_345 + 0x18))->Init(temp_r4_410, var_r23_358, 0U);
                 }
                 if (var_r22_359 > 0) {
                     temp_r4_425 = arg0->unkC;
                     temp_r6_427 = arg0->unk14 - 1;
-                    arg0->unkC = temp_r4_425 + (((var_r22_359 << 5) + temp_r6_427) & ~temp_r6_427);
+                    arg0->unkC = ((u8 *) temp_r4_425) + (((var_r22_359 << 5) + temp_r6_427) & ~temp_r6_427);
                     ((KDUniformSpline *) (var_r30_345 + 0x2C))->Init(temp_r4_425, var_r22_359, 0U);
                 }
                 M2C_FIELD(var_r30_345, f32 *, 4) = 0.7853982f;
@@ -266,7 +266,7 @@ loop_31:
         if (temp_r3_561 != NULL) {
             temp_r5_568 = arg0->unk18;
             temp_r3_569 = arg0->unk20 - 1;
-            arg0->unk18 = temp_r5_568 + (((this->unk88 * 0x18) + temp_r3_569) & ~temp_r3_569);
+            arg0->unk18 = ((u8 *) temp_r5_568) + (((this->unk88 * 0x18) + temp_r3_569) & ~temp_r3_569);
             this->unk8C = (s32 *) temp_r5_568;
             memset(this->unk8C, 0, this->unk88 * 0x18);
             var_r22_579 = this->unk8C;
@@ -846,7 +846,7 @@ loop_21:
         var_f31_955 = ((KDBasicEnvelope *) temp_r3_1802)->GetValue(var_f29_1819);
     }
     sp20 = 0.0f;
-    ((KDUniformSpline *) &sp90)->GetMeasure(var_f31_955, temp_r29_1799 + 0x18, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp90)->GetMeasure(var_f31_955, ((u8 *) temp_r29_1799) + 0x18, KDSpline_PositionMixer);
     this->unk40 = sp90;
     this->unk48 = sp98;
     this->unk60 = (M2C_FIELD(temp_r29_1799, f32 *, 8) * var_f31_955) + (M2C_FIELD(temp_r29_1799, f32 *, 4) * (1.0f - var_f31_955));
@@ -855,14 +855,14 @@ loop_21:
         var_f31_955 = ((KDBasicEnvelope *) temp_r3_1860)->GetValue(var_f29_1819);
     }
     sp1C = 0.0f;
-    ((KDUniformSpline *) &sp80)->GetMeasure(var_f31_955, temp_r29_1799 + 0x2C, KDSpline_PositionMixer);
+    ((KDUniformSpline *) &sp80)->GetMeasure(var_f31_955, ((u8 *) temp_r29_1799) + 0x2C, KDSpline_PositionMixer);
     this->unk50 = sp80;
     this->unk58 = sp88;
     this->unk64 = M2C_FIELD(temp_r29_1799, f32 *, 0xC);
     this->unk68 = M2C_FIELD(temp_r29_1799, f32 *, 0x10);
     sp28 = 0;
     sp24 = 0.0f;
-    if (KDSP_ToolsGetSplinePercent(temp_r28_927, temp_r29_1799 + 0x18, (KDBasicEnvelope *) temp_r3_1860, arg1, sp28, sp24) != 0) {
+    if (KDSP_ToolsGetSplinePercent(temp_r28_927, ((u8 *) temp_r29_1799) + 0x18, (KDBasicEnvelope *) temp_r3_1860, arg1, sp28, sp24) != 0) {
         temp_r4_1897 = M2C_FIELD(temp_r29_1799, f32 **, 0x14);
         temp_r0_1898 = sp28 * 4;
         temp_f1_1900 = *(temp_r4_1897 + temp_r0_1898);

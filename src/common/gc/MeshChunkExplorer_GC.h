@@ -60,7 +60,7 @@ inline void MeshChunkExplorer_GC::SetMeshChunk(int arg0, int arg1, int arg2) {
     M2C_FIELD(this, s32 *, 8) = 0;
     M2C_FIELD(this, u16 **, 0x3C) = (u16 *) (M2C_FIELD(this, void **, 0x44) + 0x20);
     temp_r4_369 = M2C_FIELD(this, void **, 0x44);
-    M2C_FIELD(this, void **, 0x94) = (void *) (temp_r4_369 + (M2C_FIELD(temp_r4_369, s32 *, 0x10) + 0x20));
+    M2C_FIELD(this, void **, 0x94) = (void *) (((u8 *) temp_r4_369) + (M2C_FIELD(temp_r4_369, s32 *, 0x10) + 0x20));
     M2C_FIELD(this, void **, 0x90) = (void *) (M2C_FIELD(this, void **, 0x94) + M2C_FIELD(M2C_FIELD(this, void **, 0x44), s32 *, 0x14));
     M2C_FIELD(this, void **, 0x98) = (void *) (M2C_FIELD(this, void **, 0x90) + M2C_FIELD(M2C_FIELD(this, void **, 0x44), s32 *, 0x18));
     temp_r3_385 = M2C_FIELD(this, s32 *, 0) + 1;

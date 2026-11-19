@@ -164,7 +164,7 @@ void CharacterGlowFX::Draw() {
         var_r22_89 = 0;
         temp_r24_91 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_92 = M2C_FIELD(temp_r24_91, KDSynkerPlayer3 **, 0x78);
-        if (((temp_r3_92 != NULL) && (temp_r3_92->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r24_91, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r24_91 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_92 != NULL) && (temp_r3_92->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r24_91, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r24_91) + 0x24))->GetState() == 2))) {
             var_r22_89 = 1;
         }
         if (var_r22_89 == 0) {

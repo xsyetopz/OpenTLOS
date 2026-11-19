@@ -68,13 +68,13 @@ void FireMolePrison::Update() {
     }
     if ((IsDead() == 0) && (KDSound_IsVoicePlaying(this->unk208) == 0) && (M2C_BITWISE(f32, this->unk1F8) <= 0.0f)) {
         this->unk1F8 = MKRand_Float(&gViewSeed, 1.0f, 4.0f);
-        this->unk208 = KDSound_Play3d(GS_MoleHelpMe, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        this->unk208 = KDSound_Play3d(GS_MoleHelpMe, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     } else if ((IsDead() != 0) && (KDSound_IsVoicePlaying(this->unk208) != 0)) {
         KDSound_Stop(&this->unk208);
     }
     if ((IsDead() != 0) && ((u8) M2C_FIELD(this, u8 *, 0x210) == 0)) {
         M2C_FIELD(this, u8 *, 0x210) = 1U;
-        KDSound_Play3d(GS_MoleScurry, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_MoleScurry, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
     }
 }
 #endif

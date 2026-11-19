@@ -70,7 +70,7 @@ void EnemySpawner::Update() {
         var_r31_162 = 0;
         temp_r30_164 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_165 = M2C_FIELD(temp_r30_164, KDSynkerPlayer3 **, 0x78);
-        if (((temp_r3_165 != NULL) && (temp_r3_165->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_164, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r30_164 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_165 != NULL) && (temp_r3_165->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_164, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r30_164) + 0x24))->GetState() == 2))) {
             var_r31_162 = 1;
         }
         if (var_r31_162 != 0) {

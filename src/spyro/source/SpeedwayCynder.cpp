@@ -56,21 +56,21 @@ static f32 CYNDER_HEAD_COLLISION_RADIUS = 150.0f;
 static f32 CYNDER_MAX_Z_TIME = 1.2f;
 static f32 CYNDER_MAX_BITE_SIDE_OFFSET = 1000.0f;
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void SpeedwayCynder::UpdateSound() {
     s32 sp8;
     f32 temp_f1_90;
 
     sp8 = 1;
-    ((KDSoundFader *) &this->unk3A8)->Update(GS_SWCynderGlideLP, 1U, 1U, NULL, this->unk8 + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk3A8)->Update(GS_SWCynderGlideLP, 1U, 1U, NULL, ((u8 *) this->unk8) + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     sp8 = 1;
-    ((KDSoundFader *) &this->unk3D0)->Update(GS_SWCynderFireBreathLP, 1U, this->unk3F8, NULL, this->unk8 + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    ((KDSoundFader *) &this->unk3D0)->Update(GS_SWCynderFireBreathLP, 1U, this->unk3F8, NULL, ((u8 *) this->unk8) + 0x30, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_f1_90 = this->unk36C;
     if (temp_f1_90 > 0.0f) {
         this->unk36C = temp_f1_90 - gUpdateTimeDelta;
     }
     if ((this->unk368 <= 0.5f) && (this->unk36C <= 0.0f)) {
-        this->unk370 = KDSound_Play3d(GS_SWCynderTaunt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        this->unk370 = KDSound_Play3d(GS_SWCynderTaunt, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         this->unk36C = 10.0f;
     }
 }
@@ -496,7 +496,7 @@ void SpeedwayCynder::UpdateBreath() {
                 this->unk320 = spE8;
                 this->unk328 = spF0;
                 memset(&this->unk330, 0, 0x10U);
-                KDSound_Play3d(GS_SWCynderFireBreathStart, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_SWCynderFireBreathStart, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 this->unk3F8 = 1;
                 SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>(this->unk384, &this->unk3FC);
                 temp_f2_885 = this->unk320;
@@ -531,14 +531,14 @@ void SpeedwayCynder::UpdateBreath() {
                     this->unk38C = -1.0f;
                     this->unk384->End();
                     this->unk3F8 = 0;
-                    KDSound_Play3d(GS_SWCynderFireBreathStop, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_SWCynderFireBreathStop, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 }
             }
         } else if (this->unk38C > 0.0f) {
             this->unk38C = 0.0f;
             this->unk384->End();
             this->unk3F8 = 0;
-            KDSound_Play3d(GS_SWCynderFireBreathStop, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            KDSound_Play3d(GS_SWCynderFireBreathStop, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         }
     }
 }
@@ -1150,7 +1150,7 @@ void SpeedwayCynder::GlideUpdate() {
 void SpeedwayCynder::GlideExit() {
     this->unk384->End();
     this->unk3F8 = 0;
-    KDSound_Play3d(GS_SWCynderFireBreathStop, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    KDSound_Play3d(GS_SWCynderFireBreathStop, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
 }
 #endif
 
@@ -1256,13 +1256,13 @@ void SpeedwayCynder::Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(MKAnimScript *, unsigned char *, unsigned
 void SpeedwayCynder::Update() {
     KDProp::Update();
     UpdateLookAtNodes();
     UpdateCameraZTime();
     UpdateCameraRoll();
-    KDSound_Play3d(this->unk80, this->unk8 + 0x30, 0U, 0.0f, 0U);
+    KDSound_Play3d(this->unk80, ((u8 *) this->unk8) + 0x30, 0U, 0.0f, 0U);
 }
 #endif
 
@@ -1360,7 +1360,7 @@ void SpeedwayCynder::LoadDone() {
         M2C_FIELD(temp_r6_2683, void **, 0xD0) = (void *) (this + (((var_r7_2678 - 1) * 0x48) + 0x90));
         temp_r4_2694 = M2C_FIELD(temp_r6_2683, void **, 0xD0);
         if (temp_r4_2694 != NULL) {
-            M2C_FIELD(temp_r4_2694, void **, 0x44) = (void *) (temp_r6_2683 + 0x90);
+            M2C_FIELD(temp_r4_2694, void **, 0x44) = (void *) (((u8 *) temp_r6_2683) + 0x90);
         }
         var_r7_2678 += 1;
         var_r3_2679 += 0x48;

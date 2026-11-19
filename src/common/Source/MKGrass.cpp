@@ -198,7 +198,7 @@ loop_47:
                     temp_r24_196 = M2C_FIELD(M2C_FIELD(temp_r25_191->unk0, void **, 0x30), void **, 0x24);
 loop_45:
                     if (var_r23_192 < (s32) M2C_FIELD(temp_r24_196, s32 *, 4)) {
-                        temp_r31_199 = temp_r24_196 + var_r19_193;
+                        temp_r31_199 = ((u8 *) temp_r24_196) + var_r19_193;
                         temp_r0_200 = M2C_FIELD(temp_r31_199, u16 *, 8);
                         if (((s32) temp_r0_200 == var_r30_155) || (((MKGrassType *) (gpGrassTypes + (temp_r0_200 * 0x30)))->IsInOverlayChain((MKGrassType *) temp_r29_161) != 0)) {
                             var_r22_211 = 0;
@@ -449,12 +449,12 @@ loop_9:
                 *(temp_r3_695 + temp_r0_697) = (gUpdateTimeDelta * ((M2C_FIELD(temp_r3_695, f32 *, 0x40) * 0.0625f * (f32) var_r26_688) + M2C_FIELD(temp_r3_695, f32 *, 0x3C))) + *(temp_r3_695 + temp_r0_697);
 loop_6:
                 temp_r28_715 = M2C_FIELD(var_r27_678, void **, 0x2C);
-                temp_r0_716 = temp_r28_715 + 0x6A0;
+                temp_r0_716 = ((u8 *) temp_r28_715) + 0x6A0;
                 if (*(var_r31_690 + temp_r0_716) > 6.2831855f) {
                     *(var_r31_690 + temp_r0_716) = *(var_r31_690 + temp_r0_716) - 6.2831855f;
                     goto loop_6;
                 }
-                temp_r29_721 = temp_r28_715 + var_r31_690;
+                temp_r29_721 = ((u8 *) temp_r28_715) + var_r31_690;
                 var_r26_688 += 1;
                 temp_f0_726 = M2C_FIELD(temp_r29_721, f32 *, 0x720);
                 temp_f1_728 = M2C_FIELD(temp_r28_715, f32 *, 0x38) * _table_sinf(*(temp_r28_715 + (var_r31_690 + 0x6A0)));
@@ -845,9 +845,9 @@ loop_33:
                             var_r6_1307 = var_r6_1291 - 1;
                         } else {
                             temp_r5_1311 = M2C_FIELD(var_r28_1098, void **, 0x2C);
-                            temp_r4_1313 = temp_r5_1311 + (var_r26_1233 + 0xA0);
+                            temp_r4_1313 = ((u8 *) temp_r5_1311) + (var_r26_1233 + 0xA0);
                             var_r6_1307 = var_r29_1231 % temp_r3_1212;
-                            temp_r3_1319 = temp_r5_1311 + (((var_r29_1231 - var_r6_1307) * 0x10) + 0xA0);
+                            temp_r3_1319 = ((u8 *) temp_r5_1311) + (((var_r29_1231 - var_r6_1307) * 0x10) + 0xA0);
                             M2C_FIELD(temp_r4_1313, f64 *, 0) = (f64) M2C_FIELD(temp_r3_1319, f64 *, 0);
                             M2C_FIELD(temp_r4_1313, f64 *, 8) = (f64) M2C_FIELD(temp_r3_1319, f64 *, 8);
                         }

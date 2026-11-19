@@ -258,7 +258,7 @@ loop_2:
             MKModel_Draw(this->unk50, NULL);
             temp_r4_371 = &temp_r31_401->unk9C;
             temp_r5_372 = this->unk54 + 0x5C;
-            M2C_STRUCT_COPY((s32) temp_r5_372 + 4, (s32) temp_r4_371 + 4, 0x40);
+            M2C_STRUCT_COPY((s32) ((u8 *) temp_r5_372) + 4, (s32) temp_r4_371 + 4, 0x40);
             sp8 = 1.0f;
             temp_r3_382 = this->unk54;
             spC = 1.0f;
@@ -269,7 +269,7 @@ loop_2:
             temp_r3_390 = this->unk54;
             sp28 = (f64) sp8;
             sp30 = (f64) sp10;
-            temp_r3_390->Draw(temp_r4_371 + 0x40, temp_r5_372 + 0x40, (f64) sp8);
+            temp_r3_390->Draw(temp_r4_371 + 0x40, ((u8 *) temp_r5_372) + 0x40, (f64) sp8);
             var_r30_348 += 4;
             goto loop_2;
         }

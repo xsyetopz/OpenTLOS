@@ -648,7 +648,7 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     temp_f0_873 = sp230 + M2C_BITWISE(f64, sp210);
     spC0 = temp_f0_873;
     sp240 = temp_f0_873;
-    temp_r5_886 = this->unk4C + (this->unk50 << 6);
+    temp_r5_886 = ((u8 *) this->unk4C) + (this->unk50 << 6);
     M2C_FIELD(temp_r5_886, f64 *, 0) = temp_f0_873;
     spC8 = (f32) sp238 + sp210.unk8;
     sp248 = (f64) spC8;
@@ -668,7 +668,7 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     temp_f0_924 = sp1F0 + M2C_BITWISE(f64, sp1C0);
     spB0 = temp_f0_924;
     sp200 = temp_f0_924;
-    temp_r5_938 = this->unk4C + ((this->unk50 << 6) + 0x10);
+    temp_r5_938 = ((u8 *) this->unk4C) + ((this->unk50 << 6) + 0x10);
     M2C_FIELD(temp_r5_938, f64 *, 0) = temp_f0_924;
     spB8 = (f32) sp1F8 + sp1C0.unk8;
     sp208 = (f64) spB8;
@@ -688,7 +688,7 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     temp_f0_976 = sp1A0 + sp180;
     spA0 = temp_f0_976;
     sp1B0 = temp_f0_976;
-    temp_r5_990 = this->unk4C + ((this->unk50 << 6) + 0x20);
+    temp_r5_990 = ((u8 *) this->unk4C) + ((this->unk50 << 6) + 0x20);
     M2C_FIELD(temp_r5_990, f64 *, 0) = temp_f0_976;
     spA8 = (f32) sp1A8 + (f32) sp188;
     sp1B8 = (f64) spA8;
@@ -713,7 +713,7 @@ void FootStepFX::AddFootStep(const MKVector3 &arg0, const MKVector3 &arg1, const
     temp_f0_1041 = sp150 + sp120;
     sp90 = temp_f0_1041;
     sp160 = temp_f0_1041;
-    temp_r3_1052 = this->unk4C + ((this->unk50 << 6) + 0x30);
+    temp_r3_1052 = ((u8 *) this->unk4C) + ((this->unk50 << 6) + 0x30);
     M2C_FIELD(temp_r3_1052, f64 *, 0) = temp_f0_1041;
     sp98 = (f32) sp158 + (f32) sp128;
     M2C_FIELD(temp_r3_1052, f64 *, 8) = (f64) sp98;

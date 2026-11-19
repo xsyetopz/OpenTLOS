@@ -35,14 +35,14 @@ void BaseBreathFX::SplineCollide(KDSplinePathSegment *arg0, float arg1) {
     var_r30_20 = 0;
     var_r31_21 = 0;
 loop_1:
-    temp_r4_24 = this->unk90 + var_r31_21;
+    temp_r4_24 = ((u8 *) this->unk90) + var_r31_21;
     if ((u8) M2C_FIELD(temp_r4_24, u8 *, 0x6C) != 0) {
         temp_r29_34 = (s32) (arg0->unk30.unk8 / M2C_FIELD(temp_r4_24, f32 *, 0x34));
         Tools_GetClosestSplineTime(&arg0->unk30, *temp_r4_24, temp_r29_34);
         sp8 = 0.0f;
         sp10.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &arg0->unk30, KDSpline_PositionMixer);
         sp10.unk10 = M2C_BITWISE(f64, sp10);
-        temp_r4_47 = this->unk90 + var_r31_21;
+        temp_r4_47 = ((u8 *) this->unk90) + var_r31_21;
         sp28 = (f64) sp10.unk8;
         temp_f4_52 = sp24 - temp_r4_47->unk4;
         temp_f5_56 = M2C_BITWISE(f32, sp10.unk10) - temp_r4_47->unk0;
@@ -78,22 +78,22 @@ void BaseBreathFX::CreateCollisionTest(const MKVector3 &arg0, const MKVector3 &a
 loop_2:
         temp_r9_103 = this->unk90;
         if ((u8) *(temp_r9_103 + (var_r8_99 + 0x6C)) == 0) {
-            M2C_FIELD((temp_r9_103 + var_r8_99), s8 *, 0x6C) = 1;
-            M2C_FIELD((this->unk90 + var_r8_99), u32 *, 0x68) = arg3;
-            M2C_FIELD((this->unk90 + var_r8_99), f32 *, 0x30) = 0.0f;
-            M2C_FIELD((this->unk90 + var_r8_99), f32 *, 0x34) = arg2;
-            temp_r4_129 = this->unk90 + (var_r8_99 + 0x20);
+            M2C_FIELD((((u8 *) temp_r9_103) + var_r8_99), s8 *, 0x6C) = 1;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), u32 *, 0x68) = arg3;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), f32 *, 0x30) = 0.0f;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), f32 *, 0x34) = arg2;
+            temp_r4_129 = ((u8 *) this->unk90) + (var_r8_99 + 0x20);
             M2C_FIELD(temp_r4_129, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
             M2C_FIELD(temp_r4_129, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-            temp_r11_133 = this->unk90 + (var_r8_99 + 0x10);
+            temp_r11_133 = ((u8 *) this->unk90) + (var_r8_99 + 0x10);
             M2C_FIELD(temp_r11_133, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
             M2C_FIELD(temp_r11_133, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-            temp_r4_139 = this->unk90 + var_r8_99;
+            temp_r4_139 = ((u8 *) this->unk90) + var_r8_99;
             M2C_FIELD(temp_r4_139, f64 *, 0) = (f64) M2C_FIELD(temp_r11_133, f64 *, 0);
             M2C_FIELD(temp_r4_139, f64 *, 8) = (f64) M2C_FIELD(temp_r11_133, f64 *, 8);
-            M2C_FIELD((this->unk90 + var_r8_99), void (**)(BreathFXCollisionSphereTest *), 0x38) = arg4;
-            M2C_FIELD((this->unk90 + var_r8_99), s32 *, 0x3C) = 0;
-            M2C_FIELD((this->unk90 + var_r8_99), s32 *, 0x40) = 0;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), void (**)(BreathFXCollisionSphereTest *), 0x38) = arg4;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), s32 *, 0x3C) = 0;
+            M2C_FIELD((((u8 *) this->unk90) + var_r8_99), s32 *, 0x40) = 0;
             return;
         }
         var_r8_99 += 0x70;
@@ -128,7 +128,7 @@ void BaseBreathFX::Deinit() {
     KDProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void BaseBreathFX::Update() {
     u8 spA8;
     s32 spA4;
@@ -188,15 +188,15 @@ void BaseBreathFX::Update() {
     var_r29_212 = 0;
     this->unk94 += gUpdateTimeDelta;
     do {
-        temp_r4_217 = this->unk90 + var_r29_212;
+        temp_r4_217 = ((u8 *) this->unk90) + var_r29_212;
         if ((u8) M2C_FIELD(temp_r4_217, u8 *, 0x6C) != 0) {
             M2C_FIELD(temp_r4_217, f64 *, 0x10) = (f64) M2C_FIELD(temp_r4_217, f64 *, 0);
             M2C_FIELD(temp_r4_217, f64 *, 0x18) = (f64) M2C_FIELD(temp_r4_217, f64 *, 8);
             temp_r0_227 = this->unk90;
-            temp_r3_229 = temp_r0_227 + (var_r29_212 + 0x20);
+            temp_r3_229 = ((u8 *) temp_r0_227) + (var_r29_212 + 0x20);
             temp_f0_231 = M2C_FIELD(temp_r3_229, f64 *, 0) * (f64) gUpdateTimeDelta;
             sp18 = temp_f0_231;
-            temp_r4_233 = temp_r0_227 + var_r29_212;
+            temp_r4_233 = ((u8 *) temp_r0_227) + var_r29_212;
             sp48 = temp_f0_231;
             sp20 = M2C_FIELD(temp_r3_229, f32 *, 8) * gUpdateTimeDelta;
             sp50 = (f64) sp20;
@@ -223,24 +223,24 @@ void BaseBreathFX::Update() {
             spA0 = NULL;
             spA4 = -1;
             spA8 = 0;
-            temp_r4_278 = this->unk90 + var_r29_212;
+            temp_r4_278 = ((u8 *) this->unk90) + var_r29_212;
             if (MKCollision_SweepSphereCollide(*(temp_r4_278 + 0x10), *temp_r4_278, M2C_FIELD(temp_r4_278, f32 *, 0x34), (MKCollisionResult *) &sp58, (MKCollisionMode) 7, M2C_FIELD(temp_r4_278, s32 *, 0x68)) != 0) {
                 if ((spA8 != 0) && (spA0 != NULL) && (var_r3_291 = M2C_FIELD(spA0, u32 *, 8), ((var_r3_291 == 0U) == 0))) {
 
                 } else {
                     var_r3_291 = 0U;
                 }
-                temp_r5_299 = this->unk90 + var_r29_212;
+                temp_r5_299 = ((u8 *) this->unk90) + var_r29_212;
                 if ((u32) M2C_FIELD(temp_r5_299, u32 *, 0x38) != 0U) {
                     if (var_r3_291 != 0U) {
                         M2C_FIELD(temp_r5_299, u32 *, 0x3C) = var_r3_291;
                         *(this->unk90 + (var_r29_212 + 0x40)) = spA0;
-                        temp_r3_314 = this->unk90 + (var_r29_212 + 0x48);
+                        temp_r3_314 = ((u8 *) this->unk90) + (var_r29_212 + 0x48);
                         M2C_FIELD(temp_r3_314, f64 *, 0) = (f64) sp58;
                         M2C_FIELD(temp_r3_314, f64 *, 8) = (f64) sp60;
-                        temp_r3_318 = this->unk90 + var_r29_212;
-                        temp_r5_319 = temp_r3_318 + 0x48;
-                        temp_r4_320 = temp_r3_318 + 0x10;
+                        temp_r3_318 = ((u8 *) this->unk90) + var_r29_212;
+                        temp_r5_319 = ((u8 *) temp_r3_318) + 0x48;
+                        temp_r4_320 = ((u8 *) temp_r3_318) + 0x10;
                         temp_f0_323 = M2C_FIELD(temp_r4_320, f64 *, 0) - M2C_FIELD(temp_r5_319, f64 *, 0);
                         sp8 = temp_f0_323;
                         sp28 = temp_f0_323;
@@ -248,19 +248,19 @@ void BaseBreathFX::Update() {
                         sp30 = (f64) sp10;
                         Normalise(sp38);
                         temp_f1_338 = M2C_BITWISE(f64, sp38);
-                        temp_r3_340 = this->unk90 + (var_r29_212 + 0x58);
+                        temp_r3_340 = ((u8 *) this->unk90) + (var_r29_212 + 0x58);
                         M2C_FIELD(temp_r3_340, f64 *, 0) = temp_f1_338;
                         M2C_FIELD(temp_r3_340, f64 *, 8) = (f64) sp38.unk8;
-                        temp_r3_344 = this->unk90 + var_r29_212;
+                        temp_r3_344 = ((u8 *) this->unk90) + var_r29_212;
                         M2C_FIELD(temp_r3_344, M2C_UNK (**)(void *, f64), 0x38)(temp_r3_344, temp_f1_338);
                         *(this->unk90 + (var_r29_212 + 0x6C)) = 0;
                     } else {
                         M2C_FIELD(temp_r5_299, u32 *, 0x3C) = 0U;
                         *(this->unk90 + (var_r29_212 + 0x40)) = spA0;
-                        temp_r3_365 = this->unk90 + (var_r29_212 + 0x58);
+                        temp_r3_365 = ((u8 *) this->unk90) + (var_r29_212 + 0x58);
                         M2C_FIELD(temp_r3_365, f64 *, 0) = (f64) sp68;
                         M2C_FIELD(temp_r3_365, f64 *, 8) = (f64) sp70;
-                        temp_r3_371 = this->unk90 + (var_r29_212 + 0x48);
+                        temp_r3_371 = ((u8 *) this->unk90) + (var_r29_212 + 0x48);
                         M2C_FIELD(temp_r3_371, f64 *, 0) = (f64) sp58;
                         M2C_FIELD(temp_r3_371, f64 *, 8) = (f64) sp60;
                         goto block_12;
@@ -273,7 +273,7 @@ block_12:
                 temp_r3_375 = this->unk90;
                 temp_r0_376 = var_r29_212 + 0x30;
                 *(temp_r3_375 + temp_r0_376) = *(temp_r3_375 + temp_r0_376) + gUpdateTimeDelta;
-                temp_r3_383 = this->unk90 + var_r29_212;
+                temp_r3_383 = ((u8 *) this->unk90) + var_r29_212;
                 if (M2C_FIELD(temp_r3_383, f32 *, 0x30) >= 0.45f) {
                     M2C_FIELD(temp_r3_383, s8 *, 0x6C) = 0;
                 }
@@ -322,7 +322,7 @@ void BaseBreathFX::Init() {
         var_r3_433 += 0x70;
         *(this->unk90 + temp_r7_439) = 0.0f;
         *(this->unk90 + temp_r6_441) = 0.0f;
-        temp_r10_452 = this->unk90 + temp_r10_442;
+        temp_r10_452 = ((u8 *) this->unk90) + temp_r10_442;
         M2C_FIELD(temp_r10_452, f32 *, 0) = 0.0f;
         M2C_FIELD(temp_r10_452, f32 *, 4) = 0.0f;
         M2C_FIELD(temp_r10_452, f32 *, 8) = 0.0f;

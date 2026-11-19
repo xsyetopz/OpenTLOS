@@ -968,7 +968,7 @@ block_4:
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void CynderTier1::DefrostBall() {
     s8 spA6;
     s8 spA5;
@@ -1027,7 +1027,7 @@ void CynderTier1::DefrostBall() {
         spA0 = 0;
         sp8C = 1.0f;
         sp60 = temp_f2_1920;
-        gMK->SendMessage(&sp68, 0, 0, temp_r5_1914 + 0x30, 1, 0x4000, 1, 400.0f, temp_f2_1920, temp_f3_1918);
+        gMK->SendMessage(&sp68, 0, 0, ((u8 *) temp_r5_1914) + 0x30, 1, 0x4000, 1, 400.0f, temp_f2_1920, temp_f3_1918);
         ((Ball *) this->unkB04)->Smash();
         temp_r3_1947 = this->unkB04;
         M2C_FIELD(M2C_FIELD(temp_r3_1947, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_1947);
@@ -1152,7 +1152,7 @@ s32 CynderTier1::TryFreezeBall() {
         M2C_FIELD(M2C_FIELD(temp_r3_2203, void **, 0x44), M2C_UNK (**)(), 0x30)();
         temp_r3_2210 = this->unkB04;
         M2C_FIELD(M2C_FIELD(temp_r3_2210, void **, 0x44), M2C_UNK (**)(s32), 0x20)(temp_r3_2210);
-        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (this->unk8 - 4) + 4, 0x40);
+        M2C_STRUCT_COPY((s32) &sp2C + 4, (s32) (((u8 *) this->unk8) - 4) + 4, 0x40);
         sp18 = 0.0f;
         sp10 = 0.0f;
         sp14 = 175.0f;

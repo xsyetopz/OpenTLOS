@@ -272,7 +272,7 @@ loop_46:
     if (var_r31_426 >= (s32) this->unkD) {
         return 0;
     }
-    temp_r24_431 = this->unk10 + var_r25_427;
+    temp_r24_431 = ((u8 *) this->unk10) + var_r25_427;
     temp_r3_433 = M2C_FIELD(temp_r24_431, s8 **, 0);
     var_f30_401 += M2C_FIELD(temp_r24_431, f32 *, 4);
     if ((temp_r3_433 != NULL) && ((temp_r4_437 = M2C_FIELD(temp_r24_431, s32 *, 8), ((temp_r4_437 == 0) != 0)) || ((temp_r4_437 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_437 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
@@ -284,7 +284,7 @@ loop_46:
     }
     if (((s32) M2C_FIELD(temp_r24_431, s32 *, 8) > 0) && (var_f31_400 <= var_f30_401)) {
         if (arg0 != NULL) {
-            temp_r25_468 = this->unk10 + var_r25_427;
+            temp_r25_468 = ((u8 *) this->unk10) + var_r25_427;
             temp_r3_469 = M2C_FIELD(temp_r25_468, s8 **, 0);
             if ((temp_r3_469 != NULL) && ((temp_r4_472 = M2C_FIELD(temp_r25_468, s32 *, 8), ((temp_r4_472 == 0) != 0)) || ((temp_r4_472 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_472 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
                 M2C_FIELD(temp_r25_468, s32 *, 8) = Sound_GetID(temp_r3_469);
@@ -303,7 +303,7 @@ loop_46:
                 }
             }
         } else {
-            temp_r25_534 = this->unk10 + var_r25_427;
+            temp_r25_534 = ((u8 *) this->unk10) + var_r25_427;
             temp_r3_535 = M2C_FIELD(temp_r25_534, s8 **, 0);
             if ((temp_r3_535 != NULL) && ((temp_r4_538 = M2C_FIELD(temp_r25_534, s32 *, 8), ((temp_r4_538 == 0) != 0)) || ((temp_r4_538 >= (s32) *GlobalSoundData::firstInvalidSoundID) && (temp_r4_538 <= (s32) *GlobalSoundData::lastInvalidSoundID)))) {
                 M2C_FIELD(temp_r25_534, s32 *, 8) = Sound_GetID(temp_r3_535);
@@ -500,15 +500,13 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void *GlobalSoundData::GetSoundDataBlock(int arg0) {
     s32 temp_r0_898;
 
     temp_r0_898 = this->unk1C;
     this->unk1C = temp_r0_898 + arg0;
-    return this->unk10 + (temp_r0_898 * 0xC);
+    return ((u8 *) this->unk10) + (temp_r0_898 * 0xC);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKHeap *' to
 SoundMaterial *GlobalSoundData::GetSoundMatBlock(int arg0) {
@@ -561,7 +559,7 @@ loop_12:
             temp_r3_1017 = var_r30_978->unkC->GetNextLine(var_r30_978);
             var_r30_978 = temp_r3_1017;
             if ((var_r30_978 != NULL) && (temp_r3_1017->GetFieldName() != NULL) && (stricmp("chance", var_r30_978->GetFieldName(), "Default") == 0)) {
-                var_r30_978->AsFloat(0, temp_r31_1002 + 4);
+                var_r30_978->AsFloat(0, ((u8 *) temp_r31_1002) + 4);
             } else if (var_r30_978 != NULL) {
                 var_r30_978 = var_r30_978->unkC->GetPrevLine(var_r30_978);
             }

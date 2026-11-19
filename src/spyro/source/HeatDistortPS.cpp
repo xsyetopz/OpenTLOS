@@ -407,7 +407,7 @@ loop_2:
         sp48 = (f64) sp28;
         sp50 = (f64) sp20;
         sp58 = (f64) sp28;
-        M2C_FIELD(*(this->unk8 + var_r30_510), f32 *, 0x5C) = Xform3D2D(temp_r6_533 + 0x10, *((MKVector3 *) &sp50), &sp60);
+        M2C_FIELD(*(this->unk8 + var_r30_510), f32 *, 0x5C) = Xform3D2D(((u8 *) temp_r6_533) + 0x10, *((MKVector3 *) &sp50), &sp60);
         temp_f3_580 = this->unk40.unk4;
         temp_f6_586 = this->unk40.unk0;
         temp_f7_592 = this->unk40.unk8;

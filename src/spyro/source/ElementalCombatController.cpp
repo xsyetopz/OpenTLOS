@@ -77,8 +77,8 @@ loop_2:
         sp18 = M2C_BITWISE(f64, sp8);
         sp20 = sp10;
         (*(f32 *) ((u8 *) &sp18 + 0x4)) = (*(f32 *) ((u8 *) &sp28 + 0x4));
-        this->unkC8.AddSpawnPoint(temp_r26_159 + 0x120);
-        temp_r25_183 = temp_r26_159 + 0x130;
+        this->unkC8.AddSpawnPoint(((u8 *) temp_r26_159) + 0x120);
+        temp_r25_183 = ((u8 *) temp_r26_159) + 0x130;
         temp_r25_183->SetIdentity();
         M2C_FIELD(temp_r26_159, f32 *, 0x160) = (f32) sp28;
         M2C_FIELD(temp_r26_159, f32 *, 0x164) = (*(f32 *) ((u8 *) &sp28 + 0x4));

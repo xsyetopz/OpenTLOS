@@ -74,7 +74,7 @@ void Projectile::Disable() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned long, int,
 void Projectile::Collided(MKCollisionResult &arg0) {
     s32 *temp_r3_136;
     s32 temp_r3_125;
@@ -82,7 +82,7 @@ void Projectile::Collided(MKCollisionResult &arg0) {
     this->unk14C &= ~0x10;
     temp_r3_125 = this->unk148;
     if (temp_r3_125 != 0) {
-        KDSound_Play3d(temp_r3_125, this->unk8 + 0x30, (u32) arg0.unk44, -1, 0.0f, 0U);
+        KDSound_Play3d(temp_r3_125, ((u8 *) this->unk8) + 0x30, (u32) arg0.unk44, -1, 0.0f, 0U);
     }
     temp_r3_136 = this->unk138;
     if (temp_r3_136 != NULL) {
@@ -175,11 +175,11 @@ void Projectile::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, floa
     }
     this->unk148 = var_r0_295;
     if (arg4 != 0) {
-        KDSound_Play3d(arg4, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(arg4, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         return;
     }
     if ((s32) M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
-        temp_r31_322 = this->unk8 + 0x30;
+        temp_r31_322 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r31_322, 0U, -1, 0.0f, 0U);
     }
 }
@@ -205,11 +205,11 @@ void Projectile::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2
     }
     this->unk148 = var_r0_374;
     if (arg3 != 0) {
-        KDSound_Play3d(arg3, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(arg3, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         return;
     }
     if ((s32) M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4) != 0) {
-        temp_r31_401 = this->unk8 + 0x30;
+        temp_r31_401 = ((u8 *) this->unk8) + 0x30;
         KDSound_Play3d(M2C_FIELD(checked_cast<ProjectileDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4), temp_r31_401, 0U, -1, 0.0f, 0U);
     }
 }

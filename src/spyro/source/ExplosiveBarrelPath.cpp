@@ -871,11 +871,11 @@ void ExplosiveBarrelPath::Update() {
             if ((temp_r28_1381 != NULL) && ((s32) M2C_FIELD(checked_cast<ExplosiveBarrelPathDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60) != 0)) {
                 temp_r4_1406 = checked_cast<ExplosiveBarrelPathDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                 sp8 = 1;
-                ((KDSoundFader *) (temp_r30_1380 + 0x94))->Update(M2C_FIELD(temp_r4_1406, s32 *, 0x60), 1U, 0U, (MKProp *) temp_r28_1381, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                ((KDSoundFader *) (((u8 *) temp_r30_1380) + 0x94))->Update(M2C_FIELD(temp_r4_1406, s32 *, 0x60), 1U, 0U, (MKProp *) temp_r28_1381, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
             }
         } else {
             temp_r28_1381->Enable();
-            UpdateBarrelModel(temp_r30_1380 + 0x78);
+            UpdateBarrelModel(((u8 *) temp_r30_1380) + 0x78);
             var_r3_1431 = 0;
             var_ctr_1433 = 0xF;
             do {
@@ -1000,7 +1000,7 @@ loop_18:
                 if ((s32) M2C_FIELD(checked_cast<ExplosiveBarrelPathDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60) != 0) {
                     temp_r4_1710 = checked_cast<ExplosiveBarrelPathDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                     sp8 = 1;
-                    ((KDSoundFader *) (temp_r30_1380 + 0x94))->Update(M2C_FIELD(temp_r4_1710, s32 *, 0x60), 1U, 1U, (MKProp *) temp_r28_1381, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+                    ((KDSoundFader *) (((u8 *) temp_r30_1380) + 0x94))->Update(M2C_FIELD(temp_r4_1710, s32 *, 0x60), 1U, 1U, (MKProp *) temp_r28_1381, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
                 }
             }
         }
@@ -1195,7 +1195,7 @@ loop_18:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Stop(unsigned char *)' does not match
 void ExplosiveBarrelPath::Deinit() {
     s32 var_r29_2170;
     s32 var_r31_2171;
@@ -1211,14 +1211,14 @@ void ExplosiveBarrelPath::Deinit() {
         temp_r30_2173 = this + var_r31_2171;
         temp_r3_2174 = M2C_FIELD(temp_r30_2173, void **, 0x78);
         M2C_FIELD(M2C_FIELD(temp_r3_2174, void **, 0x44), M2C_UNK (**)(void *), 0x34)(temp_r3_2174);
-        KDSound_Stop(temp_r30_2173 + 0x94);
+        KDSound_Stop(((u8 *) temp_r30_2173) + 0x94);
         var_r29_2170 += 1;
         var_r31_2171 += 0x44;
     } while (var_r29_2170 < 4);
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void ExplosiveBarrelPath::Init() {
     s32 var_r26_2206;
     s32 var_r30_2203;
@@ -1237,7 +1237,7 @@ void ExplosiveBarrelPath::Init() {
         M2C_FIELD(temp_r4_2210, f32 *, 0x8C) = 0.0f;
         M2C_FIELD(temp_r4_2210, s8 *, 0x90) = 0;
         M2C_FIELD(temp_r4_2210, s8 *, 0x91) = 0;
-        ((KDSoundFader *) (temp_r4_2210 + 0x94))->Init(0.25f, 0.25f);
+        ((KDSoundFader *) (((u8 *) temp_r4_2210) + 0x94))->Init(0.25f, 0.25f);
         var_r26_2206 += 1;
         var_r30_2203 += 0x44;
     } while (var_r26_2206 < 4);

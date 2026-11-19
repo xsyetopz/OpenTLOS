@@ -984,7 +984,7 @@ loop_27:
                 var_r20_2115 = 0;
                 temp_r26_2116 = M2C_FIELD(temp_r3_2223, s32 *, 0) + var_r21_2110;
                 do {
-                    temp_r30_2118 = temp_r26_2116 + var_r20_2115;
+                    temp_r30_2118 = ((u8 *) temp_r26_2116) + var_r20_2115;
                     if ((void *) M2C_FIELD(temp_r30_2118, void **, 0) != NULL) {
                         SumAnimTranslation((MKAnimScript *) &sp10, (MKAnim *) this->unk34, M2C_FIELD(temp_r26_2116, f32 *, 0x64));
                         M2C_FIELD(temp_r30_2118, f64 *, 8) = sp10;

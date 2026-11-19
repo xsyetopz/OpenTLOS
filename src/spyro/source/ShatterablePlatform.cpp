@@ -55,7 +55,7 @@ void ShatterablePlatform::Update() {
             return;
         }
     }
-    this->unk1A8.unkC = M2C_BITWISE(f32, (this->unk158 + (((s32) this->unk170 << 7) + 0x68)));
+    this->unk1A8.unkC = M2C_BITWISE(f32, (((u8 *) this->unk158) + (((s32) this->unk170 << 7) + 0x68)));
     ((PlatformObject *) &this->unk1A8.unk8)->BeginUpdate();
     ((PlatformObject *) &this->unk1A8.unk8)->UpdateTilt();
     UpdateMove();
@@ -69,7 +69,7 @@ void ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
-    ((PlatformObject *) &this->unk1A8.unk8)->Init((PlatformObjectDesc *) &this->unk198, this->unk158 + (((s32) this->unk170 << 7) + 0x68));
+    ((PlatformObject *) &this->unk1A8.unk8)->Init((PlatformObjectDesc *) &this->unk198, ((u8 *) this->unk158) + (((s32) this->unk170 << 7) + 0x68));
     ((PlatformObject *) &this->unk1A8.unk8)->LoadDone((MKProp *) this, &MKProp::loadInfo + 0x60);
     M2C_FIELD(this, f64 *, 0x1C8) = (f64) M2C_FIELD(this, f64 *, 0x208);
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) M2C_FIELD(this, f64 *, 0x210);

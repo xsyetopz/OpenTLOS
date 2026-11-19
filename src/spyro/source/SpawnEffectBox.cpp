@@ -127,7 +127,7 @@ void SpawnEffectBox::LoadDone() {
     var_r30_486 = 0;
 loop_8:
     if (var_r29_485 < (s32) this->unkE8) {
-        gMK->CreatePropDeferred(this->unkE0, this->unkE4 + var_r30_486);
+        gMK->CreatePropDeferred(this->unkE0, ((u8 *) this->unkE4) + var_r30_486);
         var_r29_485 += 1;
         var_r30_486 += 4;
         goto loop_8;

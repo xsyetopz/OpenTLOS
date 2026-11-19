@@ -130,7 +130,6 @@ void KDEnvParticleSystem::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDEnvParticleSystemDescriptor::CalculateEnvelope() {
     s32 temp_r5_259;
     s32 var_r4_241;
@@ -144,17 +143,16 @@ loop_2:
     temp_r5_259 = this->unkD0;
     if (var_r6_240 < (s32) (temp_r5_259 - 1)) {
         var_r6_240 += 1;
-        temp_r5_246 = this->unkD4 + var_r4_241;
+        temp_r5_246 = ((u8 *) this->unkD4) + var_r4_241;
         M2C_FIELD(temp_r5_246, f32 *, 0xC) = (f32) (M2C_FIELD(temp_r5_246, f32 *, 0x18) - M2C_FIELD(temp_r5_246, f32 *, 4));
-        temp_r5_252 = this->unkD4 + var_r4_241;
+        temp_r5_252 = ((u8 *) this->unkD4) + var_r4_241;
         var_r4_241 += 0x14;
         M2C_FIELD(temp_r5_252, f32 *, 0x10) = (f32) (M2C_FIELD(temp_r5_252, f32 *, 0x1C) - M2C_FIELD(temp_r5_252, f32 *, 8));
         goto loop_2;
     }
-    M2C_FIELD((this->unkD4 + (temp_r5_259 * 0x14)), f32 *, -8) = 0.0f;
-    M2C_FIELD((this->unkD4 + (this->unkD0 * 0x14)), f32 *, -4) = 0.0f;
+    M2C_FIELD((((u8 *) this->unkD4) + (temp_r5_259 * 0x14)), f32 *, -8) = 0.0f;
+    M2C_FIELD((((u8 *) this->unkD4) + (this->unkD0 * 0x14)), f32 *, -4) = 0.0f;
 }
-#endif
 
 void KDEnvParticleSystemDescriptor::LoadDone() {
     KDParticleSystemDescriptor::LoadDone();
@@ -194,7 +192,7 @@ loop_20:
                 var_r27_344 = 0;
 loop_8:
                 if (var_r26_343 < (s32) this->unkD0) {
-                    var_r30_334->AsFloat(var_r26_343, this->unkD4 + var_r27_344);
+                    var_r30_334->AsFloat(var_r26_343, ((u8 *) this->unkD4) + var_r27_344);
                     var_r26_343 += 1;
                     var_r27_344 += 0x14;
                     goto loop_8;
@@ -204,7 +202,7 @@ loop_8:
                 var_r27_368 = 0;
 loop_13:
                 if (var_r26_367 < (s32) this->unkD0) {
-                    var_r30_334->AsFloat(var_r26_367, this->unkD4 + (var_r27_368 + 4));
+                    var_r30_334->AsFloat(var_r26_367, ((u8 *) this->unkD4) + (var_r27_368 + 4));
                     var_r26_367 += 1;
                     var_r27_368 += 0x14;
                     goto loop_13;
@@ -214,7 +212,7 @@ loop_13:
                 var_r27_393 = 0;
 loop_18:
                 if (var_r26_392 < (s32) this->unkD0) {
-                    var_r30_334->AsFloat(var_r26_392, this->unkD4 + (var_r27_393 + 8));
+                    var_r30_334->AsFloat(var_r26_392, ((u8 *) this->unkD4) + (var_r27_393 + 8));
                     var_r26_392 += 1;
                     var_r27_393 += 0x14;
                     goto loop_18;

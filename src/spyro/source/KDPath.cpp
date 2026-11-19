@@ -228,7 +228,7 @@ loop_10:
             KDPathNode::Link((KDPathNode *) &var_r31_383->unk8);
         }
         temp_r3_456 = var_r31_383->unk24;
-        temp_r4_457 = this->unk24 + ((this->unk20 - 1) * this->unk1C);
+        temp_r4_457 = ((u8 *) this->unk24) + ((this->unk20 - 1) * this->unk1C);
         sp18 = M2C_FIELD(temp_r4_457, f64 *, 0) - M2C_FIELD(temp_r3_456, f64 *, 0);
         sp68 = sp18;
         sp20 = M2C_FIELD(temp_r4_457, f32 *, 8) - M2C_FIELD(temp_r3_456, f32 *, 8);
@@ -239,7 +239,7 @@ loop_10:
             ((KDPathNode *) &this->unk8)->Link(var_r31_383);
         }
         temp_r3_496 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
-        temp_r4_497 = this->unk24 + ((this->unk20 - 1) * this->unk1C);
+        temp_r4_497 = ((u8 *) this->unk24) + ((this->unk20 - 1) * this->unk1C);
         sp8 = M2C_FIELD(temp_r4_497, f64 *, 0) - M2C_FIELD(temp_r3_496, f64 *, 0);
         sp48 = sp8;
         sp10 = M2C_FIELD(temp_r4_497, f32 *, 8) - M2C_FIELD(temp_r3_496, f32 *, 8);
@@ -298,7 +298,7 @@ void KDPathManager::Init(int arg0) {
     *KDPathManager::pPathLists = var_r3_592;
     temp_r4_601 = *KDPathManager::numTypes - 1;
     var_r3_603 = (s32) temp_r4_601 * 4;
-    var_ctr_604 = temp_r4_601 + 1;
+    var_ctr_604 = ((u8 *) temp_r4_601) + 1;
     if (temp_r4_601 >= 0) {
         do {
             *(*KDPathManager::pPathLists + var_r3_603) = 0;
@@ -340,7 +340,6 @@ void KDSplinePathSegmentProp::Init() {
     ((KDSplinePathSegment *) &this->unk4C)->Init();
 }
 
-#if 0 // DRAFT: illegal type
 void KDPathSegment::GetPositionAlongPath(float arg0, MKVector3 &arg1) {
     f64 sp40;                                       /* compiler-managed */
     f64 sp38;
@@ -375,7 +374,7 @@ void KDPathSegment::GetPositionAlongPath(float arg0, MKVector3 &arg1) {
     var_ctr_719 = temp_r5_714 - 1;
     if (temp_r5_714 > 1) {
 loop_1:
-        temp_r5_725 = temp_r6_713 + (var_r8_711 * this->unk1C);
+        temp_r5_725 = ((u8 *) temp_r6_713) + (var_r8_711 * this->unk1C);
         var_r7_716 = temp_r5_725;
         var_f2_712 += M2C_FIELD(temp_r5_725, f32 *, 0xC);
         if (!(var_f2_712 >= temp_f7_718)) {
@@ -386,7 +385,7 @@ loop_1:
             }
         }
     }
-    temp_r3_738 = temp_r6_713 + ((var_r8_711 - 1) * this->unk1C);
+    temp_r3_738 = ((u8 *) temp_r6_713) + ((var_r8_711 - 1) * this->unk1C);
     temp_f5_740 = M2C_FIELD(temp_r3_738, f64 *, 0);
     sp18 = M2C_FIELD(var_r7_716, f64 *, 0) - temp_f5_740;
     temp_f4_743 = M2C_FIELD(var_r7_716, f32 *, 0xC);
@@ -406,7 +405,6 @@ loop_1:
     sp30 = (f64) sp10;
     M2C_FIELD(&arg1, f64 *, 8) = (f64) sp10;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 void KDSplinePathSegment::LoadDone() {
@@ -738,7 +736,6 @@ void KDPathSegmentProp::Init() {
     ((KDPathSegment *) &this->unk4C)->Init();
 }
 
-#if 0 // DRAFT: illegal type
 void *KDPathSegment::GetNearestPointXZ(const MKVector3 &arg0) {
     f32 temp_f0_1532;
     f32 temp_f1_1529;
@@ -757,7 +754,7 @@ void *KDPathSegment::GetNearestPointXZ(const MKVector3 &arg0) {
     var_ctr_1517 = temp_r0_1511;
     if (temp_r0_1511 > 0) {
         do {
-            temp_r4_1525 = this->unk24 + (var_r6_1514 * this->unk1C);
+            temp_r4_1525 = ((u8 *) this->unk24) + (var_r6_1514 * this->unk1C);
             temp_f4_1528 = arg0.unk8 - M2C_FIELD(temp_r4_1525, f32 *, 8);
             temp_f1_1529 = arg0.unk0 - M2C_FIELD(temp_r4_1525, f32 *, 0);
             temp_f0_1532 = (temp_f1_1529 * temp_f1_1529) + (temp_f4_1528 * temp_f4_1528);
@@ -771,7 +768,6 @@ void *KDPathSegment::GetNearestPointXZ(const MKVector3 &arg0) {
     }
     return var_r5_1512;
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 s32 KDPathSegment::GetIndexOf(KDPathPoint *arg0) const {
@@ -783,7 +779,7 @@ void KDPathSegment::Resolve() {
 
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void KDPathSegment::LoadDone() {
     f64 sp28;
     f64 sp20;
@@ -828,8 +824,8 @@ loop_25:
         if (var_r6_1601 < (s32) this->unk20) {
             temp_r4_1606 = this->unk1C;
             temp_r5_1608 = this->unk24;
-            temp_r3_1611 = temp_r5_1608 + ((var_r6_1601 - 1) * temp_r4_1606);
-            temp_r4_1612 = temp_r5_1608 + (var_r6_1601 * temp_r4_1606);
+            temp_r3_1611 = ((u8 *) temp_r5_1608) + ((var_r6_1601 - 1) * temp_r4_1606);
+            temp_r4_1612 = ((u8 *) temp_r5_1608) + (var_r6_1601 * temp_r4_1606);
             temp_f0_1615 = M2C_FIELD(temp_r4_1612, f64 *, 0) - M2C_FIELD(temp_r3_1611, f64 *, 0);
             sp10 = temp_f0_1615;
             sp20 = temp_f0_1615;
@@ -881,7 +877,6 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 void KDPathSegment::CopyWaypointArray(MKVector3 *arg0, int arg1) {
     MKHeap *temp_r3_1731;
     s32 temp_r0_1753;
@@ -911,15 +906,14 @@ loop_5:
         var_r3_1746 += 0x10;
         temp_r0_1753 = var_r6_1745 * this->unk1C;
         var_r6_1745 += 1;
-        temp_r4_1757 = this->unk24 + temp_r0_1753;
+        temp_r4_1757 = ((u8 *) this->unk24) + temp_r0_1753;
         M2C_FIELD(temp_r4_1757, f64 *, 0) = (f64) M2C_FIELD(temp_r4_1750, f64 *, 0);
         M2C_FIELD(temp_r4_1757, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1750, f64 *, 8);
         goto loop_5;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKHeap *temp_r3_1796;
     MKIniLine *var_r29_1815;
@@ -946,7 +940,7 @@ u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
         var_r29_1815 = arg0->unkC->GetSubLine(arg0);
 loop_10:
         if (var_r29_1815 != NULL) {
-            if (var_r29_1815->LoadVector3("waypoint", this->unk24 + (var_r28_1814 * this->unk1C), 0) != 0) {
+            if (var_r29_1815->LoadVector3("waypoint", ((u8 *) this->unk24) + (var_r28_1814 * this->unk1C), 0) != 0) {
                 var_r28_1814 += 1;
             }
             var_r29_1815 = var_r29_1815->unkC->GetNextLine(var_r29_1815);

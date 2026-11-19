@@ -367,7 +367,7 @@ loop_3:
             temp_r3_516->Dequeue();
             temp_r3_520 = this->unkAC;
             if (var_r27_509 < (s32) (temp_r3_520 - 1)) {
-                memcpy(temp_r28_515 + 0x7C, this + (((var_r27_509 + 1) * 8) + 0x7C), ((temp_r3_520 - var_r27_509) - 1) * 8);
+                memcpy(((u8 *) temp_r28_515) + 0x7C, this + (((var_r27_509 + 1) * 8) + 0x7C), ((temp_r3_520 - var_r27_509) - 1) * 8);
             }
             this->unkAC -= 1;
         } else {
@@ -1725,7 +1725,7 @@ void Level::Update() {
         this->unkD8 = M2C_FIELD(var_r4_3138, f32 *, 0xE0);
         temp_r27_3161 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_3162 = M2C_FIELD(temp_r27_3161, KDSynkerPlayer3 **, 0x78);
-        if (((temp_r3_3162 != NULL) && (temp_r3_3162->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r27_3161, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r27_3161 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_3162 != NULL) && (temp_r3_3162->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r27_3161, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r27_3161) + 0x24))->GetState() == 2))) {
             var_r29_3147 = 1;
         }
         if ((var_r29_3147 != 0) && ((s32) M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), s32 *, 0x74) == 0) && (temp_r3_3186 = M2C_FIELD(M2C_FIELD(&gb, void **, 0xC), KDSynkerPlayer3 **, 0x78)->unk100.unk0, (((u32) temp_r3_3186 == 0U) == 0))) {
@@ -2036,12 +2036,12 @@ loop_11:
     }
     temp_r0_3760 = var_r3_3754 + temp_r26_3744;
     *Level::pLevelInfo = var_r3_3754;
-    temp_r4_3762 = temp_r0_3760 + temp_r27_3737;
+    temp_r4_3762 = ((u8 *) temp_r0_3760) + temp_r27_3737;
     temp_r6_3764 = temp_r4_3762 + 0x100;
     *Level::pChunkInfo = temp_r0_3760;
     *Level::pWorldInfo = temp_r4_3762;
     *Level::pTerrainInfo = temp_r6_3764;
-    *Level::pMaterialInfo = temp_r6_3764 + temp_r28_3740;
+    *Level::pMaterialInfo = ((u8 *) temp_r6_3764) + temp_r28_3740;
     memset(var_r3_3754, 0, (u32) temp_r29_3746);
     var_r27_3775 = ((MKIni *) (*Level::pGlobalLevelIni))->GetFirstLine();
 loop_31:
@@ -2584,8 +2584,8 @@ loop_41:
     var_r29_5099 = 0;
 loop_44:
     temp_r27_5105 = this + var_r29_5099;
-    temp_ret_5110 = arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), temp_r27_5105 + 0x40, 0);
-    if ((temp_ret_5110 != 0) || (temp_ret_5121 = arg0->LoadVector3(Str_Printf("", var_r26_5097, M2C_BITWISE(f32, temp_ret_5110)), temp_r27_5105 + 0x70, 0), var_f1_5043 = M2C_BITWISE(f32, temp_ret_5121), ((temp_ret_5121 == 0) == 0))) {
+    temp_ret_5110 = arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), ((u8 *) temp_r27_5105) + 0x40, 0);
+    if ((temp_ret_5110 != 0) || (temp_ret_5121 = arg0->LoadVector3(Str_Printf("", var_r26_5097, M2C_BITWISE(f32, temp_ret_5110)), ((u8 *) temp_r27_5105) + 0x70, 0), var_f1_5043 = M2C_BITWISE(f32, temp_ret_5121), ((temp_ret_5121 == 0) == 0))) {
         return 1;
     }
     var_r26_5097 += 1;
@@ -2728,8 +2728,8 @@ s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     var_r29_5689 = 0;
 loop_33:
     temp_r27_5695 = this + var_r29_5689;
-    temp_ret_5700 = arg0->LoadVector4(Str_Printf("", var_r26_5687, var_f1_5673), temp_r27_5695 + 0x80, 0);
-    if ((temp_ret_5700 != 0) || (temp_ret_5711 = arg0->LoadVector3(Str_Printf("", var_r26_5687, M2C_BITWISE(f32, temp_ret_5700)), temp_r27_5695 + 0xB0, 0), var_f1_5673 = M2C_BITWISE(f32, temp_ret_5711), ((temp_ret_5711 == 0) == 0))) {
+    temp_ret_5700 = arg0->LoadVector4(Str_Printf("", var_r26_5687, var_f1_5673), ((u8 *) temp_r27_5695) + 0x80, 0);
+    if ((temp_ret_5700 != 0) || (temp_ret_5711 = arg0->LoadVector3(Str_Printf("", var_r26_5687, M2C_BITWISE(f32, temp_ret_5700)), ((u8 *) temp_r27_5695) + 0xB0, 0), var_f1_5673 = M2C_BITWISE(f32, temp_ret_5711), ((temp_ret_5711 == 0) == 0))) {
         return 1;
     }
     var_r26_5687 += 1;

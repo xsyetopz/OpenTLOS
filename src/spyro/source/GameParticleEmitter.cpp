@@ -551,7 +551,6 @@ void GameParticleEmitter::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal type
 void GameParticleEmitter::Update() {
     f64 sp30;
     f64 sp28;
@@ -567,7 +566,7 @@ void GameParticleEmitter::Update() {
     void *temp_r4_1080;
 
     if ((u8) this->unkE0 != 0) {
-        temp_r4_1080 = this->unk8 + 0x30;
+        temp_r4_1080 = ((u8 *) this->unk8) + 0x30;
         temp_r3_1081 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
         temp_f1_1082 = M2C_FIELD(temp_r3_1081, f64 *, 0x30);
         sp18 = temp_f1_1082;
@@ -632,7 +631,6 @@ void GameParticleEmitter::Update() {
         }
     }
 }
-#endif
 
 void GameParticleEmitter::EmitEmber() {
     MKVector3 sp28;
@@ -943,7 +941,6 @@ loop_3:
     }
 }
 
-#if 0 // DRAFT: illegal type
 void GameParticleEmitter::LoadDone() {
     f32 temp_f0_1821;
     u32 temp_r0_1846;
@@ -960,9 +957,9 @@ void GameParticleEmitter::LoadDone() {
     if (temp_r3_1824 != NULL) {
         M2C_FIELD(*temp_r3_1824, M2C_UNK (**)(), 0x10)();
         temp_r3_1831 = this->unkC8;
-        M2C_FIELD(*temp_r3_1831, M2C_UNK (**)(void **, void *), 0x28)(temp_r3_1831, this->unk8 + 0x30);
+        M2C_FIELD(*temp_r3_1831, M2C_UNK (**)(void **, void *), 0x28)(temp_r3_1831, ((u8 *) this->unk8) + 0x30);
         temp_r3_1838 = this->unkC8;
-        M2C_FIELD(*temp_r3_1838, M2C_UNK (**)(void **, void *), 0x24)(temp_r3_1838, this->unk8 + 0x20);
+        M2C_FIELD(*temp_r3_1838, M2C_UNK (**)(void **, void *), 0x24)(temp_r3_1838, ((u8 *) this->unk8) + 0x20);
     }
     temp_r0_1846 = this->unkCC;
     switch (temp_r0_1846) {
@@ -991,7 +988,6 @@ void GameParticleEmitter::LoadDone() {
         return;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {

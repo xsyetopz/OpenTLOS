@@ -334,7 +334,7 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: type mismatch
 void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     s32 spC;
     s32 sp8;
@@ -345,12 +345,12 @@ void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     } else {
         var_r30_560 = (void *) ((this->unkC + 0x1F) & 0xFFFFFFE0);
         this->unk8 = (s32) var_r30_560;
-        if (((u8) gbGoldMaster == 0) && ((void *) (var_r30_560 + arg0) >= (s32) this->unk44)) {
+        if (((u8) gbGoldMaster == 0) && ((void *) (((u8 *) var_r30_560) + arg0) >= (s32) this->unk44)) {
             sp8 = black;
             spC = white;
             OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("No memory allocating %d bytes\n(%d free in heap %s)\n[heapsize=%d]", this->unk44 - var_r30_560, &this->unk4C, this->unk4 - this->unk0));
         }
-        this->unkC = (s32) (var_r30_560 + arg0);
+        this->unkC = (s32) (((u8 *) var_r30_560) + arg0);
     }
     ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->UpdatePeak();
     return var_r30_560;

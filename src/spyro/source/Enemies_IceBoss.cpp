@@ -926,7 +926,7 @@ void IceBoss::ShatterSubObj(int arg0, Shatterable *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'KDSound_Play3d(long, unsigned char *, unsigned int, int,
 void IceBoss::ShatterBodyParts() {
     Shatterable *temp_r5_1804;
     s32 var_r29_1793;
@@ -943,9 +943,9 @@ void IceBoss::ShatterBodyParts() {
                 ShatterSubObj(M2C_FIELD(temp_r30_1796, s32 *, 0xB44), temp_r5_1804);
                 M2C_FIELD(temp_r30_1796, u8 *, 0xB58) = 1U;
                 if (IsIceKing() != 0) {
-                    KDSound_Play3d(GS_IceBossArmorSmash1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_IceBossArmorSmash1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 } else {
-                    KDSound_Play3d(GS_ElecBossArmorSmash, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_ElecBossArmorSmash, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
                 }
             }
         }
@@ -1706,7 +1706,7 @@ void IceBoss::SetupCameraSpline(float arg0, float arg1, MKVector3 arg2, MKVector
         } else {
             var_f5_3300 = 0.0f;
         }
-        temp_r30_3306 = temp_r31_3217 + 0x7C;
+        temp_r30_3306 = ((u8 *) temp_r31_3217) + 0x7C;
         var_r29_3308 = 1;
         sp1A8 = (f32) sp1A8 * var_f5_3300;
         var_r24_3318 = 0;
@@ -1765,8 +1765,8 @@ loop_32:
             spD8 = sp28;
             spE0 = (f64) sp30;
             M2C_FIELD(temp_r4_3466, f64 *, 8) = (f64) sp30;
-            ((KDUniformSpline *) (temp_r31_3217 + 0x7C))->Smooth();
-            ((KDUniformSpline *) (temp_r31_3217 + 0x7C))->Smooth();
+            ((KDUniformSpline *) (((u8 *) temp_r31_3217) + 0x7C))->Smooth();
+            ((KDUniformSpline *) (((u8 *) temp_r31_3217) + 0x7C))->Smooth();
             var_r24_3318 = 1;
             var_r23_3477 = 0;
             do {
@@ -2319,7 +2319,7 @@ void IceBossDescriptor::Deinit() {
     pIceBossDesc = NULL;
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: function call 'strcpy(unsigned char *, const char[1])' does not match
 void IceBossDescriptor::Init() {
     s32 var_r28_4929;
     s32 var_r31_4930;
@@ -2335,7 +2335,7 @@ void IceBossDescriptor::Init() {
     var_r31_4930 = 0;
     do {
         temp_r29_4932 = this + var_r31_4930;
-        strcpy(temp_r29_4932 + 0x2E0, "");
+        strcpy(((u8 *) temp_r29_4932) + 0x2E0, "");
         var_r28_4929 += 1;
         M2C_FIELD(temp_r29_4932, f32 *, 0x300) = 0.0f;
         var_r31_4930 += 0x24;

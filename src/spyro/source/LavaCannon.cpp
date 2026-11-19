@@ -105,7 +105,7 @@ void LavaCannon::EmitExplodingEffects() {
             Shatterable::Shatter(0U, NULL, -1, NULL, 1U, 0U);
             M2C_FIELD(this, s8 *, 0x264) = 1;
             var_r30_260 = 0;
-            temp_r29_262 = KDSound_Play3d(GS_TowerHit, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            temp_r29_262 = KDSound_Play3d(GS_TowerHit, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             if ((((u32) M2C_FIELD(gb.unkC, u32 *, 0x78) != 0U) || ((u32) M2C_FIELD(gb.unkC, u32 *, 0x84) != 0U)) && (((KDStateMachine<CutsceneSystem> *) (gb.unkC + 0x24))->GetState() != 0)) {
                 var_r30_260 = 1;
             }
@@ -446,11 +446,11 @@ void LavaCannon::Update() {
             var_r28_1001 = 0;
             var_r31_1002 = 0;
             if ((s32) M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x194) != 0) {
-                temp_r29_1009 = this->unk8 + 0x30;
+                temp_r29_1009 = ((u8 *) this->unk8) + 0x30;
                 var_r28_1001 = KDSound_Play3d(M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x194), temp_r29_1009, 0U, -1, 0.0f, 0U);
             }
             if ((s32) M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x198) != 0) {
-                temp_r29_1027 = this->unk8 + 0x30;
+                temp_r29_1027 = ((u8 *) this->unk8) + 0x30;
                 var_r31_1002 = KDSound_Play3d(M2C_FIELD(checked_cast<LavaCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x198), temp_r29_1027, 0U, -1, 0.0f, 0U);
             }
             var_r29_1039 = 0;

@@ -897,7 +897,7 @@ void Collectable::SpawningState() {
             if (((s32) M2C_FIELD(GetDescriptor(), s32 *, 0xC0) != 0) && ((u8) this->unk13C != 0)) {
                 temp_f1_1811 = (f32) KDSound_GetSoundEventVol(M2C_FIELD(GetDescriptor(), s32 *, 0xC0));
                 this->unk140 = (s32) (this->unk134 * temp_f1_1811);
-                KDSound_Play3d(M2C_FIELD(GetDescriptor(temp_f1_1811), s32 *, 0xC0), this->unk8 + 0x30, 0U, this->unk140, 0.0f, 0U);
+                KDSound_Play3d(M2C_FIELD(GetDescriptor(temp_f1_1811), s32 *, 0xC0), ((u8 *) this->unk8) + 0x30, 0U, this->unk140, 0.0f, 0U);
             }
             if ((u8) this->unk120 != 0) {
                 this->unkC0 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
@@ -974,7 +974,7 @@ void Collectable::SpawningState() {
             if (((u8) this->unk13C != 0) && (var_f29_1904 > this->unk138)) {
                 temp_f1_2046 = (f32) KDSound_GetSoundEventVol(M2C_FIELD(GetDescriptor(), s32 *, 0xC0));
                 this->unk140 = (s32) (this->unk134 * temp_f1_2046);
-                KDSound_Play3d(M2C_FIELD(GetDescriptor(temp_f1_2046), s32 *, 0xC0), this->unk8 + 0x30, 0U, this->unk140, 0.0f, 0U);
+                KDSound_Play3d(M2C_FIELD(GetDescriptor(temp_f1_2046), s32 *, 0xC0), ((u8 *) this->unk8) + 0x30, 0U, this->unk140, 0.0f, 0U);
                 this->unk13C = 0;
                 if (this->unk134 > M2C_FIELD(GetDescriptor(), f32 *, 0xC4)) {
                     this->unk134 -= M2C_FIELD(GetDescriptor(), f32 *, 0xC4);

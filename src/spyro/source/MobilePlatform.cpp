@@ -250,7 +250,7 @@ void MobilePlatform::UpdateMove() {
             temp_r3_510 = this->unk184;
             if (temp_r3_510 != (s32) this->unk188) {
                 this->unk188 = temp_r3_510;
-                temp_r30_517 = this->unk8 + 0x30;
+                temp_r30_517 = ((u8 *) this->unk8) + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r30_517, 0U, -1, 0.0f, 0U);
             }
         }
@@ -268,7 +268,7 @@ void MobilePlatform::UpdateMove() {
                 Message(&sp1C);
                 M2C_FIELD(this, s8 *, 0x218) = 0;
                 if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138) != 0) {
-                    temp_r30_571 = this->unk8 + 0x30;
+                    temp_r30_571 = ((u8 *) this->unk8) + 0x30;
                     KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138), temp_r30_571, 0U, -1, 0.0f, 0U);
                 }
                 this->unk1F0 = -1.0f;
@@ -279,7 +279,7 @@ void MobilePlatform::UpdateMove() {
                 Message(&sp14);
                 M2C_FIELD(this, s8 *, 0x218) = 0;
                 if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138) != 0) {
-                    temp_r30_615 = this->unk8 + 0x30;
+                    temp_r30_615 = ((u8 *) this->unk8) + 0x30;
                     KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138), temp_r30_615, 0U, -1, 0.0f, 0U);
                 }
                 this->unk1F0 = -1.0f;
@@ -293,7 +293,7 @@ void MobilePlatform::UpdateMove() {
             Message(&spC);
             M2C_FIELD(this, s8 *, 0x218) = 0;
             if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138) != 0) {
-                temp_r30_662 = this->unk8 + 0x30;
+                temp_r30_662 = ((u8 *) this->unk8) + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x138), temp_r30_662, 0U, -1, 0.0f, 0U);
             }
             if ((u8) this->unk19C.unk30.unk11 != 0) {
@@ -447,7 +447,7 @@ block_73:
             sp18 = 0xB5;
             Message(&sp18);
             if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C) != 0) {
-                temp_r29_1046 = this->unk8 + 0x30;
+                temp_r29_1046 = ((u8 *) this->unk8) + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r29_1046, 0U, -1, 0.0f, 0U);
             }
         }
@@ -457,7 +457,7 @@ block_73:
         sp10 = 0xB5;
         Message(&sp10);
         if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C) != 0) {
-            temp_r29_1073 = this->unk8 + 0x30;
+            temp_r29_1073 = ((u8 *) this->unk8) + 0x30;
             KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x13C), temp_r29_1073, 0U, -1, 0.0f, 0U);
         }
         this->unk1E8 = 0.0f;
@@ -475,7 +475,7 @@ block_73:
             M2C_FIELD(this, f32 *, 0x214) = 1.0f;
             M2C_FIELD(this->__vptr, M2C_UNK (**)(f32), 0x4C)(0.0f);
             if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x130) != 0) {
-                temp_r29_1116 = this->unk8 + 0x30;
+                temp_r29_1116 = ((u8 *) this->unk8) + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x130), temp_r29_1116, 0U, -1, 0.0f, 0U);
             }
         }
@@ -485,7 +485,7 @@ block_73:
             this->unk208 = 1.0f;
             M2C_FIELD(this, f32 *, 0x214) = -1.0f;
             if ((s32) M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x12C) != 0) {
-                temp_r29_1141 = this->unk8 + 0x30;
+                temp_r29_1141 = ((u8 *) this->unk8) + 0x30;
                 KDSound_Play3d(M2C_FIELD(checked_cast<MobilePlatformDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x12C), temp_r29_1141, 0U, -1, 0.0f, 0U);
                 return;
             }

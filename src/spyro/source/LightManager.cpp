@@ -135,7 +135,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
         temp_r8_185 = var_r5_180 + 0x4C;
         temp_r6_186 = *(&arg0 + temp_r8_185);
         if ((temp_r6_186 != NULL) && ((u8) M2C_FIELD(temp_r6_186, u8 *, 0x34) != 0) && ((u8) M2C_FIELD(temp_r6_186, u8 *, 0x40) != 0)) {
-            temp_r6_195 = temp_r6_186 + 0x10;
+            temp_r6_195 = ((u8 *) temp_r6_186) + 0x10;
             sp20 = M2C_FIELD(temp_r6_195, f64 *, 0) - sp50;
             sp40 = sp20;
             sp28 = M2C_FIELD(temp_r6_195, f32 *, 8) - (f32) sp58;
@@ -204,7 +204,7 @@ void LightManager::CalculateLightPosForShadow(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void *LightManager::AllocManagedLight(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector4 &arg2, const float &arg3, const int &arg4, const bool &arg5) {
     s32 var_ctr_341;
     s32 var_r10_340;
@@ -213,7 +213,7 @@ void *LightManager::AllocManagedLight(const MKVector3 &arg0, const MKVector3 &ar
     var_r10_340 = 0;
     var_ctr_341 = 0x48;
 loop_1:
-    temp_r12_344 = this->unk5C + var_r10_340;
+    temp_r12_344 = ((u8 *) this->unk5C) + var_r10_340;
     if ((u8) M2C_FIELD(temp_r12_344, u8 *, 0x48) == 0) {
         M2C_FIELD(temp_r12_344, s8 *, 0x34) = 0;
         M2C_FIELD(temp_r12_344, u8 *, 0x48) = 1U;
@@ -257,7 +257,7 @@ void LightManager::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void LightManager::DisableAllLights() {
     s32 var_r30_423;
     s32 var_r31_424;
@@ -265,7 +265,7 @@ void LightManager::DisableAllLights() {
     var_r30_423 = 0;
     var_r31_424 = 0;
     do {
-        EnableLight(this->unk5C + var_r31_424, 0U);
+        EnableLight(((u8 *) this->unk5C) + var_r31_424, 0U);
         var_r30_423 += 1;
         var_r31_424 += 0x50;
     } while (var_r30_423 < 0x48);

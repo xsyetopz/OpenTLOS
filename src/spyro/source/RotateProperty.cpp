@@ -86,7 +86,7 @@ void RotateProperty::Update() {
     temp_r3_130 = *KDProperty::pInstanceMem + this->unk8;
     if ((u8) M2C_FIELD(temp_r3_130, u8 *, 0x84) != 0) {
         sp20 = M2C_FIELD(this, f64 *, 0x20) * (f64) gUpdateTimeDelta;
-        temp_r3_140 = temp_r3_130 + 0x40;
+        temp_r3_140 = ((u8 *) temp_r3_130) + 0x40;
         sp60 = sp20;
         sp28 = this->unk28 * gUpdateTimeDelta;
         sp68 = (f64) sp28;

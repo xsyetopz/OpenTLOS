@@ -84,7 +84,7 @@ loop_10:
                     (*(f32 *) ((u8 *) &sp50 + 0x1c)) = 0.0f;
                 } else {
                     temp_f1_168 = MKRand_Float(&gViewSeed, this->unk88, this->unk8C);
-                    temp_r3_171 = this->unk8 + 0x20;
+                    temp_r3_171 = ((u8 *) this->unk8) + 0x20;
                     sp20 = M2C_FIELD(temp_r3_171, f64 *, 0) * temp_f1_168;
                     sp40 = sp20;
                     sp28 = M2C_FIELD(temp_r3_171, f32 *, 8) * (f32) temp_f1_168;

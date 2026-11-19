@@ -38,7 +38,7 @@ void PoisonBomb::EmitPoison() {
 
 }
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void PoisonBomb::EmitPoisonTrail() {
     f64 sp70;
     f64 sp68;
@@ -60,7 +60,7 @@ void PoisonBomb::EmitPoisonTrail() {
 
     sp30 = -1.0f;
     sp20 = 1.0f;
-    temp_r31_91 = this->unk8 + 0x30;
+    temp_r31_91 = ((u8 *) this->unk8) + 0x30;
     sp28 = -1.0f;
     sp2C = 0.0f;
     sp18 = 1.0f;
@@ -335,7 +335,7 @@ void PoisonBomb::Update() {
         this->unk1C0 = 1;
         if (this->unk160 <= 0.0f) {
             this->unk180 = 3;
-            this->unk1B8 = KDSound_Play3d(GS_PoisonBombExtra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            this->unk1B8 = KDSound_Play3d(GS_PoisonBombExtra1, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
             this->unk160 = 15.0f;
             this->unk188 = 1.5f;
             this->unk1D0 = 2.0f;
@@ -361,7 +361,7 @@ void PoisonBomb::Update() {
         this->unk1D0 = var_f0_672;
         if (this->unk188 <= 0.0f) {
             temp_r4_693 = this->unk8;
-            temp_r30_696 = temp_r4_693 + 0x30;
+            temp_r30_696 = ((u8 *) temp_r4_693) + 0x30;
             temp_r3_701 = M2C_FIELD(M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), void *(**)(void **, void *), 0xC)(M2C_FIELD(&gb, void ***, 0), temp_r4_693), void **, 8);
             temp_f1_702 = M2C_FIELD(temp_r3_701, f64 *, 0x30);
             sp80 = temp_f1_702;
@@ -418,7 +418,7 @@ void PoisonBomb::Update() {
             M2C_FIELD(temp_r3_818, s8 *, 0x70) = 0;
             sp68 = (f64) sp28;
             sp60 = (f64) sp20;
-            temp_r30_829 = this->unk8 + 0x30;
+            temp_r30_829 = ((u8 *) this->unk8) + 0x30;
             ((Explosion3 *) (M2C_FIELD(checked_cast<PoisonBombDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), Explosion3 **, 0xF0)))->Trigger(*temp_r30_829, 0.25f, 0U, 0U, *((MKVector3 *) &sp60), this->unk130);
             this->unk1C0 = 0;
             KDSound_Stop(&this->unk190);

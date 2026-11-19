@@ -172,7 +172,7 @@ void ****SpyroTargetList::UpdateTargetList() {
     temp_r6_115 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 8);
     sp130 = M2C_FIELD(temp_r6_115, f64 *, 0x20);
     sp138 = M2C_FIELD(temp_r6_115, f64 *, 0x28);
-    temp_r29_126 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->GetTargets(&sp140, 0x10, this->unk10, temp_r6_115 + 0x30, this->unkC, 1U, (MKVector3 *) &sp130, 3.1415927f);
+    temp_r29_126 = ((TargetManager *) (M2C_FIELD(&gb, TargetManager **, 0x20)))->GetTargets(&sp140, 0x10, this->unk10, ((u8 *) temp_r6_115) + 0x30, this->unkC, 1U, (MKVector3 *) &sp130, 3.1415927f);
     var_r27_127 = NULL;
 loop_2:
     if ((void ***) *this->unk8 != NULL) {

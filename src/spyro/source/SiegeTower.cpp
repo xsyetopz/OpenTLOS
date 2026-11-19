@@ -592,7 +592,7 @@ void SiegeTower::Update() {
         var_r31_1027 = 0;
         temp_r29_1029 = M2C_FIELD(&gb, void **, 0xC);
         temp_r3_1030 = M2C_FIELD(temp_r29_1029, KDSynkerPlayer3 **, 0x78);
-        if (((temp_r3_1030 != NULL) && (temp_r3_1030->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1029, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (temp_r29_1029 + 0x24))->GetState() == 2))) {
+        if (((temp_r3_1030 != NULL) && (temp_r3_1030->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r29_1029, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r29_1029) + 0x24))->GetState() == 2))) {
             var_r31_1027 = 1;
         }
         if (var_r31_1027 == 0) {

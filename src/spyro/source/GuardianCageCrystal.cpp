@@ -41,7 +41,7 @@ void GuardianCageCrystal::Explode() {
         M2C_FIELD(this, u8 *, 0x1D4) = 1U;
         ((EnergyBeam *) (M2C_FIELD(checked_cast<GuardianCageCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x16C)))->FreeEnergyBeam(M2C_FIELD(this, EnergyBeam::Beam **, 0x1C8));
         M2C_FIELD(this, EnergyBeam::Beam **, 0x1C8) = NULL;
-        KDSound_Play3d(GS_CrystalSmash2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_CrystalSmash2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
         temp_r3_95 = M2C_FIELD(this, void **, 0x1D0);
         spC = 0;
         sp8 = 0x87;
@@ -193,7 +193,7 @@ void GuardianCageCrystal::Update() {
         temp_f0_328 = spB8 * 5.50703498e-315;
         sp68 = temp_f0_328;
         spC8 = temp_f0_328;
-        temp_r4_335 = this->unk8 + 0x30;
+        temp_r4_335 = ((u8 *) this->unk8) + 0x30;
         sp70 = (f32) spC0 * 60.000004f;
         spD0 = (f64) sp70;
         temp_f0_341 = M2C_FIELD(temp_r4_335, f64 *, 0) + temp_f0_328;
