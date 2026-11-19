@@ -34,65 +34,49 @@ s32 strcmpi(s8 *, s8 *);                            /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 extern f32 *KDSpline_PositionMixer;
 
-#if 0 // DRAFT: function call 'stricmp(long, const char *)' does not match 'stricmp(long, signed char *)'
+extern "C" int stricmp(const char *, const char *);
 void *KDSP_Camera::FindCameraPath(const char *arg0) {
     s32 var_r30_17;
     s32 var_r31_18;
 
-    var_r30_17 = 0;
-    var_r31_18 = 0;
-loop_4:
-    if (var_r30_17 >= (s32) this->unk74) {
-        return NULL;
+    for (var_r30_17 = 0, var_r31_18 = 0; var_r30_17 < (s32) this->unk74; var_r30_17 += 1, var_r31_18 += 0x40) {
+        if (stricmp(*(const char **) ((u8 *) this->unk78 + var_r31_18), arg0) == 0) {
+            return (u8 *) this->unk78 + var_r31_18;
+        }
     }
-    if (stricmp(*(this->unk78 + var_r31_18), arg0) == 0) {
-        return this->unk78 + var_r31_18;
-    }
-    var_r30_17 += 1;
-    var_r31_18 += 0x40;
-    goto loop_4;
+    return NULL;
 }
-#endif
 
-#if 0 // DRAFT: function call 'strcmpi(long, const char *)' does not match 'strcmpi(signed char *, signed char *)'
+extern "C" int strcmpi(const char *, const char *);
 void *KDSP_Camera::FindCAD(const char *arg0) {
     s32 var_r30_55;
     s32 var_r31_56;
 
-    var_r30_55 = 0;
-    var_r31_56 = 0;
-loop_4:
-    if (var_r30_55 >= (s32) this->unk7C) {
-        return NULL;
+    for (var_r30_55 = 0, var_r31_56 = 0; var_r30_55 < (s32) this->unk7C; var_r30_55 += 1, var_r31_56 += 0xC) {
+        if (strcmpi(*(const char **) ((u8 *) this->unk84 + var_r31_56 + 8), arg0) == 0) {
+            return (u8 *) this->unk84 + var_r31_56;
+        }
     }
-    if (strcmpi(*(this->unk84 + (var_r31_56 + 8)), arg0) == 0) {
-        return this->unk84 + var_r31_56;
-    }
-    var_r30_55 += 1;
-    var_r31_56 += 0xC;
-    goto loop_4;
+    return NULL;
 }
-#endif
 
-#if 0 // DRAFT: function call 'Endian(unsigned long)' does not match 'Endian<...>(T0 &)'
 void KDSP_Camera::ParseMCDFile(const char *arg0) {
-    u32 *var_r31_101;
+    unsigned int *var_r31_101;
 
     this->unk94 = (unsigned long *) (MKArchive_Load(arg0, (int *) &this->unk90, NULL, -1));
     this->unk98 = NULL;
-    var_r31_101 = this->unk94;
+    var_r31_101 = (unsigned int *) this->unk94;
 loop_5:
-    if (var_r31_101 < (void *) (this->unk94 + this->unk90)) {
-        if ((u32) (Endian<int unsigned>(*var_r31_101) + 0xBBB30000) == 0x4143U) {
-            this->unk98 = var_r31_101 + 0xC;
+    if ((u8 *) var_r31_101 < (u8 *) this->unk94 + this->unk90) {
+        if ((u32) (Endian<unsigned int>(*var_r31_101) + 0xBBB30000) == 0x4143U) {
+            this->unk98 = (u32 *) ((u8 *) var_r31_101 + 0xC);
         } else {
-            Endian<int unsigned>(*var_r31_101);
+            Endian<unsigned int>(*var_r31_101);
         }
-        var_r31_101 = var_r31_101 + Endian<int unsigned>(*(var_r31_101 + 4)) + 8;
+        var_r31_101 = (unsigned int *) ((u8 *) var_r31_101 + Endian<unsigned int>(*(unsigned int *) ((u8 *) var_r31_101 + 4)) + 8);
         goto loop_5;
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'strcmpi(const char[6])' does not match 'strcmpi(signed char *, signed char *)'
 void KDSP_Camera::ParseCAD(KDSynkerHeap *arg0, const char *arg1) {
@@ -164,8 +148,8 @@ void KDSP_Camera::HeapAddSizeCAD(KDSynkerHeap *arg0, const char *arg1) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &arg3) {
-    MKIniLine sp18;
-    MKIniLine sp8;
+    MKVector3 sp18;
+    MKVector3 sp8;
     MKIniLine *temp_r3_331;
     MKIniLine *temp_r3_561;
     MKIniLine *var_r21_362;
@@ -256,13 +240,13 @@ loop_31:
                     } else if (var_r23_443->IsField("FarPlane") != 0) {
                         M2C_FIELD(var_r30_345, f32 *, 0x10) = var_r23_443->GetFloat(0);
                     } else if (var_r23_443->IsField("eye") != 0) {
-                        sp18.GetVector3((s32) var_r23_443);
-                        ((KDUniformSpline *) (var_r30_345 + 0x18))->AddNode(*((MKVector3 *) &sp18));
+                        sp18 = var_r23_443->GetVector3(0);
+                        ((KDUniformSpline *) (var_r30_345 + 0x18))->AddNode(sp18);
                         *(M2C_FIELD(var_r30_345, void **, 0x14) + var_r26_360) = var_r23_443->GetFloat(3);
                         var_r26_360 += 4;
                     } else if (var_r23_443->IsField("dst") != 0) {
-                        sp8.GetVector3((s32) var_r23_443);
-                        ((KDUniformSpline *) (var_r30_345 + 0x2C))->AddNode(*((MKVector3 *) &sp8));
+                        sp8 = var_r23_443->GetVector3(0);
+                        ((KDUniformSpline *) (var_r30_345 + 0x2C))->AddNode(sp8);
                     }
                     var_r23_443 = var_r23_443->unkC->GetNextLine(var_r23_443);
                     goto loop_31;
