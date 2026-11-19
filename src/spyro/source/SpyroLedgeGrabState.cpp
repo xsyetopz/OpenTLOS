@@ -90,7 +90,6 @@ void SpyroLedgeGrabState::PullUpDescendUpdate() {
     PullUpDescendTransition();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroLedgeGrabState::PullUpDescendEnter() {
     Spyro *temp_r3_100;
     f32 temp_f0_105;
@@ -116,17 +115,14 @@ void SpyroLedgeGrabState::PullUpDescendEnter() {
     temp_r3_100->unk33C = var_f2_104;
     this->unk10->unk38C = 1900.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroLedgeGrabState::PullUpAscendTransition() {
-    if ((this->unk10->unk33C <= 0.0f) && ((s32) this->unk14.unk0 != 2)) {
+    if ((this->unk10->unk33C <= 0.0f) && ((s32) M2C_FIELD(this, s32 *, 0x14) != 2)) {
         this->unk14.SetState(this, 2, 0U);
         return 1;
     }
     return 0;
 }
-#endif
 
 void SpyroLedgeGrabState::PullUpAscendUpdate() {
     f64 sp40;
@@ -158,18 +154,14 @@ void SpyroLedgeGrabState::PullUpAscendUpdate() {
     PullUpAscendTransition();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroLedgeGrabState::PullUpAscendEnter() {
     this->unk10->SetAnim(0x59U, 0.1f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk48 = MKVector3::zero;
     this->unk10->SetModelVisualOffset(this->unk48, 0U);
     this->unk10->unk38C = 1900.0f;
     this->unk10->SetDesiredVelocityVectical(PULL_UP_Y_VELOCITY, 540000.0f);
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroLedgeGrabState::AttachTransition() {
     InputModifier *temp_r3_253;
     s32 var_r3_266;
@@ -188,13 +180,12 @@ s32 SpyroLedgeGrabState::AttachTransition() {
     if ((u8) var_r3_266 == 0) {
         var_r3_266 = this->unk10->GetAnimScript((Spyro::AnimScriptNode) 0)->unk2C & 1;
     }
-    if (((u8) var_r3_266 != 0) && ((s32) this->unk14.unk0 != 1)) {
+    if (((u8) var_r3_266 != 0) && ((s32) M2C_FIELD(this, s32 *, 0x14) != 1)) {
         this->unk14.SetState(this, 1, 0U);
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::RefPoints'
 void SpyroLedgeGrabState::AttachUpdate() {
@@ -251,14 +242,11 @@ void SpyroLedgeGrabState::AttachUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroLedgeGrabState::AttachEnter() {
     this->unk10->SetDesiredVelocity(MKVector3::zero, 540000.0f);
-    M2C_FIELD(this, f64 *, 0x48) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x50) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
+    this->unk48 = MKVector3::zero;
     this->unk10->SetAnim(0x58U, 0.13f, (Spyro::AnimScriptNode) 0, 0U, 1.0f);
 }
-#endif
 
 void SpyroLedgeGrabState::ProcessAnimEvent(unsigned int arg0) {
 
