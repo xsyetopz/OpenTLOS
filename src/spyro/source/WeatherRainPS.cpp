@@ -21,113 +21,99 @@ static MKParticleSystem::Envelope gWeatherRainPSEnv[5] = {
     { 1.0f, 0.0f, 1.0f, 0.0f, 0.0f },
 };
 
-#if 0 // DRAFT: undefined identifier 'unksp8'
 void WeatherRainPS::UpdateParticles() {
-    f64 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    MKParticleChunk *var_r30_66;
-    MKParticleSystem::Envelope *temp_r3_156;
-    MKParticleSystem::Envelope *temp_r5_160;
-    MKParticleSystem::Envelope *temp_r5_192;
-    f32 temp_f29_73;
-    f32 temp_f3_134;
-    f32 temp_f3_169;
-    f32 temp_f4_162;
-    f32 temp_f5_158;
-    f32 var_f0_172;
-    f64 temp_f0_106;
-    f64 temp_f0_85;
-    s32 temp_r0_157;
-    s32 temp_r3_130;
-    s32 temp_r3_144;
-    s32 temp_r4_155;
-    void *temp_r29_69;
+    u8 sp8[0x8];
+    MKParticleChunk *var_r31;
+    void *temp_r30;
+    MKBaseParticleSystemDescriptor *desc;
+    MKParticleSystem::Envelope *temp_r5;
+    f32 age;
+    f32 vel_x;
+    f32 vel_y;
+    f32 vel_z;
+    f32 wind_x;
+    f32 wind_y;
+    f32 wind_z;
+    f32 temp_f0;
+    f32 temp_f3;
+    f32 temp_f3_224;
+    s32 temp_r3;
+    s32 temp_r3_199;
+    s32 temp_r4;
+    s32 idx;
 
     this->unk128 += gUpdateTimeDelta;
-    var_r30_66 = GetFirstParticle(&unksp8);
-loop_12:
-    if (var_r30_66 != NULL) {
-        temp_r29_69 = var_r30_66->unk2C;
-        temp_f29_73 = this->unk128 - M2C_FIELD(temp_r29_69, f32 *, 0x10);
-        if (temp_f29_73 > this->unk12C) {
-            var_r30_66 = DestroyParticle(&unksp8);
-        } else {
-            temp_f0_85 = M2C_FIELD(temp_r29_69, f64 *, 0) * (f64) gUpdateTimeDelta;
-            sp20 = temp_f0_85;
-            sp40 = temp_f0_85;
-            sp28 = M2C_FIELD(temp_r29_69, f32 *, 8) * gUpdateTimeDelta;
-            sp48 = (f64) sp28;
-            M2C_FIELD(var_r30_66, f64 *, 0) = (f64) (M2C_FIELD(var_r30_66, f64 *, 0) + temp_f0_85);
-            var_r30_66->unk8 += (f32) sp48;
-            temp_f0_106 = M2C_FIELD(this, f64 *, 0x108) * (f64) gUpdateTimeDelta;
-            sp10 = temp_f0_106;
-            sp30 = temp_f0_106;
-            sp18 = this->unk110 * gUpdateTimeDelta;
-            sp38 = (f64) sp18;
-            M2C_FIELD(temp_r29_69, f64 *, 0) = (f64) (M2C_FIELD(temp_r29_69, f64 *, 0) + temp_f0_106);
-            M2C_FIELD(temp_r29_69, f32 *, 8) = (f32) (M2C_FIELD(temp_r29_69, f32 *, 8) + (f32) sp38);
-            var_r30_66->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r29_69, f32 *, 0x1C);
-            temp_r3_130 = M2C_FIELD(checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x80);
-            temp_f3_134 = var_r30_66->unk20;
-            var_r30_66->unk20 = (f32) fmod(temp_r3_130, temp_f3_134 + this->unkF0, (f32) temp_r3_130, temp_f3_134);
-            temp_r3_144 = M2C_FIELD(temp_r29_69, s32 *, 0x14);
-            if (temp_f29_73 > (this->unk12C * this->unk134[temp_r3_144].unk0)) {
-                M2C_FIELD(temp_r29_69, s32 *, 0x14) = (s32) (temp_r3_144 + 1);
-            }
-            temp_r4_155 = M2C_FIELD(temp_r29_69, s32 *, 0x14);
-            temp_r3_156 = this->unk134;
-            temp_r0_157 = temp_r4_155 - 1;
-            temp_f5_158 = this->unk12C;
-            temp_r5_160 = &temp_r3_156[temp_r0_157];
-            temp_f4_162 = temp_r5_160->unk0;
-            temp_f3_169 = -((temp_f5_158 * temp_f4_162) - temp_f29_73) / (temp_f5_158 * (temp_r3_156[temp_r4_155].unk0 - temp_f4_162));
-            var_r30_66->unk1C = (temp_f3_169 * temp_r5_160->unkC) + temp_r5_160->unk4;
-            var_f0_172 = var_r30_66->unk1C;
-            if (var_f0_172 < 1.0f) {
-
-            } else {
-                var_f0_172 = 1.0f;
-            }
-            if (var_f0_172 > 0.0f) {
-
-            } else {
-                var_f0_172 = 0.0f;
-            }
-            var_r30_66->unk1C = var_f0_172;
-            temp_r5_192 = &this->unk134[temp_r0_157];
-            var_r30_66->unk28 = M2C_FIELD(temp_r29_69, f32 *, 0x18) * ((temp_f3_169 * temp_r5_192->unk10) + temp_r5_192->unk8);
-            var_r30_66 = GetNextParticle(&unksp8);
+    var_r31 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+    while (var_r31 != NULL) {
+        temp_r30 = var_r31->unk2C;
+        age = this->unk128 - M2C_FIELD(temp_r30, f32 *, 0x10);
+        if (age > this->unk12C) {
+            var_r31 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+            continue;
         }
-        goto loop_12;
+
+        /* position += velocity * dt */
+        vel_x = M2C_FIELD(temp_r30, f32 *, 0) * gUpdateTimeDelta;
+        vel_y = M2C_FIELD(temp_r30, f32 *, 4) * gUpdateTimeDelta;
+        vel_z = M2C_FIELD(temp_r30, f32 *, 8) * gUpdateTimeDelta;
+        M2C_FIELD(var_r31, f32 *, 0) += vel_x;
+        M2C_FIELD(var_r31, f32 *, 4) += vel_y;
+        var_r31->unk8 += vel_z;
+
+        /* velocity += wind * dt */
+        wind_x = this->unk108 * gUpdateTimeDelta;
+        wind_y = this->unk10C * gUpdateTimeDelta;
+        wind_z = this->unk110 * gUpdateTimeDelta;
+        M2C_FIELD(temp_r30, f32 *, 0) += wind_x;
+        M2C_FIELD(temp_r30, f32 *, 4) += wind_y;
+        M2C_FIELD(temp_r30, f32 *, 8) += wind_z;
+
+        var_r31->unk24 += gUpdateTimeDelta * M2C_FIELD(temp_r30, f32 *, 0x1C);
+
+        desc = checked_cast<MKBaseParticleSystemDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        temp_r3 = desc->unk80;
+        temp_f3 = var_r31->unk20;
+        var_r31->unk20 = (f32) fmod(temp_r3, temp_f3 + this->unkF0, (f32) temp_r3, temp_f3);
+
+        temp_r3_199 = M2C_FIELD(temp_r30, s32 *, 0x14);
+        if (age > (this->unk12C * this->unk134[temp_r3_199].unk0)) {
+            M2C_FIELD(temp_r30, s32 *, 0x14) = temp_r3_199 + 1;
+        }
+        temp_r4 = M2C_FIELD(temp_r30, s32 *, 0x14);
+        idx = temp_r4 - 1;
+        temp_r5 = &this->unk134[idx];
+        temp_f3_224 = -((this->unk12C * temp_r5->unk0) - age) / (this->unk12C * (this->unk134[temp_r4].unk0 - temp_r5->unk0));
+        var_r31->unk1C = (temp_f3_224 * temp_r5->unkC) + temp_r5->unk4;
+        temp_f0 = var_r31->unk1C;
+        if (temp_f0 < 1.0f) {
+        } else {
+            temp_f0 = 1.0f;
+        }
+        if (temp_f0 > 0.0f) {
+        } else {
+            temp_f0 = 0.0f;
+        }
+        var_r31->unk1C = temp_f0;
+        var_r31->unk28 = M2C_FIELD(temp_r30, f32 *, 0x18) * ((temp_f3_224 * temp_r5->unk10) + temp_r5->unk8);
+        var_r31 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void WeatherRainPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
-    void *temp_r3_229;
-    void *temp_r4_232;
+    void *temp_r3;
+    void *temp_r4;
 
-    temp_r3_229 = CreateParticle();
-    if (temp_r3_229 != NULL) {
-        temp_r4_232 = M2C_FIELD(temp_r3_229, void **, 0x2C);
-        M2C_FIELD(temp_r3_229, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD(temp_r3_229, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-        M2C_FIELD(temp_r3_229, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r4_232, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-        M2C_FIELD(temp_r4_232, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r4_232, f32 *, 0x18) = (f32) &arg2;
-        M2C_FIELD(temp_r4_232, f32 *, 0x1C) = 0.0f;
-        M2C_FIELD(temp_r4_232, s32 *, 0x14) = 0;
+    temp_r3 = CreateParticle();
+    if (temp_r3 != NULL) {
+        temp_r4 = M2C_FIELD(temp_r3, void **, 0x2C);
+        M2C_FIELD(temp_r3, MKVector3 *, 0) = arg0;
+        M2C_FIELD(temp_r3, f32 *, 0x20) = 0.0f;
+        M2C_FIELD(temp_r4, MKVector3 *, 0) = arg1;
+        M2C_FIELD(temp_r4, f32 *, 0x18) = arg2;
+        M2C_FIELD(temp_r4, f32 *, 0x1C) = 0.0f;
+        M2C_FIELD(temp_r4, s32 *, 0x14) = 0;
     }
 }
-#endif
 
 void WeatherRainPS::Deinit() {
     MKParticleSystem::Deinit();
