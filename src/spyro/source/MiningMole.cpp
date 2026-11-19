@@ -192,16 +192,14 @@ void Exhumor::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'P13NPCGoal_Think'
 void MiningMoleLeader::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x169) {
         ((KDSoundPlayer *) &this->unkB14)->Message(arg0);
         Enemy::Message(arg0);
         return;
     }
-    ((NPCGoal_Think *) (checked_cast<P13NPCGoal_Think))->AddGoal_BreakRock(12Goal<5Enemy>>__FP12Goal<5Enemy>((Goal<Enemy> *) this->unkA3C));
+    checked_cast<NPCGoal_Think *, Goal<Enemy> >((Goal<Enemy> *) this->unkA3C)->AddGoal_BreakRock();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *MiningMoleLeader::Update() {
@@ -380,24 +378,20 @@ void MiningMoleLeader::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MiningMole::Despawn(bool arg0) {
     s32 spC;
     s32 sp8;
     MoleTether *temp_r3_725;
-    MoleTether *temp_r3_737;
 
     temp_r3_725 = this->unkB14;
     if (temp_r3_725 != NULL) {
         spC = 0;
         sp8 = 0xBF;
-        M2C_FIELD(temp_r3_725->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
-        temp_r3_737 = this->unkB14;
-        temp_r3_737->Disable();
+        temp_r3_725->Message((MKMessage *) &sp8);
+        this->unkB14->Disable();
     }
     Enemy::Despawn(arg0);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 s32 MiningMole::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
