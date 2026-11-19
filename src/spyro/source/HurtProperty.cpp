@@ -123,67 +123,58 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void HurtProperty::Command(int arg0) {
-    switch (arg0) {                                 /* irregular */
+    switch (arg0) {
     case 1:
-        *(*KDProperty::pInstanceMem + this->unk8) = 1;
+        *(*(u8 **) KDProperty::pInstanceMem + this->unk8) = 1;
         DoHurt();
         return;
     case 2:
-        *(*KDProperty::pInstanceMem + this->unk8) = 0;
+        *(*(u8 **) KDProperty::pInstanceMem + this->unk8) = 0;
         return;
     case 3:
         DoHurt();
         return;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match 'stricmp(signed char *, long *)'
+extern "C" s32 stricmp(const char *, const char *);
 s32 HurtProperty::ResolveCommand(const char *arg0) const {
-    s32 temp_r3_241;
-
     if (stricmp(arg0, "Activate") == 0) {
         return 1;
     }
     if (stricmp(arg0, "Deactivate") == 0) {
         return 2;
     }
-    temp_r3_241 = stricmp(arg0, "Burst") - 1;
-    return 3 & ((temp_r3_241 - temp_r3_241) - !M2C_CARRY);
+    if (stricmp(arg0, "Burst") == 0) {
+        return 3;
+    }
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void HurtProperty::Update() {
-    if ((u8) *(*KDProperty::pInstanceMem + this->unk8) != 0) {
+    if (*(*(u8 **) KDProperty::pInstanceMem + this->unk8) != 0) {
         DoHurt();
     }
 }
-#endif
 
 void HurtProperty::ResolveInstance() {
 
 }
 
-#if 0 // DRAFT: pointer/array required
 void HurtProperty::LoadDoneInstance() {
-    *(*KDProperty::pInstanceMem + this->unk8) = this->unk20;
+    *(*(u8 **) KDProperty::pInstanceMem + this->unk8) = this->unk20;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 HurtProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r31_300;
 
     var_r31_300 = 0;
-    if ((arg0->LoadFloat("HurtRadius", &this->unk1C, 0) != 0) || (arg0->LoadBool("Enabled", &this->unk20, 0) != 0)) {
+    if ((arg0->LoadFloat("HurtRadius", &this->unk1C, 0) != 0) || (arg0->LoadBool("Enabled", (bool *) &this->unk20, 0) != 0)) {
         var_r31_300 = 1;
     }
     return var_r31_300;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void HurtProperty::InitInstance() {
@@ -200,27 +191,23 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void HurtProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r0_373;
 
-    if ((void **) this->unk14 == NULL) {
+    if (this->unk14 == NULL) {
         temp_r0_373 = this->unk10;
         if (temp_r0_373 != NULL) {
-            this->unk14 = (const char *) (property_cast<KDMatrixProperty *, KDProperty *>(arg0->Find(temp_r0_373)));
+            this->unk14 = (void **) property_cast<KDMatrixProperty *, KDProperty *>((KDProperty *) arg0->Find((const char *) temp_r0_373));
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 HurtProperty::LoadLine(MKIniLine *arg0) {
-    if ((MKIniLine *) this->unk18 == NULL) {
+    if (this->unk18 == NULL) {
         this->unk18 = arg0;
     }
-    return (const char **) ((u8) (arg0->LoadString("origin", &this->unk10, 0) != 0));
+    return (u8) (arg0->LoadString("origin", (const char **) &this->unk10, 0) != 0);
 }
-#endif
 
 HurtProperty::HurtProperty() {
     this->unk4 = NULL;
