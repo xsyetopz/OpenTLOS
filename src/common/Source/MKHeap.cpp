@@ -34,13 +34,11 @@ void MKHeap::ActivateTempMemOverride() {
     *MKHeap::tempMemOverride += 1;
 }
 
-#if 0 // DRAFT: illegal operand
 void MKHeap::GetMemoryStatistics(int *arg0, int *arg1, int *arg2) {
-    *arg0 = this->unkC - this->unk0;
+    *arg0 = this->unkC - (s32) this->unk0;
     *arg1 = this->unk4 - this->unk44;
     *arg2 = this->unk44 - this->unkC;
 }
-#endif
 
 void MKHeap::DumpFragmentation() {
 
@@ -61,17 +59,15 @@ void MKHeap::DumpTBlocks() {
     }
 }
 
-#if 0 // DRAFT: type mismatch 'const void *' and 'unsigned long'
 u8 MKHeap::ExistsInHeap(const void *arg0) {
     u8 var_r5_87;
 
     var_r5_87 = 0;
-    if ((arg0 >= (MKHeap *) this->unk0) && (arg0 < (u32) this->unk4)) {
+    if (((u32) arg0 >= (u32) this->unk0) && ((u32) arg0 < (u32) this->unk4)) {
         var_r5_87 = 1;
     }
     return var_r5_87;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
@@ -99,219 +95,182 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void MKHeap::TFree(const void *arg0, const char *arg1, int arg2) {
-    f32 temp_r6_147;
-    f32 var_r5_174;
-    f32 var_r7_150;
-    s32 temp_r0_183;
-    u32 temp_r5_149;
-    u32 var_ctr_154;
-    u32 var_r4_182;
+    u32 base;
+    u32 end;
+    u32 count;
+    u32 cursor;
+    u32 scan;
+    u32 min;
+    u32 i;
 
-    temp_r6_147 = this->unk38;
-    temp_r5_149 = M2C_BITWISE(s32, temp_r6_147) + (this->unk3C * 0x10);
-    var_r7_150 = temp_r6_147;
-    var_ctr_154 = (u32) ((temp_r5_149 + 0xF) - M2C_BITWISE(s32, temp_r6_147)) >> 4U;
-    if (M2C_BITWISE(u32, temp_r6_147) < temp_r5_149) {
-loop_1:
-        if ((s32) M2C_FIELD(var_r7_150, s32 *, 0) == arg0) {
-            this->unk48 -= M2C_FIELD(var_r7_150, s32 *, 4);
-            M2C_FIELD(var_r7_150, s32 *, 4) = -1;
-            M2C_FIELD(var_r7_150, s32 *, 8) = 0;
-            M2C_FIELD(var_r7_150, s32 *, 0xC) = 0;
-            if ((s32) this->unk44 == (s32) M2C_FIELD(var_r7_150, s32 *, 0)) {
-                var_r5_174 = this->unk38;
-                this->unk44 = this->unk4;
-loop_9:
-                if (M2C_BITWISE(u32, var_r5_174) < (u32) (M2C_BITWISE(s32, this->unk38) + (this->unk3C * 0x10))) {
-                    if ((s32) M2C_FIELD(var_r5_174, s32 *, 4) != -1) {
-                        var_r4_182 = M2C_FIELD(var_r5_174, u32 *, 0);
-                        temp_r0_183 = this->unk44;
-                        if ((u32) temp_r0_183 < var_r4_182) {
-                            var_r4_182 = (u32) temp_r0_183;
+    base = *(u32 *) &this->unk38;
+    end = base + (u32) (this->unk3C * 0x10);
+    count = ((end + 0xF) - base) >> 4;
+    cursor = base;
+    if (base < end) {
+        for (i = 0; i < count; i++) {
+            if (*(s32 *) cursor == (s32) arg0) {
+                this->unk48 -= *(s32 *) (cursor + 4);
+                *(s32 *) (cursor + 4) = -1;
+                *(s32 *) (cursor + 8) = 0;
+                *(s32 *) (cursor + 0xC) = 0;
+                if (this->unk44 == *(s32 *) cursor) {
+                    scan = base;
+                    this->unk44 = this->unk4;
+                    while (scan < end) {
+                        if (*(s32 *) (scan + 4) != -1) {
+                            min = *(u32 *) scan;
+                            if ((u32) this->unk44 < min) {
+                                min = (u32) this->unk44;
+                            }
+                            this->unk44 = (s32) min;
                         }
-                        this->unk44 = (s32) var_r4_182;
+                        scan += 0x10;
                     }
-                    var_r5_174 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_174) + 0x10));
-                    goto loop_9;
                 }
+                UpdatePeak();
+                return;
             }
-            UpdatePeak();
-            return;
-        }
-        var_r7_150 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r7_150) + 0x10));
-        var_ctr_154 -= 1;
-        if (var_ctr_154 == 0) {
-
-        } else {
-            goto loop_1;
+            cursor += 0x10;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
 void *MKHeap::TReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
-    f32 temp_r3_225;
-    f32 var_r31_228;
-    s32 temp_r0_245;
-    s32 var_r5_247;
-    u32 temp_r4_227;
-    u32 var_ctr_232;
-    void *temp_r31_246;
+    u32 base;
+    u32 end;
+    u32 count;
+    u32 cursor;
+    u32 i;
+    void *fresh;
+    s32 len;
 
-    if (arg0 != NULL) {
-        temp_r3_225 = this->unk38;
-        temp_r4_227 = M2C_BITWISE(s32, temp_r3_225) + (this->unk3C * 0x10);
-        var_r31_228 = temp_r3_225;
-        var_ctr_232 = (u32) ((temp_r4_227 + 0xF) - M2C_BITWISE(s32, temp_r3_225)) >> 4U;
-        if (M2C_BITWISE(u32, temp_r3_225) < temp_r4_227) {
-loop_2:
-            if ((s32) M2C_FIELD(var_r31_228, s32 *, 0) == arg0) {
-                temp_r0_245 = M2C_FIELD(var_r31_228, s32 *, 4);
-                temp_r31_246 = TAlloc(arg1, arg2, arg3, 0U);
-                var_r5_247 = arg1;
-                if (temp_r0_245 < arg1) {
-                    var_r5_247 = temp_r0_245;
+    if (arg0 == NULL) {
+        return TAlloc(arg1, arg2, arg3, 0);
+    }
+    base = *(u32 *) &this->unk38;
+    end = base + (u32) (this->unk3C * 0x10);
+    count = ((end + 0xF) - base) >> 4;
+    cursor = base;
+    if (base < end) {
+        for (i = 0; i < count; i++) {
+            if (*(s32 *) cursor == (s32) arg0) {
+                fresh = TAlloc(arg1, arg2, arg3, 0);
+                len = arg1;
+                if (*(s32 *) (cursor + 4) < arg1) {
+                    len = *(s32 *) (cursor + 4);
                 }
-                memcpy(temp_r31_246, arg0, (u32) var_r5_247);
+                memcpy(fresh, arg0, (u32) len);
                 TFree(arg0, arg2, arg3);
-                return temp_r31_246;
+                return fresh;
             }
-            var_r31_228 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r31_228) + 0x10));
-            var_ctr_232 -= 1;
-            if (var_ctr_232 == 0) {
-                goto block_7;
-            }
-            goto loop_2;
-        }
-block_7:
-        return NULL;
-    }
-    return TAlloc(arg1, arg2, arg3, 0U);
-}
-#endif
-
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'signed char *'
-void *MKHeap::TAlloc(int arg0, const char *arg1, int arg2, bool arg3) {
-    s32 spC;
-    s32 sp8;
-    MKHeap *temp_r3_378;
-    f32 temp_r8_292;
-    f32 var_r31_295;
-    s32 temp_r0_372;
-    s32 temp_r0_395;
-    s32 var_ctr_396;
-    s32 var_r0_341;
-    s32 var_r3_330;
-    u32 temp_r10_294;
-    u32 var_ctr_299;
-    u32 var_r0_359;
-    u32 var_r3_371;
-    void *var_r11_317;
-    void *var_r4_306;
-
-    temp_r8_292 = this->unk38;
-    temp_r10_294 = M2C_BITWISE(s32, temp_r8_292) + (this->unk3C * 0x10);
-    var_r31_295 = temp_r8_292;
-    var_ctr_299 = (u32) ((temp_r10_294 + 0xF) - M2C_BITWISE(s32, temp_r8_292)) >> 4U;
-    if (M2C_BITWISE(u32, temp_r8_292) < temp_r10_294) {
-loop_1:
-        if ((s32) M2C_FIELD(var_r31_295, s32 *, 4) == -1) {
-            var_r4_306 = (void *) (M2C_BITWISE(s32, var_r31_295) + 0x10);
-loop_4:
-            if ((var_r4_306 < temp_r10_294) && ((s32) M2C_FIELD(var_r4_306, s32 *, 4) == -1)) {
-                var_r4_306 += 0x10;
-                goto loop_4;
-            }
-            var_r11_317 = (void *) (M2C_BITWISE(s32, var_r31_295) - 0x10);
-loop_8:
-            if ((var_r11_317 > M2C_BITWISE(u32, temp_r8_292)) && ((s32) M2C_FIELD(var_r11_317, s32 *, 4) == -1)) {
-                var_r11_317 -= 0x10;
-                goto loop_8;
-            }
-            if (M2C_BITWISE(u32, var_r31_295) == M2C_BITWISE(u32, temp_r8_292)) {
-                var_r3_330 = this->unk4;
-            } else {
-                var_r3_330 = M2C_FIELD(var_r11_317, s32 *, 0);
-            }
-            if (var_r4_306 == temp_r10_294) {
-                var_r0_341 = (this->unkC + 0x1F) & 0xFFFFFFE0;
-            } else {
-                var_r0_341 = (M2C_FIELD(var_r4_306, s32 *, 0) + (M2C_FIELD(var_r4_306, s32 *, 4) + 0x1F)) & 0xFFFFFFE0;
-            }
-            if ((s32) (((var_r3_330 - 1) & 0xFFFFFFE0) - var_r0_341) >= arg0) {
-                M2C_FIELD(var_r31_295, s8 **, 8) = arg1;
-                M2C_FIELD(var_r31_295, s32 *, 0xC) = arg2;
-                if (M2C_BITWISE(u32, var_r31_295) == M2C_BITWISE(u32, this->unk38)) {
-                    var_r0_359 = this->unk4 - arg0;
-                } else {
-                    var_r0_359 = M2C_FIELD(var_r11_317, s32 *, 0) - arg0;
-                }
-                M2C_FIELD(var_r31_295, u32 *, 0) = var_r0_359;
-                M2C_FIELD(var_r31_295, u32 *, 0) = (u32) ((M2C_FIELD(var_r31_295, u32 *, 0) - 1) & 0xFFFFFFE0);
-                M2C_FIELD(var_r31_295, s32 *, 4) = arg0;
-                var_r3_371 = M2C_FIELD(var_r31_295, u32 *, 0);
-                temp_r0_372 = this->unk44;
-                if ((u32) temp_r0_372 < var_r3_371) {
-                    var_r3_371 = (u32) temp_r0_372;
-                }
-                this->unk44 = (s32) var_r3_371;
-                temp_r3_378 = this->unk48;
-                this->unk48 = temp_r3_378 + M2C_FIELD(var_r31_295, s32 *, 4);
-                temp_r3_378->UpdatePeak();
-                return (void *) M2C_FIELD(var_r31_295, u32 *, 0);
-            }
-            goto block_23;
-        }
-block_23:
-        var_r31_295 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r31_295) + 0x10));
-        var_ctr_299 -= 1;
-        if (var_ctr_299 == 0) {
-            goto block_24;
-        }
-        goto loop_1;
-    }
-block_24:
-    if (arg3 == 0) {
-        DumpFragmentation();
-        DumpTBlocks();
-        temp_r0_395 = this->unk3C;
-        var_ctr_396 = temp_r0_395;
-        if (temp_r0_395 > 0) {
-            do {
-                var_ctr_396 -= 1;
-            } while (var_ctr_396 != 0);
-        }
-        if ((u8) gbGoldMaster == 0) {
-            sp8 = black;
-            spC = white;
-            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("Couldn't find room/position for temp alloc!
-size=%d [heapsize=%d]", arg0, this->unk4 - this->unk0));
+            cursor += 0x10;
         }
     }
     return NULL;
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
+void *MKHeap::TAlloc(int arg0, const char *arg1, int arg2, bool arg3) {
+    u32 base;
+    u32 end;
+    u32 count;
+    u32 cursor;
+    u32 i;
+    u32 scan;
+    u32 prev;
+    u32 upper;
+    u32 lower;
+    u32 min;
+    MKHeap *temp;
+    s32 spin;
+    s32 spC;
+    s32 sp8;
+
+    base = *(u32 *) &this->unk38;
+    end = base + (u32) (this->unk3C * 0x10);
+    count = ((end + 0xF) - base) >> 4;
+    cursor = base;
+    if (base < end) {
+        for (i = 0; i < count; i++) {
+            if (*(s32 *) (cursor + 4) == -1) {
+                scan = cursor + 0x10;
+                while ((scan < end) && (*(s32 *) (scan + 4) == -1)) {
+                    scan += 0x10;
+                }
+                prev = cursor - 0x10;
+                while ((prev > base) && (*(s32 *) (prev + 4) == -1)) {
+                    prev -= 0x10;
+                }
+                if (cursor == base) {
+                    upper = (u32) this->unk4;
+                } else {
+                    upper = *(u32 *) prev;
+                }
+                if (scan == end) {
+                    lower = ((u32) this->unkC + 0x1F) & 0xFFFFFFE0;
+                } else {
+                    lower = (*(u32 *) scan + (*(u32 *) (scan + 4) + 0x1F)) & 0xFFFFFFE0;
+                }
+                if ((s32) (((upper - 1) & 0xFFFFFFE0) - lower) >= arg0) {
+                    *(s32 *) (cursor + 8) = (s32) arg1;
+                    *(s32 *) (cursor + 0xC) = arg2;
+                    if (cursor == base) {
+                        *(s32 *) cursor = this->unk4 - arg0;
+                    } else {
+                        *(s32 *) cursor = *(s32 *) prev - arg0;
+                    }
+                    *(u32 *) cursor = (*(u32 *) cursor - 1) & 0xFFFFFFE0;
+                    *(s32 *) (cursor + 4) = arg0;
+                    min = *(u32 *) cursor;
+                    if ((u32) this->unk44 < min) {
+                        min = (u32) this->unk44;
+                    }
+                    this->unk44 = (s32) min;
+                    temp = this->unk48;
+                    this->unk48 = (MKHeap *) ((s32) temp + *(s32 *) (cursor + 4));
+                    temp->UpdatePeak();
+                    return (void *) *(u32 *) cursor;
+                }
+            }
+            cursor += 0x10;
+        }
+    }
+    if (arg3 == 0) {
+        DumpFragmentation();
+        DumpTBlocks();
+        spin = this->unk3C;
+        if (spin > 0) {
+            do {
+                spin -= 1;
+            } while (spin != 0);
+        }
+        if ((u8) gbGoldMaster == 0) {
+            sp8 = black;
+            spC = white;
+            OSFatal(*(GXColor *) &spC, *(GXColor *) &sp8, (const char *) Str_Printf("Couldn't find room/position for temp alloc!\nsize=%d [heapsize=%d]", arg0, this->unk4 - (s32) this->unk0));
+        }
+    }
+    return NULL;
+}
+
 void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
+    MKHeap *first;
+
     if (arg0 != NULL) {
-        if ((arg0 >= (u32) (*MKHeap::heapList)->unk44) && (arg0 <= (u32) (*MKHeap::heapList)->unk4)) {
-            ((MKHeap *) (*MKHeap::heapList))->TFree(arg0, arg1, arg2);
+        first = ((MKHeap **) MKHeap::heapList)[0];
+        if (((u32) arg0 >= (u32) first->unk44) && ((u32) arg0 <= (u32) first->unk4)) {
+            first->TFree(arg0, arg1, arg2);
             return;
         }
-        if ((arg0 < (MKHeap *) this->unk0) || (arg0 > (u32) this->unk44)) {
-            OSFreeToHeap(__OSCurrHeap, arg0);
+        if (((u32) arg0 < (u32) this->unk0) || ((u32) arg0 > (u32) this->unk44)) {
+            OSFreeToHeap(__OSCurrHeap, (void *) arg0);
             return;
         }
         UpdatePeak();
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long *' to '_GXColor'
 void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     s32 spC;
     s32 sp8;
@@ -320,19 +279,19 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
 
     var_r30_478 = arg0;
     if ((s32) *MKHeap::tempMemOverride != 0) {
-        return ((MKHeap *) (*MKHeap::heapList))->TReAlloc(arg0, arg1, arg2, arg3);
+        return ((MKHeap **) MKHeap::heapList)[0]->TReAlloc(arg0, arg1, arg2, arg3);
     }
     if (var_r30_478 != NULL) {
         this->unkC = this->unk8 + arg1;
         if (((u8) gbGoldMaster == 0) && ((s32) this->unkC >= (s32) this->unk44)) {
             sp8 = black;
             spC = white;
-            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("Out of memory realloc'ing %d bytes", arg1));
+            OSFatal(*(GXColor *) &spC, *(GXColor *) &sp8, (const char *) Str_Printf("Out of memory realloc'ing %d bytes", arg1));
         }
-        ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->UpdatePeak();
+        this->UpdatePeak();
     } else {
         if (MKHeap::Current() != NULL) {
-            var_r3_526 = ((MKHeap *) (MKHeap::Current()))->Alloc(arg1, NULL, 0);
+            var_r3_526 = MKHeap::Current()->Alloc(arg1, NULL, 0);
         } else {
             var_r3_526 = malloc(arg1);
         }
@@ -340,30 +299,27 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     }
     return var_r30_478;
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'void *' and 'long'
 void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     s32 spC;
     s32 sp8;
     void *var_r30_560;
 
     if ((s32) *MKHeap::tempMemOverride != 0) {
-        var_r30_560 = ((MKHeap *) (*MKHeap::heapList))->TAlloc(arg0, arg1, arg2, 0U);
+        var_r30_560 = ((MKHeap **) MKHeap::heapList)[0]->TAlloc(arg0, arg1, arg2, 0);
     } else {
         var_r30_560 = (void *) ((this->unkC + 0x1F) & 0xFFFFFFE0);
         this->unk8 = (s32) var_r30_560;
-        if (((u8) gbGoldMaster == 0) && ((void *) (((u8 *) var_r30_560) + arg0) >= (s32) this->unk44)) {
+        if (((u8) gbGoldMaster == 0) && (((s32) var_r30_560 + arg0) >= this->unk44)) {
             sp8 = black;
             spC = white;
-            OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("No memory allocating %d bytes\n(%d free in heap %s)\n[heapsize=%d]", this->unk44 - var_r30_560, &this->unk4C, this->unk4 - this->unk0));
+            OSFatal(*(GXColor *) &spC, *(GXColor *) &sp8, (const char *) Str_Printf("No memory allocating %d bytes\n(%d free in heap %s)\n[heapsize=%d]", arg0, this->unk44 - (s32) var_r30_560, &this->unk4C, this->unk4 - (s32) this->unk0));
         }
-        this->unkC = (s32) (((u8 *) var_r30_560) + arg0);
+        this->unkC = (s32) ((u8 *) var_r30_560 + arg0);
     }
-    ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->UpdatePeak();
+    UpdatePeak();
     return var_r30_560;
 }
-#endif
 
 s32 MKHeap::Release(int arg0) {
     M2C_FIELD(this, s32 *, 0x30) = (s32) (M2C_FIELD(this, s32 *, 0x30) - 1);
@@ -513,48 +469,29 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
     } while (var_r30_796 < 0xA);
 }
 
-#if 0 // DRAFT: type mismatch 'unsigned long' and 'MKHeap *'
 u8 MKHeap::IsWithinAHeap() {
-    s32 var_ctr_860;
-    s32 var_r4_859;
-    void *temp_r7_862;
+    u32 i;
+    MKHeap *heap;
 
-    var_r4_859 = 0;
-    var_ctr_860 = 0xA;
-loop_1:
-    temp_r7_862 = (void *) (MKHeap::heapList[var_r4_859]);
-    if ((temp_r7_862 != NULL) && (temp_r7_862 != this) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 0) <= (MKHeap *) this->unk0) && ((u32) M2C_FIELD(temp_r7_862, u32 *, 4) >= (u32) this->unk4)) {
-        return 1U;
+    for (i = 0; i < 0xA; i++) {
+        heap = ((MKHeap **) MKHeap::heapList)[i];
+        if ((heap != NULL) && (heap != this) && ((u32) heap->unk0 <= (u32) this->unk0) && ((u32) heap->unk4 >= (u32) this->unk4)) {
+            return 1;
+        }
     }
-    var_r4_859 += 4;
-    var_ctr_860 -= 1;
-    if (var_ctr_860 == 0) {
-        return 0U;
-    }
-    goto loop_1;
+    return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void MKHeap::RemoveHeapFromGlobalList() {
-    s32 var_ctr_891;
-    s32 var_r4_890;
+    u32 i;
 
-    var_r4_890 = 0;
-    var_ctr_891 = 0xA;
-loop_1:
-    if ((u32) MKHeap::heapList[var_r4_890] == this) {
-        MKHeap::heapList[var_r4_890] = 0;
-        return;
+    for (i = 0; i < 0xA; i++) {
+        if ((u32) ((MKHeap **) MKHeap::heapList)[i] == (u32) this) {
+            ((MKHeap **) MKHeap::heapList)[i] = NULL;
+            return;
+        }
     }
-    var_r4_890 += 4;
-    var_ctr_891 -= 1;
-    if (var_ctr_891 == 0) {
-        return;
-    }
-    goto loop_1;
 }
-#endif
 
 void MKHeap::AddHeapToGlobalList() {
     s32 var_ctr_912;
@@ -582,48 +519,43 @@ void MKHeap::DeInit() {
     RemoveHeapFromGlobalList();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, const char *)' does not match 'strcpy(char *, const char *)'
 void MKHeap::Init(int arg0, int arg1, const char *arg2, void *arg3) {
     s32 spC;
     s32 sp8;
-    f32 temp_f1_993;
     s32 var_r6_1024;
 
     if (arg3 != NULL) {
         this->unk0 = (MKHeap *) arg3;
-        this->unk4 = (long) ((this->unk0 + arg0) - (arg1 * 0x10));
+        this->unk4 = (s32) ((u8 *) this->unk0 + arg0) - (arg1 * 0x10);
         M2C_FIELD(this, s8 *, 0x34) = 1;
     } else {
-        this->unk0 = (MKHeap *) (OSAllocFromHeap(__OSCurrHeap, arg0 + (arg1 * 0x10)));
-        this->unk4 = (s32) (this->unk0 + arg0);
+        this->unk0 = (MKHeap *) OSAllocFromHeap(__OSCurrHeap, arg0 + (arg1 * 0x10));
+        this->unk4 = (s32) ((u8 *) this->unk0 + arg0);
         M2C_FIELD(this, s8 *, 0x34) = 0;
         memset(this->unk0, 0xCD, (u32) arg0);
     }
     this->unkC = (s32) this->unk0;
     M2C_FIELD(this, s32 *, 0x30) = 0;
-    temp_f1_993 = M2C_BITWISE(f32, strcpy(&this->unk4C, arg2));
-    if (((u8) gbGoldMaster == 0) && ((MKHeap *) this->unk0 == NULL)) {
+    strcpy((char *) &this->unk4C, arg2);
+    if (((u8) gbGoldMaster == 0) && (this->unk0 == NULL)) {
         sp8 = black;
         spC = white;
-        OSFatal((GXColor) &spC, (GXColor) &sp8, Str_Printf("MKHeap::Init couldn't grab %d bytes!", arg0, temp_f1_993));
+        OSFatal(*(GXColor *) &spC, *(GXColor *) &sp8, (const char *) Str_Printf("MKHeap::Init couldn't grab %d bytes!", arg0));
     }
     this->unk3C = arg1;
-    this->unk38 = M2C_BITWISE(f32, this->unk4);
+    *(s32 *) &this->unk38 = this->unk4;
     this->unk44 = this->unk4;
     this->unk48 = NULL;
     var_r6_1024 = this->unk4;
-loop_8:
-    if ((u32) var_r6_1024 < (u32) (M2C_BITWISE(s32, this->unk38) + (arg1 * 0x10))) {
+    while ((u32) var_r6_1024 < (u32) (*(s32 *) &this->unk38 + (arg1 * 0x10))) {
         M2C_FIELD(var_r6_1024, s32 *, 0) = -1;
         M2C_FIELD(var_r6_1024, s32 *, 4) = -1;
         M2C_FIELD(var_r6_1024, s32 *, 8) = 0;
         M2C_FIELD(var_r6_1024, s32 *, 0xC) = 0;
         var_r6_1024 += 0x10;
-        goto loop_8;
     }
     AddHeapToGlobalList();
 }
-#endif
 
 void MKHeap::InitModule() {
     s32 var_ctr_1069;
