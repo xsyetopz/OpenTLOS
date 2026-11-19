@@ -36,6 +36,7 @@ typedef s64 M2C_UNK64;
 extern f32 __float_nan;
 extern f32 __float_huge;
 extern f32 __float_max;
+extern f32 __float_min;
 extern f64 __double_min;
 extern f64 __double_max;
 extern f64 __double_huge;

@@ -17,7 +17,6 @@
 M2C_UNK free(MKVector3 *);                          /* extern */
 MKVector3 *malloc(s32);                             /* extern */
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 s32 PolyRegion::LoadLine(char *arg0, MKIniLine *arg1) {
     MKIniLine *var_r27_42;
     MKVector3 *var_r3_31;
@@ -36,36 +35,34 @@ s32 PolyRegion::LoadLine(char *arg0, MKIniLine *arg1) {
         this->unk0 = var_r3_31;
         var_r27_42 = arg1->unkC->GetSubLine(arg1);
         var_r29_44 = 0;
-loop_12:
-        if (var_r27_42 != NULL) {
-            if (var_r27_42->LoadVector3("waypoint", this->unk0 + var_r29_44, 0) != 0) {
-                temp_f1_58 = *(this->unk0 + (var_r29_44 + 4));
-                if (temp_f1_58 < this->unk4.unk18) {
-                    this->unk4.unk18 = temp_f1_58;
+        while (var_r27_42 != NULL) {
+            if (var_r27_42->LoadVector3("waypoint", (MKVector3 *) ((u8 *) this->unk0 + var_r29_44), 0) != 0) {
+                temp_f1_58 = *(f32 *) ((u8 *) this->unk0 + (var_r29_44 + 4));
+                if (temp_f1_58 < this->unk4.unk1C) {
+                    this->unk4.unk1C = temp_f1_58;
                 }
-                temp_f1_66 = *(this->unk0 + (var_r29_44 + 4));
-                if (temp_f1_66 > this->unk4.unk1C) {
-                    this->unk4.unk1C = temp_f1_66;
+                temp_f1_66 = *(f32 *) ((u8 *) this->unk0 + (var_r29_44 + 4));
+                if (temp_f1_66 > this->unk24) {
+                    this->unk24 = temp_f1_66;
                 }
                 var_r29_44 += 0x10;
             }
             var_r27_42 = var_r27_42->unkC->GetNextLine(var_r27_42);
-            goto loop_12;
         }
         ((BoundingRegion *) &this->unk4)->Init(this->unk0, arg1->GetNmbrOfSubLines());
         this->unk30 = M2C_FIELD(this, f32 *, 0x10);
-        this->unk34 = this->unk4.unk10;
-        this->unk40 = M2C_FIELD(this, f32 *, 0x14);
-        this->unk44 = this->unk4.unk14;
-        this->unk30 = this->unk4.unk18;
-        this->unk40 = this->unk4.unk1C;
-        M2C_FIELD(this, f32 *, 0x40) = (f64) ((f64) M2C_FIELD(this, f32 *, 0x40) - (f64) M2C_FIELD(this, f32 *, 0x30));
-        this->unk44 -= this->unk34;
+        this->unk34 = this->unk4.unk1C;
+        this->unk38 = this->unk4.unk14;
+        this->unk40 = this->unk4.unk10;
+        this->unk44 = this->unk24;
+        this->unk48 = this->unk4.unk18;
+        this->unk40 = this->unk40 - this->unk30;
+        this->unk44 = this->unk44 - this->unk34;
+        this->unk48 = this->unk48 - this->unk38;
         return 1;
     }
     return 0;
 }
-#endif
 
 void PolyRegion::Deinit() {
     MKVector3 *temp_r31_128;
@@ -81,10 +78,9 @@ void PolyRegion::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__float_max'
 void PolyRegion::Init() {
+
     this->unk0 = NULL;
-    this->unk4.unk18 = __float_max;
-    this->unk4.unk1C = __float_min;
+    this->unk4.unk1C = __float_max;
+    this->unk24 = __float_min;
 }
-#endif
