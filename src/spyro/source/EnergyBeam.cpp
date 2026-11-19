@@ -32,7 +32,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
+extern "C" void free(void *);
 void EnergyBeam::Deinit() {
     MKHeap *temp_r0_55;
     MKHeap *temp_r0_74;
@@ -45,8 +45,8 @@ void EnergyBeam::Deinit() {
     var_r31_51 = var_r4_50;
     var_r3_52 = var_r4_50;
 loop_3:
-    temp_r0_60 = M2C_FIELD(var_r3_52, u32 *, -4);
-    var_r3_52 -= 4;
+    temp_r0_60 = *(u32 *) ((u8 *) var_r3_52 - 4);
+    var_r3_52 = (MKHeap *) ((u8 *) var_r3_52 - 4);
     if (temp_r0_60 != 0U) {
         temp_r0_55 = var_r3_52->unk0;
         if (temp_r0_55 < var_r31_51) {
@@ -54,20 +54,20 @@ loop_3:
         }
         goto loop_3;
     }
-    if (var_r3_52 != &gEmptyPtrListDL) {
+    if (var_r3_52 != (MKHeap *) &gEmptyPtrListDL) {
 loop_9:
         temp_r0_74 = var_r4_50->unk0;
         if (temp_r0_74 != NULL) {
             if (temp_r0_74 < var_r31_51) {
                 var_r31_51 = temp_r0_74;
             }
-            var_r4_50 += 4;
+            var_r4_50 = (MKHeap *) ((u8 *) var_r4_50 + 4);
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
             ((MKHeap *) (MKHeap::Current()))->Free(var_r31_51, NULL, 0);
         } else {
-            free(var_r31_51);
+            free((void *) var_r31_51);
         }
     }
     this->unk90 = NULL;
@@ -75,7 +75,6 @@ loop_9:
     this->unk94.Deinit();
     KDProp::Deinit();
 }
-#endif
 
 void EnergyBeam::Draw() {
     MKHeap *temp_r4_134;
@@ -372,40 +371,35 @@ loop_45:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
-    f64 sp68;                                       /* compiler-managed */
-    f64 sp60;                                       /* compiler-managed */
-    f64 sp58;
-    f64 sp50;
-    MKVector3 sp40;
-    MKVector3 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp18;
-    f64 sp10;
-    f32 sp8;
-    f32 var_f3_692;
-    f32 var_f4_625;
     f64 temp_f1_631;
     f64 temp_f1_637;
     f64 temp_f1_641;
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    f32 sp8;
+    f32 temp_f31_700;
+    f32 var_f3_692;
+    f32 var_f4_625;
+    MKVector3 sp30;
+    MKVector3 sp40;
+    MKVector3 sp60;
+    MKVector3 *temp_r3_604;
+    MKVector3 *temp_r3_727;
+    MKVector3 *temp_r4_603;
     s32 temp_r3_660;
     s32 var_r0_670;
     s32 var_r28_699;
     s32 var_r30_701;
-    void *temp_r3_604;
-    void *temp_r3_727;
-    void *temp_r3_734;
-    void *temp_r4_603;
+    s8 *temp_r3_734;
 
-    temp_r4_603 = M2C_FIELD(arg1, void **, 0);
-    temp_r3_604 = M2C_FIELD(arg1, void **, 4);
-    sp20 = M2C_FIELD(temp_r3_604, f64 *, 0) - M2C_FIELD(temp_r4_603, f64 *, 0);
-    sp60 = sp20;
-    sp28 = M2C_FIELD(temp_r3_604, f32 *, 8) - M2C_FIELD(temp_r4_603, f32 *, 8);
-    sp68 = (f64) sp28;
-    var_f4_625 = ((f32) sp68 * (f32) sp68) + (((f32) sp60 * (f32) sp60) + ((*(f32 *) ((u8 *) &sp58 + 0xc)) * (*(f32 *) ((u8 *) &sp58 + 0xc))));
+    temp_r4_603 = (MKVector3 *) M2C_FIELD(arg1, void **, 0);
+    temp_r3_604 = (MKVector3 *) M2C_FIELD(arg1, void **, 4);
+    dx = temp_r3_604->unk0 - temp_r4_603->unk0;
+    dy = temp_r3_604->unk4 - temp_r4_603->unk4;
+    dz = temp_r3_604->unk8 - temp_r4_603->unk8;
+    var_f4_625 = (dz * dz) + ((dx * dx) + (dy * dy));
     if (var_f4_625 > 0.000001f) {
         if (var_f4_625 > 0.0f) {
             temp_f1_631 = __frsqrte(var_f4_625);
@@ -447,26 +441,26 @@ void EnergyBeam::ResetSafePositions(EnergyBeam::Beam *arg1) {
     }
     var_r28_699 = 0;
     var_r30_701 = 0;
-    sp60 = (f32) sp60 * var_f3_692;
-    (*(f32 *) ((u8 *) &sp58 + 0xc)) *= var_f3_692;
-    sp68 = (f32) sp68 * var_f3_692;
+    dx = dx * var_f3_692;
+    dy = dy * var_f3_692;
+    dz = dz * var_f3_692;
+    sp60.unk0 = dx;
+    sp60.unk4 = dy;
+    sp60.unk8 = dz;
     M2C_FIELD(arg1, f32 *, 8) = var_f4_625;
+    temp_f31_700 = var_f4_625 / 7.0f;
     do {
-        sp30.operator*(var_f4_625 / 7.0f);
-        sp40.operator*((f32) var_r28_699);
-        temp_r3_727 = M2C_FIELD(arg1, void **, 0);
-        sp10 = M2C_FIELD(temp_r3_727, f64 *, 0) + M2C_BITWISE(f64, sp40);
-        temp_r3_734 = arg1 + (var_r30_701 + 0x40);
+        sp30 = sp60.operator*(temp_f31_700);
+        sp40 = sp30.operator*((f32) var_r28_699);
+        temp_r3_727 = (MKVector3 *) M2C_FIELD(arg1, void **, 0);
+        temp_r3_734 = (s8 *) arg1 + var_r30_701 + 0x40;
         var_r28_699 += 1;
         var_r30_701 += 0x50;
-        M2C_FIELD(temp_r3_734, f64 *, 0) = sp10;
-        sp18 = M2C_FIELD(temp_r3_727, f32 *, 8) + sp40.unk8;
-        sp50 = sp10;
-        sp58 = (f64) sp18;
-        M2C_FIELD(temp_r3_734, f64 *, 8) = (f64) sp18;
+        M2C_FIELD(temp_r3_734, f32 *, 0x0) = temp_r3_727->unk0 + sp40.unk0;
+        M2C_FIELD(temp_r3_734, f32 *, 0x4) = temp_r3_727->unk4 + sp40.unk4;
+        M2C_FIELD(temp_r3_734, f32 *, 0x8) = temp_r3_727->unk8 + sp40.unk8;
     } while (var_r28_699 < 8);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
@@ -524,7 +518,6 @@ void EnergyBeam::UpdateTargetVelocities(EnergyBeam::Beam *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'EnergyBeam::Beam *' and 'MKHeap *'
 void EnergyBeam::FreeEnergyBeam(EnergyBeam::Beam *arg1) {
     MKHeap *temp_r0_873;
     MKHeap *temp_r3_863;
@@ -532,57 +525,47 @@ void EnergyBeam::FreeEnergyBeam(EnergyBeam::Beam *arg1) {
     MKHeap *var_r5_855;
 
     var_r5_855 = this->unk90;
-loop_4:
-    if (var_r5_855 != NULL) {
+    while (var_r5_855 != NULL) {
         temp_r0_873 = var_r5_855->unk0;
         if (temp_r0_873 == NULL) {
             return;
         }
-        if (arg1 == temp_r0_873) {
+        if ((MKHeap *) arg1 == temp_r0_873) {
             temp_r4_860 = this->unk90;
-            this->unk90 = (MKHeap *) &temp_r4_860->unk4;
+            this->unk90 = (MKHeap *) ((u8 *) temp_r4_860 + 4);
             temp_r3_863 = temp_r4_860->unk0;
             temp_r4_860->unk0 = var_r5_855->unk0;
             var_r5_855->unk0 = temp_r3_863;
             return;
         }
-        var_r5_855 += 4;
-        goto loop_4;
+        var_r5_855 = (MKHeap *) ((u8 *) var_r5_855 + 4);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
-    f64 sp80;
-    f64 sp78;
-    MKVector3 sp68;
-    MKVector3 sp58;
-    f64 sp50;
-    f64 sp48;
-    MKVector3 sp38;
-    MKVector3 sp28;
-    f32 sp20;
-    f64 sp18;
-    f32 sp10;
-    f64 sp8;
-    MKHeap *temp_r29_907;
-    MKHeap *temp_r6_898;
-    MKHeap *temp_r6_905;
     f32 temp_f27_932;
     f32 temp_f27_962;
     f32 temp_f28_927;
     f32 temp_f28_967;
     f32 temp_f30_924;
+    f32 sp20;
+    f32 sp10;
+    MKVector3 sp68;
+    MKVector3 sp58;
+    MKVector3 sp38;
+    MKVector3 sp28;
+    MKHeap *temp_r29_907;
+    MKHeap *temp_r6_898;
+    MKHeap *temp_r6_905;
+    s8 *temp_r28_948;
     s32 var_r27_918;
     s32 var_r31_919;
-    void *temp_r28_948;
 
     temp_r6_898 = this->unk90;
     if ((u32) M2C_FIELD(temp_r6_898, u32 *, -4) == 0U) {
         return;
     }
-    temp_r6_905 = temp_r6_898 - 4;
+    temp_r6_905 = (MKHeap *) ((s8 *) temp_r6_898 - 4);
     this->unk90 = temp_r6_905;
     temp_r29_907 = temp_r6_905->unk0;
     if (temp_r29_907 != NULL) {
@@ -593,39 +576,34 @@ void EnergyBeam::SpawnEnergyBeam(MKVector3 *arg0, MKVector3 *arg1, float arg2) {
         var_r27_918 = 0;
         var_r31_919 = 0;
         do {
-            temp_f30_924 = M2C_BITWISE(f32, temp_r29_907->unk8) / 1000.0f;
+            temp_f30_924 = M2C_FIELD(temp_r29_907, f32 *, 0x8) / 1000.0f;
             temp_f28_927 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f27_932 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp58 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f27_932, temp_f28_927);
-            sp68.operator*(2500.0f);
-            sp18 = sp68 * (f64) temp_f30_924;
-            temp_r28_948 = temp_r29_907 + var_r31_919;
-            M2C_FIELD(temp_r28_948, f64 *, 0x30) = sp18;
+            sp68 = sp58.operator*(2500.0f);
+            temp_r28_948 = (s8 *) temp_r29_907 + var_r31_919;
+            M2C_FIELD(temp_r28_948, f32 *, 0x30) = sp68.unk0 * temp_f30_924;
+            M2C_FIELD(temp_r28_948, f32 *, 0x34) = sp68.unk4 * temp_f30_924;
             sp20 = sp68.unk8 * temp_f30_924;
-            sp78 = sp18;
-            sp80 = (f64) sp20;
-            M2C_FIELD(temp_r28_948, f64 *, 0x38) = (f64) sp20;
+            M2C_FIELD(temp_r28_948, f32 *, 0x38) = sp20;
             temp_f27_962 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f28_967 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             sp28 = MKVector(MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f), temp_f28_967, temp_f27_962);
-            sp38.operator*(200.0f);
-            sp8 = M2C_FIELD(temp_r28_948, f64 *, 0x40) + M2C_BITWISE(f64, sp38);
-            M2C_FIELD(temp_r28_948, f64 *, 0x20) = sp8;
+            sp38 = sp28.operator*(200.0f);
+            M2C_FIELD(temp_r28_948, f32 *, 0x20) = M2C_FIELD(temp_r28_948, f32 *, 0x40) + sp38.unk0;
+            M2C_FIELD(temp_r28_948, f32 *, 0x24) = M2C_FIELD(temp_r28_948, f32 *, 0x44) + sp38.unk4;
             sp10 = M2C_FIELD(temp_r28_948, f32 *, 0x48) + sp38.unk8;
-            sp48 = sp8;
-            sp50 = (f64) sp10;
-            M2C_FIELD(temp_r28_948, f64 *, 0x28) = (f64) sp10;
+            M2C_FIELD(temp_r28_948, f32 *, 0x28) = sp10;
             M2C_FIELD(temp_r28_948, f32 *, 0x60) = MKRand_Float((int *) &gViewSeed, 0.25f, 1.0f);
             var_r27_918 += 1;
             var_r31_919 += 0x50;
-            temp_r29_907->unkC = arg2;
+            M2C_FIELD(temp_r29_907, f32 *, 0xC) = arg2;
         } while (var_r27_918 < 8);
         UpdateTargetVelocities((EnergyBeam::Beam *) temp_r29_907);
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *EnergyBeam::Update() {
     f64 spA0;
     f64 sp98;
