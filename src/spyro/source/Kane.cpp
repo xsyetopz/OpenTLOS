@@ -54,16 +54,13 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 Kane::LoadLine(MKIniLine *arg0) {
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("StartEnabled", (u8 *) &this->unkB14, 0) != 0) || (arg0->LoadInt("StartNode", (int *) &this->unkB10, 0) != 0)) {
+    if (((u8) Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("StartEnabled", (bool *) &this->unkB14, 0) != 0) || (arg0->LoadInt("StartNode", (int *) &this->unkB10, 0) != 0)) {
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 f32 Kane::Resolve() {
     s32 spC;
     s32 sp8;
@@ -78,11 +75,10 @@ f32 Kane::Resolve() {
     if ((u8) M2C_FIELD(this, u8 *, 0xB14) == 0) {
         spC = 0;
         sp8 = 0xBF;
-        Message(&sp8);
+        Message((MKMessage *) &sp8);
         Disable();
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Kane::Init() {
