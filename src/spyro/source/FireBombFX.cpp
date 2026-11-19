@@ -98,24 +98,20 @@ void FireBombFXDescriptor::Deinit() {
     ((KDPropExDescriptor *) this)->KDPropExDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match 'MKMaterial_Create(const char *)'
 void FireBombFXDescriptor::LoadDone() {
     ((GamePropDescriptor *) this)->GamePropDescriptor::LoadDone();
-    this->unkEC = MKMaterial_Create(this->unkE8);
+    this->unkEC = (MKMaterial *) (MKMaterial_Create((const char *) this->unkE8));
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 FireBombFXDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_55;
 
     var_r31_55 = 0;
-    if ((((GamePropDescriptor *) this)->GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("flamemat", &this->unkE8, 0) != 0) || (arg0->LoadString("trailmat", &this->unkE4, 0) != 0)) {
+    if (((u8) ((GamePropDescriptor *) this)->GamePropDescriptor::LoadLine(arg0) != 0) || ((u8) arg0->LoadString("flamemat", (const char **) &this->unkE8, 0) != 0) || ((u8) arg0->LoadString("trailmat", (const char **) &this->unkE4, 0) != 0)) {
         var_r31_55 = 1;
     }
     return var_r31_55;
 }
-#endif
 
 void FireBombFXDescriptor::Init() {
     ((GamePropDescriptor *) this)->GamePropDescriptor::Init();
@@ -123,7 +119,6 @@ void FireBombFXDescriptor::Init() {
     this->unkE4 = NULL;
 }
 
-#if 0 // DRAFT: illegal type
 void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, bool arg4, bool arg5, int arg6, const MKVector3 &arg7) {
     s8 spC8;
     s32 spC4;
@@ -146,21 +141,12 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     f32 sp80;
     f32 sp7C;
     f32 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp40;
-    f64 sp38;
-    f32 sp30;
-    f64 sp28;
-    f32 sp20;
-    f64 sp18;
-    u8 sp10;
-    void *spC;
+    MKVector3 spDiff;
+    MKVector3 spStep;
+    MKVector3 spPt;
     f32 sp8;
+    void *spC;
+    u8 sp10;
     MKProp *temp_r3_231;
     MKProp *temp_r3_291;
     ManagedLight *temp_r4_161;
@@ -170,8 +156,6 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     f32 temp_f1_137;
     f32 temp_f2_410;
     f32 var_f4_346;
-    f64 temp_f0_413;
-    f64 temp_f1_245;
     f64 temp_f1_349;
     f64 temp_f1_355;
     f64 temp_f1_359;
@@ -186,7 +170,6 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     s32 var_r7_269;
     u8 var_r4_184;
     u8 var_r4_203;
-    void *temp_r3_255;
     void *temp_r5_180;
 
     MKModel_SetPosition(this->unk4, arg0);
@@ -202,11 +185,11 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     temp_r3_147 = this->unkCC;
     temp_r3_147->unkA0 |= 0x40;
     this->unk120 = arg3;
-    this->unk1B8 = arg5;
+    M2C_FIELD(this, u8 *, 0x1B8) = arg5;
     this->unkFC = 0.0f;
     this->unk104 = 0.0f;
     this->unk128 = arg2;
-    this->unk1B0 = arg4;
+    M2C_FIELD(this, u8 *, 0x1B0) = arg4;
     this->unkC8 = 10.0f;
     temp_r4_161 = this->unk108;
     if (temp_r4_161 != NULL) {
@@ -215,7 +198,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
     this->unk124 = 10000.0f;
     temp_r30_175 = M2C_FIELD(GameData::gameData, s32 *, 0x158);
     temp_r4_176 = temp_r30_175 << 5;
-    temp_r31_178 = *(&GameData::gameData[0x70] + (temp_r4_176 + 0x7C));
+    temp_r31_178 = M2C_FIELD(&GameData::gameData[0x70], s32 *, temp_r4_176 + 0x7C);
     temp_r5_180 = &GameData::gameData[0x70] + (temp_r4_176 + 0x64);
     if (temp_r31_178 == 3) {
         var_r4_184 = 0;
@@ -224,7 +207,7 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         }
         var_r6_194 = var_r4_184 != 0;
     } else {
-        var_r6_194 = *(temp_r5_180 + (temp_r31_178 * 4));
+        var_r6_194 = M2C_FIELD(temp_r5_180, s32 *, temp_r31_178 * 4);
     }
     if (temp_r31_178 == 3) {
         var_r4_203 = 0;
@@ -233,25 +216,23 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
         }
         var_r23_213 = var_r4_203 != 0;
     } else {
-        var_r23_213 = *(temp_r5_180 + (temp_r31_178 * 4));
+        var_r23_213 = M2C_FIELD(temp_r5_180, s32 *, temp_r31_178 * 4);
     }
     this->unk130.Init(arg3, ((GameStats *) &GameData::gameData[0x70])->GetBreathAttackDamage(temp_r30_175, temp_r31_178, var_r6_194), temp_r31_178, var_r23_213, temp_r30_175, temp_r30_175, 0, -1);
     temp_r3_231 = this->unk120;
     if ((temp_r3_231 != NULL) && (M2C_FIELD(temp_r3_231->unk0, s32 *, 0xC) & 8)) {
         this->unk130.unk34 = 5.0f;
     }
-    this->unk1BC = arg6;
-    temp_r0_242 = this->unk1BC;
-    switch (temp_r0_242) {                          /* switch 1; irregular */
-    case 0:                                         /* switch 1 */
-        temp_f1_245 = M2C_FIELD(&arg1, f64 *, 0);
-        this->unkD0 = temp_f1_245;
+    this->unk1C0 = arg6;
+    temp_r0_242 = this->unk1C0;
+    switch (temp_r0_242) {
+    case 0:
+        this->unkD0 = M2C_FIELD(&arg1, f64 *, 0);
         this->unkD8 = M2C_FIELD(&arg1, f64 *, 8);
-        temp_r3_255 = gb.unk0->GetCollisionInfo(temp_f1_245);
-        spC = temp_r3_255;
-        if (temp_r3_255 != NULL) {
-            sp10 = M2C_FIELD(temp_r3_255, u8 *, 4);
-            M2C_FIELD(temp_r3_255, u8 *, 4) = 0U;
+        spC = (void *) gb.unk0->GetCollisionInfo();
+        if (spC != NULL) {
+            sp10 = M2C_FIELD(spC, u8 *, 4);
+            M2C_FIELD(spC, u8 *, 4) = 0U;
         }
         var_r7_269 = 0;
         sp78 = 0.0f;
@@ -287,39 +268,38 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
             return;
         }
         return;
-    case 1:                                         /* switch 1 */
-    case 2:                                         /* switch 1 */
-        sp38 = M2C_FIELD(&arg7, f64 *, 0) - M2C_FIELD(&arg0, f64 *, 0);
-        sp58 = sp38;
-        sp40 = arg7.unk8 - arg0.unk8;
-        sp60 = (f64) sp40;
-        var_f4_346 = ((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + ((*(f32 *) ((u8 *) &sp58 + 0x4)) * (*(f32 *) ((u8 *) &sp58 + 0x4))));
+    case 1:
+    case 2:
+        spDiff.unk0 = arg7.unk0 - arg0.unk0;
+        spDiff.unk4 = arg7.unk4 - arg0.unk4;
+        spDiff.unk8 = arg7.unk8 - arg0.unk8;
+        var_f4_346 = (spDiff.unk8 * spDiff.unk8) + ((spDiff.unk0 * spDiff.unk0) + (spDiff.unk4 * spDiff.unk4));
         if (var_f4_346 > 0.0f) {
             temp_f1_349 = __frsqrte(var_f4_346);
             temp_f1_355 = 0.5 * temp_f1_349 * -(((f64) var_f4_346 * (temp_f1_349 * temp_f1_349)) - 3.0);
             temp_f1_359 = 0.5 * temp_f1_355 * -(((f64) var_f4_346 * (temp_f1_355 * temp_f1_355)) - 3.0);
             var_f4_346 = (f32) ((f64) var_f4_346 * (0.5 * temp_f1_359 * -(((f64) var_f4_346 * (temp_f1_359 * temp_f1_359)) - 3.0)));
-        } else if (var_f4_346 < M2C_BITWISE(f32, 0.0)) {
+        } else if (var_f4_346 < 0.0f) {
             var_f4_346 = __float_nan;
         } else {
             sp8 = var_f4_346;
-            temp_r3_378 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-            switch (temp_r3_378) {                  /* switch 2; irregular */
-            case 0x7F800000:                        /* switch 2 */
-                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+            temp_r3_378 = *(s32 *) &sp8 & 0x7F800000;
+            switch (temp_r3_378) {
+            case 0x7F800000:
+                if (*(s32 *) &sp8 & 0x7FFFFF) {
                     var_r0_388 = 1;
                 } else {
                     var_r0_388 = 2;
                 }
                 break;
-            case 0x0:                               /* switch 2 */
-                if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
+            case 0x0:
+                if (*(s32 *) &sp8 & 0x7FFFFF) {
                     var_r0_388 = 5;
                 } else {
                     var_r0_388 = 3;
                 }
                 break;
-            default:                                /* switch 2 */
+            default:
                 var_r0_388 = 4;
                 break;
             }
@@ -328,29 +308,25 @@ void FireBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, 
             }
         }
         temp_f2_410 = 0.5f * var_f4_346;
-        temp_f0_413 = M2C_FIELD(&arg1, f64 *, 0) * (f64) temp_f2_410;
-        sp28 = temp_f0_413;
-        sp48 = temp_f0_413;
-        sp30 = arg1.unk8 * temp_f2_410;
-        sp50 = (f64) sp30;
-        sp18 = M2C_FIELD(&arg0, f64 *, 0) + temp_f0_413;
-        sp68 = sp18;
-        sp20 = arg0.unk8 + (f32) sp50;
-        sp70 = (f64) sp20;
+        spStep.unk0 = arg1.unk0 * temp_f2_410;
+        spStep.unk4 = arg1.unk4 * temp_f2_410;
+        spStep.unk8 = arg1.unk8 * temp_f2_410;
+        spPt.unk0 = arg0.unk0 + spStep.unk0;
+        spPt.unk4 = arg0.unk4 + spStep.unk4;
+        spPt.unk8 = arg0.unk8 + spStep.unk8;
         this->unk1C8 = 0.0f;
-        this->unk1C4 = 0;
-        ((KDUniformSpline *) &this->unk1C0)->AddNode(arg0);
-        ((KDUniformSpline *) &this->unk1C0)->AddNode(*((MKVector3 *) &sp68));
-        ((KDUniformSpline *) &this->unk1C0)->AddNode(arg7);
-        this->unk1D4 = 0.0f;
+        this->unk1C8 = 0.0f;
+        ((KDUniformSpline *) &this->unk1C4)->AddNode(arg0);
+        ((KDUniformSpline *) &this->unk1C4)->AddNode(spPt);
+        ((KDUniformSpline *) &this->unk1C4)->AddNode(arg7);
+        this->unk1D8 = 0.0f;
         this->unk1D8 = 10000.0f / this->unk1C8;
-        if (((s32) this->unk1BC == 2) && (gb.unk0->GetHeroType() == 0)) {
-            KDSound_Play3d(GS_CynderBreathStart2, ((u8 *) this->unk8) + 0x30, 0U, -1, 0.0f, 0U);
+        if (((s32) this->unk1C0 == 2) && (gb.unk0->GetHeroType() == 0)) {
+            KDSound_Play3d(GS_CynderBreathStart2, (const MKVector3 *) (((u8 *) this->unk8) + 0x30), 0U, -1, 0.0f, 0U);
         }
         break;
     }
 }
-#endif
 
 void FireBombFX::Deinit() {
     ManagedLight *temp_r4_493;
@@ -360,7 +336,7 @@ void FireBombFX::Deinit() {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_493, 0U);
         ((LightManager *) gb.unk80)->FreeManagedLight(this->unk108);
     }
-    ((KDUniformSpline *) &this->unk1C0)->Deinit();
+    ((KDUniformSpline *) &this->unk1C4)->Deinit();
     KDSound_Stop((int *) &this->unk188);
     GameProp::Deinit();
 }
@@ -606,8 +582,8 @@ void FireBombFX::DrawFlameBall() {
         sp210 = temp_f3_851;
         sp1A8 = (f64) sp48;
         sp1B0 = (f64) sp50;
-        sp1B8.operator*(this->unkC8 * this->unk128);
-        sp1C8.operator*(this->unkC8 * this->unk128);
+        sp1B8 = ((MKVector3 *) &sp1A8)->operator*(this->unkC8 * this->unk128);
+        sp1C8 = ((MKVector3 *) &sp218)->operator*(this->unkC8 * this->unk128);
         temp_f0_877 = sp1C8 + M2C_BITWISE(f64, sp1B8);
         sp88 = temp_f0_877;
         sp238 = temp_f0_877;
@@ -615,8 +591,8 @@ void FireBombFX::DrawFlameBall() {
         sp1D8 = temp_f0_877;
         sp240 = (f64) sp90;
         sp1E0 = (f64) sp90;
-        sp178.operator*(this->unkC8 * this->unk128);
-        sp188.operator*(this->unkC8 * this->unk128);
+        sp178 = ((MKVector3 *) &sp208)->operator*(this->unkC8 * this->unk128);
+        sp188 = ((MKVector3 *) &sp218)->operator*(this->unkC8 * this->unk128);
         sp78 = sp188 + M2C_BITWISE(f64, sp178);
         sp40 = -sp210;
         sp80 = sp188.unk8 + sp178.unk8;
@@ -628,13 +604,13 @@ void FireBombFX::DrawFlameBall() {
         sp130 = (f64) sp40;
         sp198 = sp78;
         sp1A0 = (f64) sp80;
-        sp138.operator*(this->unkC8 * this->unk128);
+        sp138 = ((MKVector3 *) &sp128)->operator*(this->unkC8 * this->unk128);
         sp28 = -sp218;
         sp2C = -(*(f32 *) ((u8 *) &sp200 + 0x1c));
         sp30 = -sp220;
         sp148 = (f64) sp28;
         sp150 = (f64) sp30;
-        sp158.operator*(this->unkC8 * this->unk128);
+        sp158 = ((MKVector3 *) &sp148)->operator*(this->unkC8 * this->unk128);
         temp_f0_955 = sp158 + M2C_BITWISE(f64, sp138);
         sp68 = temp_f0_955;
         sp258 = temp_f0_955;
@@ -642,13 +618,13 @@ void FireBombFX::DrawFlameBall() {
         sp168 = temp_f0_955;
         sp260 = (f64) sp70;
         sp170 = (f64) sp70;
-        spE8.operator*(this->unkC8 * this->unk128);
+        spE8 = ((MKVector3 *) &sp208)->operator*(this->unkC8 * this->unk128);
         sp18 = -sp218;
         sp1C = -(*(f32 *) ((u8 *) &sp200 + 0x1c));
         sp20 = -sp220;
         spF8 = (f64) sp18;
         sp100 = (f64) sp20;
-        sp108.operator*(this->unkC8 * this->unk128);
+        sp108 = ((MKVector3 *) &spF8)->operator*(this->unkC8 * this->unk128);
         sp58 = sp108 + M2C_BITWISE(f64, spE8);
         sp268 = sp58;
         sp60 = sp108.unk8 + spE8.unk8;
@@ -741,9 +717,9 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     if ((s32) this->unk130.unk3C == 0) {
         var_r31_1121 = 0;
     }
-    if (((s32) this->unk1BC == 1) || (gb.unk0->GetHeroType() == 2)) {
+    if (((s32) this->unk1C0 == 1) || (gb.unk0->GetHeroType() == 2)) {
         this->unkF8->unk88 = GS_Explosion7;
-    } else if ((s32) this->unk1BC == 2) {
+    } else if ((s32) this->unk1C0 == 2) {
         if (gb.unk0->GetHeroType() == 1) {
             this->unkF8->unk88 = GS_SWCynderFireball3;
         } else {
@@ -751,7 +727,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
         }
     }
     sp8 = 1;
-    this->unkF8->Trigger(arg1, 0.9f * this->unk128, 0U, this->unk120, 5, this->unk1B0, 1U, var_r31_1121, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    this->unkF8->Trigger(arg1, 0.9f * this->unk128, 0U, this->unk120, 5, M2C_FIELD(this, u8 *, 0x1B0), 1U, var_r31_1121, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     temp_r4_1179 = this->unkCC;
     temp_r4_1179->unkA0 = (temp_r4_1179->unkA0 & ~0x80) | ((lit_687 << 7) & 0x80);
     if ((arg2 != NULL) && ((MKProp *) arg2->unk8 != NULL)) {
@@ -763,7 +739,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
         temp_r3_1197 = arg2->unk8;
         temp_r3_1197->Message(&this->unk130, temp_f1_1190);
     }
-    if ((s32) this->unk1BC == 2) {
+    if ((s32) this->unk1C0 == 2) {
         var_f26_1207 = 750.0f;
         if ((u8) gb.unk35D != 0) {
             var_f26_1207 = 400.0f;
@@ -796,7 +772,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
     if (temp_r4_1297 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_1297, 0U);
     }
-    if ((u8) this->unk1B8 != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0x1B8) != 0) {
         var_r31_1312 = 0;
         temp_f26_1313 = arg0.unk8;
         temp_f27_1314 = arg1.unk8;
@@ -826,7 +802,7 @@ void FireBombFX::Explode(const MKVector3 &arg0, const MKVector3 &arg1, MKCollisi
             sp80 = temp_f0_1357;
             sp18 = temp_f27_1314 + (f32) sp78;
             sp88 = (f64) sp18;
-            this->unk1B4->SpawnClusterBomb(*((MKVector3 *) &sp80), *((MKVector3 *) &spE0));
+            ((ClusterBomb *) (M2C_FIELD(this, ClusterBomb **, 0x1B4)))->SpawnClusterBomb(*((MKVector3 *) &sp80), *((MKVector3 *) &spE0));
             var_r31_1312 += 1;
         } while (var_r31_1312 < 5);
     }
@@ -839,7 +815,7 @@ void FireBombFX::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'double'
 void *FireBombFX::Update() {
     u8 sp5E0;
     s32 sp5DC;
@@ -1111,7 +1087,7 @@ void *FireBombFX::Update() {
     void *temp_r4_1573;
     void *temp_r5_1930;
 
-    temp_r0_1444 = this->unk1BC;
+    temp_r0_1444 = this->unk1C0;
     switch (temp_r0_1444) {                         /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         sp8 = 1;
@@ -1177,10 +1153,10 @@ void *FireBombFX::Update() {
         sp500 = temp_f0_1611;
         sp4E8 = temp_f1_1610;
         sp4F0 = temp_f0_1611;
-        temp_r0_1616 = this->unk1BC;
+        temp_r0_1616 = this->unk1C0;
         switch (temp_r0_1616) {                     /* switch 2; irregular */
         case 0:                                     /* switch 2 */
-            sp408.operator*(gUpdateTimeDelta);
+            sp408 = ((MKVector3 *) &this->unkD0)->operator*(gUpdateTimeDelta);
             sp98 = sp4F8 + M2C_BITWISE(f64, sp408);
             sp418 = sp98;
             temp_f28_1635 = gUpdateTimeDelta;
@@ -1199,7 +1175,7 @@ void *FireBombFX::Update() {
             break;
         case 1:                                     /* switch 2 */
         case 2:                                     /* switch 2 */
-            var_f0_1674 = (this->unk1D8 * gUpdateTimeDelta) + this->unk1D4;
+            var_f0_1674 = (M2C_FIELD(this, f32 *, 0x1D8) * gUpdateTimeDelta) + this->unk1D8;
             if (var_f0_1674 < 1.0f) {
 
             } else {
@@ -1210,12 +1186,12 @@ void *FireBombFX::Update() {
             } else {
                 var_f0_1674 = 0.0f;
             }
-            this->unk1D4 = var_f0_1674;
+            this->unk1D8 = var_f0_1674;
             sp14 = 0.0f;
-            ((KDUniformSpline *) &sp3D8)->GetMeasure(this->unk1D4, (Matrix *) &this->unk1C0, KDSpline_PositionMixer);
+            ((KDUniformSpline *) &sp3D8)->GetMeasure(this->unk1D8, (Matrix *) &this->unk1C4, KDSpline_PositionMixer);
             sp4E8 = sp3D8;
             sp4F0 = sp3E0;
-            if (this->unk1D4 == 1.0f) {
+            if (this->unk1D8 == 1.0f) {
                 this->unk104 = 4.0f;
             }
             break;
@@ -1346,7 +1322,7 @@ void *FireBombFX::Update() {
             sp498 = temp_f0_1996;
             sp200 = (f32) sp4F0 + (f32) sp3C0;
             sp4A0 = (f64) sp200;
-            if ((s32) this->unk1BC == 2) {
+            if ((s32) this->unk1C0 == 2) {
                 sp24 = MKRand_Float((int *) &gViewSeed, 6.0f, 8.0f);
                 sp1F0 = 0.0f;
                 sp1E8 = 0.0f;
@@ -1367,7 +1343,7 @@ void *FireBombFX::Update() {
                 Explode(*((MKVector3 *) &sp4C8), *((MKVector3 *) &sp4E8), NULL);
             }
         }
-        if ((s32) this->unk1BC == 2) {
+        if ((s32) this->unk1C0 == 2) {
             temp_f30_2070 = this->unkC8;
             temp_f28_2075 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
             temp_f27_2080 = MKRand_Float((int *) &gViewSeed, -1.0f, 1.0f);
@@ -1540,63 +1516,39 @@ void *FireBombFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
+static f32 lit_535 = 1000.0f;
+static f32 lit_542 = 2.5f;
 f32 FireBombFX::Resolve() {
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f64 sp58;
-    f64 sp50;
-    f64 sp48;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp30;
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
+    FireBombFXDescriptor *desc;
+    MKVector4 v48;
+    MKVector4 v58;
+    MKVector3 v68;
+    MKVector3 v78;
     ManagedLight *temp_r4_2600;
 
     KDPropEx::Resolve();
-    sp30 = 0.0f;
-    sp40 = 0.0f;
-    sp18 = 1.0f;
-    sp1C = 1.0f;
-    sp20 = 0.0f;
-    sp24 = 1.0f;
-    sp28 = 0.0f;
-    sp2C = 0.0f;
-    sp38 = 0.0f;
-    sp3C = 0.0f;
-    sp58 = (f64) sp18;
-    sp60 = (f64) sp20;
-    sp68 = (f64) sp28;
-    sp70 = (f64) sp30;
-    sp78 = (f64) sp38;
-    sp80 = (f64) sp40;
-    this->unk108 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 1000.0f, lit_536, lit_537));
+    v58.unk0 = 1.0f;
+    v58.unk4 = 1.0f;
+    v58.unk8 = 0.0f;
+    v58.unkC = 1.0f;
+    v68.unk0 = 0.0f;
+    v68.unk4 = 0.0f;
+    v68.unk8 = 0.0f;
+    v78.unk0 = 0.0f;
+    v78.unk4 = 0.0f;
+    v78.unk8 = 0.0f;
+    v48.unk0 = 1.0f;
+    v48.unk4 = 1.0f;
+    v48.unk8 = 1.0f;
+    v48.unkC = 1.0f;
+    this->unk108 = (ManagedLight *) (((LightManager *) gb.unk80)->AllocManagedLight(v78, v68, v58, lit_535, lit_536, lit_537));
     temp_r4_2600 = this->unk108;
     if (temp_r4_2600 != NULL) {
         ((LightManager *) gb.unk80)->EnableLight(temp_r4_2600, 0U);
     }
-    sp8 = 1.0f;
-    spC = 1.0f;
-    sp10 = 1.0f;
-    sp14 = 1.0f;
-    sp48 = (f64) sp8;
-    sp50 = (f64) sp10;
-    this->unkCC->InitData(this->unk4, lit_540, M2C_FIELD(checked_cast<FireBombFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0xE4), lit_541, *((MKVector4 *) &sp48), 2.5f, 1U, 0.4f);
+    desc = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unkCC->InitData(this->unk4, lit_540, (char *) desc->unkE4, lit_541, v48, lit_542, 1U, 0.4f);
 }
-#endif
 
 void FireBombFX::Init() {
     GameProp::Init();
@@ -1615,7 +1567,7 @@ void FireBombFX::Init() {
     this->unk120 = NULL;
     this->unk124 = 1000.0f;
     ((KDSoundFader *) &this->unk188)->Init(0.25f, 0.25f);
-    this->unk1B4 = checked_cast<ClusterBomb *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ClusterBomb"));
-    this->unk1B8 = 0;
-    ((KDUniformSpline *) &this->unk1C0)->Init(3, 0U);
+    M2C_FIELD(this, s32 *, 0x1B4) = (long) (checked_cast<ClusterBomb *, MKProp>(((MKSceneManager *) gMK)->CreateProp("ClusterBomb")));
+    M2C_FIELD(this, s8 *, 0x1B8) = 0;
+    ((KDUniformSpline *) &this->unk1C4)->Init(3, 0U);
 }
