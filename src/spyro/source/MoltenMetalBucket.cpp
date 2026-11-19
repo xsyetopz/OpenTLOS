@@ -51,37 +51,39 @@ static s8 *pMoltenMetalBucketEvents[3] = (signed char *) ({ "emitStart", "emitSt
 #endif
 static s32 lit_655 = 1;
 
-#if 0 // DRAFT: ')' expected
 void MoltenMetalBucket::Stop() {
     u8 temp_r3_76;
+    MoltenMetalBucketDescriptor *desc;
 
-    this->unk80->SetAnim(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x100), 1.0f, 0.25f, 0, -1);
+    desc = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk80->SetAnim(M2C_FIELD(desc, MKAnim **, 0x100), 1.0f, 0.25f, 0, -1);
     temp_r3_76 = this->unk178;
-    this->unk178 = (temp_r3_76 & ~0x80) | ((CLZ((temp_r3_76 >> 7U) & 1) << 2) & 0x80);
+    this->unk178 = (temp_r3_76 & ~0x80) | ((__cntlzw((temp_r3_76 >> 7U) & 1) << 2) & 0x80);
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void MoltenMetalBucket::Start() {
     u8 temp_r3_106;
+    MoltenMetalBucketDescriptor *desc;
 
-    this->unk80->SetAnim(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xFC), 1.0f, 0.25f, 0, -1);
+    desc = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk80->SetAnim(M2C_FIELD(desc, MKAnim **, 0xFC), 1.0f, 0.25f, 0, -1);
     temp_r3_106 = this->unk178;
-    this->unk178 = (temp_r3_106 & ~0x80) | ((CLZ((temp_r3_106 >> 7U) & 1) << 2) & 0x80);
+    this->unk178 = (temp_r3_106 & ~0x80) | ((__cntlzw((temp_r3_106 >> 7U) & 1) << 2) & 0x80);
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void MoltenMetalBucket::PourStop() {
-    this->unk80->SetAnim(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xF8), 0.25f, 0.25f, 0, -1);
-}
-#endif
+    MoltenMetalBucketDescriptor *desc;
 
-#if 0 // DRAFT: ')' expected
-void MoltenMetalBucket::Pour() {
-    this->unk80->SetAnim(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xF4), 0.25f, 0.25f, 0, -1);
+    desc = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk80->SetAnim(M2C_FIELD(desc, MKAnim **, 0xF8), 0.25f, 0.25f, 0, -1);
 }
-#endif
+
+void MoltenMetalBucket::Pour() {
+    MoltenMetalBucketDescriptor *desc;
+
+    desc = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk80->SetAnim(M2C_FIELD(desc, MKAnim **, 0xF4), 0.25f, 0.25f, 0, -1);
+}
 
 void MoltenMetalBucket::Message(MKMessage *arg0) {
     s32 temp_r0_177;
@@ -346,21 +348,21 @@ void *MoltenMetalBucket::Update() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
 f32 MoltenMetalBucket::Resolve() {
-    void *temp_r31_612;
-    void *temp_r31_621;
-    void *temp_r31_630;
+    MoltenMetalBucketDescriptor *desc_a;
+    MoltenMetalBucketDescriptor *desc_b;
 
     KDPropEx::Resolve();
-    temp_r31_612 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unkEC)->Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x110), M2C_FIELD(temp_r31_612, f32 *, 0x114));
-    temp_r31_621 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unk114)->Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x118), M2C_FIELD(temp_r31_621, f32 *, 0x11C));
-    temp_r31_630 = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unk13C)->Init(M2C_FIELD(checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x120), M2C_FIELD(temp_r31_630, f32 *, 0x124));
+    desc_a = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    desc_b = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unkEC)->Init(M2C_FIELD(desc_b, f32 *, 0x110), M2C_FIELD(desc_a, f32 *, 0x114));
+    desc_a = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    desc_b = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unk114)->Init(M2C_FIELD(desc_b, f32 *, 0x118), M2C_FIELD(desc_a, f32 *, 0x11C));
+    desc_a = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    desc_b = checked_cast<MoltenMetalBucketDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unk13C)->Init(M2C_FIELD(desc_b, f32 *, 0x120), M2C_FIELD(desc_a, f32 *, 0x124));
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *[3]' to 'const char **'
 s32 MoltenMetalBucket::LoadDone() {
@@ -395,19 +397,17 @@ void MoltenMetalBucketDescriptor::Deinit() {
     MKMaterial_Destroy(this->unkEC);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void MoltenMetalBucketDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "");
-    this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "");
-    this->unkEC = MKMaterial_Create"";
-    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
-    this->unkF4 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
-    this->unkF8 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
-    this->unkFC = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
-    this->unk100 = (long) (((MKAnimScript *) this->unk34)->GetAnim(""));
+    M2C_FIELD(this, s32 *, 0xE4) = MKModel_GetRefPointIndex(this->unk2C, "r_emitter");
+    this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "r_emitter_1");
+    this->unkEC = (MKMaterial *) (MKMaterial_Create("fx_003"));
+    this->unkF0 = (long) (((MKAnimScript *) this->unk34)->GetAnim("idle"));
+    this->unkF4 = (long) (((MKAnimScript *) this->unk34)->GetAnim("pour"));
+    this->unkF8 = (long) (((MKAnimScript *) this->unk34)->GetAnim("reset"));
+    this->unkFC = (long) (((MKAnimScript *) this->unk34)->GetAnim("start"));
+    this->unk100 = (long) (((MKAnimScript *) this->unk34)->GetAnim("stop"));
 }
-#endif
 
 s32 MoltenMetalBucketDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_818;
