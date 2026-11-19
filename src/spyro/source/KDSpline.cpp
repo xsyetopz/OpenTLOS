@@ -1201,60 +1201,37 @@ void KDUniformSpline::GetMatrix(int arg0, Matrix *arg1) const {
 }
 #endif
 
-#if 0 // DRAFT: identifier 'KDUniformSpline::GetNextPositionFast(float, Matrix *, int *, float *)const ' redeclared was declared as: 'MKVector3 (float, Matrix *, int *, float *
-void KDUniformSpline::GetNextPositionFast(float farg0, Matrix *arg2, int *arg3, float *arg4) const {
+MKVector3 KDUniformSpline::GetNextPositionFast(float farg0, Matrix *arg2, int *arg3, float *arg4) const {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f30_1842;
-    f32 temp_f30_1903;
-    f32 temp_f31_1897;
-    f32 temp_f3_1887;
-    s32 temp_r3_1832;
+    f32 t;
+    f32 dur;
+    f32 frac;
+    f32 frac2;
+    f32 frac3;
 
     if (((s32) this->unk4 > 0) && (this->unk8 == 0.0f)) {
-        temp_r3_1832 = this->unkC;
-        M2C_FIELD(sret, f64 *, 0) = (f64) M2C_FIELD(temp_r3_1832, f64 *, 0);
-        M2C_FIELD(sret, f64 *, 8) = (f64) M2C_FIELD(temp_r3_1832, f64 *, 8);
-        return result;
+        return *(MKVector3 *) this->unkC;
     }
-    temp_f30_1842 = farg0 * this->unk8;
+    t = farg0 * this->unk8;
     if (*arg4 == 0.0f) {
         *arg3 = -1;
     }
-    if (temp_f30_1842 >= *arg4) {
-loop_8:
-        if ((temp_f30_1842 >= *arg4) && ((s32) *arg3 < (s32) (this->unk4 - 2))) {
+    if (t >= *arg4) {
+        while ((t >= *arg4) && ((s32) *arg3 < (s32) (this->unk4 - 2))) {
             *arg3 += 1;
-            *arg4 += *(this->unkC + ((*arg3 << 5) + 0x1C));
-            goto loop_8;
+            *arg4 += *(f32 *) (this->unkC + ((*arg3 << 5) + 0x1C));
         }
         GetMatrix(*arg3, arg2);
     }
-    temp_f3_1887 = *(this->unkC + ((*arg3 << 5) + 0x1C));
-    temp_f31_1897 = (temp_f30_1842 - (*arg4 - temp_f3_1887)) / temp_f3_1887;
-    temp_f30_1903 = temp_f31_1897 * temp_f31_1897;
-    sp20 = temp_f31_1897;
-    sp1C = temp_f30_1903;
-    sp30 = (f64) sp20;
-    sp18 = temp_f31_1897 * temp_f30_1903;
-    (*(f32 *) ((u8 *) &sp30 + 0x4)) = 1.0f;
-    sp28 = (f64) sp18;
-    sp8 = arg2->unk30 + (((f32) sp30 * arg2->unk20) + (((f32) sp28 * arg2->unk0) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * arg2->unk10)));
-    spC = arg2->unk34 + (((f32) sp30 * arg2->unk24) + (((f32) sp28 * arg2->unk4) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * arg2->unk14)));
-    sp10 = arg2->unk38 + (((f32) sp30 * arg2->unk28) + (((f32) sp28 * arg2->unk8) + ((*(f32 *) ((u8 *) &sp28 + 0x4)) * arg2->unk18)));
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    dur = *(f32 *) (this->unkC + ((*arg3 << 5) + 0x1C));
+    frac = (t - (*arg4 - dur)) / dur;
+    frac2 = frac * frac;
+    frac3 = frac * frac2;
+    result.unk0 = arg2->unk30 + ((frac * arg2->unk20) + ((frac3 * arg2->unk0) + (frac2 * arg2->unk10)));
+    result.unk4 = arg2->unk34 + ((frac * arg2->unk24) + ((frac3 * arg2->unk4) + (frac2 * arg2->unk14)));
+    result.unk8 = arg2->unk38 + ((frac * arg2->unk28) + ((frac3 * arg2->unk8) + (frac2 * arg2->unk18)));
     return result;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 s32 KDUniformSpline::AddNode(const MKVector3 &arg0) {
@@ -2010,68 +1987,36 @@ void KDSpline::Init(int arg0, bool arg1) {
     this->unk10 = arg1;
 }
 
-#if 0 // DRAFT: illegal function overloading
-void KDSpline_GetMeasure(const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const MKVector3 &arg4, float farg0, Matrix *arg5) {
+MKVector3 KDSpline_GetMeasure(const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, const MKVector3 &arg4, float farg0, Matrix *arg5) {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f32 sp7C;
-    f32 sp78;
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
-    f32 sp68;
-    f32 sp64;
-    f32 sp60;
-    f32 sp5C;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f64 sp38;
-    f64 sp30;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 temp_f3_3307;
+    Matrix m;
+    f32 t2;
+    f32 t3;
 
-    sp40 = arg2.unk0;
-    sp44 = arg2.unk4;
-    sp48 = arg2.unk8;
-    sp4C = 0.0f;
-    sp50 = arg1.unk0;
-    sp54 = arg1.unk4;
-    sp58 = arg1.unk8;
-    sp5C = 0.0f;
-    sp60 = arg3.unk0;
-    sp64 = arg3.unk4;
-    sp68 = arg3.unk8;
-    sp6C = 0.0f;
-    sp70 = arg4.unk0;
-    sp74 = arg4.unk4;
-    sp78 = arg4.unk8;
-    sp7C = 1.0f;
-    ((Matrix *) &sp40)->Multiply4x4(arg5, (Matrix *) &sp40);
-    temp_f3_3307 = farg0 * farg0;
-    sp28 = farg0;
-    sp24 = temp_f3_3307;
-    sp38 = (f64) sp28;
-    sp20 = farg0 * temp_f3_3307;
-    sp30 = (f64) sp20;
-    (*(f32 *) ((u8 *) &sp38 + 0x4)) = 1.0f;
-    sp10 = sp70 + (((f32) sp38 * sp60) + (((f32) sp30 * sp40) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp50)));
-    sp14 = sp74 + (((f32) sp38 * sp64) + (((f32) sp30 * sp44) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp54)));
-    sp18 = sp78 + (((f32) sp38 * sp68) + (((f32) sp30 * sp48) + ((*(f32 *) ((u8 *) &sp30 + 0x4)) * sp58)));
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp10;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp18;
+    m.unk0 = arg2.unk0;
+    m.unk4 = arg2.unk4;
+    m.unk8 = arg2.unk8;
+    m.unkC = 0.0f;
+    m.unk10 = arg1.unk0;
+    m.unk14 = arg1.unk4;
+    m.unk18 = arg1.unk8;
+    m.unk1C = 0.0f;
+    m.unk20 = arg3.unk0;
+    m.unk24 = arg3.unk4;
+    m.unk28 = arg3.unk8;
+    m.unk2C = 0.0f;
+    m.unk30 = arg4.unk0;
+    m.unk34 = arg4.unk4;
+    m.unk38 = arg4.unk8;
+    m.unk3C = 1.0f;
+    m.Multiply4x4(arg5, &m);
+    t2 = farg0 * farg0;
+    t3 = farg0 * t2;
+    result.unk0 = arg4.unk0 + ((farg0 * arg3.unk0) + ((t3 * m.unk0) + (t2 * m.unk10)));
+    result.unk4 = arg4.unk4 + ((farg0 * arg3.unk4) + ((t3 * m.unk4) + (t2 * m.unk14)));
+    result.unk8 = arg4.unk8 + ((farg0 * arg3.unk8) + ((t3 * m.unk8) + (t2 * m.unk18)));
     return result;
 }
-#endif
 
 void KDSpline_cpp::__sinit() {
     f32 spC4;
