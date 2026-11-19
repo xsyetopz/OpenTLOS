@@ -269,11 +269,12 @@ void ExplosiveBarrel::TriggerShatterFX() {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 f32 ExplosiveBarrel::GetRadius() {
-    return M2C_FIELD(checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x174);
+    ExplosiveBarrelDescriptor *desc;
+
+    desc = checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    return desc->unk174;
 }
-#endif
 
 void ExplosiveBarrel::SetOwner(ExplosiveBarrelPath *arg0) {
     this->unk1A8 = arg0;
@@ -402,62 +403,50 @@ block_50:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'int *'
 void *ExplosiveBarrel::Update() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp14;
-    f32 sp10;
-    s32 sp8;
-    BurningWick *temp_r3_797;
-    BurningWick *temp_r3_832;
-    s32 temp_r0_776;
-    s32 temp_r4_813;
-    void *temp_r3_809;
-    void *temp_r6_757;
+    f64 volumeLo;
+    f64 volumeHi;
+    f32 inside;
+    f32 zero;
+    void *volume;
+    ExplosiveBarrelDescriptor *desc;
 
     Shatterable::Update();
-    sp8 = 1;
-    ((KDSoundPlayer *) &this->unk1BC)->Update(GS_TNTBarrelFuseLP, 1U, this->unk1BA, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    sp14 = 0.0f;
-    sp10 = 0.0f;
+    ((KDSoundPlayer *) &this->unk1BC)->Update(GS_TNTBarrelFuseLP, 1U, this->unk1BA, (MKProp *) this, NULL, 0U, -1, 1);
+    zero = 0.0f;
+    inside = 0.0f;
     if ((u8) this->unk1B9 == 0) {
-        temp_r6_757 = this->unk8;
-        sp18 = M2C_FIELD(temp_r6_757, f64 *, 0x30);
-        sp20 = M2C_FIELD(temp_r6_757, f64 *, 0x38);
-        if ((((KDWaterVolume *) &sp18)->IsWithin(*((MKVector3 *) &sp10), &sp14, (s32 *) temp_r6_757) != 0) && (M2C_BITWISE(s32, sp14) == 1)) {
+        volume = this->unk8;
+        volumeLo = M2C_FIELD(volume, f64 *, 0x30);
+        volumeHi = M2C_FIELD(volume, f64 *, 0x38);
+        if ((((KDWaterVolume *) &volumeLo)->IsWithin(*((MKVector3 *) &zero), &inside, (int *) volume) != 0) && (M2C_BITWISE(s32, inside) == 1)) {
             this->unk1B9 = 1;
             this->unk1B4 = 2;
         }
     }
-    temp_r0_776 = this->unk1B4;
-    switch (temp_r0_776) {                          /* irregular */
+    switch (this->unk1B4) {
     case 1:
         if (this->unk1AC->Burnt() != 0) {
             Explode();
-            return;
+            break;
         }
-        temp_r3_797 = this->unk1AC;
-        temp_r3_797->Update();
-        return;
+        return this->unk1AC->Update();
     case 2:
         Explode();
-        return;
-    case 3:
-        temp_r3_809 = checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        if (((s32) this->unk16C == 0) || ((temp_r4_813 = this->unk180, ((temp_r4_813 == (s32) M2C_FIELD(temp_r3_809, s32 *, 0x160)) != 0)) && ((s32) *(this->unk168 + (((temp_r4_813 - 1) << 7) + 0x44)) == 2))) {
-            SetActive(0U);
-            this->unk1B4 = 4;
-            return;
-        }
-        return;
-    default:
-        temp_r3_832 = this->unk1AC;
-        temp_r3_832->Update();
         break;
+    case 3:
+        desc = checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        if ((this->unk16C == 0) || ((this->unk180 == desc->unk160) && (M2C_FIELD(this->unk168, s32 *, (((this->unk180 - 1) << 7) + 0x44)) == 2))) {
+            SetActive(false);
+            this->unk1B4 = 4;
+        }
+        break;
+    case 4:
+        break;
+    default:
+        return this->unk1AC->Update();
     }
 }
-#endif
 
 void ExplosiveBarrel::Draw() {
     BurningWick *temp_r3_857;
@@ -490,27 +479,21 @@ f32 ExplosiveBarrel::Resolve() {
     Shatterable::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'P25ExplosiveBarrelDescriptor'
 s32 ExplosiveBarrel::LoadDone() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    BurningWick *temp_r3_931;
+    ExplosiveBarrelDescriptor *desc;
+    BurningWick *wick;
+    MKVector3 dir;
 
     Shatterable::LoadDone();
-    temp_r3_931 = checked_cast<BurningWick *, MKProp>(((MKSceneManager *) gMK)->CreateProp("BurningWick"));
-    sp10 = 0.0f;
-    sp8 = 1.0f;
-    spC = 0.0f;
-    this->unk1AC = temp_r3_931;
-    sp20 = (f64) sp10;
-    sp18 = (f64) sp8;
-    this->unk1AC->InitData(*(checked_cast<P25ExplosiveBarrelDescriptor), 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x170, *this->unk4, (MKVector3 *) &sp18);
+    wick = checked_cast<BurningWick *, MKProp>(((MKSceneManager *) gMK)->CreateProp("BurningWick"));
+    dir.unk0 = 1.0f;
+    dir.unk4 = 0.0f;
+    dir.unk8 = 0.0f;
+    this->unk1AC = wick;
+    desc = checked_cast<ExplosiveBarrelDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    this->unk1AC->InitData(desc->unk170, this->unk4, dir);
     SetDefaults();
 }
-#endif
 
 s32 ExplosiveBarrel::LoadLine(MKIniLine *arg0) {
     s32 var_r31_968;
@@ -540,17 +523,17 @@ void ExplosiveBarrel::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk16C'
 void ExplosiveBarrelDescriptor::LoadDone() {
-    BoundingVolume *temp_r3_1064;
+    Explosion4 *explosion;
+    BoundingVolume *bounds;
 
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<Explosion4 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Explosion4"));
+    explosion = checked_cast<Explosion4 *, MKProp>(((MKSceneManager *) gMK)->CreateProp("Explosion4"));
+    M2C_FIELD(this, Explosion4 **, 0x16C) = explosion;
     this->unk170 = MKModel_GetRefPointIndex(this->unk2C, "r_wick");
-    temp_r3_1064 = this->unk1C;
-    this->unk174 = 0.5f * (temp_r3_1064->unk10 - temp_r3_1064->unk0);
+    bounds = this->unk1C;
+    this->unk174 = 0.5f * (bounds->unk10 - bounds->unk0);
 }
-#endif
 
 s32 ExplosiveBarrelDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1086;
