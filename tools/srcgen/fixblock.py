@@ -78,7 +78,15 @@ def check(stem: str, mangled: str, install: bool) -> int:
     target = next(((s, b) for s, b in pairs if s == mangled), None)
     if not target or not fix.exists():
         sys.exit(f"no block for {mangled}" if not target else f"missing {fix.relative_to(ROOT)}")
+    # A prototype at the top of a fix stays in src/ after install, outside the
+    # function's block; a reinstall must not add a second copy.
+    # Only the leading declarations are filtered: body statements repeat legitimately.
+    present = set(lines)
     text = fix.read_text().strip().split("\n")
+    head = 0
+    while head < len(text) and (text[head].rstrip().endswith(";") or not text[head].strip()):
+        head += 1
+    text = [l for l in text[:head] if l.strip() and l not in present] + text[head:]
     out, drop = list(lines), []
     for s, (i, j, msg) in pairs:
         if s == mangled:
