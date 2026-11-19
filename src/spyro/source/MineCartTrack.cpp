@@ -40,7 +40,6 @@ extern f32 *KDSpline_PositionMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: illegal implicit conversion from 'MineCartTrack' to 'void *'
 void MineCartTrack::Message(MKMessage *arg0) {
     s32 temp_r0_54;
     s32 var_r29_52;
@@ -59,9 +58,9 @@ loop_1:
         this->unk50.unk38 = 0.0f;
         this->unk144 = 0;
     }
-    temp_r3_67 = *(this + (var_r31_47 + 0x78));
+    temp_r3_67 = M2C_FIELD(this, void **, var_r31_47 + 0x78);
     if (temp_r3_67 != NULL) {
-        M2C_FIELD(M2C_FIELD(temp_r3_67, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
+        M2C_FIELD(M2C_FIELD(temp_r3_67, void **, 0x44), M2C_UNK (**)(void *, MKMessage *), 0x2C)(temp_r3_67, arg0);
     }
     var_r29_52 += 1;
     var_r31_47 += 4;
@@ -71,7 +70,6 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void *MineCartTrack::Update() {

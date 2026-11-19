@@ -25,51 +25,39 @@
 extern s32 GS_MenuSelect;
 extern void *autosaveCard;
 
-#if 0 // DRAFT: undefined identifier 'P8UISystem'
 void MCQueryScreen::Update() {
-    s32 sp34;
-    s32 sp30;
-    s32 sp2C;
-    s32 sp28;
-    s32 sp24;
-    s32 sp20;
-    s32 sp1C;
-    s32 sp18;
-    s32 sp14;
-    s32 sp10;
-    s32 spC;
-    s32 sp8;
-    UIContainer *temp_r3_176;
-    UIContainer *temp_r3_224;
-    UIContainer *temp_r3_234;
-    UIContainer *temp_r3_244;
-    s32 temp_r0_57;
-    s32 temp_r30_71;
-    s32 temp_r3_183;
+    s32 sp8[2];
+    s32 sp10[2];
+    s32 sp18[2];
+    s32 sp20[2];
+    s32 sp28[2];
+    s32 sp30[2];
     s32 var_r3_313;
+    UIContainer *temp_r3_176;
+    UIButton *temp_btn;
+    UIText *temp_text;
     void **temp_r3_194;
     void **temp_r3_204;
     void **temp_r3_214;
 
     if (KDMemoryCard::Update() == 0) {
         if (((void *) autosaveCard != NULL) && (((u8) M2C_FIELD(autosaveCard, u8 *, 9) == 0) || ((u8) M2C_FIELD(autosaveCard, u8 *, 8) != 0))) {
-            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
+            ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
             return;
         }
-        if (((KDMemoryCard *) *MemoryCardScreen::selectedCard != NULL) && (((u8) (*MemoryCardScreen::selectedCard)->unk9 == 0) || ((u8) (*MemoryCardScreen::selectedCard)->unk8 != 0))) {
-            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
+        if ((*(KDMemoryCard **) MemoryCardScreen::selectedCard != NULL) && (((u8) (*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk9 == 0) || ((u8) (*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk8 != 0))) {
+            ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
             return;
         }
-        temp_r0_57 = this->unkD0;
-        if (temp_r0_57 == 1) {
-            ((KDMemoryCard *) (*MemoryCardScreen::selectedCard))->SetState((KDMCState) 3);
+        if (this->unkD0 == 1) {
+            (*(KDMemoryCard **) MemoryCardScreen::selectedCard)->SetState((KDMCState) 3);
             this->unkD0 = 2;
             return;
         }
-        if (temp_r0_57 == 2) {
-            if (((s32) (*MemoryCardScreen::selectedCard)->unk24 > 0) && ((temp_r30_71 = (*MemoryCardScreen::selectedCard)->unk18, ((temp_r30_71 < MemoryCard_GetSaveGameBlockSize()) != 0)) || ((s32) (*MemoryCardScreen::selectedCard)->unk14 < 1))) {
-                *MCQueryScreen::query = 6;
-                ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCQuery");
+        if (this->unkD0 == 2) {
+            if (((*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk24 > 0) && (((*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk18 < MemoryCard_GetSaveGameBlockSize()) || ((*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk14 < 1))) {
+                *(s32 *) MCQueryScreen::query = 6;
+                ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCQuery");
                 return;
             }
             ExamineCard();
@@ -80,103 +68,98 @@ void MCQueryScreen::Update() {
         } else {
             ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
         }
-        goto block_20;
     }
-block_20:
-    if ((s32) this->unkD0 == 0) {
-        if (UIControls_Pressed((FrontEndControls) 0xC, -1) != 0) {
-            if ((u8) *MemoryCardScreen::bNewGame != 0) {
-                KDSound_Play(GS_MenuSelect, 0U, -1);
-                FrontEnd_GoToNewGame();
-                return;
-            }
+    if (this->unkD0 != 0) {
+        return;
+    }
+    if (UIControls_Pressed((FrontEndControls) 0xC, -1) != 0) {
+        if (*(u8 *) MemoryCardScreen::bNewGame != 0) {
+            KDSound_Play(GS_MenuSelect, 0U, -1);
+            FrontEnd_GoToNewGame();
+            return;
+        }
+        PopScreen();
+        return;
+    }
+    if (UIControls_Pressed((FrontEndControls) 0xF, -1) != 0) {
+        if ((*(s32 *) MCQueryScreen::query == 6) && ((*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk24 > 0)) {
+            ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectFile");
+            return;
+        }
+        if (*(u32 *) KDMemoryCard::numCardsPresent == 1U) {
             PopScreen();
             return;
         }
-        if (UIControls_Pressed((FrontEndControls) 0xF, -1) != 0) {
-            if (((s32) *MCQueryScreen::query == 6) && ((s32) (*MemoryCardScreen::selectedCard)->unk24 > 0)) {
-                ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectFile");
-                return;
-            }
-            if ((u32) *KDMemoryCard::numCardsPresent == 1U) {
-                PopScreen();
-                return;
-            }
-            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
+        return;
+    }
+    if (UIControls_Pressed((FrontEndControls) 0xE, -1) == 0) {
+        UIScreen::Update();
+        return;
+    }
+    KDSound_Play(GS_MenuSelect, 0U, -1);
+    temp_r3_176 = this->unkE4;
+    temp_btn = ui_cast<UIButton *, UIObject *>(temp_r3_176->GetChild(M2C_FIELD(temp_r3_176, s32 *, 0x68)));
+    temp_text = ui_cast<UIText *, UIObject *>(temp_btn->GetChild(0));
+    switch (M2C_FIELD(temp_text, s32 *, 0x6C)) {
+    case 0x34:
+        temp_r3_194 = this->unkE0;
+        sp30[0] = 3;
+        sp30[1] = 0;
+        M2C_FIELD(*temp_r3_194, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_194, sp30);
+        temp_r3_204 = this->unkD8;
+        sp28[0] = 3;
+        sp28[1] = 0;
+        M2C_FIELD(*temp_r3_204, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_204, sp28);
+        temp_r3_214 = this->unkD4;
+        sp20[0] = 3;
+        sp20[1] = 0;
+        M2C_FIELD(*temp_r3_214, M2C_UNK (**)(void **, s32 *), 0x2C)(temp_r3_214, sp20);
+        sp18[0] = 3;
+        sp18[1] = 0;
+        this->unkC8->Message((UIMessage *) sp18);
+        sp10[0] = 3;
+        sp10[1] = 0;
+        this->unkE4->Message((UIMessage *) sp10);
+        sp8[0] = 5;
+        sp8[1] = 0;
+        this->unkE4->Message((UIMessage *) sp8);
+        this->unkD0 = 1;
+        return;
+    case 0x35:
+        if ((*(s32 *) MCQueryScreen::query == 6) && ((*(KDMemoryCard **) MemoryCardScreen::selectedCard)->unk24 > 0)) {
+            ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectFile");
             return;
         }
-        if (UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) {
-            KDSound_Play(GS_MenuSelect, 0U, -1);
-            temp_r3_176 = this->unkE4;
-            temp_r3_183 = M2C_FIELD(ui_cast<UIText *, UIObject *>(((UIContainer *) (ui_cast<P8UIButton))->GetChild(P8UIObject>__FP8UIObject(temp_r3_176->GetChild(M2C_FIELD(temp_r3_176, s32 *, 0x68))), 0)), s32 *, 0x6C);
-            switch (temp_r3_183) {
-            case 0x34:
-                temp_r3_194 = this->unkE0;
-                sp30 = 3;
-                sp34 = 0;
-                M2C_FIELD(*temp_r3_194, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_194, &sp30, 3);
-                temp_r3_204 = this->unkD8;
-                sp28 = 3;
-                sp2C = 0;
-                M2C_FIELD(*temp_r3_204, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_204, &sp28, 3);
-                temp_r3_214 = this->unkD4;
-                sp20 = 3;
-                sp24 = 0;
-                M2C_FIELD(*temp_r3_214, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_214, &sp20, 3);
-                temp_r3_224 = this->unkC8;
-                sp18 = 3;
-                sp1C = 0;
-                temp_r3_224->Message(&sp18, 3);
-                temp_r3_234 = this->unkE4;
-                sp10 = 3;
-                sp14 = 0;
-                temp_r3_234->Message(&sp10, 3);
-                temp_r3_244 = this->unkE4;
-                sp8 = 5;
-                spC = 0;
-                temp_r3_244->Message(&sp8, 5);
-                this->unkD0 = 1;
-                return;
-            case 0x35:
-                if (((s32) *MCQueryScreen::query == 6) && ((s32) (*MemoryCardScreen::selectedCard)->unk24 > 0)) {
-                    ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectFile");
-                    return;
-                }
-                if ((u32) *KDMemoryCard::numCardsPresent == 1U) {
-                    PopScreen();
-                    return;
-                }
-                ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
-                return;
-            case 0x43:
-                *MCQueryScreen::query = 8;
-                ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCQuery");
-                return;
-            case 0x49:
-                *MCActionScreen::action = 1;
-                ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCAction");
-                return;
-            case 0x2C:
-                var_r3_313 = 3;
-                if ((s32) *MCQueryScreen::query == 8) {
-                    var_r3_313 = 4;
-                }
-                *MCActionScreen::action = var_r3_313;
-                ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCAction");
-                return;
-            case 0x2D:
-                PopScreen();
-                /* fallthrough */
-                return;
-            }
-        } else {
-            UIScreen::Update();
+        if (*(u32 *) KDMemoryCard::numCardsPresent == 1U) {
+            PopScreen();
+            return;
         }
-    } else {
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCSelectCard");
+        return;
+    case 0x43:
+        *(s32 *) MCQueryScreen::query = 8;
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCQuery");
+        return;
+    case 0x49:
+        *(s32 *) MCActionScreen::action = 1;
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCAction");
+        return;
+    case 0x2C:
+        var_r3_313 = 3;
+        if (*(s32 *) MCQueryScreen::query == 8) {
+            var_r3_313 = 4;
+        }
+        *(s32 *) MCActionScreen::action = var_r3_313;
+        ui_cast<UISystem *, UIContainer *>(GetRoot())->ChangeScreen("MCAction");
+        return;
+    case 0x2D:
+        PopScreen();
+        return;
     default:
+        break;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void MCQueryScreen::OnEnter() {
@@ -445,12 +428,11 @@ void MCQueryScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match 'UIStringTable_Remove(const char *)'
 void MCQueryScreen::Resolve() {
     UIContainer *temp_r3_769;
     s32 var_r29_760;
     s32 var_r31_761;
-    s8 *temp_r3_741;
+    const char *temp_r3_741;
     void **temp_r31_740;
     void *temp_r30_767;
 
@@ -460,18 +442,18 @@ void MCQueryScreen::Resolve() {
     this->unkDC = (void **) (FindChild("dashPrompt"));
     this->unkE0 = (void **) (ui_cast<UIText *, UIObject *>(FindChild("Message")));
     temp_r31_740 = this->unkE0;
-    temp_r3_741 = M2C_FIELD(temp_r31_740, s8 **, 0x68);
+    temp_r3_741 = M2C_FIELD(temp_r31_740, const char **, 0x68);
     if (temp_r3_741 != NULL) {
         UIStringTable_Remove(temp_r3_741);
     }
-    M2C_FIELD(temp_r31_740, s8 **, 0x68) = NULL;
+    M2C_FIELD(temp_r31_740, const char **, 0x68) = NULL;
     M2C_FIELD(temp_r31_740, s32 *, 0x6C) = -1;
     this->unkE4 = ui_cast<UIButtonGroup *, UIObject *>(FindChild("Buttons"));
     if ((UIContainer *) this->unkE4 != NULL) {
         var_r29_760 = 0;
         var_r31_761 = 0;
         do {
-            temp_r30_767 = this + var_r31_761;
+            temp_r30_767 = (s8 *) this + var_r31_761;
             M2C_FIELD(temp_r30_767, UIContainer **, 0xE8) = ui_cast<UIButton *, UIObject *>(this->unkE4->GetChild(var_r29_760));
             temp_r3_769 = M2C_FIELD(temp_r30_767, UIContainer **, 0xE8);
             if (temp_r3_769 != NULL) {
@@ -482,7 +464,6 @@ void MCQueryScreen::Resolve() {
         } while (var_r29_760 < 3);
     }
 }
-#endif
 
 void MCQueryScreen::Init() {
     s32 var_ctr_806;
