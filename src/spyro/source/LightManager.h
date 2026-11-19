@@ -1,0 +1,27 @@
+#ifndef SPYRO_SOURCE_LIGHTMANAGER_H
+#define SPYRO_SOURCE_LIGHTMANAGER_H
+
+#include <dolphin/types.h>
+#include "common/Source/MKProp.h"
+
+class LightManager;
+class MKProp;
+class MKVector3;
+class MKVector4;
+class ManagedLight;
+
+class LightManager : public MKProp {  // base: ctor/dtor vtable stores
+public:
+    virtual ~LightManager(void);
+    virtual void Init(void);
+    virtual void Deinit(void);
+    void EnableLight(ManagedLight *, bool);
+    void FreeManagedLight(ManagedLight *);
+    void CalculateLightPosForShadow(const MKVector3 &);
+    void * AllocManagedLight(const MKVector3 &, const MKVector3 &, const MKVector4 &, const float &, const int &, const bool &);
+    void DisableAllLights(void);
+    /* 0x04c */ u8 pad4C[0x10];
+    /* 0x05c */ void* unk5C;
+};
+
+#endif  // SPYRO_SOURCE_LIGHTMANAGER_H

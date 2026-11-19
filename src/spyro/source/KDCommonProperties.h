@@ -1,0 +1,164 @@
+#ifndef SPYRO_SOURCE_KDCOMMONPROPERTIES_H
+#define SPYRO_SOURCE_KDCOMMONPROPERTIES_H
+
+#include <dolphin/types.h>
+#include "spyro/source/KDMatrixProperty.h"
+#include "spyro/source/KDProperty.h"
+
+class KDAmbientSoundProperty;
+class KDAnimEventProperty;
+class KDAnimProperty;
+class KDCommonProperties_cpp;
+class KDMatrixProperty;
+class KDMessageHandlerProperty;
+class KDPathFollowerProperty;
+class KDPathProperty;
+class KDProperty;
+class KDPropertyClassRegistry;
+class KDPropertyCommand;
+class KDPropertySet;
+class KDRefPointProperty;
+class KDScriptProperty;
+class KDSoundAttachmentProperty;
+class MKAnim;
+class MKIniLine;
+class MKMessage;
+
+class KDAmbientSoundProperty : public KDProperty {  // base: vtable prefix
+public:
+    virtual void Init(const char *);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 Query(int);
+    virtual s32 GetInstanceDataSize(void) const;
+    virtual void InitInstance(void);
+    virtual void DeinitInstance(void);
+    virtual void Update(void);
+    virtual void Command(int);
+    /* 0x004 */ u8 pad4[0x4];
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ void** unk14;
+    /* 0x018 */ u8 pad18[0x4];
+    /* 0x01c */ u8 unk1C;
+    /* 0x01d */ u8 pad1D[0x3];
+    /* 0x020 */ f32 unk20;
+    /* 0x024 */ f32 unk24;
+};
+
+class KDAnimEventProperty : public KDScriptProperty {  // base: ctor/dtor vtable stores
+public:
+    virtual void Deinit(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 Query(int);
+    virtual void Update(void);
+    KDAnimEventProperty(void);
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ s32 unkC;
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ KDPropertyCommand unk14;
+};
+
+class KDAnimProperty : public KDProperty {  // base: vtable prefix
+public:
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 ResolveCommand(const char *) const;
+    virtual void Command(int);
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ u8 pad8[0x8];
+    /* 0x010 */ void* unk10;
+    /* 0x014 */ MKAnim* unk14;
+    /* 0x018 */ f32 unk18;
+    /* 0x01c */ u8 unk1C;
+};
+
+class KDCommonProperties_cpp {
+public:
+    void __sinit(void);
+};
+
+class KDMessageHandlerProperty : public KDScriptProperty {  // base: ctor/dtor vtable stores
+public:
+    virtual void Init(const char *);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 GetInstanceDataSize(void) const;
+    virtual s32 GetInstanceDataAlignment(void) const;
+    virtual void InitInstance(void);
+    virtual void Trigger(void);
+    virtual void Message(MKMessage *);
+    KDMessageHandlerProperty(void);
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ KDProperty* unkC;
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ KDPropertyCommand unk14;
+    /* 0x024 */ u8 unk24;
+};
+
+class KDPathFollowerProperty : public KDProperty {  // base: vtable prefix
+public:
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 Query(int);
+    virtual s32 ResolveCommand(const char *) const;
+    virtual s32 GetInstanceDataSize(void) const;
+    virtual void InitInstance(void);
+    virtual s32 LoadLineInstance(MKIniLine *);
+    virtual void ResolveInstance(void);
+    virtual void Update(void);
+    virtual void Command(int);
+    void UpdateSplinePath(void);
+    void UpdateNormalPath(void);
+    /* 0x004 */ u8 pad4[0x4];
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ u8 unk10;
+    /* 0x011 */ u8 pad11[0x3];
+    /* 0x014 */ KDPathProperty* unk14;
+    /* 0x018 */ void** unk18;
+};
+
+class KDRefPointProperty : public KDMatrixProperty {  // base: ctor/dtor vtable stores
+public:
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 Query(int);
+    virtual void Update(void);
+    KDRefPointProperty(void);
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ s32 unkC;
+    /* 0x010 */ s8* unk10;
+    /* 0x014 */ u32 unk14;
+};
+
+class KDSoundAttachmentProperty : public KDProperty {  // base: vtable prefix
+public:
+    virtual void Init(const char *);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Resolve(KDPropertySet *);
+    virtual void * GetClassInfo(void) const;
+    virtual s32 ResolveCommand(const char *) const;
+    virtual s32 GetInstanceDataSize(void) const;
+    virtual void InitInstance(void);
+    virtual void Command(int);
+    /* 0x004 */ s8* unk4;
+    /* 0x008 */ s32 unk8;
+    /* 0x00c */ u8 padC[0x4];
+    /* 0x010 */ s32 unk10;
+    /* 0x014 */ s8* unk14;
+    /* 0x018 */ s8* unk18;
+};
+
+void KDCommonProperties_RegisterAll(KDPropertyClassRegistry *);
+#endif  // SPYRO_SOURCE_KDCOMMONPROPERTIES_H

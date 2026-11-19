@@ -1,0 +1,80 @@
+#ifndef SPYRO_SOURCE_MOLTENMETALBUCKET_H
+#define SPYRO_SOURCE_MOLTENMETALBUCKET_H
+
+#include <dolphin/types.h>
+#include "spyro/source/GameMessages.h"
+#include "spyro/source/GameProp.h"
+
+class BreathHitMessage;
+class GameProp;
+class GamePropDescriptor;
+class LiquidFX;
+class MKIniLine;
+class MKMaterial;
+class MKMessage;
+class MoltenMetalBucket;
+class MoltenMetalBucketDescriptor;
+
+class MoltenMetalBucket : public GameProp {  // base: vtable prefix
+public:
+    virtual ~MoltenMetalBucket(void);
+    virtual void Init(void);
+    virtual void LoadDone(void);
+    virtual void Deinit(void);
+    virtual void Resolve(void);
+    virtual void Update(void);
+    virtual void Message(MKMessage *);
+    MoltenMetalBucket(void);
+    void Stop(void);
+    void Start(void);
+    void PourStop(void);
+    void Pour(void);
+    /* 0x0c4 */ u8 padC4[0x4];
+    /* 0x0c8 */ f64 unkC8;
+    /* 0x0d0 */ f32 unkD0;
+    /* 0x0d4 */ u8 padD4[0x4];
+    /* 0x0d8 */ f64 unkD8;
+    /* 0x0e0 */ f64 unkE0;
+    /* 0x0e8 */ u8 unkE8;
+    /* 0x0e9 */ u8 padE9[0x3];
+    /* 0x0ec */ s32 unkEC;
+    /* 0x0f0 */ u8 padF0[0x24];
+    /* 0x114 */ s32 unk114;
+    /* 0x118 */ u8 pad118[0x24];
+    /* 0x13c */ s32 unk13C;
+    /* 0x140 */ u8 pad140[0x28];
+    /* 0x168 */ f64 unk168;
+    /* 0x170 */ f64 unk170;
+    /* 0x178 */ u8 unk178;
+    /* 0x179 */ u8 pad179[0x3];
+    /* 0x17c */ LiquidFX* unk17C;
+    /* 0x180 */ BreathHitMessage unk180;
+};
+
+class MoltenMetalBucketDescriptor : public GamePropDescriptor {  // base: vtable prefix
+public:
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Deinit(void);
+    virtual void Resolve(void);
+    MoltenMetalBucketDescriptor(void);
+    /* 0x0e5 */ u8 padE5[0x3];
+    /* 0x0e8 */ s32 unkE8;
+    /* 0x0ec */ MKMaterial* unkEC;
+    /* 0x0f0 */ s32 unkF0;
+    /* 0x0f4 */ s32 unkF4;
+    /* 0x0f8 */ s32 unkF8;
+    /* 0x0fc */ s32 unkFC;
+    /* 0x100 */ s32 unk100;
+    /* 0x104 */ s32 unk104;
+    /* 0x108 */ s32 unk108;
+    /* 0x10c */ s32 unk10C;
+    /* 0x110 */ f32 unk110;
+    /* 0x114 */ f32 unk114;
+    /* 0x118 */ f32 unk118;
+    /* 0x11c */ f32 unk11C;
+    /* 0x120 */ f32 unk120;
+    /* 0x124 */ f32 unk124;
+};
+
+#endif  // SPYRO_SOURCE_MOLTENMETALBUCKET_H

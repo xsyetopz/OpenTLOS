@@ -1,0 +1,150 @@
+#ifndef SPYRO_SOURCE_ENEMIES_EARTHBOSS_H
+#define SPYRO_SOURCE_ENEMIES_EARTHBOSS_H
+
+#include <dolphin/types.h>
+#include "common/Source/MKProp.h"
+#include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/FireAndIceFX.h"
+
+class EarthBoss;
+class EarthBossArm;
+class EarthBossArmDescriptor;
+class EarthBossDescriptor;
+class Enemy;
+class EnemyAttack;
+class EnemyDamageFeedback;
+class EnemyDescriptor;
+class FireAndIceFX;
+class MKAnimScript;
+class MKDynamicBone;
+class MKIniLine;
+class MKMaterial;
+class MKMessage;
+class MKProp;
+class MKPropDescriptor;
+class MKVector3;
+class Matrix;
+class SpawnPointRef;
+
+class EarthBoss : public Enemy {  // base: vtable prefix
+public:
+    virtual ~EarthBoss(void);
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void LoadDone(void);
+    virtual void Deinit(void);
+    virtual void Update(void);
+    virtual void Draw(void);
+    virtual void Message(MKMessage *);
+    virtual void SetDefaults(void);
+    virtual void Despawn(bool);
+    virtual void SetupCollision(void);
+    virtual void UpdateCollisionItems(void);
+    virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
+    virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
+    virtual void CheckAnimEvents(void);
+    virtual s32 Spawn(const Matrix *, SpawnPointRef *);
+    virtual void GetCharacterName(void);
+    virtual void DoHitFx(EnemyDamageFeedback *);
+    EarthBoss(void);
+    void InterceptDamage(void);
+    void RestartStage(void);
+    void CollideWithShatterables(void);
+    void ShowFist(bool);
+    void UpdatePhrasesAndSounds(void);
+    void TempDisableCollision(bool);
+    void UpdateEnemyHud(void);
+    void SetupCollisionSphere(int, const char *, const char *, float, const MKVector3 &);
+};
+
+class EarthBossArm : public MKProp {  // base: ctor/dtor vtable stores
+public:
+    virtual ~EarthBossArm(void);
+    virtual void Init(void);
+    virtual void LoadDone(void);
+    virtual void Deinit(void);
+    virtual void Reset(void);
+    virtual void Update(void);
+    virtual void Draw(void);
+    virtual void Message(MKMessage *);
+    virtual void Enable(void);
+    virtual void Disable(void);
+    virtual void pure_slot12() = 0;  // name unknown: no descendant fills this slot
+    virtual void pure_slot13() = 0;  // name unknown: no descendant fills this slot
+    virtual void GetProp(void);
+    virtual s32 GetEnemy(void);
+    virtual s32 IsHero(void);
+    virtual s32 IsFriend(void);
+    virtual s32 IsEnemy(void);
+    virtual s32 IsShatterable(void);
+    virtual s32 IsDead(void);
+    virtual s32 GetMoveToPoint(const MKVector3 &, MKVector3 *);
+    virtual s32 GetLookToPoint(const MKVector3 &, MKVector3 *);
+    virtual s32 GetAimPoint(const MKVector3 &, MKVector3 *);
+    virtual void GetVel(void);
+    virtual void * GetCollisionInfo(void);
+    virtual f32 GetCollisionRadius(void);
+    virtual f32 GetCollisionHeight(void);
+    virtual f32 GetTimeLastHit(void);
+    virtual s32 IsAttacking(void);
+    virtual s32 GetAttackerManager(void);
+    void DoHitFx(EnemyDamageFeedback *);
+    s32 CheckMeleeHit(EnemyAttack *);
+    void Extend(void);
+    void Aim(const MKVector3 &);
+    void Retract(void);
+    void SetRetracted(void);
+    void UpdateExtensionBone(MKDynamicBone *, void *);
+    void UpdateElbowBone(MKDynamicBone *, void *);
+    void UpdateShoulderBone(MKDynamicBone *, void *);
+    void UpdateRetraction(void);
+    void UpdateExtension(void);
+    void UpdateTarget(void);
+    void InitBoneData(int, const char *);
+    void Init2(EarthBoss *);
+    /* 0x04c */ u8 pad4C[0x94];
+    /* 0x0e0 */ f64 unkE0;
+    /* 0x0e8 */ f64 unkE8;
+    /* 0x0f0 */ u8 padF0[0x54];
+    /* 0x144 */ s32 unk144;
+    /* 0x148 */ u8 pad148[0x1fc];
+    /* 0x344 */ s32 unk344;
+    /* 0x348 */ u8 pad348[0x18];
+    /* 0x360 */ s32 unk360;
+    /* 0x364 */ s32 unk364;
+    /* 0x368 */ s32 unk368;
+    /* 0x36c */ MKAnimScript* unk36C;
+    /* 0x370 */ Enemy* unk370;
+    /* 0x374 */ MKAnimScript* unk374;
+    /* 0x378 */ f64 unk378;
+    /* 0x380 */ f64 unk380;
+    /* 0x388 */ s32 unk388;
+    /* 0x38c */ s32 unk38C;
+    /* 0x390 */ u8 unk390;
+    /* 0x391 */ u8 pad391[0xf];
+    /* 0x3a0 */ FireAndIceFX unk3A0;
+    /* 0x44c */ u8 pad44C[0x4];
+    /* 0x450 */ f32 unk450;
+    /* 0x454 */ u8 pad454[0x4];
+    /* 0x458 */ f64 unk458;
+    /* 0x460 */ f64 unk460;
+    /* 0x468 */ MKMaterial* unk468;
+};
+
+class EarthBossArmDescriptor : public MKPropDescriptor {  // base: vtable prefix
+public:
+    virtual void LoadDone(void);
+};
+
+class EarthBossDescriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
+public:
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void LoadDone(void);
+    EarthBossDescriptor(void);
+    /* 0x2b4 */ u8 pad2B4[0x48];
+    /* 0x2fc */ f32 unk2FC;
+};
+
+#endif  // SPYRO_SOURCE_ENEMIES_EARTHBOSS_H

@@ -1,0 +1,61 @@
+#ifndef SPYRO_SOURCE_EARTHBREATHFX_H
+#define SPYRO_SOURCE_EARTHBREATHFX_H
+
+#include <dolphin/types.h>
+#include "common/Source/Matrix.h"
+#include "spyro/source/BaseBreathFX.h"
+#include "spyro/source/GameMessages.h"
+
+class BaseBreathFX;
+class BreathHitMessage;
+class EarthBreathFX;
+class FuryFXEarth;
+class FuryFXEarth2;
+class MKMaterial;
+class MKModel;
+class MKProp;
+class MKVector3;
+class ManagedLight;
+class Matrix;
+
+class EarthBreathFX : public BaseBreathFX {  // base: ctor/dtor vtable stores
+public:
+    virtual ~EarthBreathFX(void);
+    virtual void Init(void);
+    virtual void Deinit(void);
+    virtual void Resolve(void);
+    virtual void Update(void);
+    virtual void Draw(void);
+    EarthBreathFX(void);
+    u8 ShootEarthBomb(const MKVector3 &, const MKVector3 &, const MKVector3 &, bool);
+    void ResetFury(void);
+    void DrawShotgunMuzzelFlash(void);
+    s32 ShootShotgun(const MKVector3 &, const MKVector3 &, const MKVector3 &);
+    s32 Trigger(MKProp *, const MKVector3 &, const MKVector3 &, const MKVector3 &, int, bool);
+    void DrawSeedBullets(void);
+    void UpdateSeedBullets(void);
+    void * SpawnSeedBullet(const MKVector3 &, const MKVector3 &, const MKVector3 &, float, bool);
+    /* 0x0a4 */ u8 padA4[0x4];
+    /* 0x0a8 */ f32 unkA8;
+    /* 0x0ac */ f32 unkAC;
+    /* 0x0b0 */ s8 unkB0;
+    /* 0x0b1 */ u8 padB1[0x3];
+    /* 0x0b4 */ MKMaterial* unkB4;
+    /* 0x0b8 */ ManagedLight* unkB8;
+    /* 0x0bc */ f32 unkBC;
+    /* 0x0c0 */ FuryFXEarth* unkC0;
+    /* 0x0c4 */ FuryFXEarth2* unkC4;
+    /* 0x0c8 */ MKVector3** unkC8;
+    /* 0x0cc */ u8 padCC[0x4];
+    /* 0x0d0 */ BreathHitMessage unkD0;
+    /* 0x121 */ u8 pad121[0x7];
+    /* 0x128 */ MKModel* unk128;
+    /* 0x12c */ f32 unk12C;
+    /* 0x130 */ f64 unk130;
+    /* 0x138 */ f64 unk138;
+    /* 0x140 */ MKModel* unk140;
+    /* 0x144 */ u8 pad144[0xc];
+    /* 0x150 */ Matrix unk150;
+};
+
+#endif  // SPYRO_SOURCE_EARTHBREATHFX_H

@@ -1,0 +1,46 @@
+#ifndef SPYRO_SOURCE_MOLTENMETALBUCKETTRACK_H
+#define SPYRO_SOURCE_MOLTENMETALBUCKETTRACK_H
+
+#include <dolphin/types.h>
+#include "common/Source/MKProp.h"
+#include "common/Source/Matrix.h"
+
+class MKIniLine;
+class MKMaterial;
+class MKMessage;
+class MKProp;
+class MKPropDescriptor;
+class Matrix;
+class MoltenMetalBucketTrack;
+class MoltenMetalBucketTrackDescriptor;
+
+class MoltenMetalBucketTrack : public MKProp {  // base: ctor/dtor vtable stores
+public:
+    virtual ~MoltenMetalBucketTrack(void);
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void Deinit(void);
+    virtual void Resolve(void);
+    virtual void Update(void);
+    virtual void Draw(void);
+    virtual void Message(MKMessage *);
+    /* 0x04c */ Matrix unk4C;
+    /* 0x0d8 */ u8 padD8[0x8];
+    /* 0x0e0 */ u8 unkE0;
+    /* 0x0e1 */ u8 padE1[0x3];
+    /* 0x0e4 */ s32 unkE4;
+    /* 0x0e8 */ f32 unkE8;
+};
+
+class MoltenMetalBucketTrackDescriptor : public MKPropDescriptor {  // base: vtable prefix
+public:
+    virtual void Init(void);
+    virtual void Deinit(void);
+    /* 0x048 */ u8 pad48[0x20];
+    /* 0x068 */ f64 unk68;
+    /* 0x070 */ f64 unk70;
+    /* 0x078 */ f64 unk78;
+    /* 0x080 */ MKMaterial* unk80;
+};
+
+#endif  // SPYRO_SOURCE_MOLTENMETALBUCKETTRACK_H

@@ -1,0 +1,47 @@
+#ifndef SPYRO_SOURCE_PROPGROUPVOLUME_H
+#define SPYRO_SOURCE_PROPGROUPVOLUME_H
+
+#include <dolphin/types.h>
+#include "common/Source/MKProp.h"
+#include "spyro/source/PolyRegion.h"
+
+class MKIniLine;
+class MKProp;
+class MKPropDescriptor;
+class MKVector3;
+class PolyRegion;
+class PropGroupVolume;
+class PropGroupVolumeDescriptor;
+
+class PropGroupVolume : public MKProp {  // base: ctor/dtor vtable stores
+public:
+    virtual ~PropGroupVolume(void);
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void LoadDone(void);
+    virtual void Deinit(void);
+    virtual void Reset(void);
+    u8 LoadOverlayName(MKIniLine *);
+    void CullGroups(const MKVector3 &);
+    /* 0x04c */ u8 pad4C[0x4];
+    /* 0x050 */ PolyRegion unk50;
+    /* 0x09c */ u8 pad9C[0x4];
+    /* 0x0a0 */ s32 unkA0;
+    /* 0x0a4 */ u8 padA4[0x200];
+    /* 0x2a4 */ s32 unk2A4;
+    /* 0x2a8 */ f32 unk2A8;
+    /* 0x2ac */ u8 unk2AC;
+    /* 0x2ad */ u8 unk2AD;
+};
+
+class PropGroupVolumeDescriptor : public MKPropDescriptor {  // base: vtable prefix
+public:
+    virtual void Init(void);
+    virtual void Deinit(void);
+    /* 0x048 */ u8 pad48[0x18];
+    /* 0x060 */ void* unk60;
+    /* 0x064 */ PropGroupVolumeDescriptor* unk64;
+    /* 0x068 */ PropGroupVolumeDescriptor* unk68;
+};
+
+#endif  // SPYRO_SOURCE_PROPGROUPVOLUME_H

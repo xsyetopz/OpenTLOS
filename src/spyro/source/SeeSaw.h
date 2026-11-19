@@ -1,0 +1,65 @@
+#ifndef SPYRO_SOURCE_SEESAW_H
+#define SPYRO_SOURCE_SEESAW_H
+
+#include <dolphin/types.h>
+#include "common/Source/Matrix.h"
+#include "spyro/source/KDProp.h"
+
+class KDProp;
+class KDPropDescriptor;
+class MKIniLine;
+class MKMessage;
+class Matrix;
+class Platform;
+class PlatformAttachment;
+class SeeSaw;
+class SeeSawDescriptor;
+
+class PlatformAttachment {
+public:
+    /* 0x000 */ Platform* unk0;
+    /* 0x004 */ u8 pad4[0x4];
+    /* 0x008 */ PlatformAttachment* unk8;
+    /* 0x00c */ PlatformAttachment* unkC;
+};
+
+class SeeSaw : public KDProp {  // base: ctor/dtor vtable stores
+public:
+    virtual ~SeeSaw(void);
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    virtual void LoadDone(void);
+    virtual void Deinit(void);
+    virtual void Resolve(void);
+    virtual void Update(void);
+    virtual void Message(MKMessage *);
+    void Detach(PlatformAttachment *);
+    void Attach(PlatformAttachment *);
+    /* 0x089 */ u8 pad89[0x7];
+    /* 0x090 */ Matrix unk90;
+    /* 0x11c */ u8 pad11C[0x4];
+    /* 0x120 */ PlatformAttachment* unk120;
+    /* 0x124 */ PlatformAttachment* unk124;
+    /* 0x128 */ f32 unk128;
+    /* 0x12c */ f32 unk12C;
+    /* 0x130 */ f32 unk130;
+    /* 0x134 */ f32 unk134;
+    /* 0x138 */ f32 unk138;
+    /* 0x13c */ s32 unk13C;
+    /* 0x140 */ u8 unk140;
+};
+
+class SeeSawDescriptor : public KDPropDescriptor {  // base: vtable prefix
+public:
+    virtual void Init(void);
+    virtual s32 LoadLine(MKIniLine *);
+    /* 0x06d */ u8 pad6D[0x3];
+    /* 0x070 */ s32 unk70;
+    /* 0x074 */ f32 unk74;
+    /* 0x078 */ f32 unk78;
+    /* 0x07c */ f32 unk7C;
+    /* 0x080 */ f32 unk80;
+    /* 0x084 */ f32 unk84;
+};
+
+#endif  // SPYRO_SOURCE_SEESAW_H

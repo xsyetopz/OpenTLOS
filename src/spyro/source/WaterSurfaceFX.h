@@ -1,0 +1,49 @@
+#ifndef SPYRO_SOURCE_WATERSURFACEFX_H
+#define SPYRO_SOURCE_WATERSURFACEFX_H
+
+#include <dolphin/types.h>
+#include "common/Source/MKProp.h"
+
+class MKMaterial;
+class MKProp;
+class MKPropDescriptor;
+class MKVector3;
+class WaterSurfaceFX;
+class WaterSurfaceFXDescriptor;
+
+class WaterSurfaceFX : public MKProp {  // base: ctor/dtor vtable stores
+public:
+    class Ripple;
+    class Wake;
+    virtual ~WaterSurfaceFX(void);
+    virtual void Init(void);
+    virtual void Deinit(void);
+    virtual void Update(void);
+    virtual void Draw(void);
+    void UpdateRipples(void);
+    void DrawRipple(WaterSurfaceFX::Ripple *);
+    void SpawnRipple(const MKVector3 &, float);
+    void AddWakeNode(WaterSurfaceFX::Wake *, const MKVector3 &, const MKVector3 &, float);
+    void SpawnWake(void);
+    void DrawWake(WaterSurfaceFX::Wake *);
+    u8 UpdateWake(WaterSurfaceFX::Wake *);
+    void AddMovementForce(const MKVector3 &, const MKVector3 &);
+    /* 0x04c */ WaterSurfaceFX::Wake** unk4C;
+    /* 0x050 */ WaterSurfaceFX::Wake* unk50;
+    /* 0x054 */ f32 unk54;
+    /* 0x058 */ f32 unk58;
+    /* 0x05c */ WaterSurfaceFX::Wake** unk5C;
+};
+
+class WaterSurfaceFXDescriptor : public MKPropDescriptor {  // base: vtable prefix
+public:
+    virtual void Init(void);
+    virtual void Deinit(void);
+    /* 0x048 */ u8 pad48[0x18];
+    /* 0x060 */ MKMaterial* unk60;
+    /* 0x064 */ MKMaterial* unk64;
+    /* 0x068 */ MKMaterial* unk68;
+    /* 0x06c */ MKMaterial* unk6C;
+};
+
+#endif  // SPYRO_SOURCE_WATERSURFACEFX_H
