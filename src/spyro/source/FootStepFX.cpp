@@ -758,96 +758,81 @@ void FootStepFX::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
 void FootStepFX::Draw() {
-    f64 sp28;
-    f64 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    f32 temp_f2_1148;
-    f32 var_f30_1155;
-    s32 temp_r0_1253;
-    s32 temp_r26_1221;
-    s32 temp_r31_1157;
-    s32 var_r0_1183;
-    s32 var_r28_1172;
-    s32 var_r29_1173;
-    s32 var_r30_1156;
-    s32 var_r3_1177;
-    s32 var_r3_1188;
+    f32 proj;
+    f32 alpha;
+    MKVector4 color;
+    s32 pass;
+    s32 idx;
+    s32 count;
+    s32 first;
+    s32 prev;
+    s32 n;
+    s32 k;
+    s32 off;
 
     if ((u8) this->unk60 != 0) {
         MKView_Push();
-        MKView_GetProjection(NULL, &sp8, NULL);
-        temp_f2_1148 = sp8 + 0.05f;
-        sp8 = temp_f2_1148;
-        MKView_SetProjection(0.0f, temp_f2_1148, 0.0f);
+        MKView_GetProjection(NULL, &proj, NULL);
+        proj = proj + 0.05f;
+        MKView_SetProjection(0.0f, proj, 0.0f);
         MKSetMatrix(Matrix::identity);
-        var_f30_1155 = 1.0f;
-        var_r30_1156 = 0;
-        temp_r31_1157 = this->unk54;
+        alpha = 1.0f;
+        pass = 0;
+        first = this->unk54;
         do {
-            if (var_r30_1156 == 0) {
+            if (pass == 0) {
                 MKMaterial_SetMaterial(this->unk5C);
             } else {
                 MKMaterial_SetMaterial(this->unk58);
             }
             MKPrimitive(0xC, 0x10);
-            var_r28_1172 = temp_r31_1157;
-            var_r29_1173 = 0;
-loop_17:
-            temp_r0_1253 = this->unk50;
-            if (var_r28_1172 != temp_r0_1253) {
-                var_r3_1177 = this->unk54 - 1;
-                if (var_r3_1177 < 0) {
-                    var_r3_1177 = 0x1D;
+            idx = first;
+            count = 0;
+            while (idx != this->unk50) {
+                prev = this->unk54 - 1;
+                if (prev < 0) {
+                    prev = 0x1D;
                 }
-                if (temp_r0_1253 == var_r3_1177) {
-                    var_r0_1183 = lit_523;
-                    if (var_r29_1173 < var_r0_1183) {
-                        var_r0_1183 = var_r29_1173;
+                if (this->unk50 == prev) {
+                    n = lit_523;
+                    if (count < n) {
+                        n = count;
                     }
-                    var_r3_1188 = lit_522;
-                    if (var_r0_1183 > var_r3_1188) {
-                        var_r3_1188 = var_r0_1183;
+                    k = lit_522;
+                    if (n > k) {
+                        k = n;
                     }
-                    var_f30_1155 = 0.5f * ((f32) var_r3_1188 / 15.0f);
+                    alpha = 0.5f * ((f32) k / 15.0f);
                 }
                 MKBegin(4);
-                sp10 = var_f30_1155;
-                sp14 = var_f30_1155;
-                sp18 = var_f30_1155;
-                sp1C = 1.0f;
-                sp20 = (f64) sp10;
-                sp28 = (f64) sp18;
-                MKSetColorV(*((MKVector4 *) &sp20));
+                color.unk0 = alpha;
+                color.unk4 = alpha;
+                color.unk8 = alpha;
+                color.unkC = 1.0f;
+                MKSetColorV(color);
                 MKSetTexCoord1F(0.0f, 1.0f);
-                temp_r26_1221 = var_r28_1172 << 6;
-                MKSetPositionV(*(this->unk4C + temp_r26_1221));
+                off = idx << 6;
+                MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk4C + off));
                 MKSetTexCoord1F(1.0f, 1.0f);
-                MKSetPositionV(*(this->unk4C + (temp_r26_1221 + 0x10)));
+                MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk4C + off + 0x10));
                 MKSetTexCoord1F(0.0f, 0.0f);
-                MKSetPositionV(*(this->unk4C + (temp_r26_1221 + 0x20)));
+                MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk4C + off + 0x20));
                 MKSetTexCoord1F(1.0f, 0.0f);
-                MKSetPositionV(*(this->unk4C + (temp_r26_1221 + 0x30)));
+                MKSetPositionV(*(MKVector3 *) ((u8 *) this->unk4C + off + 0x30));
                 MKEnd();
-                var_r28_1172 += 1;
-                if (var_r28_1172 >= 0x1E) {
-                    var_r28_1172 = 0;
+                idx += 1;
+                if (idx >= 0x1E) {
+                    idx = 0;
                 }
-                var_r29_1173 += 1;
-                goto loop_17;
+                count += 1;
             }
             MKEndPrimitive();
-            var_r30_1156 += 1;
-        } while (var_r30_1156 < 2);
+            pass += 1;
+        } while (pass < 2);
         MKView_Pop();
     }
 }
-#endif
 
 void *FootStepFX::Update() {
 

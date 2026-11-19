@@ -67,36 +67,30 @@ void GamePropColored::Init() {
     this->unkC8.unkC = 1.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void GamePropColoredDescriptor::Deinit() {
     MKMaterial *temp_r3_108;
 
-    temp_r3_108 = this->unkE4;
+    temp_r3_108 = M2C_FIELD(this, MKMaterial **, 0xE4);
     if (temp_r3_108 != NULL) {
         MKMaterial_Destroy(temp_r3_108);
     }
     KDPropExDescriptor::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 GamePropColoredDescriptor::LoadLine(MKIniLine *arg0) {
-    s8 *sp8;
+    const char *sp8;
 
     if (GamePropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
     if (arg0->LoadString("ColoredMaterial", &sp8, 0) != 0) {
-        this->unkE4 = MKMaterial_Create(sp8);
+        M2C_FIELD(this, MKMaterial **, 0xE4) = (MKMaterial *) MKMaterial_Create(sp8);
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkE4'
 void GamePropColoredDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = NULL;
+    M2C_FIELD(this, MKMaterial **, 0xE4) = NULL;
 }
-#endif

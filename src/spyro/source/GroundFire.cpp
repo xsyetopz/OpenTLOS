@@ -34,7 +34,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unk3C'
 void GroundFire::Emit(const MKVector3 &arg0, float arg1, bool arg2) {
     KDSoundFader *temp_r31_22;
     MKHeap *temp_r6_16;
@@ -42,51 +41,49 @@ void GroundFire::Emit(const MKVector3 &arg0, float arg1, bool arg2) {
 
     temp_r6_16 = this->unk0;
     if ((KDSoundFader *) M2C_FIELD(temp_r6_16, KDSoundFader **, -4) != NULL) {
-        this->unk0 = temp_r6_16 - 4;
+        this->unk0 = (MKHeap *) ((u8 *) temp_r6_16 - 4);
         temp_r31_22 = M2C_FIELD(temp_r6_16, KDSoundFader **, -4);
         if (temp_r31_22 != NULL) {
             temp_r31_22->unk28 = M2C_FIELD(&arg0, f64 *, 0);
-            M2C_FIELD(temp_r31_22, f64 *, 0x30) = (f64) M2C_FIELD(&arg0, f64 *, 8);
+            M2C_FIELD(temp_r31_22, f64 *, 0x30) = M2C_FIELD(&arg0, f64 *, 8);
             temp_r31_22->unk40 = arg1;
             temp_r31_22->unk38 = arg1;
-            temp_r31_22->unk3C = 0.0f;
+            M2C_FIELD(temp_r31_22, f32 *, 0x3C) = 0.0f;
             temp_r31_22->Init(0.5f, 0.25f);
             M2C_FIELD(temp_r31_22, s8 *, 0x48) = 1;
             var_r0_40 = GS_SpyroFireBurnGroundLP;
             if (arg2 != 0) {
                 var_r0_40 = GS_SpyroFuryStepsBurnLP;
             }
-            temp_r31_22->unk44 = var_r0_40;
+            M2C_FIELD(temp_r31_22, s32 *, 0x44) = var_r0_40;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void GroundFire::Deinit() {
     MKHeap *temp_r0_66;
     MKHeap *temp_r0_85;
     MKHeap *var_r31_62;
-    MKHeap *var_r3_63;
-    MKHeap *var_r4_61;
+    u8 *var_r3_63;
+    u8 *var_r4_61;
     u32 temp_r0_71;
 
-    var_r4_61 = this->unk0;
-    var_r31_62 = var_r4_61;
-    var_r3_63 = var_r4_61;
+    var_r4_61 = (u8 *) this->unk0;
+    var_r31_62 = this->unk0;
+    var_r3_63 = (u8 *) this->unk0;
 loop_3:
     temp_r0_71 = M2C_FIELD(var_r3_63, u32 *, -4);
     var_r3_63 -= 4;
     if (temp_r0_71 != 0U) {
-        temp_r0_66 = var_r3_63->unk0;
+        temp_r0_66 = M2C_FIELD(var_r3_63, MKHeap **, 0);
         if (temp_r0_66 < var_r31_62) {
             var_r31_62 = temp_r0_66;
         }
         goto loop_3;
     }
-    if (var_r3_63 != &gEmptyPtrListDL) {
+    if ((void *) var_r3_63 != (void *) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_85 = var_r4_61->unk0;
+        temp_r0_85 = M2C_FIELD(var_r4_61, MKHeap **, 0);
         if (temp_r0_85 != NULL) {
             if (temp_r0_85 < var_r31_62) {
                 var_r31_62 = temp_r0_85;
@@ -102,7 +99,6 @@ loop_9:
     }
     this->unk0 = NULL;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void GroundFire::Update() {
