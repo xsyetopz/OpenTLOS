@@ -85,7 +85,6 @@ void ElecTier3Goal_Scan::Terminate() {
     this->unk8 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 ElecTier3Goal_Scan::Update() {
     Character *temp_r29_174;
     Character *temp_r29_93;
@@ -103,7 +102,7 @@ u8 ElecTier3Goal_Scan::Update() {
     temp_r29_93 = this->unkC;
     var_r30_94 = 0;
     if (temp_r29_93->HasAnimFinished() != 0) {
-        temp_r4_99 = temp_r29_93->unkA50;
+        temp_r4_99 = M2C_FIELD(temp_r29_93, u32 **, 0xA50);
         if ((temp_r4_99 != NULL) && ((u32) *temp_r4_99 == (u32) M2C_FIELD(temp_r29_93->unk630, u32 *, 0x20))) {
             var_r30_94 = 1;
         }
@@ -133,7 +132,7 @@ u8 ElecTier3Goal_Scan::Update() {
     temp_r29_174 = this->unkC;
     var_r30_175 = 0;
     if (temp_r29_174->HasAnimFinished() != 0) {
-        temp_r4_180 = temp_r29_174->unkA50;
+        temp_r4_180 = M2C_FIELD(temp_r29_174, u32 **, 0xA50);
         if ((temp_r4_180 != NULL) && ((u32) M2C_FIELD(temp_r4_180, u32 *, 0x40) == (u32) M2C_FIELD(temp_r29_174->unk630, u32 *, 0x20))) {
             var_r30_175 = 1;
         }
@@ -143,7 +142,6 @@ u8 ElecTier3Goal_Scan::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void ElecTier3Goal_Scan::Activate() {
     this->unk8 = 0;
@@ -626,18 +624,16 @@ void ElecTier3Goal_Think::AddGoal_FollowSpawnPath() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void ElecTier3Goal_Think::AddGoal_Spawn() {
     Goal<Enemy> *temp_r3_1217;
 
     temp_r3_1217 = this->unk38;
-    if ((temp_r3_1217 != NULL) && (IsPresent(M2C_FIELD(temp_r3_1217->__vptr, s32 (**)(), 0x34)()) == 0)) {
+    if ((temp_r3_1217 != NULL) && (IsPresent(temp_r3_1217->GetType()) == 0)) {
         this->unk54 |= 0x80;
         RemoveAllSubgoals();
         AddSubgoal((Goal<Enemy> *) this->unk38);
     }
 }
-#endif
 
 void ElecTier3Goal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
