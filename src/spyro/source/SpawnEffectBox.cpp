@@ -119,8 +119,8 @@ void SpawnEffectBox::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char[1])' does not match 'stricmp(long *)'
 s32 SpawnEffectBox::LoadDone() {
+    s32 stricmp(s8 *, const char *);
     s32 temp_r30_470;
     s32 var_r29_485;
     s32 var_r30_486;
@@ -128,7 +128,7 @@ s32 SpawnEffectBox::LoadDone() {
 
     MKProp::LoadDone();
     this->unk50.Init(*((Matrix *) &MKProp::loadInfo));
-    if (((s8 *) this->unkE0 != NULL) && (stricmp("") == 0)) {
+    if (((s8 *) this->unkE0 != NULL) && (stricmp(this->unkE0, "") == 0)) {
         this->unkE0 = NULL;
     }
     temp_r30_470 = this->unkE8 * 4;
@@ -142,7 +142,7 @@ s32 SpawnEffectBox::LoadDone() {
     var_r30_486 = 0;
 loop_8:
     if (var_r29_485 < (s32) this->unkE8) {
-        gMK->CreatePropDeferred(this->unkE0, ((u8 *) this->unkE4) + var_r30_486);
+        gMK->CreatePropDeferred((const char *) this->unkE0, (MKProp **) (((u8 *) this->unkE4) + var_r30_486));
         var_r29_485 += 1;
         var_r30_486 += 4;
         goto loop_8;
@@ -151,7 +151,6 @@ loop_8:
     this->unkFC = 0.0f;
     this->unkFC = M2C_FIELD(&gb, f32 *, 0x30C) + MKRand_Float((int *) &gViewSeed, this->unkF4, this->unkF8);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 SpawnEffectBox::LoadLine(MKIniLine *arg0) {

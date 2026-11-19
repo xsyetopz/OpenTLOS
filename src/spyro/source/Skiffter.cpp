@@ -1145,7 +1145,6 @@ loop_197:
 }
 #endif
 
-#if 0 // DRAFT: illegal type
 f32 SkiffterCritter::Resolve() {
     s32 temp_r0_1810;
     s32 temp_r31_1789;
@@ -1168,17 +1167,15 @@ loop_5:
         temp_r0_1810 = var_r4_1803 + 0x60;
         var_r6_1806 += 1;
         var_r4_1803 += 0x80;
-        *(this->unk170 + temp_r0_1810) = 0;
+        *(s32 *) (((u8 *) this->unk170) + temp_r0_1810) = 0;
         goto loop_5;
     }
 }
-#endif
 
 s32 SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r28_1883;
     s32 temp_r29_1863;
@@ -1201,7 +1198,7 @@ s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
         var_r28_1883 = arg0->unkC->GetSubLine(arg0);
 loop_8:
         if (var_r28_1883 != NULL) {
-            var_r28_1883->LoadVector3("waypoint", ((u8 *) this->unk174) + var_r30_1879, 0);
+            var_r28_1883->LoadVector3("waypoint", (MKVector3 *) (((u8 *) this->unk174) + var_r30_1879), 0);
             var_r30_1879 += 0x10;
             var_r28_1883 = var_r28_1883->unkC->GetNextLine(var_r28_1883);
             goto loop_8;
@@ -1210,7 +1207,6 @@ loop_8:
     }
     return 0;
 }
-#endif
 
 void SkiffterCritter::Init() {
     Critters::Init();
