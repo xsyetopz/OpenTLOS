@@ -70,7 +70,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'placingWidget'
+#if 0 // DRAFT: expression syntax error
 s32 CreateWidgetWindow::CreateHook(MKWidget *arg0, unsigned int arg1, unsigned int arg2, void *arg3) {
     MKWidget *temp_r0_143;
     MKWidget *temp_r3_144;

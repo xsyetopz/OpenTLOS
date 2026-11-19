@@ -25,7 +25,7 @@ void MKDynamicBone::DefaultUpdater(MKDynamicBone *arg0, void *arg1) {
     Update();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
+#if 0 // DRAFT: undefined identifier 'unk74'
 void MKDynamicBone::Reset() {
     Animation *temp_r3_49;
     Matrix *temp_r30_34;
@@ -106,7 +106,7 @@ void MKDynamicBone::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void MKDynamicBone::Update() {
     Animation *temp_r3_236;
     Animation *temp_r3_254;

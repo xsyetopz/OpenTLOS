@@ -1632,15 +1632,17 @@ void MKCollisionSphereItem::Init(MKVector3 *arg0, float arg1, float arg2, const 
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
+#if 0 // DRAFT: undefined identifier 'unk88'
 void MKCollisionModelItem::ReLoad(MKModel *arg0) {
     this->unkA0.unk88 = M2C_BITWISE(f32, arg0);
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk88'
 void MKCollisionModelItem::UnLoad() {
     this->unkA0.unk88 = 0.0f;
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp44'
 void MKCollisionModelItem::LocaliseRay(const MKCollisionRay &arg0) {
@@ -1788,7 +1790,7 @@ void MKCollisionModelItem::GetRadius() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: undefined identifier 'unk88'
 s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
     s32 temp_r3_3414;
 
@@ -1802,7 +1804,7 @@ s32 MKCollisionModelItem::GetVerts(unsigned int arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk88'
 void MKCollisionModelItem::Update() {
     f32 temp_r3_3434;
 
@@ -1818,7 +1820,7 @@ void MKCollisionModelItem::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: undefined identifier 'unk88'
 void MKCollisionModelItem::EllipsoidsTest(MKCollisionEllipsoid *arg0, int arg1, MKCollisionAABB arg2, MKCollisionResult *arg3) {
     MKCollisionEllipsoid *temp_r3_3511;
     f64 *temp_r5_3568;
@@ -1878,7 +1880,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_sp6C'
+#if 0 // DRAFT: undefined identifier 'unk88'
 void MKCollisionModelItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult *arg1, MKBestResult *arg2, MKBestResult *arg3, int arg4) {
     f32 temp_f3_3636;
     f32 temp_f6_3645;
@@ -1903,7 +1905,7 @@ void MKCollisionModelItem::SweepBoxCollide(const MKSweptBox &arg0, MKBestResult 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'arg_spC'
+#if 0 // DRAFT: undefined identifier 'unk88'
 s32 MKCollisionModelItem::BoxCollide(MKCollisionBox &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionResult *temp_r28_3749;
     s32 temp_r3_3742;
@@ -1935,7 +1937,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk88'
 s32 MKCollisionModelItem::SphereCollide(MKCollisionRay &arg0, MKCollisionResult *arg1, int arg2) {
     MKCollisionRay sp68;
     M2C_UNK sp64;
@@ -2047,7 +2049,7 @@ s32 MKCollisionModelItem::SweepSphereCollide(MKCollisionRay &arg0, MKCollisionRe
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'unk88'
 s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollisionResult *arg1, MKCollisionGroundHint *arg2) {
     MKCollisionRay spC0;
     M2C_UNK spBC;
@@ -2118,7 +2120,7 @@ s32 MKCollisionModelItem::GetGroundPoint(const MKCollisionRay &arg0, MKCollision
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: declaration syntax error
 s32 MKCollisionModelItem::RayCollide(MKCollisionRay &arg0, MKCollisionResult *arg1) {
     MKCollisionRay spC0;
     M2C_UNK spBC;

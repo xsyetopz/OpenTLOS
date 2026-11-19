@@ -9,7 +9,7 @@ void *malloc(s32);                                  /* extern */
 extern s32 baddress;
 extern u8 gbGoldMaster;
 
-#if 0 // DRAFT: undefined identifier 'tempMemOverride'
+#if 0 // DRAFT: expression syntax error
 static s32 black = 0;                               /* const */
 static s32 white = 0xFFFFFFFF;                      /* const */
 
@@ -18,13 +18,13 @@ void MKHeap::SetTempMemOverrideStatus(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'tempMemOverride'
+#if 0 // DRAFT: expression syntax error
 void MKHeap::DeactivateTempMemOverride() {
     tempMemOverride.unk0 -= 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'tempMemOverride'
+#if 0 // DRAFT: expression syntax error
 void MKHeap::ActivateTempMemOverride() {
     tempMemOverride.unk0 += 1;
 }
@@ -69,7 +69,7 @@ u8 MKHeap::ExistsInHeap(const void *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[40]' to
 void MKHeap::FreeFromAnyHeap(void *arg0, const char *arg1, int arg2) {
     MKHeap *temp_r3_115;
     s32 var_r29_111;
@@ -291,7 +291,7 @@ size=%d [heapsize=%d]", arg0, this->unk4 - this->unk0));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: expression syntax error
 void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
     if (arg0 != NULL) {
         if ((arg0 >= (u32) heapList.unk0->unk44) && (arg0 <= (u32) heapList.unk0->unk4)) {
@@ -307,7 +307,7 @@ void MKHeap::Free(const void *arg0, const char *arg1, int arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'tempMemOverride'
+#if 0 // DRAFT: expression syntax error
 void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
     s32 spC;
     s32 sp8;
@@ -340,7 +340,7 @@ void *MKHeap::ReAlloc(void *arg0, int arg1, const char *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'tempMemOverride'
+#if 0 // DRAFT: expression syntax error
 void *MKHeap::Alloc(int arg0, const char *arg1, int arg2) {
     s32 spC;
     s32 sp8;
@@ -380,13 +380,13 @@ s32 MKHeap::Mark() {
     return this->unkC;
 }
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: expression syntax error
 u32 MKHeap::Main() {
     return (u32) heapList.unk0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'currentHeap'
+#if 0 // DRAFT: expression syntax error
 MKHeap *MKHeap::Current() {
     if ((s32) currentHeap.unk0 == -1) {
         return NULL;
@@ -395,7 +395,7 @@ MKHeap *MKHeap::Current() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'currentHeap'
+#if 0 // DRAFT: expression syntax error
 s32 MKHeap::Pop() {
     s32 temp_r0_667;
 
@@ -405,7 +405,7 @@ s32 MKHeap::Pop() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'currentHeap'
+#if 0 // DRAFT: expression syntax error
 void MKHeap::Push() {
     MKHeap *temp_r5_679;
 
@@ -415,13 +415,13 @@ void MKHeap::Push() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'peak'
+#if 0 // DRAFT: expression syntax error
 u32 MKHeap::GetPeak() {
     return (u32) peak.unk0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[40]' to
 void MKHeap::UpdatePeak() {
     MKHeap *temp_r3_708;
     MKHeap *var_r0_746;
@@ -476,7 +476,7 @@ void MKHeap::UpdatePeak() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[40]' to
 void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *arg4) {
     s32 sp10;
     s32 spC;
@@ -525,7 +525,7 @@ void MKHeap::GetHeapStatistics(int *arg0, int *arg1, int *arg2, int *arg3, int *
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: type mismatch
 u8 MKHeap::IsWithinAHeap() {
     s32 var_ctr_860;
     s32 var_r4_859;
@@ -547,7 +547,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: illegal operand
 void MKHeap::RemoveHeapFromGlobalList() {
     s32 var_ctr_891;
     s32 var_r4_890;
@@ -568,7 +568,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'heapList'
+#if 0 // DRAFT: illegal operand
 void MKHeap::AddHeapToGlobalList() {
     s32 var_ctr_912;
     s32 var_r4_911;
@@ -639,7 +639,7 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'currentHeap'
+#if 0 // DRAFT: expression syntax error
 void MKHeap::InitModule() {
     s32 var_ctr_1069;
     s32 var_r3_1064;

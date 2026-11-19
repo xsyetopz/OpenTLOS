@@ -396,7 +396,7 @@ void SoftSweepSphere::Init(MKVector4 *arg0) {
     this->unk38 |= 0x40;
 }
 
-#if 0 // DRAFT: undefined identifier 'clothCreateDisabled'
+#if 0 // DRAFT: expression syntax error
 void MKCloth::DisableClothCreate(bool arg0) {
     clothCreateDisabled.unk0 = (s8) this;
 }
@@ -1195,7 +1195,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'globalForces'
+#if 0 // DRAFT: type mismatch
 void MKCloth::UpdatePosition() {
     f32 sp40;
     f32 sp3C;
@@ -1320,7 +1320,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sweepSpheres'
+#if 0 // DRAFT: illegal implicit conversion from 'MKCloth *' to
 void MKCloth::IncludeCollision() {
     MKCollisionAABB sp228;
     f64 sp220;
@@ -1844,7 +1844,7 @@ loop_28:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'globalCollisionPrim'
+#if 0 // DRAFT: undefined identifier 'arg_sp60'
 void MKCloth::UpdateGlobalCollisionPrims() {
     MKVector3 *temp_r3_2908;
     MKVector3 *temp_r6_2909;
@@ -1945,7 +1945,7 @@ void MKCloth::SetFriction(float arg0) {
     this->unkD4 = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier 'capsules'
+#if 0 // DRAFT: undefined identifier 'sp10'
 void MKCloth::SetCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3) {
     f64 sp28;
     f64 sp20;
@@ -2034,7 +2034,6 @@ void MKCloth::SetCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVecto
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'capsules'
 s32 MKCloth::AllocateCapsule() {
     s32 var_ctr_3211;
     s32 var_r3_3209;
@@ -2061,9 +2060,7 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'planes'
 void MKCloth::SetCollisionPlane(int arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3) {
     void *temp_r3_3246;
 
@@ -2075,9 +2072,7 @@ void MKCloth::SetCollisionPlane(int arg0, const MKVector3 &arg1, const MKVector3
     M2C_FIELD(temp_r3_3246, f64 *, 0x18) = (f64) M2C_FIELD(arg0, f32 *, 8);
     M2C_FIELD(temp_r3_3246, f32 *, 0x20) = arg3;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'planes'
 s32 MKCloth::AllocatePlane() {
     s32 var_ctr_3271;
     s32 var_r3_3269;
@@ -2104,9 +2099,7 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'spheres'
 void MKCloth::SetCollisionSphere(int arg0, const MKVector4 &arg1) {
     void *temp_r3_3301;
 
@@ -2114,9 +2107,7 @@ void MKCloth::SetCollisionSphere(int arg0, const MKVector4 &arg1) {
     M2C_FIELD(temp_r3_3301, f64 *, 0) = (f64) M2C_FIELD(arg0, f64 *, 0);
     M2C_FIELD(temp_r3_3301, f64 *, 8) = (f64) M2C_FIELD(arg0, f64 *, 8);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'spheres'
 s32 MKCloth::AllocateSphere() {
     s32 var_ctr_3315;
     s32 var_r3_3313;
@@ -2143,21 +2134,15 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'sweepSpheres'
 void MKCloth::MoveCollisionSweepSphere(int arg0, const MKVector3 &arg1) {
     ((SoftSweepSphere *) (&sweepSpheres + ((s32) this << 6)))->UpdatePos(*((MKVector3 *) arg0));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'sweepSpheres'
 void MKCloth::ResetCollisionSweepSphere(int arg0, MKVector4 *arg1) {
     ((SoftSweepSphere *) (&sweepSpheres + ((s32) this << 6)))->Init((MKVector4 *) arg0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'sweepSpheres'
 void MKCloth::ReleaseSweepSphere(int arg0) {
     void *temp_r3_3377;
 
@@ -2165,9 +2150,7 @@ void MKCloth::ReleaseSweepSphere(int arg0) {
     M2C_FIELD(temp_r3_3377, u8 *, 0x38) = (u8) (M2C_FIELD(temp_r3_3377, u8 *, 0x38) & ~0x80);
     M2C_FIELD(temp_r3_3377, u8 *, 0x38) = (u8) (M2C_FIELD(temp_r3_3377, u8 *, 0x38) & ~0x40);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'sweepSpheres'
 s32 MKCloth::AllocateSweepSphere() {
     s32 var_ctr_3396;
     s32 var_r3_3394;
@@ -2194,7 +2177,6 @@ loop_1:
     }
     goto loop_1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp18'
 void MKCloth::SetInternalCollisionCapsule(int arg0, const MKVector3 &arg1, const MKVector3 &arg2, float arg3, float arg4) {

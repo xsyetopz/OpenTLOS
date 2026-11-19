@@ -543,7 +543,7 @@ s8 *Texture::Create(const char *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'initialised'
+#if 0 // DRAFT: expression syntax error
 void Texture::InitModule() {
     initialised.unk0 = 1;
 }

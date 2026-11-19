@@ -25,20 +25,26 @@ static Frustum viewFrustum_332;
 static Frustum worldFrustum_333;
 static Matrix *pStack = ViewStack;
 
+#if 0 // DRAFT: undefined identifier 'unk60'
 f32 MKView_GetAspectRatio() {
     return M2C_BITWISE(f32, pStack->unk60);
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk60'
 void MKView_SetAspectRatio(float arg0) {
     pStack->unk60 = arg0;
     MKView_SettingsCounter += 1;
 }
+#endif
 
+#if 0 // DRAFT: undefined identifier 'unk64'
 f32 *MKView_GetOrthoRect() {
     return &pStack->unk64;
 }
+#endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk78'
 Texture *MKView_GetRenderTarget(Texture **arg0) {
     if (arg0 != NULL) {
         *arg0 = M2C_FIELD(pStack, Texture **, 0x7C);
@@ -47,7 +53,7 @@ Texture *MKView_GetRenderTarget(Texture **arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk58'
 Frustum *MKView_GetWorldFrustum() {
     f32 sp14;
     f32 sp10;
@@ -334,7 +340,7 @@ s32 MKView_VisibilityTest(const BoundingVolume &arg0, const Matrix &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'tan(Matrix *, float)' does not match
+#if 0 // DRAFT: undefined identifier 'unk54'
 void MKView_TransformPoint2Dto3D(float arg0, float arg1, float arg2, MKVector3 *arg3) {
     f64 sp70;
     f64 sp68;
@@ -444,14 +450,17 @@ f32 MKView_TransformPoint3Dto2D(MKVector3 *arg0, const MKVector3 &arg1) {
 }
 #endif
 
+#if 0 // DRAFT: undefined identifier 'unk74'
 s32 MKView_GetFlags() {
     return M2C_BITWISE(s32, pStack->unk74);
 }
+#endif
 
 u8 MKView_IsOrtho() {
     return M2C_FIELD(pStack, u8 *, 0x50);
 }
 
+#if 0 // DRAFT: undefined identifier 'unk64'
 void MKView_SetOrthoRect(const MKRect *arg0) {
     if (arg0 != NULL) {
         pStack->unk64 = arg0->unk0;
@@ -460,6 +469,7 @@ void MKView_SetOrthoRect(const MKRect *arg0) {
         pStack->unk70 = arg0->unkC;
     }
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'identity'
 void MKView_SetOrtho(const MKRect *arg0) {
@@ -475,7 +485,7 @@ void MKView_SetOrtho(const MKRect *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk54'
 void MKView_GetProjection(float *arg0, float *arg1, float *arg2) {
     f32 var_f0_1162;
     f32 var_f0_1175;
@@ -502,7 +512,7 @@ void MKView_GetProjection(float *arg0, float *arg1, float *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk54'
 void MKView_SetProjection(float arg0, float arg1, float arg2) {
     M2C_FIELD(pStack, s8 *, 0x50) = 0;
     if (arg0 != 0.0f) {
@@ -789,7 +799,7 @@ void MKView_Push() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Texture *' to
+#if 0 // DRAFT: undefined identifier 'unk78'
 void MKView_SetRenderTarget(Texture *arg0, Texture *arg1) {
     pStack->unk78 = M2C_BITWISE(f32, arg0);
     M2C_FIELD(pStack, Texture **, 0x7C) = arg1;
@@ -797,7 +807,7 @@ void MKView_SetRenderTarget(Texture *arg0, Texture *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
+#if 0 // DRAFT: undefined identifier 'unk48'
 void MKView_InitModule() {
     f64 spE0;
     f64 spD8;

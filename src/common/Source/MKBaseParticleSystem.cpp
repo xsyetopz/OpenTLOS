@@ -183,7 +183,7 @@ void MKParticleSystem_InitModule(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sp20'
+#if 0 // DRAFT: undefined identifier 'unk50'
 void MKBaseParticleSystem::DrawChunk(Matrix *arg0, MKVector4 *arg1, MKParticleChunk *arg2) {
     f64 sp48;
     f64 sp40;
@@ -337,7 +337,7 @@ MKParticleChunk *MKBaseParticleSystem::GetNextParticle(MKBaseParticleSystem::Par
     return M2C_FIELD(arg1, MKParticleChunk **, 4);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk78'
 MKParticleChunk *MKBaseParticleSystem::GetFirstParticle(MKBaseParticleSystem::ParticleRec *arg1) {
     if (M2C_BITWISE(s32, this->unk60.unk78) == 0) {
         M2C_FIELD(arg1, f32 *, 0) = 0.0f;
@@ -350,7 +350,7 @@ MKParticleChunk *MKBaseParticleSystem::GetFirstParticle(MKBaseParticleSystem::Pa
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 void MKBaseParticleSystem::DestroyAllParticles() {
     f32 var_r31_583;
 
@@ -367,7 +367,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
+#if 0 // DRAFT: declaration syntax error
 MKParticleChunk *MKBaseParticleSystem::DestroyParticle(MKBaseParticleSystem::ParticleRec *arg1) {
     MKParticleChunk *temp_r3_630;
     MKParticleChunk *temp_r3_636;
@@ -460,7 +460,7 @@ void MKBaseParticleSystem::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk68'
 void *MKBaseParticleSystem::AllocateParticle() {
     MKParticleChunk *temp_r3_788;
     f32 temp_r3_780;
@@ -528,7 +528,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'temp_r3_881'
 void *MKBaseParticleSystem::CreateParticle() {
     MKParticleChunk *temp_r3_881;
     f32 temp_r3_873;
@@ -607,7 +607,7 @@ loop_15:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk78'
 void MKBaseParticleSystem::Draw(Matrix *arg0, MKVector4 *arg1) {
     f32 temp_f3_1004;
     f32 temp_f3_1094;
@@ -747,7 +747,7 @@ void MKBaseParticleSystem::EmitParticles() {
 
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk70'
 void MKBaseParticleSystem::PostUpdate() {
     f32 var_r7_1234;
     u8 var_r6_1235;
@@ -782,7 +782,7 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: undefined identifier 'unk68'
 void MKBaseParticleSystem::Update() {
     f32 temp_f1_1288;
     f32 var_r3_1329;
@@ -831,7 +831,7 @@ void MKBaseParticleSystem::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'nanf'
+#if 0 // DRAFT: undefined identifier 'unk40'
 void MKBaseParticleSystem::Init() {
     MKProp::Init();
     M2C_FIELD(this, f32 *, 0x50) = 1.0f;

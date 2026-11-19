@@ -30,7 +30,7 @@ static MKFont pEndColourToken__6MKFont;             /* type too large by 0xC; un
 static MKFont pPageToken__6MKFont;                  /* type too large by 0xC; unable to generate initializer: cannot parse .L_8036DA43 as integer */
 static GeometryTransformationInfo transformInfo_723 = { 1, 0 };
 
-#if 0 // DRAFT: undefined identifier 'currentColour'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 f32 *MKFont::GetFontColour(int arg0) {
     s32 temp_r0_22;
     s32 var_r3_12;
@@ -987,7 +987,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'fontColours'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void MKFont::DeinitModule() {
     MKHeap *temp_r0_1787;
     MKHeap *temp_r0_1806;
@@ -1250,7 +1250,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'fontList'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[4]' to
 void *MKFont::Find(const char *arg0) {
     void **var_r31_2167;
     void *temp_r3_2180;

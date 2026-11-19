@@ -26,7 +26,7 @@ extern MKDynamicBoneSystem gDynamicBones;
 extern MKAttachment *pDeathRow;
 extern s8 *pTemplatesList;
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk74'
 void MKModel_EnableClothUpdate(MKModel *arg0, bool arg1) {
     f32 temp_r3_14;
 
@@ -37,7 +37,7 @@ void MKModel_EnableClothUpdate(MKModel *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk74'
 void MKModel_UpdateCloth(MKModel *arg0) {
     f32 temp_r3_27;
 
@@ -48,7 +48,7 @@ void MKModel_UpdateCloth(MKModel *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk74'
 void MKModel_SetClothManualUpdate(MKModel *arg0, bool arg1) {
     f32 temp_r3_41;
 
@@ -59,7 +59,7 @@ void MKModel_SetClothManualUpdate(MKModel *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
+#if 0 // DRAFT: undefined identifier 'unk74'
 MKCloth *MKModel_GetClothSubObject(const MKModel *arg0, int arg1) {
     f32 temp_r3_51;
 
@@ -71,7 +71,7 @@ MKCloth *MKModel_GetClothSubObject(const MKModel *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float' to
+#if 0 // DRAFT: undefined identifier 'unk74'
 ModelCloth *MKModel_GetCloth(const MKModel *arg0) {
     return M2C_BITWISE(ModelCloth *, arg0->unk10.unk74);
 }
@@ -309,7 +309,7 @@ void MKModel_CalculateCentre(const MKModel *arg0, MKVector3 *arg1) {
     }
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk70'
 s32 MKModel_GetMaterial(const MKModel *arg0, int arg1, bool arg2) {
     u8 var_r5_783;
 
@@ -826,12 +826,14 @@ void MKModel_EnableScissoring(MKModel *arg0, bool arg1) {
     arg0->unk4 = (arg0->unk4 & ~2) | ((arg1 << 1) & 2);
 }
 
+#if 0 // DRAFT: undefined identifier 'unk60'
 Animation *MKModel_GetAnimation(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) < 1U) {
         return NULL;
     }
     return (Animation *) arg0->unk10.unk60;
 }
+#endif
 
 void MKModel_SetPosition(MKModel *arg0, const MKVector3 &arg1) {
     arg0->unk10.unk30 = arg1.unk0;
@@ -881,23 +883,27 @@ MKModel *MKModel_GetAttachment(const MKModel *arg0) {
     return (MKModel *) arg0->unk8;
 }
 
+#if 0 // DRAFT: undefined identifier 'unk4C'
 void MKModel_SetAlpha(MKModel *arg0, float arg1) {
     arg0->unk10.unk4C = arg1;
 }
+#endif
 
 void MKModel_SetColor(MKModel *arg0, const MKVector4 &arg1) {
     M2C_FIELD(arg0, f64 *, 0x50) = (f64) M2C_FIELD(&arg1, f64 *, 0);
     M2C_FIELD(arg0, f64 *, 0x58) = (f64) M2C_FIELD(&arg1, f64 *, 8);
 }
 
+#if 0 // DRAFT: undefined identifier 'unk4C'
 f32 MKModel_GetAlpha(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 1U) {
         return arg0->unk10.unk4C;
     }
     return 1.0f;
 }
+#endif
 
-#if 0 // DRAFT: undefined identifier 'one'
+#if 0 // DRAFT: undefined identifier 'unk40'
 f64 *MKModel_GetColor(const MKModel *arg0) {
     if ((u32) (((u8) arg0->unk4 >> 5U) & 7) >= 1U) {
         return (f64 *) &arg0->unk10.unk40;
@@ -1379,7 +1385,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk60'
 void MKModel_Destroy(MKModel *arg0) {
     arg0->unk4 |= 0x18;
     arg0->unk8 = pDeathRow;
@@ -2363,7 +2369,7 @@ loop_79:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier 'unk60'
 void MKModelInternal_FixUpBlendShapes(MKModel *arg0) {
     s32 var_r25_4139;
     s32 var_r30_4161;

@@ -3,7 +3,7 @@
 #include <m2c_macros.h>
 
 extern void **gMK;
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 static MKResource sWorkingChunkID__10MKResource;    /* type too large by 0x28; unable to generate initializer: not enough data */
 
 void MKResource::InitialiseResource() {
@@ -11,7 +11,7 @@ void MKResource::InitialiseResource() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sWorkingChunkID'
+#if 0 // DRAFT: expression syntax error
 s32 MKResource::IsResourceAvailable() {
     s32 temp_r4_38;
     s32 var_r3_39;

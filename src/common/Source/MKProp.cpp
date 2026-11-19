@@ -496,7 +496,7 @@ void MKProp::Resolve() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'loadInfo'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void MKProp::LoadDone() {
     MKModel *temp_r3_1331;
 

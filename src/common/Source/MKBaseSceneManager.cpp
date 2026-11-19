@@ -339,7 +339,7 @@ loop_31:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPropMapping'
+#if 0 // DRAFT: expression syntax error
 void MKSceneManager::PropResolver_Deinit() {
     MKHeap *temp_r3_691;
     void *temp_r31_690;
@@ -406,7 +406,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPropMapping'
+#if 0 // DRAFT: expression syntax error
 void MKSceneManager::PropResolver_Remove(MKProp *arg0) {
     s32 temp_cr0_gt_798;
     s32 temp_r4_785;
@@ -446,7 +446,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pPropMapping'
+#if 0 // DRAFT: expression syntax error
 void MKSceneManager::PropResolver_Add(MKProp *arg0, const char *arg1) {
     s32 temp_r5_847;
     s32 temp_r6_829;

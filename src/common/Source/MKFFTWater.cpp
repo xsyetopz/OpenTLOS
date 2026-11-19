@@ -1239,7 +1239,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'numTypesVisible'
+#if 0 // DRAFT: expression syntax error
 void MKFFTWater::ManagedDraw() {
     MKFFTWaterType *temp_r3_2374;
     MKFFTWaterType *var_r4_2377;
@@ -1270,7 +1270,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'numTypesVisible'
+#if 0 // DRAFT: expression syntax error
 void MKFFTWater::BuildVisibleTypesList() {
     s32 temp_r0_2431;
     s32 var_ctr_2408;
