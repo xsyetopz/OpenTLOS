@@ -19,7 +19,8 @@ class MKVector3;
 class MKAnimScriptedEvent {
 public:
     class AnimationSwitch;
-    class EventType;
+    // Integer-valued: GetFirstEvent compares r4 against 0, 1 and 6.
+    enum EventType {};
     void FreeMaterial(void);
     s32 GetStringSizeOfEvent(MKIniLine *);
     u8 ParseEvent(MKIniLine *, char *);

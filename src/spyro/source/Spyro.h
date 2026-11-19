@@ -78,10 +78,12 @@ public:
 class Spyro : public MKProp {  // base: ctor/dtor vtable stores
 public:
     class AnimEvents;
-    class AnimScriptNode;
-    class Medium;
+    // Integer-valued: GetAnimScript scales r4 by 0x58, SetMedium forwards r4
+    // as a state index, GetRefPos shifts r5; a by-value class would arrive as a pointer.
+    enum AnimScriptNode {};
+    enum Medium {};
     class Nodes;
-    class RefPoints;
+    enum RefPoints {};
     virtual ~Spyro(void);
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
