@@ -67,54 +67,43 @@ void ScreenWobbleFX::DrawSpeedEffect() {
     }
 }
 
-#if 0 // DRAFT: function call 'operator*(float, MKVector3)' does not match 'MKVector3::operator*(float)const '
 void ScreenWobbleFX::AddRandomWobbleForce(float arg0) {
-    MKVector3 sp58;
-    MKVector3 sp48;
-    f64 sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f32 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    s32 var_r29_113;
-    s32 var_r30_109;
-    s32 var_r31_111;
-    void *temp_r3_141;
+    MKVector3 lo;
+    MKVector3 hi;
+    MKVector3 rnd;
+    void *node;
+    f32 mx;
+    f32 my;
+    f32 mz;
+    s32 i;
+    s32 j;
+    s32 base;
 
-    var_r30_109 = 0;
-    var_r31_111 = 0;
+    j = 0;
+    base = 0;
     do {
-        var_r29_113 = 0;
-loop_2:
-        sp10 = 0.0f;
-        sp20 = 0.0f;
-        sp8 = 1.0f;
-        spC = 1.0f;
-        sp18 = -1.0f;
-        sp1C = -1.0f;
-        sp28 = (f64) sp8;
-        sp30 = (f64) sp10;
-        sp38 = (f64) sp18;
-        sp40 = (f64) sp20;
-        sp48 = KDRand_Vector(*((MKVector3 *) &sp38), *((MKVector3 *) &sp28));
-        sp58 = __ml(gUpdateTimeDelta, sp48);
-        temp_r3_141 = ((u8 *) this->unk0) + (((var_r29_113 + var_r31_111) * 0x38) + 0x20);
-        M2C_FIELD(temp_r3_141, f64 *, 0) = (f64) (M2C_FIELD(temp_r3_141, f64 *, 0) + M2C_BITWISE(f64, sp58));
-        var_r29_113 += 1;
-        M2C_FIELD(temp_r3_141, f32 *, 8) = (f32) (M2C_FIELD(temp_r3_141, f32 *, 8) + sp58.unk8);
-        if (var_r29_113 < 0xF) {
-            goto loop_2;
-        }
-        var_r30_109 += 1;
-        var_r31_111 += 0xF;
-    } while (var_r30_109 < 0xF);
+        i = 0;
+        do {
+            lo.unk0 = -1.0f;
+            lo.unk4 = -1.0f;
+            lo.unk8 = 0.0f;
+            hi.unk0 = 1.0f;
+            hi.unk4 = 1.0f;
+            hi.unk8 = 0.0f;
+            rnd = KDRand_Vector(lo, hi);
+            mx = gUpdateTimeDelta * rnd.unk0;
+            my = gUpdateTimeDelta * rnd.unk4;
+            mz = gUpdateTimeDelta * rnd.unk8;
+            node = ((u8 *) this->unk0) + (((i + base) * 0x38) + 0x20);
+            M2C_FIELD(node, f32 *, 0) = M2C_FIELD(node, f32 *, 0) + mx;
+            M2C_FIELD(node, f32 *, 4) = M2C_FIELD(node, f32 *, 4) + my;
+            M2C_FIELD(node, f32 *, 8) = M2C_FIELD(node, f32 *, 8) + mz;
+            i += 1;
+        } while (i < 0xF);
+        j += 1;
+        base += 0xF;
+    } while (j < 0xF);
 }
-#endif
 
 #if 0 // DRAFT: illegal type
 void ScreenWobbleFX::InitWobbleNodes() {
@@ -210,78 +199,62 @@ void ScreenWobbleFX::Deinit() {
     SetMotionBlurCapEnable(0U);
 }
 
-#if 0 // DRAFT: illegal type
 void ScreenWobbleFX::Draw() {
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
-    f32 sp20;
-    f64 sp18;                                       /* compiler-managed */
-    f64 sp10;                                       /* compiler-managed */
-    Tools_Ortho sp8;
-    f32 *temp_r3_347;
-    s32 temp_r26_380;
-    s32 temp_r26_412;
-    s32 var_r27_370;
-    s32 var_r29_375;
-    s32 var_r30_368;
-    void *temp_r3_390;
-    void *temp_r3_422;
-    void *temp_r4_397;
-    void *temp_r4_429;
+    f32 *rect;
+    f32 ox;
+    f32 oy;
+    f32 ow;
+    f32 oh;
+    MKVector3 pos;
+    void *node;
+    s32 i;
+    s32 j;
+    s32 base;
+    s32 next;
 
     if (((u8) this->unk18 != 0) && ((this->unk4 > 0.0f) || ((u8) this->unk8 != 0))) {
-        sp8.Tools_Ortho();
-        temp_r3_347 = MKView_GetOrthoRect();
-        sp24 = M2C_FIELD(temp_r3_347, f32 *, 4);
-        sp28 = M2C_FIELD(temp_r3_347, f32 *, 8);
-        sp2C = M2C_FIELD(temp_r3_347, f32 *, 0xC);
-        sp20 = M2C_FIELD(temp_r3_347, f32 *, 0);
+        Tools_Ortho ortho;
+
+        rect = MKView_GetOrthoRect();
+        ox = rect[0];
+        oy = rect[1];
+        ow = rect[2];
+        oh = rect[3];
         MKMaterial_SetMaterial(this->unkC);
         MKPrimitive(0xC, 0x10);
         MKSetMatrix(Matrix::identity);
-        var_r30_368 = 0;
-        var_r27_370 = 0;
+        j = 0;
+        base = 0;
         do {
             MKBegin(0x1E);
-            var_r29_375 = 0;
-loop_5:
-            temp_r26_380 = (var_r29_375 + var_r27_370) * 0x38;
-            MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * *(this->unk0 + (temp_r26_380 + 0x34)));
-            temp_r3_390 = ((u8 *) this->unk0) + temp_r26_380;
-            MKSetTexCoord1F(M2C_FIELD(temp_r3_390, f32 *, 0), M2C_FIELD(temp_r3_390, f32 *, 4));
-            temp_r4_397 = ((u8 *) this->unk0) + (temp_r26_380 + 0x10);
-            sp10 = M2C_FIELD(temp_r4_397, f64 *, 0);
-            sp18 = M2C_FIELD(temp_r4_397, f64 *, 8);
-            sp18 = 0.0f;
-            sp10 = ((f32) sp10 * sp28) + sp20;
-            (*(f32 *) ((u8 *) &sp8 + 0xc)) = ((*(f32 *) ((u8 *) &sp8 + 0xc)) * sp2C) + sp24;
-            MKSetPositionV(*((MKVector3 *) &sp10));
-            temp_r26_412 = (var_r29_375 + ((var_r30_368 + 1) * 0xF)) * 0x38;
-            MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * *(this->unk0 + (temp_r26_412 + 0x34)));
-            temp_r3_422 = ((u8 *) this->unk0) + temp_r26_412;
-            MKSetTexCoord1F(M2C_FIELD(temp_r3_422, f32 *, 0), M2C_FIELD(temp_r3_422, f32 *, 4));
-            temp_r4_429 = ((u8 *) this->unk0) + (temp_r26_412 + 0x10);
-            sp10 = M2C_FIELD(temp_r4_429, f64 *, 0);
-            sp18 = M2C_FIELD(temp_r4_429, f64 *, 8);
-            sp18 = 0.0f;
-            sp10 = ((f32) sp10 * sp28) + sp20;
-            (*(f32 *) ((u8 *) &sp8 + 0xc)) = ((*(f32 *) ((u8 *) &sp8 + 0xc)) * sp2C) + sp24;
-            MKSetPositionV(*((MKVector3 *) &sp10));
-            var_r29_375 += 1;
-            if (var_r29_375 < 0xF) {
-                goto loop_5;
-            }
+            next = (j + 1) * 0xF;
+            i = 0;
+            do {
+                node = ((u8 *) this->unk0) + ((i + base) * 0x38);
+                MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * M2C_FIELD(node, f32 *, 0x34));
+                MKSetTexCoord1F(M2C_FIELD(node, f32 *, 0x0), M2C_FIELD(node, f32 *, 0x4));
+                pos.unk0 = (M2C_FIELD(node, f32 *, 0x10) * ow) + ox;
+                pos.unk4 = (M2C_FIELD(node, f32 *, 0x14) * oh) + oy;
+                pos.unk8 = 0.0f;
+                MKSetPositionV(pos);
+
+                node = ((u8 *) this->unk0) + ((i + next) * 0x38);
+                MKSetColorF(1.0f, 1.0f, 1.0f, this->unk4 * M2C_FIELD(node, f32 *, 0x34));
+                MKSetTexCoord1F(M2C_FIELD(node, f32 *, 0x0), M2C_FIELD(node, f32 *, 0x4));
+                pos.unk0 = (M2C_FIELD(node, f32 *, 0x10) * ow) + ox;
+                pos.unk4 = (M2C_FIELD(node, f32 *, 0x14) * oh) + oy;
+                pos.unk8 = 0.0f;
+                MKSetPositionV(pos);
+                i += 1;
+            } while (i < 0xF);
             MKEnd();
-            var_r30_368 += 1;
-            var_r27_370 += 0xF;
-        } while (var_r30_368 < 0xE);
+            j += 1;
+            base += 0xF;
+        } while (j < 0xE);
         MKEndPrimitive();
-        sp8.~Tools_Ortho(-1);
     }
     DrawScreenFlash();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void ScreenWobbleFX::DrawScreenFlash() {

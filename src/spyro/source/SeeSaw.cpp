@@ -394,36 +394,32 @@ s32 SeeSaw::LoadLine(MKIniLine *arg0) {
     return var_r31_699;
 }
 
-#if 0 // DRAFT: ')' expected
 f32 SeeSaw::Resolve() {
-    void *temp_r31_751;
+    SeeSawDescriptor *desc;
+    SeeSawDescriptor *desc2;
 
     MKProp::Resolve();
-    temp_r31_751 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    ((KDSoundFader *) &this->unkF0)->Init(M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x74), M2C_FIELD(temp_r31_751, f32 *, 0x78));
+    desc = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    desc2 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    ((KDSoundFader *) &this->unkF0)->Init(desc2->unk74, desc->unk78);
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SeeSaw::Deinit() {
     s32 spC;
     s32 sp8;
-    Platform *temp_r3_778;
-    PlatformAttachment *temp_r3_787;
+    Platform *platform;
+    PlatformAttachment *att;
 
-loop_2:
-    temp_r3_787 = this->unk118.unk8;
-    if (temp_r3_787 != &this->unk118) {
-        temp_r3_778 = temp_r3_787->unk0;
+    while (this->unk118.unk8 != &this->unk118) {
+        att = this->unk118.unk8;
+        platform = att->unk0;
         spC = 0;
         sp8 = 0x26;
-        temp_r3_778->Message(&sp8);
-        goto loop_2;
+        platform->Message((MKMessage *) &sp8);
     }
     KDSound_Stop((int *) &this->unkF0);
     KDProp::Deinit();
 }
-#endif
 
 void SeeSaw::Init() {
     KDProp::Init();
