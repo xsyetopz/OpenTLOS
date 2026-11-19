@@ -114,37 +114,31 @@ void KDSP_EnvelopeList::Init() {
     this->unk8 = NULL;
 }
 
-#if 0 // DRAFT: pointer/array required
 u16 KDSP_ToolsGetMatchingNodeIndex(MKModel *arg0, const char *arg1) {
     Animation *temp_r3_196;
-    s32 var_r28_205;
+    s8 *var_r28_205;
     s8 temp_r31_199;
     u16 var_r29_200;
-    u8 temp_r3_218;
+    s8 temp_r3_218;
 
     temp_r3_196 = MKModel_GetAnimation(arg0);
     temp_r31_199 = temp_r3_196->GetNmbrOfNodes();
     var_r29_200 = 0;
-loop_8:
-    if ((s32) var_r29_200 >= temp_r31_199) {
-        return 0xFFFFU;
-    }
-    var_r28_205 = temp_r3_196->GetNodeName((s32) var_r29_200);
-loop_5:
-    temp_r3_218 = *var_r28_205;
-    if (((s8) temp_r3_218 == 0) || ((s8) temp_r3_218 == 0)) {
+    while ((s32) var_r29_200 < temp_r31_199) {
+        var_r28_205 = (s8 *) temp_r3_196->GetNodeName((s32) var_r29_200);
+        temp_r3_218 = *var_r28_205;
+        while (temp_r3_218 != 0) {
+            if (stricmp((u8 *) var_r28_205, (s8 *) arg1) == 0) {
+                return var_r29_200;
+            }
+            var_r28_205 += 1;
+            temp_r3_218 = *var_r28_205;
+        }
         var_r29_200 += 1;
-        goto loop_8;
     }
-    if (stricmp((u8 *) var_r28_205, arg1) == 0) {
-        return var_r29_200;
-    }
-    var_r28_205 += 1;
-    goto loop_5;
+    return 0xFFFFU;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 s32 KDSP_ToolsGetSplinePercent(KDSP_Bar *arg0, KDUniformSpline *arg1, KDBasicEnvelope *arg2, float arg3, int &arg4, float &arg5) {
     f32 temp_f1_329;
     f32 temp_f2_316;
@@ -152,9 +146,8 @@ s32 KDSP_ToolsGetSplinePercent(KDSP_Bar *arg0, KDUniformSpline *arg1, KDBasicEnv
     f32 var_f0_296;
     f32 var_f0_344;
     f32 var_f3_313;
-    s32 temp_r5_325;
 
-    if ((s32) arg1->unk0 == 1) {
+    if (arg1->unk0 == 1) {
         return 0;
     }
     var_f0_271 = (arg3 - (f32) arg0->unk0) / (f32) arg0->unk4;
@@ -168,11 +161,11 @@ s32 KDSP_ToolsGetSplinePercent(KDSP_Bar *arg0, KDUniformSpline *arg1, KDBasicEnv
     } else {
         var_f0_271 = 0.0f;
     }
-    &arg5 = var_f0_271;
+    arg5 = var_f0_271;
     if ((arg2 != NULL) && ((s32) arg2->unk0 > 0)) {
-        &arg5 = arg2->GetValue(&arg5);
+        arg5 = arg2->GetValue(arg5);
     }
-    var_f0_296 = &arg5;
+    var_f0_296 = arg5;
     if (var_f0_296 < 1.0f) {
 
     } else {
@@ -183,21 +176,19 @@ s32 KDSP_ToolsGetSplinePercent(KDSP_Bar *arg0, KDUniformSpline *arg1, KDBasicEnv
     } else {
         var_f0_296 = 0.0f;
     }
-    &arg5 = var_f0_296;
+    arg5 = var_f0_296;
     var_f3_313 = 0.0f;
-    temp_f2_316 = &arg5 * arg1->unk8;
-    &arg4 = 0;
-loop_19:
-    temp_r5_325 = (long) (&arg4);
-    temp_f1_329 = *(arg1->unkC + ((temp_r5_325 << 5) + 0x1C));
-    if (((var_f3_313 + temp_f1_329) < temp_f2_316) && (temp_r5_325 < (s32) (arg1->unk4 - 1))) {
+    temp_f2_316 = arg5 * arg1->unk8;
+    arg4 = 0;
+    temp_f1_329 = *(f32 *) (arg1->unkC + ((arg4 << 5) + 0x1C));
+    while (((var_f3_313 + temp_f1_329) < temp_f2_316) && (arg4 < (s32) (arg1->unk4 - 1))) {
         var_f3_313 += temp_f1_329;
-        &arg4 += 1;
-        goto loop_19;
+        arg4 += 1;
+        temp_f1_329 = *(f32 *) (arg1->unkC + ((arg4 << 5) + 0x1C));
     }
     if (temp_f1_329 > 0.0f) {
-        &arg5 = (temp_f2_316 - var_f3_313) / temp_f1_329;
-        var_f0_344 = &arg5;
+        arg5 = (temp_f2_316 - var_f3_313) / temp_f1_329;
+        var_f0_344 = arg5;
         if (var_f0_344 < 1.0f) {
 
         } else {
@@ -208,9 +199,8 @@ loop_19:
         } else {
             var_f0_344 = 0.0f;
         }
-        &arg5 = var_f0_344;
+        arg5 = var_f0_344;
         return 1;
     }
     return 0;
 }
-#endif

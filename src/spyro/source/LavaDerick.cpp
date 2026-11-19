@@ -64,90 +64,54 @@ void LavaDerick::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void *LavaDerickDescriptor::CalcBounds() {
     MKVector3 sp8;
-    BoundingVolume *temp_r3_105;
-    BoundingVolume *temp_r3_115;
-    BoundingVolume *temp_r3_125;
-    BoundingVolume *temp_r3_135;
-    BoundingVolume *temp_r3_147;
-    BoundingVolume *temp_r3_159;
-    BoundingVolume *temp_r4_171;
-    f32 temp_f1_107;
-    f32 temp_f1_117;
-    f32 temp_f1_127;
-    f32 temp_f2_138;
-    f32 temp_f2_150;
-    f32 temp_f2_162;
-    f32 var_f0_106;
-    f32 var_f0_116;
-    f32 var_f0_126;
-    f32 var_f0_139;
-    f32 var_f0_151;
-    f32 var_f0_163;
+    BoundingVolume *bv;
+    f32 var_f0;
 
     MKModel_CalculateRefPointWorldPosition(this->unk2C, (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "hurtsphere1"), &sp8);
-    temp_r3_105 = this->unk1C;
-    var_f0_106 = M2C_BITWISE(f32, sp8);
-    temp_f1_107 = temp_r3_105->unk0;
-    if (var_f0_106 < temp_f1_107) {
-
+    bv = this->unk1C;
+    var_f0 = sp8.unk0;
+    if (var_f0 < bv->unk0) {
     } else {
-        var_f0_106 = temp_f1_107;
+        var_f0 = bv->unk0;
     }
-    temp_r3_105->unk0 = var_f0_106;
-    temp_r3_115 = this->unk1C;
-    var_f0_116 = sp8.unk4;
-    temp_f1_117 = temp_r3_115->unk4;
-    if (var_f0_116 < temp_f1_117) {
-
+    bv->unk0 = var_f0;
+    var_f0 = sp8.unk4;
+    if (var_f0 < bv->unk4) {
     } else {
-        var_f0_116 = temp_f1_117;
+        var_f0 = bv->unk4;
     }
-    temp_r3_115->unk4 = var_f0_116;
-    temp_r3_125 = this->unk1C;
-    var_f0_126 = sp8.unk8;
-    temp_f1_127 = temp_r3_125->unk8;
-    if (var_f0_126 < temp_f1_127) {
-
+    bv->unk4 = var_f0;
+    var_f0 = sp8.unk8;
+    if (var_f0 < bv->unk8) {
     } else {
-        var_f0_126 = temp_f1_127;
+        var_f0 = bv->unk8;
     }
-    temp_r3_125->unk8 = var_f0_126;
-    temp_r3_135 = this->unk1C;
-    temp_f2_138 = temp_r3_135->unk10;
-    var_f0_139 = M2C_BITWISE(f32, sp8) - temp_r3_135->unk0;
-    if (var_f0_139 > temp_f2_138) {
-
+    bv->unk8 = var_f0;
+    var_f0 = sp8.unk0 - bv->unk0;
+    if (var_f0 > bv->unk10) {
     } else {
-        var_f0_139 = temp_f2_138;
+        var_f0 = bv->unk10;
     }
-    temp_r3_135->unk10 = var_f0_139;
-    temp_r3_147 = this->unk1C;
-    temp_f2_150 = temp_r3_147->unk14;
-    var_f0_151 = sp8.unk4 - temp_r3_147->unk4;
-    if (var_f0_151 > temp_f2_150) {
-
+    bv->unk10 = var_f0;
+    var_f0 = sp8.unk4 - bv->unk4;
+    if (var_f0 > bv->unk14) {
     } else {
-        var_f0_151 = temp_f2_150;
+        var_f0 = bv->unk14;
     }
-    temp_r3_147->unk14 = var_f0_151;
-    temp_r3_159 = this->unk1C;
-    temp_f2_162 = temp_r3_159->unk18;
-    var_f0_163 = sp8.unk8 - temp_r3_159->unk8;
-    if (var_f0_163 > temp_f2_162) {
-
+    bv->unk14 = var_f0;
+    var_f0 = sp8.unk8 - bv->unk8;
+    if (var_f0 > bv->unk18) {
     } else {
-        var_f0_163 = temp_f2_162;
+        var_f0 = bv->unk18;
     }
-    temp_r3_159->unk18 = var_f0_163;
-    temp_r4_171 = this->unk1C;
-    M2C_FIELD(temp_r4_171, f32 *, 0x10) = (f64) ((f64) M2C_FIELD(temp_r4_171, f32 *, 0x10) - (f64) M2C_FIELD(temp_r4_171, f32 *, 0));
-    temp_r4_171->unk18 -= temp_r4_171->unk8;
-    return &temp_r4_171->unk10;
+    bv->unk18 = var_f0;
+    bv->unk10 = bv->unk10 - bv->unk0;
+    bv->unk14 = bv->unk14 - bv->unk4;
+    bv->unk18 -= bv->unk8;
+    return &bv->unk10;
 }
-#endif
 
 void LavaDerickDescriptor::Resolve() {
     MKPropDescriptor::Resolve();

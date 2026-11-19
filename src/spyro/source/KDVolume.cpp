@@ -148,27 +148,21 @@ void KDVolume::GetCenterPos() {
     M2C_FIELD(this, f64 *, 8) = (f64) sp20;
 }
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
     f32 sp8;
+    f32 spC;
+    f32 sp10;
     f32 temp_f6_213;
     f32 temp_f7_217;
     f32 temp_f8_223;
 
-    temp_f6_213 = arg0.unk4;
-    temp_f7_217 = arg0.unk0;
-    temp_f8_223 = arg0.unk8;
+    temp_f6_213 = M2C_FIELD(&arg0, f32 *, 4);
+    temp_f7_217 = M2C_FIELD(&arg0, f32 *, 0);
+    temp_f8_223 = M2C_FIELD(&arg0, f32 *, 8);
     sp8 = this->unk30 + ((temp_f8_223 * this->unk20) + ((temp_f7_217 * M2C_FIELD(this, f32 *, 0)) + (temp_f6_213 * this->unk10)));
     spC = this->unk34 + ((temp_f8_223 * this->unk24) + ((temp_f7_217 * M2C_FIELD(this, f32 *, 4)) + (temp_f6_213 * this->unk14)));
-    sp18 = (f64) sp8;
     sp10 = this->unk38 + ((temp_f8_223 * this->unk28) + ((temp_f7_217 * this->unk8) + (temp_f6_213 * this->unk18)));
-    sp20 = (f64) sp10;
-    M2C_ERROR(/* unknown instruction: cror 0x2, 0x1, 0x2 */);
-    if (((f32) sp18 == M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && ((f32) sp18 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && ((f32) sp20 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && ((f32) sp20 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
+    if ((sp8 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && (sp8 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && (sp10 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && (sp10 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
         if (arg1 != NULL) {
             *arg1 = this->unk84;
         }
@@ -176,47 +170,33 @@ s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 s32 KDVolume::IsWithin(const MKVector3 &arg0, float *arg1) {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
     f32 sp8;
+    f32 spC;
+    f32 sp10;
     f32 temp_f0_286;
     f32 temp_f3_285;
     f32 temp_f7_299;
     f32 temp_f8_304;
-    u8 var_r0_295;
 
-    temp_f3_285 = arg0.unk4;
+    temp_f3_285 = M2C_FIELD(&arg0, f32 *, 4);
     temp_f0_286 = this->unk84;
     if ((temp_f3_285 < temp_f0_286) && (temp_f3_285 > this->unk80)) {
-        var_r0_295 = 0;
-        temp_f7_299 = arg0.unk0;
-        temp_f8_304 = arg0.unk8;
+        temp_f7_299 = M2C_FIELD(&arg0, f32 *, 0);
+        temp_f8_304 = M2C_FIELD(&arg0, f32 *, 8);
         sp8 = this->unk30 + ((temp_f8_304 * this->unk20) + ((temp_f7_299 * M2C_FIELD(this, f32 *, 0)) + (temp_f3_285 * this->unk10)));
         spC = this->unk34 + ((temp_f8_304 * this->unk24) + ((temp_f7_299 * M2C_FIELD(this, f32 *, 4)) + (temp_f3_285 * this->unk14)));
         sp10 = this->unk38 + ((temp_f8_304 * this->unk28) + ((temp_f7_299 * this->unk8) + (temp_f3_285 * this->unk18)));
-        sp18 = (f64) sp8;
-        sp20 = (f64) sp10;
-        if (((f32) sp18 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && ((f32) sp18 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 4)) && ((*(f32 *) ((u8 *) &sp18 + 0x4)) <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 4) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x14))) && ((f32) sp20 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && ((f32) sp20 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
-            var_r0_295 = 1;
-        }
-        if (var_r0_295 != 0) {
+        if ((sp8 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 0)) && (sp8 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 0) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x10))) && (spC >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 4)) && (spC <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 4) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x14))) && (sp10 >= M2C_FIELD(KDVolume::boundingVolume, f32 *, 8)) && (sp10 <= (M2C_FIELD(KDVolume::boundingVolume, f32 *, 8) + M2C_FIELD(KDVolume::boundingVolume, f32 *, 0x18)))) {
             if (arg1 != NULL) {
                 *arg1 = temp_f0_286;
             }
             return 1;
         }
-        goto block_13;
     }
-block_13:
     return 0;
 }
-#endif
 
 void KDVolume::Deinit() {
 

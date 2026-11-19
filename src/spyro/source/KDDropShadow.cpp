@@ -20,8 +20,8 @@
 
 MKHeap *malloc(s32);                                /* extern */
 
-#if 0 // DRAFT: ')' expected
 void KDDropShadow::Draw() {
+    KDDropShadowDescriptor *desc;
     Matrix *var_r31_61;
     Matrix *var_r3_104;
     Matrix *var_r3_53;
@@ -30,7 +30,8 @@ void KDDropShadow::Draw() {
     f32 temp_f1_91;
     f32 temp_f3_98;
 
-    MKMaterial_SetMaterial(M2C_FIELD(checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKMaterial **, 0x38));
+    desc = checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    MKMaterial_SetMaterial(M2C_FIELD(desc, MKMaterial **, 0x38));
     MKPrimitive(0xC, 0x10);
     var_r3_53 = this->unk50;
     if (var_r3_53 != (Matrix *) this->unk54) {
@@ -39,8 +40,7 @@ void KDDropShadow::Draw() {
         var_r3_53 = NULL;
     }
     var_r31_61 = var_r3_53;
-loop_7:
-    if (var_r31_61 != NULL) {
+    while (var_r31_61 != NULL) {
         MKSetMatrix(*var_r31_61);
         MKBegin(4);
         temp_f1_70 = -M2C_FIELD(var_r31_61, f32 *, 0x40);
@@ -57,17 +57,15 @@ loop_7:
         temp_f3_98 = M2C_FIELD(var_r31_61, f32 *, 0x40);
         MKSetPositionF(-temp_f3_98, 1.0f, temp_f3_98);
         MKEnd();
-        var_r3_104 = var_r31_61 + 0x50;
+        var_r3_104 = (Matrix *) ((u8 *) var_r31_61 + 0x50);
         if (var_r3_104 >= (Matrix *) this->unk54) {
             var_r3_104 = NULL;
         }
         var_r31_61 = var_r3_104;
-        goto loop_7;
     }
     this->unk50 = this->unk54;
     MKEndPrimitive();
 }
-#endif
 
 void KDDropShadow::Reset() {
     MKProp::Reset();
@@ -82,25 +80,25 @@ void KDDropShadow::Deinit() {
     MKProp::Deinit();
 }
 
-#if 0 // DRAFT: ')' expected
 s32 KDDropShadow::LoadDone() {
+    KDDropShadowDescriptor *desc;
     MKHeap *var_r3_185;
     Matrix *temp_r0_194;
     s32 temp_r31_177;
 
     MKProp::LoadDone();
-    temp_r31_177 = M2C_FIELD(checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60);
+    desc = checked_cast<KDDropShadowDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    temp_r31_177 = desc->unk60;
     if (MKHeap::Current() != NULL) {
         var_r3_185 = (MKHeap *) (((MKHeap *) (MKHeap::Current()))->Alloc(temp_r31_177 * 0x50, NULL, 0));
     } else {
         var_r3_185 = malloc(temp_r31_177 * 0x50);
     }
     this->unk4C = var_r3_185;
-    temp_r0_194 = (Matrix *) (this->unk4C + (temp_r31_177 * 0x50));
+    temp_r0_194 = (Matrix *) ((u8 *) this->unk4C + (temp_r31_177 * 0x50));
     this->unk50 = temp_r0_194;
     this->unk54 = temp_r0_194;
 }
-#endif
 
 s32 KDDropShadowDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_213;
