@@ -281,12 +281,10 @@ void SwampTier3Goal_Patrol::Init(SwampTier3 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk6F8'
 void SwampTier3Goal_Cower::Terminate() {
-    this->unkC->unk6F8 = 0;
+    M2C_FIELD(this->unkC, u8 *, 0x6F8) = 0;
     this->unk8 = 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk8B0'
 u8 SwampTier3Goal_Cower::Update() {
@@ -1389,25 +1387,27 @@ void SwampTier3Goal_Think::AddGoal_Patrol() {
     }
 }
 
-#if 0 // DRAFT: declaration syntax error
 void SwampTier3Goal_Think::AddGoal_AlertMode(AITargetData *arg0) {
-    Goal<SwampTier3> *temp_r4_2419;
+    EnemyGoal_AlertMode *alert;
+    s32 flag;
+    s32 zero;
     s32 temp_r3_2433;
 
-    if (IsPresent(0x54) == 0) {
+    if ((u8) IsPresent(0x54) == 0) {
         RemoveAllSubgoals();
-        AddSubgoal((Goal<SwampTier3> *) this->unk30);
-        temp_r4_2419 = this->unk30;
-        M2C_FIELD(temp_r4_2419, AITargetData **, 0x20) = arg0;
-        M2C_FIELD(temp_r4_2419, s32 *, 0x4C) = 3;
-        M2C_FIELD(temp_r4_2419, u8 *, 0x50) = (u8) (M2C_FIELD(temp_r4_2419, u8 *, 0x50) | 0x80);
-        ((EnemyGoal_AlertMode *) this->unk30)->SetSummonGoal((Goal<Enemy> *) this->unk34);
-        M2C_FIELD(this->unkC, s8 *, 0xB10) = 0;
+        AddSubgoal(this->unk30);
+        alert = (EnemyGoal_AlertMode *) this->unk30;
+        alert->unk20 = arg0;
+        alert->unk4C = 3;
+        flag = 1;
+        alert->unk50 = (u8) ((alert->unk50 & ~0x80) | ((flag << 7) & 0x80));
+        alert->SetSummonGoal((Goal<Enemy> *) this->unk34);
+        zero = 0;
+        M2C_FIELD(this->unkC, u8 *, 0xB10) = (u8) zero;
         temp_r3_2433 = this->unkC;
-        M2C_FIELD(temp_r3_2433, u8 *, 0xB01) = (u8) (M2C_FIELD(temp_r3_2433, u8 *, 0xB01) & ~0x20);
+        M2C_FIELD(temp_r3_2433, u8 *, 0xB01) = (u8) ((M2C_FIELD(temp_r3_2433, u8 *, 0xB01) & ~0x20) | ((zero << 5) & 0x20));
     }
 }
-#endif
 
 void SwampTier3Goal_Think::AddGoal_Respawn() {
     if (IsPresent(0x1E) == 0) {
