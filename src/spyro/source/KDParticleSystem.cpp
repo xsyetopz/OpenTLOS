@@ -22,19 +22,17 @@ f64 pow(f32, f32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 static M2C_UNK gDefaultEnvelope;                    /* unable to generate initializer: unknown type */
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void KDEnvParticleSystem::KDEnvConfigureSystemData(KDParticleSystem *arg0, MKParticle *arg1) {
-    void *temp_r3_21;
+    void *env;
 
-    temp_r3_21 = M2C_FIELD(this->unk0, void **, 0xD4);
-    arg0->unk20 = 0.0f;
-    arg0->unk28 = M2C_FIELD(temp_r3_21, f32 *, 8);
-    arg0->unk10 = 1.0f;
-    arg0->unk14 = 1.0f;
-    arg0->unk18 = 1.0f;
-    arg0->unk1C = M2C_FIELD(temp_r3_21, f32 *, 4);
+    env = M2C_FIELD(this->unk0, void **, 0xD4);
+    M2C_FIELD(arg0, f32 *, 0x20) = 0.0f;
+    M2C_FIELD(arg0, f32 *, 0x28) = M2C_FIELD(env, f32 *, 8);
+    M2C_FIELD(arg0, f32 *, 0x10) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x14) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x18) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x1C) = M2C_FIELD(env, f32 *, 4);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp8'
 void KDEnvParticleSystem::UpdateParticles() {
@@ -132,12 +130,13 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF0'
 void KDEnvParticleSystem::Init() {
+    void (KDEnvParticleSystem::*pfn)(KDParticleSystem *, MKParticle *);
+
     KDParticleSystem::Init();
-    this->unkF0 = &KDEnvParticleSystem::KDEnvConfigureSystemData;
+    pfn = &KDEnvParticleSystem::KDEnvConfigureSystemData;
+    M2C_FIELD(this, void **, 0xF0) = *(void **) &pfn;
 }
-#endif
 
 void KDEnvParticleSystemDescriptor::CalculateEnvelope() {
     s32 temp_r5_259;
@@ -258,16 +257,14 @@ void KDEnvParticleSystemDescriptor::Init() {
     CalculateEnvelope();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void KDParticleSystem::KDConfigureSystemData(KDParticleSystem *arg0, MKParticle *arg1) {
-    arg0->unk28 = 1.0f;
-    arg0->unk20 = 0.0f;
-    arg0->unk10 = 1.0f;
-    arg0->unk14 = 1.0f;
-    arg0->unk18 = 1.0f;
-    arg0->unk1C = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x28) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x20) = 0.0f;
+    M2C_FIELD(arg0, f32 *, 0x10) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x14) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x18) = 1.0f;
+    M2C_FIELD(arg0, f32 *, 0x1C) = 1.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp8'
 void KDParticleSystem::UpdateParticles() {
@@ -332,16 +329,17 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF0'
 void KDParticleSystem::Init() {
+    void (KDParticleSystem::*pfn)(KDParticleSystem *, MKParticle *);
+
     MKBaseParticleSystem::Init();
     this->unkF4 = 0.0f;
     this->unkA8 = M2C_FIELD(this->unk0, f32 *, 0x94);
     this->unkAC = M2C_FIELD(this->unk0, f32 *, 0x98);
-    this->unkF0 = &KDParticleSystem::KDConfigureSystemData;
+    pfn = &KDParticleSystem::KDConfigureSystemData;
+    M2C_FIELD(this, void **, 0xF0) = *(void **) &pfn;
     this->unkF8 = 0;
 }
-#endif
 
 void KDParticleSystemDescriptor::Update() {
     this->unkC4 = (f32) pow(this->unkC0, gUpdateTimeDelta);
