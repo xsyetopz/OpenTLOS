@@ -158,7 +158,6 @@ void FireBossDriverGoal_Crash::Activate() {
     this->unkC->SetAnim((AnimSequenceType) 2, 0x28, 0, 0.15f, 0U, 0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 FireBossDriverGoal_Idle::Update() {
     AnimSequence *temp_r4_233;
     AnimSequence *temp_r4_246;
@@ -175,16 +174,16 @@ u8 FireBossDriverGoal_Idle::Update() {
         temp_r29_227 = this->unkC;
         var_r30_228 = 0;
         if (temp_r29_227->HasAnimFinished() != 0) {
-            temp_r4_233 = temp_r29_227->unkA50;
+            temp_r4_233 = ((Enemy *) temp_r29_227)->unkA50;
             if ((temp_r4_233 != NULL) && ((u32) temp_r4_233->unk0 == (u32) M2C_FIELD(temp_r29_227->unk630, u32 *, 0x20))) {
                 var_r30_228 = 1;
             }
         }
-        if ((var_r30_228 != 0) && (temp_r3_245 = this->unkC, temp_r4_246 = temp_r3_245->unkA50, (((u32) temp_r4_246->unk20 == 0) == 0))) {
+        if ((var_r30_228 != 0) && (temp_r3_245 = this->unkC, temp_r4_246 = ((Enemy *) temp_r3_245)->unkA50, (((u32) temp_r4_246->unk20 == 0) == 0))) {
             ((Enemy *) temp_r3_245)->SetAnim(temp_r4_246, (AnimTransition *) &temp_r4_246->unk20, 0.15f, 0U);
         } else {
             temp_r3_256 = this->unkC;
-            temp_r4_257 = temp_r3_256->unkA50;
+            temp_r4_257 = ((Enemy *) temp_r3_256)->unkA50;
             if (((u32) temp_r4_257->unk40 != 0) && (temp_r6_261 = temp_r3_256->unk630, (((u32) M2C_FIELD(temp_r6_261, u32 *, 0x20) == (u32) temp_r4_257->unk20) != 0))) {
                 if ((s32) M2C_FIELD(temp_r6_261, s32 *, 0x44) >= 3) {
                     ((Enemy *) temp_r3_256)->SetAnim(temp_r4_257, (AnimTransition *) &temp_r4_257->unk40, 0.15f, 0U);
@@ -200,7 +199,6 @@ u8 FireBossDriverGoal_Idle::Update() {
     }
     return this->unk8;
 }
-#endif
 
 void FireBossDriverGoal_Idle::Activate() {
     s32 var_r5_303;

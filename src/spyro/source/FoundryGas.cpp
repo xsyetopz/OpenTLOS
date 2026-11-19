@@ -107,7 +107,6 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void FoundryGas::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r30_225;
     void *temp_r3_222;
@@ -115,18 +114,19 @@ void FoundryGas::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float 
     temp_r3_222 = CreateParticle();
     if (temp_r3_222 != NULL) {
         temp_r30_225 = M2C_FIELD(temp_r3_222, void **, 0x2C);
-        M2C_FIELD(temp_r3_222, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-        M2C_FIELD(temp_r3_222, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
+        M2C_FIELD(temp_r3_222, f32 *, 0) = M2C_FIELD(&arg0, f32 *, 0);
+        M2C_FIELD(temp_r3_222, f32 *, 4) = M2C_FIELD(&arg0, f32 *, 4);
+        M2C_FIELD(temp_r3_222, f32 *, 8) = M2C_FIELD(&arg0, f32 *, 8);
         M2C_FIELD(temp_r3_222, f32 *, 0x20) = 0.0f;
-        M2C_FIELD(temp_r30_225, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-        M2C_FIELD(temp_r30_225, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-        M2C_FIELD(temp_r30_225, f32 *, 0x1C) = (f32) &arg2;
+        M2C_FIELD(temp_r30_225, f32 *, 0) = M2C_FIELD(&arg1, f32 *, 0);
+        M2C_FIELD(temp_r30_225, f32 *, 4) = M2C_FIELD(&arg1, f32 *, 4);
+        M2C_FIELD(temp_r30_225, f32 *, 8) = M2C_FIELD(&arg1, f32 *, 8);
+        M2C_FIELD(temp_r30_225, f32 *, 0x1C) = arg2;
         M2C_FIELD(temp_r30_225, f32 *, 0x20) = 1.0f;
         M2C_FIELD(temp_r3_222, f32 *, 0x24) = MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f);
         M2C_FIELD(temp_r30_225, f32 *, 0x18) = MKRand_Float((int *) &gViewSeed, -0.3f, 0.3f);
     }
 }
-#endif
 
 void FoundryGas::Deinit() {
     MKParticleSystem::Deinit();
