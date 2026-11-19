@@ -451,7 +451,6 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void MKSceneManager::PropResolver_Add(MKProp *arg0, const char *arg1) {
     s32 temp_r5_847;
     s32 temp_r6_829;
@@ -461,6 +460,7 @@ void MKSceneManager::PropResolver_Add(MKProp *arg0, const char *arg1) {
     u32 temp_r5_833;
     u32 temp_r5_840;
     u32 temp_r5_842;
+    s8 *table;
 
     temp_r6_829 = arg0->unk14;
     if (temp_r6_829 >= 1) {
@@ -469,48 +469,46 @@ void MKSceneManager::PropResolver_Add(MKProp *arg0, const char *arg1) {
         var_r8_837 = ((temp_r0_834 << 0xA) | (temp_r0_834 >> 0x16U)) + temp_r5_833;
 loop_3:
         temp_r5_847 = var_r8_837 * 0x28;
-        if ((s32) *(*MKSceneManager::pPropMapping + temp_r5_847) != -1) {
+        if (*(s32 *) (*(s8 **) MKSceneManager::pPropMapping + temp_r5_847) != -1) {
             temp_r5_840 = var_r8_837 + 1;
             temp_r5_842 = temp_r5_840 >> 0x1FU;
             temp_r0_843 = (temp_r5_840 << 0x16) - temp_r5_842;
             var_r8_837 = ((temp_r0_843 << 0xA) | (temp_r0_843 >> 0x16U)) + temp_r5_842;
             goto loop_3;
         }
-        *(*MKSceneManager::pPropMapping + temp_r5_847) = temp_r6_829;
-        M2C_FIELD((*MKSceneManager::pPropMapping + temp_r5_847), MKProp **, 4) = arg0;
+        table = *(s8 **) MKSceneManager::pPropMapping;
+        *(s32 *) (table + temp_r5_847) = temp_r6_829;
+        *(MKProp **) (table + temp_r5_847 + 4) = arg0;
         if ((arg1 != NULL) && ((s8) (u8) *arg1 != 0)) {
-            strcpy(*MKSceneManager::pPropMapping + ((*MKSceneManager::nmbrOfMappings * 0x28) + 8), arg1);
+            strcpy((char *) (*(s8 **) MKSceneManager::pPropMapping + ((*(s32 *) MKSceneManager::nmbrOfMappings * 0x28) + 8)), arg1);
         } else {
-            strcpy(*MKSceneManager::pPropMapping + ((*MKSceneManager::nmbrOfMappings * 0x28) + 8), *arg0->unk0);
+            strcpy((char *) (*(s8 **) MKSceneManager::pPropMapping + ((*(s32 *) MKSceneManager::nmbrOfMappings * 0x28) + 8)), (const char *) ((MKPropDescriptor *) arg0->unk0)->unk0);
         }
-        *MKSceneManager::nmbrOfMappings += 1;
+        *(s32 *) MKSceneManager::nmbrOfMappings += 1;
     }
 }
-#endif
 
-#if 0 // DRAFT: pointer/array required
 void MKSceneManager::PropResolver_Init() {
-    s32 var_ctr_914;
-    s32 var_r4_910;
-    s8 *var_r3_901;
+    s8 *var_r3;
+    s32 var_r4;
+    s32 var_ctr;
 
     if (MKHeap::Current() != NULL) {
-        var_r3_901 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA000, NULL, 0));
+        var_r3 = (signed char *) (((MKHeap *) (MKHeap::Current()))->Alloc(0xA000, NULL, 0));
     } else {
-        var_r3_901 = malloc(0xA000);
+        var_r3 = malloc(0xA000);
     }
-    var_r4_910 = 0;
-    *MKSceneManager::pPropMapping = (unsigned char) (var_r3_901);
-    *MKSceneManager::nmbrOfMappings = 0;
-    var_ctr_914 = 0x400;
+    var_r4 = 0;
+    *(s8 **) MKSceneManager::pPropMapping = var_r3;
+    *(s32 *) MKSceneManager::nmbrOfMappings = 0;
+    var_ctr = 0x400;
     do {
-        M2C_FIELD(&(*MKSceneManager::pPropMapping)[var_r4_910], s32 *, 4) = 0;
-        (*MKSceneManager::pPropMapping)[var_r4_910] = -1;
-        var_r4_910 += 0x28;
-        var_ctr_914 -= 1;
-    } while (var_ctr_914 != 0);
+        *(s32 *) (*(s8 **) MKSceneManager::pPropMapping + var_r4 + 4) = 0;
+        *(s32 *) (*(s8 **) MKSceneManager::pPropMapping + var_r4) = -1;
+        var_r4 += 0x28;
+        var_ctr -= 1;
+    } while (var_ctr != 0);
 }
-#endif
 
 void MKSceneManager::Deinit() {
     s8 **temp_r31_936;
