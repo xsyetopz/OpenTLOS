@@ -379,10 +379,9 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 void BirdCritter::SetFlyingExitState(Bird *arg0) {
-    f64 sp48;                                       /* compiler-managed */
-    f64 sp40;                                       /* compiler-managed */
+    f64 sp48;
+    f64 sp40;
     f64 sp38;
     f64 sp30;
     f64 sp28;
@@ -399,11 +398,13 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
     s32 temp_r30_774;
     s32 temp_r3_852;
     s32 var_r0_862;
+    BirdCritterDescriptor *temp_r3_descr;
 
     arg0->unk60 = 5;
     temp_r30_774 = arg0->unk60;
     var_f6_780 = 0.0f;
-    arg0->unk50 = M2C_FIELD((checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (temp_r30_774 * 4)), void **, 0x70);
+    temp_r3_descr = checked_cast<BirdCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    arg0->unk50 = M2C_FIELD(((u8 *) temp_r3_descr) + (temp_r30_774 * 4), void **, 0x70);
     arg0->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(arg0->unk50, s16 *, 4) / 30.0f));
     arg0->unk54 = 0.0f;
     sp10 = -arg0->unk20;
@@ -424,7 +425,7 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
         } else {
             sp8 = var_f4_818;
             temp_r3_852 = M2C_BITWISE(s32, sp8) & 0x7F800000;
-            switch (temp_r3_852) {                  /* irregular */
+            switch (temp_r3_852) {
             case 0x7F800000:
                 if (M2C_BITWISE(s32, sp8) & 0x7FFFFF) {
                     var_r0_862 = 1;
@@ -462,7 +463,6 @@ void BirdCritter::SetFlyingExitState(Bird *arg0) {
     arg0->unk38 = (f32) sp38;
     arg0->unk3C = 1.0f;
 }
-#endif
 
 void BirdCritter::SetFlyingLoopState(Bird *arg0) {
     s32 temp_r31_934;
@@ -824,17 +824,19 @@ s32 BirdCritter::LoadDone() {
     this->unk170 = var_r3_1631;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKVector3 *'
+extern "C" void *malloc(u32);
+extern "C" void *malloc(u32);
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_1689;
+    MKVector3 *temp_r5_1690;
     s32 temp_r31_1670;
     s32 var_r31_1688;
     void *var_r3_1678;
 
-    if (Critters::LoadLine(arg0) != 0) {
+    if ((u8) Critters::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField("Waypoints") != 0) {
+    if ((u8) arg0->IsField("Waypoints") != 0) {
         this->unk178 = arg0->GetNmbrOfSubLines();
         temp_r31_1670 = this->unk178 * 0x10;
         if (MKHeap::Current() != NULL) {
@@ -843,20 +845,18 @@ s32 BirdCritter::LoadLine(MKIniLine *arg0) {
             var_r3_1678 = malloc(temp_r31_1670);
         }
         this->unk174 = var_r3_1678;
-        var_r31_1688 = 0;
         var_r30_1689 = arg0->unkC->GetSubLine(arg0);
-loop_8:
-        if (var_r30_1689 != NULL) {
-            var_r30_1689->AsVector3(0, ((u8 *) this->unk174) + var_r31_1688);
+        var_r31_1688 = 0;
+        while (var_r30_1689 != NULL) {
+            temp_r5_1690 = (MKVector3 *) (((u8 *) this->unk174) + var_r31_1688);
+            var_r30_1689->AsVector3(0, temp_r5_1690);
             var_r31_1688 += 0x10;
             var_r30_1689 = var_r30_1689->unkC->GetNextLine(var_r30_1689);
-            goto loop_8;
         }
         return 1;
     }
     return 0;
 }
-#endif
 
 void BirdCritter::Init() {
     Critters::Init();

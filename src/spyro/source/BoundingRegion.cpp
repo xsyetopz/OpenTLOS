@@ -98,73 +98,53 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'float'
 u8 BoundingRegion::IsPointInBoundaryRect(const MKVector3 &arg0) {
     Matrix sp40;
-    f64 sp38;
-    f64 sp30;
-    f64 sp28;
-    f64 sp20;
     f32 sp18;
     f32 sp14;
     f32 sp10;
+    f32 x;
+    f32 z;
     Matrix *temp_r4_189;
-    f32 temp_f3_194;
-    f32 temp_f6_200;
-    f32 temp_f7_206;
-    u8 var_r3_232;
     void *temp_r3_185;
+    u8 var_r3_232;
 
-    sp30 = M2C_FIELD(&arg0, f64 *, 0);
+    x = arg0.unk0;
+    z = arg0.unk8;
     temp_r3_185 = M2C_FIELD(this, void **, 0);
-    sp38 = M2C_FIELD(&arg0, f64 *, 8);
     if (temp_r3_185 != NULL) {
         temp_r4_189 = M2C_FIELD(temp_r3_185, Matrix **, 0x30);
         if (temp_r4_189 != NULL) {
             sp40.Inverse(temp_r4_189);
-            temp_f3_194 = arg0.unk4;
-            temp_f6_200 = arg0.unk0;
-            temp_f7_206 = arg0.unk8;
-            sp10 = sp40.unk30 + ((temp_f7_206 * sp40.unk20) + ((temp_f6_200 * M2C_BITWISE(f32, sp40)) + (temp_f3_194 * sp40.unk10)));
-            sp14 = sp40.unk34 + ((temp_f7_206 * sp40.unk24) + ((temp_f6_200 * sp40.unk4) + (temp_f3_194 * sp40.unk14)));
-            sp18 = sp40.unk38 + ((temp_f7_206 * sp40.unk28) + ((temp_f6_200 * sp40.unk8) + (temp_f3_194 * sp40.unk18)));
-            sp20 = (f64) sp10;
-            sp28 = (f64) sp18;
-            sp30 = (f64) sp10;
-            sp38 = (f64) sp18;
+            sp10 = sp40.unk30 + ((arg0.unk8 * sp40.unk20) + ((arg0.unk0 * sp40.unk0) + (arg0.unk4 * sp40.unk10)));
+            sp14 = sp40.unk34 + ((arg0.unk8 * sp40.unk24) + ((arg0.unk0 * sp40.unk4) + (arg0.unk4 * sp40.unk14)));
+            sp18 = sp40.unk38 + ((arg0.unk8 * sp40.unk28) + ((arg0.unk0 * sp40.unk8) + (arg0.unk4 * sp40.unk18)));
+            x = sp10;
+            z = sp18;
         }
     }
     var_r3_232 = 0;
-    if (((f32) sp30 > M2C_FIELD(this, f32 *, 0xC)) && ((f32) sp30 < this->unk10) && ((f32) sp38 > this->unk14) && ((f32) sp38 < this->unk18)) {
+    if ((x > M2C_FIELD(this, f32 *, 0xC)) && (x < this->unk10) && (z > this->unk14) && (z < this->unk18)) {
         var_r3_232 = 1;
     }
     return var_r3_232;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__float_max'
 s32 BoundingRegion::IsPointWithin(const MKVector3 &arg0) {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
+    MKVector3 sp18;
     u32 temp_r3_285;
     u32 temp_r4_286;
 
     if (IsPointInBoundaryRect(arg0) == 0) {
         return 0;
     }
-    sp8 = __float_max;
-    sp10 = arg0.unk8;
-    spC = 0.0f;
-    sp20 = (f64) sp10;
-    sp18 = (f64) sp8;
-    temp_r3_285 = GetIntersectCount(arg0, *((MKVector3 *) &sp18));
+    sp18.unk0 = __float_max;
+    sp18.unk4 = 0.0f;
+    sp18.unk8 = arg0.unk8;
+    temp_r3_285 = GetIntersectCount(arg0, sp18);
     temp_r4_286 = temp_r3_285 >> 0x1FU;
     return (((temp_r3_285 & 1) ^ temp_r4_286) - temp_r4_286) == 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_max'
 void BoundingRegion::InitBoundaryRect() {
@@ -228,11 +208,12 @@ void BoundingRegion::Init(MKVector3 *arg0, int arg1) {
     InitBoundaryRect();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk20'
 void BoundingRegion::Init(KDLocalPathSegment *arg0) {
+    KDLocalPathSegment *temp_r4;
+
     M2C_FIELD(this, KDLocalPathSegment **, 0) = arg0;
     M2C_FIELD(this, s32 *, 4) = 0;
-    M2C_FIELD(this, s32 *, 8) = (s32) M2C_FIELD(this, KDLocalPathSegment **, 0)->unk20;
+    temp_r4 = M2C_FIELD(this, KDLocalPathSegment **, 0);
+    M2C_FIELD(this, s32 *, 8) = M2C_FIELD(temp_r4, s32 *, 0x20);
     InitBoundaryRect();
 }
-#endif
