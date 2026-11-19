@@ -156,7 +156,6 @@ void SpyroCombatState::CometDashUpdate() {
     CometDashTransition();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroCombatState::CometDashExit() {
     s32 spC;
     s32 sp8;
@@ -165,9 +164,8 @@ void SpyroCombatState::CometDashExit() {
     temp_r3_128 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x43A;
-    M2C_FIELD(temp_r3_128->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    temp_r3_128->Message((MKMessage *) &sp8);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::CometDashEnter() {
@@ -293,7 +291,6 @@ void SpyroCombatState::CometDashEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 u8 SpyroCombatState::ChargeKnockdownTransition() {
     s8 sp2D;
     s8 sp2C;
@@ -302,8 +299,7 @@ u8 SpyroCombatState::ChargeKnockdownTransition() {
     s32 sp20;
     s32 sp1C;
     s32 sp18;
-    f64 sp10;
-    f64 sp8;
+    MKVector3 sp8;
     Spyro *temp_r3_388;
     Spyro *temp_r3_417;
     u8 var_r31_416;
@@ -323,9 +319,8 @@ u8 SpyroCombatState::ChargeKnockdownTransition() {
         var_r4_389 = 1;
         if ((u8) temp_r3_388->unk2F0 != 0) {
             temp_r5_393 = temp_r3_388->unk8;
-            sp8 = M2C_FIELD(temp_r5_393, f64 *, 0x30);
-            sp10 = M2C_FIELD(temp_r5_393, f64 *, 0x38);
-            if (!(((*(f32 *) ((u8 *) &sp8 + 0x4)) - temp_r3_388->unk2A4) > 33.0f)) {
+            sp8 = *(MKVector3 *) ((u8 *) temp_r5_393 + 0x30);
+            if (!((sp8.unk4 - temp_r3_388->unk2A4) > 33.0f)) {
                 var_r4_389 = 0;
             }
         }
@@ -346,7 +341,6 @@ block_6:
     }
     return var_r31_416;
 }
-#endif
 
 void SpyroCombatState::ChargeKnockdownUpdate() {
     f64 sp60;
@@ -558,7 +552,6 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroCombatState::KnockupTransition() {
     s8 sp1D;
     s8 sp1C;
@@ -604,7 +597,6 @@ block_9:
     }
     return var_r31_814;
 }
-#endif
 
 void SpyroCombatState::KnockupUpdate() {
     InputModifier *temp_r3_892;
@@ -649,13 +641,8 @@ void SpyroCombatState::KnockupExit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::KnockupEnter() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
+    MKVector3 scale;
     Spyro *temp_r3_989;
     Spyro *temp_r3_993;
 
@@ -673,15 +660,12 @@ void SpyroCombatState::KnockupEnter() {
     this->unk10->unk460.SetHitType(2);
     this->unk10->unk460.SetCombatArc(0);
     this->unk10->SetAnim(0x20U, 0.2f, (Spyro::AnimScriptNode) 0, 4U, 1.0f);
-    sp10 = 2.0f;
-    sp8 = 2.0f;
-    spC = 2.0f;
-    sp20 = (f64) sp10;
-    sp18 = (f64) sp8;
-    this->unk10->SetLVEScale(*((MKVector3 *) &sp18));
+    scale.unk0 = 2.0f;
+    scale.unk4 = 2.0f;
+    scale.unk8 = 2.0f;
+    this->unk10->SetLVEScale(scale);
     this->unk31 = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 u8 SpyroCombatState::CombatTransition() {
@@ -792,7 +776,6 @@ void SpyroCombatState::CombatUpdate() {
     CombatTransition();
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroCombatState::CombatExit() {
     Spyro *temp_r4_1269;
 
@@ -802,7 +785,6 @@ void SpyroCombatState::CombatExit() {
     this->unk2C = 0;
     this->unk2E = 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void SpyroCombatState::CombatEnter() {
@@ -1345,15 +1327,13 @@ void CombatStateData::SetLastCombatEnemy(Targetable *arg0) {
     this->unk20.Set(arg0);
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void CombatStateData::SetLastCombatEnemy(MKProp *arg0) {
     if ((arg0 == NULL) || !(M2C_FIELD(arg0->unk0, s32 *, 0xC) & 0x208)) {
-        this->unk20.Set(NULL);
+        this->unk20.Set((Targetable *) NULL);
         return;
     }
     this->unk20.Set(arg0);
 }
-#endif
 
 void CombatStateData::SetDefaults() {
     this->unk4C = 0;
@@ -1371,7 +1351,6 @@ void CombatStateData::SetDefaults() {
     this->unk44 = 2;
 }
 
-#if 0 // DRAFT: ambiguous access to overloaded function 'TargetContext::Set(Targetable *)' 'TargetContext::Set(MKProp *)'
 void CombatStateData::Init() {
     SetDefaults();
     this->unk51 = 1;
@@ -1379,12 +1358,11 @@ void CombatStateData::Init() {
     this->unk53 = 1;
     this->unk34 = 0.0f;
     this->unk3C = 0;
-    this->unk20.Set(NULL);
+    this->unk20.Set((Targetable *) NULL);
     this->unk38 = 0.0f;
     this->unk48 = 0;
-    ((TargetContext *) &this->unk20.unk8)->Set(NULL);
+    ((TargetContext *) &this->unk20.unk8)->Set((Targetable *) NULL);
 }
-#endif
 
 void SpyroCombatState_cpp::__sinit() {
     f32 *temp_r3_2738;
