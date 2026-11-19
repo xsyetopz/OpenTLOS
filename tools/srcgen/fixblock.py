@@ -81,7 +81,9 @@ def check(stem: str, mangled: str, install: bool) -> int:
     # A prototype at the top of a fix stays in src/ after install, outside the
     # function's block; a reinstall must not add a second copy.
     # Only the leading declarations are filtered: body statements repeat legitimately.
-    present = set(lines)
+    # A copy counts only above the block, where it is in scope for the fix.
+    _, (start, _, start_msg) = target
+    present = set(lines[:start - 1 if start_msg is not None else start])
     text = fix.read_text().strip().split("\n")
     head = 0
     while head < len(text) and (text[head].rstrip().endswith(";") or not text[head].strip()):
