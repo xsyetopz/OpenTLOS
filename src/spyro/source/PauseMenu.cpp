@@ -67,25 +67,23 @@ extern UISystem *pSystem;
 extern UIStringTable strings;
 static u8 bAllowStartToQuit = 1;
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to 'bool (*)()'
 void PauseMenu_AutosaveScreen(const char *arg0) {
     void *temp_r3_41;
 
     if ((u8) gb.unk395 == 0) {
-        gb.SetGamePaused(1U, (u8 (*)()) PauseMenu_Update, PauseMenu_Draw, 1U);
+        gb.SetGamePaused(1U, (bool (*)(void)) PauseMenu_Update, PauseMenu_Draw, 1U);
         PauseMenu_Reset(arg0);
         return;
     }
     if (((UISystem *) pSystem != NULL) && ((u32) gb.unk398 == 1)) {
-        temp_r3_41 = M2C_FIELD((pSystem + (pSystem->unk6C * 4)), void **, 0x70);
-        if ((temp_r3_41 != NULL) && (stricmp(M2C_FIELD(temp_r3_41, s32 *, 4), "AutosaveWarning") == 0)) {
+        temp_r3_41 = M2C_FIELD(pSystem, void **, pSystem->unk6C * 4 + 0x70);
+        if ((temp_r3_41 != NULL) && (stricmp(M2C_FIELD(temp_r3_41, s32 *, 4), (M2C_UNK *) "AutosaveWarning") == 0)) {
             pSystem->ChangeScreen(arg0);
             return;
         }
         pSystem->PushScreen(arg0);
     }
 }
-#endif
 
 void PauseMenu_AllowStartToQuit(bool arg0) {
     bAllowStartToQuit = arg0;
@@ -165,7 +163,6 @@ void PauseMenu_Draw() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char (*)()' to 'bool (*)()'
 s32 PauseMenu_Update() {
     KDSynkerPlayer3 *temp_r3_279;
     u8 var_r29_275;
@@ -179,8 +176,8 @@ s32 PauseMenu_Update() {
             pSystem->ClearStack(NULL);
         }
         pSystem->Update();
-        if ((u32) M2C_FIELD((pSystem + (pSystem->unk6C * 4)), u32 *, 0x70) == 0U) {
-            gb.SetGamePaused(0U, (u8 (*)()) PauseMenu_Update, PauseMenu_Draw, 1U);
+        if ((u32) M2C_FIELD(pSystem, u32 *, pSystem->unk6C * 4 + 0x70) == 0U) {
+            gb.SetGamePaused(0U, (bool (*)(void)) PauseMenu_Update, PauseMenu_Draw, 1U);
             if ((u8) bStopSoundsAfterPauseMenu != 0) {
                 KDSound_StopAll();
                 bStopSoundsAfterPauseMenu = 0;
@@ -189,7 +186,7 @@ s32 PauseMenu_Update() {
             }
             var_r29_275 = 1;
             var_r31_277 = 0;
-            temp_r30_278 = gb.unkC;
+            temp_r30_278 = M2C_FIELD(&gb, void **, 0xC);
             temp_r3_279 = M2C_FIELD(temp_r30_278, KDSynkerPlayer3 **, 0x78);
             if (((temp_r3_279 != NULL) && (temp_r3_279->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_278, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r30_278) + 0x24))->GetState() == 2))) {
                 var_r31_277 = 1;
@@ -203,9 +200,7 @@ s32 PauseMenu_Update() {
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void PauseMenu_Reset(const char *arg0) {
     s32 spC;
     s32 sp8;
@@ -217,7 +212,7 @@ void PauseMenu_Reset(const char *arg0) {
     if ((UISystem *) pSystem != NULL) {
         sp8 = 1;
         spC = 0;
-        M2C_FIELD(pSystem->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        pSystem->Message((UIMessage *) &sp8);
         if (arg0 == NULL) {
             if (((s32) M2C_FIELD(GameData::gameData, s32 *, 0x164) > 0) && ((u32) (((u8) GameData::gameData[0x18A] >> 7U) & 1) == 1)) {
                 pSystem->PushScreen("main");
@@ -233,18 +228,17 @@ void PauseMenu_Reset(const char *arg0) {
             GameData::gameData[0x18A] &= ~0x80;
         }
     }
-    UIControls_SetDevice((MKInputDevices) *gb.unk354);
+    UIControls_SetDevice(*(MKInputDevices *) gb.unk354);
     PauseMenu_AllowStartToQuit(1U);
     KDSound_PauseAll(1U);
     var_r31_407 = 0;
-    temp_r30_409 = gb.unkC;
+    temp_r30_409 = M2C_FIELD(&gb, void **, 0xC);
     temp_r3_410 = M2C_FIELD(temp_r30_409, KDSynkerPlayer3 **, 0x78);
     if (((temp_r3_410 != NULL) && (temp_r3_410->IsPlaying() != 0)) || (((s32) M2C_FIELD(temp_r30_409, s32 *, 0x74) == 2) && (((KDStateMachine<CutsceneSystem> *) (((u8 *) temp_r30_409) + 0x24))->GetState() == 2))) {
         var_r31_407 = 1;
     }
     KDSound_PauseMusic(1U, var_r31_407);
 }
-#endif
 
 void PauseMenu_Deinit() {
     UIStringTable *temp_r30_452;
@@ -270,7 +264,6 @@ void PauseMenu_Deinit() {
     strings.Deinit();
 }
 
-#if 0 // DRAFT: function call 'Init(UIObject *, unsigned char[20])' does not match 'UIObject::Init()'
 void PauseMenu_Init() {
     MCLoadCheckScreen *temp_r3_554;
     MCLoadCheckScreen *temp_r3_572;
@@ -296,9 +289,9 @@ void PauseMenu_Init() {
     } else {
         var_r30_521 = malloc(temp_r30_512);
     }
-    M2C_FIELD(NoisySystem::descriptor, M2C_UNK (**)(UIObject *, u8 *), 0xC)(var_r30_521, NoisySystem::descriptor);
+    M2C_FIELD(NoisySystem::descriptor, void (**)(UIObject *), 0xC)(var_r30_521);
     var_r30_521->unk8 = NoisySystem::descriptor;
-    var_r30_521->Init(NoisySystem::descriptor);
+    var_r30_521->Init();
     pSystem = checked_cast<NoisySystem *, UIObject>(var_r30_521);
     var_r4_547 = &UIObjectDescriptor::list;
 loop_6:
@@ -306,8 +299,8 @@ loop_6:
     if (temp_r3_554 == NULL) {
         var_r4_547->unk0 = (MCLoadCheckScreen *) PauseMainScreen::descriptor;
         M2C_FIELD(PauseMainScreen::descriptor, s32 *, 0x10) = 0;
-    } else if (temp_r3_554 != PauseMainScreen::descriptor) {
-        var_r4_547 = (UIObjectDescriptor *) &temp_r3_554->unk10;
+    } else if (temp_r3_554 != (MCLoadCheckScreen *) PauseMainScreen::descriptor) {
+        var_r4_547 = (UIObjectDescriptor *) ((s8 *) temp_r3_554 + 0x10);
         goto loop_6;
     }
     var_r4_564 = &UIObjectDescriptor::list;
@@ -316,8 +309,8 @@ loop_11:
     if (temp_r3_572 == NULL) {
         var_r4_564->unk0 = (MCLoadCheckScreen *) ExitConfirmScreen::descriptor;
         M2C_FIELD(ExitConfirmScreen::descriptor, s32 *, 0x10) = 0;
-    } else if (temp_r3_572 != ExitConfirmScreen::descriptor) {
-        var_r4_564 = (UIObjectDescriptor *) &temp_r3_572->unk10;
+    } else if (temp_r3_572 != (MCLoadCheckScreen *) ExitConfirmScreen::descriptor) {
+        var_r4_564 = (UIObjectDescriptor *) ((s8 *) temp_r3_572 + 0x10);
         goto loop_11;
     }
     var_r4_582 = &UIObjectDescriptor::list;
@@ -326,8 +319,8 @@ loop_16:
     if (temp_r3_590 == NULL) {
         var_r4_582->unk0 = (MCLoadCheckScreen *) LevelSelectButtons::descriptor;
         M2C_FIELD(LevelSelectButtons::descriptor, s32 *, 0x10) = 0;
-    } else if (temp_r3_590 != LevelSelectButtons::descriptor) {
-        var_r4_582 = (UIObjectDescriptor *) &temp_r3_590->unk10;
+    } else if (temp_r3_590 != (MCLoadCheckScreen *) LevelSelectButtons::descriptor) {
+        var_r4_582 = (UIObjectDescriptor *) ((s8 *) temp_r3_590 + 0x10);
         goto loop_16;
     }
     var_r4_600 = &UIObjectDescriptor::list;
@@ -336,8 +329,8 @@ loop_21:
     if (temp_r3_608 == NULL) {
         var_r4_600->unk0 = (MCLoadCheckScreen *) LevelSelectScreen::descriptor;
         M2C_FIELD(LevelSelectScreen::descriptor, s32 *, 0x10) = 0;
-    } else if (temp_r3_608 != LevelSelectScreen::descriptor) {
-        var_r4_600 = (UIObjectDescriptor *) &temp_r3_608->unk10;
+    } else if (temp_r3_608 != (MCLoadCheckScreen *) LevelSelectScreen::descriptor) {
+        var_r4_600 = (UIObjectDescriptor *) ((s8 *) temp_r3_608 + 0x10);
         goto loop_21;
     }
     var_r4_618 = &UIObjectDescriptor::list;
@@ -346,8 +339,8 @@ loop_26:
     if (temp_r3_626 == NULL) {
         var_r4_618->unk0 = (MCLoadCheckScreen *) OptionsScreen::descriptor;
         M2C_FIELD(OptionsScreen::descriptor, s32 *, 0x10) = 0;
-    } else if (temp_r3_626 != OptionsScreen::descriptor) {
-        var_r4_618 = (UIObjectDescriptor *) &temp_r3_626->unk10;
+    } else if (temp_r3_626 != (MCLoadCheckScreen *) OptionsScreen::descriptor) {
+        var_r4_618 = (UIObjectDescriptor *) ((s8 *) temp_r3_626 + 0x10);
         goto loop_26;
     }
     var_r4_636 = &UIObjectDescriptor::list;
@@ -356,8 +349,8 @@ loop_31:
     if (temp_r3_644 == NULL) {
         var_r4_636->unk0 = (MCLoadCheckScreen *) LevelUpScreen::descriptor;
         M2C_FIELD(LevelUpScreen::descriptor, s32 *, 0x10) = 0;
-    } else if (temp_r3_644 != LevelUpScreen::descriptor) {
-        var_r4_636 = (UIObjectDescriptor *) &temp_r3_644->unk10;
+    } else if (temp_r3_644 != (MCLoadCheckScreen *) LevelUpScreen::descriptor) {
+        var_r4_636 = (UIObjectDescriptor *) ((s8 *) temp_r3_644 + 0x10);
         goto loop_31;
     }
     UITools_RegisterAll();
@@ -366,10 +359,9 @@ loop_31:
         pSystem->LoadResources();
     }
     UIStringTable_SetCurrent(temp_r31_510);
-    M2C_FIELD(&pBackground, MKResource **, 0) = MKMaterial_Create"ui_pause_bg1";
-    M2C_FIELD(&pBackground, MKResource **, 4) = MKMaterial_Create"ui_pause_bg2";
+    M2C_FIELD(&pBackground, MKResource **, 0) = MKMaterial_Create("ui_pause_bg1");
+    M2C_FIELD(&pBackground, MKResource **, 4) = MKMaterial_Create("ui_pause_bg2");
 }
-#endif
 
 void PauseMenu_cpp::__sinit() {
     strings.UIStringTable();
