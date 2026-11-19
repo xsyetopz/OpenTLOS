@@ -106,37 +106,27 @@ void ConvexTier3::Deinit() {
     Enemy::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
 f32 ConvexTier3::Resolve() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    ModelCloth *temp_r3_143;
-    s32 var_r29_147;
-    s32 var_r31_148;
+    MKVector3 sp18;
+    ModelCloth *cloth;
+    s32 i;
+    s32 off;
 
     Enemy::Resolve();
-    temp_r3_143 = MKModel_GetCloth(this->unk4);
-    if (temp_r3_143 != NULL) {
-        var_r29_147 = 0;
-        var_r31_148 = 0;
-loop_3:
-        if (var_r29_147 < (s32) temp_r3_143->unk4) {
-            sp10 = 0.0f;
-            sp8 = 0.0f;
-            spC = 0.0f;
-            sp20 = (f64) sp10;
-            sp18 = (f64) sp8;
-            ((MKCloth *) (temp_r3_143->unk8 + var_r31_148))->SetForce(0, *((MKVector3 *) &sp18), -1);
-            var_r29_147 += 1;
-            var_r31_148 += 0xF8;
-            goto loop_3;
+    cloth = MKModel_GetCloth(this->unk4);
+    if (cloth != NULL) {
+        i = 0;
+        off = 0;
+        while (i < cloth->unk4) {
+            sp18.unk0 = 0.0f;
+            sp18.unk4 = 0.0f;
+            sp18.unk8 = 0.0f;
+            ((MKCloth *) ((u8 *) cloth->unk8 + off))->SetForce(0, sp18, -1);
+            i += 1;
+            off += 0xF8;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void ConvexTier3::Init() {
@@ -178,9 +168,9 @@ void ConvexTier2::Message(MKMessage *arg0) {
 #if 0 // DRAFT: undefined identifier '__vt'
 void ConvexTier2::UpdateMovementCustom() {
     M2C_UNK *sp44;
-    f32 sp40;
+    s32 sp40;
     s8 sp3C;
-    f32 sp38;
+    s32 sp38;
     s32 sp34;
     s8 sp30;
     f32 sp28;
@@ -188,8 +178,10 @@ void ConvexTier2::UpdateMovementCustom() {
     f32 sp20;
     s32 sp1C;
     s32 sp18;
-    f64 sp8;
+    MKVector3 sp8;
     SB2 *temp_r6_300;
+    f64 temp_f1_318;
+    u8 var_r5_303;
 
     sp44 = &__vt;
     sp18 = 0x30;
@@ -200,21 +192,23 @@ void ConvexTier2::UpdateMovementCustom() {
     sp28 = 0.0f;
     sp30 = 0;
     sp34 = -1;
-    sp38 = 0.0f;
+    sp38 = 0;
     sp3C = 0;
-    sp40 = 0.0f;
+    sp40 = 0;
     sp18 = 0x31;
     this->unk110.unk440 = (MKMessage *) &sp18;
     UpdateRotation();
     UpdateVelocity();
     temp_r6_300 = this->unk640;
+    var_r5_303 = 0;
     if (((temp_r6_300 != NULL) && (((u8) temp_r6_300->unk464 >> 7U) & 1)) || (((u8) this->unk6B5 >> 1U) & 1)) {
-
+        var_r5_303 = 1;
     }
-    ((MovementObject *) &sp8)->Update((u8) &this->unk588);
-    this->unk100 = sp8;
-    this->unk108 = sp10;
-    UpdateModel(sp8);
+    sp8 = ((MovementObject *) &this->unk588)->Update(var_r5_303);
+    temp_f1_318 = M2C_BITWISE(f64, sp8);
+    this->unk100 = temp_f1_318;
+    this->unk108 = (f64) sp8.unk8;
+    UpdateModel(temp_f1_318);
 }
 #endif
 
@@ -247,14 +241,14 @@ void ConvexTier2::UpdateCollisionItems() {
     f32 sp10;
     f64 sp8;
 
-    sp48.operator*(200.0f);
+    sp48 = ((MKVector3 *) &this->unkC0)->operator*(200.0f);
     sp18 = M2C_FIELD(this, f64 *, 0x588) + M2C_BITWISE(f64, sp48);
     this->unk60 = sp18;
     sp20 = this->unk588.unk8 + sp48.unk8;
     sp58 = sp18;
     sp60 = (f64) sp20;
     this->unk68 = (f64) sp20;
-    sp28.operator*(1000.0f);
+    sp28 = ((MKVector3 *) &this->unkC0)->operator*(1000.0f);
     sp8 = M2C_FIELD(this, f64 *, 0x588) - M2C_BITWISE(f64, sp28);
     this->unk70 = sp8;
     sp10 = this->unk588.unk8 - sp28.unk8;
@@ -304,37 +298,27 @@ void ConvexTier2::Deinit() {
     Enemy::Deinit();
 }
 
-#if 0 // DRAFT: illegal type
 f32 ConvexTier2::Resolve() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    ModelCloth *temp_r3_528;
-    s32 var_r29_532;
-    s32 var_r31_533;
+    MKVector3 sp18;
+    ModelCloth *cloth;
+    s32 i;
+    s32 off;
 
     Enemy::Resolve();
-    temp_r3_528 = MKModel_GetCloth(this->unk4);
-    if (temp_r3_528 != NULL) {
-        var_r29_532 = 0;
-        var_r31_533 = 0;
-loop_3:
-        if (var_r29_532 < (s32) temp_r3_528->unk4) {
-            sp10 = 0.0f;
-            sp8 = 0.0f;
-            spC = 0.0f;
-            sp20 = (f64) sp10;
-            sp18 = (f64) sp8;
-            ((MKCloth *) (temp_r3_528->unk8 + var_r31_533))->SetForce(0, *((MKVector3 *) &sp18), -1);
-            var_r29_532 += 1;
-            var_r31_533 += 0xF8;
-            goto loop_3;
+    cloth = MKModel_GetCloth(this->unk4);
+    if (cloth != NULL) {
+        i = 0;
+        off = 0;
+        while (i < cloth->unk4) {
+            sp18.unk0 = 0.0f;
+            sp18.unk4 = 0.0f;
+            sp18.unk8 = 0.0f;
+            ((MKCloth *) ((u8 *) cloth->unk8 + off))->SetForce(0, sp18, -1);
+            i += 1;
+            off += 0xF8;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void ConvexTier2::Init() {
