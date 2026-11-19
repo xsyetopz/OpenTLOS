@@ -1188,7 +1188,6 @@ s32 FallingLeaves::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: illegal operand
 void FallingLeaves::Init() {
     s32 temp_r0_2027;
     s32 var_ctr_2025;
@@ -1207,13 +1206,12 @@ void FallingLeaves::Init() {
     do {
         temp_r0_2027 = var_r3_2022 + 0x178;
         var_r3_2022 += 0x20;
-        *(this + temp_r0_2027) = 0;
+        M2C_FIELD(this, s8 *, temp_r0_2027) = 0;
         var_ctr_2025 -= 1;
     } while (var_ctr_2025 != 0);
     this->unk1E0 = 1;
     this->unk1E1 = 0;
 }
-#endif
 
 void FallingLeavesDescriptor::Init() {
     MKBaseParticleSystemDescriptor::Init();
