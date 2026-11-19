@@ -1,0 +1,66 @@
+void MoltenMetalPS::UpdateParticles() {
+    u8 sp8[8];
+    f32 sp18;
+    f32 velX;
+    f32 velY;
+    MKParticleChunk *var_r7_62;
+    MKParticleSystem::Envelope *temp_r3_115;
+    MKParticleSystem::Envelope *temp_r5_120;
+    MKParticleSystem::Envelope *temp_r5_153;
+    f32 temp_f3_129;
+    f32 temp_f3_69;
+    f32 temp_f5_122;
+    f32 temp_f6_117;
+    f32 var_f0_133;
+    s32 temp_r0_116;
+    s32 temp_r3_103;
+    s32 temp_r4_114;
+    void *temp_r8_65;
+
+    this->unk128 += gUpdateTimeDelta;
+    var_r7_62 = GetFirstParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+loop_12:
+    if (var_r7_62 != NULL) {
+        temp_r8_65 = var_r7_62->unk2C;
+        temp_f3_69 = this->unk128 - M2C_FIELD(temp_r8_65, f32 *, 0x10);
+        if (temp_f3_69 > this->unk12C) {
+            var_r7_62 = DestroyParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+        } else {
+            M2C_FIELD(temp_r8_65, f32 *, 4) = (f32) -((1000.0f * gUpdateTimeDelta) - M2C_FIELD(temp_r8_65, f32 *, 4));
+            velX = M2C_FIELD(temp_r8_65, f32 *, 0) * gUpdateTimeDelta;
+            velY = M2C_FIELD(temp_r8_65, f32 *, 4) * gUpdateTimeDelta;
+            sp18 = M2C_FIELD(temp_r8_65, f32 *, 8) * gUpdateTimeDelta;
+            M2C_FIELD(var_r7_62, f32 *, 0) = M2C_FIELD(var_r7_62, f32 *, 0) + velX;
+            M2C_FIELD(var_r7_62, f32 *, 4) = M2C_FIELD(var_r7_62, f32 *, 4) + velY;
+            var_r7_62->unk8 += sp18;
+            temp_r3_103 = M2C_FIELD(temp_r8_65, s32 *, 0x14);
+            if (temp_f3_69 > (this->unk12C * this->unk134[temp_r3_103].unk0)) {
+                M2C_FIELD(temp_r8_65, s32 *, 0x14) = (s32) (temp_r3_103 + 1);
+            }
+            temp_r4_114 = M2C_FIELD(temp_r8_65, s32 *, 0x14);
+            temp_r3_115 = this->unk134;
+            temp_r0_116 = temp_r4_114 - 1;
+            temp_f6_117 = this->unk12C;
+            temp_r5_120 = &temp_r3_115[temp_r0_116];
+            temp_f5_122 = temp_r5_120->unk0;
+            temp_f3_129 = -((temp_f6_117 * temp_f5_122) - temp_f3_69) / (temp_f6_117 * (temp_r3_115[temp_r4_114].unk0 - temp_f5_122));
+            var_r7_62->unk1C = M2C_FIELD(temp_r8_65, f32 *, 0x20) * ((temp_f3_129 * temp_r5_120->unkC) + temp_r5_120->unk4);
+            var_f0_133 = var_r7_62->unk1C;
+            if (var_f0_133 < 1.0f) {
+
+            } else {
+                var_f0_133 = 1.0f;
+            }
+            if (var_f0_133 > 0.0f) {
+
+            } else {
+                var_f0_133 = 0.0f;
+            }
+            var_r7_62->unk1C = var_f0_133;
+            temp_r5_153 = &this->unk134[temp_r0_116];
+            var_r7_62->unk28 = M2C_FIELD(temp_r8_65, f32 *, 0x1C) * ((temp_f3_129 * temp_r5_153->unk10) + temp_r5_153->unk8);
+            var_r7_62 = GetNextParticle((MKBaseParticleSystem::ParticleRec *) sp8);
+        }
+        goto loop_12;
+    }
+}

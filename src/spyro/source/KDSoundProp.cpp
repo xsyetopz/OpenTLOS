@@ -98,32 +98,30 @@ s32 KDSoundProp::LoadDone() {
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&MKProp::loadInfo - 4) + 4, 0x40);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 KDSoundProp::LoadLine(MKIniLine *arg0) {
-    s8 *sp8;
-    s32 var_r30_238;
+    const char *sp8;
+    s32 result;
 
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
     if (arg0->LoadString("sound", &sp8, 0) != 0) {
-        if ((s32) (u8) *sp8 == 0x2A) {
+        if ((u8) *sp8 == 0x2A) {
             sp8 += 1;
         }
         this->unk50 = KDSound_ResolveSound(sp8, NULL);
         return 1;
     }
     if (arg0->LoadString("dummySphere", &sp8, 0) != 0) {
-        var_r30_238 = 1;
+        result = 1;
     } else {
-        var_r30_238 = 0;
+        result = 0;
         if ((arg0->LoadFloat("minDelay", &this->unk58, 0) != 0) || (arg0->LoadFloat("maxDelay", &this->unk5C, 0) != 0)) {
-            var_r30_238 = 1;
+            result = 1;
         }
     }
-    return var_r30_238;
+    return result;
 }
-#endif
 
 void KDSoundProp::Deinit() {
     MKProp::Deinit();
