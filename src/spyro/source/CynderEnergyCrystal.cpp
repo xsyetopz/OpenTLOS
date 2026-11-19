@@ -66,7 +66,7 @@ void CynderEnergyCrystal::UpdateMovement() {
             var_f0_118 = -1500.0f;
         }
         this->unk15C = var_f0_118;
-        M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *, f32 *, M2C_UNK, f32), 0x10)(&this->unk168, &this->unkD0.unk88, 0, 0.0f);
+        M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(M2C_UNK *, M2C_UNK *, M2C_UNK, f32), 0x10)(&this->unk168, &this->unk158, 0, 0.0f);
         M2C_FIELD(M2C_FIELD(this, void **, 0x168), M2C_UNK (**)(f32 *, M2C_UNK *), 0x4C)(&sp8, &this->unk168);
         this->unkD0.unk30 = sp8;
         this->unkD0.unk34 = spC;
@@ -75,7 +75,7 @@ void CynderEnergyCrystal::UpdateMovement() {
         this->unk5E8 = this->unk2D4 > 0;
         if ((u8) this->unk5E8 != 0) {
             KDSound_Play3d(GS_EnergyCrystalBounce, (MKVector3 *) &this->unkD0.unk30, 0U, -1, 0.0f, 0U);
-            this->unkD0.unk88 = 0.0f;
+            M2C_FIELD(this, f32 *, 0x158) = 0.0f;
             this->unk15C = 0.0f;
             this->unk160 = 0.0f;
             this->unkD0.SetRotationToNone();
@@ -100,7 +100,7 @@ void CynderEnergyCrystal::Resolve() {
     KDPropEx::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void CynderEnergyCrystal::LoadDone() {
     f64 sp68;
     f64 sp60;
@@ -124,7 +124,7 @@ void CynderEnergyCrystal::LoadDone() {
     s32 temp_r3_256;
 
     GameProp::LoadDone();
-    this->unkD0.unk80 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "handle");
+    this->unk150 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "handle");
     this->unk5E0 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobble"));
     temp_r3_256 = checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
@@ -165,19 +165,17 @@ void CynderEnergyCrystal::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void CynderEnergyCrystal::Init() {
     GameProp::Init();
     this->unkC8 = NULL;
     this->unkD0.SetIdentity();
-    this->unkD0.unk40.SetIdentity();
-    this->unkD0.unk80 = 0xFFFF;
+    this->unk110.SetIdentity();
+    this->unk150 = 0xFFFF;
     this->unk5E8 = 0;
-    this->unkD0.unk88 = 0.0f;
+    M2C_FIELD(this, f32 *, 0x158) = 0.0f;
     this->unk15C = 0.0f;
     this->unk160 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void CynderEnergyCrystalDescriptor::Init() {

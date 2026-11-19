@@ -410,7 +410,7 @@ void EarthBreathFX::DrawShotgunMuzzelFlash() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+#if 0 // DRAFT: undefined identifier 'KDStateMachine'
 s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     ManagedLight *temp_r3_1227;
     ManagedLight *temp_r3_1240;
@@ -472,7 +472,7 @@ s32 EarthBreathFX::ShootShotgun(const MKVector3 &arg0, const MKVector3 &arg1, co
         ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(1.0f, 1.0f, 0.11f, 0, 4.0f, 0U);
         KDSound_Play3d(GS_SpyroBreathRumble2, &arg0, 0U, -1, 0.0f, 0U);
         M2C_FIELD(this, s8 *, 0x198) = 1;
-        this->unk150.unk44 = 0.125f;
+        this->unk194 = 0.125f;
         break;
     case 3:
         var_r31_766 = GS_SpyroEarthBlast4;
@@ -1269,7 +1269,7 @@ void EarthBreathFX::Update() {
     this->unkBC -= gUpdateTimeDelta;
     this->unk128 = M2C_BITWISE(f32, this->unk128) - gUpdateTimeDelta;
     this->unk150.unk3C -= gUpdateTimeDelta;
-    this->unk150.unk44 -= gUpdateTimeDelta;
+    this->unk194 -= gUpdateTimeDelta;
     temp_f3_2396 = this->unkA8;
     if (temp_f3_2396 > 0.0f) {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
@@ -1329,7 +1329,7 @@ void EarthBreathFX::Update() {
     }
     if ((u8) M2C_FIELD(this, u8 *, 0x198) != 0) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unk150.unk44 == 0.0f) {
+        if (this->unk194 == 0.0f) {
             sp30 = 0.0f;
             sp98 = M2C_FIELD(this, f64 *, 0x180);
             spA0 = M2C_FIELD(this, f64 *, 0x188);
@@ -1452,6 +1452,6 @@ void EarthBreathFX::Init() {
         var_r29_2710 += 1;
     } while (var_r29_2710 < 8);
     M2C_FIELD(this, s8 *, 0x198) = 0;
-    this->unk150.unk44 = 0.0f;
+    this->unk194 = 0.0f;
 }
 #endif

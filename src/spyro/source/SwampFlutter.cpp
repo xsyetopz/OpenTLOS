@@ -5,6 +5,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Critters.h"
 #include "spyro/source/KDProp.h"
+#include "spyro/source/Volume.h"
 #include "unplaced_templates.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/StdMath.h"
@@ -307,9 +308,7 @@ loop_8:
 
 #if 0 // DRAFT: illegal type
 void SwampFlutterCritter::Resolve() {
-    f64 sp20;
-    f64 sp18;
-    f64 sp8;
+    Volume sp8;
     SwampFlutter *temp_r30_560;
     s32 temp_r25_588;
     s32 var_r28_553;
@@ -322,12 +321,12 @@ loop_2:
     if (var_r31_551 < (s32) this->unk90) {
         temp_r30_560 = this->unk170 + var_r28_553;
         sp8.GetRandPos();
-        sp18 = sp8;
-        sp20 = sp10;
+        sp8.unk10 = M2C_BITWISE(f64, sp8);
+        sp8.unk18 = sp8.unk8;
         M2C_STRUCT_COPY(temp_r30_560, &identity, 0x40);
-        M2C_FIELD(temp_r30_560, f32 *, 0x30) = (f32) sp18;
+        M2C_FIELD(temp_r30_560, f32 *, 0x30) = (f32) sp8.unk10;
         temp_r30_560->unk34 = unksp1C;
-        temp_r30_560->unk38 = (f32) sp20;
+        temp_r30_560->unk38 = (f32) sp8.unk18;
         temp_r30_560->unk3C = 1.0f;
         FindNewFlyParameters(temp_r30_560);
         temp_r30_560->unk60 = 0;

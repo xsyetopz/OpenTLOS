@@ -361,13 +361,13 @@ void EnemyGeneratorDoor::Init(EnemyGenerator *arg0, EnemyGeneratorDoorData *arg1
         if (temp_r30_861 != NULL) {
             temp_r30_861->__vptr = &__vt;
             temp_r30_861->__vptr = &__vt;
-            temp_r30_861->unk8 = 0;
+            M2C_FIELD(temp_r30_861, s32 *, 8) = 0;
             ((EventMessage *) (temp_r30_861 + 8))->Init();
-            temp_r30_861->unkC = 0;
+            M2C_FIELD(temp_r30_861, s32 *, 0xC) = 0;
             ((EventMessage *) (temp_r30_861 + 0xC))->Init();
-            temp_r30_861->unk10 = 0;
+            M2C_FIELD(temp_r30_861, s32 *, 0x10) = 0;
             ((EventMessage *) (temp_r30_861 + 0x10))->Init();
-            temp_r30_861->unk14 = 0;
+            M2C_FIELD(temp_r30_861, s32 *, 0x14) = 0;
             ((EventMessage *) (temp_r30_861 + 0x14))->Init();
         }
         operator new(0x60U, NULL, 0);
@@ -375,7 +375,7 @@ void EnemyGeneratorDoor::Init(EnemyGenerator *arg0, EnemyGeneratorDoorData *arg1
         temp_r30_861->Init();
         this->unk18->Init(temp_r30_861);
         this->unk18->LoadDone();
-        temp_r30_861->unk4 |= 0x4220;
+        M2C_FIELD(temp_r30_861, s32 *, 4) = (s32) (M2C_FIELD(temp_r30_861, s32 *, 4) | 0x4220);
     } else {
         checked_cast<EnemySpawnPointData *, SpawnPointData>((SpawnPointData *) temp_r3_854->unk4);
     }

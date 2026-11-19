@@ -334,12 +334,12 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'unkF0'
 void KDParticleSystem::Init() {
     MKBaseParticleSystem::Init();
     this->unkF4 = 0.0f;
-    this->unk60.unk48 = M2C_FIELD(this->unk0, f32 *, 0x94);
-    this->unk60.unk4C = M2C_FIELD(this->unk0, f32 *, 0x98);
+    this->unkA8 = M2C_FIELD(this->unk0, f32 *, 0x94);
+    this->unkAC = M2C_FIELD(this->unk0, f32 *, 0x98);
     this->unkF0 = &KDParticleSystem::KDConfigureSystemData;
     this->unkF8 = 0;
 }

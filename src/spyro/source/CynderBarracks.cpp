@@ -55,21 +55,17 @@ void CynderBarracks::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
 void CynderBarracks::Resolve() {
     Shatterable::Resolve();
     this->unk1B4.Resolve();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
 void CynderBarracks::LoadDone() {
     Shatterable::LoadDone();
     this->unk1B4.LoadDone();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
+#if 0 // DRAFT: illegal implicit conversion from 'EnemyGenerator *' to
 s32 CynderBarracks::LoadLine(MKIniLine *arg0) {
     s32 var_r31_202;
 
@@ -81,12 +77,10 @@ s32 CynderBarracks::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
 void CynderBarracks::Deinit() {
     this->unk1B4.Deinit();
     Shatterable::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBarracks::Init() {

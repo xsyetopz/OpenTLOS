@@ -154,7 +154,6 @@ loop_4:
     goto loop_4;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void FuryFXConvexity::DrawDragonChasers() {
     KDSoundFader **var_r31_271;
     KDSoundFader *temp_r4_284;
@@ -164,14 +163,13 @@ loop_2:
     if (var_r31_271 != NULL) {
         temp_r4_284 = *var_r31_271;
         if (temp_r4_284 != NULL) {
-            MKModel_SetWorldMatrix(M2C_BITWISE(MKModel *, this->unk1A0.unk40), *((Matrix *) &temp_r4_284->unk30));
-            MKModel_Draw(M2C_BITWISE(MKModel *, this->unk1A0.unk40), NULL);
+            MKModel_SetWorldMatrix(this->unk1E0, *((Matrix *) &temp_r4_284->unk30));
+            MKModel_Draw(this->unk1E0, NULL);
             var_r31_271 += 4;
             goto loop_2;
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp8'
 void FuryFXConvexity::UpdateDragonChasers() {
@@ -184,12 +182,12 @@ void FuryFXConvexity::UpdateDragonChasers() {
     MKHeap *temp_r3_1042;
     MKHeap *temp_r3_1385;
     MKHeap *temp_r3_1441;
+    ManagedLight *temp_r3_1491;
     ManagedLight *temp_r4_1342;
     f32 *temp_r3_640;
     f32 *temp_r3_938;
     f32 temp_f1_1386;
     f32 temp_f1_334;
-    f32 temp_r3_1491;
     f32 var_f1_786;
     f32 var_f22_444;
     f32 var_f22_667;
@@ -443,10 +441,10 @@ block_105:
                     M2C_FIELD(temp_r23_1448, f32 *, 0x14) = M2C_BITWISE(f32, this->unk160->unkF4);
                 }
                 if ((ManagedLight *) M2C_FIELD(temp_r29_1508, ManagedLight **, 0x84) != NULL) {
-                    temp_r3_1491 = this->unk90.unk68;
-                    M2C_FIELD(temp_r3_1491, f64 *, 0x10) = (f64) temp_r29_1508->unk60;
-                    M2C_FIELD(temp_r3_1491, f64 *, 0x18) = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
-                    temp_r3_1496 = M2C_FIELD(temp_r3_1491, void **, 0x3C);
+                    temp_r3_1491 = this->unkF8;
+                    temp_r3_1491->unk10 = temp_r29_1508->unk60;
+                    temp_r3_1491->unk18 = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
+                    temp_r3_1496 = temp_r3_1491->unk3C;
                     if (temp_r3_1496 != NULL) {
                         M2C_FIELD(temp_r3_1496, f64 *, 0x10) = (f64) temp_r29_1508->unk60;
                         M2C_FIELD(temp_r3_1496, f64 *, 0x18) = (f64) M2C_FIELD(temp_r29_1508, f32 *, 0x68);
@@ -772,7 +770,7 @@ block_105:
             goto loop_113;
         }
     }
-    if (((u8) gb.unk381 != 0) && ((s32) this->unk90.unk60 == 0) && (var_r27_331 <= 0)) {
+    if (((u8) gb.unk381 != 0) && ((s32) this->unkF0 == 0) && (var_r27_331 <= 0)) {
         gb.unk381 = 0;
     }
 }
@@ -828,14 +826,14 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
     KDSoundFader **temp_r3_1568;
     KDSoundFader **temp_r3_1575;
     KDSoundFader *temp_r31_1580;
+    ManagedLight *temp_r3_1638;
+    ManagedLight *temp_r3_1649;
+    ManagedLight *temp_r3_1669;
+    ManagedLight *temp_r4_1630;
     TargetManager ***var_r27_1691;
     TargetManager **temp_r30_1868;
     f32 *temp_r3_1600;
     f32 temp_f1_1958;
-    f32 temp_r3_1638;
-    f32 temp_r3_1649;
-    f32 temp_r3_1669;
-    f32 temp_r4_1630;
     f32 var_f0_1959;
     f32 var_f29_1686;
     f32 var_f30_1754;
@@ -880,25 +878,25 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
     temp_r31_1580->unk6C = 1.0f;
     M2C_FIELD(temp_r31_1580, f32 *, 0x90) = 0.0f;
     temp_r31_1580->Init(0.75f, 0.5f);
-    M2C_FIELD(temp_r31_1580, f32 *, 0x84) = (f32) this->unk90.unk68;
+    M2C_FIELD(temp_r31_1580, ManagedLight **, 0x84) = (ManagedLight *) this->unkF8;
     M2C_FIELD(temp_r31_1580, s8 *, 0x9C) = 0;
     KDSound_Play3d(GS_SpyroBreathConvex1, (MKVector3 *) &temp_r31_1580->unk60, 0U, -1, 0.0f, 0U);
-    temp_r4_1630 = this->unk90.unk68;
-    if (M2C_BITWISE(u32, temp_r4_1630) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_1630), 1U);
-        temp_r3_1638 = this->unk90.unk68;
+    temp_r4_1630 = this->unkF8;
+    if (temp_r4_1630 != NULL) {
+        gb.unk80->EnableLight(temp_r4_1630, 1U);
+        temp_r3_1638 = this->unkF8;
         temp_f1_1639 = (f64) M2C_FIELD(&arg0, f32 *, 0);
         temp_f0_1640 = (f64) M2C_FIELD(&arg0, f32 *, 8);
-        M2C_FIELD(temp_r3_1638, f64 *, 0x10) = temp_f1_1639;
-        M2C_FIELD(temp_r3_1638, f64 *, 0x18) = temp_f0_1640;
-        temp_r3_1643 = M2C_FIELD(temp_r3_1638, void **, 0x3C);
+        temp_r3_1638->unk10 = temp_f1_1639;
+        temp_r3_1638->unk18 = temp_f0_1640;
+        temp_r3_1643 = temp_r3_1638->unk3C;
         if (temp_r3_1643 != NULL) {
             M2C_FIELD(temp_r3_1643, f64 *, 0x10) = temp_f1_1639;
             M2C_FIELD(temp_r3_1643, f64 *, 0x18) = temp_f0_1640;
         }
-        temp_r3_1649 = this->unk90.unk68;
-        M2C_FIELD(temp_r3_1649, f32 *, 0x38) = 2000.0f;
-        temp_r3_1652 = M2C_FIELD(temp_r3_1649, void **, 0x3C);
+        temp_r3_1649 = this->unkF8;
+        temp_r3_1649->unk38 = 2000.0f;
+        temp_r3_1652 = temp_r3_1649->unk3C;
         if (temp_r3_1652 != NULL) {
             M2C_FIELD(temp_r3_1652, f32 *, 0x20) = 2000.0f;
             M2C_FIELD(temp_r3_1652, f32 *, 0x24) = 4000000.0f;
@@ -906,13 +904,13 @@ s32 FuryFXConvexity::LaunchDragonChaser(const MKVector3 &arg0, const MKVector3 &
             M2C_FIELD(temp_r3_1652, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_1652, f32 *, 0x24));
         }
         sp40 = 1.0f;
-        temp_r3_1669 = this->unk90.unk68;
+        temp_r3_1669 = this->unkF8;
         sp44 = 0.0f;
         sp48 = 0.75f;
         sp4C = 1.0f;
-        M2C_FIELD(temp_r3_1669, f64 *, 0x20) = (f64) sp40;
-        M2C_FIELD(temp_r3_1669, f64 *, 0x28) = (f64) sp48;
-        temp_r3_1677 = M2C_FIELD(temp_r3_1669, void **, 0x3C);
+        temp_r3_1669->unk20 = (f64) sp40;
+        temp_r3_1669->unk28 = (f64) sp48;
+        temp_r3_1677 = temp_r3_1669->unk3C;
         sp150 = (f64) sp40;
         sp158 = (f64) sp48;
         if (temp_r3_1677 != NULL) {
@@ -1050,17 +1048,17 @@ loop_41:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: pointer/array required
 void FuryFXConvexity::ResetFury() {
     s32 spC;
     s32 sp8;
-    f32 temp_r4_2026;
+    ManagedLight *temp_r4_2026;
 
     SetDefaults();
     Disable();
-    temp_r4_2026 = this->unk90.unk68;
-    if (M2C_BITWISE(u32, temp_r4_2026) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_2026), 0U);
+    temp_r4_2026 = this->unkF8;
+    if (temp_r4_2026 != NULL) {
+        gb.unk80->EnableLight(temp_r4_2026, 0U);
     }
     gb.unk2CC.Disable(this->unk168);
     this->unk168 = -1;
@@ -1072,7 +1070,7 @@ void FuryFXConvexity::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     f64 sp128;
     f64 sp120;
@@ -1106,9 +1104,9 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     f32 sp28;
     f32 sp18;
     f32 sp8;
+    ManagedLight *temp_r3_2266;
+    ManagedLight *temp_r4_2244;
     f32 temp_f27_2165;
-    f32 temp_r3_2266;
-    f32 temp_r4_2244;
     s32 var_r28_2138;
     void *temp_r3_2272;
 
@@ -1117,23 +1115,23 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     this->unk90.unk34 = arg0.unk4;
     this->unk90.unk38 = arg0.unk8;
     this->unk90.unk3C = 1.0f;
-    if ((s32) this->unk90.unk60 == 0) {
+    if ((s32) this->unkF0 == 0) {
         this->unk168 = gb.unk2CC.Enable(0.1f, 3.0f, 0.75f, 15.0f);
-        this->unk90.unk60 = 1;
+        this->unkF0 = 1;
         this->unk150 = 0.0f;
         this->unk14C = 1;
-        this->unk90.unk64 = 1.0f;
+        this->unkF4 = 1.0f;
         M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(&arg0, f32 *, 0);
         M2C_FIELD(this, f64 *, 0xE8) = (f64) M2C_FIELD(&arg0, f32 *, 8);
-        KDSound_Play3d(GS_SpyroFuryConvexExtra1, (MKVector3 *) &this->unk90.unk50, 0U, -1, 0.0f, 0U);
+        KDSound_Play3d(GS_SpyroFuryConvexExtra1, &this->unkE0, 0U, -1, 0.0f, 0U);
         MKVector(0.0f, 500.0f, 0.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         var_r28_2138 = 0;
-        M2C_FIELD(this, f64 *, 0xD0) = sp30;
-        sp38 = this->unk90.unk58 + spF8;
+        this->unkD0 = sp30;
+        sp38 = this->unkE0.unk8 + spF8;
         sp100 = sp30;
-        M2C_FIELD(this, f64 *, 0xD8) = (f64) sp38;
+        this->unkD8 = (f64) sp38;
         this->unk164 = 0.0f;
         this->unk170.unk20 = (f64) M2C_FIELD(&arg0, f32 *, 0);
         sp108 = (f64) sp38;
@@ -1171,18 +1169,18 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
         sp88 = (f64) sp48;
         gb.GetSpyro();
         ((CharacterGlowFX *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x260), void **, 4), CharacterGlowFX **, 0x28)))->Enable(1U, *((MKVector4 *) &sp80), 10.0f);
-        temp_r4_2244 = this->unk90.unk68;
-        if (M2C_BITWISE(u32, temp_r4_2244) != 0U) {
-            gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_2244), 1U);
+        temp_r4_2244 = this->unkF8;
+        if (temp_r4_2244 != NULL) {
+            gb.unk80->EnableLight(temp_r4_2244, 1U);
             MKVector(0.0f, 100.0f, 0.0f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-            temp_r3_2266 = this->unk90.unk68;
+            temp_r3_2266 = this->unkF8;
             sp70 = sp10;
-            sp18 = this->unk90.unk58 + sp68;
-            M2C_FIELD(temp_r3_2266, f64 *, 0x10) = sp10;
-            M2C_FIELD(temp_r3_2266, f64 *, 0x18) = (f64) sp18;
-            temp_r3_2272 = M2C_FIELD(temp_r3_2266, void **, 0x3C);
+            sp18 = this->unkE0.unk8 + sp68;
+            temp_r3_2266->unk10 = sp10;
+            temp_r3_2266->unk18 = (f64) sp18;
+            temp_r3_2272 = temp_r3_2266->unk3C;
             sp78 = (f64) sp18;
             if (temp_r3_2272 != NULL) {
                 M2C_FIELD(temp_r3_2272, f64 *, 0x10) = sp10;
@@ -1196,18 +1194,16 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void FuryFXConvexity::SetDefaults() {
     SetDefaults();
-    this->unk90.unk60 = 0;
+    this->unkF0 = 0;
     this->unk90.SetIdentity();
-    this->unk90.unk64 = 0.0f;
+    this->unkF4 = 0.0f;
     this->unk14C = 0;
     this->unk164 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: pointer/array required
 void FuryFXConvexity::Deinit() {
     KDSoundFader **var_r31_2359;
     KDSoundFader **var_r3_2360;
@@ -1215,17 +1211,17 @@ void FuryFXConvexity::Deinit() {
     KDSoundFader *temp_r0_2363;
     KDSoundFader *temp_r0_2382;
     MKHeap *temp_r3_2385;
-    f32 temp_r4_2338;
+    ManagedLight *temp_r4_2338;
     u32 temp_r0_2368;
 
-    temp_r4_2338 = this->unk90.unk68;
-    if (M2C_BITWISE(u32, temp_r4_2338) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_2338), 0U);
-        gb.unk80->FreeManagedLight(M2C_BITWISE(ManagedLight *, this->unk90.unk68));
-        this->unk90.unk68 = 0.0f;
+    temp_r4_2338 = this->unkF8;
+    if (temp_r4_2338 != NULL) {
+        gb.unk80->EnableLight(temp_r4_2338, 0U);
+        gb.unk80->FreeManagedLight(this->unkF8);
+        this->unkF8 = NULL;
     }
-    MKModel_Destroy(M2C_BITWISE(MKModel *, this->unk1A0.unk40));
-    KDSound_Stop((s32 *) &this->unk90.unk6C);
+    MKModel_Destroy(this->unk1E0);
+    KDSound_Stop(&this->unkFC);
     KDSound_Stop(&this->unk124);
     var_r4_2358 = this->unk158;
     var_r31_2359 = var_r4_2358;
@@ -1281,14 +1277,16 @@ loop_2:
             goto loop_2;
         }
     }
-    this->unk90.unk6C.Message(arg0);
+    this->unkFC.Message(arg0);
     this->unk124.Message(arg0);
     KDProp::Message(arg0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void FuryFXConvexity::Update() {
+    ManagedLight *temp_r3_4111;
+    ManagedLight *temp_r4_2542;
     f32 temp_f14_2737;
     f32 temp_f14_3057;
     f32 temp_f14_3281;
@@ -1306,8 +1304,6 @@ void FuryFXConvexity::Update() {
     f32 temp_f1_4026;
     f32 temp_f2_2558;
     f32 temp_f2_2572;
-    f32 temp_r3_4111;
-    f32 temp_r4_2542;
     f32 var_f0_3480;
     f32 var_f0_4079;
     f32 var_f15_2660;
@@ -1347,16 +1343,16 @@ void FuryFXConvexity::Update() {
     void *temp_r3_3511;
     void *temp_r3_3821;
     void *temp_r3_4141;
-    this->unk90.unk64 = this->unk90.unk64 - gUpdateTimeDelta;
+    this->unkF4 = this->unkF4 - gUpdateTimeDelta;
     arg_sp8 = 1;
-    this->unk90.unk6C.Update(GS_SpyroFuryConvexLP1, 1U, this->unk14C, NULL, (MKVector3 *) &this->unk90.unk40, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    this->unkFC.Update(GS_SpyroFuryConvexLP1, 1U, this->unk14C, NULL, (MKVector3 *) &this->unkD0, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     arg_sp8 = 1;
-    this->unk124.Update(GS_SpyroFuryConvexLP3, 1U, this->unk14D, NULL, (MKVector3 *) &this->unk90.unk40, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    this->unk124.Update(GS_SpyroFuryConvexLP3, 1U, this->unk14D, NULL, (MKVector3 *) &this->unkD0, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     UpdateDragonChasers();
-    if ((LightActiveOnChasers() == 0) && ((s32) this->unk90.unk60 == 0)) {
-        temp_r4_2542 = this->unk90.unk68;
-        if (M2C_BITWISE(u32, temp_r4_2542) != 0U) {
-            gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_2542), 0U);
+    if ((LightActiveOnChasers() == 0) && ((s32) this->unkF0 == 0)) {
+        temp_r4_2542 = this->unkF8;
+        if (temp_r4_2542 != NULL) {
+            gb.unk80->EnableLight(temp_r4_2542, 0U);
         }
     }
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
@@ -1366,7 +1362,7 @@ void FuryFXConvexity::Update() {
         if (temp_f2_2558 > 1.43f) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (temp_f2_2558 == 1.45f) {
-                KDSound_Play3d(GS_SpyroFuryConvexLP2, (MKVector3 *) &this->unk90.unk50, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_SpyroFuryConvexLP2, &this->unkE0, 0U, -1, 0.0f, 0U);
             }
         }
         temp_f2_2572 = this->unk150;
@@ -1383,13 +1379,13 @@ void FuryFXConvexity::Update() {
         ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.7f * temp_f15_2623, temp_f15_2623, 0.033f, 0, 4.0f, 0U);
         this->unk150 += gUpdateTimeDelta;
     }
-    temp_r0_2643 = this->unk90.unk60;
+    temp_r0_2643 = this->unkF0;
     if ((u32) temp_r0_2643 <= 6U) {
         switch (temp_r0_2643) {                     /* switch 1 */
             return;
         case 1:                                     /* switch 1 */
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
-                var_f15_2660 = this->unk90.unk64;
+                var_f15_2660 = this->unkF4;
                 if (var_f15_2660 < 1.0f) {
 
                 } else {
@@ -1413,7 +1409,7 @@ void FuryFXConvexity::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp618 = arg_sp118;
-            arg_sp120 = this->unk90.unk58 + arg_sp610;
+            arg_sp120 = this->unkE0.unk8 + arg_sp610;
             arg_sp748 = arg_sp118;
             arg_sp620 = (f64) arg_sp120;
             arg_sp750 = (f64) arg_sp120;
@@ -1438,9 +1434,9 @@ void FuryFXConvexity::Update() {
             arg_sp2C = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
             gb.unk74->Emit(*((MKVector3 *) &arg_sp748), *((MKVector3 *) &arg_sp738), arg_sp2C, *((MKVector4 *) &arg_sp578), 0.0f);
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk64 == 0.0f) {
-                this->unk90.unk60 = 2;
-                this->unk90.unk64 = 2.0f;
+            if (this->unkF4 == 0.0f) {
+                this->unkF0 = 2;
+                this->unkF4 = 2.0f;
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     arg_sp7CC = 0;
                     MKVector(1.0f, 1.0f, 1.0f);
@@ -1461,7 +1457,7 @@ void FuryFXConvexity::Update() {
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 arg_sp548 = arg_sp218;
-                arg_sp220 = this->unk90.unk48 - (f32) arg_sp730;
+                arg_sp220 = M2C_FIELD(this, f32 *, 0xD8) - (f32) arg_sp730;
                 arg_sp550 = (f64) arg_sp220;
                 var_f4_2866 = ((f32) arg_sp550 * (f32) arg_sp550) + (((f32) arg_sp548 * (f32) arg_sp548) + (arg_sp54C * arg_sp54C));
                 if (var_f4_2866 > 1e-12f) {
@@ -1515,15 +1511,15 @@ void FuryFXConvexity::Update() {
                 arg_sp708 = (f64) arg_sp1F8;
                 KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp870, *((MKVector3 *) &arg_sp718), (MKVector3 *) &arg_sp708);
                 arg_sp870.Scale3x3((Matrix *) &arg_sp870, 3.0f);
-                arg_sp8A0 = this->unk90.unk40;
-                arg_sp8A4 = this->unk90.unk44;
-                arg_sp8A8 = this->unk90.unk48;
+                arg_sp8A0 = M2C_FIELD(this, f32 *, 0xD0);
+                arg_sp8A4 = M2C_FIELD(this, f32 *, 0xD4);
+                arg_sp8A8 = M2C_FIELD(this, f32 *, 0xD8);
                 arg_sp8AC = 1.0f;
                 gb.unk1C0.StartWarp((Matrix *) &arg_sp870);
             }
             goto block_159;
         case 2:                                     /* switch 1 */
-            var_f3_2993 = this->unk90.unk64;
+            var_f3_2993 = this->unkF4;
             if (var_f3_2993 < 2.0f) {
 
             } else {
@@ -1544,7 +1540,7 @@ void FuryFXConvexity::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp538 = arg_spE8;
-            arg_spF0 = this->unk90.unk58 + arg_sp530;
+            arg_spF0 = this->unkE0.unk8 + arg_sp530;
             arg_sp6F8 = arg_spE8;
             arg_sp540 = (f64) arg_spF0;
             arg_sp700 = (f64) arg_spF0;
@@ -1569,9 +1565,9 @@ void FuryFXConvexity::Update() {
             arg_sp28 = MKRand_Float(&gViewSeed, 3.0f, 5.0f);
             gb.unk74->Emit(*((MKVector3 *) &arg_sp6F8), *((MKVector3 *) &arg_sp6E8), arg_sp28, *((MKVector4 *) &arg_sp498), 0.0f);
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk64 == 0.0f) {
-                this->unk90.unk64 = 0.1f;
-                this->unk90.unk60 += 1;
+            if (this->unkF4 == 0.0f) {
+                this->unkF4 = 0.1f;
+                this->unkF0 += 1;
             } else if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 arg_sp7AC = 0;
                 temp_f15_3139 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);
@@ -1592,9 +1588,9 @@ void FuryFXConvexity::Update() {
         case 3:                                     /* switch 1 */
             EmitVortexParticles();
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk64 == 0.0f) {
-                this->unk90.unk64 = 0.1f;
-                this->unk90.unk60 += 1;
+            if (this->unkF4 == 0.0f) {
+                this->unkF4 = 0.1f;
+                this->unkF0 += 1;
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 arg_sp78C = 0;
@@ -1619,7 +1615,7 @@ void FuryFXConvexity::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp448 = arg_spA8;
-            arg_spB0 = this->unk90.unk58 + arg_sp440;
+            arg_spB0 = this->unkE0.unk8 + arg_sp440;
             arg_sp6D8 = arg_spA8;
             arg_sp450 = (f64) arg_spB0;
             arg_sp6E0 = (f64) arg_spB0;
@@ -1653,7 +1649,7 @@ void FuryFXConvexity::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp398 = arg_sp88;
-            arg_sp90 = this->unk90.unk58 + arg_sp390;
+            arg_sp90 = this->unkE0.unk8 + arg_sp390;
             arg_sp6B8 = arg_sp88;
             arg_sp3A0 = (f64) arg_sp90;
             arg_sp6C0 = (f64) arg_sp90;
@@ -1693,12 +1689,12 @@ void FuryFXConvexity::Update() {
             }
             var_f0_3480 = 0.0f;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk64 == 0.0f) {
-                this->unk90.unk64 = 5.0f;
+            if (this->unkF4 == 0.0f) {
+                this->unkF4 = 5.0f;
                 arg_sp1C0 = 0.0f;
                 arg_sp1B8 = 0.0f;
                 arg_sp1BC = 500.0f;
-                this->unk90.unk60 += 1;
+                this->unkF0 += 1;
                 arg_sp2C8 = (f64) arg_sp1B8;
                 arg_sp2D0 = (f64) arg_sp1C0;
                 M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r4, 0x0, qr0 */);
@@ -1841,7 +1837,7 @@ void FuryFXConvexity::Update() {
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 arg_sp248 = arg_sp148;
-                arg_sp150 = this->unk90.unk48 - (f32) arg_sp670;
+                arg_sp150 = M2C_FIELD(this, f32 *, 0xD8) - (f32) arg_sp670;
                 arg_sp250 = (f64) arg_sp150;
                 var_f4_3845 = ((f32) arg_sp250 * (f32) arg_sp250) + (((f32) arg_sp248 * (f32) arg_sp248) + (arg_sp24C * arg_sp24C));
                 if (var_f4_3845 > 1e-12f) {
@@ -1895,9 +1891,9 @@ void FuryFXConvexity::Update() {
                 arg_sp648 = (f64) arg_sp128;
                 KDMath_BuildMatrixFromFwd((Matrix *) &arg_sp7F0, *((MKVector3 *) &arg_sp658), (MKVector3 *) &arg_sp648);
                 arg_sp7F0.Scale3x3((Matrix *) &arg_sp7F0, 3.0f);
-                arg_sp820 = this->unk90.unk40;
-                arg_sp824 = this->unk90.unk44;
-                arg_sp828 = this->unk90.unk48;
+                arg_sp820 = M2C_FIELD(this, f32 *, 0xD0);
+                arg_sp824 = M2C_FIELD(this, f32 *, 0xD4);
+                arg_sp828 = M2C_FIELD(this, f32 *, 0xD8);
                 arg_sp82C = 1.0f;
                 gb.unk1C0.StartWarp((Matrix *) &arg_sp7F0);
             }
@@ -1915,7 +1911,7 @@ void FuryFXConvexity::Update() {
             EmitVortexParticles();
             this->unk14C = 0;
             this->unk14D = 0;
-            var_f15_3998 = this->unk90.unk64 / 5.0f;
+            var_f15_3998 = this->unkF4 / 5.0f;
             if (var_f15_3998 < 1.0f) {
 
             } else {
@@ -1937,10 +1933,10 @@ void FuryFXConvexity::Update() {
                 }
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk64 == 0.0f) {
-                this->unk90.unk60 = 6;
-                this->unk90.unk64 = 1.4f;
-                KDSound_Play3d(GS_SpyroFuryConvexExtra2, (MKVector3 *) &this->unk90.unk50, 0U, -1, 0.0f, 0U);
+            if (this->unkF4 == 0.0f) {
+                this->unkF0 = 6;
+                this->unkF4 = 1.4f;
+                KDSound_Play3d(GS_SpyroFuryConvexExtra2, &this->unkE0, 0U, -1, 0.0f, 0U);
                 if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                     arg_sp34 = 0;
                     arg_sp30 = 0x459;
@@ -1950,7 +1946,7 @@ void FuryFXConvexity::Update() {
             }
             goto block_159;
         case 6:                                     /* switch 1 */
-            var_f0_4079 = this->unk90.unk64;
+            var_f0_4079 = this->unkF4;
             if (var_f0_4079 < 1.4f) {
 
             } else {
@@ -1961,31 +1957,31 @@ void FuryFXConvexity::Update() {
             } else {
                 var_f0_4079 = 0.0f;
             }
-            this->unk90.unk64 = var_f0_4079;
+            this->unkF4 = var_f0_4079;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk64 == 0.0f) {
-                this->unk90.unk60 = 0;
+            if (this->unkF4 == 0.0f) {
+                this->unkF0 = 0;
             }
             goto block_159;
         }
     } else {
 block_159:
         gb.unk74->ApplyWind(&this->unk170);
-        if ((s32) this->unk90.unk60 <= 4) {
-            temp_r3_4111 = this->unk90.unk68;
-            if (M2C_BITWISE(u32, temp_r3_4111) != 0U) {
+        if ((s32) this->unkF0 <= 4) {
+            temp_r3_4111 = this->unkF8;
+            if (temp_r3_4111 != NULL) {
                 arg_sp40 = 0.0f;
                 arg_sp38 = 0.0f;
                 arg_sp3C = 250.0f * gUpdateTimeDelta;
-                arg_sp628 = M2C_FIELD(temp_r3_4111, f64 *, 0x10);
+                arg_sp628 = temp_r3_4111->unk10;
                 arg_sp238 = (f64) arg_sp38;
-                arg_sp630 = M2C_FIELD(temp_r3_4111, f64 *, 0x18);
+                arg_sp630 = temp_r3_4111->unk18;
                 arg_sp240 = (f64) arg_sp40;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                M2C_FIELD(temp_r3_4111, f64 *, 0x10) = arg_sp628;
+                temp_r3_4111->unk10 = arg_sp628;
                 arg_sp630 = (f32) arg_sp630 + (f32) arg_sp240;
-                M2C_FIELD(temp_r3_4111, f64 *, 0x18) = arg_sp630;
-                temp_r3_4141 = M2C_FIELD(temp_r3_4111, void **, 0x3C);
+                temp_r3_4111->unk18 = arg_sp630;
+                temp_r3_4141 = temp_r3_4111->unk3C;
                 if (temp_r3_4141 != NULL) {
                     M2C_FIELD(temp_r3_4141, f64 *, 0x10) = arg_sp628;
                     M2C_FIELD(temp_r3_4141, f64 *, 0x18) = arg_sp630;
@@ -1996,7 +1992,7 @@ block_159:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: pointer/array required
 void FuryFXConvexity::Resolve() {
     f64 sp80;
     f64 sp78;
@@ -2020,9 +2016,9 @@ void FuryFXConvexity::Resolve() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    f32 temp_r3_4241;
-    f32 temp_r3_4261;
-    f32 temp_r4_4235;
+    ManagedLight *temp_r3_4241;
+    ManagedLight *temp_r3_4261;
+    ManagedLight *temp_r4_4235;
     void *temp_r3_4244;
     void *temp_r3_4269;
 
@@ -2043,13 +2039,13 @@ void FuryFXConvexity::Resolve() {
     sp70 = (f64) sp30;
     sp78 = (f64) sp38;
     sp80 = (f64) sp40;
-    this->unk90.unk68 = M2C_BITWISE(f32, gb.unk80->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_780, lit_781));
-    temp_r4_4235 = this->unk90.unk68;
-    if (M2C_BITWISE(u32, temp_r4_4235) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_4235), 0U);
-        temp_r3_4241 = this->unk90.unk68;
-        M2C_FIELD(temp_r3_4241, f32 *, 0x38) = 2000.0f;
-        temp_r3_4244 = M2C_FIELD(temp_r3_4241, void **, 0x3C);
+    this->unkF8 = gb.unk80->AllocManagedLight(*((MKVector3 *) &sp78), *((MKVector3 *) &sp68), *((MKVector4 *) &sp58), 300.0f, lit_780, lit_781);
+    temp_r4_4235 = this->unkF8;
+    if (temp_r4_4235 != NULL) {
+        gb.unk80->EnableLight(temp_r4_4235, 0U);
+        temp_r3_4241 = this->unkF8;
+        temp_r3_4241->unk38 = 2000.0f;
+        temp_r3_4244 = temp_r3_4241->unk3C;
         if (temp_r3_4244 != NULL) {
             M2C_FIELD(temp_r3_4244, f32 *, 0x20) = 2000.0f;
             M2C_FIELD(temp_r3_4244, f32 *, 0x24) = 4000000.0f;
@@ -2057,13 +2053,13 @@ void FuryFXConvexity::Resolve() {
             M2C_FIELD(temp_r3_4244, f32 *, 0x2C) = (f32) (1.0f / M2C_FIELD(temp_r3_4244, f32 *, 0x24));
         }
         sp8 = 1.0f;
-        temp_r3_4261 = this->unk90.unk68;
+        temp_r3_4261 = this->unkF8;
         spC = 0.0f;
         sp10 = 0.75f;
         sp14 = 1.0f;
-        M2C_FIELD(temp_r3_4261, f64 *, 0x20) = (f64) sp8;
-        M2C_FIELD(temp_r3_4261, f64 *, 0x28) = (f64) sp10;
-        temp_r3_4269 = M2C_FIELD(temp_r3_4261, void **, 0x3C);
+        temp_r3_4261->unk20 = (f64) sp8;
+        temp_r3_4261->unk28 = (f64) sp10;
+        temp_r3_4269 = temp_r3_4261->unk3C;
         sp48 = (f64) sp8;
         sp50 = (f64) sp10;
         if (temp_r3_4269 != NULL) {
@@ -2075,7 +2071,7 @@ void FuryFXConvexity::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void FuryFXConvexity::Init() {
     f64 sp40;
     f64 sp38;
@@ -2098,9 +2094,9 @@ void FuryFXConvexity::Init() {
 
     FuryFX::Init();
     SetDefaults();
-    this->unk90.unk40 = 0.0f;
-    this->unk90.unk44 = 0.0f;
-    this->unk90.unk48 = 0.0f;
+    M2C_FIELD(this, f32 *, 0xD0) = 0.0f;
+    M2C_FIELD(this, f32 *, 0xD4) = 0.0f;
+    M2C_FIELD(this, f32 *, 0xD8) = 0.0f;
     this->unk15C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSAdd"));
     temp_r3_4315 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSSub"));
     this->unk160 = temp_r3_4315;
@@ -2125,8 +2121,8 @@ void FuryFXConvexity::Init() {
     temp_r4_4345 = this->unk158;
     this->unk158 = temp_r4_4345 + 4;
     M2C_FIELD(temp_r4_4345, KDSoundFader ***, 4) = NULL;
-    this->unk90.unk68 = 0.0f;
-    this->unk90.unk6C.Init(1.0f, 7.0f);
+    this->unkF8 = NULL;
+    this->unkFC.Init(1.0f, 7.0f);
     this->unk124.Init(0.75f, 6.0f);
     this->unk14C = 0;
     this->unk14D = 0;
@@ -2148,7 +2144,7 @@ void FuryFXConvexity::Init() {
     temp_r3_4401 = &this->unk1A0;
     temp_r3_4401->RotateYaw(temp_r3_4401, 0.3926991f);
     this->unk170.unk10 = 450.0f;
-    this->unk1A0.unk40 = M2C_BITWISE(f32, MKModel_Create("FX0035_Head", NULL, 2, NULL));
+    this->unk1E0 = MKModel_Create("FX0035_Head", NULL, 2, NULL);
     this->unk150 = -1.0f;
 }
 #endif

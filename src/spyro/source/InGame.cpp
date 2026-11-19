@@ -75,7 +75,24 @@ extern Level *pLoadingInfo_947;
 extern s8 *pMessage;
 extern s32 ppChunk_959;
 static M2C_UNK listenerPos;                         /* unable to generate initializer: unknown type */
-static Matrix sndCameraMat;                         /* type too large by 0x4C; unable to generate initializer: not enough data */
+static Matrix sndCameraMat = {
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+};
 static ChunkInfo *pDesiredChunks_962[3];
 #if 0 // DRAFT: undefined identifier 'DojoDialogMsg'
 static M2C_UNK lit_903;                                /* unable to generate initializer: unknown type; const */

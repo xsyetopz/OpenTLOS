@@ -1,12 +1,14 @@
 #include "spyro/source/EnemyGoal_DefensiveMode.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
-#include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -15,33 +17,33 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unk588'
+#if 0 // DRAFT: undefined identifier 'unkA38'
 void EnemyGoal_ShieldCharge::Terminate() {
     Character *temp_r3_55;
     Character *temp_r6_19;
-    SB2 *temp_r3_26;
-    SB2 *temp_r3_31;
     s32 var_r3_63;
     u8 temp_r0_62;
+    void *temp_r3_26;
+    void *temp_r3_31;
     void *temp_r5_56;
 
     this->unkC->StopMovement(1U);
     temp_r6_19 = this->unkC;
-    temp_r6_19->unk110.unk588 = temp_r6_19->unk110.unk928->unk168;
-    temp_r3_26 = this->unkC->unk110.unk530;
-    temp_r3_26->unk464 &= ~0x80;
-    temp_r3_31 = this->unkC->unk110.unk530;
-    temp_r3_31->unk464 |= 0x10;
-    this->unkC->unk110.unk530->SeekOff();
-    this->unkC->unk110.unk530->ObstacleAvoidanceOff();
-    this->unkC->unk110.unk530->WallAvoidanceOff();
-    this->unkC->unk110.unk530->ContainmentOff();
+    temp_r6_19->unk690 = temp_r6_19->unkA38->unk168;
+    temp_r3_26 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_26, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_26, u8 *, 0x464) & ~0x80);
+    temp_r3_31 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_31, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_31, u8 *, 0x464) | 0x10);
+    this->unkC->unk638->SeekOff();
+    this->unkC->unk638->ObstacleAvoidanceOff();
+    this->unkC->unk638->WallAvoidanceOff();
+    this->unkC->unk638->ContainmentOff();
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
     temp_r3_55 = this->unkC;
-    temp_r5_56 = temp_r3_55->unk110.unk94C;
+    temp_r5_56 = temp_r3_55->unkA5C;
     if ((temp_r5_56 != NULL) && ((u32) M2C_FIELD(temp_r5_56, u32 *, 8) != 0U)) {
-        temp_r0_62 = temp_r3_55->unk110.unk9F8;
+        temp_r0_62 = temp_r3_55->unkB08;
         var_r3_63 = 1;
         if (!((temp_r0_62 >> 1U) & 1) && !(temp_r0_62 & 1)) {
             var_r3_63 = 0;
@@ -52,7 +54,7 @@ void EnemyGoal_ShieldCharge::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7F8'
+#if 0 // DRAFT: undefined identifier 'unk908'
 u8 EnemyGoal_ShieldCharge::Update() {
     f64 sp20;
     f64 sp18;
@@ -90,32 +92,32 @@ u8 EnemyGoal_ShieldCharge::Update() {
         ActivateIfInactive();
         temp_r3_117 = this->unkC;
         var_r30_118 = 0;
-        if (((u8) temp_r3_117->unk110.unk7F8 == 2) || (temp_r3_117->unk110.unk7F0.Get() != NULL)) {
+        if (((u8) temp_r3_117->unk908 == 2) || (temp_r3_117->unk900.Get() != NULL)) {
             var_r30_118 = 1;
         }
         if (var_r30_118 != 0) {
             temp_r4_131 = this->unkC;
-            temp_r4_131->unk110.unk7B0.Update(temp_r4_131->unk110.unk478);
+            temp_r4_131->unk8C0.Update(*((MKVector3 *) &temp_r4_131->unk588));
         }
         temp_r29_136 = this->unkC;
         var_r30_137 = 0;
         if (temp_r29_136->HasAnimFinished() != 0) {
-            temp_r4_142 = temp_r29_136->unk110.unk940;
-            if ((temp_r4_142 != NULL) && ((u32) *temp_r4_142 == (u32) M2C_FIELD(temp_r29_136->unk110.unk520, u32 *, 0x20))) {
+            temp_r4_142 = temp_r29_136->unkA50;
+            if ((temp_r4_142 != NULL) && ((u32) *temp_r4_142 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_136, void **, 0x630), u32 *, 0x20))) {
                 var_r30_137 = 1;
             }
         }
         if (var_r30_137 != 0) {
             temp_r3_154 = this->unkC;
-            temp_r4_158 = temp_r3_154->unk110.unk914->unk0;
+            temp_r4_158 = temp_r3_154->unkA24->unk0;
             temp_r3_154->SetAnim(temp_r4_158, (AnimTransition *) &temp_r4_158->unk20, 0.15f, 0U);
             this->unk14 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
             EnableSB();
         } else {
             temp_r6_171 = this->unkC;
             var_r5_172 = 0;
-            temp_r4_173 = temp_r6_171->unk110.unk940;
-            if ((temp_r4_173 != NULL) && ((u32) M2C_FIELD(temp_r4_173, u32 *, 0x20) == (u32) M2C_FIELD(temp_r6_171->unk110.unk520, u32 *, 0x20))) {
+            temp_r4_173 = temp_r6_171->unkA50;
+            if ((temp_r4_173 != NULL) && ((u32) M2C_FIELD(temp_r4_173, u32 *, 0x20) == (u32) M2C_FIELD(M2C_FIELD(temp_r6_171, void **, 0x630), u32 *, 0x20))) {
                 var_r5_172 = 1;
             }
             if (var_r5_172 != 0) {
@@ -123,9 +125,9 @@ u8 EnemyGoal_ShieldCharge::Update() {
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 sp18 = sp8;
-                sp10 = temp_r6_171->unk110.unk478.unk8 + temp_r6_171->unk98;
+                sp10 = temp_r6_171->unk588.unk4 + temp_r6_171->unk98;
                 sp20 = (f64) sp10;
-                if ((this->unkC->IsInsideEnemyRegion() == 0) || (temp_r4_203 = this->unkC, ((temp_r4_203->unk110.unk728.IsPointWithin(temp_r4_203->unk110.unk478) == 0) == 0))) {
+                if ((this->unkC->IsInsideEnemyRegion() == 0) || (temp_r4_203 = this->unkC, ((temp_r4_203->unk838.IsPointWithin(*((MKVector3 *) &temp_r4_203->unk588)) == 0) == 0))) {
                     this->unk8 = 3;
                 } else {
                     temp_r3_214 = this->unkC;
@@ -138,13 +140,13 @@ u8 EnemyGoal_ShieldCharge::Update() {
                         this->unk8 = 2;
                     } else {
                         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                        if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) || (temp_r3_241 = this->unkC, temp_f31_247 = M2C_FIELD(temp_r3_241->__vptr, f32 (**)(Character *), 0x100)(temp_r3_241), M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkC->unk110.unk7B0.GetDist() == temp_f31_247) != 0))) {
+                        if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) || (temp_r3_241 = this->unkC, temp_f31_247 = M2C_FIELD(temp_r3_241->__vptr, f32 (**)(Character *), 0x100)(temp_r3_241), M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkC->unk8C0.GetDist() == temp_f31_247) != 0))) {
                             this->unk8 = 2;
                         }
                     }
                 }
                 temp_r3_257 = this->unkC;
-                if (temp_r3_257->CheckMeleeHit(temp_r3_257->unk110.unk914, -1) != 0) {
+                if (temp_r3_257->CheckMeleeHit(temp_r3_257->unkA24, -1) != 0) {
                     this->unkC->SetHitTarget(1U);
                     var_f1_271 = this->unk14 - M2C_FIELD(&gb, f32 *, 0x30C);
                     if (var_f1_271 > 0.0f) {
@@ -166,7 +168,7 @@ block_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk530'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_ShieldCharge::EnableSB() {
     AITargetData sp38;
     f32 sp30;
@@ -174,12 +176,12 @@ void EnemyGoal_ShieldCharge::EnableSB() {
     f32 sp10;
     Character *temp_r3_314;
     Character *temp_r4_366;
-    SB2 *temp_r3_310;
-    SB2 *temp_r3_382;
     f32 temp_f31_319;
+    void *temp_r3_310;
+    void *temp_r3_382;
 
-    temp_r3_310 = this->unkC->unk110.unk530;
-    temp_r3_310->unk464 |= 0x80;
+    temp_r3_310 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_310, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_310, u8 *, 0x464) | 0x80);
     temp_r3_314 = this->unkC;
     temp_f31_319 = M2C_FIELD(temp_r3_314->__vptr, f32 (**)(Character *, M2C_UNK), 0x100)(temp_r3_314, 1);
     sp38.GetDir();
@@ -198,18 +200,18 @@ void EnemyGoal_ShieldCharge::EnableSB() {
     sp38.unk40 = sp8;
     sp10 = sp38.unk38 + (f32) sp38.unk28;
     sp38.unk40.unk8 = (f64) sp10;
-    this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp38.unk40), 0U);
+    this->unkC->unk8C0.Set(*((MKVector3 *) &sp38.unk40), 0U);
     temp_r4_366 = this->unkC;
-    temp_r4_366->unk110.unk530->SeekOn((AITargetData *) &temp_r4_366->unk110.unk7B0);
-    this->unkC->unk110.unk530->ObstacleAvoidanceOn(this->unk10);
-    this->unkC->unk110.unk530->WallAvoidanceOn();
-    this->unkC->unk110.unk530->ContainmentOn();
-    temp_r3_382 = this->unkC->unk110.unk530;
-    temp_r3_382->unk464 &= ~0x10;
+    temp_r4_366->unk638->SeekOn((AITargetData *) &temp_r4_366->unk8C0);
+    this->unkC->unk638->ObstacleAvoidanceOn(this->unk10);
+    this->unkC->unk638->WallAvoidanceOn();
+    this->unkC->unk638->ContainmentOn();
+    temp_r3_382 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_382, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_382, u8 *, 0x464) & ~0x10);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk914'
+#if 0 // DRAFT: undefined identifier 'unkA24'
 void EnemyGoal_ShieldCharge::Activate() {
     f64 sp8;
     AnimSequence *temp_r4_409;
@@ -220,7 +222,7 @@ void EnemyGoal_ShieldCharge::Activate() {
 
     this->unk8 = 0;
     temp_r3_407 = this->unkC;
-    temp_r4_409 = temp_r3_407->unk110.unk914->unk0;
+    temp_r4_409 = temp_r3_407->unkA24->unk0;
     if ((u32) temp_r4_409->unk0 != 0) {
         temp_r3_407->SetAnim(temp_r4_409, (AnimTransition *) temp_r4_409, 0.15f, 0U);
     } else {
@@ -235,32 +237,32 @@ void EnemyGoal_ShieldCharge::Activate() {
     temp_r5_444 = this->unkC;
     M2C_FIELD(temp_r5_444, f64 *, 0xE0) = sp8;
     M2C_FIELD(temp_r5_444, f64 *, 0xE8) = sp10;
-    temp_r5_444->unk110.unk5A5 |= 0x40;
+    temp_r5_444->unk6B5 |= 0x40;
     this->unkC->SetRunMovementSpeed(1U);
-    this->unkC->unk110.unk588 = 0.25f;
+    this->unkC->unk690 = 0.25f;
     temp_r4_459 = this->unkC;
 loop_5:
-    if ((u32) *temp_r4_459->unk110.unk90C != 0U) {
-        temp_r4_459->unk110.unk90C += 4;
+    if ((u32) *temp_r4_459->unkA1C != 0U) {
+        temp_r4_459->unkA1C += 4;
         goto loop_5;
     }
     temp_r3_470 = this->unkC;
-    if (temp_r3_470->unk110.unk914->unk38 & 0x40000000) {
+    if (temp_r3_470->unkA24->unk38 & 0x40000000) {
         temp_r3_470->SetInvulnerableToMeleeAttacks(1U, 1U);
         this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk94C'
+#if 0 // DRAFT: undefined identifier 'unkA5C'
 void EnemyGoal_ShieldBlock::Terminate() {
     Character *temp_r4_493;
     void *temp_r5_494;
 
     temp_r4_493 = this->unkC;
-    temp_r5_494 = temp_r4_493->unk110.unk94C;
+    temp_r5_494 = temp_r4_493->unkA5C;
     if ((temp_r5_494 != NULL) && ((u32) M2C_FIELD(temp_r5_494, u32 *, 8) != 0U)) {
-        M2C_FIELD(temp_r5_494, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r5_494, u8 *, 0x10) & ~0x80) | ((temp_r4_493->unk110.unk9F8 << 7) & 0x80));
+        M2C_FIELD(temp_r5_494, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r5_494, u8 *, 0x10) & ~0x80) | ((temp_r4_493->unkB08 << 7) & 0x80));
     }
     this->unk8 = 1;
 }
@@ -322,18 +324,18 @@ u8 EnemyGoal_ShieldBlock::Update() {
         }
         ActivateIfInactive();
         temp_r3_544 = this->unkC;
-        if ((temp_r3_544->unk110.unk9A8 > 0.8f) && ((u8) this->unk1C == 0) && ((u8) this->unk1D == 0)) {
-            temp_r3_544->unk110.unk57C = 1.5707964f;
+        if ((temp_r3_544->unkAB8 > 0.8f) && ((u8) this->unk1C == 0) && ((u8) this->unk1D == 0)) {
+            temp_r3_544->unk684 = 1.5707964f;
             this->unk1C = 1;
         }
         if (((u8) this->unk1C != 0) || ((u8) this->unk1D != 0)) {
             temp_r3_567 = this->unkC;
-            if ((u32) M2C_FIELD(temp_r3_567->unk110.unk520, u32 *, 0x20) != (u32) M2C_FIELD(temp_r3_567->unk110.unk940, u32 *, 0x40)) {
+            if ((u32) M2C_FIELD(M2C_FIELD(temp_r3_567, void **, 0x630), u32 *, 0x20) != (u32) M2C_FIELD(temp_r3_567->unkA50, u32 *, 0x40)) {
                 sp98.GetDir();
                 temp_r4_577 = this->unkC;
                 M2C_FIELD(temp_r4_577, f64 *, 0xE0) = sp98;
                 M2C_FIELD(temp_r4_577, f64 *, 0xE8) = spA0;
-                temp_r4_577->unk110.unk5A5 |= 0x40;
+                temp_r4_577->unk6B5 |= 0x40;
             }
         }
         if ((u8) this->unk1D != 0) {
@@ -379,7 +381,7 @@ block_21:
         }
         if (this->unkC->HasAnimFinished() == 0) {
             var_r4_691 = 0;
-            temp_r5_692 = this->unkC->unk110.unk520;
+            temp_r5_692 = M2C_FIELD(this->unkC, void **, 0x630);
             if (((u32) M2C_FIELD(temp_r5_692, u32 *, 0x2C) >> 1U) & 1) {
                 var_r3_697 = 0;
                 if ((M2C_FIELD(temp_r5_692, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_692, s32 *, 0x44) > 1)) {
@@ -397,26 +399,26 @@ block_32:
             temp_r28_714 = this->unkC;
             var_r30_715 = 0;
             if (temp_r28_714->HasAnimFinished() != 0) {
-                temp_r4_720 = temp_r28_714->unk110.unk940;
-                if ((temp_r4_720 != NULL) && ((u32) *temp_r4_720 == (u32) M2C_FIELD(temp_r28_714->unk110.unk520, u32 *, 0x20))) {
+                temp_r4_720 = temp_r28_714->unkA50;
+                if ((temp_r4_720 != NULL) && ((u32) *temp_r4_720 == (u32) M2C_FIELD(M2C_FIELD(temp_r28_714, void **, 0x630), u32 *, 0x20))) {
                     var_r30_715 = 1;
                 }
             }
-            if ((var_r30_715 != 0) && (temp_r3_732 = this->unkC, temp_r4_733 = temp_r3_732->unk110.unk940, (((u32) M2C_FIELD(temp_r4_733, u32 *, 0x20) == 0U) == 0))) {
+            if ((var_r30_715 != 0) && (temp_r3_732 = this->unkC, temp_r4_733 = temp_r3_732->unkA50, (((u32) M2C_FIELD(temp_r4_733, u32 *, 0x20) == 0U) == 0))) {
                 temp_r3_732->SetAnim((AnimSequence *) temp_r4_733, (AnimTransition *) (temp_r4_733 + 0x20), 0.0f, 0U);
             } else {
                 temp_r3_743 = this->unkC;
-                temp_r4_744 = temp_r3_743->unk110.unk940;
+                temp_r4_744 = temp_r3_743->unkA50;
                 temp_r6_745 = M2C_FIELD(temp_r4_744, u32 *, 0x40);
-                if ((temp_r6_745 != 0U) && ((u32) M2C_FIELD(temp_r3_743->unk110.unk520, u32 *, 0x20) != temp_r6_745) && ((M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) != 0)) || (temp_r5_759 = temp_r3_743->unk110.unk9F8, ((((temp_r5_759 >> 1U) & 1) == 0) == 0)) || (temp_r5_759 & 1))) {
+                if ((temp_r6_745 != 0U) && ((u32) M2C_FIELD(M2C_FIELD(temp_r3_743, void **, 0x630), u32 *, 0x20) != temp_r6_745) && ((M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) != 0)) || (temp_r5_759 = temp_r3_743->unkB08, ((((temp_r5_759 >> 1U) & 1) == 0) == 0)) || (temp_r5_759 & 1))) {
                     temp_r3_743->SetAnim((AnimSequence *) temp_r4_744, (AnimTransition *) (temp_r4_744 + 0x40), 0.0f, 0U);
                 }
             }
             temp_r28_770 = this->unkC;
             var_r30_771 = 0;
             if (temp_r28_770->HasAnimFinished() != 0) {
-                temp_r4_776 = temp_r28_770->unk110.unk940;
-                if ((temp_r4_776 != NULL) && ((u32) M2C_FIELD(temp_r4_776, u32 *, 0x40) == (u32) M2C_FIELD(temp_r28_770->unk110.unk520, u32 *, 0x20))) {
+                temp_r4_776 = temp_r28_770->unkA50;
+                if ((temp_r4_776 != NULL) && ((u32) M2C_FIELD(temp_r4_776, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r28_770, void **, 0x630), u32 *, 0x20))) {
                     var_r30_771 = 1;
                 }
             }
@@ -425,7 +427,7 @@ block_32:
             }
         }
         temp_r3_791 = this->unkC;
-        if ((((u8) temp_r3_791->unk110.unk9F8 >> 4U) & 1) && (temp_r3_791->CheckMeleeHit(temp_r3_791->unk110.unk914, -1) != 0)) {
+        if ((((u8) temp_r3_791->unkB08 >> 4U) & 1) && (temp_r3_791->CheckMeleeHit(temp_r3_791->unkA24, -1) != 0)) {
             this->unkC->SetHitTarget(1U);
         }
         return this->unk8;
@@ -452,48 +454,48 @@ void EnemyGoal_ShieldBlock::Activate() {
     this->unk8 = 0;
     this->unkC->SetHitTarget(0U);
     temp_r3_828 = this->unkC;
-    temp_r3_828->unk110.unk9F8 &= ~1;
+    temp_r3_828->unkB08 &= ~1;
     this->unkC->StopMovement(1U);
     temp_r5_836 = this->unkC;
-    temp_r5_836->unk110.unk57C = temp_r5_836->unk110.unk928->unk15C;
+    temp_r5_836->unk684 = temp_r5_836->unkA38->unk15C;
     sp8.GetDir();
     temp_r4_843 = this->unkC;
     M2C_FIELD(temp_r4_843, f64 *, 0xE0) = sp8;
     M2C_FIELD(temp_r4_843, f64 *, 0xE8) = sp10;
-    temp_r4_843->unk110.unk5A5 |= 0x40;
+    temp_r4_843->unk6B5 |= 0x40;
     temp_r3_854 = this->unkC;
-    temp_r4_856 = temp_r3_854->unk110.unk914->unk0;
+    temp_r4_856 = temp_r3_854->unkA24->unk0;
     temp_r3_854->SetAnim(temp_r4_856, (AnimTransition *) temp_r4_856, 0.15f, 0U);
     this->unk14 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk18;
-    this->unkC->unk110.unk96C = 0.0f;
+    this->unkC->unkA7C = 0.0f;
     temp_r3_869 = this->unkC;
     temp_r3_873 = this->unkC;
     var_f2_874 = 0.0f;
-    temp_f0_876 = temp_r3_873->unk110.unk9A8 - temp_r3_869->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 8, temp_r3_869->unk110.unk914);
+    temp_f0_876 = temp_r3_873->unkAB8 - temp_r3_869->unkA38->GetEnemyAttackSetting((EnemySettingType) 8, temp_r3_869->unkA24);
     if (var_f2_874 > temp_f0_876) {
 
     } else {
         var_f2_874 = temp_f0_876;
     }
-    temp_r3_873->unk110.unk9A8 = var_f2_874;
+    temp_r3_873->unkAB8 = var_f2_874;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk94C'
+#if 0 // DRAFT: undefined identifier 'unkA5C'
 void EnemyGoal_Block::Terminate() {
     Character *temp_r4_894;
     void *temp_r5_895;
 
     temp_r4_894 = this->unkC;
-    temp_r5_895 = temp_r4_894->unk110.unk94C;
+    temp_r5_895 = temp_r4_894->unkA5C;
     if ((temp_r5_895 != NULL) && ((u32) M2C_FIELD(temp_r5_895, u32 *, 8) != 0U)) {
-        M2C_FIELD(temp_r5_895, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r5_895, u8 *, 0x10) & ~0x80) | ((temp_r4_894->unk110.unk9F8 << 7) & 0x80));
+        M2C_FIELD(temp_r5_895, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r5_895, u8 *, 0x10) & ~0x80) | ((temp_r4_894->unkB08 << 7) & 0x80));
     }
     this->unk8 = 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
+#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 EnemyGoal_Block::Update() {
     Character *temp_r29_1004;
     Character *temp_r29_948;
@@ -515,7 +517,7 @@ u8 EnemyGoal_Block::Update() {
     ActivateIfInactive();
     if (this->unkC->HasAnimFinished() == 0) {
         var_r4_925 = 0;
-        temp_r5_926 = this->unkC->unk110.unk520;
+        temp_r5_926 = M2C_FIELD(this->unkC, void **, 0x630);
         if (((u32) M2C_FIELD(temp_r5_926, u32 *, 0x2C) >> 1U) & 1) {
             var_r3_931 = 0;
             if ((M2C_FIELD(temp_r5_926, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_926, s32 *, 0x44) > 1)) {
@@ -533,26 +535,26 @@ block_8:
         temp_r29_948 = this->unkC;
         var_r30_949 = 0;
         if (temp_r29_948->HasAnimFinished() != 0) {
-            temp_r4_954 = temp_r29_948->unk110.unk940;
-            if ((temp_r4_954 != NULL) && ((u32) *temp_r4_954 == (u32) M2C_FIELD(temp_r29_948->unk110.unk520, u32 *, 0x20))) {
+            temp_r4_954 = temp_r29_948->unkA50;
+            if ((temp_r4_954 != NULL) && ((u32) *temp_r4_954 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_948, void **, 0x630), u32 *, 0x20))) {
                 var_r30_949 = 1;
             }
         }
-        if ((var_r30_949 != 0) && (temp_r3_966 = this->unkC, temp_r4_967 = temp_r3_966->unk110.unk940, (((u32) M2C_FIELD(temp_r4_967, u32 *, 0x20) == 0U) == 0))) {
+        if ((var_r30_949 != 0) && (temp_r3_966 = this->unkC, temp_r4_967 = temp_r3_966->unkA50, (((u32) M2C_FIELD(temp_r4_967, u32 *, 0x20) == 0U) == 0))) {
             temp_r3_966->SetAnim((AnimSequence *) temp_r4_967, (AnimTransition *) (temp_r4_967 + 0x20), 0.0f, 0U);
         } else {
             temp_r3_977 = this->unkC;
-            temp_r4_978 = temp_r3_977->unk110.unk940;
+            temp_r4_978 = temp_r3_977->unkA50;
             temp_r6_979 = M2C_FIELD(temp_r4_978, u32 *, 0x40);
-            if ((temp_r6_979 != 0U) && ((u32) M2C_FIELD(temp_r3_977->unk110.unk520, u32 *, 0x20) != temp_r6_979) && ((M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) != 0)) || (temp_r5_993 = temp_r3_977->unk110.unk9F8, ((((temp_r5_993 >> 1U) & 1) == 0) == 0)) || (temp_r5_993 & 1))) {
+            if ((temp_r6_979 != 0U) && ((u32) M2C_FIELD(M2C_FIELD(temp_r3_977, void **, 0x630), u32 *, 0x20) != temp_r6_979) && ((M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk14) != 0)) || (temp_r5_993 = temp_r3_977->unkB08, ((((temp_r5_993 >> 1U) & 1) == 0) == 0)) || (temp_r5_993 & 1))) {
                 temp_r3_977->SetAnim((AnimSequence *) temp_r4_978, (AnimTransition *) (temp_r4_978 + 0x40), 0.0f, 0U);
             }
         }
         temp_r29_1004 = this->unkC;
         var_r30_1005 = 0;
         if (temp_r29_1004->HasAnimFinished() != 0) {
-            temp_r4_1010 = temp_r29_1004->unk110.unk940;
-            if ((temp_r4_1010 != NULL) && ((u32) M2C_FIELD(temp_r4_1010, u32 *, 0x40) == (u32) M2C_FIELD(temp_r29_1004->unk110.unk520, u32 *, 0x20))) {
+            temp_r4_1010 = temp_r29_1004->unkA50;
+            if ((temp_r4_1010 != NULL) && ((u32) M2C_FIELD(temp_r4_1010, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1004, void **, 0x630), u32 *, 0x20))) {
                 var_r30_1005 = 1;
             }
         }
@@ -561,7 +563,7 @@ block_8:
         }
     }
     temp_r3_1025 = this->unkC;
-    if ((((u8) temp_r3_1025->unk110.unk9F8 >> 4U) & 1) && (temp_r3_1025->CheckMeleeHit(temp_r3_1025->unk110.unk914, -1) != 0)) {
+    if ((((u8) temp_r3_1025->unkB08 >> 4U) & 1) && (temp_r3_1025->CheckMeleeHit(temp_r3_1025->unkA24, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
@@ -584,44 +586,44 @@ void EnemyGoal_Block::Activate() {
     this->unk8 = 0;
     this->unkC->SetHitTarget(0U);
     temp_r3_1059 = this->unkC;
-    temp_r3_1059->unk110.unk9F8 &= ~1;
+    temp_r3_1059->unkB08 &= ~1;
     this->unkC->StopMovement(1U);
     temp_r5_1067 = this->unkC;
-    temp_r5_1067->unk110.unk57C = temp_r5_1067->unk110.unk928->unk15C;
+    temp_r5_1067->unk684 = temp_r5_1067->unkA38->unk15C;
     sp8.GetDir();
     temp_r4_1074 = this->unkC;
     M2C_FIELD(temp_r4_1074, f64 *, 0xE0) = sp8;
     M2C_FIELD(temp_r4_1074, f64 *, 0xE8) = sp10;
-    temp_r4_1074->unk110.unk5A5 |= 0x40;
+    temp_r4_1074->unk6B5 |= 0x40;
     temp_r3_1085 = this->unkC;
-    temp_r4_1087 = temp_r3_1085->unk110.unk914->unk0;
+    temp_r4_1087 = temp_r3_1085->unkA24->unk0;
     temp_r3_1085->SetAnim(temp_r4_1087, (AnimTransition *) temp_r4_1087, 0.15f, 0U);
     this->unk14 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unk18;
     temp_r3_1097 = this->unkC;
     temp_r3_1101 = this->unkC;
     var_f2_1102 = 0.0f;
-    temp_f0_1104 = temp_r3_1101->unk110.unk9A8 - temp_r3_1097->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 8, temp_r3_1097->unk110.unk914);
+    temp_f0_1104 = temp_r3_1101->unkAB8 - temp_r3_1097->unkA38->GetEnemyAttackSetting((EnemySettingType) 8, temp_r3_1097->unkA24);
     if (var_f2_1102 > temp_f0_1104) {
 
     } else {
         var_f2_1102 = temp_f0_1104;
     }
-    temp_r3_1101->unk110.unk9A8 = var_f2_1102;
+    temp_r3_1101->unkAB8 = var_f2_1102;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk914'
+#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EnemyGoal_DefensiveMode::Terminate() {
+    CharacterBreathFX *temp_r5_1128;
     Enemy *temp_r3_1127;
-    EnemyAttack *temp_r5_1128;
 
     temp_r3_1127 = this->unkC;
-    temp_r5_1128 = temp_r3_1127->unk110.unk914;
+    temp_r5_1128 = temp_r3_1127->unkA0C;
     if (temp_r5_1128 != NULL) {
-        this->unkC->unk110.unk960 = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_1127->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, temp_r5_1128);
+        this->unkC->unkA58 = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_1127->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_1128);
     }
-    this->unkC->unk110.unk914 = NULL;
-    this->unkC->unk110.unk5E8 = 0;
+    this->unkC->unkA0C = NULL;
+    M2C_FIELD(this->unkC, s8 *, 0x6F8) = 0;
     this->unk8 = 1;
     RemoveAllSubgoals();
 }
@@ -635,32 +637,32 @@ u8 EnemyGoal_DefensiveMode::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_DefensiveMode::Activate() {
-    AttackSweepData *temp_r3_1205;
     Enemy *temp_r3_1188;
     Enemy *temp_r4_1193;
     Goal<Enemy> *temp_r3_1230;
     Goal<Enemy> *temp_r4_1242;
     Goal<Enemy> *temp_r6_1266;
+    MKMaterial *temp_r3_1205;
     s32 temp_r3_1224;
 
     this->unk8 = 0;
     RemoveAllSubgoals();
     temp_r3_1188 = this->unkC;
-    temp_r3_1188->unk110.unk9F8 &= ~1;
+    M2C_FIELD(temp_r3_1188, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_1188, u8 *, 0xB08) & ~1);
     temp_r4_1193 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_1193->unk110.unk90C != 0U) {
-        temp_r4_1193->unk110.unk90C += 4;
+    if ((void *) temp_r4_1193->unkA04->__vptr != NULL) {
+        temp_r4_1193->unkA04 = (CharacterZapFX *) &temp_r4_1193->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_1205 = this->unkC->unk110.unk920;
+    temp_r3_1205 = this->unkC->unkA18;
     if (temp_r3_1205 != NULL) {
         temp_r3_1205->SetDefaults();
     }
-    if (((EnemyAttack *) this->unkC->unk110.unk914 != NULL) || (this->unkC->SelectDefensiveAttack(this->unk20->GetDist(), 0x1FFF0000U) != 0)) {
-        temp_r3_1224 = this->unkC->unk110.unk914->unk38;
+    if (((CharacterBreathFX *) this->unkC->unkA0C != NULL) || (this->unkC->SelectDefensiveAttack(this->unk20->GetDist(), 0x1FFF0000U) != 0)) {
+        temp_r3_1224 = M2C_FIELD(this->unkC->unkA0C, s32 *, 0x38);
         if (temp_r3_1224 & 0x10000) {
             AddSubgoal__21CompositeGoal<5Enemy>FP12Goal<5Enemy>((CompositeGoal<Enemy> *) this, (Goal<Enemy> *) this->unk24);
             temp_r3_1230 = this->unk24;

@@ -65,6 +65,9 @@ loop_4:
 
 #if 0 // DRAFT: illegal type
 void ShwimmaCritter::Update() {
+    s8 sp1B8;
+    s32 sp1B4;
+    s32 sp1B0;
     Volume sp128;
     f64 sp120;
     f64 sp118;
@@ -215,11 +218,11 @@ loop_38:
                     unksp1A2 = 0;
                     unksp1A3 = 0;
                     sp128.unk40.unk3C = 0.0f;
-                    sp128.unk40.unk40 = 3.4028235e38f;
-                    sp128.unk40.unk44 = 0.0f;
-                    sp128.unk40.unk48 = 0.0f;
-                    sp128.unk40.unk4C = nanf;
-                    sp128.unk40.unk50 = 0;
+                    sp128.unk80 = 3.4028235e38f;
+                    sp128.unk84 = 0.0f;
+                    sp1B0 = 0;
+                    sp1B4 = -1;
+                    sp1B8 = 0;
                     spF0 = (f64) sp80;
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
                     spA0 = 0.0f;

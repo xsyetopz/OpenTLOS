@@ -12,8 +12,8 @@
 #include "spyro/source/GameCameraMessages.h"
 #include "spyro/source/KDCamera.h"
 #include "spyro/source/KDCameraHeroData.h"
-#include "spyro/source/KDCameraHeroMoveYaw.h"
 #include "spyro/source/KDCameraJumpTargetOffset.h"
+#include "spyro/source/KDCameraPoint.h"
 #include "spyro/source/KDCameraSimpleDelta.h"
 #include "spyro/source/KDCollisionObject.h"
 #include "spyro/source/TargetManager.h"
@@ -165,10 +165,10 @@ void GameCamera2::MiscMessage(MKMessage *arg0) {
     f64 sp28;
     f64 sp18;
     f32 sp10;
+    KDCameraPoint *temp_r4_370;
+    KDCameraPoint *temp_r4_429;
     f32 temp_f31_354;
     f32 temp_f31_412;
-    f32 temp_r4_370;
-    f32 temp_r4_429;
     s32 temp_r0_277;
     void *temp_r3_339;
     void *temp_r3_380;
@@ -199,7 +199,7 @@ void GameCamera2::MiscMessage(MKMessage *arg0) {
             TryTeleport(sp68, 1U);
         }
         sp38.GetUpdatedTarget();
-        temp_r4_370 = this->unk60.unk44;
+        temp_r4_370 = this->unkA4;
         M2C_FIELD(temp_r4_370, f64 *, 0) = M2C_BITWISE(f64, sp38);
         M2C_FIELD(temp_r4_370, f64 *, 8) = M2C_BITWISE(f64, sp38.unk8);
         UpdateLTW();
@@ -221,7 +221,7 @@ void GameCamera2::MiscMessage(MKMessage *arg0) {
             M2C_FIELD(temp_r3_380, s8 *, 0x18) = TryTeleport(sp48, 1U);
         }
         sp18.GetUpdatedTarget();
-        temp_r4_429 = this->unk60.unk44;
+        temp_r4_429 = this->unkA4;
         M2C_FIELD(temp_r4_429, f64 *, 0) = sp18;
         M2C_FIELD(temp_r4_429, f64 *, 8) = sp20;
         UpdateLTW();
@@ -717,10 +717,10 @@ void GameCamera2::AdjustPitchWithFloorUpdate() {
     KDCameraDeltaStagesEx *temp_r4_1291;
     KDCameraHeroData *temp_r3_1182;
     KDCameraHeroData *temp_r3_1306;
+    KDCameraPoint *temp_r3_1238;
+    KDCameraPoint *temp_r3_1312;
     f32 temp_f1_1338;
     f32 temp_f31_1265;
-    f32 temp_r3_1238;
-    f32 temp_r3_1312;
     f32 temp_ret_1260;
     f32 var_f1_1267;
     f32 var_f31_1337;
@@ -764,7 +764,7 @@ void GameCamera2::AdjustPitchWithFloorUpdate() {
         sp100 = M2C_FIELD(temp_r5_1227, f64 *, 0x38);
         if (AdjustPitchWithFloorForPos(*((MKVector3 *) &spF8)) != 0) {
             temp_r4_1237 = this->unk8;
-            temp_r3_1238 = this->unk60.unk44;
+            temp_r3_1238 = this->unkA4;
             sp88 = M2C_FIELD(temp_r4_1237, f64 *, 0x30);
             sp78 = M2C_FIELD(temp_r3_1238, f64 *, 0);
             sp90 = M2C_FIELD(temp_r4_1237, f64 *, 0x38);
@@ -799,7 +799,7 @@ void GameCamera2::AdjustPitchWithFloorUpdate() {
                 sp128 = temp_r3_1306->unk50;
                 sp130 = temp_r3_1306->unk58;
                 temp_r4_1311 = this->unk8;
-                temp_r3_1312 = this->unk60.unk44;
+                temp_r3_1312 = this->unkA4;
                 sp58 = M2C_FIELD(temp_r4_1311, f64 *, 0x30);
                 sp48 = M2C_FIELD(temp_r3_1312, f64 *, 0);
                 sp60 = M2C_FIELD(temp_r4_1311, f64 *, 0x38);
@@ -855,7 +855,7 @@ void GameCamera2::AdjustPitchWithFloorDisable() {
     this->unk2A0 &= ~0x80;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+#if 0 // DRAFT: undefined identifier 'nanf'
 void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
     s8 sp1C0;
     f32 sp1BC;
@@ -923,6 +923,7 @@ void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
     f32 sp8;
     KDCameraDeltaStagesEx *temp_r28_1955;
     KDCameraHeroData *temp_r3_1606;
+    KDCameraPoint *temp_r3_1561;
     KDCollisionObject *temp_r4_1689;
     f32 *var_r0_1709;
     f32 *var_r30_1580;
@@ -933,7 +934,6 @@ void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
     f32 temp_f30_1959;
     f32 temp_f30_1962;
     f32 temp_f3_1642;
-    f32 temp_r3_1561;
     f32 var_f31_1650;
     f32 var_f31_1805;
     f32 var_f3_1896;
@@ -963,7 +963,7 @@ void GameCamera2::CollSlideUpdate(const MKVector3 &arg0) {
     void *temp_r6_2006;
     void *temp_r8_1978;
 
-    temp_r3_1561 = this->unk60.unk44;
+    temp_r3_1561 = this->unkA4;
     sp160 = M2C_FIELD(temp_r3_1561, f64 *, 0);
     sp168 = M2C_FIELD(temp_r3_1561, f64 *, 8);
     if (((u8) this->unk29C != 0) && ((s32) this->unk200->unkC0 > 0)) {
@@ -1549,6 +1549,9 @@ void GameCamera2::PlayerAdjustUpdate() {
     CameraData *temp_r29_3341;
     KDCameraHeroData *temp_r3_3175;
     KDCameraHeroData *temp_r3_3181;
+    KDCameraPoint *temp_r3_3371;
+    KDCameraPoint *temp_r3_3406;
+    KDCameraPoint *temp_r4_3342;
     f32 temp_f1_3208;
     f32 temp_f1_3211;
     f32 temp_f1_3214;
@@ -1561,9 +1564,6 @@ void GameCamera2::PlayerAdjustUpdate() {
     f32 temp_f30_3378;
     f32 temp_f5_3321;
     f32 temp_f6_3302;
-    f32 temp_r3_3371;
-    f32 temp_r3_3406;
-    f32 temp_r4_3342;
     f32 var_f0_3140;
     f32 var_f1_3120;
     f32 var_f1_3240;
@@ -1703,7 +1703,7 @@ void GameCamera2::PlayerAdjustUpdate() {
         }
         temp_r5_3340 = this->unk8;
         temp_r29_3341 = gameData.GetCameraData();
-        temp_r4_3342 = this->unk60.unk44;
+        temp_r4_3342 = this->unkA4;
         spC0 = M2C_FIELD(temp_r5_3340, f64 *, 0x30);
         temp_f28_3348 = this->unk284;
         spB0 = M2C_FIELD(temp_r4_3342, f64 *, 0);
@@ -1716,7 +1716,7 @@ void GameCamera2::PlayerAdjustUpdate() {
         temp_f29_3366 = KDMath_GetPitch(*((MKVector3 *) &spA0));
         temp_f1_3368 = temp_r29_3341->GetPlayerRotatePitchMultiplier();
         temp_r4_3369 = this->unk8;
-        temp_r3_3371 = this->unk60.unk44;
+        temp_r3_3371 = this->unkA4;
         sp90 = M2C_FIELD(temp_r4_3369, f64 *, 0x30);
         temp_f30_3378 = (temp_f30_3104 * (var_f31_3159 * temp_f28_3348) * temp_f1_3368) + temp_f29_3366;
         sp80 = M2C_FIELD(temp_r3_3371, f64 *, 0);
@@ -1727,7 +1727,7 @@ void GameCamera2::PlayerAdjustUpdate() {
         sp28 = (f32) sp88 - (f32) sp98;
         sp78 = (f64) sp28;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (((temp_f30_3378 == KDMath_GetPitch(*((MKVector3 *) &sp70))) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f30_3378 == this->unk54->GetCurrentPitch()) != 0))) || ((temp_r4_3405 = this->unk8, temp_r3_3406 = this->unk60.unk44, sp60 = M2C_FIELD(temp_r4_3405, f64 *, 0x30), sp50 = M2C_FIELD(temp_r3_3406, f64 *, 0), sp68 = M2C_FIELD(temp_r4_3405, f64 *, 0x38), sp58 = M2C_FIELD(temp_r3_3406, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp40 = sp10, sp18 = (f32) sp58 - (f32) sp68, sp48 = (f64) sp18, ((temp_f30_3378 < KDMath_GetPitch(*((MKVector3 *) &sp40))) != 0)) && (temp_r30_3277 != 0)) || (sp8 == 0.0f)) {
+        if (((temp_f30_3378 == KDMath_GetPitch(*((MKVector3 *) &sp70))) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f30_3378 == this->unk54->GetCurrentPitch()) != 0))) || ((temp_r4_3405 = this->unk8, temp_r3_3406 = this->unkA4, sp60 = M2C_FIELD(temp_r4_3405, f64 *, 0x30), sp50 = M2C_FIELD(temp_r3_3406, f64 *, 0), sp68 = M2C_FIELD(temp_r4_3405, f64 *, 0x38), sp58 = M2C_FIELD(temp_r3_3406, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp40 = sp10, sp18 = (f32) sp58 - (f32) sp68, sp48 = (f64) sp18, ((temp_f30_3378 < KDMath_GetPitch(*((MKVector3 *) &sp40))) != 0)) && (temp_r30_3277 != 0)) || (sp8 == 0.0f)) {
             this->unk54->EnablePitchOverride(temp_f30_3378, 0.0f);
         }
     }
@@ -2106,19 +2106,19 @@ void GameCamera2::StaticPosUpdate() {
     f64 sp18;
     f64 sp10;
     f64 sp8;
-    f32 temp_r4_4188;
-    f32 temp_r4_4197;
+    KDCameraPoint *temp_r4_4188;
+    KDCameraPoint *temp_r4_4197;
     f64 temp_f0_4199;
     f64 temp_f1_4198;
     void *temp_r5_4195;
 
     sp18.GetUpdatedTarget();
-    temp_r4_4188 = this->unk60.unk44;
+    temp_r4_4188 = this->unkA4;
     M2C_FIELD(temp_r4_4188, f64 *, 0) = sp18;
     M2C_FIELD(temp_r4_4188, f64 *, 8) = sp20;
     UpdateLTW();
     temp_r5_4195 = this->unk8;
-    temp_r4_4197 = this->unk60.unk40;
+    temp_r4_4197 = this->unkA0;
     temp_f1_4198 = M2C_FIELD(temp_r5_4195, f64 *, 0x30);
     temp_f0_4199 = M2C_FIELD(temp_r5_4195, f64 *, 0x38);
     sp8 = temp_f1_4198;
@@ -2538,109 +2538,111 @@ void GameCamera2::Init() {
 
 #if 0 // DRAFT: expression syntax error
 void GameCamera2::InitModule() {
-    f32 sp1C;
+    s32 sp1C;
     s32 sp18;
-    u32 sp14;
-    f32 sp10;
+    s32 sp14;
+    s32 sp10;
     s32 spC;
-    u32 sp8;
+    s32 sp8;
+    void *temp_r3_5098;
 
     deltaStageInfo.InitModule();
     pPossibleStateChanges.unk0 = &deltaStageInfo.unk30;
     if ((s8) init_762 == 0) {
-        M2C_FIELD(&deltaStageInfo, f32 *, 0xF0) = (f32) deltaStageInfo.unk60.unk10;
-        M2C_FIELD(&deltaStageInfo, f32 *, 0xF4) = (f32) deltaStageInfo.unk60.unk14;
-        M2C_FIELD(&deltaStageInfo, f32 *, 0xF8) = (f32) deltaStageInfo.unk60.unk18;
-        deltaStageInfo.unk1CC = deltaStageInfo.unk60.unk74;
-        sp14 = M2C_FIELD(&__ptmf_null, u32 *, 0);
+        temp_r3_5098 = &deltaStageInfo + 0xDC;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x14) = (f32) deltaStageInfo.unk60.unk10;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x18) = (f32) deltaStageInfo.unk60.unk14;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x1C) = (f32) deltaStageInfo.unk60.unk18;
+        M2C_FIELD(temp_r3_5098, s32 *, 0xF0) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xD4);
+        sp14 = M2C_FIELD(&__ptmf_null, s32 *, 0);
         sp18 = M2C_FIELD(&__ptmf_null, s32 *, 4);
-        sp1C = M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, u32 *, 0xFC) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
-        M2C_FIELD(&deltaStageInfo, s32 *, 0x100) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x104) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x108) = (f32) deltaStageInfo.unk60.unk1C;
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x10C) = (f32) deltaStageInfo.unk60.unk20;
-        deltaStageInfo.unk110 = deltaStageInfo.unk60.unk24;
-        deltaStageInfo.unk130 = deltaStageInfo.unk60.unk28;
-        deltaStageInfo.unk134 = deltaStageInfo.unk60.unk2C;
-        deltaStageInfo.unk138 = M2C_BITWISE(KDCameraHeroMoveYaw *, deltaStageInfo.unk60.unk30);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x13C) = (f32) deltaStageInfo.unk60.unk34;
-        deltaStageInfo.unk140 = M2C_BITWISE(KDCameraJumpTargetOffset *, deltaStageInfo.unk60.unk38);
-        deltaStageInfo.unk144 = deltaStageInfo.unk60.unk3C;
-        deltaStageInfo.unk148 = deltaStageInfo.unk60.unk40;
-        deltaStageInfo.unk14C = deltaStageInfo.unk60.unk44;
-        deltaStageInfo.unk150 = deltaStageInfo.unk60.unk48;
-        deltaStageInfo.unk170 = deltaStageInfo.unk60.unk4C;
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x174) = (f32) deltaStageInfo.unk60.unk50;
-        deltaStageInfo.unk178 = M2C_BITWISE(s32, deltaStageInfo.unk60.unk54);
-        deltaStageInfo.unk17C = M2C_FIELD(&__ptmf_null, u32 *, 0);
-        M2C_FIELD(&deltaStageInfo, s32 *, 0x180) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        deltaStageInfo.unk184 = M2C_FIELD(&__ptmf_null, f32 *, 8);
-        deltaStageInfo.unk188 = deltaStageInfo.unk60.unk58;
-        deltaStageInfo.unk18C = deltaStageInfo.unk60.unk5C;
-        deltaStageInfo.unk190 = M2C_BITWISE(f32, deltaStageInfo.unk60.unk60);
-        deltaStageInfo.unk1B0 = M2C_BITWISE(f32, M2C_FIELD(&__ptmf_null, u32 *, 0));
-        deltaStageInfo.unk1B4 = M2C_FIELD(&__ptmf_null, s32 *, 4);
-        deltaStageInfo.unk1B8 = M2C_FIELD(&__ptmf_null, f32 *, 8);
-        deltaStageInfo.unk1BC = deltaStageInfo.unk60.unk64;
-        deltaStageInfo.unk1C0 = deltaStageInfo.unk60.unk68;
-        deltaStageInfo.unk1C4 = deltaStageInfo.unk60.unk6C;
-        deltaStageInfo.unk1C8 = deltaStageInfo.unk60.unk70;
-        deltaStageInfo.unk1D0 = deltaStageInfo.unk60.unk78;
+        sp1C = M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(temp_r3_5098, s32 *, 0x20) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+        M2C_FIELD(temp_r3_5098, s32 *, 0x24) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+        M2C_FIELD(temp_r3_5098, s32 *, 0x28) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(temp_r3_5098, f32 *, 0x2C) = (f32) deltaStageInfo.unk60.unk1C;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x30) = (f32) deltaStageInfo.unk60.unk20;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x34) = (f32) deltaStageInfo.unk60.unk24;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x54) = (f32) deltaStageInfo.unk60.unk28;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x58) = (f32) deltaStageInfo.unk60.unk2C;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x5C) = (f32) deltaStageInfo.unk60.unk30;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x60) = (f32) deltaStageInfo.unk60.unk34;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x64) = (f32) deltaStageInfo.unk60.unk38;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x68) = (f32) deltaStageInfo.unk60.unk3C;
+        M2C_FIELD(temp_r3_5098, KDCameraPoint **, 0x6C) = (KDCameraPoint *) deltaStageInfo.unkA0;
+        M2C_FIELD(temp_r3_5098, KDCameraPoint **, 0x70) = (KDCameraPoint *) deltaStageInfo.unkA4;
+        M2C_FIELD(temp_r3_5098, f32 *, 0x74) = (f32) deltaStageInfo.unkA8;
+        M2C_FIELD(temp_r3_5098, s32 *, 0x94) = (s32) deltaStageInfo.unkAC;
+        M2C_FIELD(temp_r3_5098, s32 *, 0x98) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xB0);
+        M2C_FIELD(temp_r3_5098, s32 *, 0x9C) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xB4);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xA0) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xA4) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xA8) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xAC) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xB8);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xB0) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xBC);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xB4) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xC0);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xD4) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xD8) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xDC) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xE0) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xC4);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xE4) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xC8);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xE8) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xCC);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xEC) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xD0);
+        M2C_FIELD(temp_r3_5098, s32 *, 0xF4) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0xD8);
         init_762 = 1;
     }
-    pStateDescriptors.unk0 = &deltaStageInfo.unk60.unk7C;
+    pStateDescriptors.unk0 = &deltaStageInfo + 0xDC;
     if ((s8) init_780 == 0) {
-        sp8 = M2C_FIELD(&__ptmf_null, u32 *, 0);
+        sp8 = M2C_FIELD(&__ptmf_null, s32 *, 0);
         spC = M2C_FIELD(&__ptmf_null, s32 *, 4);
-        sp10 = M2C_FIELD(&__ptmf_null, f32 *, 8);
-        deltaStageInfo.unk2A0 = M2C_FIELD(&__ptmf_null, u32 *, 0);
+        sp10 = M2C_FIELD(&__ptmf_null, s32 *, 8);
+        deltaStageInfo.unk2A0 = M2C_FIELD(&__ptmf_null, s32 *, 0);
         deltaStageInfo.unk2A4 = M2C_FIELD(&__ptmf_null, s32 *, 4);
-        deltaStageInfo.unk2A8 = M2C_FIELD(&__ptmf_null, f32 *, 8);
+        deltaStageInfo.unk2A8 = M2C_FIELD(&__ptmf_null, s32 *, 8);
         deltaStageInfo.unk2AC = M2C_FIELD(&deltaStageInfo, s32 *, 0x1DC);
         deltaStageInfo.unk2B0 = deltaStageInfo.unk1E0;
         deltaStageInfo.unk2B4 = deltaStageInfo.unk1E4;
         deltaStageInfo.unk2B8 = deltaStageInfo.unk1E8;
         deltaStageInfo.unk2BC = M2C_FIELD(&deltaStageInfo, s32 *, 0x1EC);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x2C0) = (s32) deltaStageInfo.unk1F0;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x2D8) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x2D8) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x2DC) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x2E0) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x2E4) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x2E0) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x2E4) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x2E8) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x2EC) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x2EC) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x2F0) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0x1F4);
         M2C_FIELD(&deltaStageInfo, KDCamera **, 0x2F4) = (KDCamera *) deltaStageInfo.unk1F8;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x2F8) = (s32) deltaStageInfo.unk1FC;
         M2C_FIELD(&deltaStageInfo, KDCollisionObject **, 0x310) = (KDCollisionObject *) deltaStageInfo.unk200;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x314) = (s32) M2C_FIELD(&deltaStageInfo, s32 *, 0x204);
         M2C_FIELD(&deltaStageInfo, f32 *, 0x318) = (f32) deltaStageInfo.unk208;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x31C) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x31C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x320) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x324) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x324) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
         M2C_FIELD(&deltaStageInfo, f32 *, 0x328) = (f32) deltaStageInfo.unk20C;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x32C) = (s32) deltaStageInfo.unk210;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x330) = (s32) deltaStageInfo.unk214;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x348) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x348) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x34C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x350) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x354) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x350) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x354) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x358) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x35C) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x35C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x360) = (s32) deltaStageInfo.unk218;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x364) = (s32) deltaStageInfo.unk21C;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x368) = (s32) deltaStageInfo.unk220;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x380) = (s32) deltaStageInfo.unk224;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x384) = (s32) deltaStageInfo.unk228;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x388) = (s32) deltaStageInfo.unk22C;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x38C) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x38C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x390) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x394) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x3F8) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x404) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x430) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x43C) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
-        M2C_FIELD(&deltaStageInfo, f32 *, 0x474) = (f32) M2C_FIELD(&__ptmf_null, f32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x394) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x3F8) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x404) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x430) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x43C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x474) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 8);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x398) = (s32) deltaStageInfo.unk230;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x39C) = (s32) deltaStageInfo.unk234;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x3A0) = (s32) deltaStageInfo.unk238;
@@ -2653,16 +2655,16 @@ void GameCamera2::InitModule() {
         M2C_FIELD(&deltaStageInfo, s32 *, 0x3D0) = (s32) deltaStageInfo.unk254;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x3D4) = (s32) deltaStageInfo.unk258;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x3D8) = (s32) deltaStageInfo.unk25C;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x3F0) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x3F0) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x3F4) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x3FC) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x3FC) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x400) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x408) = (s32) deltaStageInfo.unk260;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x40C) = (s32) deltaStageInfo.unk264;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x410) = (s32) deltaStageInfo.unk268;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x428) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x428) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x42C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x434) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x434) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x438) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x440) = (s32) deltaStageInfo.unk26C;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x444) = (s32) deltaStageInfo.unk270;
@@ -2670,7 +2672,7 @@ void GameCamera2::InitModule() {
         M2C_FIELD(&deltaStageInfo, s32 *, 0x460) = (s32) deltaStageInfo.unk278;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x464) = (s32) deltaStageInfo.unk27C;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x468) = (s32) deltaStageInfo.unk280;
-        M2C_FIELD(&deltaStageInfo, u32 *, 0x46C) = (u32) M2C_FIELD(&__ptmf_null, u32 *, 0);
+        M2C_FIELD(&deltaStageInfo, s32 *, 0x46C) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 0);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x470) = (s32) M2C_FIELD(&__ptmf_null, s32 *, 4);
         M2C_FIELD(&deltaStageInfo, s32 *, 0x478) = (s32) deltaStageInfo.unk284;
         M2C_FIELD(&deltaStageInfo, s32 *, 0x47C) = (s32) deltaStageInfo.unk288;

@@ -16,7 +16,7 @@ extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: illegal use of abstract class ('Trap::pure_slot16()')
 static M2C_UNK lit_631;                                /* unable to generate initializer: unknown type */
-static BoulderRamp states__11BoulderRamp;           /* type too large by 0xF8; unable to generate initializer: not enough data */
+static BoulderRamp states__11BoulderRamp;           /* type too large by 0xA8; unable to generate initializer: not enough data */
 static struct _struct_boulderRampGroups_0x18 boulderRampGroups[8];
 #endif
 

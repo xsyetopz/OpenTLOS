@@ -4,7 +4,6 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
-#include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
@@ -12,68 +11,68 @@ M2C_UNK free(s32);                                  /* extern */
 s32 malloc(M2C_UNK);                                /* extern */
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unk530'
+#if 0 // DRAFT: expression syntax error
 void EnemyTestGoal_MoveToTarget::Terminate() {
     Character *temp_r3_61;
-    SB2 *temp_r3_30;
+    void *temp_r3_30;
 
-    temp_r3_30 = this->unkC->unk110.unk530;
-    temp_r3_30->unk464 &= ~0x80;
-    this->unkC->unk110.unk530->SeekOff();
-    this->unkC->unk110.unk530->PursuitOff();
-    this->unkC->unk110.unk530->RandomPursuitOff();
-    this->unkC->unk110.unk530->WanderOff();
-    this->unkC->unk110.unk530->PathFollowingOff();
-    this->unkC->unk110.unk530->ObstacleAvoidanceOff();
-    this->unkC->unk110.unk530->WallAvoidanceOff();
-    this->unkC->unk110.unk530->ContainmentOff();
-    this->unkC->unk110.unk530->HazardAvoidanceOff();
+    temp_r3_30 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_30, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_30, u8 *, 0x464) & ~0x80);
+    this->unkC->unk638->SeekOff();
+    this->unkC->unk638->PursuitOff();
+    this->unkC->unk638->RandomPursuitOff();
+    this->unkC->unk638->WanderOff();
+    this->unkC->unk638->PathFollowingOff();
+    this->unkC->unk638->ObstacleAvoidanceOff();
+    this->unkC->unk638->WallAvoidanceOff();
+    this->unkC->unk638->ContainmentOff();
+    this->unkC->unk638->HazardAvoidanceOff();
     temp_r3_61 = this->unkC;
-    temp_r3_61->unk110.unk488 = 0.0f;
-    temp_r3_61->unk110.unk48C = 0.0f;
-    temp_r3_61->unk110.unk490 = 0.0f;
+    temp_r3_61->unk588.unkC = 0.0f;
+    temp_r3_61->unk598 = 0.0f;
+    temp_r3_61->unk59C = 0.0f;
     this->unk8 = 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk8D8'
+#if 0 // DRAFT: undefined identifier 'unk9E8'
 u8 EnemyTestGoal_MoveToTarget::Update() {
     ActivateIfInactive();
-    this->unkC->unk110.unk8D8.Update();
+    this->unkC->unk9E8.Update();
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk110.unk530->PathFollowingHasLooped() != 0)) {
+    if ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk18) || (this->unk10->GetDist() < this->unk14) || (this->unkC->unk638->PathFollowingHasLooped() != 0)) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk530'
+#if 0 // DRAFT: expression syntax error
 void EnemyTestGoal_MoveToTarget::Activate() {
     Character *temp_r3_148;
-    SB2 *temp_r3_128;
+    void *temp_r3_128;
 
     this->unk8 = 0;
-    temp_r3_128 = this->unkC->unk110.unk530;
-    temp_r3_128->unk464 |= 0x80;
-    this->unkC->unk110.unk530->WanderOn();
-    this->unkC->unk110.unk530->ObstacleAvoidanceOn(NULL);
-    this->unkC->unk110.unk530->WallAvoidanceOn();
-    this->unkC->unk110.unk530->ContainmentOn();
-    this->unkC->unk110.unk530->HazardAvoidanceOn();
+    temp_r3_128 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_128, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_128, u8 *, 0x464) | 0x80);
+    this->unkC->unk638->WanderOn();
+    this->unkC->unk638->ObstacleAvoidanceOn(NULL);
+    this->unkC->unk638->WallAvoidanceOn();
+    this->unkC->unk638->ContainmentOn();
+    this->unkC->unk638->HazardAvoidanceOn();
     temp_r3_148 = this->unkC;
-    if (temp_r3_148->unk110.unk530->unk460 & 0x40) {
+    if (M2C_FIELD(temp_r3_148->unk638, s32 *, 0x460) & 0x40) {
         if (M2C_FIELD(temp_r3_148->__vptr, u8 (**)(), 0x190)() != 0) {
-            this->unkC->unk110.unk8D8.Set(0xFU, 0xA, 0, 0x11);
+            this->unkC->unk9E8.Set(0xFU, 0xA, 0, 0x11);
         } else {
-            this->unkC->unk110.unk8D8.Set(0xBU, 0xA, 0, 0);
+            this->unkC->unk9E8.Set(0xBU, 0xA, 0, 0);
         }
     } else {
-        temp_r3_148->unk110.unk8D8.Set(0xFU, 0xA, 0, 0);
+        temp_r3_148->unk9E8.Set(0xFU, 0xA, 0, 0);
     }
-    this->unkC->unk110.unk58C = 0.0f;
+    this->unkC->unk694 = 0.0f;
     this->unkC->SetMovementType((CharacterMoveType) 0);
-    if (this->unkC->unk110.unk530->unk460 & 0x40) {
+    if (M2C_FIELD(this->unkC->unk638, s32 *, 0x460) & 0x40) {
         this->unk18 = M2C_FIELD(&gb, f32 *, 0x30C) + 100.0f;
         return;
     }

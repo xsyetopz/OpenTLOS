@@ -3,7 +3,7 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier 'unk3C'
-static KDVolume boundingVolume__8KDVolume;          /* type too large by 0xAC; unable to generate initializer: confusing struct layout */
+static KDVolume boundingVolume__8KDVolume;          /* type too large by 0x68; unable to generate initializer: confusing struct layout */
 
 void KDVolume::UpdateMatrix(Matrix &arg0) {
     f64 sp70;
@@ -78,13 +78,13 @@ void KDVolume::UpdateMatrix(Matrix &arg0) {
     } else {
         var_f0_117 = unksp5C;
     }
-    this->unk40.unk40 = var_f0_117;
+    this->unk80 = var_f0_117;
     if (var_f12_85 > unksp5C) {
 
     } else {
         var_f12_85 = unksp5C;
     }
-    this->unk40.unk44 = var_f12_85;
+    this->unk84 = var_f12_85;
 }
 #endif
 
@@ -148,7 +148,7 @@ s32 KDVolume::IsWithinXZ(const MKVector3 &arg0, float *arg1) {
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                 if ((f32) sp20 == (M2C_FIELD(&boundingVolume, f32 *, 8) + boundingVolume.unk18)) {
                     if (arg1 != NULL) {
-                        *arg1 = this->unk40.unk44;
+                        *arg1 = this->unk84;
                     }
                     return 1;
                 }
@@ -173,8 +173,8 @@ s32 KDVolume::IsWithin(const MKVector3 &arg0, float *arg1) {
     u8 var_r0_295;
 
     temp_f3_285 = arg0.unk4;
-    temp_f0_286 = this->unk40.unk44;
-    if ((temp_f3_285 < temp_f0_286) && (temp_f3_285 > this->unk40.unk40)) {
+    temp_f0_286 = this->unk84;
+    if ((temp_f3_285 < temp_f0_286) && (temp_f3_285 > this->unk80)) {
         var_r0_295 = 0;
         temp_f7_299 = arg0.unk0;
         temp_f8_304 = arg0.unk8;

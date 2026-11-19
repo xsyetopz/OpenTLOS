@@ -2,11 +2,13 @@
 #include "common/Source/MKDistanceLevelChunk.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
+#include "common/Source/Matrix.h"
+#include "spyro/source/KDPath.h"
 #include "spyro/source/KDSpline.h"
 #include <m2c_macros.h>
 
 extern f32 *KDSpline_PositionMixer;
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: undefined identifier 'sp48'
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
 
 void SplineProp::CalcBounds() {
@@ -35,6 +37,7 @@ void SplineProp::CalcBounds() {
     f32 sp10;
     f32 spC;
     f32 sp8;
+    KDSplinePathSegment *temp_r4_35;
     f32 temp_f1_103;
     f32 temp_f1_117;
     f32 temp_f1_138;
@@ -49,7 +52,6 @@ void SplineProp::CalcBounds() {
     f32 var_f0_84;
     f32 var_f0_93;
     f32 var_f1_56;
-    s32 temp_r4_35;
     s32 var_r6_12;
     void *temp_r5_36;
 
@@ -57,28 +59,28 @@ void SplineProp::CalcBounds() {
     sp38 = 9.99999e7f;
     sp3C = 9.99999e7f;
     sp40 = 9.99999e7f;
-    M2C_FIELD(this, f64 *, 0x90) = (f64) sp38;
+    this->unk90 = (f64) sp38;
     sp30 = -9.99999e7f;
     sp28 = -9.99999e7f;
     sp2C = -9.99999e7f;
-    M2C_FIELD(this, f64 *, 0x98) = (f64) sp40;
-    M2C_FIELD(this, f64 *, 0xA0) = (f64) sp28;
+    this->unk98 = (f64) sp40;
+    this->unkA0 = (f64) sp28;
     sp98 = (f64) sp38;
     spA0 = (f64) sp40;
     sp88 = (f64) sp28;
     sp90 = (f64) sp30;
-    M2C_FIELD(this, f64 *, 0xA8) = (f64) sp30;
+    this->unkA8 = (f64) sp30;
 loop_20:
-    if (var_r6_12 < (s32) M2C_FIELD(this->unk50.unk60, s32 *, 0x20)) {
-        temp_r4_35 = this->unk50.unk60;
+    if (var_r6_12 < (s32) this->unkB0->unk20) {
+        temp_r4_35 = this->unkB0;
         temp_r5_36 = this->unk8;
         sp78 = M2C_FIELD(temp_r5_36, f64 *, 0x30);
         sp80 = M2C_FIELD(temp_r5_36, f64 *, 0x38);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        temp_f2_53 = this->unk50.unk40;
+        temp_f2_53 = (f32) M2C_FIELD(this, f64 *, 0x90);
         spA8 = sp48;
-        sp50 = M2C_FIELD((M2C_FIELD(temp_r4_35, s32 *, 0x24) + (var_r6_12 * M2C_FIELD(temp_r4_35, s32 *, 0x1C))), f32 *, 8) - (f32) sp80;
+        sp50 = M2C_FIELD((temp_r4_35->unk24 + (var_r6_12 * temp_r4_35->unk1C)), f32 *, 8) - (f32) sp80;
         var_f1_56 = (f32) spA8;
         spB0 = (f64) sp50;
         if (var_f1_56 < temp_f2_53) {
@@ -86,51 +88,51 @@ loop_20:
         } else {
             var_f1_56 = temp_f2_53;
         }
-        this->unk50.unk40 = var_f1_56;
+        M2C_FIELD(this, f64 *, 0x90) = var_f1_56;
         var_f0_66 = unkspAC;
-        temp_f1_67 = this->unk50.unk44;
+        temp_f1_67 = M2C_FIELD(this, f32 *, 0x94);
         if (var_f0_66 < temp_f1_67) {
 
         } else {
             var_f0_66 = temp_f1_67;
         }
-        this->unk50.unk44 = var_f0_66;
+        M2C_FIELD(this, f32 *, 0x94) = var_f0_66;
         var_f0_75 = (f32) spB0;
-        temp_f1_76 = this->unk50.unk48;
+        temp_f1_76 = (f32) M2C_FIELD(this, f64 *, 0x98);
         if (var_f0_75 < temp_f1_76) {
 
         } else {
             var_f0_75 = temp_f1_76;
         }
-        this->unk50.unk48 = var_f0_75;
+        M2C_FIELD(this, f64 *, 0x98) = var_f0_75;
         var_f0_84 = (f32) spA8;
-        temp_f1_85 = this->unk50.unk50;
+        temp_f1_85 = (f32) M2C_FIELD(this, f64 *, 0xA0);
         if (var_f0_84 > temp_f1_85) {
 
         } else {
             var_f0_84 = temp_f1_85;
         }
-        this->unk50.unk50 = var_f0_84;
+        M2C_FIELD(this, f64 *, 0xA0) = var_f0_84;
         var_f0_93 = unkspAC;
-        temp_f1_94 = this->unk50.unk54;
+        temp_f1_94 = M2C_FIELD(this, f32 *, 0xA4);
         if (var_f0_93 > temp_f1_94) {
 
         } else {
             var_f0_93 = temp_f1_94;
         }
-        this->unk50.unk54 = var_f0_93;
+        M2C_FIELD(this, f32 *, 0xA4) = var_f0_93;
         var_f0_102 = (f32) spB0;
-        temp_f1_103 = this->unk50.unk58;
+        temp_f1_103 = (f32) M2C_FIELD(this, f64 *, 0xA8);
         if (var_f0_102 > temp_f1_103) {
 
         } else {
             var_f0_102 = temp_f1_103;
         }
-        this->unk50.unk58 = var_f0_102;
+        M2C_FIELD(this, f64 *, 0xA8) = var_f0_102;
         var_r6_12 += 1;
         goto loop_20;
     }
-    temp_f1_117 = this->unk50.unk64;
+    temp_f1_117 = this->unkB4;
     if (temp_f1_117 != 0.0f) {
         sp18 = temp_f1_117;
         sp1C = temp_f1_117;
@@ -140,8 +142,8 @@ loop_20:
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
-        this->unk50.unk48 -= (f32) sp70;
-        temp_f1_138 = this->unk50.unk64;
+        M2C_FIELD(this, f64 *, 0x98) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x98) - (f32) sp70);
+        temp_f1_138 = this->unkB4;
         sp10 = temp_f1_138;
         sp8 = temp_f1_138;
         spC = temp_f1_138;
@@ -150,23 +152,23 @@ loop_20:
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r0, 0x0, qr0 */);
-        this->unk50.unk58 += (f32) sp60;
+        M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) + (f32) sp60);
     }
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r3, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r3, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r3, $r4, 0x0, qr0 */);
-    this->unk50.unk58 -= this->unk50.unk48;
+    M2C_FIELD(this, f64 *, 0xA8) = (f32) ((f32) M2C_FIELD(this, f64 *, 0xA8) - (f32) M2C_FIELD(this, f64 *, 0x98));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to
 void SplineProp::LoadDone() {
     KDUniformSpline sp10;
     f32 sp8;
 
     sp8 = 0.0f;
-    sp10.GetMeasure(0.0f, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+    sp10.GetMeasure(0.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
     M2C_FIELD(&loadInfo, f64 *, 0x40) = M2C_BITWISE(f64, sp10);
     M2C_FIELD(&loadInfo, f64 *, 0x48) = (f64) sp10.unk8;
     MKProp::LoadDone();
@@ -174,12 +176,11 @@ void SplineProp::LoadDone() {
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
     this->unk50.SetRotationToNone();
     CalcBounds();
-    this->unkC = (BoundingVolume *) &this->unk50.unk40;
-    this->unk50.unk60->LoadDone();
+    this->unkC = (BoundingVolume *) &this->unk90;
+    this->unkB0->LoadDone();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 s32 SplineProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
@@ -192,37 +193,32 @@ s32 SplineProp::LoadLine(MKIniLine *arg0) {
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), f32 *, 0x38) = 0.0f;
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x3C) = 0;
         }
-        this->unk50.unk60 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk50.unk60->Init();
-        M2C_FIELD(this->unk50.unk60, s8 *, 0x44) = 0;
-        this->unk50.unk60->LoadLine(arg0);
+        this->unkB0 = M2C_ERROR(/* Read from unset register $r3 */);
+        this->unkB0->Init();
+        this->unkB0->unk44 = 0;
+        this->unkB0->LoadLine(arg0);
         return 1;
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void SplineProp::Deinit() {
-    s32 temp_r3_292;
+    KDSplinePathSegment *temp_r3_292;
 
-    temp_r3_292 = this->unk50.unk60;
-    if ((u32) temp_r3_292 != 0U) {
+    temp_r3_292 = this->unkB0;
+    if (temp_r3_292 != NULL) {
         temp_r3_292->Deinit();
-        operator delete((void *) this->unk50.unk60);
-        this->unk50.unk60 = 0;
+        operator delete(this->unkB0);
+        this->unkB0 = NULL;
     }
     MKProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void SplineProp::Init() {
     MKProp::Init();
-    this->unk50.unk60 = 0;
-    this->unk50.unk64 = 0.0f;
+    this->unkB0 = NULL;
+    this->unkB4 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'volume'
 void SplinePropDescriptor::Init() {

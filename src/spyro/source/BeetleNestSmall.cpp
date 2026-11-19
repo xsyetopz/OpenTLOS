@@ -145,7 +145,7 @@ loop_21:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk208'
+#if 0 // DRAFT: type mismatch
 void BeetleNestSmall::LoadDone() {
     f64 sp20;
     f64 sp18;

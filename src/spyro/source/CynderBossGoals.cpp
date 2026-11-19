@@ -2,13 +2,18 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterBreathFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Cynder.h"
 #include "spyro/source/CynderBreathFX.h"
+#include "spyro/source/EarthShockwave.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyAttackPattern.h"
 #include "spyro/source/EnemyDataTypes.h"
@@ -71,9 +76,9 @@ void CynderBossGoal_Death::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 u8 CynderBossGoal_HoverAttack::Update() {
-    AnimSequence **temp_r4_117;
+    CharacterFireFX *temp_r4_117;
     Cynder *temp_r3_116;
     Cynder *temp_r3_302;
     Cynder *temp_r3_96;
@@ -87,12 +92,12 @@ u8 CynderBossGoal_HoverAttack::Update() {
     ActivateIfInactive();
     temp_r3_96 = this->unkC;
     var_r30_97 = 0;
-    if (((u8) temp_r3_96->unk110.unk7A8 == 2) || (temp_r3_96->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_96, u8 *, 0x8B8) == 2) || (temp_r3_96->unk870.unk30.Get() != NULL)) {
         var_r30_97 = 1;
     }
-    if ((var_r30_97 != 0) && (this->unkC->unk110.unk520->CheckEvent(0) != 0)) {
+    if ((var_r30_97 != 0) && (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(0) != 0)) {
         temp_r3_116 = this->unkC;
-        temp_r4_117 = temp_r3_116->unk110.unk910;
+        temp_r4_117 = temp_r3_116->unkA08;
         if (temp_r4_117 != NULL) {
             MKModel_GetRefPointMatrix(temp_r3_116->unk4, M2C_FIELD(temp_r4_117, s32 *, 0x84), (Matrix *) &arg_sp1A0, 1U);
             arg_sp90 = -arg_sp1C0;
@@ -164,11 +169,11 @@ u8 CynderBossGoal_HoverAttack::Update() {
         }
     }
     temp_r3_302 = this->unkC;
-    temp_r3_302->unk110.unk488 = M2C_FIELD(temp_r3_302, f64 *, 0x90);
-    temp_r3_302->unk110.unk490 = M2C_FIELD(temp_r3_302, f64 *, 0x98);
+    M2C_FIELD(temp_r3_302, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_302, f64 *, 0x90);
+    M2C_FIELD(temp_r3_302, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_302, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() == 0) {
         var_r4_312 = 0;
-        temp_r5_313 = this->unkC->unk110.unk520;
+        temp_r5_313 = M2C_FIELD(this->unkC, MKAnimScript **, 0x630);
         if (((u32) temp_r5_313->unk2C >> 1U) & 1) {
             var_r3_318 = 0;
             if ((temp_r5_313->unk38 > 0.0f) || ((s32) temp_r5_313->unk44 > 1)) {
@@ -191,40 +196,39 @@ block_19:
 
 #if 0 // DRAFT: undefined identifier 'unkCB0'
 void CynderBossGoal_HoverAttack::Activate() {
-    AnimSequence *temp_r4_386;
     Cynder *temp_r3_367;
     Cynder *temp_r3_382;
+    void *temp_r4_386;
 
     this->unk8 = 0;
     this->unkC->unkCB0 = 1;
     temp_r3_367 = this->unkC;
-    temp_r3_367->unk110.unk5A5 |= 0x10;
+    temp_r3_367->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     if (this->unkC->SelectAttack(0x10, 0x49) != 0) {
         temp_r3_382 = this->unkC;
-        temp_r4_386 = *temp_r3_382->unk110.unk910;
-        temp_r3_382->SetAnim(temp_r4_386, (AnimTransition *) temp_r4_386, 0.15f, 0U);
+        temp_r4_386 = temp_r3_382->unkA08->__vptr;
+        temp_r3_382->SetAnim((AnimSequence *) temp_r4_386, (AnimTransition *) temp_r4_386, 0.15f, 0U);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
 u8 CynderBossGoal_HoverRight::Update() {
     Character *temp_r3_406;
-    MKAnimScript *temp_r5_413;
     u8 var_r3_418;
     u8 var_r4_407;
+    void *temp_r5_413;
 
     ActivateIfInactive();
     temp_r3_406 = this->unkC;
     var_r4_407 = 0;
-    temp_r3_406->unk110.unk488 = M2C_FIELD(temp_r3_406, f64 *, 0x90);
-    temp_r3_406->unk110.unk490 = M2C_FIELD(temp_r3_406, f64 *, 0x98);
-    temp_r5_413 = this->unkC->unk110.unk520;
-    if (((u32) temp_r5_413->unk2C >> 1U) & 1) {
+    M2C_FIELD(temp_r3_406, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_406, f64 *, 0x90);
+    M2C_FIELD(temp_r3_406, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_406, f64 *, 0x98);
+    temp_r5_413 = M2C_FIELD(this->unkC, void **, 0x630);
+    if (((u32) M2C_FIELD(temp_r5_413, u32 *, 0x2C) >> 1U) & 1) {
         var_r3_418 = 0;
-        if ((temp_r5_413->unk38 > 0.0f) || ((s32) temp_r5_413->unk44 > 1)) {
+        if ((M2C_FIELD(temp_r5_413, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_413, s32 *, 0x44) > 1)) {
             var_r3_418 = 1;
         }
         if (var_r3_418 != 0) {
@@ -236,37 +240,35 @@ u8 CynderBossGoal_HoverRight::Update() {
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_HoverRight::Activate() {
     Character *temp_r3_457;
 
     this->unk8 = 0;
     temp_r3_457 = this->unkC;
-    temp_r3_457->unk110.unk5A5 |= 0x10;
+    temp_r3_457->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE6, 0, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
 u8 CynderBossGoal_HoverLeft::Update() {
     Character *temp_r3_490;
-    MKAnimScript *temp_r5_497;
     u8 var_r3_502;
     u8 var_r4_491;
+    void *temp_r5_497;
 
     ActivateIfInactive();
     temp_r3_490 = this->unkC;
     var_r4_491 = 0;
-    temp_r3_490->unk110.unk488 = M2C_FIELD(temp_r3_490, f64 *, 0x90);
-    temp_r3_490->unk110.unk490 = M2C_FIELD(temp_r3_490, f64 *, 0x98);
-    temp_r5_497 = this->unkC->unk110.unk520;
-    if (((u32) temp_r5_497->unk2C >> 1U) & 1) {
+    M2C_FIELD(temp_r3_490, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_490, f64 *, 0x90);
+    M2C_FIELD(temp_r3_490, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_490, f64 *, 0x98);
+    temp_r5_497 = M2C_FIELD(this->unkC, void **, 0x630);
+    if (((u32) M2C_FIELD(temp_r5_497, u32 *, 0x2C) >> 1U) & 1) {
         var_r3_502 = 0;
-        if ((temp_r5_497->unk38 > 0.0f) || ((s32) temp_r5_497->unk44 > 1)) {
+        if ((M2C_FIELD(temp_r5_497, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_497, s32 *, 0x44) > 1)) {
             var_r3_502 = 1;
         }
         if (var_r3_502 != 0) {
@@ -278,37 +280,35 @@ u8 CynderBossGoal_HoverLeft::Update() {
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_HoverLeft::Activate() {
     Character *temp_r3_541;
 
     this->unk8 = 0;
     temp_r3_541 = this->unkC;
-    temp_r3_541->unk110.unk5A5 |= 0x10;
+    temp_r3_541->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE5, 0, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
 u8 CynderBossGoal_Hover::Update() {
     Character *temp_r3_574;
-    MKAnimScript *temp_r5_581;
     u8 var_r3_586;
     u8 var_r4_575;
+    void *temp_r5_581;
 
     ActivateIfInactive();
     temp_r3_574 = this->unkC;
     var_r4_575 = 0;
-    temp_r3_574->unk110.unk488 = M2C_FIELD(temp_r3_574, f64 *, 0x90);
-    temp_r3_574->unk110.unk490 = M2C_FIELD(temp_r3_574, f64 *, 0x98);
-    temp_r5_581 = this->unkC->unk110.unk520;
-    if (((u32) temp_r5_581->unk2C >> 1U) & 1) {
+    M2C_FIELD(temp_r3_574, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_574, f64 *, 0x90);
+    M2C_FIELD(temp_r3_574, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_574, f64 *, 0x98);
+    temp_r5_581 = M2C_FIELD(this->unkC, void **, 0x630);
+    if (((u32) M2C_FIELD(temp_r5_581, u32 *, 0x2C) >> 1U) & 1) {
         var_r3_586 = 0;
-        if ((temp_r5_581->unk38 > 0.0f) || ((s32) temp_r5_581->unk44 > 1)) {
+        if ((M2C_FIELD(temp_r5_581, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_581, s32 *, 0x44) > 1)) {
             var_r3_586 = 1;
         }
         if (var_r3_586 != 0) {
@@ -320,15 +320,14 @@ u8 CynderBossGoal_Hover::Update() {
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_Hover::Activate() {
     Character *temp_r3_625;
 
     this->unk8 = 0;
     temp_r3_625 = this->unkC;
-    temp_r3_625->unk110.unk5A5 |= 0x10;
+    temp_r3_625->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE3, 0, 0.15f, 0U, 0U);
@@ -362,28 +361,28 @@ u8 CynderBossGoal_HoverAttackMode::Update() {
     }
     if ((u8) this->unk3C == 0) {
         temp_r3_712 = this->unkC;
-        if ((u8) temp_r3_712->unkF1E == 0) {
+        if ((u8) M2C_FIELD(temp_r3_712, u8 *, 0xF1E) == 0) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_712->unk110.unk9B8 == 0.0f) {
+            if (temp_r3_712->unkAB0 == 0.0f) {
                 temp_r3_712->TriggerFuryPowerUp(15.0f, (HeroHurtReactionType) 9);
                 this->unk3C = 1;
-                this->unkC->unkF1E = 1;
+                M2C_FIELD(this->unkC, u8 *, 0xF1E) = 1U;
             }
         }
     }
     temp_r3_729 = this->unkC;
-    if (((u8) temp_r3_729->unkF20 != 0) && ((u8) temp_r3_729->unkF1F != 0)) {
+    if (((u8) M2C_FIELD(temp_r3_729, u8 *, 0xF20) != 0) && ((u8) M2C_FIELD(temp_r3_729, u8 *, 0xF1F) != 0)) {
         temp_r3_729->ResetFury();
     }
     temp_r3_738 = this->unkC;
-    if ((((u8) temp_r3_738->unkF1E != 0) && ((u8) this->unk3C != 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_r3_738->unkF70 == 0.0f) != 0))) || ((u8) temp_r3_738->unkF1D != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_738, u8 *, 0xF1E) != 0) && ((u8) this->unk3C != 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_r3_738->unkF70 == 0.0f) != 0))) || ((u8) M2C_FIELD(temp_r3_738, u8 *, 0xF1D) != 0)) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCFC'
+#if 0 // DRAFT: expression syntax error
 void CynderBossGoal_HoverAttackMode::Activate() {
     Cynder *temp_r3_779;
     s32 temp_r0_855;
@@ -397,9 +396,9 @@ void CynderBossGoal_HoverAttackMode::Activate() {
     this->unkC->unkCFC = 0;
     RemoveAllSubgoals();
     temp_r3_779 = this->unkC;
-    if (((u8) temp_r3_779->unkF1E == 0) && ((u8) this->unk3C == 0)) {
+    if (((u8) M2C_FIELD(temp_r3_779, u8 *, 0xF1E) == 0) && ((u8) this->unk3C == 0)) {
         var_r30_787 = 0;
-        if (((u8) temp_r3_779->unk110.unk7A8 == 2) || (temp_r3_779->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_779, u8 *, 0x8B8) == 2) || (temp_r3_779->unk870.unk30.Get() != NULL)) {
             var_r30_787 = 1;
         }
         if ((var_r30_787 == 0) || ((gb.GetSpyro(), (((u32) M2C_ERROR(/* Read from unset register $r3 */) == 0U) == 0)) && (gb.GetSpyro(), (((s32) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x5C) == 9) != 0)))) {
@@ -436,7 +435,7 @@ void CynderBossGoal_HoverAttackMode::Activate() {
         return;
     }
 block_8:
-    temp_r0_812 = (u8) this->unkC->unkF1E;
+    temp_r0_812 = M2C_FIELD(this->unkC, u8 *, 0xF1E);
     if ((temp_r0_812 != 0) && (temp_r3_815 = this->unk38, ((temp_r3_815 > 0) != 0))) {
         this->unk38 = temp_r3_815 - 1;
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
@@ -586,7 +585,7 @@ void CynderBossGoal_HoverAttackMode::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 CynderBossGoal_HitByFury::Update() {
     MKCollisionResult sp48;
     f64 sp40;
@@ -612,14 +611,14 @@ u8 CynderBossGoal_HitByFury::Update() {
     ActivateIfInactive();
     if ((u8) this->unk10 == 0) {
         temp_r3_1182 = this->unkC;
-        temp_r3_1182->unk110.unk488 = M2C_FIELD(temp_r3_1182, f64 *, 0x90);
-        temp_r3_1182->unk110.unk490 = M2C_FIELD(temp_r3_1182, f64 *, 0x98);
+        M2C_FIELD(temp_r3_1182, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_1182, f64 *, 0x90);
+        M2C_FIELD(temp_r3_1182, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_1182, f64 *, 0x98);
     }
     if ((u8) this->unk10 == 0) {
         temp_r7_1191 = this->unkC;
         var_r5_1192 = 0;
-        temp_r4_1193 = temp_r7_1191->unk110.unk940;
-        if ((temp_r4_1193 != NULL) && ((u32) M2C_FIELD(temp_r4_1193, u32 *, 0x40) == (u32) temp_r7_1191->unk110.unk520->unk20)) {
+        temp_r4_1193 = temp_r7_1191->unkA50;
+        if ((temp_r4_1193 != NULL) && ((u32) M2C_FIELD(temp_r4_1193, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r7_1191, void **, 0x630), u32 *, 0x20))) {
             var_r5_1192 = 1;
         }
         if (var_r5_1192 != 0) {
@@ -627,16 +626,16 @@ u8 CynderBossGoal_HitByFury::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r6, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp38 = sp18;
-            sp20 = temp_r7_1191->unk110.unk478.unk8 + (f32) M2C_FIELD(temp_r7_1191, f64 *, 0x5A0);
+            sp20 = temp_r7_1191->unk588.unk4 + temp_r7_1191->unk59C;
             sp40 = (f64) sp20;
-            if (MKCollision_RayCollide(this->unkC->unk110.unk478, *((MKVector3 *) &sp38), &sp48, (MKCollisionMode) 4, 0) != 0) {
+            if (MKCollision_RayCollide(*((MKVector3 *) &this->unkC->unk588), *((MKVector3 *) &sp38), &sp48, (MKCollisionMode) 4, 0) != 0) {
                 temp_r4_1228 = this->unkC;
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                temp_r4_1228->unk110.unk488 = sp8;
-                sp10 = sp48.unk8 - temp_r4_1228->unk110.unk478.unk8;
+                M2C_FIELD(temp_r4_1228, f64 *, 0x598) = sp8;
+                sp10 = sp48.unk8 - temp_r4_1228->unk588.unk4;
                 sp28 = sp8;
-                temp_r4_1228->unk110.unk490 = (f64) sp10;
+                M2C_FIELD(temp_r4_1228, f64 *, 0x5A0) = (f64) sp10;
                 sp30 = (f64) sp10;
                 this->unk10 = 1;
             }
@@ -645,8 +644,8 @@ u8 CynderBossGoal_HitByFury::Update() {
     temp_r29_1247 = this->unkC;
     var_r30_1248 = 0;
     if (temp_r29_1247->HasAnimFinished() != 0) {
-        temp_r4_1253 = temp_r29_1247->unk110.unk940;
-        if ((temp_r4_1253 != NULL) && ((u32) *temp_r4_1253 == (u32) temp_r29_1247->unk110.unk520->unk20)) {
+        temp_r4_1253 = temp_r29_1247->unkA50;
+        if ((temp_r4_1253 != NULL) && ((u32) *temp_r4_1253 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1247, void **, 0x630), u32 *, 0x20))) {
             var_r30_1248 = 1;
         }
     }
@@ -655,8 +654,8 @@ u8 CynderBossGoal_HitByFury::Update() {
     } else {
         temp_r29_1275 = this->unkC;
         var_r5_1276 = 0;
-        temp_r4_1277 = temp_r29_1275->unk110.unk940;
-        if ((temp_r4_1277 != NULL) && ((u32) M2C_FIELD(temp_r4_1277, u32 *, 0x20) == (u32) temp_r29_1275->unk110.unk520->unk20)) {
+        temp_r4_1277 = temp_r29_1275->unkA50;
+        if ((temp_r4_1277 != NULL) && ((u32) M2C_FIELD(temp_r4_1277, u32 *, 0x20) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1275, void **, 0x630), u32 *, 0x20))) {
             var_r5_1276 = 1;
         }
         if ((var_r5_1276 != 0) && ((u8) gb.unk381 == 0)) {
@@ -665,8 +664,8 @@ u8 CynderBossGoal_HitByFury::Update() {
         } else {
             var_r30_1309 = 0;
             if (temp_r29_1275->HasAnimFinished() != 0) {
-                temp_r4_1313 = temp_r29_1275->unk110.unk940;
-                if ((temp_r4_1313 != NULL) && ((u32) M2C_FIELD(temp_r4_1313, u32 *, 0x40) == (u32) temp_r29_1275->unk110.unk520->unk20)) {
+                temp_r4_1313 = temp_r29_1275->unkA50;
+                if ((temp_r4_1313 != NULL) && ((u32) M2C_FIELD(temp_r4_1313, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1275, void **, 0x630), u32 *, 0x20))) {
                     var_r30_1309 = 1;
                 }
             }
@@ -680,13 +679,13 @@ u8 CynderBossGoal_HitByFury::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_HitByFury::Activate() {
     Character *temp_r3_1352;
 
     this->unk8 = 0;
     temp_r3_1352 = this->unkC;
-    temp_r3_1352->unk110.unk5A5 |= 0x10;
+    temp_r3_1352->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 3, 0x143, 0, 0.15f, 0U, 0U);
@@ -695,14 +694,14 @@ void CynderBossGoal_HitByFury::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 CynderBossGoal_Stage3Fury::Update() {
     Character *temp_r3_1391;
 
     ActivateIfInactive();
     temp_r3_1391 = this->unkC;
-    temp_r3_1391->unk110.unk488 = M2C_FIELD(temp_r3_1391, f64 *, 0x90);
-    temp_r3_1391->unk110.unk490 = M2C_FIELD(temp_r3_1391, f64 *, 0x98);
+    M2C_FIELD(temp_r3_1391, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_1391, f64 *, 0x90);
+    M2C_FIELD(temp_r3_1391, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_1391, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() != 0) {
         if ((u8) this->unk10 != 0) {
             this->unkC->SetAnim((AnimSequenceType) 0xA, 0x142, 0, 0.15f, 0U, 0U);
@@ -718,14 +717,14 @@ u8 CynderBossGoal_Stage3Fury::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_Stage3Fury::Activate() {
     Character *temp_r3_1449;
 
     this->unk8 = 0;
     this->unk10 = 1;
     temp_r3_1449 = this->unkC;
-    temp_r3_1449->unk110.unk5A5 |= 0x10;
+    temp_r3_1449->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0x141, 0, 0.15f, 0U, 0U);
@@ -750,7 +749,7 @@ void CynderBossGoal_Stage2Fury::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 u8 CynderBossGoal_Stage2Fury::Update() {
     EnemyHudData sp10;
     s32 spC;
@@ -761,8 +760,8 @@ u8 CynderBossGoal_Stage2Fury::Update() {
 
     ActivateIfInactive();
     temp_r3_1520 = this->unkC;
-    temp_r3_1520->unk110.unk488 = M2C_FIELD(temp_r3_1520, f64 *, 0x90);
-    temp_r3_1520->unk110.unk490 = M2C_FIELD(temp_r3_1520, f64 *, 0x98);
+    M2C_FIELD(temp_r3_1520, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_1520, f64 *, 0x90);
+    M2C_FIELD(temp_r3_1520, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_1520, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() != 0) {
         this->unk10 += 1;
         temp_r0_1532 = this->unk10;
@@ -803,13 +802,13 @@ u8 CynderBossGoal_Stage2Fury::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_Stage2Fury::Activate() {
     Character *temp_r3_1648;
 
     this->unk8 = 0;
     temp_r3_1648 = this->unkC;
-    temp_r3_1648->unk110.unk5A5 |= 0x10;
+    temp_r3_1648->unk6B5 |= 0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetHealth(0.0f);
@@ -829,7 +828,7 @@ void CynderGoal_FlyingAttackMode::Reset() {
     this->unk3C = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 void CynderGoal_FlyingAttackMode::Terminate() {
     Cynder *temp_r3_1719;
     u8 var_r31_1720;
@@ -838,14 +837,14 @@ void CynderGoal_FlyingAttackMode::Terminate() {
     RemoveAllSubgoals();
     temp_r3_1719 = this->unkC;
     var_r31_1720 = 0;
-    if (((u8) temp_r3_1719->unk110.unk7A8 == 2) || (temp_r3_1719->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1719, u8 *, 0x8B8) == 2) || (temp_r3_1719->unk870.unk30.Get() != NULL)) {
         var_r31_1720 = 1;
     }
     if (var_r31_1720 != 0) {
-        this->unkC->unkF14 = gb.unk30C + 30.0f;
+        this->unkC->unkEFC.unk0 = gb.unk30C + 30.0f;
         return;
     }
-    this->unkC->unkF14 = 0.0f;
+    this->unkC->unkEFC.unk0 = 0.0f;
 }
 #endif
 
@@ -864,7 +863,7 @@ u8 CynderGoal_FlyingAttackMode::Update() {
     } else {
         temp_r3_1770 = this->unkC;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_1770->unk110.unk9B8 == 0.0f) {
+        if (temp_r3_1770->unkAB0 == 0.0f) {
             temp_r3_1770->CalcLandingFlightPathData();
             temp_r5_1779 = this->unk30;
             temp_r5_1779->unk18 = this->unkC->unkFF8;
@@ -872,8 +871,8 @@ u8 CynderGoal_FlyingAttackMode::Update() {
             this->unk3C = 4;
         } else {
             temp_r0_1789 = temp_r3_1770->unkCFC;
-            if ((temp_r0_1789 < 2) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((gb.unk30C == temp_r3_1770->unk110.unk96C) != 0))) {
-                temp_r3_1770->unk110.unk96C = gb.unk30C + 10.0f;
+            if ((temp_r0_1789 < 2) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((gb.unk30C == temp_r3_1770->unkA7C) != 0))) {
+                temp_r3_1770->unkA7C = gb.unk30C + 10.0f;
                 this->unk30->PerformBreathAttack();
                 temp_r4_1804 = this->unkC;
                 temp_r4_1804->unkCFC += 1;
@@ -889,7 +888,7 @@ u8 CynderGoal_FlyingAttackMode::Update() {
     if ((u8) this->unk8 != 0) {
         if ((s32) this->unk3C == 6) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unkC->unk110.unk9B8 == 0.0f) {
+            if (this->unkC->unkAB0 == 0.0f) {
                 this->unk8 = 3;
             }
         } else {
@@ -900,15 +899,15 @@ u8 CynderGoal_FlyingAttackMode::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCFC'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderGoal_FlyingAttackMode::Activate() {
     Cynder *temp_r5_1910;
     Cynder *temp_r6_1920;
     CynderBossGoal_FlyAlongSpline *temp_r5_1922;
+    EnemyDescriptor *temp_r3_1892;
     Goal<Cynder> *temp_r3_1911;
     Goal<Cynder> *temp_r5_1943;
     s32 temp_r0_1873;
-    u32 *temp_r3_1892;
 
     this->unk8 = 0;
     this->unkC->unkCFC = 0;
@@ -917,8 +916,8 @@ void CynderGoal_FlyingAttackMode::Activate() {
     switch (temp_r0_1873) {                         /* irregular */
     case 1:
         this->unkC->CalcFlightPathData2();
-        temp_r3_1892 = this->unkC->unk110.unk940;
-        if ((temp_r3_1892 != NULL) && ((s32) M2C_FIELD(temp_r3_1892, s32 *, 0x6C) == 6)) {
+        temp_r3_1892 = this->unkC->unkA38;
+        if ((temp_r3_1892 != NULL) && ((s32) temp_r3_1892->unk6C == 6)) {
             AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
             return;
         }
@@ -928,22 +927,22 @@ void CynderGoal_FlyingAttackMode::Activate() {
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
         temp_r5_1910 = this->unkC;
         temp_r3_1911 = this->unk2C;
-        M2C_FIELD(temp_r3_1911, f64 **, 0x10) = &temp_r5_1910->unkFA0;
+        M2C_FIELD(temp_r3_1911, f32 **, 0x10) = &temp_r5_1910->unkF88;
         M2C_FIELD(temp_r3_1911, s32 *, 0x14) = (s32) temp_r5_1910->unkFFC;
         return;
     case 3:
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
         temp_r6_1920 = this->unkC;
         temp_r5_1922 = this->unk30;
-        temp_r5_1922->unk10 = (AITargetData *) temp_r6_1920->unkFF0;
+        temp_r5_1922->unk10 = temp_r6_1920->unkFF0;
         temp_r5_1922->unk14 = temp_r6_1920->unkFF4;
         temp_r5_1922->unk24 &= ~0x40;
-        this->unkC->unk110.unk96C = gb.unk30C + 1.0f;
+        this->unkC->unkA7C = gb.unk30C + 1.0f;
         return;
     case 5:
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
         temp_r5_1943 = this->unk34;
-        M2C_FIELD(temp_r5_1943, s32 **, 0x10) = &this->unkC->unkCD4;
+        M2C_FIELD(temp_r5_1943, f32 **, 0x10) = &this->unkC->unkCD4;
         M2C_FIELD(temp_r5_1943, f32 *, 0x14) = 0.0f;
         M2C_FIELD(temp_r5_1943, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r5_1943, u8 *, 0x24) | 0x40);
         return;
@@ -1144,7 +1143,6 @@ void CynderGoal_TurnToAttack::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk57C'
 u8 CynderGoal_TurnToAttack::Update() {
     Character *temp_r3_2320;
 
@@ -1152,14 +1150,13 @@ u8 CynderGoal_TurnToAttack::Update() {
     temp_r3_2320 = this->unkC;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (((temp_r3_2320->unkC8 * temp_r3_2320->unkE8) + ((temp_r3_2320->unkC0 * temp_r3_2320->unkE0) + (temp_r3_2320->unkC4 * temp_r3_2320->unkE4))) == 0.999f) {
-        temp_r3_2320->unk110.unk57C = 0.0f;
+        temp_r3_2320->unk684 = 0.0f;
         this->unk8 = 2;
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: undefined identifier 'unk8B8'
 void CynderGoal_TurnToAttack::Activate() {
     f64 sp30;
     f64 sp28;
@@ -1187,10 +1184,10 @@ void CynderGoal_TurnToAttack::Activate() {
     this->unkC->StopMovement(1U);
     temp_r3_2360 = this->unkC;
     var_r30_2361 = 0;
-    if (((u8) temp_r3_2360->unk110.unk7A8 == 2) || (temp_r3_2360->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) temp_r3_2360->unk8B8 == 2) || (temp_r3_2360->unk8B0.Get() != NULL)) {
         var_r30_2361 = 1;
     }
-    if ((var_r30_2361 == 0) || (temp_r3_2374 = this->unkC, temp_r4_2376 = temp_r3_2374->unk110.unk94C->unk8, ((temp_r4_2376 == NULL) != 0))) {
+    if ((var_r30_2361 == 0) || (temp_r3_2374 = this->unkC, temp_r4_2376 = M2C_FIELD(temp_r3_2374->unkA5C, EnemyAttack ***, 8), ((temp_r4_2376 == NULL) != 0))) {
         this->unk8 = 3;
         return;
     }
@@ -1204,7 +1201,7 @@ void CynderGoal_TurnToAttack::Activate() {
     M2C_FIELD(temp_r4_2397, f64 *, 0xE0) = sp28;
     temp_f2_2411 = (temp_r4_2397->unkC8 * (f32) sp30) + ((temp_r4_2397->unkC0 * (f32) sp28) + (temp_r4_2397->unkC4 * unksp2C));
     M2C_FIELD(temp_r4_2397, f64 *, 0xE8) = sp30;
-    temp_r4_2397->unk110.unk5A5 |= 0x40;
+    temp_r4_2397->unk6B5 |= 0x40;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f2_2411 == 0.999f) {
         this->unk8 = 2;
@@ -1223,7 +1220,7 @@ void CynderGoal_TurnToAttack::Activate() {
             sp10 = (temp_f9_2430 * temp_f8_2432) - (temp_f7_2436 * temp_f4_2434);
             sp18 = (f64) sp8;
             sp20 = (f64) sp10;
-            temp_r3_2427->unk110.unk57C = 3.1415927f;
+            temp_r3_2427->unk684 = 3.1415927f;
             var_r5_2463 = 0x15;
             if (((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU) != 0) {
                 var_r5_2463 = 0x14;
@@ -1231,7 +1228,7 @@ void CynderGoal_TurnToAttack::Activate() {
             this->unkC->SetAnim((AnimSequenceType) 4, var_r5_2463, 0, 0.15f, 0U, 0U);
         } else {
             this->unkC->SetAnim((AnimSequenceType) 1, 0xA, 0, 0.15f, 0U, 0U);
-            this->unkC->unk110.unk57C = 3.1415927f;
+            this->unkC->unk684 = 3.1415927f;
         }
     }
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
@@ -1250,7 +1247,7 @@ void CynderGoal_GroundAttackMode::AddGoal_MoveToAttackRange(EnemyAttack *arg0) {
         temp_r4_2523 = this->unk2C;
         M2C_FIELD(temp_r4_2523, AITargetData **, 0x20) = (AITargetData *) this->unk20;
         M2C_FIELD(temp_r4_2523, f32 *, 0x38) = temp_f31_2516;
-        M2C_FIELD(temp_r4_2523, s8 *, 0x3D) = (s8) (this->unkC->unkD01 == 0);
+        M2C_FIELD(temp_r4_2523, s8 *, 0x3D) = (s8) (M2C_FIELD(this->unkC, u8 *, 0xD01) == 0);
     }
 }
 #endif
@@ -1315,15 +1312,13 @@ void CynderGoal_GroundAttackMode::SetParams(AITargetData *arg0, EAPItem *arg1, b
     this->unk44 = (this->unk44 & ~0x20) | ((arg2 << 5) & 0x20);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9D8'
 void CynderGoal_GroundAttackMode::Reset() {
     this->unk8 = 1;
     RemoveAllSubgoals();
     this->unk44 &= ~0x40;
     this->unk44 &= ~0x20;
-    this->unk40 = this->unkC->unk110.unk9D8;
+    this->unk40 = M2C_BITWISE(s32, this->unkC->unkAD0);
 }
-#endif
 
 void CynderGoal_GroundAttackMode::Terminate() {
     this->unk8 = 1;
@@ -1338,7 +1333,7 @@ u8 CynderGoal_GroundAttackMode::Update() {
     this->unk8 = UpdateSubgoals();
     if ((u8) this->unk8 == 2) {
         temp_r4_2719 = this->unkC;
-        if ((temp_r4_2719->unk110.unk9B8 > 0.0f) && (((s32) temp_r4_2719->unk110.unk9D8 != 2) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((gb.unk30C == temp_r4_2719->unkF14) == 0)))) {
+        if ((temp_r4_2719->unkAB0 > 0.0f) && ((M2C_BITWISE(s32, temp_r4_2719->unkAD0) != 2) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((gb.unk30C == M2C_FIELD(temp_r4_2719, f32 *, 0xF14)) == 0)))) {
             Activate();
         }
     }
@@ -1346,30 +1341,30 @@ u8 CynderGoal_GroundAttackMode::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 void CynderGoal_GroundAttackMode::Activate() {
     EAPItem *temp_r0_2807;
-    EAPManager *temp_r3_2803;
-    EAPManager *temp_r3_2852;
-    EAPManager *temp_r4_2816;
-    EAPManager *temp_r4_2821;
-    EAPManager *temp_r4_2873;
     Enemy *temp_r3_2760;
     Enemy *temp_r4_2793;
     Enemy *temp_r4_2840;
     Enemy *temp_r4_2859;
     s32 temp_r3_2862;
     u8 var_r30_2761;
+    void *temp_r3_2803;
+    void *temp_r3_2852;
+    void *temp_r4_2816;
+    void *temp_r4_2821;
+    void *temp_r4_2873;
 
     this->unk8 = 0;
     RemoveAllSubgoals();
     temp_r3_2760 = this->unkC;
     var_r30_2761 = 0;
-    if (((u8) temp_r3_2760->unk110.unk7A8 == 2) || (temp_r3_2760->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_2760, u8 *, 0x8B8) == 2) || (temp_r3_2760->unk870.unk30.Get() != NULL)) {
         var_r30_2761 = 1;
     }
     if ((var_r30_2761 == 0) && (this->unkC->SelectTarget() == 0)) {
-        if (((u8) this->unkC->unk110.unk9F8 >> 1U) & 1) {
+        if (((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 1U) & 1) {
             AddGoal_Cheer();
             this->unkC->SetHitTarget(0U);
             return;
@@ -1378,40 +1373,40 @@ void CynderGoal_GroundAttackMode::Activate() {
         return;
     }
     temp_r4_2793 = this->unkC;
-    if (((u8) temp_r4_2793->unk110.unk94C->unk10 >> 6U) & 1) {
-        temp_r4_2793->unk110.unk96C = 0.0f;
+    if (((u8) M2C_FIELD(temp_r4_2793->unkA44, u8 *, 0x10) >> 6U) & 1) {
+        temp_r4_2793->unkA7C = 0.0f;
     }
-    temp_r3_2803 = this->unkC->unk110.unk94C;
-    temp_r3_2803->unk10 |= 0x20;
+    temp_r3_2803 = this->unkC->unkA44;
+    M2C_FIELD(temp_r3_2803, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r3_2803, u8 *, 0x10) | 0x20);
     temp_r0_2807 = this->unk3C;
     if (temp_r0_2807 != NULL) {
-        this->unkC->unk110.unk94C->unk8 = &temp_r0_2807->unk0;
-        temp_r4_2816 = this->unkC->unk110.unk94C;
-        temp_r4_2816->unk10 &= ~0x80;
-        temp_r4_2821 = this->unkC->unk110.unk94C;
-        temp_r4_2821->unk10 &= ~0x40;
-        this->unkC->unk110.unk910 = &this->unk3C->unk0->unk0;
-        this->unkC->unk110.unk914 = this->unk3C->unk0;
+        M2C_FIELD(this->unkC->unkA44, EAPItem **, 8) = temp_r0_2807;
+        temp_r4_2816 = this->unkC->unkA44;
+        M2C_FIELD(temp_r4_2816, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_2816, u8 *, 0x10) & ~0x80);
+        temp_r4_2821 = this->unkC->unkA44;
+        M2C_FIELD(temp_r4_2821, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_2821, u8 *, 0x10) & ~0x40);
+        this->unkC->unkA08 = (CharacterFireFX *) this->unk3C->unk0;
+        this->unkC->unkA0C = (CharacterBreathFX *) this->unk3C->unk0;
         AddGoal_Attack(this->unk3C->unk0);
         this->unk3C = NULL;
         return;
     }
     temp_r4_2840 = this->unkC;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C != temp_r4_2840->unk110.unk96C) {
+    if (gb.unk30C != temp_r4_2840->unkA7C) {
         AddGoal_AttackIdle();
         return;
     }
-    temp_r3_2852 = temp_r4_2840->unk110.unk94C;
-    temp_r3_2852->unk10 &= ~0x40;
+    temp_r3_2852 = temp_r4_2840->unkA44;
+    M2C_FIELD(temp_r3_2852, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r3_2852, u8 *, 0x10) & ~0x40);
     temp_r4_2859 = this->unkC;
-    temp_r3_2862 = temp_r4_2859->unk110.unk94C->Evaluate(temp_r4_2859, this->unk20, NULL, 0);
+    temp_r3_2862 = temp_r4_2859->unkA44->Evaluate(temp_r4_2859, this->unk20, NULL, 0);
     if ((temp_r3_2862 != 0) && (AddGoal_Attack(*temp_r3_2862) != 0)) {
-        temp_r4_2873 = this->unkC->unk110.unk94C;
-        temp_r4_2873->unk10 &= ~0x80;
-        this->unkC->unk110.unk94C->unk8 = (EnemyAttack **) temp_r3_2862;
-        this->unkC->unk110.unk910 = &(*temp_r3_2862)->unk0;
-        this->unkC->unk110.unk914 = *temp_r3_2862;
+        temp_r4_2873 = this->unkC->unkA44;
+        M2C_FIELD(temp_r4_2873, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_2873, u8 *, 0x10) & ~0x80);
+        M2C_FIELD(this->unkC->unkA44, s32 *, 8) = temp_r3_2862;
+        this->unkC->unkA08 = (CharacterFireFX *) *temp_r3_2862;
+        this->unkC->unkA0C = (CharacterBreathFX *) *temp_r3_2862;
         AddGoal_MoveToAttackRange(*temp_r3_2862);
         return;
     }
@@ -1602,7 +1597,7 @@ void CynderGoal_GroundAttackMode::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_FlyingInWait::Terminate() {
     Character *temp_r3_3243;
     Character *temp_r3_3250;
@@ -1615,22 +1610,22 @@ void CynderBossGoal_FlyingInWait::Terminate() {
     this->unk8 = 1;
     RemoveAllSubgoals();
     temp_r3_3243 = this->unkC;
-    temp_r3_3243->unk110.unk5A5 |= 0x20;
+    temp_r3_3243->unk6B5 |= 0x20;
     temp_r3_3250 = this->unkC;
-    temp_r3_3250->unk110.unk5A5 &= ~0x10;
+    temp_r3_3250->unk6B5 &= ~0x10;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
     temp_r6_3273 = this->unkC;
-    temp_r6_3273->unk110.unk96C = gb.unk30C + 3.0f;
+    temp_r6_3273->unkA7C = gb.unk30C + 3.0f;
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
     temp_r3_3286 = this->unkC;
-    temp_f6_3290 = temp_r3_3286->unk110.unk4B8;
+    temp_f6_3290 = temp_r3_3286->unk5C8;
     arg_sp50 = temp_f6_3290;
-    temp_f1_3296 = temp_r3_3286->unk110.unk4BC;
+    temp_f1_3296 = temp_r3_3286->unk5C8;
     arg_sp54 = temp_f1_3296;
-    temp_f5_3302 = temp_r3_3286->unk110.unk4C0;
+    temp_f5_3302 = temp_r3_3286->unk5CC;
     arg_sp18 = (up.unk0 * temp_f1_3296) - (up.unk4 * temp_f6_3290);
     arg_sp58 = temp_f5_3302;
     arg_sp28 = (f64) arg_sp18;
@@ -1642,9 +1637,9 @@ void CynderBossGoal_FlyingInWait::Terminate() {
     arg_sp34 = arg_sp24;
     arg_sp38 = (f32) arg_sp28;
     arg_sp3C = 0.0f;
-    arg_sp60 = temp_r3_3286->unk110.unk4A8;
-    arg_sp64 = temp_r3_3286->unk110.unk4AC;
-    temp_f1_3326 = temp_r3_3286->unk110.unk4B0;
+    arg_sp60 = temp_r3_3286->unk5B8;
+    arg_sp64 = temp_r3_3286->unk5B8;
+    temp_f1_3326 = temp_r3_3286->unk5BC;
     arg_sp68 = temp_f1_3326;
     arg_sp6C = 1.0f;
     temp_r3_3286->Teleport(&arg_sp30, &up, temp_r6_3273, temp_f1_3326, arg_sp24, (f32) arg_sp20, 0.0f, temp_f5_3302, temp_f6_3290, up.unk8, up.unk4);
@@ -1854,28 +1849,26 @@ void CynderBossGoal_FlyingInWait::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
 u8 CynderBossGoal_RunningTakeOff::Update() {
     Enemy *temp_r3_3736;
     Enemy *temp_r3_3742;
 
     ActivateIfInactive();
-    if (this->unkC->unk110.unk520->CheckEvent(5) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(5) != 0) {
         this->unkC->SetIdleMovementSpeed(1U);
         temp_r3_3736 = this->unkC;
-        temp_r3_3736->unk110.unk5A5 |= 0x10;
+        temp_r3_3736->unk6B5 |= 0x10;
     }
     temp_r3_3742 = this->unkC;
-    temp_r3_3742->unk110.unk488 = M2C_FIELD(temp_r3_3742, f64 *, 0x90);
-    temp_r3_3742->unk110.unk490 = M2C_FIELD(temp_r3_3742, f64 *, 0x98);
+    M2C_FIELD(temp_r3_3742, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_3742, f64 *, 0x90);
+    M2C_FIELD(temp_r3_3742, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_3742, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() != 0) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_RunningTakeOff::Activate() {
     Enemy *temp_r3_3773;
     Enemy *temp_r6_3782;
@@ -1883,21 +1876,21 @@ void CynderBossGoal_RunningTakeOff::Activate() {
 
     this->unk8 = 0;
     temp_r3_3773 = this->unkC;
-    temp_r3_3773->unk110.unk5A5 &= ~0x20;
+    temp_r3_3773->unk6B5 &= ~0x20;
     this->unkC->StopMovement(0U);
     this->unkC->SetMovementType((CharacterMoveType) 1);
     temp_r6_3782 = this->unkC;
     M2C_FIELD(temp_r6_3782, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r6_3782, f64 *, 0xC0);
     M2C_FIELD(temp_r6_3782, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r6_3782, f64 *, 0xC8);
-    temp_r6_3782->unk110.unk5A5 |= 0x40;
+    temp_r6_3782->unk6B5 |= 0x40;
     temp_r6_3793 = this->unkC;
     M2C_FIELD(temp_r6_3793, f64 *, 0xF0) = (f64) M2C_FIELD(temp_r6_3793, f64 *, 0xD0);
     M2C_FIELD(temp_r6_3793, f64 *, 0xF8) = (f64) M2C_FIELD(temp_r6_3793, f64 *, 0xD8);
-    temp_r6_3793->unk110.unk5A5 |= 0x40;
+    temp_r6_3793->unk6B5 |= 0x40;
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDC, 0, 0.15f, 0U, 0U);
-    this->unkC->unkCFC = 0;
+    M2C_FIELD(this->unkC, s32 *, 0xCFC) = 0;
 }
 #endif
 
@@ -1963,7 +1956,7 @@ void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
     sp1B0 = M2C_FIELD(&zero, f64 *, 8);
     if (arg0 != 0) {
         sp198.GetPos();
-        this->unkC->unk110.unk6F0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        this->unkC->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp198), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         sp178.operator*(100.0f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
         sp188 = sp68;
@@ -1979,7 +1972,7 @@ void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
         sp168 = spA8;
         spB0 = (f32) sp1E0 + (f32) sp160;
         sp170 = (f64) spB0;
-        if (this->unkC->unk110.unk6F0.GetFirstIntersectionPlane(*((MKVector3 *) &sp168), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
+        if (this->unkC->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &sp168), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             sp138 = sp28;
             sp30 = (f32) sp1D0 - (f32) sp1E0;
@@ -1992,7 +1985,7 @@ void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
             sp1E0 = (f32) sp1E0 + (f32) sp150;
         } else {
             var_r30_3947 = 0;
-            if (this->unkC->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
+            if (this->unkC->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp1C8)) != 0) {
                 sp98.GetRegionPos();
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                 if ((f32) fabs(sp9C - unksp1CC) == 500.0f) {
@@ -2006,7 +1999,7 @@ void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
         }
     } else {
         sp128.GetPos();
-        this->unkC->unk110.unk728.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
+        this->unkC->unk800.unk28.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp128), (MKVector3 *) &sp1D8, (MKVector3 *) &sp1B8);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
         sp1C0 = (f32) sp1C0 * -1.0f;
         sp108.operator*(100.0f);
@@ -2024,7 +2017,7 @@ void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
         spF8 = sp78;
         sp80 = (f32) sp1E0 + (f32) spF0;
         sp100 = (f64) sp80;
-        if (this->unkC->unk110.unk728.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
+        if (this->unkC->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp1C8), (MKVector3 *) &sp1C8, (MKVector3 *) &sp1A8) != 0) {
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             spC8 = sp18;
             sp20 = (f32) sp1D0 - (f32) sp1E0;
@@ -2035,15 +2028,15 @@ void CynderBossGoal_MoveToTarget::CalculateRegionEdgeMoveTarget(bool arg0) {
             spE0 = (f64) sp40;
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp1E0 = (f32) sp1E0 + (f32) spE0;
-        } else if (this->unkC->unk110.unk728.IsPointWithin(*((MKVector3 *) &sp1C8)) == 0) {
+        } else if (this->unkC->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp1C8)) == 0) {
             sp1D8 = sp1C8;
             sp1E0 = sp1D0;
         }
     }
-    this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp1D8), 0U);
-    this->unkC->unk110.unk7B0.SetInsideRegion(1U);
+    this->unkC->unk870.unk40.Set(*((MKVector3 *) &sp1D8), 0U);
+    this->unkC->unk870.unk40.SetInsideRegion(1U);
     temp_r4_4091 = this->unkC;
-    temp_r4_4091->unk110.unk7B0.Update(temp_r4_4091->unk110.unk478);
+    temp_r4_4091->unk870.unk40.Update(*((MKVector3 *) &temp_r4_4091->unk588));
 }
 #endif
 
@@ -2052,7 +2045,7 @@ void CynderBossGoal_MoveToTarget::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'Update'
 u8 CynderBossGoal_MoveToTarget::Update() {
     f64 sp140;
     f64 sp138;
@@ -2130,7 +2123,7 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                 return temp_r3_4172;
             }
             temp_r4_4177 = this->unkC;
-            temp_r4_4177->unk110.unk7B0.Update(temp_r4_4177->unk110.unk478);
+            temp_r4_4177->unk870.unk40.Update(*((MKVector3 *) &temp_r4_4177->unk588));
             this->unk8 = UpdateSubgoals();
             temp_r3_4184 = this->unk34;
             if (temp_r3_4184->IsActive() != 0) {
@@ -2142,7 +2135,7 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                     spA8 = sp38;
-                    sp40 = (f32) sp140 - temp_r4_4196->unkF88;
+                    sp40 = (f32) sp140 - temp_r4_4196->unkF70;
                     spB8 = sp38;
                     spB0 = (f64) sp40;
                     spC0 = (f64) sp40;
@@ -2171,16 +2164,16 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                             spA0 = (f64) sp30;
                             if (!((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + (unksp8C * unksp8C))) < 40000.0f)) {
                                 sp108.GetPos();
-                                this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp108), 0U);
+                                this->unkC->unk870.unk40.Set(*((MKVector3 *) &sp108), 0U);
                                 temp_r3_4296 = this->unkC;
                                 temp_r5_4298 = temp_r3_4296->unk8;
                                 spF8 = M2C_FIELD(temp_r5_4298, f64 *, 0x30);
                                 sp100 = M2C_FIELD(temp_r5_4298, f64 *, 0x38);
-                                temp_r3_4296->unk110.unk7B0.Update(*((MKVector3 *) &spF8));
-                                this->unkC->unk110.unk7B0.SetInsideRegion(1U);
-                                this->unkC->unk110.unk7B0.SetInsideExclusionRegion(0U);
+                                temp_r3_4296->unk870.unk40.Update(*((MKVector3 *) &spF8));
+                                this->unkC->unk870.unk40.SetInsideRegion(1U);
+                                this->unkC->unk870.unk40.SetInsideExclusionRegion(0U);
                                 temp_r6_4315 = this->unk30;
-                                M2C_FIELD(temp_r6_4315, AITargetData **, 0x10) = &this->unkC->unk110.unk7B0;
+                                M2C_FIELD(temp_r6_4315, TargetContext **, 0x10) = &this->unkC->unk870.unk40;
                                 M2C_FIELD(temp_r6_4315, f32 *, 0x18) = 200.0f;
                                 M2C_FIELD(temp_r6_4315, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4315, u8 *, 0x30) | 0x80);
                                 M2C_FIELD(temp_r6_4315, s32 *, 0x20) = 0;
@@ -2199,14 +2192,14 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                         sp68 = sp18;
-                        sp20 = (f32) spF0 - temp_r4_4344->unkF88;
+                        sp20 = (f32) spF0 - temp_r4_4344->unkF70;
                         sp78 = sp18;
                         sp70 = (f64) sp20;
                         sp80 = (f64) sp20;
                         if (!((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + (unksp6C * unksp6C))) < 40000.0f)) {
                             AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
                             temp_r8_4383 = this->unk34;
-                            M2C_FIELD(temp_r8_4383, void **, 0x10) = (void *) this->unkC->unkF7C;
+                            M2C_FIELD(temp_r8_4383, f32 *, 0x10) = (f32) this->unkC->unkF64;
                             M2C_FIELD(temp_r8_4383, f32 *, 0x14) = 10000.0f;
                             M2C_FIELD(temp_r8_4383, s32 *, 0x18) = 0xA;
                             M2C_FIELD(temp_r8_4383, s32 *, 0x20) = 6;
@@ -2220,7 +2213,7 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                     } else {
                         temp_r3_4412 = this->unkC;
                         var_r30_4413 = 0;
-                        if (((u8) M2C_FIELD(temp_r3_4412, u8 *, 0x908) == 2) || (temp_r3_4412->unk110.unk7B0.unk40.Get() != NULL)) {
+                        if (((u8) M2C_FIELD(temp_r3_4412, u8 *, 0x908) == 2) || (temp_r3_4412->unk8C0.unk30.Get() != NULL)) {
                             var_r30_4413 = 1;
                         }
                         if (var_r30_4413 != 0) {
@@ -2236,9 +2229,9 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                             if (!((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + (unksp4C * unksp4C))) < 40000.0f)) {
                                 temp_r3_4459 = M2C_FIELD(this->unk20, u8 *, 0x49);
                                 if (((temp_r3_4459 >> 6U) & 1) && !((temp_r3_4459 >> 5U) & 1)) {
-                                    this->unkC->unk110.unk7B0.SetDefaults();
+                                    this->unkC->unk870.unk40.SetDefaults();
                                     temp_r6_4469 = this->unk30;
-                                    M2C_FIELD(temp_r6_4469, AITargetData **, 0x10) = (AITargetData *) this->unk20;
+                                    M2C_FIELD(temp_r6_4469, TargetContext **, 0x10) = (TargetContext *) this->unk20;
                                     M2C_FIELD(temp_r6_4469, f32 *, 0x18) = (f32) this->unk38;
                                     M2C_FIELD(temp_r6_4469, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4469, u8 *, 0x30) | 0x80);
                                     M2C_FIELD(temp_r6_4469, s32 *, 0x20) = 0;
@@ -2247,7 +2240,7 @@ u8 CynderBossGoal_MoveToTarget::Update() {
                                     M2C_FIELD(temp_r6_4469, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4469, u8 *, 0x30) | 0x40);
                                     M2C_FIELD(temp_r6_4469, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4469, u8 *, 0x30) | 0x20);
                                     M2C_FIELD(temp_r6_4469, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4469, u8 *, 0x30) & ~0x10);
-                                    this->unkC->unk110.unk530->SeekOn(this->unk20);
+                                    this->unkC->unk638->SeekOn(this->unk20);
                                 }
                             }
                         }
@@ -2275,7 +2268,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF7C'
+#if 0 // DRAFT: undefined identifier 'Update'
 void CynderBossGoal_MoveToTarget::Activate() {
     f64 spD0;
     f64 spC8;
@@ -2338,13 +2331,13 @@ void CynderBossGoal_MoveToTarget::Activate() {
         this->unk3C = 0;
         this->unk3E = 0;
         temp_r3_4566 = this->unkC;
-        if ((void *) temp_r3_4566->unkF7C != NULL) {
+        if (M2C_BITWISE(u32, temp_r3_4566->unkF64) != 0U) {
             if (temp_r3_4566->FollowPathToTarget(this->unk20) != 0) {
                 temp_r3_4574 = this->unkC;
                 temp_r5_4576 = temp_r3_4574->unk8;
                 spC8 = M2C_FIELD(temp_r5_4576, f64 *, 0x30);
                 spD0 = M2C_FIELD(temp_r5_4576, f64 *, 0x38);
-                temp_r3_4574->unk110.unk7B0.Update(*((MKVector3 *) &spC8));
+                temp_r3_4574->unk870.unk40.Update(*((MKVector3 *) &spC8));
                 temp_r5_4583 = this->unkC;
                 temp_r3_4584 = temp_r5_4583->unk8;
                 spB8 = M2C_FIELD(temp_r3_4584, f64 *, 0x30);
@@ -2352,14 +2345,14 @@ void CynderBossGoal_MoveToTarget::Activate() {
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 sp58 = sp18;
-                sp20 = (f32) spC0 - temp_r5_4583->unkF88;
+                sp20 = (f32) spC0 - temp_r5_4583->unkF70;
                 sp68 = sp18;
                 sp60 = (f64) sp20;
                 sp70 = (f64) sp20;
                 if (!((((f32) sp60 * (f32) sp60) + (((f32) sp58 * (f32) sp58) + (unksp5C * unksp5C))) < 40000.0f)) {
                     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
                     temp_r7_4622 = this->unk34;
-                    M2C_FIELD(temp_r7_4622, void **, 0x10) = (void *) this->unkC->unkF7C;
+                    M2C_FIELD(temp_r7_4622, f32 *, 0x10) = (f32) this->unkC->unkF64;
                     M2C_FIELD(temp_r7_4622, f32 *, 0x14) = 10000.0f;
                     M2C_FIELD(temp_r7_4622, s32 *, 0x18) = 0xA;
                     M2C_FIELD(temp_r7_4622, s32 *, 0x20) = 6;
@@ -2390,9 +2383,9 @@ void CynderBossGoal_MoveToTarget::Activate() {
                 }
 block_12:
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
-                this->unkC->unk110.unk7B0.SetInsideRegion(1U);
+                this->unkC->unk870.unk40.SetInsideRegion(1U);
                 temp_r6_4701 = this->unk30;
-                M2C_FIELD(temp_r6_4701, AITargetData **, 0x10) = &this->unkC->unk110.unk7B0;
+                M2C_FIELD(temp_r6_4701, TargetContext **, 0x10) = &this->unkC->unk870.unk40;
                 M2C_FIELD(temp_r6_4701, f32 *, 0x18) = 200.0f;
                 M2C_FIELD(temp_r6_4701, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4701, u8 *, 0x30) | 0x80);
                 M2C_FIELD(temp_r6_4701, s32 *, 0x20) = 0;
@@ -2406,12 +2399,12 @@ block_12:
             }
             goto block_18;
         }
-        if (((u8) temp_r3_4566->unkD01 != 0) && ((temp_r0_4732 = M2C_FIELD(this->unk20, u8 *, 0x49), temp_r0_4734 = (temp_r0_4732 >> 5U) & 1, ((((temp_r0_4732 >> 6U) & 1) == 0) != 0)) || (temp_r0_4734 != 0))) {
+        if (((u8) M2C_FIELD(temp_r3_4566, u8 *, 0xD01) != 0) && ((temp_r0_4732 = M2C_FIELD(this->unk20, u8 *, 0x49), temp_r0_4734 = (temp_r0_4732 >> 5U) & 1, ((((temp_r0_4732 >> 6U) & 1) == 0) != 0)) || (temp_r0_4734 != 0))) {
             CalculateRegionEdgeMoveTarget(temp_r0_4734 == 0);
-            if (this->unkC->unk110.unk7B0.GetDist() > 200.0f) {
+            if (this->unkC->unk870.unk40.GetDist() > 200.0f) {
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
                 temp_r6_4754 = this->unk30;
-                M2C_FIELD(temp_r6_4754, AITargetData **, 0x10) = &this->unkC->unk110.unk7B0;
+                M2C_FIELD(temp_r6_4754, TargetContext **, 0x10) = &this->unkC->unk870.unk40;
                 M2C_FIELD(temp_r6_4754, f32 *, 0x18) = 200.0f;
                 M2C_FIELD(temp_r6_4754, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4754, u8 *, 0x30) | 0x80);
                 M2C_FIELD(temp_r6_4754, s32 *, 0x20) = 0;
@@ -2440,17 +2433,17 @@ block_18:
             sp88.GetDir();
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             temp_r30_4828 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r3 */) >> 0x1DU) & 1;
-            if (((u8) this->unk3D != 0) && (this->unkC->unk110.unk760.GetDist() > 1500.0f) && (this->unkC->unk110.unk760.GetDist() < 2200.0f) && (this->unkC->CanLeap(temp_r30_4828) != 0)) {
+            if (((u8) this->unk3D != 0) && (this->unkC->unk838.unk28.GetDist() > 1500.0f) && (this->unkC->unk838.unk28.GetDist() < 2200.0f) && (this->unkC->CanLeap(temp_r30_4828) != 0)) {
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
-                M2C_FIELD(this->unk2C, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+                M2C_FIELD(this->unk2C, f32 **, 0x10) = &this->unkC->unk838.unk28;
                 temp_r3_4858 = this->unk28;
                 M2C_FIELD(temp_r3_4858, u8 *, 0x20) = (u8) ((M2C_FIELD(temp_r3_4858, u8 *, 0x20) & ~0x40) | ((temp_r30_4828 << 6) & 0x40));
                 return;
             }
             AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
             temp_r6_4869 = this->unk30;
-            M2C_FIELD(temp_r6_4869, AITargetData **, 0x10) = (AITargetData *) this->unk20;
+            M2C_FIELD(temp_r6_4869, TargetContext **, 0x10) = (TargetContext *) this->unk20;
             M2C_FIELD(temp_r6_4869, f32 *, 0x18) = (f32) this->unk38;
             M2C_FIELD(temp_r6_4869, u8 *, 0x30) = (u8) (M2C_FIELD(temp_r6_4869, u8 *, 0x30) | 0x80);
             M2C_FIELD(temp_r6_4869, s32 *, 0x20) = 0;
@@ -2664,12 +2657,12 @@ u8 CynderBossGoal_TestMode::Update() {
     Cynder *temp_r3_5291;
     Cynder *temp_r5_5317;
     Cynder *temp_r6_5310;
+    EnemyDescriptor *temp_r4_5292;
     Goal<Cynder> *temp_r4_5312;
     Goal<Cynder> *temp_r4_5318;
     Goal<Cynder> *temp_r5_5361;
     Goal<Cynder> *temp_r5_5369;
     s32 var_r3_5342;
-    u32 *temp_r4_5292;
     u8 var_r3_5328;
     void **temp_r3_5277;
 
@@ -2679,8 +2672,8 @@ u8 CynderBossGoal_TestMode::Update() {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (gb.unk30C == this->unk50) {
             temp_r3_5291 = this->unkC;
-            temp_r4_5292 = temp_r3_5291->unk110.unk940;
-            if ((temp_r4_5292 != NULL) && ((s32) M2C_FIELD(temp_r4_5292, s32 *, 0x6C) == 6)) {
+            temp_r4_5292 = temp_r3_5291->unkA38;
+            if ((temp_r4_5292 != NULL) && ((s32) temp_r4_5292->unk6C == 6)) {
                 temp_r3_5291->CalcFlightPathData2();
                 RemoveAllSubgoals();
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
@@ -2688,11 +2681,11 @@ u8 CynderBossGoal_TestMode::Update() {
                 AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk44);
                 temp_r6_5310 = this->unkC;
                 temp_r4_5312 = this->unk40;
-                M2C_FIELD(temp_r4_5312, f64 **, 0x10) = &temp_r6_5310->unkFA0;
+                M2C_FIELD(temp_r4_5312, f32 **, 0x10) = &temp_r6_5310->unkF88;
                 M2C_FIELD(temp_r4_5312, s32 *, 0x14) = (s32) temp_r6_5310->unkFFC;
                 temp_r5_5317 = this->unkC;
                 temp_r4_5318 = this->unk44;
-                M2C_FIELD(temp_r4_5318, KDUniformSpline **, 0x10) = (KDUniformSpline *) temp_r5_5317->unkFF0;
+                M2C_FIELD(temp_r4_5318, AITargetData **, 0x10) = (AITargetData *) temp_r5_5317->unkFF0;
                 M2C_FIELD(temp_r4_5318, f32 *, 0x14) = (f32) temp_r5_5317->unkFF4;
                 M2C_FIELD(temp_r4_5318, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r4_5318, u8 *, 0x24) & ~0x40);
             }
@@ -2715,7 +2708,7 @@ u8 CynderBossGoal_TestMode::Update() {
         M2C_FIELD(temp_r5_5361, f32 *, 0x18) = (f32) this->unkC->unkFF8;
         M2C_FIELD(temp_r5_5361, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r5_5361, u8 *, 0x24) | 0x80);
         temp_r5_5369 = this->unk48;
-        M2C_FIELD(temp_r5_5369, s32 **, 0x10) = &this->unkC->unkCD4;
+        M2C_FIELD(temp_r5_5369, f32 **, 0x10) = &this->unkC->unkCD4;
         M2C_FIELD(temp_r5_5369, f32 *, 0x14) = 0.0f;
         M2C_FIELD(temp_r5_5369, u8 *, 0x24) = (u8) (M2C_FIELD(temp_r5_5369, u8 *, 0x24) | 0x40);
     }
@@ -2733,7 +2726,7 @@ void CynderBossGoal_TestMode::Activate() {
     RemoveAllSubgoals();
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
     temp_r5_5404 = this->unk30;
-    M2C_FIELD(temp_r5_5404, M2C_UNK **, 0x20) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r5_5404, f32 **, 0x20) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r5_5404, f32 *, 0x38) = 1000.0f;
     M2C_FIELD(temp_r5_5404, s8 *, 0x3D) = 1;
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
@@ -3051,39 +3044,39 @@ void CynderBossGoal_TestMode::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD00'
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void CynderBossGoal_BreathAttack::Terminate() {
-    AnimSequence **temp_r5_5996;
     AttackerManager *var_r3_6041;
-    EAPManager *temp_r4_6013;
+    CharacterFireFX *temp_r5_5996;
     Enemy *temp_r3_5991;
     Enemy *temp_r3_5995;
     Enemy *temp_r3_6012;
     Enemy *temp_r3_6021;
     Enemy *var_r4_6048;
     u8 var_r30_6022;
+    void *temp_r4_6013;
 
-    this->unkC->unkD00 = 0;
+    M2C_FIELD(this->unkC, s8 *, 0xD00) = 0;
     temp_r3_5991 = this->unkC;
-    temp_r3_5991->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_5991, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_5991, u8 *, 0xB08) & ~0x10);
     temp_r3_5995 = this->unkC;
-    temp_r5_5996 = temp_r3_5995->unk110.unk910;
+    temp_r5_5996 = temp_r3_5995->unkA08;
     if (temp_r5_5996 != NULL) {
-        this->unkC->unk110.unk96C = gb.unk30C + temp_r3_5995->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_5996);
+        this->unkC->unkA7C = gb.unk30C + temp_r3_5995->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_5996);
     }
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_6012 = this->unkC;
-    temp_r4_6013 = temp_r3_6012->unk110.unk94C;
+    temp_r4_6013 = temp_r3_6012->unkA44;
     if (temp_r4_6013 != NULL) {
-        temp_r4_6013->unk10 = (temp_r4_6013->unk10 & ~0x80) | ((temp_r3_6012->unk110.unk9F8 << 6) & 0x80);
+        M2C_FIELD(temp_r4_6013, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r4_6013, u8 *, 0x10) & ~0x80) | ((M2C_FIELD(temp_r3_6012, u8 *, 0xB08) << 6) & 0x80));
     }
     temp_r3_6021 = this->unkC;
     var_r30_6022 = 0;
-    if (((u8) temp_r3_6021->unk110.unk7A8 == 2) || (temp_r3_6021->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_6021, u8 *, 0x8B8) == 2) || (temp_r3_6021->unk870.unk30.Get() != NULL)) {
         var_r30_6022 = 1;
     }
     if (var_r30_6022 != 0) {
-        var_r3_6041 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_6041 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_6041 = NULL;
     }
@@ -3096,11 +3089,11 @@ void CynderBossGoal_BreathAttack::Terminate() {
     }
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
-    this->unkC->unkCEC->End();
+    ((CynderBreathFX *) (M2C_FIELD(this->unkC, CynderBreathFX **, 0xCEC)))->End();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 u8 CynderBossGoal_BreathAttack::Update() {
     f64 sp248;
     f64 sp240;
@@ -3154,7 +3147,7 @@ u8 CynderBossGoal_BreathAttack::Update() {
     f32 sp28;
     f32 sp18;
     f32 sp8;
-    AnimSequence **temp_r29_6172;
+    CharacterFireFX *temp_r29_6172;
     Enemy *temp_r29_6537;
     Enemy *temp_r29_6563;
     Enemy *temp_r30_6169;
@@ -3167,6 +3160,10 @@ u8 CynderBossGoal_BreathAttack::Update() {
     Enemy *temp_r3_6584;
     Enemy *temp_r4_6119;
     Enemy *temp_r4_6132;
+    EnemyDescriptor *temp_r4_6231;
+    EnemyDescriptor *temp_r4_6543;
+    EnemyDescriptor *temp_r4_6558;
+    EnemyDescriptor *temp_r4_6569;
     f32 temp_f2_6211;
     f32 var_f4_6387;
     f32 var_f4_6454;
@@ -3175,10 +3172,6 @@ u8 CynderBossGoal_BreathAttack::Update() {
     f64 temp_f1_6403;
     s32 temp_r3_6422;
     s32 var_r0_6432;
-    u32 *temp_r4_6231;
-    u32 *temp_r4_6543;
-    u32 *temp_r4_6558;
-    u32 *temp_r4_6569;
     u8 temp_r3_6093;
     u8 var_r30_6102;
     u8 var_r30_6538;
@@ -3192,7 +3185,7 @@ u8 CynderBossGoal_BreathAttack::Update() {
     if ((u8) this->unk18 != 0) {
         temp_r3_6101 = this->unkC;
         var_r30_6102 = 0;
-        if (((u8) temp_r3_6101->unk110.unk7A8 == 2) || (temp_r3_6101->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_6101, u8 *, 0x8B8) == 2) || (temp_r3_6101->unk870.unk30.Get() != NULL)) {
             var_r30_6102 = 1;
         }
         if (var_r30_6102 != 0) {
@@ -3200,8 +3193,8 @@ u8 CynderBossGoal_BreathAttack::Update() {
             temp_r4_6119 = this->unkC;
             M2C_FIELD(temp_r4_6119, f64 *, 0xE0) = M2C_BITWISE(f64, sp1F0);
             M2C_FIELD(temp_r4_6119, f64 *, 0xE8) = (f64) sp1F0.unk8;
-            temp_r4_6119->unk110.unk5A5 |= 0x40;
-            this->unkC->unk110.unk57C = 3.1415927f;
+            temp_r4_6119->unk6B5 |= 0x40;
+            this->unkC->unk684 = 3.1415927f;
         }
     }
     temp_r4_6132 = this->unkC;
@@ -3212,18 +3205,18 @@ u8 CynderBossGoal_BreathAttack::Update() {
     spD8 = (up.unk0 * unksp244) - (up.unk4 * (f32) sp240);
     sp1F0.unk40 = (f64) spD0;
     sp1F0.unk40.unk8 = (f64) spD8;
-    MKModel_CalculateRefPointWorldPosition(temp_r4_6132->unk4, M2C_FIELD(temp_r4_6132->unk110.unk910, s32 *, 0x84), (MKVector3 *) &sp1F0.unk30);
-    if (this->unkC->unk110.unk520->CheckEvent(0) != 0) {
+    MKModel_CalculateRefPointWorldPosition(temp_r4_6132->unk4, M2C_FIELD(temp_r4_6132->unkA08, s32 *, 0x84), (MKVector3 *) &sp1F0.unk30);
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(0) != 0) {
         temp_r30_6169 = this->unkC;
-        temp_r29_6172 = temp_r30_6169->unk110.unk910;
+        temp_r29_6172 = temp_r30_6169->unkA08;
         M2C_FIELD(temp_r30_6169->__vptr, M2C_UNK (**)(MKVector3 *, Enemy *), 0xF8)(&sp1E0, temp_r30_6169);
-        temp_r30_6169->unkCEC->Trigger((MKProp *) temp_r30_6169, *((MKVector3 *) &sp1F0.unk30), *((MKVector3 *) &sp240), sp1E0, 1.0f, M2C_FIELD(temp_r29_6172, s32 *, 0x84), 100.0f);
-        this->unkC->unkD00 = 1;
-        this->unkC->unkCB0 = 1;
+        ((CynderBreathFX *) (M2C_FIELD(temp_r30_6169, CynderBreathFX **, 0xCEC)))->Trigger((MKProp *) temp_r30_6169, *((MKVector3 *) &sp1F0.unk30), *((MKVector3 *) &sp240), sp1E0, 1.0f, M2C_FIELD(temp_r29_6172, s32 *, 0x84), 100.0f);
+        M2C_FIELD(this->unkC, s8 *, 0xD00) = 1;
+        M2C_FIELD(this->unkC, s8 *, 0xCB0) = 1;
         this->unk18 = 0;
-        this->unkC->unk110.unk57C = 0.0f;
+        this->unkC->unk684 = 0.0f;
     }
-    if (((u8) this->unkC->unk110.unk9F8 >> 4U) & 1) {
+    if (((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 4U) & 1) {
         this->unk10 += 0.75f * (this->unk14 * (6.2831855f * gUpdateTimeDelta));
         temp_f2_6211 = this->unk14;
         if ((temp_f2_6211 > 0.0f) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((this->unk10 == 6.2831855f) != 0))) {
@@ -3232,8 +3225,8 @@ u8 CynderBossGoal_BreathAttack::Update() {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (this->unk10 == 0.0f) {
                 temp_r3_6229 = this->unkC;
-                temp_r4_6231 = temp_r3_6229->unk110.unk940;
-                temp_r3_6229->SetAnim((AnimSequence *) temp_r4_6231, (AnimTransition *) (temp_r4_6231 + 0x40), 0.0f, 0U);
+                temp_r4_6231 = temp_r3_6229->unkA38;
+                temp_r3_6229->SetAnim((AnimSequence *) temp_r4_6231, (AnimTransition *) &temp_r4_6231->__vptr, 0.0f, 0U);
             }
         }
         spC0 = -M2C_BITWISE(f32, sp1F0.unk40);
@@ -3275,8 +3268,8 @@ u8 CynderBossGoal_BreathAttack::Update() {
         temp_r3_6349 = this->unkC;
         sp170 = sp20;
         sp28 = sp168 + sp150.unk8;
-        temp_r3_6349->unk110.unk5F0 = sp20;
-        temp_r3_6349->unk110.unk5F8 = (f64) sp28;
+        M2C_FIELD(temp_r3_6349, f64 *, 0x700) = sp20;
+        temp_r3_6349->unk708 = (f64) sp28;
         temp_r3_6355 = this->unkC;
         sp178 = (f64) sp28;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
@@ -3344,38 +3337,38 @@ u8 CynderBossGoal_BreathAttack::Update() {
         sp58 = sp1F0.unk38 + (f32) sp118;
         sp108 = (f64) sp78;
         sp128 = (f64) sp58;
-        this->unkC->unkCEC->UpdateBeam((MKVector3) &sp130, (MKVector3) &sp120, (MKVector3) &sp100);
+        ((CynderBreathFX *) (M2C_FIELD(this->unkC, CynderBreathFX **, 0xCEC)))->UpdateBeam((MKVector3) &sp130, (MKVector3) &sp120, (MKVector3) &sp100);
     } else {
         spE0.operator*(800.0f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r3_6519 = this->unkC;
         spF0 = sp10;
         sp18 = sp1F0.unk38 + spE0.unk8;
-        temp_r3_6519->unk110.unk5F0 = sp10;
+        M2C_FIELD(temp_r3_6519, f64 *, 0x700) = sp10;
         spF8 = (f64) sp18;
-        temp_r3_6519->unk110.unk5F8 = (f64) sp18;
+        temp_r3_6519->unk708 = (f64) sp18;
     }
-    if (this->unkC->unk110.unk520->CheckEvent(1) != 0) {
-        this->unkC->unkCEC->End();
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(1) != 0) {
+        ((CynderBreathFX *) (M2C_FIELD(this->unkC, CynderBreathFX **, 0xCEC)))->End();
     }
     temp_r29_6537 = this->unkC;
     var_r30_6538 = 0;
     if (temp_r29_6537->HasAnimFinished() != 0) {
-        temp_r4_6543 = temp_r29_6537->unk110.unk940;
-        if ((temp_r4_6543 != NULL) && ((u32) *temp_r4_6543 == (u32) temp_r29_6537->unk110.unk520->unk20)) {
+        temp_r4_6543 = temp_r29_6537->unkA38;
+        if ((temp_r4_6543 != NULL) && ((s8 *) temp_r4_6543->unk0 == (u32) M2C_FIELD(temp_r29_6537, MKAnimScript **, 0x630)->unk20)) {
             var_r30_6538 = 1;
         }
     }
     if (var_r30_6538 != 0) {
         temp_r3_6555 = this->unkC;
-        temp_r4_6558 = temp_r3_6555->unk110.unk940;
-        temp_r3_6555->SetAnim((AnimSequence *) temp_r4_6558, (AnimTransition *) (temp_r4_6558 + 0x20), 0.0f, 0U);
+        temp_r4_6558 = temp_r3_6555->unkA38;
+        temp_r3_6555->SetAnim((AnimSequence *) temp_r4_6558, (AnimTransition *) &temp_r4_6558->unk20, 0.0f, 0U);
     } else {
         temp_r29_6563 = this->unkC;
         var_r30_6564 = 0;
         if (temp_r29_6563->HasAnimFinished() != 0) {
-            temp_r4_6569 = temp_r29_6563->unk110.unk940;
-            if ((temp_r4_6569 != NULL) && ((u32) M2C_FIELD(temp_r4_6569, u32 *, 0x40) == (u32) temp_r29_6563->unk110.unk520->unk20)) {
+            temp_r4_6569 = temp_r29_6563->unkA38;
+            if ((temp_r4_6569 != NULL) && ((void *) temp_r4_6569->__vptr == (u32) M2C_FIELD(temp_r29_6563, MKAnimScript **, 0x630)->unk20)) {
                 var_r30_6564 = 1;
             }
         }
@@ -3384,17 +3377,15 @@ u8 CynderBossGoal_BreathAttack::Update() {
         }
     }
     temp_r3_6584 = this->unkC;
-    if ((((u8) temp_r3_6584->unk110.unk9F8 >> 4U) & 1) && (temp_r3_6584->CheckMeleeHit((EnemyAttack *) temp_r3_6584->unk110.unk910, -1) != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_6584, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_6584->CheckMeleeHit((EnemyAttack *) temp_r3_6584->unkA08, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD58'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderBossGoal_BreathAttack::Activate() {
-    AnimSequence *temp_r5_6653;
-    AttackSweepData *temp_r3_6669;
     AttackerManager *var_r3_6694;
     Enemy *temp_r3_6638;
     Enemy *temp_r3_6651;
@@ -3402,10 +3393,12 @@ void CynderBossGoal_BreathAttack::Activate() {
     Enemy *temp_r4_6657;
     Enemy *temp_r5_6720;
     Enemy *var_r4_6701;
+    MKMaterial *temp_r3_6669;
     u8 var_r30_6675;
+    void *temp_r5_6653;
 
     this->unk8 = 0;
-    if (PhrasePlayer_IsEventPlaying(this->unkC->unkD58) != 0) {
+    if (PhrasePlayer_IsEventPlaying(M2C_FIELD(this->unkC, s32 *, 0xD58)) != 0) {
         this->unk8 = 2;
         return;
     }
@@ -3414,27 +3407,27 @@ void CynderBossGoal_BreathAttack::Activate() {
     temp_r3_6638->unkA0 = 0.0f;
     temp_r3_6638->unkA4 = 0.0f;
     temp_r3_6638->unkA8 = 0.0f;
-    this->unkC->unkCEC->unk1C8 = 100.0f;
+    M2C_FIELD(M2C_FIELD(this->unkC, void **, 0xCEC), f32 *, 0x1C8) = 100.0f;
     temp_r3_6651 = this->unkC;
-    temp_r5_6653 = *temp_r3_6651->unk110.unk910;
-    temp_r3_6651->SetAnim((AnimSequenceType) temp_r5_6653->unk6C, temp_r5_6653->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_6653 = temp_r3_6651->unkA08->__vptr;
+    temp_r3_6651->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_6653, s32 *, 0x6C), M2C_FIELD(temp_r5_6653, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_6657 = this->unkC;
 loop_4:
-    if ((u32) *temp_r4_6657->unk110.unk90C != 0U) {
-        temp_r4_6657->unk110.unk90C += 4;
+    if ((void *) temp_r4_6657->unkA04->__vptr != NULL) {
+        temp_r4_6657->unkA04 = (CharacterZapFX *) &temp_r4_6657->unkA04->unk4;
         goto loop_4;
     }
-    temp_r3_6669 = this->unkC->unk110.unk920;
+    temp_r3_6669 = this->unkC->unkA18;
     if (temp_r3_6669 != NULL) {
         temp_r3_6669->SetDefaults();
     }
     temp_r3_6674 = this->unkC;
     var_r30_6675 = 0;
-    if (((u8) temp_r3_6674->unk110.unk7A8 == 2) || (temp_r3_6674->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_6674, u8 *, 0x8B8) == 2) || (temp_r3_6674->unk870.unk30.Get() != NULL)) {
         var_r30_6675 = 1;
     }
     if (var_r30_6675 != 0) {
-        var_r3_6694 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_6694 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_6694 = NULL;
     }
@@ -3449,46 +3442,46 @@ loop_4:
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->SetHitTarget(0U);
     temp_r5_6720 = this->unkC;
-    temp_r5_6720->unkCFC += 1;
+    M2C_FIELD(temp_r5_6720, s32 *, 0xCFC) = (s32) (M2C_FIELD(temp_r5_6720, s32 *, 0xCFC) + 1);
     this->unk10 = 0.0f;
     this->unk14 = 1.0f;
     this->unk18 = 1;
-    this->unkC->unkCB0 = 0;
+    M2C_FIELD(this->unkC, s8 *, 0xCB0) = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void CynderBossGoal_MeleeAttack::Terminate() {
-    AnimSequence **temp_r5_6755;
     AttackerManager *var_r3_6800;
-    EAPManager *temp_r4_6772;
+    CharacterFireFX *temp_r5_6755;
     Enemy *temp_r3_6750;
     Enemy *temp_r3_6754;
     Enemy *temp_r3_6771;
     Enemy *temp_r3_6780;
     Enemy *var_r4_6807;
     u8 var_r30_6781;
+    void *temp_r4_6772;
 
     temp_r3_6750 = this->unkC;
-    temp_r3_6750->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_6750, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_6750, u8 *, 0xB08) & ~0x10);
     temp_r3_6754 = this->unkC;
-    temp_r5_6755 = temp_r3_6754->unk110.unk910;
+    temp_r5_6755 = temp_r3_6754->unkA08;
     if (temp_r5_6755 != NULL) {
-        this->unkC->unk110.unk96C = gb.unk30C + temp_r3_6754->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_6755);
+        this->unkC->unkA7C = gb.unk30C + temp_r3_6754->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_6755);
     }
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_6771 = this->unkC;
-    temp_r4_6772 = temp_r3_6771->unk110.unk94C;
+    temp_r4_6772 = temp_r3_6771->unkA44;
     if (temp_r4_6772 != NULL) {
-        temp_r4_6772->unk10 = (temp_r4_6772->unk10 & ~0x80) | ((temp_r3_6771->unk110.unk9F8 << 6) & 0x80);
+        M2C_FIELD(temp_r4_6772, u8 *, 0x10) = (u8) ((M2C_FIELD(temp_r4_6772, u8 *, 0x10) & ~0x80) | ((M2C_FIELD(temp_r3_6771, u8 *, 0xB08) << 6) & 0x80));
     }
     temp_r3_6780 = this->unkC;
     var_r30_6781 = 0;
-    if (((u8) temp_r3_6780->unk110.unk7A8 == 2) || (temp_r3_6780->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_6780, u8 *, 0x8B8) == 2) || (temp_r3_6780->unk870.unk30.Get() != NULL)) {
         var_r30_6781 = 1;
     }
     if (var_r30_6781 != 0) {
-        var_r3_6800 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_6800 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_6800 = NULL;
     }
@@ -3504,9 +3497,9 @@ void CynderBossGoal_MeleeAttack::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier 'unksp40'
 u8 CynderBossGoal_MeleeAttack::Update() {
-    AnimSequence **temp_r3_6859;
+    CharacterFireFX *temp_r3_6859;
     Enemy *temp_r3_6888;
     Enemy *temp_r3_7087;
     Enemy *temp_r3_7115;
@@ -3541,8 +3534,8 @@ u8 CynderBossGoal_MeleeAttack::Update() {
         this->unk8 = 2;
     }
     temp_r4_6858 = this->unkC;
-    temp_r3_6859 = temp_r4_6858->unk110.unk910;
-    if ((temp_r3_6859 != NULL) && (M2C_FIELD(temp_r3_6859, s32 *, 0x38) & 0x80) && (temp_r4_6858->unk110.unk520->CheckEvent(1) != 0)) {
+    temp_r3_6859 = temp_r4_6858->unkA08;
+    if ((temp_r3_6859 != NULL) && (M2C_FIELD(temp_r3_6859, s32 *, 0x38) & 0x80) && (((MKAnimScript *) (M2C_FIELD(temp_r4_6858, MKAnimScript **, 0x630)))->CheckEvent(1) != 0)) {
         unksp40 = 1.0f;
         unksp44 = 0.0f;
         unksp48 = 0.1f;
@@ -3550,7 +3543,7 @@ u8 CynderBossGoal_MeleeAttack::Update() {
         unksp90 = unksp40;
         unksp98 = 5.122630465e-315;
         temp_r4_6883 = this->unkC;
-        temp_r4_6883->unkCE8->Trigger(temp_r4_6883->unk110.unk478, 1.0f, 0U, (MKVector4) &unksp90);
+        ((EarthShockwave *) (M2C_FIELD(temp_r4_6883, EarthShockwave **, 0xCE8)))->Trigger(*((MKVector3 *) &temp_r4_6883->unk588), 1.0f, 0U, (MKVector4) &unksp90);
         temp_r3_6888 = this->unkC;
         temp_f1_6893 = 0.5f * -500.0f;
         temp_f3_6894 = M2C_FIELD(temp_r3_6888, f64 *, 0x588);
@@ -3593,7 +3586,7 @@ loop_38:
                 unksp58 = M2C_FIELD(temp_r3_6982, f64 *, 0x38);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r4, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                temp_f1_6994 = unksp58 - this->unkC->unk110.unk478.unk8;
+                temp_f1_6994 = unksp58 - this->unkC->unk588.unk4;
                 unkspA0 = unksp30;
                 unksp38 = temp_f1_6994;
                 unkspA4 = 0.0f;
@@ -3646,7 +3639,7 @@ loop_38:
                 } else {
                     var_r4_7093 = NULL;
                 }
-                temp_r3_7087->MeleeDamageTarget(var_r4_7093, (EnemyAttack *) temp_r3_7087->unk110.unk910, *((MKVector3 *) &unkspA0), -1);
+                temp_r3_7087->MeleeDamageTarget(var_r4_7093, (EnemyAttack *) temp_r3_7087->unkA08, *((MKVector3 *) &unkspA0), -1);
                 this->unkC->SetHitTarget(1U);
                 var_r28_6961 += 1;
                 var_r26_6962 += 0x58;
@@ -3656,17 +3649,15 @@ loop_38:
         } while (var_r29_6911 < 4);
     }
     temp_r3_7115 = this->unkC;
-    if ((((u8) temp_r3_7115->unk110.unk9F8 >> 4U) & 1) && (temp_r3_7115->CheckMeleeHit((EnemyAttack *) temp_r3_7115->unk110.unk910, -1) != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_7115, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_7115->CheckMeleeHit((EnemyAttack *) temp_r3_7115->unkA08, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderBossGoal_MeleeAttack::Activate() {
-    AnimSequence *temp_r5_7172;
-    AttackSweepData *temp_r3_7188;
     AttackerManager *var_r3_7213;
     Enemy *temp_r3_7161;
     Enemy *temp_r3_7170;
@@ -3674,7 +3665,9 @@ void CynderBossGoal_MeleeAttack::Activate() {
     Enemy *temp_r4_7176;
     Enemy *temp_r4_7239;
     Enemy *var_r4_7220;
+    MKMaterial *temp_r3_7188;
     u8 var_r30_7194;
+    void *temp_r5_7172;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -3683,25 +3676,25 @@ void CynderBossGoal_MeleeAttack::Activate() {
     temp_r3_7161->unkA4 = 0.0f;
     temp_r3_7161->unkA8 = 0.0f;
     temp_r3_7170 = this->unkC;
-    temp_r5_7172 = *temp_r3_7170->unk110.unk910;
-    temp_r3_7170->SetAnim((AnimSequenceType) temp_r5_7172->unk6C, temp_r5_7172->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_7172 = temp_r3_7170->unkA08->__vptr;
+    temp_r3_7170->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_7172, s32 *, 0x6C), M2C_FIELD(temp_r5_7172, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_7176 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_7176->unk110.unk90C != 0U) {
-        temp_r4_7176->unk110.unk90C += 4;
+    if ((void *) temp_r4_7176->unkA04->__vptr != NULL) {
+        temp_r4_7176->unkA04 = (CharacterZapFX *) &temp_r4_7176->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_7188 = this->unkC->unk110.unk920;
+    temp_r3_7188 = this->unkC->unkA18;
     if (temp_r3_7188 != NULL) {
         temp_r3_7188->SetDefaults();
     }
     temp_r3_7193 = this->unkC;
     var_r30_7194 = 0;
-    if (((u8) temp_r3_7193->unk110.unk7A8 == 2) || (temp_r3_7193->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_7193, u8 *, 0x8B8) == 2) || (temp_r3_7193->unk870.unk30.Get() != NULL)) {
         var_r30_7194 = 1;
     }
     if (var_r30_7194 != 0) {
-        var_r3_7213 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_7213 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_7213 = NULL;
     }
@@ -3716,7 +3709,7 @@ loop_2:
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     this->unkC->SetHitTarget(0U);
     temp_r4_7239 = this->unkC;
-    temp_r4_7239->unkCFC += 1;
+    M2C_FIELD(temp_r4_7239, s32 *, 0xCFC) = (s32) (M2C_FIELD(temp_r4_7239, s32 *, 0xCFC) + 1);
 }
 #endif
 
@@ -3726,41 +3719,41 @@ void CynderBossGoal_Idle::Reset() {
     this->unk14 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: undefined identifier 'unk8B8'
 u8 CynderBossGoal_Idle::Update() {
     Character *temp_r3_7270;
     Character *temp_r4_7295;
     Character *temp_r4_7338;
-    MKAnimScript *temp_r5_7316;
     s32 temp_r4_7342;
     u8 var_r30_7271;
     u8 var_r3_7321;
     u8 var_r4_7315;
+    void *temp_r5_7316;
 
     ActivateIfInactive();
     temp_r3_7270 = this->unkC;
     var_r30_7271 = 0;
-    if (((u8) temp_r3_7270->unk110.unk7A8 == 2) || (temp_r3_7270->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) temp_r3_7270->unk8B8 == 2) || (temp_r3_7270->unk8B0.Get() != NULL)) {
         var_r30_7271 = 1;
     }
     if ((var_r30_7271 == 0) || ((s32) this->unk14 == 4)) {
-        this->unkC->unk110.unk57C = 0.0f;
+        this->unkC->unk684 = 0.0f;
     }
     if ((s32) this->unk14 != 4) {
         temp_r4_7295 = this->unkC;
-        if (temp_r4_7295->unk110.unk57C == 0.0f) {
+        if (M2C_BITWISE(f32, temp_r4_7295->unk684) == 0.0f) {
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (gb.unk30C == temp_r4_7295->unk110.unk96C) {
+            if (gb.unk30C == temp_r4_7295->unkA7C) {
                 this->unk8 = 2;
             }
         }
     }
     if (this->unkC->HasAnimFinished() == 0) {
         var_r4_7315 = 0;
-        temp_r5_7316 = this->unkC->unk110.unk520;
-        if (((u32) temp_r5_7316->unk2C >> 1U) & 1) {
+        temp_r5_7316 = M2C_FIELD(this->unkC, void **, 0x630);
+        if (((u32) M2C_FIELD(temp_r5_7316, u32 *, 0x2C) >> 1U) & 1) {
             var_r3_7321 = 0;
-            if ((temp_r5_7316->unk38 > 0.0f) || ((s32) temp_r5_7316->unk44 > 1)) {
+            if ((M2C_FIELD(temp_r5_7316, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_7316, s32 *, 0x44) > 1)) {
                 var_r3_7321 = 1;
             }
             if (var_r3_7321 != 0) {
@@ -3773,11 +3766,11 @@ u8 CynderBossGoal_Idle::Update() {
     } else {
 block_18:
         temp_r4_7338 = this->unkC;
-        temp_r4_7338->unk110.unk9DC += 1;
+        temp_r4_7338->unkAEC += 1;
         temp_r4_7342 = this->unk10;
-        if ((temp_r4_7342 != 0) && ((s32) this->unkC->unk110.unk9DC >= temp_r4_7342)) {
+        if ((temp_r4_7342 != 0) && ((s32) this->unkC->unkAEC >= temp_r4_7342)) {
             this->unk8 = 2;
-        } else if ((temp_r4_7342 == 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((gb.unk30C == this->unkC->unk110.unk96C) != 0))) {
+        } else if ((temp_r4_7342 == 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((gb.unk30C == this->unkC->unkA7C) != 0))) {
             this->unk8 = 2;
         } else {
             this->unkC->SetAnim((AnimSequenceType) 1, this->unk14, 0, 0.15f, 0U, 0U);
@@ -3787,13 +3780,13 @@ block_18:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9DC'
+#if 0 // DRAFT: undefined identifier 'unkAEC'
 void CynderBossGoal_Idle::Activate() {
     Character *temp_r3_7399;
     s32 temp_r0_7412;
 
     this->unk8 = 0;
-    this->unkC->unk110.unk9DC = 0;
+    this->unkC->unkAEC = 0;
     this->unkC->StopMovement(1U);
     temp_r3_7399 = this->unkC;
     temp_r3_7399->unkA0 = 0.0f;
@@ -3808,7 +3801,7 @@ void CynderBossGoal_Idle::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: undefined identifier 'unk8B8'
 u8 CynderBossGoal_Leap::Update() {
     Character *temp_r3_7448;
     Character *temp_r3_7493;
@@ -3827,7 +3820,7 @@ u8 CynderBossGoal_Leap::Update() {
     ActivateIfInactive();
     temp_r3_7448 = this->unkC;
     var_r30_7449 = 0;
-    if (((u8) temp_r3_7448->unk110.unk7A8 == 2) || (temp_r3_7448->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) temp_r3_7448->unk8B8 == 2) || (temp_r3_7448->unk8B0.Get() != NULL)) {
         var_r30_7449 = 1;
     }
     if (var_r30_7449 != 0) {
@@ -3835,16 +3828,16 @@ u8 CynderBossGoal_Leap::Update() {
         temp_r4_7466 = this->unkC;
         M2C_FIELD(temp_r4_7466, f64 *, 0xE0) = arg_spA0;
         M2C_FIELD(temp_r4_7466, f64 *, 0xE8) = arg_spA8;
-        temp_r4_7466->unk110.unk5A5 |= 0x40;
+        temp_r4_7466->unk6B5 |= 0x40;
     }
-    if (this->unkC->unk110.unk520->CheckEvent(6) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(6) != 0) {
         temp_r3_7482 = this->unk20;
         this->unk20 = (temp_r3_7482 & ~0x80) | ((CLZ((temp_r3_7482 >> 7U) & 1) << 2) & 0x80);
-        this->unkC->unk110.unk57C = 3.1415927f;
+        this->unkC->unk684 = 3.1415927f;
         if (!(((u8) this->unk20 >> 7U) & 1)) {
             temp_r3_7493 = this->unkC;
             var_r30_7494 = 0;
-            if (((u8) temp_r3_7493->unk110.unk7A8 == 2) || (temp_r3_7493->unk110.unk7A0.Get() != NULL)) {
+            if (((u8) temp_r3_7493->unk8B8 == 2) || (temp_r3_7493->unk8B0.Get() != NULL)) {
                 var_r30_7494 = 1;
             }
             if (var_r30_7494 != 0) {
@@ -3852,7 +3845,7 @@ u8 CynderBossGoal_Leap::Update() {
                 temp_r4_7511 = this->unkC;
                 M2C_FIELD(temp_r4_7511, f64 *, 0xE0) = arg_sp90;
                 M2C_FIELD(temp_r4_7511, f64 *, 0xE8) = arg_sp98;
-                temp_r4_7511->unk110.unk5A5 |= 0x40;
+                temp_r4_7511->unk6B5 |= 0x40;
             }
         }
     }
@@ -3924,7 +3917,7 @@ void CynderBossGoal_Leap::Activate() {
     this->unkC->SetAnim((AnimSequenceType) 9, var_r5_7665, 0, 0.15f, 4U, 0U);
     temp_r3_7677 = this->unkC;
     var_r31_7678 = 0;
-    if (((u8) temp_r3_7677->unk110.unk7A8 == 2) || (temp_r3_7677->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) temp_r3_7677->unk8B8 == 2) || (temp_r3_7677->unk8B0.Get() != NULL)) {
         var_r31_7678 = 1;
     }
     if (var_r31_7678 != 0) {
@@ -3956,7 +3949,7 @@ u8 CynderBossGoal_AttackPhase3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF1E'
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void CynderBossGoal_AttackPhase3::Activate() {
     Enemy *temp_r3_7776;
     Enemy *temp_r3_7813;
@@ -3970,22 +3963,22 @@ void CynderBossGoal_AttackPhase3::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     temp_r3_7776 = this->unkC;
-    if ((u8) temp_r3_7776->unkF1E == 0) {
+    if ((u8) M2C_FIELD(temp_r3_7776, u8 *, 0xF1E) == 0) {
         temp_r3_7776->SetInvulnerableToBreathAttacks(0U, 1U);
         this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     }
     temp_r4_7788 = this->unkC;
-    if ((u8) temp_r4_7788->unkF1B != 0) {
+    if ((u8) M2C_FIELD(temp_r4_7788, u8 *, 0xF1B) != 0) {
         gb.unk35D = 1;
-        if ((u8) temp_r4_7788->unkF1C != 0) {
-            temp_r4_7788->unkED0.Send((MKProp *) temp_r4_7788);
+        if ((u8) M2C_FIELD(temp_r4_7788, u8 *, 0xF1C) != 0) {
+            ((EventMessage *) (temp_r4_7788 + 0xED0))->Send((MKProp *) temp_r4_7788);
             M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
             temp_r3_7813 = this->unkC;
-            temp_f6_7817 = temp_r3_7813->unkEA8;
+            temp_f6_7817 = M2C_FIELD(temp_r3_7813, f32 *, 0xEA8);
             arg_sp50 = temp_f6_7817;
-            temp_f1_7823 = temp_r3_7813->unkEAC;
+            temp_f1_7823 = M2C_FIELD(temp_r3_7813, f32 *, 0xEAC);
             arg_sp54 = temp_f1_7823;
-            temp_f5_7829 = temp_r3_7813->unkEB0;
+            temp_f5_7829 = M2C_FIELD(temp_r3_7813, f32 *, 0xEB0);
             arg_sp18 = (up.unk0 * temp_f1_7823) - (up.unk4 * temp_f6_7817);
             arg_sp58 = temp_f5_7829;
             arg_sp28 = (f64) arg_sp18;
@@ -3997,30 +3990,30 @@ void CynderBossGoal_AttackPhase3::Activate() {
             arg_sp34 = arg_sp24;
             arg_sp38 = (f32) arg_sp28;
             arg_sp3C = 0.0f;
-            arg_sp60 = temp_r3_7813->unkE98;
-            arg_sp64 = temp_r3_7813->unkE9C;
-            temp_f1_7853 = temp_r3_7813->unkEA0;
+            arg_sp60 = M2C_FIELD(temp_r3_7813, f32 *, 0xE98);
+            arg_sp64 = M2C_FIELD(temp_r3_7813, f32 *, 0xE9C);
+            temp_f1_7853 = M2C_FIELD(temp_r3_7813, f32 *, 0xEA0);
             arg_sp68 = temp_f1_7853;
             arg_sp6C = 1.0f;
             temp_r3_7813->Teleport(&arg_sp30, &up, temp_f1_7853, arg_sp24, (f32) arg_sp20, 0.0f, temp_f5_7829, temp_f6_7817, up.unk8, up.unk4);
             temp_r5_7860 = this->unkC;
             M2C_FIELD(temp_r5_7860, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r5_7860, f64 *, 0xC0);
             M2C_FIELD(temp_r5_7860, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r5_7860, f64 *, 0xC8);
-            temp_r5_7860->unk110.unk5A5 |= 0x40;
+            temp_r5_7860->unk6B5 |= 0x40;
             this->unkC->StopMovement(1U);
             this->unkC->EnableFlyingRotation(0U);
         }
         gameData.unkB8.SetValue(0.0f, 1U);
-        this->unkC->unkF1B = 0;
+        M2C_FIELD(this->unkC, u8 *, 0xF1B) = 0U;
         temp_r3_7885 = this->unkC;
-        if ((u8) temp_r3_7885->unkF1C != 0) {
-            temp_r3_7885->unkF1C = 0;
+        if ((u8) M2C_FIELD(temp_r3_7885, u8 *, 0xF1C) != 0) {
+            M2C_FIELD(temp_r3_7885, u8 *, 0xF1C) = 0U;
             AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
         }
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
         return;
     }
-    if ((u8) temp_r4_7788->unkF1D != 0) {
+    if ((u8) M2C_FIELD(temp_r4_7788, u8 *, 0xF1D) != 0) {
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk30);
         return;
@@ -4214,23 +4207,21 @@ void CynderBossGoal_AttackPhase2::Reset() {
     this->unk20 = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9F1'
 void CynderBossGoal_AttackPhase2::Terminate() {
     Cynder *temp_r3_8275;
     Cynder *temp_r3_8279;
     Cynder *temp_r3_8283;
 
     temp_r3_8275 = this->unkC;
-    temp_r3_8275->unk110.unk9F1 &= ~0x80;
+    M2C_FIELD(temp_r3_8275, u8 *, 0xB01) = (u8) (M2C_FIELD(temp_r3_8275, u8 *, 0xB01) & ~0x80);
     temp_r3_8279 = this->unkC;
-    temp_r3_8279->unk110.unk5A5 |= 0x20;
+    temp_r3_8279->unk6B5 |= 0x20;
     temp_r3_8283 = this->unkC;
-    temp_r3_8283->unk110.unk5A5 &= ~0x10;
+    temp_r3_8283->unk6B5 &= ~0x10;
     this->unkC->EnableFlyingRotation(0U);
     this->unk8 = 1;
     RemoveAllSubgoals();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 CynderBossGoal_AttackPhase2::Update() {
@@ -4243,21 +4234,21 @@ u8 CynderBossGoal_AttackPhase2::Update() {
     this->unk8 = UpdateSubgoals();
     temp_r4_8313 = this->unkC;
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (temp_r4_8313->unk110.unk9B8 == 0.0f) {
-        temp_r4_8313->unk110.unk9F1 |= 0x80;
+    if (temp_r4_8313->unkAB0 == 0.0f) {
+        M2C_FIELD(temp_r4_8313, u8 *, 0xB01) = (u8) (M2C_FIELD(temp_r4_8313, u8 *, 0xB01) | 0x80);
     }
     if ((u8) this->unk8 != 0) {
         temp_r3_8326 = this->unkC;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_8326->unk110.unk9B8 == 0.0f) {
+        if (temp_r3_8326->unkAB0 == 0.0f) {
             var_r31_8333 = 0;
-            if (((u8) temp_r3_8326->unk110.unk7A8 == 2) || (temp_r3_8326->unk110.unk7A0.Get() != NULL)) {
+            if (((u8) M2C_FIELD(temp_r3_8326, u8 *, 0x8B8) == 2) || (temp_r3_8326->unk870.unk30.Get() != NULL)) {
                 var_r31_8333 = 1;
             }
             if (var_r31_8333 != 0) {
-                this->unkC->unk110.unk9D8 = 3;
+                this->unkC->unkAD0 = 4e-45f;
                 temp_r3_8349 = this->unkC;
-                temp_r3_8349->unk110.unk9F1 |= 0x80;
+                M2C_FIELD(temp_r3_8349, u8 *, 0xB01) = (u8) (M2C_FIELD(temp_r3_8349, u8 *, 0xB01) | 0x80);
             } else {
                 goto block_9;
             }
@@ -4275,9 +4266,9 @@ void CynderBossGoal_AttackPhase2::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (gb.unk30C != this->unkC->unkF14) {
+    if (gb.unk30C != M2C_BITWISE(f32, this->unkC->unkEFC.unk0)) {
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
-        this->unk24->SetParams((AITargetData *) &this->unkC->unk110.unk760, this->unk20, 0U);
+        this->unk24->SetParams((AITargetData *) &this->unkC->unk838.unk28, this->unk20, 0U);
         return;
     }
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
@@ -4414,7 +4405,7 @@ u8 CynderBossGoal_AttackPhase1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
+#if 0 // DRAFT: illegal token
 void CynderBossGoal_AttackPhase1::Activate() {
     this->unk8 = 0;
     RemoveAllSubgoals();
@@ -4514,7 +4505,7 @@ void CynderBossGoal_AttackPhase1::Init(Cynder *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: undefined identifier 'sp8'
 u8 CynderBossGoal_FlyAttack3::Update() {
     f64 sp20;
     f64 sp18;
@@ -4535,32 +4526,32 @@ u8 CynderBossGoal_FlyAttack3::Update() {
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     var_r30_8887 = 0;
-    temp_r4_8880->unk110.unk488 = sp8;
+    M2C_FIELD(temp_r4_8880, f64 *, 0x598) = sp8;
     sp10 = temp_r4_8880->unkC8 * (2000.0f * gUpdateTimeDelta);
     sp18 = sp8;
-    temp_r4_8880->unk110.unk490 = (f64) sp10;
+    M2C_FIELD(temp_r4_8880, f64 *, 0x5A0) = (f64) sp10;
     temp_r29_8896 = this->unkC;
     sp20 = (f64) sp10;
     if (temp_r29_8896->HasAnimFinished() != 0) {
-        temp_r4_8902 = temp_r29_8896->unk110.unk940;
-        if ((temp_r4_8902 != NULL) && ((u32) *temp_r4_8902 == (u32) temp_r29_8896->unk110.unk520->unk20)) {
+        temp_r4_8902 = temp_r29_8896->unkA50;
+        if ((temp_r4_8902 != NULL) && ((u32) *temp_r4_8902 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_8896, void **, 0x630), u32 *, 0x20))) {
             var_r30_8887 = 1;
         }
     }
     if (var_r30_8887 != 0) {
         temp_r3_8914 = this->unkC;
-        temp_r4_8917 = temp_r3_8914->unk110.unk940;
+        temp_r4_8917 = temp_r3_8914->unkA50;
         temp_r3_8914->SetAnim((AnimSequence *) temp_r4_8917, (AnimTransition *) (temp_r4_8917 + 0x20), 0.0f, 0U);
     } else {
         temp_r29_8922 = this->unkC;
-        if ((s32) temp_r29_8922->unk110.unk520->unk44 >= 1) {
-            temp_r4_8927 = temp_r29_8922->unk110.unk940;
+        if ((s32) M2C_FIELD(M2C_FIELD(temp_r29_8922, void **, 0x630), s32 *, 0x44) >= 1) {
+            temp_r4_8927 = temp_r29_8922->unkA50;
             temp_r29_8922->SetAnim((AnimSequence *) temp_r4_8927, (AnimTransition *) (temp_r4_8927 + 0x40), 0.0f, 0U);
         } else {
             var_r30_8936 = 0;
             if (temp_r29_8922->HasAnimFinished() != 0) {
-                temp_r4_8940 = temp_r29_8922->unk110.unk940;
-                if ((temp_r4_8940 != NULL) && ((u32) M2C_FIELD(temp_r4_8940, u32 *, 0x40) == (u32) temp_r29_8922->unk110.unk520->unk20)) {
+                temp_r4_8940 = temp_r29_8922->unkA50;
+                if ((temp_r4_8940 != NULL) && ((u32) M2C_FIELD(temp_r4_8940, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_8922, void **, 0x630), u32 *, 0x20))) {
                     var_r30_8936 = 1;
                 }
             }
@@ -4573,9 +4564,8 @@ u8 CynderBossGoal_FlyAttack3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: undefined identifier 'SetRunMovementSpeed'
 void CynderBossGoal_FlyAttack3::Activate() {
-    AnimSequence *temp_r5_9022;
     AttackSweepData *temp_r3_9038;
     Character *temp_r3_8977;
     Character *temp_r3_8981;
@@ -4584,12 +4574,13 @@ void CynderBossGoal_FlyAttack3::Activate() {
     Character *temp_r4_9026;
     Character *temp_r5_8985;
     Character *temp_r7_8994;
+    void *temp_r5_9022;
 
     this->unk8 = 0;
     temp_r3_8977 = this->unkC;
-    temp_r3_8977->unk110.unk5A5 &= ~0x20;
+    temp_r3_8977->unk6B5 &= ~0x20;
     temp_r3_8981 = this->unkC;
-    temp_r3_8981->unk110.unk5A5 |= 0x10;
+    temp_r3_8981->unk6B5 |= 0x10;
     temp_r5_8985 = this->unkC;
     M2C_FIELD(temp_r5_8985, s32 *, 0xCFC) = (s32) (M2C_FIELD(temp_r5_8985, s32 *, 0xCFC) + 1);
     this->unkC->SetRunMovementSpeed(1U);
@@ -4597,22 +4588,22 @@ void CynderBossGoal_FlyAttack3::Activate() {
     temp_r7_8994 = this->unkC;
     M2C_FIELD(temp_r7_8994, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r7_8994, f64 *, 0xC0);
     M2C_FIELD(temp_r7_8994, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r7_8994, f64 *, 0xC8);
-    temp_r7_8994->unk110.unk5A5 |= 0x40;
+    temp_r7_8994->unk6B5 |= 0x40;
     temp_r3_9008 = this->unkC;
     M2C_FIELD(temp_r3_9008, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
     M2C_FIELD(temp_r3_9008, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
-    temp_r3_9008->unk110.unk5A5 |= 0x40;
+    temp_r3_9008->unk6B5 |= 0x40;
     this->unkC->SelectAttack(0x10, 0x48);
     temp_r3_9016 = this->unkC;
-    temp_r5_9022 = *temp_r3_9016->unk110.unk910;
-    temp_r3_9016->SetAnim((AnimSequenceType) temp_r5_9022->unk6C, temp_r5_9022->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_9022 = *temp_r3_9016->unkA20;
+    temp_r3_9016->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_9022, s32 *, 0x6C), M2C_FIELD(temp_r5_9022, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_9026 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_9026->unk110.unk90C != 0U) {
-        temp_r4_9026->unk110.unk90C += 4;
+    if ((u32) *temp_r4_9026->unkA1C != 0U) {
+        temp_r4_9026->unkA1C += 4;
         goto loop_2;
     }
-    temp_r3_9038 = this->unkC->unk110.unk920;
+    temp_r3_9038 = this->unkC->unkA30;
     if (temp_r3_9038 != NULL) {
         temp_r3_9038->SetDefaults();
     }
@@ -4769,7 +4760,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: undefined identifier 'sp8'
 u8 CynderBossGoal_FlyAttack1::Update() {
     f64 sp20;
     f64 sp18;
@@ -4790,32 +4781,32 @@ u8 CynderBossGoal_FlyAttack1::Update() {
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
     var_r30_9382 = 0;
-    temp_r4_9375->unk110.unk488 = sp8;
+    M2C_FIELD(temp_r4_9375, f64 *, 0x598) = sp8;
     sp10 = temp_r4_9375->unkC8 * (2000.0f * gUpdateTimeDelta);
     sp18 = sp8;
-    temp_r4_9375->unk110.unk490 = (f64) sp10;
+    M2C_FIELD(temp_r4_9375, f64 *, 0x5A0) = (f64) sp10;
     temp_r29_9391 = this->unkC;
     sp20 = (f64) sp10;
     if (temp_r29_9391->HasAnimFinished() != 0) {
-        temp_r4_9397 = temp_r29_9391->unk110.unk940;
-        if ((temp_r4_9397 != NULL) && ((u32) *temp_r4_9397 == (u32) temp_r29_9391->unk110.unk520->unk20)) {
+        temp_r4_9397 = temp_r29_9391->unkA50;
+        if ((temp_r4_9397 != NULL) && ((u32) *temp_r4_9397 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_9391, void **, 0x630), u32 *, 0x20))) {
             var_r30_9382 = 1;
         }
     }
     if (var_r30_9382 != 0) {
         temp_r3_9409 = this->unkC;
-        temp_r4_9412 = temp_r3_9409->unk110.unk940;
+        temp_r4_9412 = temp_r3_9409->unkA50;
         temp_r3_9409->SetAnim((AnimSequence *) temp_r4_9412, (AnimTransition *) (temp_r4_9412 + 0x20), 0.0f, 0U);
     } else {
         temp_r29_9417 = this->unkC;
-        if ((s32) temp_r29_9417->unk110.unk520->unk44 >= 1) {
-            temp_r4_9422 = temp_r29_9417->unk110.unk940;
+        if ((s32) M2C_FIELD(M2C_FIELD(temp_r29_9417, void **, 0x630), s32 *, 0x44) >= 1) {
+            temp_r4_9422 = temp_r29_9417->unkA50;
             temp_r29_9417->SetAnim((AnimSequence *) temp_r4_9422, (AnimTransition *) (temp_r4_9422 + 0x40), 0.0f, 0U);
         } else {
             var_r30_9431 = 0;
             if (temp_r29_9417->HasAnimFinished() != 0) {
-                temp_r4_9435 = temp_r29_9417->unk110.unk940;
-                if ((temp_r4_9435 != NULL) && ((u32) M2C_FIELD(temp_r4_9435, u32 *, 0x40) == (u32) temp_r29_9417->unk110.unk520->unk20)) {
+                temp_r4_9435 = temp_r29_9417->unkA50;
+                if ((temp_r4_9435 != NULL) && ((u32) M2C_FIELD(temp_r4_9435, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_9417, void **, 0x630), u32 *, 0x20))) {
                     var_r30_9431 = 1;
                 }
             }
@@ -4828,9 +4819,8 @@ u8 CynderBossGoal_FlyAttack1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: undefined identifier 'SetRunMovementSpeed'
 void CynderBossGoal_FlyAttack1::Activate() {
-    AnimSequence *temp_r5_9517;
     AttackSweepData *temp_r3_9533;
     Character *temp_r3_9472;
     Character *temp_r3_9476;
@@ -4839,12 +4829,13 @@ void CynderBossGoal_FlyAttack1::Activate() {
     Character *temp_r4_9521;
     Character *temp_r5_9480;
     Character *temp_r7_9489;
+    void *temp_r5_9517;
 
     this->unk8 = 0;
     temp_r3_9472 = this->unkC;
-    temp_r3_9472->unk110.unk5A5 &= ~0x20;
+    temp_r3_9472->unk6B5 &= ~0x20;
     temp_r3_9476 = this->unkC;
-    temp_r3_9476->unk110.unk5A5 |= 0x10;
+    temp_r3_9476->unk6B5 |= 0x10;
     temp_r5_9480 = this->unkC;
     M2C_FIELD(temp_r5_9480, s32 *, 0xCFC) = (s32) (M2C_FIELD(temp_r5_9480, s32 *, 0xCFC) + 1);
     this->unkC->SetRunMovementSpeed(1U);
@@ -4852,29 +4843,29 @@ void CynderBossGoal_FlyAttack1::Activate() {
     temp_r7_9489 = this->unkC;
     M2C_FIELD(temp_r7_9489, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r7_9489, f64 *, 0xC0);
     M2C_FIELD(temp_r7_9489, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r7_9489, f64 *, 0xC8);
-    temp_r7_9489->unk110.unk5A5 |= 0x40;
+    temp_r7_9489->unk6B5 |= 0x40;
     temp_r3_9503 = this->unkC;
     M2C_FIELD(temp_r3_9503, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
     M2C_FIELD(temp_r3_9503, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
-    temp_r3_9503->unk110.unk5A5 |= 0x40;
+    temp_r3_9503->unk6B5 |= 0x40;
     this->unkC->SelectAttack(0x10, 0x46);
     temp_r3_9511 = this->unkC;
-    temp_r5_9517 = *temp_r3_9511->unk110.unk910;
-    temp_r3_9511->SetAnim((AnimSequenceType) temp_r5_9517->unk6C, temp_r5_9517->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_9517 = *temp_r3_9511->unkA20;
+    temp_r3_9511->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_9517, s32 *, 0x6C), M2C_FIELD(temp_r5_9517, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_9521 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_9521->unk110.unk90C != 0U) {
-        temp_r4_9521->unk110.unk90C += 4;
+    if ((u32) *temp_r4_9521->unkA1C != 0U) {
+        temp_r4_9521->unkA1C += 4;
         goto loop_2;
     }
-    temp_r3_9533 = this->unkC->unk110.unk920;
+    temp_r3_9533 = this->unkC->unkA30;
     if (temp_r3_9533 != NULL) {
         temp_r3_9533->SetDefaults();
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 CynderBossGoal_GlideToAttack::Update() {
     f64 sp48;
     f32 sp38;
@@ -4896,14 +4887,14 @@ u8 CynderBossGoal_GlideToAttack::Update() {
 
     ActivateIfInactive();
     temp_r4_9558 = this->unkC;
-    temp_r4_9558->unk110.unk7B0.Update(temp_r4_9558->unk110.unk478);
+    temp_r4_9558->unk8C0.Update(*((MKVector3 *) &temp_r4_9558->unk588));
     sp48.GetDir();
     temp_r4_9566 = this->unkC;
     M2C_FIELD(temp_r4_9566, f64 *, 0xE0) = sp48;
     M2C_FIELD(temp_r4_9566, f64 *, 0xE8) = sp50;
-    temp_r4_9566->unk110.unk5A5 &= ~0x40;
+    temp_r4_9566->unk6B5 &= ~0x40;
     var_f30_9578 = 2000.0f * gUpdateTimeDelta;
-    temp_f1_9580 = this->unkC->unk110.unk7B0.GetDist();
+    temp_f1_9580 = this->unkC->unk8C0.GetDist();
     if (temp_f1_9580 < var_f30_9578) {
         var_f30_9578 = temp_f1_9580;
     }
@@ -4914,50 +4905,50 @@ u8 CynderBossGoal_GlideToAttack::Update() {
     if ((sp38 == M2C_FIELD(temp_r30_9585, f32 *, 0xD38)) && (sp3C == M2C_FIELD(temp_r30_9585, f32 *, 0xD3C)) && (sp40 == M2C_FIELD(temp_r30_9585, f32 *, 0xD40))) {
         var_r0_9591 = 1;
     }
-    if ((var_r0_9591 != 0) && ((this->unkC->unk110.unk7B0.GetDist() - var_f30_9578) < 5.0f)) {
+    if ((var_r0_9591 != 0) && ((this->unkC->unk8C0.GetDist() - var_f30_9578) < 5.0f)) {
         temp_r4_9614 = this->unkC;
-        temp_r4_9614->unk110.unk7B0.Set(*(temp_r4_9614 + 0xD48), 1U);
+        temp_r4_9614->unk8C0.Set(*(temp_r4_9614 + 0xD48), 1U);
         temp_r4_9619 = this->unkC;
-        temp_r4_9619->unk110.unk7B0.Update(temp_r4_9619->unk110.unk478);
+        temp_r4_9619->unk8C0.Update(*((MKVector3 *) &temp_r4_9619->unk588));
         sp28.GetDir();
         temp_r4_9627 = this->unkC;
         M2C_FIELD(temp_r4_9627, f64 *, 0xE0) = sp28;
         M2C_FIELD(temp_r4_9627, f64 *, 0xE8) = sp30;
-        temp_r4_9627->unk110.unk5A5 &= ~0x40;
+        temp_r4_9627->unk6B5 &= ~0x40;
         var_f31_9586 = 2000.0f * gUpdateTimeDelta;
     }
     temp_r4_9640 = this->unkC;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    temp_r4_9640->unk110.unk488 = sp8;
+    M2C_FIELD(temp_r4_9640, f64 *, 0x598) = sp8;
     sp10 = temp_r4_9640->unkC8 * var_f31_9586;
     sp18 = sp8;
-    temp_r4_9640->unk110.unk490 = (f64) sp10;
+    M2C_FIELD(temp_r4_9640, f64 *, 0x5A0) = (f64) sp10;
     sp20 = (f64) sp10;
-    if (this->unkC->unk110.unk520->unk2C & 2) {
+    if (M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), s32 *, 0x2C) & 2) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_GlideToAttack::Activate() {
     Character *temp_r3_9686;
     Character *temp_r3_9690;
 
     this->unk8 = 0;
     temp_r3_9686 = this->unkC;
-    temp_r3_9686->unk110.unk5A5 &= ~0x20;
+    temp_r3_9686->unk6B5 &= ~0x20;
     temp_r3_9690 = this->unkC;
-    temp_r3_9690->unk110.unk5A5 |= 0x10;
+    temp_r3_9690->unk6B5 |= 0x10;
     this->unkC->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unk110.unk57C = 0.3926991f;
+    this->unkC->unk684 = 0.3926991f;
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE1, 1, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 CynderBossGoal_GlideToLand::Update() {
     Character *temp_r3_9780;
     Character *temp_r4_9730;
@@ -4974,14 +4965,14 @@ u8 CynderBossGoal_GlideToLand::Update() {
     f32 var_f30_9755;
     ActivateIfInactive();
     temp_r4_9730 = this->unkC;
-    temp_r4_9730->unk110.unk7B0.Update(temp_r4_9730->unk110.unk478);
+    temp_r4_9730->unk8C0.Update(*((MKVector3 *) &temp_r4_9730->unk588));
     arg_sp50.GetDir();
     temp_r4_9738 = this->unkC;
     M2C_FIELD(temp_r4_9738, f64 *, 0xE0) = arg_sp50;
     M2C_FIELD(temp_r4_9738, f64 *, 0xE8) = arg_sp58;
-    temp_r4_9738->unk110.unk5A5 &= ~0x40;
+    temp_r4_9738->unk6B5 &= ~0x40;
     temp_f31_9750 = 3500.0f * gUpdateTimeDelta;
-    temp_f1_9752 = this->unkC->unk110.unk7B0.GetDist();
+    temp_f1_9752 = this->unkC->unk8C0.GetDist();
     if (temp_f1_9752 < temp_f31_9750) {
         var_f30_9755 = temp_f1_9752;
     } else {
@@ -4990,16 +4981,16 @@ u8 CynderBossGoal_GlideToLand::Update() {
     temp_r4_9760 = this->unkC;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-    temp_r4_9760->unk110.unk488 = arg_sp20;
+    M2C_FIELD(temp_r4_9760, f64 *, 0x598) = arg_sp20;
     arg_sp28 = temp_r4_9760->unkC8 * var_f30_9755;
     arg_sp40 = arg_sp20;
-    temp_r4_9760->unk110.unk490 = (f64) arg_sp28;
+    M2C_FIELD(temp_r4_9760, f64 *, 0x5A0) = (f64) arg_sp28;
     arg_sp48 = (f64) arg_sp28;
-    if ((this->unkC->unk110.unk7B0.GetDist() - var_f30_9755) < var_f30_9755) {
+    if ((this->unkC->unk8C0.GetDist() - var_f30_9755) < var_f30_9755) {
         temp_r3_9780 = this->unkC;
-        arg_sp90 = temp_r3_9780->unk110.unk478.unk0;
-        arg_sp94 = temp_r3_9780->unk110.unk478.unk4;
-        arg_sp98 = temp_r3_9780->unk110.unk478.unk8;
+        arg_sp90 = M2C_FIELD(temp_r3_9780, f32 *, 0x588);
+        arg_sp94 = temp_r3_9780->unk588.unk0;
+        arg_sp98 = temp_r3_9780->unk588.unk4;
         arg_sp9C = 1.0f;
         temp_f8_9791 = temp_r3_9780->unkC0;
         arg_sp80 = temp_f8_9791;
@@ -5031,24 +5022,24 @@ u8 CynderBossGoal_GlideToLand::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_GlideToLand::Activate() {
     Character *temp_r3_9857;
     Character *temp_r3_9861;
 
     this->unk8 = 0;
     temp_r3_9857 = this->unkC;
-    temp_r3_9857->unk110.unk5A5 &= ~0x20;
+    temp_r3_9857->unk6B5 &= ~0x20;
     temp_r3_9861 = this->unkC;
-    temp_r3_9861->unk110.unk5A5 |= 0x10;
+    temp_r3_9861->unk6B5 |= 0x10;
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->EnableFlyingRotation(0U);
-    this->unkC->unk110.unk57C = 0.785398f;
+    this->unkC->unk684 = 0.785398f;
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE1, 1, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 CynderBossGoal_Dive::Update() {
     AITargetData sp58;
     f64 sp50;
@@ -5089,34 +5080,34 @@ u8 CynderBossGoal_Dive::Update() {
 
     ActivateIfInactive();
     temp_r4_9903 = this->unkC;
-    temp_r4_9903->unk110.unk7B0.Update(temp_r4_9903->unk110.unk478);
+    temp_r4_9903->unk8C0.Update(*((MKVector3 *) &temp_r4_9903->unk588));
     sp58.GetDir();
     temp_r3_9911 = this->unkC;
     var_r30_9912 = 0;
     M2C_FIELD(temp_r3_9911, f64 *, 0xE0) = M2C_BITWISE(f64, sp58);
     M2C_FIELD(temp_r3_9911, f64 *, 0xE8) = (f64) sp58.unk8;
-    temp_r3_9911->unk110.unk5A5 &= ~0x40;
+    temp_r3_9911->unk6B5 &= ~0x40;
     temp_r29_9920 = this->unkC;
     if (temp_r29_9920->HasAnimFinished() != 0) {
-        temp_r4_9925 = temp_r29_9920->unk110.unk940;
-        if ((temp_r4_9925 != NULL) && ((u32) *temp_r4_9925 == (u32) temp_r29_9920->unk110.unk520->unk20)) {
+        temp_r4_9925 = temp_r29_9920->unkA50;
+        if ((temp_r4_9925 != NULL) && ((u32) *temp_r4_9925 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_9920, void **, 0x630), u32 *, 0x20))) {
             var_r30_9912 = 1;
         }
     }
     if (var_r30_9912 != 0) {
         temp_r3_9937 = this->unkC;
-        temp_r4_9940 = temp_r3_9937->unk110.unk940;
+        temp_r4_9940 = temp_r3_9937->unkA50;
         temp_r3_9937->SetAnim((AnimSequence *) temp_r4_9940, (AnimTransition *) (temp_r4_9940 + 0x20), 0.0f, 0U);
     } else {
         temp_r6_9945 = this->unkC;
         var_r5_9946 = 0;
-        temp_r4_9947 = temp_r6_9945->unk110.unk940;
-        if ((temp_r4_9947 != NULL) && ((u32) M2C_FIELD(temp_r4_9947, u32 *, 0x20) == (u32) temp_r6_9945->unk110.unk520->unk20)) {
+        temp_r4_9947 = temp_r6_9945->unkA50;
+        if ((temp_r4_9947 != NULL) && ((u32) M2C_FIELD(temp_r4_9947, u32 *, 0x20) == (u32) M2C_FIELD(M2C_FIELD(temp_r6_9945, void **, 0x630), u32 *, 0x20))) {
             var_r5_9946 = 1;
         }
         if (var_r5_9946 != 0) {
             temp_f31_9962 = 4000.0f * gUpdateTimeDelta;
-            temp_f1_9963 = temp_r6_9945->unk110.unk7B0.GetDist();
+            temp_f1_9963 = temp_r6_9945->unk8C0.GetDist();
             if (temp_f1_9963 < temp_f31_9962) {
                 var_f30_9966 = temp_f1_9963;
             } else {
@@ -5125,55 +5116,55 @@ u8 CynderBossGoal_Dive::Update() {
             temp_r4_9971 = this->unkC;
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
-            temp_r4_9971->unk110.unk488 = sp18;
+            M2C_FIELD(temp_r4_9971, f64 *, 0x598) = sp18;
             sp20 = temp_r4_9971->unkC8 * var_f30_9966;
             sp48 = sp18;
-            temp_r4_9971->unk110.unk490 = (f64) sp20;
+            M2C_FIELD(temp_r4_9971, f64 *, 0x5A0) = (f64) sp20;
             sp50 = (f64) sp20;
-            if ((this->unkC->unk110.unk7B0.GetDist() - var_f30_9966) < 5.0f) {
+            if ((this->unkC->unk8C0.GetDist() - var_f30_9966) < 5.0f) {
                 temp_r4_9992 = this->unkC;
-                temp_r4_9992->unk110.unk7B0.Set(*(temp_r4_9992 + 0xD38), 1U);
+                temp_r4_9992->unk8C0.Set(*(temp_r4_9992 + 0xD38), 1U);
                 this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE2, 2, 0.15f, 0U, 0U);
             }
         } else {
-            temp_r4_10007 = temp_r6_9945->unk110.unk940;
+            temp_r4_10007 = temp_r6_9945->unkA50;
             var_r5_10008 = 0;
-            if ((temp_r4_10007 != NULL) && ((u32) M2C_FIELD(temp_r4_10007, u32 *, 0x40) == (u32) temp_r6_9945->unk110.unk520->unk20)) {
+            if ((temp_r4_10007 != NULL) && ((u32) M2C_FIELD(temp_r4_10007, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r6_9945, void **, 0x630), u32 *, 0x20))) {
                 var_r5_10008 = 1;
             }
             if (var_r5_10008 != 0) {
-                temp_f29_10028 = (500.0f * (1.0f - temp_r6_9945->unk110.unk520->unk24)) + 3500.0f;
+                temp_f29_10028 = (500.0f * (1.0f - M2C_FIELD(M2C_FIELD(temp_r6_9945, void **, 0x630), f32 *, 0x24))) + 3500.0f;
                 var_f30_10029 = temp_f29_10028 * gUpdateTimeDelta;
-                temp_f1_10030 = temp_r6_9945->unk110.unk7B0.GetDist();
+                temp_f1_10030 = temp_r6_9945->unk8C0.GetDist();
                 if (temp_f1_10030 < var_f30_10029) {
                     var_f30_10029 = temp_f1_10030;
                 }
                 var_f31_10036 = var_f30_10029;
-                if ((this->unkC->unk110.unk7B0.GetDist() - var_f30_10029) < 5.0f) {
+                if ((this->unkC->unk8C0.GetDist() - var_f30_10029) < 5.0f) {
                     temp_r4_10043 = this->unkC;
-                    temp_r4_10043->unk110.unk7B0.Set(*(temp_r4_10043 + 0xD48), 1U);
+                    temp_r4_10043->unk8C0.Set(*(temp_r4_10043 + 0xD48), 1U);
                     temp_r4_10048 = this->unkC;
-                    temp_r4_10048->unk110.unk7B0.Update(temp_r4_10048->unk110.unk478);
+                    temp_r4_10048->unk8C0.Update(*((MKVector3 *) &temp_r4_10048->unk588));
                     sp38.GetDir();
                     temp_r4_10056 = this->unkC;
                     M2C_FIELD(temp_r4_10056, f64 *, 0xE0) = sp38;
                     M2C_FIELD(temp_r4_10056, f64 *, 0xE8) = sp40;
-                    temp_r4_10056->unk110.unk5A5 &= ~0x40;
+                    temp_r4_10056->unk6B5 &= ~0x40;
                     var_f31_10036 = temp_f29_10028 * gUpdateTimeDelta;
                 }
                 temp_r4_10068 = this->unkC;
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
                 var_r30_10073 = 0;
-                temp_r4_10068->unk110.unk488 = sp8;
+                M2C_FIELD(temp_r4_10068, f64 *, 0x598) = sp8;
                 sp10 = temp_r4_10068->unkC8 * var_f31_10036;
                 sp28 = sp8;
-                temp_r4_10068->unk110.unk490 = (f64) sp10;
+                M2C_FIELD(temp_r4_10068, f64 *, 0x5A0) = (f64) sp10;
                 temp_r29_10082 = this->unkC;
                 sp30 = (f64) sp10;
                 if (temp_r29_10082->HasAnimFinished() != 0) {
-                    temp_r4_10088 = temp_r29_10082->unk110.unk940;
-                    if ((temp_r4_10088 != NULL) && ((u32) M2C_FIELD(temp_r4_10088, u32 *, 0x40) == (u32) temp_r29_10082->unk110.unk520->unk20)) {
+                    temp_r4_10088 = temp_r29_10082->unkA50;
+                    if ((temp_r4_10088 != NULL) && ((u32) M2C_FIELD(temp_r4_10088, u32 *, 0x40) == (u32) M2C_FIELD(M2C_FIELD(temp_r29_10082, void **, 0x630), u32 *, 0x20))) {
                         var_r30_10073 = 1;
                     }
                 }
@@ -5187,24 +5178,24 @@ u8 CynderBossGoal_Dive::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_Dive::Activate() {
     Character *temp_r3_10130;
     Character *temp_r3_10134;
 
     this->unk8 = 0;
     temp_r3_10130 = this->unkC;
-    temp_r3_10130->unk110.unk5A5 &= ~0x20;
+    temp_r3_10130->unk6B5 &= ~0x20;
     temp_r3_10134 = this->unkC;
-    temp_r3_10134->unk110.unk5A5 |= 0x10;
-    this->unkC->unk110.unk57C = 0.3926991f;
+    temp_r3_10134->unk6B5 |= 0x10;
+    this->unkC->unk684 = 0.3926991f;
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->EnableFlyingRotation(0U);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xE0, 0, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'Update'
 u8 CynderBossGoal_FlyToDive::Update() {
     AITargetData sp60;
     M2C_UNK sp50;
@@ -5229,98 +5220,98 @@ u8 CynderBossGoal_FlyToDive::Update() {
     Cynder *temp_r4_10300;
     Cynder *temp_r4_10361;
     Cynder *temp_r5_10183;
+    EnemyDescriptor *temp_r4_10310;
+    EnemyDescriptor *temp_r4_10316;
+    EnemyDescriptor *temp_r4_10333;
+    EnemyDescriptor *temp_r4_10348;
     f32 temp_f1_10202;
     f32 temp_f29_10211;
     f32 temp_f2_10232;
     f32 temp_f31_10266;
     f32 var_f30_10213;
-    u32 *temp_r4_10310;
-    u32 *temp_r4_10316;
-    u32 *temp_r4_10333;
-    u32 *temp_r4_10348;
     u8 var_r30_10329;
     u8 var_r5_10315;
 
     ActivateIfInactive();
     temp_r4_10175 = this->unkC;
-    temp_r4_10175->unk110.unk7B0.Update(temp_r4_10175->unk110.unk478);
+    temp_r4_10175->unk870.unk40.Update(*((MKVector3 *) &temp_r4_10175->unk588));
     sp60.GetDir();
     temp_r5_10183 = this->unkC;
     M2C_FIELD(temp_r5_10183, f64 *, 0xE0) = M2C_BITWISE(f64, sp60);
     M2C_FIELD(temp_r5_10183, f64 *, 0xE8) = (f64) sp60.unk8;
-    temp_r5_10183->unk110.unk5A5 |= 0x40;
+    temp_r5_10183->unk6B5 |= 0x40;
     temp_r3_10196 = this->unkC;
     M2C_FIELD(temp_r3_10196, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
     M2C_FIELD(temp_r3_10196, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
-    temp_r3_10196->unk110.unk5A5 |= 0x40;
+    temp_r3_10196->unk6B5 |= 0x40;
     temp_f1_10202 = this->unk10;
     if (temp_f1_10202 > 0.0f) {
         temp_r3_10206 = this->unkC;
         temp_f29_10211 = 3000.0f * (temp_f1_10202 / 3.0f);
-        if (((u8) temp_r3_10206->unk110.unk9F8 >> 7U) & 1) {
+        if (((u8) M2C_FIELD(temp_r3_10206, u8 *, 0xB08) >> 7U) & 1) {
             var_f30_10213 = -1.0f;
         } else {
             var_f30_10213 = 1.0f;
         }
-        if (temp_r3_10206->unk110.unk7B0.GetDist() < temp_f29_10211) {
+        if (temp_r3_10206->unk870.unk40.GetDist() < temp_f29_10211) {
             temp_r3_10222 = this->unkC;
-            temp_r3_10222->unkF98 += gUpdateTimeDelta * (temp_f29_10211 * (var_f30_10213 * temp_r3_10222->unkF94));
+            M2C_FIELD(temp_r3_10222, f32 *, 0xF98) = (f32) ((gUpdateTimeDelta * (temp_f29_10211 * (var_f30_10213 * M2C_BITWISE(f32, temp_r3_10222->unkF7C)))) + M2C_FIELD(temp_r3_10222, f32 *, 0xF98));
             temp_r3_10231 = this->unkC;
-            temp_f2_10232 = temp_r3_10231->unkF98;
+            temp_f2_10232 = M2C_FIELD(temp_r3_10231, f32 *, 0xF98);
             if (temp_f2_10232 > 1.0f) {
-                temp_r3_10231->unkF98 = temp_f2_10232 - 1.0f;
+                M2C_FIELD(temp_r3_10231, f32 *, 0xF98) = (f32) (temp_f2_10232 - 1.0f);
             } else if (temp_f2_10232 < 0.0f) {
-                temp_r3_10231->unkF98 = temp_f2_10232 + 1.0f;
+                M2C_FIELD(temp_r3_10231, f32 *, 0xF98) = (f32) (temp_f2_10232 + 1.0f);
             }
             temp_r4_10245 = this->unkC;
             sp8 = 0.0f;
-            sp50.GetMeasure(temp_r4_10245->unkF98, (Matrix *) &temp_r4_10245->unkCC0, KDSpline_PositionMixer);
-            this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp50), 1U);
+            sp50.GetMeasure(M2C_FIELD(temp_r4_10245, f32 *, 0xF98), (Matrix *) &temp_r4_10245->unkCC0, KDSpline_PositionMixer);
+            this->unkC->unk870.unk40.Set(*((MKVector3 *) &sp50), 1U);
             temp_r4_10259 = this->unkC;
-            temp_r4_10259->unk110.unk7B0.Update(temp_r4_10259->unk110.unk478);
+            temp_r4_10259->unk870.unk40.Update(*((MKVector3 *) &temp_r4_10259->unk588));
         }
         temp_f31_10266 = gUpdateTimeDelta;
         sp30.operator*(temp_f29_10211);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
         temp_r3_10277 = this->unkC;
-        temp_r3_10277->unk110.unk488 = sp10;
+        M2C_FIELD(temp_r3_10277, f64 *, 0x598) = sp10;
         sp18 = sp30.unk8 * temp_f31_10266;
         sp40 = sp10;
-        temp_r3_10277->unk110.unk490 = (f64) sp18;
+        M2C_FIELD(temp_r3_10277, f64 *, 0x5A0) = (f64) sp18;
         sp48 = (f64) sp18;
         this->unk10 -= gUpdateTimeDelta;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
         if (this->unk10 == 0.0f) {
             this->unkC->CalculateDiveTrajectory();
             temp_r4_10295 = this->unkC;
-            temp_r4_10295->unk110.unk7B0.Set(*((MKVector3 *) &temp_r4_10295->unkD28), 0U);
+            temp_r4_10295->unk870.unk40.Set(*((MKVector3 *) &temp_r4_10295->unkD10), 0U);
             temp_r4_10300 = this->unkC;
-            temp_r4_10300->unk110.unk7B0.Update(temp_r4_10300->unk110.unk478);
-            this->unkC->unk110.unk57C = 0.785398f;
+            temp_r4_10300->unk870.unk40.Update(*((MKVector3 *) &temp_r4_10300->unk588));
+            this->unkC->unk684 = 0.785398f;
             temp_r3_10309 = this->unkC;
-            temp_r4_10310 = temp_r3_10309->unk110.unk940;
-            temp_r3_10309->SetAnim((AnimSequence *) temp_r4_10310, (AnimTransition *) (temp_r4_10310 + 0x20), 0.0f, 0U);
+            temp_r4_10310 = temp_r3_10309->unkA38;
+            temp_r3_10309->SetAnim((AnimSequence *) temp_r4_10310, (AnimTransition *) &temp_r4_10310->unk20, 0.0f, 0U);
         }
     }
     temp_r29_10314 = this->unkC;
     var_r5_10315 = 0;
-    temp_r4_10316 = temp_r29_10314->unk110.unk940;
-    if ((temp_r4_10316 != NULL) && ((u32) *temp_r4_10316 == (u32) temp_r29_10314->unk110.unk520->unk20)) {
+    temp_r4_10316 = temp_r29_10314->unkA38;
+    if ((temp_r4_10316 != NULL) && ((s8 *) temp_r4_10316->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_10314, void **, 0x630), u32 *, 0x20))) {
         var_r5_10315 = 1;
     }
     if (var_r5_10315 != 0) {
         var_r30_10329 = 0;
         if (temp_r29_10314->HasAnimFinished() != 0) {
-            temp_r4_10333 = temp_r29_10314->unk110.unk940;
-            if ((temp_r4_10333 != NULL) && ((u32) *temp_r4_10333 == (u32) temp_r29_10314->unk110.unk520->unk20)) {
+            temp_r4_10333 = temp_r29_10314->unkA38;
+            if ((temp_r4_10333 != NULL) && ((s8 *) temp_r4_10333->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_10314, void **, 0x630), u32 *, 0x20))) {
                 var_r30_10329 = 1;
             }
         }
         if (var_r30_10329 != 0) {
             temp_r3_10345 = this->unkC;
-            temp_r4_10348 = temp_r3_10345->unk110.unk940;
-            temp_r3_10345->SetAnim((AnimSequence *) temp_r4_10348, (AnimTransition *) (temp_r4_10348 + 0x20), 0.0f, 0U);
+            temp_r4_10348 = temp_r3_10345->unkA38;
+            temp_r3_10345->SetAnim((AnimSequence *) temp_r4_10348, (AnimTransition *) &temp_r4_10348->unk20, 0.0f, 0U);
         }
     } else {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
@@ -5329,7 +5320,7 @@ u8 CynderBossGoal_FlyToDive::Update() {
             temp_r4_10361 = this->unkC;
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             if (((temp_r4_10361->unkC8 * sp28) + ((temp_r4_10361->unkC0 * sp20) + (temp_r4_10361->unkC4 * sp24))) == 0.999f) {
-                temp_r4_10361->unk110.unk7B0.Set(*((MKVector3 *) &temp_r4_10361->unkD28), 1U);
+                temp_r4_10361->unk870.unk40.Set(*((MKVector3 *) &temp_r4_10361->unkD10), 1U);
                 this->unk8 = 2;
             }
         }
@@ -5338,16 +5329,16 @@ u8 CynderBossGoal_FlyToDive::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_FlyToDive::Activate() {
     Cynder *temp_r3_10408;
     Cynder *temp_r3_10412;
 
     this->unk8 = 0;
     temp_r3_10408 = this->unkC;
-    temp_r3_10408->unk110.unk5A5 &= ~0x20;
+    temp_r3_10408->unk6B5 &= ~0x20;
     temp_r3_10412 = this->unkC;
-    temp_r3_10412->unk110.unk5A5 |= 0x10;
+    temp_r3_10412->unk6B5 |= 0x10;
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDF, 0, 0.15f, 0U, 0U);
     this->unkC->EnableFlyingRotation(0U);
@@ -5355,7 +5346,7 @@ void CynderBossGoal_FlyToDive::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 CynderBossGoal_FlyAlongWaypoints::Update() {
     f64 sp30;
     f64 sp28;
@@ -5369,16 +5360,16 @@ u8 CynderBossGoal_FlyAlongWaypoints::Update() {
 
     ActivateIfInactive();
     temp_r4_10449 = this->unkC;
-    temp_r4_10449->unk110.unk7B0.Update(temp_r4_10449->unk110.unk478);
-    if (this->unkC->unk110.unk7B0.GetDist() < 1000.0f) {
+    temp_r4_10449->unk8C0.Update(*((MKVector3 *) &temp_r4_10449->unk588));
+    if (this->unkC->unk8C0.GetDist() < 1000.0f) {
         temp_r3_10460 = this->unk18 + 1;
         this->unk18 = temp_r3_10460;
         if (temp_r3_10460 >= (s32) this->unk14) {
             this->unk8 = 2;
         } else {
-            this->unkC->unk110.unk7B0.Set(*(this->unk10 + (this->unk18 * 0x10)), 1U);
+            this->unkC->unk8C0.Set(*(this->unk10 + (this->unk18 * 0x10)), 1U);
             temp_r4_10477 = this->unkC;
-            temp_r4_10477->unk110.unk7B0.Update(temp_r4_10477->unk110.unk478);
+            temp_r4_10477->unk8C0.Update(*((MKVector3 *) &temp_r4_10477->unk588));
         }
     }
     temp_f31_10484 = gUpdateTimeDelta;
@@ -5388,14 +5379,14 @@ u8 CynderBossGoal_FlyAlongWaypoints::Update() {
     temp_r3_10495 = this->unkC;
     sp28 = sp8;
     sp10 = sp18.unk8 * temp_f31_10484;
-    temp_r3_10495->unk110.unk488 = sp8;
-    temp_r3_10495->unk110.unk490 = (f64) sp10;
+    M2C_FIELD(temp_r3_10495, f64 *, 0x598) = sp8;
+    M2C_FIELD(temp_r3_10495, f64 *, 0x5A0) = (f64) sp10;
     sp30 = (f64) sp10;
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_FlyAlongWaypoints::Activate() {
     Character *temp_r3_10524;
     Character *temp_r3_10528;
@@ -5403,37 +5394,37 @@ void CynderBossGoal_FlyAlongWaypoints::Activate() {
 
     this->unk8 = 0;
     temp_r3_10524 = this->unkC;
-    temp_r3_10524->unk110.unk5A5 &= ~0x20;
+    temp_r3_10524->unk6B5 &= ~0x20;
     temp_r3_10528 = this->unkC;
-    temp_r3_10528->unk110.unk5A5 |= 0x10;
+    temp_r3_10528->unk6B5 |= 0x10;
     this->unkC->SetMovementType((CharacterMoveType) 2);
     this->unk18 = 0;
-    this->unkC->unk110.unk7B0.Set(*(this->unk10 + (this->unk18 * 0x10)), 1U);
+    this->unkC->unk8C0.Set(*(this->unk10 + (this->unk18 * 0x10)), 1U);
     temp_r4_10544 = this->unkC;
-    temp_r4_10544->unk110.unk7B0.Update(temp_r4_10544->unk110.unk478);
+    temp_r4_10544->unk8C0.Update(*((MKVector3 *) &temp_r4_10544->unk588));
     this->unkC->EnableFlyingRotation(1U);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDE, 0, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCEC'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderBossGoal_FlyAlongSpline::PerformBreathAttack() {
-    AnimSequence *temp_r5_10592;
     Cynder *temp_r3_10586;
+    void *temp_r5_10592;
 
     this->unk24 |= 0x20;
-    this->unkC->unkCEC->unk1C8 = 200.0f;
+    M2C_FIELD(this->unkC->unkCD4, f32 *, 0x1C8) = 200.0f;
     this->unkC->SelectAttack(0x10, 0x47);
     temp_r3_10586 = this->unkC;
-    temp_r5_10592 = *temp_r3_10586->unk110.unk910;
-    temp_r3_10586->SetAnim((AnimSequenceType) temp_r5_10592->unk6C, temp_r5_10592->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_10592 = temp_r3_10586->unkA08->__vptr;
+    temp_r3_10586->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_10592, s32 *, 0x6C), M2C_FIELD(temp_r5_10592, s32 *, 0x68), 0, 0.15f, 0U, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCEC'
+#if 0 // DRAFT: pointer/array required
 void CynderBossGoal_FlyAlongSpline::Terminate() {
     if (((u8) this->unk24 >> 5U) & 1) {
-        this->unkC->unkCEC->End();
+        this->unkC->unkCD4->End();
     }
     this->unk24 &= ~0x20;
     this->unkC->unkCB0 = 1;
@@ -5441,9 +5432,9 @@ void CynderBossGoal_FlyAlongSpline::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'Update'
 u8 CynderBossGoal_FlyAlongSpline::Update() {
-    AnimSequence **temp_r29_10999;
+    CharacterFireFX *temp_r29_10999;
     Cynder *temp_r29_11065;
     Cynder *temp_r29_11091;
     Cynder *temp_r30_10996;
@@ -5454,6 +5445,10 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
     Cynder *temp_r4_10655;
     Cynder *temp_r4_10831;
     Cynder *temp_r4_10922;
+    EnemyDescriptor *temp_r4_11071;
+    EnemyDescriptor *temp_r4_11086;
+    EnemyDescriptor *temp_r4_11096;
+    EnemyDescriptor *temp_r4_11109;
     f32 temp_f1_10690;
     f32 temp_f27_10665;
     f32 temp_f29_10945;
@@ -5467,17 +5462,13 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
     f64 temp_f1_10760;
     s32 temp_r3_10779;
     s32 var_r0_10789;
-    u32 *temp_r4_11071;
-    u32 *temp_r4_11086;
-    u32 *temp_r4_11096;
-    u32 *temp_r4_11109;
     u8 var_r30_11066;
     u8 var_r30_11105;
     void *temp_r3_10678;
     void *temp_r3_10834;
     ActivateIfInactive();
     temp_r4_10655 = this->unkC;
-    temp_r4_10655->unk110.unk7B0.Update(temp_r4_10655->unk110.unk478);
+    temp_r4_10655->unk870.unk40.Update(*((MKVector3 *) &temp_r4_10655->unk588));
     temp_f27_10665 = 10.0f * (3000.0f * gUpdateTimeDelta);
     if (((u8) this->unk24 >> 7U) & 1) {
         arg_sp20 = 0.0f;
@@ -5562,8 +5553,8 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
     arg_sp78 = arg_sp38;
     arg_sp40 = (f32) arg_sp160 - (f32) arg_sp1F0;
     arg_sp80 = (f64) arg_sp40;
-    if ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1) || (temp_r4_10831->unk110.unk7B0.GetDist() < temp_f27_10665)) {
-        this->unk1C += 2.0f * (temp_f27_10665 * (this->unk20 * this->unkC->unkF94));
+    if ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1) || (temp_r4_10831->unk870.unk40.GetDist() < temp_f27_10665)) {
+        this->unk1C += 2.0f * (temp_f27_10665 * (this->unk20 * M2C_BITWISE(f32, this->unkC->unkF7C)));
         temp_f2_10884 = this->unk1C;
         if (temp_f2_10884 > 1.0f) {
             if (((u8) this->unk24 >> 6U) & 1) {
@@ -5580,12 +5571,12 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
         }
         arg_sp14 = 0.0f;
         arg_sp148.GetMeasure(this->unk1C, (Matrix *) this->unk10, KDSpline_PositionMixer);
-        this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &arg_sp148), 1U);
+        this->unkC->unk870.unk40.Set(*((MKVector3 *) &arg_sp148), 1U);
         temp_r4_10922 = this->unkC;
-        temp_r4_10922->unk110.unk7B0.Update(temp_r4_10922->unk110.unk478);
+        temp_r4_10922->unk870.unk40.Update(*((MKVector3 *) &temp_r4_10922->unk588));
         if (((u8) this->unk24 >> 6U) & 1) {
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if ((this->unk1C == 1.0f) && (this->unkC->unk110.unk7B0.GetDist() < 500.0f)) {
+            if ((this->unk1C == 1.0f) && (this->unkC->unk870.unk40.GetDist() < 500.0f)) {
                 this->unk8 = 2;
             }
         }
@@ -5597,12 +5588,12 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
     temp_r3_10956 = this->unkC;
     arg_sp138 = arg_sp28;
     arg_sp30 = arg_sp130 * temp_f29_10945;
-    temp_r3_10956->unk110.unk488 = arg_sp28;
-    temp_r3_10956->unk110.unk490 = (f64) arg_sp30;
+    M2C_FIELD(temp_r3_10956, f64 *, 0x598) = arg_sp28;
+    M2C_FIELD(temp_r3_10956, f64 *, 0x5A0) = (f64) arg_sp30;
     arg_sp140 = (f64) arg_sp30;
     if (((u8) this->unk24 >> 5U) & 1) {
         temp_r3_10966 = this->unkC;
-        MKModel_GetRefPointMatrix(temp_r3_10966->unk4, M2C_FIELD(temp_r3_10966->unk110.unk910, s32 *, 0x84), (Matrix *) &arg_sp210, 1U);
+        MKModel_GetRefPointMatrix(temp_r3_10966->unk4, M2C_FIELD(temp_r3_10966->unkA08, s32 *, 0x84), (Matrix *) &arg_sp210, 1U);
         arg_sp68 = -arg_sp230;
         arg_sp6C = -arg_sp234;
         arg_sp70 = -arg_sp238;
@@ -5610,14 +5601,14 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
         arg_sp1D0 = (f64) arg_sp70;
         arg_sp1B8 = arg_sp240;
         arg_sp1C0 = arg_sp248;
-        if (this->unkC->unk110.unk520->CheckEvent(0) != 0) {
+        if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(0) != 0) {
             temp_r30_10996 = this->unkC;
-            temp_r29_10999 = temp_r30_10996->unk110.unk910;
+            temp_r29_10999 = temp_r30_10996->unkA08;
             M2C_FIELD(temp_r30_10996->__vptr, M2C_UNK (**)(M2C_UNK *, Cynder *), 0xF8)(&arg_sp118, temp_r30_10996);
-            temp_r30_10996->unkCEC->Trigger((MKProp *) temp_r30_10996, *((MKVector3 *) &arg_sp1B8), *((MKVector3 *) &arg_sp1C8), *((MKVector3 *) &arg_sp118), 1.0f, M2C_FIELD(temp_r29_10999, s32 *, 0x84), 100.0f);
+            temp_r30_10996->unkCD4->Trigger((MKProp *) temp_r30_10996, *((MKVector3 *) &arg_sp1B8), *((MKVector3 *) &arg_sp1C8), *((MKVector3 *) &arg_sp118), 1.0f, M2C_FIELD(temp_r29_10999, s32 *, 0x84), 100.0f);
         }
         temp_r3_11014 = this->unkC;
-        if (((u8) temp_r3_11014->unk110.unk9F8 >> 4U) & 1) {
+        if (((u8) M2C_FIELD(temp_r3_11014, u8 *, 0xB08) >> 4U) & 1) {
             arg_sp108 = arg_sp1B8;
             arg_sp110 = arg_sp1C0;
             M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f28 */);
@@ -5630,33 +5621,33 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
             arg_sp50 = (f32) arg_sp1C0 + (f32) arg_spF0;
             arg_spE0 = arg_sp1D0;
             arg_sp100 = (f64) arg_sp50;
-            temp_r3_11014->unkCEC->UpdateBeam((MKVector3) &arg_sp108, (MKVector3) &arg_spF8, (MKVector3) &arg_spD8);
+            temp_r3_11014->unkCD4->UpdateBeam((MKVector3) &arg_sp108, (MKVector3) &arg_spF8, (MKVector3) &arg_spD8);
         }
-        if (this->unkC->unk110.unk520->CheckEvent(1) != 0) {
-            this->unkC->unkCEC->End();
+        if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(1) != 0) {
+            this->unkC->unkCD4->End();
         }
         temp_r29_11065 = this->unkC;
         var_r30_11066 = 0;
         if (temp_r29_11065->HasAnimFinished() != 0) {
-            temp_r4_11071 = temp_r29_11065->unk110.unk940;
-            if ((temp_r4_11071 != NULL) && ((u32) *temp_r4_11071 == (u32) temp_r29_11065->unk110.unk520->unk20)) {
+            temp_r4_11071 = temp_r29_11065->unkA38;
+            if ((temp_r4_11071 != NULL) && ((s8 *) temp_r4_11071->unk0 == (u32) M2C_FIELD(temp_r29_11065, MKAnimScript **, 0x630)->unk20)) {
                 var_r30_11066 = 1;
             }
         }
         if (var_r30_11066 != 0) {
             temp_r3_11083 = this->unkC;
-            temp_r4_11086 = temp_r3_11083->unk110.unk940;
-            temp_r3_11083->SetAnim((AnimSequence *) temp_r4_11086, (AnimTransition *) (temp_r4_11086 + 0x20), 0.0f, 0U);
+            temp_r4_11086 = temp_r3_11083->unkA38;
+            temp_r3_11083->SetAnim((AnimSequence *) temp_r4_11086, (AnimTransition *) &temp_r4_11086->unk20, 0.0f, 0U);
         } else {
             temp_r29_11091 = this->unkC;
-            if ((s32) temp_r29_11091->unk110.unk520->unk44 >= 3) {
-                temp_r4_11096 = temp_r29_11091->unk110.unk940;
-                temp_r29_11091->SetAnim((AnimSequence *) temp_r4_11096, (AnimTransition *) (temp_r4_11096 + 0x40), 0.0f, 0U);
+            if ((s32) M2C_FIELD(temp_r29_11091, MKAnimScript **, 0x630)->unk44 >= 3) {
+                temp_r4_11096 = temp_r29_11091->unkA38;
+                temp_r29_11091->SetAnim((AnimSequence *) temp_r4_11096, (AnimTransition *) &temp_r4_11096->__vptr, 0.0f, 0U);
             } else {
                 var_r30_11105 = 0;
                 if (temp_r29_11091->HasAnimFinished() != 0) {
-                    temp_r4_11109 = temp_r29_11091->unk110.unk940;
-                    if ((temp_r4_11109 != NULL) && ((u32) M2C_FIELD(temp_r4_11109, u32 *, 0x40) == (u32) temp_r29_11091->unk110.unk520->unk20)) {
+                    temp_r4_11109 = temp_r29_11091->unkA38;
+                    if ((temp_r4_11109 != NULL) && ((void *) temp_r4_11109->__vptr == (u32) M2C_FIELD(temp_r29_11091, MKAnimScript **, 0x630)->unk20)) {
                         var_r30_11105 = 1;
                     }
                 }
@@ -5671,7 +5662,7 @@ u8 CynderBossGoal_FlyAlongSpline::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_FlyAlongSpline::Activate() {
     f64 spC0;
     f64 spB8;
@@ -5720,11 +5711,11 @@ void CynderBossGoal_FlyAlongSpline::Activate() {
 
     this->unk8 = 0;
     temp_r3_11167 = this->unkC;
-    temp_r3_11167->unk110.unk5A5 &= ~0x20;
+    temp_r3_11167->unk6B5 &= ~0x20;
     temp_r3_11171 = this->unkC;
-    temp_r3_11171->unk110.unk5A5 |= 0x10;
+    temp_r3_11171->unk6B5 |= 0x10;
     this->unkC->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unkF94 = 1.0f / this->unk10->unk8;
+    this->unkC->unkF7C = 1.0f / this->unk10->unk8;
     this->unk1C = this->unk14;
     this->unk20 = 1.0f;
     this->unk24 &= ~0x80;
@@ -5835,19 +5826,19 @@ void CynderBossGoal_FlyAlongSpline::Activate() {
         this->unk20 = -1.0f;
     }
     temp_r4_11420 = this->unkC;
-    temp_r4_11420->unk110.unk9F8 = (temp_r4_11420->unk110.unk9F8 & ~0x80) | ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU) << 7) & 0x80);
+    M2C_FIELD(temp_r4_11420, u8 *, 0xB08) = (u8) ((M2C_FIELD(temp_r4_11420, u8 *, 0xB08) & ~0x80) | ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU) << 7) & 0x80));
     sp10 = 0.0f;
     sp68.unk10.GetMeasure(this->unk1C, (Matrix *) this->unk10, KDSpline_PositionMixer);
-    this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp68.unk10), 1U);
+    this->unkC->unk870.unk40.Set(*((MKVector3 *) &sp68.unk10), 1U);
     temp_r4_11437 = this->unkC;
-    temp_r4_11437->unk110.unk7B0.Update(temp_r4_11437->unk110.unk478);
+    temp_r4_11437->unk870.unk40.Update(*((MKVector3 *) &temp_r4_11437->unk588));
     this->unkC->EnableFlyingRotation(1U);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDE, 0, 0.15f, 0U, 0U);
     this->unkC->unkCB0 = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: undefined identifier 'unk8C0'
 u8 CynderBossGoal_Fly::Update() {
     KDUniformSpline sp60;
     f64 sp58;
@@ -5877,10 +5868,10 @@ u8 CynderBossGoal_Fly::Update() {
 
     ActivateIfInactive();
     temp_r4_11479 = this->unkC;
-    temp_r4_11479->unk110.unk7B0.Update(temp_r4_11479->unk110.unk478);
+    temp_r4_11479->unk8C0.Update(*((MKVector3 *) &temp_r4_11479->unk588));
     temp_r3_11483 = this->unkC;
     var_f29_11484 = 3000.0f;
-    if (((u8) temp_r3_11483->unk110.unk9F8 >> 7U) & 1) {
+    if (((u8) temp_r3_11483->unkB08 >> 7U) & 1) {
         var_f30_11488 = -1.0f;
     } else {
         var_f30_11488 = 1.0f;
@@ -5888,7 +5879,7 @@ u8 CynderBossGoal_Fly::Update() {
     if (M2C_FIELD(temp_r3_11483, f32 *, 0xF98) != 0.0f) {
         var_f29_11484 = 4500.0f;
     }
-    if (temp_r3_11483->unk110.unk7B0.GetDist() < var_f29_11484) {
+    if (temp_r3_11483->unk8C0.GetDist() < var_f29_11484) {
         temp_r3_11503 = this->unkC;
         M2C_FIELD(temp_r3_11503, f32 *, 0xF98) = (f32) ((gUpdateTimeDelta * (var_f29_11484 * (var_f30_11488 * M2C_FIELD(temp_r3_11503, f32 *, 0xF94)))) + M2C_FIELD(temp_r3_11503, f32 *, 0xF98));
         temp_r3_11512 = this->unkC;
@@ -5901,9 +5892,9 @@ u8 CynderBossGoal_Fly::Update() {
         temp_r4_11526 = this->unkC;
         sp8 = 0.0f;
         sp60.GetMeasure(M2C_FIELD(temp_r4_11526, f32 *, 0xF98), temp_r4_11526 + 0xCC0, KDSpline_PositionMixer);
-        this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp60), 1U);
+        this->unkC->unk8C0.Set(*((MKVector3 *) &sp60), 1U);
         temp_r4_11540 = this->unkC;
-        temp_r4_11540->unk110.unk7B0.Update(temp_r4_11540->unk110.unk478);
+        temp_r4_11540->unk8C0.Update(*((MKVector3 *) &temp_r4_11540->unk588));
     }
     temp_f31_11547 = gUpdateTimeDelta;
     sp40.operator*(3000.0f);
@@ -5912,14 +5903,14 @@ u8 CynderBossGoal_Fly::Update() {
     temp_r3_11558 = this->unkC;
     sp50 = sp10;
     sp18 = sp40.unk8 * temp_f31_11547;
-    temp_r3_11558->unk110.unk488 = sp10;
-    temp_r3_11558->unk110.unk490 = (f64) sp18;
+    M2C_FIELD(temp_r3_11558, f64 *, 0x598) = sp10;
+    M2C_FIELD(temp_r3_11558, f64 *, 0x5A0) = (f64) sp18;
     sp58 = (f64) sp18;
     this->unk10 += gUpdateTimeDelta;
     temp_r4_11569 = this->unkC;
-    if ((((u32) temp_r4_11569->unk110.unk520->unk2C >> 1U) & 1) && (this->unk10 > 7.5f)) {
+    if ((((u32) M2C_FIELD(M2C_FIELD(temp_r4_11569, void **, 0x630), u32 *, 0x2C) >> 1U) & 1) && (this->unk10 > 7.5f)) {
         var_r30_11579 = 0;
-        if (((u8) temp_r4_11569->unk110.unk7A8 == 2) || (temp_r4_11569->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) temp_r4_11569->unk8B8 == 2) || (temp_r4_11569->unk8B0.Get() != NULL)) {
             var_r30_11579 = 1;
         }
         if (var_r30_11579 != 0) {
@@ -5938,7 +5929,7 @@ u8 CynderBossGoal_Fly::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_Fly::Activate() {
     f64 sp128;
     f64 sp120;
@@ -6011,11 +6002,11 @@ void CynderBossGoal_Fly::Activate() {
 
     this->unk8 = 0;
     temp_r3_11644 = this->unkC;
-    temp_r3_11644->unk110.unk5A5 &= ~0x20;
+    temp_r3_11644->unk6B5 &= ~0x20;
     temp_r3_11648 = this->unkC;
-    temp_r3_11648->unk110.unk5A5 |= 0x10;
+    temp_r3_11648->unk6B5 |= 0x10;
     this->unkC->SetMovementType((CharacterMoveType) 2);
-    this->unkC->unk110.unk57C = 1.570796f;
+    this->unkC->unk684 = 1.570796f;
     temp_r4_11661 = this->unkC;
     M2C_FIELD(temp_r4_11661, f32 *, 0xF94) = (f32) (1.0f / M2C_FIELD(temp_r4_11661, f32 *, 0xCC8));
     sp14 = 0.0f;
@@ -6154,22 +6145,22 @@ void CynderBossGoal_Fly::Activate() {
     sp48 = (temp_f9_11926 * temp_f8_11928) - (temp_f7_11932 * temp_f4_11930);
     spC0.unk10 = (f64) sp40;
     spD8 = (f64) sp48;
-    temp_r5_11923->unk110.unk9F8 = (temp_r5_11923->unk110.unk9F8 & ~0x80) | ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r3 */) >> 0x1FU) << 7) & 0x80);
+    temp_r5_11923->unkB08 = (temp_r5_11923->unkB08 & ~0x80) | ((((u32) M2C_ERROR(/* unknown instruction: mfcr $r3 */) >> 0x1FU) << 7) & 0x80);
     temp_r4_11961 = this->unkC;
     sp18 = 0.0f;
     sp60.GetMeasure(M2C_FIELD(temp_r4_11961, f32 *, 0xF98), temp_r4_11961 + 0xCC0, KDSpline_PositionMixer);
-    this->unkC->unk110.unk7B0.Set(*((MKVector3 *) &sp60), 1U);
+    this->unkC->unk8C0.Set(*((MKVector3 *) &sp60), 1U);
     temp_r4_11972 = this->unkC;
-    temp_r4_11972->unk110.unk7B0.Update(temp_r4_11972->unk110.unk478);
+    temp_r4_11972->unk8C0.Update(*((MKVector3 *) &temp_r4_11972->unk588));
     sp50.GetDir();
     temp_r6_11980 = this->unkC;
     M2C_FIELD(temp_r6_11980, f64 *, 0xE0) = sp50;
     M2C_FIELD(temp_r6_11980, f64 *, 0xE8) = sp58;
-    temp_r6_11980->unk110.unk5A5 &= ~0x40;
+    temp_r6_11980->unk6B5 &= ~0x40;
     temp_r3_11993 = this->unkC;
     M2C_FIELD(temp_r3_11993, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
     M2C_FIELD(temp_r3_11993, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
-    temp_r3_11993->unk110.unk5A5 &= ~0x40;
+    temp_r3_11993->unk6B5 &= ~0x40;
     this->unkC->EnableFlyingRotation(1U);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDE, 0, 0.15f, 0U, 0U);
     this->unk10 = 0.0f;
@@ -6199,21 +6190,21 @@ u8 CynderBossGoal_Land::Update() {
     arg_sp10 = (temp_f7_12075 * arg_sp50) + ((temp_f6_12069 * arg_sp30) + (temp_f3_12064 * arg_sp40));
     arg_sp14 = (temp_f7_12075 * arg_sp54) + ((temp_f6_12069 * arg_sp34) + (temp_f3_12064 * arg_sp44));
     arg_sp18 = (temp_f7_12075 * arg_sp58) + ((temp_f6_12069 * arg_sp38) + (temp_f3_12064 * arg_sp48));
-    temp_r3_12062->unk110.unk488 = (f64) arg_sp10;
-    temp_r3_12062->unk110.unk490 = (f64) arg_sp18;
+    M2C_FIELD(temp_r3_12062, f64 *, 0x598) = (f64) arg_sp10;
+    M2C_FIELD(temp_r3_12062, f64 *, 0x5A0) = (f64) arg_sp18;
     arg_sp20 = (f64) arg_sp10;
     arg_sp28 = (f64) arg_sp18;
     if (this->unkC->HasAnimFinished() != 0) {
         this->unk8 = 2;
         temp_r3_12101 = this->unkC;
-        temp_r3_12101->unk110.unk5A5 |= 0x20;
+        temp_r3_12101->unk6B5 |= 0x20;
         this->unkC->SetMovementType((CharacterMoveType) 0);
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_Land::Activate() {
     f64 sp8;
     Enemy *temp_r3_12128;
@@ -6226,13 +6217,13 @@ void CynderBossGoal_Land::Activate() {
 
     this->unk8 = 0;
     temp_r3_12128 = this->unkC;
-    temp_r3_12128->unk110.unk5A5 &= ~0x20;
+    temp_r3_12128->unk6B5 &= ~0x20;
     temp_r3_12132 = this->unkC;
-    temp_r3_12132->unk110.unk5A5 &= ~0x10;
+    temp_r3_12132->unk6B5 &= ~0x10;
     this->unkC->SetMovementType((CharacterMoveType) 1);
     temp_r3_12138 = this->unkC;
     var_r30_12139 = 0;
-    if (((u8) temp_r3_12138->unk110.unk7A8 == 2) || (temp_r3_12138->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_12138, u8 *, 0x8B8) == 2) || (temp_r3_12138->unk870.unk30.Get() != NULL)) {
         var_r30_12139 = 1;
     }
     if (var_r30_12139 != 0) {
@@ -6240,47 +6231,45 @@ void CynderBossGoal_Land::Activate() {
         temp_r4_12156 = this->unkC;
         M2C_FIELD(temp_r4_12156, f64 *, 0xE0) = sp8;
         M2C_FIELD(temp_r4_12156, f64 *, 0xE8) = sp10;
-        temp_r4_12156->unk110.unk5A5 |= 0x40;
+        temp_r4_12156->unk6B5 |= 0x40;
     } else {
         temp_r4_12167 = this->unkC;
         M2C_FIELD(temp_r4_12167, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_12167, f64 *, 0xC0);
         M2C_FIELD(temp_r4_12167, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r4_12167, f64 *, 0xC8);
-        temp_r4_12167->unk110.unk5A5 |= 0x40;
+        temp_r4_12167->unk6B5 |= 0x40;
     }
     temp_r6_12178 = this->unkC;
     M2C_FIELD(temp_r6_12178, f64 *, 0xF0) = (f64) M2C_FIELD(&up, f64 *, 0);
     M2C_FIELD(temp_r6_12178, f64 *, 0xF8) = (f64) M2C_FIELD(&up, f64 *, 8);
-    temp_r6_12178->unk110.unk5A5 |= 0x40;
-    this->unkC->unk110.unk57C = 0.392699f;
+    temp_r6_12178->unk6B5 |= 0x40;
+    this->unkC->unk684 = 0.392699f;
     this->unkC->EnableFlyingRotation(0U);
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDD, 0, 0.15f, 0U, 0U);
     this->unkC->UpdateAnimation();
-    this->unkC->unkCFC = 0;
+    M2C_FIELD(this->unkC, s32 *, 0xCFC) = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
 u8 CynderBossGoal_TakeOff::Update() {
     Enemy *temp_r3_12232;
     Enemy *temp_r3_12238;
 
     ActivateIfInactive();
-    if (this->unkC->unk110.unk520->CheckEvent(5) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(5) != 0) {
         this->unkC->SetIdleMovementSpeed(1U);
         temp_r3_12232 = this->unkC;
-        temp_r3_12232->unk110.unk5A5 |= 0x10;
+        temp_r3_12232->unk6B5 |= 0x10;
     }
     temp_r3_12238 = this->unkC;
-    temp_r3_12238->unk110.unk488 = M2C_FIELD(temp_r3_12238, f64 *, 0x90);
-    temp_r3_12238->unk110.unk490 = M2C_FIELD(temp_r3_12238, f64 *, 0x98);
+    M2C_FIELD(temp_r3_12238, f64 *, 0x598) = (f64) M2C_FIELD(temp_r3_12238, f64 *, 0x90);
+    M2C_FIELD(temp_r3_12238, f64 *, 0x5A0) = (f64) M2C_FIELD(temp_r3_12238, f64 *, 0x98);
     if (this->unkC->HasAnimFinished() != 0) {
         this->unk8 = 2;
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void CynderBossGoal_TakeOff::Activate() {
     Enemy *temp_r3_12269;
     Enemy *temp_r3_12295;
@@ -6289,24 +6278,24 @@ void CynderBossGoal_TakeOff::Activate() {
 
     this->unk8 = 0;
     temp_r3_12269 = this->unkC;
-    temp_r3_12269->unk110.unk5A5 &= ~0x20;
+    temp_r3_12269->unk6B5 &= ~0x20;
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 1);
     temp_r4_12278 = this->unkC;
     M2C_FIELD(temp_r4_12278, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r4_12278, f64 *, 0xC0);
     M2C_FIELD(temp_r4_12278, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r4_12278, f64 *, 0xC8);
-    temp_r4_12278->unk110.unk5A5 |= 0x40;
+    temp_r4_12278->unk6B5 |= 0x40;
     temp_r4_12287 = this->unkC;
     M2C_FIELD(temp_r4_12287, f64 *, 0xF0) = (f64) M2C_FIELD(temp_r4_12287, f64 *, 0xD0);
     M2C_FIELD(temp_r4_12287, f64 *, 0xF8) = (f64) M2C_FIELD(temp_r4_12287, f64 *, 0xD8);
-    temp_r4_12287->unk110.unk5A5 |= 0x40;
+    temp_r4_12287->unk6B5 |= 0x40;
     temp_r3_12295 = this->unkC;
-    if ((u8) temp_r3_12295->unkF19 == 0) {
+    if ((u8) M2C_FIELD(temp_r3_12295, u8 *, 0xF19) == 0) {
         temp_r3_12295->SetInvulnerableToMeleeAttacks(1U, 1U);
         this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     }
     this->unkC->SetAnim((AnimSequenceType) 0xA, 0xDC, 0, 0.15f, 0U, 0U);
-    this->unkC->unkCFC = 0;
+    M2C_FIELD(this->unkC, s32 *, 0xCFC) = 0;
 }
 #endif
 
@@ -6318,12 +6307,12 @@ u8 CynderBossGoal_AttackFlight::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_AttackFlight::Activate() {
     s32 temp_r3_12377;
 
     this->unk8 = 0;
-    if (!(((u8) this->unkC->unk110.unk5A5 >> 4U) & 1)) {
+    if (!(((u8) this->unkC->unk6B5 >> 4U) & 1)) {
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
     }
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk24);
@@ -6340,7 +6329,7 @@ void CynderBossGoal_AttackFlight::Activate() {
 block_6:
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk38);
     }
-    this->unkC->unkCF4 = 0;
+    this->unkC->unkCDC = 0.0f;
 }
 #endif
 
@@ -6576,12 +6565,12 @@ u8 CynderBossGoal_LandingFlight::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A5'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__22CompositeGoal'
 void CynderBossGoal_LandingFlight::Activate() {
     Goal<Cynder> *temp_r6_12835;
 
     this->unk8 = 0;
-    if (!(((u8) this->unkC->unk110.unk5A5 >> 4U) & 1)) {
+    if (!(((u8) this->unkC->unk6B5 >> 4U) & 1)) {
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk20);
         temp_r6_12835 = this->unk20;
         M2C_FIELD(temp_r6_12835, s32 *, 0x10) = 0;
@@ -6596,7 +6585,7 @@ void CynderBossGoal_LandingFlight::Activate() {
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk34);
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk38);
     AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
-    this->unkC->unkCF4 = 1;
+    this->unkC->unkCDC = 1e-45f;
 }
 #endif
 
@@ -6839,7 +6828,7 @@ void CynderBossGoal_Think::AddGoal_Idle() {
         RemoveAllSubgoals();
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk28);
         temp_r6_13345 = this->unk28;
-        M2C_FIELD(temp_r6_13345, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+        M2C_FIELD(temp_r6_13345, f32 **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r6_13345, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r6_13345, s32 *, 0x18) = 0xA;
         M2C_FIELD(temp_r6_13345, s32 *, 0x1C) = 0;
@@ -6887,29 +6876,28 @@ block_8:
     } else {
 block_16:
         temp_r4_13428 = this->unkC;
-        temp_r4_13428->unk110.unk800 = arg0->unk0;
-        temp_r4_13428->unk110.unk808 = arg0->unk8;
-        temp_r4_13428->unk110.unk810 = arg0->unk10;
-        temp_r4_13428->unk110.unk814 = arg0->unk14;
-        temp_r4_13428->unk110.unk818 = arg0->unk18;
-        temp_r4_13428->unk110.unk81C = arg0->unk1C;
-        temp_r4_13428->unk110.unk820 = arg0->unk20;
-        temp_r4_13428->unk110.unk824 = arg0->unk24;
-        temp_r4_13428->unk110.unk828 = arg0->unk28;
-        temp_r4_13428->unk110.unk82C = arg0->unk2C;
-        temp_r4_13428->unk110.unk830 = arg0->unk30;
-        temp_r4_13428->unk110.unk834 = arg0->unk34;
-        this->unkC->unk110.unk818 = 0.0f;
+        M2C_FIELD(temp_r4_13428, f64 *, 0x910) = (f64) arg0->unk0;
+        M2C_FIELD(temp_r4_13428, f64 *, 0x918) = (f64) arg0->unk8;
+        M2C_FIELD(temp_r4_13428, s32 *, 0x920) = (s32) arg0->unk10;
+        M2C_FIELD(temp_r4_13428, s32 *, 0x924) = (s32) arg0->unk14;
+        temp_r4_13428->unk918 = arg0->unk18;
+        temp_r4_13428->unk92C = arg0->unk1C;
+        temp_r4_13428->unk920 = arg0->unk20;
+        temp_r4_13428->unk924 = arg0->unk24;
+        temp_r4_13428->unk928 = M2C_BITWISE(f32, arg0->unk28);
+        temp_r4_13428->unk92C = M2C_BITWISE(f32, arg0->unk2C);
+        temp_r4_13428->unk930 = arg0->unk30;
+        M2C_FIELD(temp_r4_13428, u8 *, 0x944) = (u8) arg0->unk34;
+        this->unkC->unk918 = 0.0f;
         RemoveAllSubgoals();
         AddSubgoal__22CompositeGoal<6Cynder>FP13Goal<6Cynder>((CompositeGoal<Cynder> *) this, (Goal<Cynder> *) this->unk2C);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 CynderBossGoal_Think::Update() {
     s32 sp8;
-    EAPManager *temp_r4_13580;
     Enemy *temp_r3_13546;
     Enemy *temp_r3_13566;
     Enemy *temp_r3_13573;
@@ -6921,12 +6909,13 @@ u8 CynderBossGoal_Think::Update() {
     s32 temp_r3_13592;
     u32 temp_r31_13488;
     u8 temp_r4_13610;
+    void *temp_r4_13580;
 
     if (this->unkC->WasHit() != 0) {
         this->unk8 = 1;
     }
     temp_r0_13485 = this->unk24;
-    temp_r31_13488 = ((u8) this->unkC->unk110.unk9F9 >> 7U) & 1;
+    temp_r31_13488 = ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1;
     switch (temp_r0_13485) {                        /* irregular */
     case 1:
         Music_Pause(1U);
@@ -6949,11 +6938,11 @@ u8 CynderBossGoal_Think::Update() {
         break;
     }
     temp_r4_13532 = this->unkC;
-    if ((u8) temp_r4_13532->unkF18 != 0) {
-        temp_r4_13532->unkF18 = 0;
+    if ((u8) M2C_FIELD(temp_r4_13532, u8 *, 0xF18) != 0) {
+        M2C_FIELD(temp_r4_13532, u8 *, 0xF18) = 0U;
         temp_r4_13539 = this->unkC;
-        temp_r4_13539->unk110.unk8C8 = 0;
-        temp_r4_13539->unk110.unk8C4 = 0;
+        temp_r4_13539->unk9D8 = 0;
+        temp_r4_13539->unk9D4 = 0;
         RemoveAllSubgoals();
         this->unk8 = 1;
     }
@@ -6962,22 +6951,22 @@ u8 CynderBossGoal_Think::Update() {
         this->unkC->SelectTarget();
     }
     ActivateIfInactive();
-    if (temp_r31_13488 == (u32) (((u8) this->unkC->unk110.unk9F9 >> 7U) & 1)) {
+    if (temp_r31_13488 == (u32) (((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1)) {
         this->unk8 = UpdateSubgoals();
         temp_r3_13566 = this->unkC;
-        if ((EAPManager *) temp_r3_13566->unk110.unk94C != NULL) {
+        if ((void *) temp_r3_13566->unkA44 != NULL) {
             temp_r3_13566->IsFlinching();
             if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                 temp_r3_13573 = this->unkC;
-                if (!(((u8) temp_r3_13573->unk110.unk5A5 >> 4U) & 1) && ((s32) temp_r3_13573->unk110.unk9D8 <= 2)) {
-                    temp_r4_13580 = temp_r3_13573->unk110.unk94C;
-                    temp_r4_13580->unk10 |= 0x40;
+                if (!(((u8) temp_r3_13573->unk6B5 >> 4U) & 1) && (M2C_BITWISE(s32, temp_r3_13573->unkAD0) <= 2)) {
+                    temp_r4_13580 = temp_r3_13573->unkA44;
+                    M2C_FIELD(temp_r4_13580, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r4_13580, u8 *, 0x10) | 0x40);
                     sp8 = 7;
                     temp_r4_13589 = this->unkC;
-                    temp_r3_13592 = temp_r4_13589->unk110.unk94C->Evaluate(temp_r4_13589, (AITargetData *) &temp_r4_13589->unk110.unk760, &sp8, 1);
+                    temp_r3_13592 = temp_r4_13589->unkA44->Evaluate(temp_r4_13589, (AITargetData *) &temp_r4_13589->unk838.unk28, &sp8, 1);
                     if (temp_r3_13592 != 0) {
                         RemoveAllSubgoals();
-                        if ((s32) this->unkC->unk110.unk9D8 == 1) {
+                        if (M2C_BITWISE(s32, this->unkC->unkAD0) == 1) {
                             AddGoal_AttackPhase1((EAPItem *) temp_r3_13592);
                         } else {
                             AddGoal_AttackPhase2((EAPItem *) temp_r3_13592);
@@ -6989,7 +6978,7 @@ u8 CynderBossGoal_Think::Update() {
         temp_r4_13610 = this->unk8;
         if (temp_r4_13610 == 2) {
             temp_r3_13613 = this->unkC;
-            if (!(((u8) temp_r3_13613->unk110.unk9F9 >> 7U) & 1)) {
+            if (!(((u8) M2C_FIELD(temp_r3_13613, u8 *, 0xB09) >> 7U) & 1)) {
                 M2C_FIELD(temp_r3_13613->__vptr, M2C_UNK (**)(), 0x34)();
                 return this->unk8;
             }
@@ -7004,7 +6993,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: undefined identifier 'arg_sp6C'
 void CynderBossGoal_Think::Arbitrate() {
     Enemy *temp_r3_13674;
     Enemy *temp_r3_13743;
@@ -7016,15 +7005,15 @@ void CynderBossGoal_Think::Arbitrate() {
     f32 temp_f31_13749;
     f32 temp_f5_13691;
     f32 temp_f6_13678;
-    s32 temp_r0_13853;
-    if ((((u8) this->unkC->unk110.unk9F9 >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&identity - 4) + 4, 0x40), temp_r3_13674 = this->unkC, temp_f6_13678 = temp_r3_13674->unk110.unk4B8, arg_sp90 = temp_f6_13678, temp_f1_13685 = temp_r3_13674->unk110.unk4BC, arg_sp94 = temp_f1_13685, temp_f5_13691 = temp_r3_13674->unk110.unk4C0, arg_sp18 = (up.unk0 * temp_f1_13685) - (up.unk4 * temp_f6_13678), arg_sp98 = temp_f5_13691, arg_sp28 = (f64) arg_sp18, arg_sp10 = (up.unk4 * temp_f5_13691) - (up.unk8 * temp_f1_13685), arg_sp14 = (up.unk8 * temp_f6_13678) - (up.unk0 * temp_f5_13691), arg_sp9C = 0.0f, arg_sp20 = (f64) arg_sp10, arg_sp70 = (f32) arg_sp20, arg_sp74 = arg_sp24, arg_sp78 = (f32) arg_sp28, arg_sp7C = 0.0f, arg_spA0 = temp_r3_13674->unk110.unk4A8, arg_spA4 = temp_r3_13674->unk110.unk4AC, temp_f1_13715 = temp_r3_13674->unk110.unk4B0, arg_spA8 = temp_f1_13715, arg_spAC = 1.0f, ((temp_r3_13674->Spawn(&arg_sp70, 0, &up, temp_f1_13715, arg_sp24, (f32) arg_sp20, 0.0f, temp_f5_13691, temp_f6_13678, up.unk8, up.unk4) == 0) == 0))) {
+    f32 temp_r0_13853;
+    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_sp6C + 4, (s32) (&identity - 4) + 4, 0x40), temp_r3_13674 = this->unkC, temp_f6_13678 = temp_r3_13674->unk5C8, arg_sp90 = temp_f6_13678, temp_f1_13685 = temp_r3_13674->unk5C8, arg_sp94 = temp_f1_13685, temp_f5_13691 = temp_r3_13674->unk5CC, arg_sp18 = (up.unk0 * temp_f1_13685) - (up.unk4 * temp_f6_13678), arg_sp98 = temp_f5_13691, arg_sp28 = (f64) arg_sp18, arg_sp10 = (up.unk4 * temp_f5_13691) - (up.unk8 * temp_f1_13685), arg_sp14 = (up.unk8 * temp_f6_13678) - (up.unk0 * temp_f5_13691), arg_sp9C = 0.0f, arg_sp20 = (f64) arg_sp10, arg_sp70 = (f32) arg_sp20, arg_sp74 = arg_sp24, arg_sp78 = (f32) arg_sp28, arg_sp7C = 0.0f, arg_spA0 = temp_r3_13674->unk5B8, arg_spA4 = temp_r3_13674->unk5B8, temp_f1_13715 = temp_r3_13674->unk5BC, arg_spA8 = temp_f1_13715, arg_spAC = 1.0f, ((temp_r3_13674->Spawn(&arg_sp70, 0, &up, temp_f1_13715, arg_sp24, (f32) arg_sp20, 0.0f, temp_f5_13691, temp_f6_13678, up.unk8, up.unk4) == 0) == 0))) {
         if (this->unkC->WasHit() != 0) {
             arg_sp30.Init();
             this->unkC->TakeDamage((EnemyDamageFeedback *) &arg_sp30, 0U);
             this->unkC->UpdateEnemyHud();
             if ((arg_sp58 == 0xD) && !((arg_sp64 >> 6U) & 1)) {
                 temp_r3_13743 = this->unkC;
-                if ((u8) temp_r3_13743->unkF1E == 0) {
+                if ((u8) M2C_FIELD(temp_r3_13743, u8 *, 0xF1E) == 0) {
                     temp_f31_13749 = gameData.unkB8.unk4;
                     temp_f30_13751 = gameData.unkB8.unk0;
                     temp_f29_13757 = temp_f31_13749 * (1.0f - temp_r3_13743->GetHealthPercentage());
@@ -7040,11 +7029,11 @@ void CynderBossGoal_Think::Arbitrate() {
             }
             temp_r4_13770 = this->unkC;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((temp_r4_13770->unk110.unk9B8 == 0.0f) && (arg_sp58 == 0xD) && ((arg_sp64 >> 6U) & 1)) {
-                temp_r4_13770->unkF1D = 1;
+            if ((temp_r4_13770->unkAB0 == 0.0f) && (arg_sp58 == 0xD) && ((arg_sp64 >> 6U) & 1)) {
+                M2C_FIELD(temp_r4_13770, s8 *, 0xF1D) = 1;
                 arg_sp58 = 0xE;
             }
-            if ((arg_sp58 == 4) || (arg_sp58 == 5) || (((u8) this->unkC->unk110.unk5A5 >> 4U) & 1)) {
+            if ((arg_sp58 == 4) || (arg_sp58 == 5) || (((u8) this->unkC->unk6B5 >> 4U) & 1)) {
                 arg_sp58 = 0xE;
             }
             if (arg_sp58 != 0xE) {
@@ -7056,8 +7045,8 @@ void CynderBossGoal_Think::Arbitrate() {
 block_19:
         this->unkC->IsFlinching();
         if (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (IsActive(0xA6) == 0) && (IsActive(0xA7) == 0) && (IsActive(0xA8) == 0) && (IsActive(0x9B) == 0) && (IsActive(0x9A) == 0)) {
-            temp_r0_13853 = this->unkC->unk110.unk9D8;
-            switch (temp_r0_13853) {                /* irregular */
+            temp_r0_13853 = this->unkC->unkAD0;
+            switch (M2C_BITWISE(s32, temp_r0_13853)) { /* irregular */
             case 1:
                 AddGoal_AttackPhase1(NULL);
                 return;
@@ -7081,15 +7070,13 @@ void CynderBossGoal_Think::Activate() {
     Arbitrate();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkF14'
 void CynderBossGoal_Think::Reset() {
     this->unk8 = 1;
     RemoveAllSubgoals();
     this->unk20 = 1;
     this->unk24 = 0;
-    this->unkC->unkF14 = 0.0f;
+    M2C_FIELD(this->unkC, f32 *, 0xF14) = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk360'
 void CynderBossGoal_Think::Deinit() {

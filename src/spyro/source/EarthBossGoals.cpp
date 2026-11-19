@@ -1,8 +1,12 @@
 #include "spyro/source/EarthBossGoals.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
+#include "spyro/source/BoneBlurFX.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Enemies_EarthBoss.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
@@ -114,9 +118,9 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     }
     temp_r4_135 = this->unkC;
     var_r30_136 = 0;
-    temp_r4_135->unk110.unk57C = var_f1_121 * temp_r4_135->unk110.unk928->unk158;
+    temp_r4_135->unk684 = var_f1_121 * M2C_FIELD(temp_r4_135->unkA20, f32 *, 0x158);
     temp_r3_141 = this->unkC;
-    if (((u8) temp_r3_141->unk110.unk7A8 == 2) || (temp_r3_141->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_141, u8 *, 0x8B8) == 2) || (temp_r3_141->unk870.unk30.Get() != NULL)) {
         var_r30_136 = 1;
     }
     if (var_r30_136 != 0) {
@@ -124,9 +128,9 @@ u8 EarthBossGoal_MoveToTarget::Update() {
         temp_r4_158 = this->unkC;
         M2C_FIELD(temp_r4_158, f64 *, 0xE0) = M2C_BITWISE(f64, sp50);
         M2C_FIELD(temp_r4_158, f64 *, 0xE8) = (f64) sp50.unk8;
-        temp_r4_158->unk110.unk5A5 |= 0x40;
+        temp_r4_158->unk6B5 |= 0x40;
     }
-    if ((this->unkC->unk110.unk520->CheckEvent(9) != 0) || (this->unkC->unk110.unk520->CheckEvent(0xA) != 0)) {
+    if ((((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(9) != 0) || (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(0xA) != 0)) {
         temp_f31_199 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         unksp64 = 0;
         MKVector(0.05f, 0.8f, 0.05f);
@@ -144,10 +148,10 @@ u8 EarthBossGoal_MoveToTarget::Update() {
     }
     temp_r3_237 = this->unkC;
     var_r30_238 = 0;
-    if (((u8) temp_r3_237->unk110.unk7A8 == 2) || (temp_r3_237->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_237, u8 *, 0x8B8) == 2) || (temp_r3_237->unk870.unk30.Get() != NULL)) {
         var_r30_238 = 1;
     }
-    if ((var_r30_238 == 0) || (this->unkC->unk110.unk760.GetDist() < 1500.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0))) {
+    if ((var_r30_238 == 0) || (this->unkC->unk838.unk28.GetDist() < 1500.0f) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0))) {
         this->unk8 = 2;
     }
     return this->unk8;
@@ -164,31 +168,31 @@ void EarthBossGoal_MoveToTarget::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EarthBossGoal_MeleeAttack5::Terminate() {
     AttackerManager *var_r3_364;
+    CharacterFireFX *temp_r5_329;
     Enemy *temp_r3_324;
     Enemy *temp_r3_328;
     Enemy *temp_r3_345;
     Enemy *var_r4_371;
-    EnemyAttack *temp_r5_329;
     u8 var_r30_343;
 
     temp_r3_324 = this->unkC;
-    temp_r3_324->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_324, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_324, u8 *, 0xB08) & ~0x10);
     temp_r3_328 = this->unkC;
-    temp_r5_329 = temp_r3_328->unk110.unk910;
+    temp_r5_329 = temp_r3_328->unkA08;
     if (temp_r5_329 != NULL) {
-        this->unkC->unk110.unk96C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_328->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, temp_r5_329);
+        this->unkC->unkA7C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_328->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_329);
     }
     var_r30_343 = 0;
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_345 = this->unkC;
-    if (((u8) temp_r3_345->unk110.unk7A8 == 2) || (temp_r3_345->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_345, u8 *, 0x8B8) == 2) || (temp_r3_345->unk870.unk30.Get() != NULL)) {
         var_r30_343 = 1;
     }
     if (var_r30_343 != 0) {
-        var_r3_364 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_364 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_364 = NULL;
     }
@@ -204,7 +208,6 @@ void EarthBossGoal_MeleeAttack5::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
 u8 EarthBossGoal_MeleeAttack5::Update() {
     Enemy *temp_r3_410;
 
@@ -213,24 +216,23 @@ u8 EarthBossGoal_MeleeAttack5::Update() {
         this->unk8 = 2;
     }
     temp_r3_410 = this->unkC;
-    if ((((u8) temp_r3_410->unk110.unk9F8 >> 4U) & 1) && (temp_r3_410->CheckMeleeHit(temp_r3_410->unk110.unk910, -1) != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_410, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_410->CheckMeleeHit((EnemyAttack *) temp_r3_410->unkA08, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_MeleeAttack5::Activate() {
-    AnimSequence *temp_r5_459;
-    AttackSweepData *temp_r3_475;
     AttackerManager *var_r3_500;
     Enemy *temp_r3_444;
     Enemy *temp_r3_453;
     Enemy *temp_r3_480;
     Enemy *temp_r4_463;
     Enemy *var_r4_507;
+    MKMaterial *temp_r3_475;
     u8 var_r30_481;
+    void *temp_r5_459;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -240,25 +242,25 @@ void EarthBossGoal_MeleeAttack5::Activate() {
     temp_r3_444->unkA8 = 0.0f;
     this->unkC->SelectAttack(0x10, 0x40);
     temp_r3_453 = this->unkC;
-    temp_r5_459 = temp_r3_453->unk110.unk910->unk0;
-    temp_r3_453->SetAnim((AnimSequenceType) temp_r5_459->unk6C, temp_r5_459->unk68, 0, 0.15f, 4U, 0U);
+    temp_r5_459 = temp_r3_453->unkA08->__vptr;
+    temp_r3_453->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_459, s32 *, 0x6C), M2C_FIELD(temp_r5_459, s32 *, 0x68), 0, 0.15f, 4U, 0U);
     temp_r4_463 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_463->unk110.unk90C != 0U) {
-        temp_r4_463->unk110.unk90C += 4;
+    if ((void *) temp_r4_463->unkA04->__vptr != NULL) {
+        temp_r4_463->unkA04 = (CharacterZapFX *) &temp_r4_463->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_475 = this->unkC->unk110.unk920;
+    temp_r3_475 = this->unkC->unkA18;
     if (temp_r3_475 != NULL) {
         temp_r3_475->SetDefaults();
     }
     temp_r3_480 = this->unkC;
     var_r30_481 = 0;
-    if (((u8) temp_r3_480->unk110.unk7A8 == 2) || (temp_r3_480->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_480, u8 *, 0x8B8) == 2) || (temp_r3_480->unk870.unk30.Get() != NULL)) {
         var_r30_481 = 1;
     }
     if (var_r30_481 != 0) {
-        var_r3_500 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_500 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_500 = NULL;
     }
@@ -274,31 +276,31 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EarthBossGoal_MeleeAttack4::Terminate() {
     AttackerManager *var_r3_579;
+    CharacterFireFX *temp_r5_544;
     Enemy *temp_r3_539;
     Enemy *temp_r3_543;
     Enemy *temp_r3_560;
     Enemy *var_r4_586;
-    EnemyAttack *temp_r5_544;
     u8 var_r30_558;
 
     temp_r3_539 = this->unkC;
-    temp_r3_539->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_539, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_539, u8 *, 0xB08) & ~0x10);
     temp_r3_543 = this->unkC;
-    temp_r5_544 = temp_r3_543->unk110.unk910;
+    temp_r5_544 = temp_r3_543->unkA08;
     if (temp_r5_544 != NULL) {
-        this->unkC->unk110.unk96C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_543->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, temp_r5_544);
+        this->unkC->unkA7C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_543->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_544);
     }
     var_r30_558 = 0;
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_560 = this->unkC;
-    if (((u8) temp_r3_560->unk110.unk7A8 == 2) || (temp_r3_560->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_560, u8 *, 0x8B8) == 2) || (temp_r3_560->unk870.unk30.Get() != NULL)) {
         var_r30_558 = 1;
     }
     if (var_r30_558 != 0) {
-        var_r3_579 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_579 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_579 = NULL;
     }
@@ -314,45 +316,45 @@ void EarthBossGoal_MeleeAttack4::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: illegal operand
 u8 EarthBossGoal_MeleeAttack4::Update() {
-    AnimSequence *temp_r4_624;
-    AnimSequence *temp_r4_645;
-    AnimSequence *temp_r4_656;
-    AnimSequence *temp_r4_715;
-    AnimSequence *temp_r5_674;
     Enemy *temp_r29_618;
     Enemy *temp_r29_650;
     Enemy *temp_r3_644;
     Enemy *temp_r3_672;
     Enemy *temp_r3_721;
-    MKAnimScript *temp_r6_686;
+    EnemyDescriptor *temp_r4_624;
+    EnemyDescriptor *temp_r4_645;
+    EnemyDescriptor *temp_r4_656;
+    EnemyDescriptor *temp_r4_715;
+    EnemyDescriptor *temp_r5_674;
     u8 var_r30_619;
     u8 var_r30_651;
     u8 var_r4_692;
     u8 var_r5_687;
     u8 var_r6_673;
+    void *temp_r6_686;
 
     ActivateIfInactive();
     temp_r29_618 = this->unkC;
     var_r30_619 = 0;
     if (temp_r29_618->HasAnimFinished() != 0) {
-        temp_r4_624 = temp_r29_618->unk110.unk940;
-        if ((temp_r4_624 != NULL) && ((u32) temp_r4_624->unk0 == (u32) temp_r29_618->unk110.unk520->unk20)) {
+        temp_r4_624 = temp_r29_618->unkA38;
+        if ((temp_r4_624 != NULL) && ((s8 *) temp_r4_624->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_618, void **, 0x630), u32 *, 0x20))) {
             var_r30_619 = 1;
         }
     }
     if (var_r30_619 != 0) {
         this->unk10 = M2C_FIELD(&gb, f32 *, 0x30C) + 3.0f;
         temp_r3_644 = this->unkC;
-        temp_r4_645 = temp_r3_644->unk110.unk940;
-        temp_r3_644->SetAnim(temp_r4_645, temp_r4_645 + 0x20, 0.0f, 0U);
+        temp_r4_645 = temp_r3_644->unkA38;
+        temp_r3_644->SetAnim((AnimSequence *) temp_r4_645, (AnimTransition *) &temp_r4_645->unk20, 0.0f, 0U);
     } else {
         temp_r29_650 = this->unkC;
         var_r30_651 = 0;
         if (temp_r29_650->HasAnimFinished() != 0) {
-            temp_r4_656 = temp_r29_650->unk110.unk940;
-            if ((temp_r4_656 != NULL) && ((u32) temp_r4_656->unk40 == (u32) temp_r29_650->unk110.unk520->unk20)) {
+            temp_r4_656 = temp_r29_650->unkA38;
+            if ((temp_r4_656 != NULL) && ((void *) temp_r4_656->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_650, void **, 0x630), u32 *, 0x20))) {
                 var_r30_651 = 1;
             }
         }
@@ -361,16 +363,16 @@ u8 EarthBossGoal_MeleeAttack4::Update() {
         } else {
             temp_r3_672 = this->unkC;
             var_r6_673 = 0;
-            temp_r5_674 = temp_r3_672->unk110.unk940;
-            if ((temp_r5_674 != NULL) && ((u32) temp_r5_674->unk20 == (u32) temp_r3_672->unk110.unk520->unk20)) {
+            temp_r5_674 = temp_r3_672->unkA38;
+            if ((temp_r5_674 != NULL) && (M2C_BITWISE(u32, temp_r5_674->unk20) == (u32) M2C_FIELD(M2C_FIELD(temp_r3_672, void **, 0x630), u32 *, 0x20))) {
                 var_r6_673 = 1;
             }
             if (var_r6_673 != 0) {
-                temp_r6_686 = temp_r3_672->unk110.unk520;
+                temp_r6_686 = M2C_FIELD(temp_r3_672, void **, 0x630);
                 var_r5_687 = 0;
-                if (((u32) temp_r6_686->unk2C >> 1U) & 1) {
+                if (((u32) M2C_FIELD(temp_r6_686, u32 *, 0x2C) >> 1U) & 1) {
                     var_r4_692 = 0;
-                    if ((temp_r6_686->unk38 > 0.0f) || ((s32) temp_r6_686->unk44 > 1)) {
+                    if ((M2C_FIELD(temp_r6_686, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r6_686, s32 *, 0x44) > 1)) {
                         var_r4_692 = 1;
                     }
                     if (var_r4_692 != 0) {
@@ -380,32 +382,32 @@ u8 EarthBossGoal_MeleeAttack4::Update() {
                 if (var_r5_687 != 0) {
                     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) {
-                        temp_r4_715 = temp_r3_672->unk110.unk940;
-                        temp_r3_672->SetAnim(temp_r4_715, (AnimTransition *) &temp_r4_715->unk40, 0.0f, 0U);
+                        temp_r4_715 = temp_r3_672->unkA38;
+                        temp_r3_672->SetAnim((AnimSequence *) temp_r4_715, (AnimTransition *) &temp_r4_715->__vptr, 0.0f, 0U);
                     }
                 }
             }
         }
     }
     temp_r3_721 = this->unkC;
-    if ((((u8) temp_r3_721->unk110.unk9F8 >> 4U) & 1) && (temp_r3_721->CheckMeleeHit(temp_r3_721->unk110.unk910, -1) != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_721, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_721->CheckMeleeHit((EnemyAttack *) temp_r3_721->unkA08, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_MeleeAttack4::Activate() {
-    AnimSequence *temp_r5_770;
-    AttackSweepData *temp_r3_786;
     AttackerManager *var_r3_811;
     Enemy *temp_r3_755;
     Enemy *temp_r3_764;
     Enemy *temp_r3_791;
     Enemy *temp_r4_774;
     Enemy *var_r4_818;
+    MKMaterial *temp_r3_786;
     u8 var_r30_792;
+    void *temp_r5_770;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -415,25 +417,25 @@ void EarthBossGoal_MeleeAttack4::Activate() {
     temp_r3_755->unkA8 = 0.0f;
     this->unkC->SelectAttack(0x10, 0x3F);
     temp_r3_764 = this->unkC;
-    temp_r5_770 = temp_r3_764->unk110.unk910->unk0;
-    temp_r3_764->SetAnim((AnimSequenceType) temp_r5_770->unk6C, temp_r5_770->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_770 = temp_r3_764->unkA08->__vptr;
+    temp_r3_764->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_770, s32 *, 0x6C), M2C_FIELD(temp_r5_770, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_774 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_774->unk110.unk90C != 0U) {
-        temp_r4_774->unk110.unk90C += 4;
+    if ((void *) temp_r4_774->unkA04->__vptr != NULL) {
+        temp_r4_774->unkA04 = (CharacterZapFX *) &temp_r4_774->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_786 = this->unkC->unk110.unk920;
+    temp_r3_786 = this->unkC->unkA18;
     if (temp_r3_786 != NULL) {
         temp_r3_786->SetDefaults();
     }
     temp_r3_791 = this->unkC;
     var_r30_792 = 0;
-    if (((u8) temp_r3_791->unk110.unk7A8 == 2) || (temp_r3_791->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_791, u8 *, 0x8B8) == 2) || (temp_r3_791->unk870.unk30.Get() != NULL)) {
         var_r30_792 = 1;
     }
     if (var_r30_792 != 0) {
-        var_r3_811 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_811 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_811 = NULL;
     }
@@ -450,31 +452,31 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EarthBossGoal_MeleeAttack3::Terminate() {
     AttackerManager *var_r3_892;
+    CharacterFireFX *temp_r5_857;
     Enemy *temp_r3_852;
     Enemy *temp_r3_856;
     Enemy *temp_r3_873;
     Enemy *var_r4_899;
-    EnemyAttack *temp_r5_857;
     u8 var_r30_871;
 
     temp_r3_852 = this->unkC;
-    temp_r3_852->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_852, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_852, u8 *, 0xB08) & ~0x10);
     temp_r3_856 = this->unkC;
-    temp_r5_857 = temp_r3_856->unk110.unk910;
+    temp_r5_857 = temp_r3_856->unkA08;
     if (temp_r5_857 != NULL) {
-        this->unkC->unk110.unk96C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_856->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, temp_r5_857);
+        this->unkC->unkA7C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_856->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_857);
     }
     var_r30_871 = 0;
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_873 = this->unkC;
-    if (((u8) temp_r3_873->unk110.unk7A8 == 2) || (temp_r3_873->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_873, u8 *, 0x8B8) == 2) || (temp_r3_873->unk870.unk30.Get() != NULL)) {
         var_r30_871 = 1;
     }
     if (var_r30_871 != 0) {
-        var_r3_892 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_892 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_892 = NULL;
     }
@@ -487,11 +489,11 @@ void EarthBossGoal_MeleeAttack3::Terminate() {
     }
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
-    this->unkC->unkB9E = 0;
+    M2C_FIELD(this->unkC, s8 *, 0xB9E) = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
+#if 0 // DRAFT: illegal type
 u8 EarthBossGoal_MeleeAttack3::Update() {
     s8 sp60;
     f64 sp58;
@@ -510,7 +512,7 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
     if (this->unkC->HasAnimFinished() != 0) {
         this->unk8 = 2;
     }
-    if (this->unkC->unk110.unk520->CheckEvent(1) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(1) != 0) {
         temp_f31_967 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         sp4C = 0;
         MKVector(0.05f, 0.8f, 0.05f);
@@ -527,24 +529,24 @@ u8 EarthBossGoal_MeleeAttack3::Update() {
         M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp48, sp8);
     }
     temp_r3_1005 = this->unkC;
-    if ((((u8) temp_r3_1005->unk110.unk9F8 >> 4U) & 1) && (temp_r3_1005->CheckMeleeHit(temp_r3_1005->unk110.unk910, -1) != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_1005, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_1005->CheckMeleeHit((EnemyAttack *) temp_r3_1005->unkA08, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_MeleeAttack3::Activate() {
-    AnimSequence *temp_r5_1056;
-    AttackSweepData *temp_r3_1072;
     AttackerManager *var_r3_1097;
     Enemy *temp_r3_1041;
     Enemy *temp_r3_1050;
     Enemy *temp_r3_1077;
     Enemy *temp_r4_1060;
     Enemy *var_r4_1104;
+    MKMaterial *temp_r3_1072;
     u8 var_r30_1078;
+    void *temp_r5_1056;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -554,25 +556,25 @@ void EarthBossGoal_MeleeAttack3::Activate() {
     temp_r3_1041->unkA8 = 0.0f;
     this->unkC->SelectAttack(0x10, 0x3E);
     temp_r3_1050 = this->unkC;
-    temp_r5_1056 = temp_r3_1050->unk110.unk910->unk0;
-    temp_r3_1050->SetAnim((AnimSequenceType) temp_r5_1056->unk6C, temp_r5_1056->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_1056 = temp_r3_1050->unkA08->__vptr;
+    temp_r3_1050->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_1056, s32 *, 0x6C), M2C_FIELD(temp_r5_1056, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_1060 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_1060->unk110.unk90C != 0U) {
-        temp_r4_1060->unk110.unk90C += 4;
+    if ((void *) temp_r4_1060->unkA04->__vptr != NULL) {
+        temp_r4_1060->unkA04 = (CharacterZapFX *) &temp_r4_1060->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_1072 = this->unkC->unk110.unk920;
+    temp_r3_1072 = this->unkC->unkA18;
     if (temp_r3_1072 != NULL) {
         temp_r3_1072->SetDefaults();
     }
     temp_r3_1077 = this->unkC;
     var_r30_1078 = 0;
-    if (((u8) temp_r3_1077->unk110.unk7A8 == 2) || (temp_r3_1077->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1077, u8 *, 0x8B8) == 2) || (temp_r3_1077->unk870.unk30.Get() != NULL)) {
         var_r30_1078 = 1;
     }
     if (var_r30_1078 != 0) {
-        var_r3_1097 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_1097 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_1097 = NULL;
     }
@@ -585,35 +587,35 @@ loop_2:
     }
     this->unkC->SetInvulnerableToMeleeAttacks(1U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
-    this->unkC->unkB9E = 1;
+    M2C_FIELD(this->unkC, s8 *, 0xB9E) = 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EarthBossGoal_MeleeAttack2::Terminate() {
     AttackerManager *var_r3_1179;
+    CharacterFireFX *temp_r5_1144;
     Enemy *temp_r3_1139;
     Enemy *temp_r3_1143;
     Enemy *temp_r3_1160;
     Enemy *var_r4_1186;
-    EnemyAttack *temp_r5_1144;
     u8 var_r30_1158;
 
     temp_r3_1139 = this->unkC;
-    temp_r3_1139->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_1139, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_1139, u8 *, 0xB08) & ~0x10);
     temp_r3_1143 = this->unkC;
-    temp_r5_1144 = temp_r3_1143->unk110.unk910;
+    temp_r5_1144 = temp_r3_1143->unkA08;
     if (temp_r5_1144 != NULL) {
-        this->unkC->unk110.unk96C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_1143->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, temp_r5_1144);
+        this->unkC->unkA7C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_1143->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_1144);
     }
     var_r30_1158 = 0;
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_1160 = this->unkC;
-    if (((u8) temp_r3_1160->unk110.unk7A8 == 2) || (temp_r3_1160->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1160, u8 *, 0x8B8) == 2) || (temp_r3_1160->unk870.unk30.Get() != NULL)) {
         var_r30_1158 = 1;
     }
     if (var_r30_1158 != 0) {
-        var_r3_1179 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_1179 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_1179 = NULL;
     }
@@ -626,11 +628,11 @@ void EarthBossGoal_MeleeAttack2::Terminate() {
     }
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
-    this->unkC->unkC2E = 0;
+    M2C_FIELD(this->unkC, s8 *, 0xC2E) = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: illegal operand
 u8 EarthBossGoal_MeleeAttack2::Update() {
     s8 sp60;
     f64 sp58;
@@ -642,16 +644,16 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
     MKVector3 sp28;
     M2C_UNK sp18;
     f32 sp10;
-    AnimSequence *temp_r4_1242;
-    AnimSequence *temp_r4_1264;
-    AnimSequence *temp_r4_1278;
-    AnimSequence *temp_r4_1319;
-    AnimSequence *temp_r5_1296;
     Enemy *temp_r29_1236;
     Enemy *temp_r29_1272;
     Enemy *temp_r3_1223;
     Enemy *temp_r3_1263;
     Enemy *temp_r3_1294;
+    EnemyDescriptor *temp_r4_1242;
+    EnemyDescriptor *temp_r4_1264;
+    EnemyDescriptor *temp_r4_1278;
+    EnemyDescriptor *temp_r4_1319;
+    EnemyDescriptor *temp_r5_1296;
     f32 temp_f31_1352;
     u8 var_r30_1237;
     u8 var_r30_1273;
@@ -659,29 +661,29 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
 
     ActivateIfInactive();
     temp_r3_1223 = this->unkC;
-    if ((((u8) temp_r3_1223->unk110.unk9F8 >> 4U) & 1) && (temp_r3_1223->CheckMeleeHit(temp_r3_1223->unk110.unk910, -1) != 0)) {
+    if ((((u8) M2C_FIELD(temp_r3_1223, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_1223->CheckMeleeHit((EnemyAttack *) temp_r3_1223->unkA08, -1) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     temp_r29_1236 = this->unkC;
     var_r30_1237 = 0;
     if (temp_r29_1236->HasAnimFinished() != 0) {
-        temp_r4_1242 = temp_r29_1236->unk110.unk940;
-        if ((temp_r4_1242 != NULL) && ((u32) temp_r4_1242->unk0 == (u32) temp_r29_1236->unk110.unk520->unk20)) {
+        temp_r4_1242 = temp_r29_1236->unkA38;
+        if ((temp_r4_1242 != NULL) && ((s8 *) temp_r4_1242->unk0 == (u32) M2C_FIELD(temp_r29_1236, MKAnimScript **, 0x630)->unk20)) {
             var_r30_1237 = 1;
         }
     }
     if (var_r30_1237 != 0) {
-        this->unk10 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unkC->unkCC8;
+        this->unk10 = M2C_FIELD(&gb, f32 *, 0x30C) + M2C_FIELD(this->unkC, f32 *, 0xCC8);
         temp_r3_1263 = this->unkC;
-        temp_r4_1264 = temp_r3_1263->unk110.unk940;
-        temp_r3_1263->SetAnim(temp_r4_1264, (AnimTransition *) &temp_r4_1264->unk20, 0.0f, 0U);
-        this->unkC->unkC2E = 1;
+        temp_r4_1264 = temp_r3_1263->unkA38;
+        temp_r3_1263->SetAnim((AnimSequence *) temp_r4_1264, (AnimTransition *) &temp_r4_1264->unk20, 0.0f, 0U);
+        M2C_FIELD(this->unkC, s8 *, 0xC2E) = 1;
     } else {
         temp_r29_1272 = this->unkC;
         var_r30_1273 = 0;
         if (temp_r29_1272->HasAnimFinished() != 0) {
-            temp_r4_1278 = temp_r29_1272->unk110.unk940;
-            if ((temp_r4_1278 != NULL) && ((u32) temp_r4_1278->unk40 == (u32) temp_r29_1272->unk110.unk520->unk20)) {
+            temp_r4_1278 = temp_r29_1272->unkA38;
+            if ((temp_r4_1278 != NULL) && ((void *) temp_r4_1278->__vptr == (u32) M2C_FIELD(temp_r29_1272, MKAnimScript **, 0x630)->unk20)) {
                 var_r30_1273 = 1;
             }
         }
@@ -690,18 +692,18 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
         } else {
             temp_r3_1294 = this->unkC;
             var_r6_1295 = 0;
-            temp_r5_1296 = temp_r3_1294->unk110.unk940;
-            if ((temp_r5_1296 != NULL) && ((u32) temp_r5_1296->unk20 == (u32) temp_r3_1294->unk110.unk520->unk20)) {
+            temp_r5_1296 = temp_r3_1294->unkA38;
+            if ((temp_r5_1296 != NULL) && (M2C_BITWISE(u32, temp_r5_1296->unk20) == (u32) M2C_FIELD(temp_r3_1294, MKAnimScript **, 0x630)->unk20)) {
                 var_r6_1295 = 1;
             }
-            if ((var_r6_1295 != 0) && ((((u8) temp_r3_1294->unk110.unk9F8 >> 1U) & 1) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0)))) {
-                temp_r4_1319 = temp_r3_1294->unk110.unk940;
-                temp_r3_1294->SetAnim(temp_r4_1319, (AnimTransition *) &temp_r4_1319->unk40, 0.0f, 0U);
-                this->unkC->unkC2E = 0;
+            if ((var_r6_1295 != 0) && ((((u8) M2C_FIELD(temp_r3_1294, u8 *, 0xB08) >> 1U) & 1) || (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0)))) {
+                temp_r4_1319 = temp_r3_1294->unkA38;
+                temp_r3_1294->SetAnim((AnimSequence *) temp_r4_1319, (AnimTransition *) &temp_r4_1319->__vptr, 0.0f, 0U);
+                M2C_FIELD(this->unkC, s8 *, 0xC2E) = 0;
             }
         }
     }
-    if (this->unkC->unk110.unk520->CheckEvent(1) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this->unkC, MKAnimScript **, 0x630)))->CheckEvent(1) != 0) {
         temp_f31_1352 = ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay3D(0.05f, 0.4f, 0.2f, this->unkC->unk8 + 0x30, 80.0f, 0, 4.0f, 0U);
         sp4C = 0;
         MKVector(0.05f, 0.8f, 0.05f);
@@ -721,17 +723,17 @@ u8 EarthBossGoal_MeleeAttack2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_MeleeAttack2::Activate() {
-    AnimSequence *temp_r5_1428;
-    AttackSweepData *temp_r3_1444;
     AttackerManager *var_r3_1469;
     Enemy *temp_r3_1413;
     Enemy *temp_r3_1422;
     Enemy *temp_r3_1449;
     Enemy *temp_r4_1432;
     Enemy *var_r4_1476;
+    MKMaterial *temp_r3_1444;
     u8 var_r30_1450;
+    void *temp_r5_1428;
 
     this->unk8 = 0;
     this->unkC->StopMovement(1U);
@@ -741,25 +743,25 @@ void EarthBossGoal_MeleeAttack2::Activate() {
     temp_r3_1413->unkA8 = 0.0f;
     this->unkC->SelectAttack(0x10, 0x3D);
     temp_r3_1422 = this->unkC;
-    temp_r5_1428 = temp_r3_1422->unk110.unk910->unk0;
-    temp_r3_1422->SetAnim((AnimSequenceType) temp_r5_1428->unk6C, temp_r5_1428->unk68, 0, 0.15f, 0U, 0U);
+    temp_r5_1428 = temp_r3_1422->unkA08->__vptr;
+    temp_r3_1422->SetAnim((AnimSequenceType) M2C_FIELD(temp_r5_1428, s32 *, 0x6C), M2C_FIELD(temp_r5_1428, s32 *, 0x68), 0, 0.15f, 0U, 0U);
     temp_r4_1432 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_1432->unk110.unk90C != 0U) {
-        temp_r4_1432->unk110.unk90C += 4;
+    if ((void *) temp_r4_1432->unkA04->__vptr != NULL) {
+        temp_r4_1432->unkA04 = (CharacterZapFX *) &temp_r4_1432->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_1444 = this->unkC->unk110.unk920;
+    temp_r3_1444 = this->unkC->unkA18;
     if (temp_r3_1444 != NULL) {
         temp_r3_1444->SetDefaults();
     }
     temp_r3_1449 = this->unkC;
     var_r30_1450 = 0;
-    if (((u8) temp_r3_1449->unk110.unk7A8 == 2) || (temp_r3_1449->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1449, u8 *, 0x8B8) == 2) || (temp_r3_1449->unk870.unk30.Get() != NULL)) {
         var_r30_1450 = 1;
     }
     if (var_r30_1450 != 0) {
-        var_r3_1469 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_1469 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_1469 = NULL;
     }
@@ -776,31 +778,31 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'GetEnemyAttackSetting'
 void EarthBossGoal_MeleeAttack1::Terminate() {
     AttackerManager *var_r3_1550;
+    CharacterFireFX *temp_r5_1515;
     Enemy *temp_r3_1510;
     Enemy *temp_r3_1514;
     Enemy *temp_r3_1531;
     Enemy *var_r4_1557;
-    EnemyAttack *temp_r5_1515;
     u8 var_r30_1529;
 
     temp_r3_1510 = this->unkC;
-    temp_r3_1510->unk110.unk9F8 &= ~0x10;
+    M2C_FIELD(temp_r3_1510, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_1510, u8 *, 0xB08) & ~0x10);
     temp_r3_1514 = this->unkC;
-    temp_r5_1515 = temp_r3_1514->unk110.unk910;
+    temp_r5_1515 = temp_r3_1514->unkA08;
     if (temp_r5_1515 != NULL) {
-        this->unkC->unk110.unk96C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_1514->unk110.unk928->GetEnemyAttackSetting((EnemySettingType) 6, temp_r5_1515);
+        this->unkC->unkA7C = M2C_FIELD(&gb, f32 *, 0x30C) + temp_r3_1514->unkA20->GetEnemyAttackSetting((EnemySettingType) 6, (EnemyAttack *) temp_r5_1515);
     }
     var_r30_1529 = 0;
-    this->unkC->unk110.unk910 = NULL;
+    this->unkC->unkA08 = NULL;
     temp_r3_1531 = this->unkC;
-    if (((u8) temp_r3_1531->unk110.unk7A8 == 2) || (temp_r3_1531->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1531, u8 *, 0x8B8) == 2) || (temp_r3_1531->unk870.unk30.Get() != NULL)) {
         var_r30_1529 = 1;
     }
     if (var_r30_1529 != 0) {
-        var_r3_1550 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_1550 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_1550 = NULL;
     }
@@ -811,19 +813,14 @@ void EarthBossGoal_MeleeAttack1::Terminate() {
         }
         var_r3_1550->Remove((Targetable *) var_r4_1557, 2);
     }
-    this->unkC->unkBE6 = 0;
+    M2C_FIELD(this->unkC, s8 *, 0xBE6) = 0;
     this->unkC->SetInvulnerableToMeleeAttacks(0U, 1U);
     this->unkC->SetInvulnerableToBreathAttacks(0U, 1U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: illegal operand
 u8 EarthBossGoal_MeleeAttack1::Update() {
-    AnimSequence *temp_r4_1598;
-    AnimSequence *temp_r4_1618;
-    AnimSequence *temp_r4_1632;
-    AnimSequence *temp_r4_1650;
-    AnimSequence *temp_r4_1710;
     EarthBossArm *temp_r3_1724;
     EarthBossArm *temp_r5_1681;
     Enemy *temp_r29_1592;
@@ -832,6 +829,11 @@ u8 EarthBossGoal_MeleeAttack1::Update() {
     Enemy *temp_r3_1679;
     Enemy *temp_r5_1722;
     Enemy *temp_r6_1648;
+    EnemyDescriptor *temp_r4_1598;
+    EnemyDescriptor *temp_r4_1618;
+    EnemyDescriptor *temp_r4_1632;
+    EnemyDescriptor *temp_r4_1650;
+    EnemyDescriptor *temp_r4_1710;
     u8 var_r30_1593;
     u8 var_r30_1627;
     u8 var_r4_1680;
@@ -842,24 +844,24 @@ u8 EarthBossGoal_MeleeAttack1::Update() {
     temp_r29_1592 = this->unkC;
     var_r30_1593 = 0;
     if (temp_r29_1592->HasAnimFinished() != 0) {
-        temp_r4_1598 = temp_r29_1592->unk110.unk940;
-        if ((temp_r4_1598 != NULL) && ((u32) temp_r4_1598->unk0 == (u32) temp_r29_1592->unk110.unk520->unk20)) {
+        temp_r4_1598 = temp_r29_1592->unkA38;
+        if ((temp_r4_1598 != NULL) && ((s8 *) temp_r4_1598->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1592, void **, 0x630), u32 *, 0x20))) {
             var_r30_1593 = 1;
         }
     }
     if (var_r30_1593 != 0) {
-        this->unkC->unkCC0->Extend();
-        this->unkC->unk110.unk57C = 0.0f;
+        ((EarthBossArm *) (M2C_FIELD(this->unkC, EarthBossArm **, 0xCC0)))->Extend();
+        this->unkC->unk684 = 0.0f;
         temp_r3_1617 = this->unkC;
-        temp_r4_1618 = temp_r3_1617->unk110.unk940;
-        temp_r3_1617->SetAnim(temp_r4_1618, (AnimTransition *) &temp_r4_1618->unk20, 0.0f, 0U);
-        this->unkC->unkBE6 = 1;
+        temp_r4_1618 = temp_r3_1617->unkA38;
+        temp_r3_1617->SetAnim((AnimSequence *) temp_r4_1618, (AnimTransition *) &temp_r4_1618->unk20, 0.0f, 0U);
+        M2C_FIELD(this->unkC, s8 *, 0xBE6) = 1;
     } else {
         temp_r29_1626 = this->unkC;
         var_r30_1627 = 0;
         if (temp_r29_1626->HasAnimFinished() != 0) {
-            temp_r4_1632 = temp_r29_1626->unk110.unk940;
-            if ((temp_r4_1632 != NULL) && ((u32) temp_r4_1632->unk40 == (u32) temp_r29_1626->unk110.unk520->unk20)) {
+            temp_r4_1632 = temp_r29_1626->unkA38;
+            if ((temp_r4_1632 != NULL) && ((void *) temp_r4_1632->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1626, void **, 0x630), u32 *, 0x20))) {
                 var_r30_1627 = 1;
             }
         }
@@ -868,61 +870,61 @@ u8 EarthBossGoal_MeleeAttack1::Update() {
         } else {
             temp_r6_1648 = this->unkC;
             var_r5_1649 = 0;
-            temp_r4_1650 = temp_r6_1648->unk110.unk940;
-            if ((temp_r4_1650 != NULL) && ((u32) temp_r4_1650->unk20 == (u32) temp_r6_1648->unk110.unk520->unk20)) {
+            temp_r4_1650 = temp_r6_1648->unkA38;
+            if ((temp_r4_1650 != NULL) && (M2C_BITWISE(u32, temp_r4_1650->unk20) == (u32) M2C_FIELD(M2C_FIELD(temp_r6_1648, void **, 0x630), u32 *, 0x20))) {
                 var_r5_1649 = 1;
             }
             if (var_r5_1649 != 0) {
-                if (((u8) this->unk14 == 0) && ((u8) temp_r6_1648->unkCC0->unk390 != 0)) {
+                if (((u8) this->unk14 == 0) && ((u8) M2C_FIELD(temp_r6_1648, EarthBossArm **, 0xCC0)->unk390 != 0)) {
                     this->unk14 = 1;
-                    this->unk10 = M2C_FIELD(&gb, f32 *, 0x30C) + this->unkC->unkCC8;
+                    this->unk10 = M2C_FIELD(&gb, f32 *, 0x30C) + M2C_FIELD(this->unkC, f32 *, 0xCC8);
                 }
                 temp_r3_1679 = this->unkC;
                 var_r4_1680 = 0;
-                temp_r5_1681 = temp_r3_1679->unkCC0;
+                temp_r5_1681 = M2C_FIELD(temp_r3_1679, EarthBossArm **, 0xCC0);
                 if (((s32) temp_r5_1681->unk38C == 4) && ((u8) temp_r5_1681->unk358 == 0)) {
                     var_r4_1680 = 1;
                 }
-                if (((var_r4_1680 == 0) && ((u8) temp_r5_1681->unk390 == 0)) || (((u8) temp_r3_1679->unk110.unk9F8 >> 1U) & 1) || (((u8) this->unk14 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0)))) {
-                    temp_r4_1710 = temp_r3_1679->unk110.unk940;
-                    temp_r3_1679->SetAnim(temp_r4_1710, (AnimTransition *) &temp_r4_1710->unk40, 0.0f, 0U);
-                    this->unkC->unkCC0->Retract();
-                    this->unkC->unkBE6 = 0;
+                if (((var_r4_1680 == 0) && ((u8) temp_r5_1681->unk390 == 0)) || (((u8) M2C_FIELD(temp_r3_1679, u8 *, 0xB08) >> 1U) & 1) || (((u8) this->unk14 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((M2C_FIELD(&gb, f32 *, 0x30C) == this->unk10) != 0)))) {
+                    temp_r4_1710 = temp_r3_1679->unkA38;
+                    temp_r3_1679->SetAnim((AnimSequence *) temp_r4_1710, (AnimTransition *) &temp_r4_1710->__vptr, 0.0f, 0U);
+                    ((EarthBossArm *) (M2C_FIELD(this->unkC, EarthBossArm **, 0xCC0)))->Retract();
+                    M2C_FIELD(this->unkC, s8 *, 0xBE6) = 0;
                 }
             }
         }
     }
     temp_r5_1722 = this->unkC;
     var_r4_1723 = 0;
-    temp_r3_1724 = temp_r5_1722->unkCC0;
+    temp_r3_1724 = M2C_FIELD(temp_r5_1722, EarthBossArm **, 0xCC0);
     if (((s32) temp_r3_1724->unk38C == 4) && ((u8) temp_r3_1724->unk358 == 0)) {
         var_r4_1723 = 1;
     }
-    if ((var_r4_1723 != 0) && (temp_r3_1724->CheckMeleeHit(temp_r5_1722->unk110.unk910) != 0)) {
+    if ((var_r4_1723 != 0) && (temp_r3_1724->CheckMeleeHit((EnemyAttack *) temp_r5_1722->unkA08) != 0)) {
         this->unkC->SetHitTarget(1U);
     }
     return this->unk8;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk910'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_MeleeAttack1::Activate() {
     M2C_UNK sp8;
-    AnimSequence *temp_r4_1769;
-    AttackSweepData *temp_r3_1792;
     AttackerManager *var_r3_1817;
     Enemy *temp_r3_1765;
     Enemy *temp_r3_1775;
     Enemy *temp_r3_1797;
     Enemy *temp_r4_1780;
     Enemy *var_r4_1824;
+    MKMaterial *temp_r3_1792;
     u8 var_r30_1798;
+    void *temp_r4_1769;
 
     this->unk8 = 0;
     this->unkC->SelectAttack(0x10, 0x3C);
     temp_r3_1765 = this->unkC;
-    temp_r4_1769 = temp_r3_1765->unk110.unk910->unk0;
-    temp_r3_1765->SetAnim(temp_r4_1769, (AnimTransition *) temp_r4_1769, 0.15f, 0U);
+    temp_r4_1769 = temp_r3_1765->unkA08->__vptr;
+    temp_r3_1765->SetAnim((AnimSequence *) temp_r4_1769, (AnimTransition *) temp_r4_1769, 0.15f, 0U);
     this->unkC->StopMovement(1U);
     temp_r3_1775 = this->unkC;
     temp_r3_1775->unkA0 = 0.0f;
@@ -930,21 +932,21 @@ void EarthBossGoal_MeleeAttack1::Activate() {
     temp_r3_1775->unkA8 = 0.0f;
     temp_r4_1780 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_1780->unk110.unk90C != 0U) {
-        temp_r4_1780->unk110.unk90C += 4;
+    if ((void *) temp_r4_1780->unkA04->__vptr != NULL) {
+        temp_r4_1780->unkA04 = (CharacterZapFX *) &temp_r4_1780->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_1792 = this->unkC->unk110.unk920;
+    temp_r3_1792 = this->unkC->unkA18;
     if (temp_r3_1792 != NULL) {
         temp_r3_1792->SetDefaults();
     }
     temp_r3_1797 = this->unkC;
     var_r30_1798 = 0;
-    if (((u8) temp_r3_1797->unk110.unk7A8 == 2) || (temp_r3_1797->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1797, u8 *, 0x8B8) == 2) || (temp_r3_1797->unk870.unk30.Get() != NULL)) {
         var_r30_1798 = 1;
     }
     if (var_r30_1798 != 0) {
-        var_r3_1817 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_1817 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_1817 = NULL;
     }
@@ -960,7 +962,7 @@ loop_2:
     this->unk10 = 0.0f;
     this->unk14 = 0;
     sp8.GetPos();
-    this->unkC->unkCC0->Aim(*((MKVector3 *) &sp8));
+    ((EarthBossArm *) (M2C_FIELD(this->unkC, EarthBossArm **, 0xCC0)))->Aim(*((MKVector3 *) &sp8));
 }
 #endif
 
@@ -970,7 +972,7 @@ void EarthBossGoal_AttackPhase3::AddGoal_AttackIdle() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_1871 = this->unk20;
-    M2C_FIELD(temp_r6_1871, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r6_1871, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_1871, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_1871, s32 *, 0x18) = 0xA0;
     M2C_FIELD(temp_r6_1871, s32 *, 0x1C) = 0;
@@ -984,7 +986,7 @@ void EarthBossGoal_AttackPhase3::AddGoal_Taunt() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_1901 = this->unk20;
-    M2C_FIELD(temp_r6_1901, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r6_1901, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_1901, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_1901, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_1901, s32 *, 0x1C) = 0;
@@ -1008,7 +1010,7 @@ u8 EarthBossGoal_AttackPhase3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 void EarthBossGoal_AttackPhase3::Activate() {
     Enemy *temp_r3_1974;
     Enemy *temp_r3_1988;
@@ -1018,21 +1020,21 @@ void EarthBossGoal_AttackPhase3::Activate() {
     RemoveAllSubgoals();
     temp_r3_1974 = this->unkC;
     var_r31_1975 = 0;
-    if (((u8) temp_r3_1974->unk110.unk7A8 == 2) || (temp_r3_1974->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_1974, u8 *, 0x8B8) == 2) || (temp_r3_1974->unk870.unk30.Get() != NULL)) {
         var_r31_1975 = 1;
     }
-    if ((var_r31_1975 == 0) || (temp_r3_1988 = this->unkC, (((s32) temp_r3_1988->unk110.unk9D8 == 2) == 0))) {
+    if ((var_r31_1975 == 0) || (temp_r3_1988 = this->unkC, ((M2C_BITWISE(s32, temp_r3_1988->unkAD0) == 2) == 0))) {
         this->unk8 = 2;
         return;
     }
-    if (((u8) temp_r3_1988->unk110.unk9F8 >> 1U) & 1) {
+    if (((u8) M2C_FIELD(temp_r3_1988, u8 *, 0xB08) >> 1U) & 1) {
         temp_r3_1988->SetHitTarget(0U);
         AddGoal_Taunt();
         return;
     }
-    if (temp_r3_1988->unk110.unk760.GetDist() < 500.0f) {
+    if (temp_r3_1988->unk838.unk28.GetDist() < 500.0f) {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unk110.unk96C) {
+        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) {
             AddGoal_AttackIdle();
             return;
         }
@@ -1119,7 +1121,7 @@ void EarthBossGoal_AttackPhase2::AddGoal_AttackIdle() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2181 = this->unk20;
-    M2C_FIELD(temp_r6_2181, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r6_2181, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2181, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2181, s32 *, 0x18) = 0xA;
     M2C_FIELD(temp_r6_2181, s32 *, 0x1C) = 0;
@@ -1133,7 +1135,7 @@ void EarthBossGoal_AttackPhase2::AddGoal_Taunt() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2211 = this->unk20;
-    M2C_FIELD(temp_r6_2211, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r6_2211, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2211, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2211, s32 *, 0x18) = 3;
     M2C_FIELD(temp_r6_2211, s32 *, 0x1C) = 0;
@@ -1157,7 +1159,7 @@ u8 EarthBossGoal_AttackPhase2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 void EarthBossGoal_AttackPhase2::Activate() {
     Enemy *temp_r3_2284;
     Enemy *temp_r3_2298;
@@ -1167,21 +1169,21 @@ void EarthBossGoal_AttackPhase2::Activate() {
     RemoveAllSubgoals();
     temp_r3_2284 = this->unkC;
     var_r31_2285 = 0;
-    if (((u8) temp_r3_2284->unk110.unk7A8 == 2) || (temp_r3_2284->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_2284, u8 *, 0x8B8) == 2) || (temp_r3_2284->unk870.unk30.Get() != NULL)) {
         var_r31_2285 = 1;
     }
-    if ((var_r31_2285 == 0) || (temp_r3_2298 = this->unkC, (((s32) temp_r3_2298->unk110.unk9D8 == 1) == 0))) {
+    if ((var_r31_2285 == 0) || (temp_r3_2298 = this->unkC, ((M2C_BITWISE(s32, temp_r3_2298->unkAD0) == 1) == 0))) {
         this->unk8 = 2;
         return;
     }
-    if (((u8) temp_r3_2298->unk110.unk9F8 >> 1U) & 1) {
+    if (((u8) M2C_FIELD(temp_r3_2298, u8 *, 0xB08) >> 1U) & 1) {
         temp_r3_2298->SetHitTarget(0U);
         AddGoal_Taunt();
         return;
     }
-    if (temp_r3_2298->unk110.unk760.GetDist() < 1000.0f) {
+    if (temp_r3_2298->unk838.unk28.GetDist() < 1000.0f) {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unk110.unk96C) {
+        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) {
             AddGoal_AttackIdle();
             return;
         }
@@ -1262,16 +1264,16 @@ void EarthBossGoal_AttackPhase2::Init(EarthBoss *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk918'
+#if 0 // DRAFT: undefined identifier 'AddSubgoal__25CompositeGoal'
 u8 EarthBossGoal_AttackPhase1::AddGoal_ScrapeFootClean() {
+    BoneBlurFX *temp_r4_2488;
     Goal<EarthBoss> *temp_r6_2499;
-    void **temp_r4_2488;
 
-    temp_r4_2488 = this->unkC->unk110.unk918;
-    if ((temp_r4_2488 != NULL) && ((s32) M2C_FIELD(*temp_r4_2488, s32 *, 0x68) == 0x3E)) {
+    temp_r4_2488 = this->unkC->unkA10;
+    if ((temp_r4_2488 != NULL) && ((s32) M2C_FIELD(temp_r4_2488->unk0, s32 *, 0x68) == 0x3E)) {
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
         temp_r6_2499 = this->unk20;
-        M2C_FIELD(temp_r6_2499, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+        M2C_FIELD(temp_r6_2499, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r6_2499, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r6_2499, s32 *, 0x18) = 0xA2;
         M2C_FIELD(temp_r6_2499, s32 *, 0x1C) = 0;
@@ -1289,7 +1291,7 @@ void EarthBossGoal_AttackPhase1::AddGoal_AttackIdle() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2537 = this->unk20;
-    M2C_FIELD(temp_r6_2537, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r6_2537, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2537, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2537, s32 *, 0x18) = 0xA;
     M2C_FIELD(temp_r6_2537, s32 *, 0x1C) = 0;
@@ -1303,7 +1305,7 @@ void EarthBossGoal_AttackPhase1::AddGoal_TauntOnKill() {
 
     AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk20);
     temp_r6_2567 = this->unk20;
-    M2C_FIELD(temp_r6_2567, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+    M2C_FIELD(temp_r6_2567, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
     M2C_FIELD(temp_r6_2567, s32 *, 0x14) = 1;
     M2C_FIELD(temp_r6_2567, s32 *, 0x18) = 4;
     M2C_FIELD(temp_r6_2567, s32 *, 0x1C) = 0;
@@ -1316,20 +1318,20 @@ void EarthBossGoal_AttackPhase1::Terminate() {
     RemoveAllSubgoals();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 u8 EarthBossGoal_AttackPhase1::Update() {
     Enemy *temp_r3_2611;
     Enemy *temp_r4_2637;
-    MKAnimScript *temp_r5_2645;
     u8 var_r30_2612;
     u8 var_r3_2651;
     u8 var_r4_2646;
     void **temp_r3_2630;
+    void *temp_r5_2645;
 
     if ((u8) this->unk3C != 0) {
         temp_r3_2611 = this->unkC;
         var_r30_2612 = 0;
-        if (((u8) temp_r3_2611->unk110.unk7A8 == 2) || (temp_r3_2611->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r3_2611, u8 *, 0x8B8) == 2) || (temp_r3_2611->unk870.unk30.Get() != NULL)) {
             var_r30_2612 = 1;
         }
         if (var_r30_2612 != 0) {
@@ -1341,12 +1343,12 @@ u8 EarthBossGoal_AttackPhase1::Update() {
     if (M2C_FIELD(*temp_r3_2630, u8 (**)(void **), 0x28)(temp_r3_2630) != 0) {
         temp_r4_2637 = this->unkC;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r4_2637->unk110.unk96C) {
-            temp_r5_2645 = temp_r4_2637->unk110.unk520;
+        if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r4_2637->unkA7C) {
+            temp_r5_2645 = M2C_FIELD(temp_r4_2637, void **, 0x630);
             var_r4_2646 = 0;
-            if (((u32) temp_r5_2645->unk2C >> 1U) & 1) {
+            if (((u32) M2C_FIELD(temp_r5_2645, u32 *, 0x2C) >> 1U) & 1) {
                 var_r3_2651 = 0;
-                if ((temp_r5_2645->unk38 > 0.0f) || ((s32) temp_r5_2645->unk44 > 1)) {
+                if ((M2C_FIELD(temp_r5_2645, f32 *, 0x38) > 0.0f) || ((s32) M2C_FIELD(temp_r5_2645, s32 *, 0x44) > 1)) {
                     var_r3_2651 = 1;
                 }
                 if (var_r3_2651 != 0) {
@@ -1366,7 +1368,7 @@ u8 EarthBossGoal_AttackPhase1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 u8 EarthBossGoal_AttackPhase1::SelectAttack() {
     AITargetData sp8;
     Enemy *temp_r3_2709;
@@ -1399,7 +1401,7 @@ u8 EarthBossGoal_AttackPhase1::SelectAttack() {
     var_r29_2711 = 0;
     var_r28_2712 = 0;
     var_r26_2714 = 0;
-    if (((u8) temp_r3_2709->unk110.unk7A8 == 2) || (temp_r3_2709->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_2709, u8 *, 0x8B8) == 2) || (temp_r3_2709->unk870.unk30.Get() != NULL)) {
         var_r26_2714 = 1;
     }
     if (var_r26_2714 == 0) {
@@ -1408,7 +1410,7 @@ u8 EarthBossGoal_AttackPhase1::SelectAttack() {
     temp_f28_2734 = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &this->unkC->unkC0)));
     sp8.GetDir();
     temp_f29_2742 = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp8)));
-    var_r25_2745 = *this->unkC->unk110.unk928->unk228;
+    var_r25_2745 = *M2C_FIELD(this->unkC->unkA20, void *****, 0x228);
 loop_20:
     if (var_r25_2745 != NULL) {
         temp_r26_2810 = *var_r25_2745;
@@ -1417,7 +1419,7 @@ loop_20:
             temp_f30_2753 = NormaliseAngle(temp_f28_2734 + M2C_FIELD(temp_r26_2810, f32 *, 0x1C));
             temp_f31_2757 = NormaliseAngle(temp_f28_2734 + M2C_FIELD(temp_r26_2810, f32 *, 0x20));
             temp_f27_2758 = M2C_FIELD(temp_r26_2810, f32 *, 0x18);
-            temp_f1_2760 = this->unkC->unk110.unk760.GetDist();
+            temp_f1_2760 = this->unkC->unk838.unk28.GetDist();
             var_r0_2762 = 0;
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             if (temp_f1_2760 == M2C_FIELD(temp_r26_2810, f32 *, 0x14)) {
@@ -1455,7 +1457,7 @@ loop_20:
     var_r26_2823 = 0;
     temp_r3_2826 = MKRand_Int(&gViewSeed, 0, var_r30_2710);
     var_r7_2828 = 0;
-    var_r6_2832 = *this->unkC->unk110.unk928->unk228;
+    var_r6_2832 = *M2C_FIELD(this->unkC->unkA20, void *****, 0x228);
 loop_30:
     if (var_r6_2832 != NULL) {
         temp_r5_2849 = *var_r6_2832;
@@ -1497,7 +1499,7 @@ block_29:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 void EarthBossGoal_AttackPhase1::Activate() {
     Enemy *temp_r3_2926;
     u8 var_r30_2924;
@@ -1507,11 +1509,11 @@ void EarthBossGoal_AttackPhase1::Activate() {
     var_r30_2924 = 0;
     this->unk3C = 0;
     temp_r3_2926 = this->unkC;
-    if (((u8) temp_r3_2926->unk110.unk7A8 == 2) || (temp_r3_2926->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_2926, u8 *, 0x8B8) == 2) || (temp_r3_2926->unk870.unk30.Get() != NULL)) {
         var_r30_2924 = 1;
     }
     if (var_r30_2924 == 0) {
-        if (((u8) this->unkC->unk110.unk9F8 >> 1U) & 1) {
+        if (((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 1U) & 1) {
             AddGoal_TauntOnKill();
             this->unkC->SetHitTarget(0U);
             return;
@@ -1520,7 +1522,7 @@ void EarthBossGoal_AttackPhase1::Activate() {
         AddGoal_AttackIdle();
         return;
     }
-    if (((u8) this->unkC->unk110.unk9F8 >> 1U) & 1) {
+    if (((u8) M2C_FIELD(this->unkC, u8 *, 0xB08) >> 1U) & 1) {
         if (AddGoal_ScrapeFootClean() == 0) {
             this->unkC->SetHitTarget(0U);
             goto block_10;
@@ -1528,7 +1530,7 @@ void EarthBossGoal_AttackPhase1::Activate() {
     } else {
 block_10:
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unk110.unk96C) {
+        if (M2C_FIELD(&gb, f32 *, 0x30C) != this->unkC->unkA7C) {
             AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
             return;
         }
@@ -1723,7 +1725,7 @@ void EarthBossGoal_Think::AddGoal_Idle() {
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk24);
         temp_r5_3356 = this->unk24;
-        M2C_FIELD(temp_r5_3356, M2C_UNK **, 0x10) = &this->unkC->unk110.unk760;
+        M2C_FIELD(temp_r5_3356, M2C_UNK **, 0x10) = &this->unkC->unk838.unk28;
         M2C_FIELD(temp_r5_3356, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r5_3356, s32 *, 0x18) = 1;
         M2C_FIELD(temp_r5_3356, s32 *, 0x1C) = 0;
@@ -1769,26 +1771,26 @@ void EarthBossGoal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     } else {
 block_16:
         temp_r4_3465 = this->unkC;
-        temp_r4_3465->unk110.unk800 = arg0->unk0;
-        temp_r4_3465->unk110.unk808 = arg0->unk8;
-        temp_r4_3465->unk110.unk810 = arg0->unk10;
-        temp_r4_3465->unk110.unk814 = arg0->unk14;
-        temp_r4_3465->unk110.unk818 = arg0->unk18;
-        temp_r4_3465->unk110.unk81C = arg0->unk1C;
-        temp_r4_3465->unk110.unk820 = arg0->unk20;
-        temp_r4_3465->unk110.unk824 = arg0->unk24;
-        temp_r4_3465->unk110.unk828 = arg0->unk28;
-        temp_r4_3465->unk110.unk82C = arg0->unk2C;
-        temp_r4_3465->unk110.unk830 = arg0->unk30;
-        temp_r4_3465->unk110.unk834 = arg0->unk34;
-        this->unkC->unk110.unk818 = 0.0f;
+        M2C_FIELD(temp_r4_3465, f64 *, 0x910) = (f64) arg0->unk0;
+        M2C_FIELD(temp_r4_3465, f64 *, 0x918) = (f64) arg0->unk8;
+        M2C_FIELD(temp_r4_3465, s32 *, 0x920) = (s32) arg0->unk10;
+        M2C_FIELD(temp_r4_3465, s32 *, 0x924) = (s32) arg0->unk14;
+        temp_r4_3465->unk918 = arg0->unk18;
+        temp_r4_3465->unk92C = arg0->unk1C;
+        temp_r4_3465->unk920 = arg0->unk20;
+        temp_r4_3465->unk924 = arg0->unk24;
+        temp_r4_3465->unk928 = M2C_BITWISE(f32, arg0->unk28);
+        temp_r4_3465->unk92C = M2C_BITWISE(f32, arg0->unk2C);
+        temp_r4_3465->unk930 = arg0->unk30;
+        M2C_FIELD(temp_r4_3465, u8 *, 0x944) = (u8) arg0->unk34;
+        this->unkC->unk918 = 0.0f;
         RemoveAllSubgoals();
         AddSubgoal__25CompositeGoal<9EarthBoss>FP16Goal<9EarthBoss>((CompositeGoal<EarthBoss> *) this, (Goal<EarthBoss> *) this->unk28);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCDC'
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 EarthBossGoal_Think::Update() {
     Enemy *temp_r3_3535;
     Enemy *temp_r3_3553;
@@ -1800,11 +1802,11 @@ u8 EarthBossGoal_Think::Update() {
         this->unk8 = 1;
     }
     temp_r4_3521 = this->unkC;
-    if ((u8) temp_r4_3521->unkCDC != 0) {
-        temp_r4_3521->unkCDC = 0;
+    if ((u8) M2C_FIELD(temp_r4_3521, u8 *, 0xCDC) != 0) {
+        M2C_FIELD(temp_r4_3521, u8 *, 0xCDC) = 0U;
         temp_r4_3528 = this->unkC;
-        temp_r4_3528->unk110.unk8C8 = 0;
-        temp_r4_3528->unk110.unk8C4 = 0;
+        temp_r4_3528->unk9D8 = 0;
+        temp_r4_3528->unk9D4 = 0;
         RemoveAllSubgoals();
         this->unk8 = 1;
     }
@@ -1817,7 +1819,7 @@ u8 EarthBossGoal_Think::Update() {
     temp_r4_3550 = this->unk8;
     if (temp_r4_3550 == 2) {
         temp_r3_3553 = this->unkC;
-        if (!(((u8) temp_r3_3553->unk110.unk9F9 >> 7U) & 1)) {
+        if (!(((u8) M2C_FIELD(temp_r3_3553, u8 *, 0xB09) >> 7U) & 1)) {
             M2C_FIELD(temp_r3_3553->__vptr, M2C_UNK (**)(), 0x34)();
             return this->unk8;
         }
@@ -1829,7 +1831,7 @@ u8 EarthBossGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: undefined identifier 'arg_spAC'
 void EarthBossGoal_Think::Arbitrate() {
     EarthBossArm *temp_r3_3883;
     Enemy *temp_r3_3608;
@@ -1844,13 +1846,13 @@ void EarthBossGoal_Think::Arbitrate() {
     f32 temp_f3_3781;
     f32 temp_f5_3625;
     f32 temp_f6_3612;
+    f32 temp_r0_3925;
+    f32 temp_r4_3706;
     f32 var_f4_3766;
     f32 var_f5_3786;
     f64 temp_f1_3791;
     f64 temp_f1_3797;
     f64 temp_f1_3801;
-    s32 temp_r0_3925;
-    s32 temp_r4_3706;
     s32 temp_r5_3820;
     s32 var_ctr_3735;
     s32 var_r3_3830;
@@ -1859,9 +1861,9 @@ void EarthBossGoal_Think::Arbitrate() {
     u8 var_r0_3728;
     void *temp_r6_3778;
     void *temp_r7_3741;
-    if ((((u8) this->unkC->unk110.unk9F9 >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_spAC + 4, (s32) (&identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk110.unk4B8, arg_spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk110.unk4BC, arg_spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk110.unk4C0, arg_sp30 = (up.unk0 * temp_f1_3619) - (up.unk4 * temp_f6_3612), arg_spD8 = temp_f5_3625, arg_sp50 = (f64) arg_sp30, arg_sp28 = (up.unk4 * temp_f5_3625) - (up.unk8 * temp_f1_3619), arg_sp2C = (up.unk8 * temp_f6_3612) - (up.unk0 * temp_f5_3625), arg_spDC = 0.0f, arg_sp48 = (f64) arg_sp28, arg_spB0 = (f32) arg_sp48, arg_spB4 = arg_sp4C, arg_spB8 = (f32) arg_sp50, arg_spBC = 0.0f, arg_spE0 = temp_r3_3608->unk110.unk4A8, arg_spE4 = temp_r3_3608->unk110.unk4AC, temp_f1_3649 = temp_r3_3608->unk110.unk4B0, arg_spE8 = temp_f1_3649, arg_spEC = 1.0f, ((temp_r3_3608->Spawn(&arg_spB0, 0, &up, temp_f1_3649, arg_sp4C, (f32) arg_sp48, 0.0f, temp_f5_3625, temp_f6_3612, up.unk8, up.unk4) == 0) == 0))) {
+    if ((((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 7U) & 1) || (M2C_STRUCT_COPY((s32) &arg_spAC + 4, (s32) (&identity - 4) + 4, 0x40), temp_r3_3608 = this->unkC, temp_f6_3612 = temp_r3_3608->unk5C8, arg_spD0 = temp_f6_3612, temp_f1_3619 = temp_r3_3608->unk5C8, arg_spD4 = temp_f1_3619, temp_f5_3625 = temp_r3_3608->unk5CC, arg_sp30 = (up.unk0 * temp_f1_3619) - (up.unk4 * temp_f6_3612), arg_spD8 = temp_f5_3625, arg_sp50 = (f64) arg_sp30, arg_sp28 = (up.unk4 * temp_f5_3625) - (up.unk8 * temp_f1_3619), arg_sp2C = (up.unk8 * temp_f6_3612) - (up.unk0 * temp_f5_3625), arg_spDC = 0.0f, arg_sp48 = (f64) arg_sp28, arg_spB0 = (f32) arg_sp48, arg_spB4 = arg_sp4C, arg_spB8 = (f32) arg_sp50, arg_spBC = 0.0f, arg_spE0 = temp_r3_3608->unk5B8, arg_spE4 = temp_r3_3608->unk5B8, temp_f1_3649 = temp_r3_3608->unk5BC, arg_spE8 = temp_f1_3649, arg_spEC = 1.0f, ((temp_r3_3608->Spawn(&arg_spB0, 0, &up, temp_f1_3649, arg_sp4C, (f32) arg_sp48, 0.0f, temp_f5_3625, temp_f6_3612, up.unk8, up.unk4) == 0) == 0))) {
         temp_r3_3659 = this->unkC;
-        if ((u8) temp_r3_3659->unkCDD == 0) {
+        if ((u8) M2C_FIELD(temp_r3_3659, u8 *, 0xCDD) == 0) {
             AddGoal_Spawn();
             return;
         }
@@ -1869,15 +1871,15 @@ void EarthBossGoal_Think::Arbitrate() {
             arg_sp78.Init();
             this->unkC->InterceptDamage();
             this->unkC->TakeDamage((EnemyDamageFeedback *) &arg_sp78, 0U);
-            if ((arg_sp9C != 0.0f) && (KDSound_IsVoicePlaying(this->unkC->unkCE0) == 0)) {
-                this->unkC->unkCE0 = KDSound_Play3d(GS_SSFlinch, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+            if ((arg_sp9C != 0.0f) && (KDSound_IsVoicePlaying(M2C_FIELD(this->unkC, s32 *, 0xCE0)) == 0)) {
+                M2C_FIELD(this->unkC, s32 *, 0xCE0) = KDSound_Play3d(GS_SSFlinch, this->unkC->unk8 + 0x30, 0U, -1, 0.0f, 0U);
             }
             temp_r5_3699 = this->unkC;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r5_3699->unk110.unk9B8 == 0.0f) {
-                temp_r4_3706 = temp_r5_3699->unk110.unk9D8;
-                if (temp_r4_3706 < (s32) (temp_r5_3699->unk110.unk928->unk11C - 1)) {
-                    temp_r5_3699->unk110.unk9D8 = temp_r4_3706 + 1;
+            if (temp_r5_3699->unkAB0 == 0.0f) {
+                temp_r4_3706 = temp_r5_3699->unkAD0;
+                if (M2C_BITWISE(s32, temp_r4_3706) < (s32) (M2C_FIELD(temp_r5_3699->unkA20, s32 *, 0x11C) - 1)) {
+                    temp_r5_3699->unkAD0 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r4_3706) + 1));
                     this->unkC->RestartStage();
                     arg_sp58.EnemyHudData();
                     this->unkC->GetMaxHealth();
@@ -1892,7 +1894,7 @@ void EarthBossGoal_Think::Arbitrate() {
                 var_ctr_3735 = 6;
 loop_13:
                 if (((u32) (var_r8_3733 - 4) > 1U) && (temp_r6_3740 = this->unkC, temp_r7_3741 = temp_r6_3740 + var_r4_3734, ((arg_sp88 == (u32) M2C_FIELD(temp_r7_3741, u32 *, 0xB10)) != 0)) && ((u8) M2C_FIELD(temp_r7_3741, u8 *, 0xB55) == 0)) {
-                    if ((var_r8_3733 != 2) || ((s32) temp_r6_3740->unkCC0->unk38C == 0)) {
+                    if ((var_r8_3733 != 2) || ((s32) M2C_FIELD(temp_r6_3740, EarthBossArm **, 0xCC0)->unk38C == 0)) {
                         var_r0_3728 = 1;
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -1961,8 +1963,8 @@ loop_13:
             }
             temp_r3_3877 = this->unkC;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r3_3877->unk110.unk9B8 == 0.0f) {
-                temp_r3_3883 = temp_r3_3877->unkCC0;
+            if (temp_r3_3877->unkAB0 == 0.0f) {
+                temp_r3_3883 = M2C_FIELD(temp_r3_3877, EarthBossArm **, 0xCC0);
                 if ((s32) temp_r3_3883->unk38C != 0) {
                     temp_r3_3883->Retract();
                 }
@@ -1990,8 +1992,8 @@ block_47:
 block_51:
         this->unkC->IsFlinching();
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) {
-            temp_r0_3925 = this->unkC->unk110.unk9D8;
-            switch (temp_r0_3925) {                 /* switch 2; irregular */
+            temp_r0_3925 = this->unkC->unkAD0;
+            switch (M2C_BITWISE(s32, temp_r0_3925)) { /* switch 2; irregular */
             case 0:                                 /* switch 2 */
                 AddGoal_AttackPhase1();
                 return;

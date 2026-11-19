@@ -27,7 +27,7 @@ extern M2C_UNK gb;
 static struct _struct_siegeTowerGroups_0x18 siegeTowerGroups[8];
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C0'
+#if 0 // DRAFT: pointer/array required
 void SiegeTower::ZapBall(Ball *arg0) {
     f64 sp10;
     f64 sp8;
@@ -70,7 +70,7 @@ void SiegeTower::ZapBall(Ball *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C0'
+#if 0 // DRAFT: pointer/array required
 void SiegeTower::Shoot(Targetable *arg0) {
     s8 sp99;
     s8 sp98;
@@ -161,7 +161,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C0'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void SiegeTower::UpdateShooting(Targetable *arg0) {
     M2C_UNK sp58;
     f64 sp50;
@@ -243,7 +243,6 @@ void SiegeTower::UpdateShooting(Targetable *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C0'
 void SiegeTower::CalcSpikeBeamPositions() {
     void *temp_r3_431;
 
@@ -251,9 +250,7 @@ void SiegeTower::CalcSpikeBeamPositions() {
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_431, s32 *, 0x170), (MKVector3 *) &this->unk1C0.unk80);
     MKModel_CalculateRefPointWorldPosition(this->unk4, M2C_FIELD(temp_r3_431, s32 *, 0x174), (MKVector3 *) &this->unk24C);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C0'
 void SiegeTower::FreeElecBeams() {
     s32 temp_r4_458;
     void *temp_r3_457;
@@ -265,7 +262,6 @@ void SiegeTower::FreeElecBeams() {
         this->unk1C0.unk7C = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void SiegeTower::AllocElecBeams() {
@@ -274,7 +270,7 @@ void SiegeTower::AllocElecBeams() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk280'
+#if 0 // DRAFT: expression syntax error
 void SiegeTower::Message(MKMessage *arg0) {
     s32 temp_r0_510;
     s32 temp_r3_544;
@@ -317,7 +313,7 @@ block_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk324'
+#if 0 // DRAFT: undefined identifier 'sp10'
 void SiegeTower::UpdateTurning(MKVector3 arg0) {
     MKVector3 spB0;
     f64 spA8;
@@ -714,7 +710,7 @@ void SiegeTower::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk324'
+#if 0 // DRAFT: expression syntax error
 void SiegeTower::Resolve() {
     u32 temp_r4_1352;
     void *temp_r3_1361;
@@ -732,7 +728,7 @@ void SiegeTower::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B0'
+#if 0 // DRAFT: expression syntax error
 void SiegeTower::LoadDone() {
     f64 sp8;
     f32 temp_r0_1422;
@@ -773,7 +769,6 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B0'
 s32 SiegeTower::LoadLine(MKIniLine *arg0) {
     if ((Shatterable::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x1C0), u8 (**)(f64 *, MKIniLine *), 8)(&this->unk1B0, arg0) != 0) || (arg0->LoadFloat("fTargetRange", &this->unk280.unk0, 0) != 0)) {
         return 1;
@@ -784,9 +779,8 @@ s32 SiegeTower::LoadLine(MKIniLine *arg0) {
     }
     return 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B0'
+#if 0 // DRAFT: expression syntax error
 void SiegeTower::Deinit() {
     s32 temp_r3_1516;
     s32 var_ctr_1542;
@@ -820,7 +814,7 @@ void SiegeTower::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B0'
+#if 0 // DRAFT: expression syntax error
 void SiegeTower::Init() {
     Shatterable::Init();
     this->unk1B0.Init(checked_cast<P20SiegeTowerDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x184, (MKProp *) this);

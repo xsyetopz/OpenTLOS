@@ -18,7 +18,7 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'identity'
 void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 sp20;
     f64 sp18;
@@ -34,8 +34,8 @@ void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, 
         temp_r6_50 = temp_r6_46 - 4;
         this->unk58 = temp_r6_50;
         temp_r31_56 = *temp_r6_50;
-        temp_r31_56->unk40 = 0.0f;
-        temp_r31_56->unk44 = arg2;
+        M2C_FIELD(temp_r31_56, f32 *, 0x40) = 0.0f;
+        M2C_FIELD(temp_r31_56, f32 *, 0x44) = arg2;
         M2C_STRUCT_COPY(temp_r31_56, &identity, 0x40);
         sp10 = 0.0f;
         sp8 = 0.0f;
@@ -164,7 +164,7 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'unksp1BC'
 void ExplosionFX::DrawShockwaves() {
     f64 sp220;
     f64 sp218;
@@ -259,15 +259,15 @@ loop_2:
     if (var_r24_306 != NULL) {
         temp_r3_511 = *var_r24_306;
         if (temp_r3_511 != NULL) {
-            temp_f24_313 = temp_r3_511->unk40 / 0.5f;
+            temp_f24_313 = M2C_FIELD(temp_r3_511, f32 *, 0x40) / 0.5f;
             sp38 = -(f32) sp1B8;
             temp_f25_320 = (1500.0f * temp_f24_313) + 500.0f;
             sp3C = -unksp1BC;
             sp40 = -(f32) sp1C0;
             sp178 = (f64) sp38;
             sp180 = (f64) sp40;
-            sp188.operator*(temp_f25_320 * (*var_r24_306)->unk44);
-            sp198.operator*(temp_f25_320 * (*var_r24_306)->unk44);
+            sp188.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
+            sp198.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp1E8 = sp78;
@@ -275,8 +275,8 @@ loop_2:
             sp1A8 = sp78;
             sp1F0 = (f64) sp80;
             sp1B0 = (f64) sp80;
-            sp148.operator*(temp_f25_320 * (*var_r24_306)->unk44);
-            sp158.operator*(temp_f25_320 * (*var_r24_306)->unk44);
+            sp148.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
+            sp158.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp30 = -(f32) sp1C0;
@@ -289,13 +289,13 @@ loop_2:
             sp100 = (f64) sp30;
             sp168 = sp68;
             sp170 = (f64) sp70;
-            sp108.operator*(temp_f25_320 * (*var_r24_306)->unk44);
+            sp108.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             sp18 = -(f32) sp1C8;
             sp1C = -unksp1CC;
             sp20 = -(f32) sp1D0;
             sp118 = (f64) sp18;
             sp120 = (f64) sp20;
-            sp128.operator*(temp_f25_320 * (*var_r24_306)->unk44);
+            sp128.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp208 = sp58;
@@ -303,13 +303,13 @@ loop_2:
             sp138 = sp58;
             sp210 = (f64) sp60;
             sp140 = (f64) sp60;
-            spB8.operator*(temp_f25_320 * (*var_r24_306)->unk44);
+            spB8.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             sp8 = -(f32) sp1C8;
             spC = -unksp1CC;
             sp10 = -(f32) sp1D0;
             spC8 = (f64) sp8;
             spD0 = (f64) sp10;
-            spD8.operator*(temp_f25_320 * (*var_r24_306)->unk44);
+            spD8.operator*(temp_f25_320 * M2C_FIELD(*var_r24_306, f32 *, 0x44));
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             temp_f4_458 = 1.0f - temp_f24_313;
@@ -466,7 +466,6 @@ void ExplosionFX::Draw() {
     DrawShockwaves();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void ExplosionFX::Update() {
     Matrix **temp_r4_862;
     Matrix **temp_r4_891;
@@ -502,9 +501,9 @@ loop_10:
         if (temp_r4_903 == NULL) {
             return;
         }
-        temp_r4_903->unk40 += gUpdateTimeDelta;
+        M2C_FIELD(temp_r4_903, f32 *, 0x40) = (f32) (M2C_FIELD(temp_r4_903, f32 *, 0x40) + gUpdateTimeDelta);
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if ((*var_r6_878)->unk40 == 0.5f) {
+        if (M2C_FIELD(*var_r6_878, f32 *, 0x40) == 0.5f) {
             temp_r4_891 = this->unk58;
             this->unk58 = temp_r4_891 + 4;
             temp_r5_894 = *temp_r4_891;
@@ -515,7 +514,6 @@ loop_10:
         goto loop_10;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ExplosionFX::Init() {

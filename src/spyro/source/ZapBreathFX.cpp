@@ -752,7 +752,7 @@ void ZapBreathFX::UpdateZapMissiles() {
                     if (var_f25_953 < 300.0f) {
                         temp_r3_1161 = *(this->unkAC + (var_r27_718 + 0x50));
                         temp_r3_1165 = M2C_FIELD(*temp_r3_1161, Enemy *(**)(void **), 0xC)(temp_r3_1161);
-                        if ((temp_r3_1165 != NULL) && (temp_r3_1165->IsKnockedUp() != 0) && !(((u8) temp_r3_1165->unk110.unk9F2 >> 6U) & 1)) {
+                        if ((temp_r3_1165 != NULL) && (temp_r3_1165->IsKnockedUp() != 0) && !(((u8) M2C_FIELD(temp_r3_1165, u8 *, 0xB02) >> 6U) & 1)) {
                             temp_r3_1176 = checked_cast<ZapCage *, MKProp>(this->unkFC->CreateInstance());
                             if (temp_r3_1176 != NULL) {
                                 M2C_FIELD(temp_r3_1176->__vptr, M2C_UNK (**)(), 0x30)();

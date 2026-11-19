@@ -41,7 +41,7 @@ void ExplosiveBarrel::Ignite(float arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ExplosiveBarrel::Explode() {
     ExplosiveBarrel *spC;
     s32 sp8;
@@ -70,11 +70,9 @@ void ExplosiveBarrel::SetState(ExplosiveBarrel::States arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
 s32 ExplosiveBarrel::GetState() {
     return this->unk1B4;
 }
-#endif
 
 void ExplosiveBarrel::SetActive(bool arg0) {
     void *temp_r3_172;
@@ -243,7 +241,7 @@ void ExplosiveBarrel::Enable() {
     M2C_FIELD(M2C_FIELD(temp_r3_500, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_500);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ExplosiveBarrel::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -350,7 +348,7 @@ block_50:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1AC'
+#if 0 // DRAFT: expression syntax error
 void ExplosiveBarrel::Update() {
     f64 sp20;
     f64 sp18;
@@ -407,7 +405,6 @@ void ExplosiveBarrel::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
 void ExplosiveBarrel::Draw() {
     void *temp_r3_857;
 
@@ -417,9 +414,8 @@ void ExplosiveBarrel::Draw() {
         M2C_FIELD(M2C_FIELD(temp_r3_857, void **, 0x44), M2C_UNK (**)(void *), 0x28)(temp_r3_857);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1AC'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ExplosiveBarrel::SetDefaults() {
     void *temp_r3_879;
     void *temp_r3_884;
@@ -440,7 +436,7 @@ void ExplosiveBarrel::Resolve() {
     Shatterable::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'temp_r3_931'
+#if 0 // DRAFT: expression syntax error
 void ExplosiveBarrel::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -472,14 +468,14 @@ s32 ExplosiveBarrel::LoadLine(MKIniLine *arg0) {
     return var_r31_968;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1AC'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ExplosiveBarrel::Deinit() {
     KDSound_Stop((s32 *) &this->unk1AC);
     Shatterable::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1AC'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ExplosiveBarrel::Init() {
     Shatterable::Init();
     this->unk198 = 0.0f;

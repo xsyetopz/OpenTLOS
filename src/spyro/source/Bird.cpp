@@ -88,6 +88,7 @@ loop_2:
 
 #if 0 // DRAFT: undefined identifier 'unk30'
 void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
+    f64 sp200;
     Volume sp178;
     f64 sp170;
     f64 sp168;
@@ -282,8 +283,8 @@ void BirdCritter::FindNewFlyParameters(Bird *arg0, bool arg1) {
     }
     sp178.unk40 = M2C_FIELD(arg0, f64 *, 0x30);
     sp178.unk40.unk8 = (f64) M2C_FIELD(arg0, f32 *, 0x38);
-    sp178.unk40.unk40 = sp18;
-    sp178.unk40.unk48 = sp20;
+    sp178.unk80 = sp18;
+    sp200 = sp20;
     temp_f3_467 = arg0->unk20;
     acos((arg0->unk28 * (f32) sp178.unk28) + ((temp_f3_467 * (f32) sp178.unk20) + (arg0->unk24 * unksp19C)), (f32) sp178.unk20, temp_f3_467, (f32) sp178.unk28);
     sp78 = -arg0->unk20;

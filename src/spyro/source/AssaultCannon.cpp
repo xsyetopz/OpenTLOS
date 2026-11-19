@@ -43,7 +43,7 @@ extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of abstract class ('Shatterable::pure_slot16()')
 static M2C_UNK lit_723;                                /* unable to generate initializer: unknown type */
-static AssaultCannon states__13AssaultCannon;       /* type too large by 0xAAC; unable to generate initializer: confusing struct layout */
+static AssaultCannon states__13AssaultCannon;       /* type too large by 0x2CC; unable to generate initializer: confusing struct layout */
 static s8 *pTurretAnimEvents = "Fire";
 #endif
 
@@ -143,7 +143,7 @@ void AssaultCannon::AllocElecBeams() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2BC'
+#if 0 // DRAFT: illegal implicit conversion from 'AssaultCannonDescriptor *' to
 void AssaultCannon::EmitShootingFX() {
     MKVector3 sp70;
     f64 sp68;                                       /* compiler-managed */
@@ -373,12 +373,10 @@ void AssaultCannon::StateDeadUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2D4'
 void AssaultCannon::StateDeadEnter() {
     SetAnim(5, 0, 1.0f);
     this->unk2D4 = 3.0f;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void AssaultCannon::StateFireExit() {
@@ -2562,7 +2560,7 @@ void AssaultCannon::StateIdleUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2C0'
+#if 0 // DRAFT: illegal operand
 void AssaultCannon::StateIdleEnter() {
     if ((u32) this->unk80->unk20 != (void *) this->unk2C0) {
         SetAnim(0, 0, 1.0f);
@@ -2570,7 +2568,7 @@ void AssaultCannon::StateIdleEnter() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2BC'
+#if 0 // DRAFT: undefined identifier 'sp10'
 u64 AssaultCannon::UpdateTurning(MKVector3 arg0) {
     MKVector3 spB0;
     f64 spA8;
@@ -2826,7 +2824,7 @@ void AssaultCannon::TakeDamage(float arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2C8'
+#if 0 // DRAFT: undefined identifier 'unk218'
 void AssaultCannon::Deinit() {
     u32 temp_r3_5070;
 
@@ -2856,7 +2854,7 @@ void AssaultCannon::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk294'
+#if 0 // DRAFT: expression syntax error
 void AssaultCannon::Message(MKMessage *arg0) {
     f64 sp260;
     f64 sp258;
@@ -3273,7 +3271,7 @@ void AssaultCannon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2BC'
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void AssaultCannon::LoadDone() {
     f64 sp18;
     f64 sp10;
@@ -3369,7 +3367,6 @@ void AssaultCannon::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk2C4'
 void AssaultCannon::SetDefaults() {
     this->unk2C4 = 20.0f;
     this->unk2C0 = 0.0f;
@@ -3384,7 +3381,6 @@ void AssaultCannon::SetDefaults() {
     M2C_FIELD(this, f32 *, 0x35C) = 0.0f;
     M2C_FIELD(this, f32 *, 0x360) = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'AssaultCannonDescriptor *' to
 void AssaultCannon::Init() {

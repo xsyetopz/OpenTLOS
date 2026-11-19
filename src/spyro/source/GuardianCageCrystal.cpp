@@ -54,7 +54,7 @@ void GuardianCageCrystal::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector
     Explode();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1C8'
+#if 0 // DRAFT: expression syntax error
 void GuardianCageCrystal::Message(MKMessage *arg0) {
     GuardianCageCrystal *var_r0_152;
     void *temp_r3_150;
@@ -77,7 +77,7 @@ void GuardianCageCrystal::Draw() {
     Shatterable::Draw();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1C8'
+#if 0 // DRAFT: expression syntax error
 void GuardianCageCrystal::Update() {
     f64 sp100;
     f64 spF8;
@@ -276,7 +276,7 @@ void GuardianCageCrystal::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C8'
+#if 0 // DRAFT: expression syntax error
 void GuardianCageCrystal::Init() {
     Shatterable::Init();
     M2C_FIELD(this, s8 *, 0x1D4) = 0;

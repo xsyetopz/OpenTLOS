@@ -284,7 +284,7 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'identity'
 void SonicAttack::SpawnSonicRing(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp20;
     f64 sp18;
@@ -302,7 +302,7 @@ void SonicAttack::SpawnSonicRing(const MKVector3 &arg0, const MKVector3 &arg1) {
             spC = 1.0f;
             sp8 = 0.0f;
             sp10 = 0.0f;
-            temp_r31_414->unk40 = 1.0f;
+            M2C_FIELD(temp_r31_414, f32 *, 0x40) = 1.0f;
             sp18 = (f64) sp8;
             sp20 = (f64) sp10;
             M2C_STRUCT_COPY(temp_r31_414, &identity, 0x40);

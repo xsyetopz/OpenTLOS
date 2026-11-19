@@ -477,16 +477,16 @@ loop_9:
                 if ((u8) this->unkE0 != 0) {
                     M2C_FIELD(this, f64 *, 0x80) = temp_f1_956;
                     M2C_FIELD(this, f64 *, 0x88) = temp_f0_957;
-                    M2C_FIELD(this, f64 *, 0x90) = sp78;
-                    M2C_FIELD(this, f64 *, 0x98) = sp80;
+                    this->unk90 = sp78;
+                    this->unk98 = sp80;
                     this->unkE0 = 0;
                 } else {
                     Min(sp48, *((MKVector3 *) &this->unk4C.unk34));
                     M2C_FIELD(this, f64 *, 0x80) = M2C_BITWISE(f64, sp48);
                     M2C_FIELD(this, f64 *, 0x88) = (f64) sp48.unk8;
-                    Max(sp38, *((MKVector3 *) &this->unk4C.unk44));
-                    M2C_FIELD(this, f64 *, 0x90) = M2C_BITWISE(f64, sp38);
-                    M2C_FIELD(this, f64 *, 0x98) = (f64) sp38.unk8;
+                    Max(sp38, *((MKVector3 *) &this->unk90));
+                    this->unk90 = M2C_BITWISE(f64, sp38);
+                    this->unk98 = (f64) sp38.unk8;
                 }
                 this->unk4C.AddNode(*((MKVector3 *) &sp78));
                 var_r30_942 = var_r30_942->unkC->GetNextLine(var_r30_942);
@@ -510,16 +510,16 @@ loop_18:
                 if ((u8) this->unkE0 != 0) {
                     M2C_FIELD(this, f64 *, 0x80) = temp_f1_1030;
                     M2C_FIELD(this, f64 *, 0x88) = temp_f0_1031;
-                    M2C_FIELD(this, f64 *, 0x90) = sp68;
-                    M2C_FIELD(this, f64 *, 0x98) = sp70;
+                    this->unk90 = sp68;
+                    this->unk98 = sp70;
                     this->unkE0 = 0;
                 } else {
                     Min(sp18, *((MKVector3 *) &this->unk4C.unk34));
                     M2C_FIELD(this, f64 *, 0x80) = M2C_BITWISE(f64, sp18);
                     M2C_FIELD(this, f64 *, 0x88) = (f64) sp18.unk8;
-                    Max(sp8, *((MKVector3 *) &this->unk4C.unk44));
-                    M2C_FIELD(this, f64 *, 0x90) = M2C_BITWISE(f64, sp8);
-                    M2C_FIELD(this, f64 *, 0x98) = (f64) sp8.unk8;
+                    Max(sp8, *((MKVector3 *) &this->unk90));
+                    this->unk90 = M2C_BITWISE(f64, sp8);
+                    this->unk98 = (f64) sp8.unk8;
                 }
                 this->unk4C.unk14.AddNode(*((MKVector3 *) &sp68));
                 var_r30_1016 = var_r30_1016->unkC->GetNextLine(var_r30_1016);
@@ -540,17 +540,17 @@ void MoltenMetalBucketTrack::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: undefined identifier 'identity'
 void MoltenMetalBucketTrack::Init() {
     MKProp::Init();
-    M2C_STRUCT_COPY((s32) &this->unk4C.unk50 + 4, (s32) (&identity - 4) + 4, 0x40);
-    this->unk8 = &this->unk4C.unk54;
+    M2C_STRUCT_COPY((s32) (this + 0x9C) + 4, (s32) (&identity - 4) + 4, 0x40);
+    this->unk8 = &this->unkA0;
     this->unk4C.unk28 = M2C_BITWISE(f32, checked_cast<MoltenMetalBucket *, MKProp>(gMK->CreateProp("MoltenMetalBucket")));
     this->unk4C.unk2C = 0.0f;
     M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0x90) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0x98) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unk90 = M2C_FIELD(&zero, f64 *, 0);
+    this->unk98 = M2C_FIELD(&zero, f64 *, 8);
     this->unkC = (BoundingVolume *) &this->unk4C.unk34;
     this->unkE0 = 1;
     this->unkE4 = 0;

@@ -1,7 +1,6 @@
 #include "spyro/source/FuryFXFire.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKMaterial.h"
-#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -18,6 +17,7 @@
 #include "spyro/source/ManagedLight.h"
 #include "spyro/source/ShapedTrailFX.h"
 #include "spyro/source/Spyro.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKView.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
@@ -36,7 +36,7 @@ extern s32 GS_SpyroFuryAttack3;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
-extern f32 gRenderState;
+extern MKMaterial *gRenderState;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
@@ -54,12 +54,12 @@ static u8 lit_910 = 0;
 
 static u8 lit_1163 = 0;
 
-#if 0 // DRAFT: undefined identifier 'unk58'
+#if 0 // DRAFT: pointer/array required
 void FuryFXFire::ResetFury() {
     s32 spC;
     s32 sp8;
-    f32 temp_r4_118;
-    f32 temp_r4_63;
+    Corona *temp_r4_118;
+    ManagedLight *temp_r4_63;
     s32 var_r27_97;
     s32 var_r30_96;
     void *temp_r28_100;
@@ -67,9 +67,9 @@ void FuryFXFire::ResetFury() {
     void *temp_r5_102;
 
     SetDefaults();
-    temp_r4_63 = this->unk90.unk58;
-    if (M2C_BITWISE(u32, temp_r4_63) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_63), 0U);
+    temp_r4_63 = this->unkE8;
+    if (temp_r4_63 != NULL) {
+        gb.unk80->EnableLight(temp_r4_63, 0U);
     }
     gb.unkD0 = 0;
     gb.unk2CC.Disable(this->unk2E8);
@@ -92,9 +92,9 @@ void FuryFXFire::ResetFury() {
         var_r27_97 += 1;
         var_r30_96 += 0x80;
     } while (var_r27_97 < 3);
-    temp_r4_118 = this->unk90.unk64;
-    if (M2C_BITWISE(u32, temp_r4_118) != 0U) {
-        M2C_FIELD(temp_r4_118, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_118, u8 *, 0x31) & ~0x40);
+    temp_r4_118 = this->unkF4;
+    if (temp_r4_118 != NULL) {
+        temp_r4_118->unk31 &= ~0x40;
     }
 }
 #endif
@@ -136,7 +136,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
     void *temp_r4_242;
     void *temp_r5_272;
 
-    if (M2C_BITWISE(s32, this->unk90.unk74) == 0) {
+    if ((s32) this->unk104 == 0) {
         M2C_FIELD(this, u8 *, 0x2F0) = arg1;
         M2C_FIELD(this, u8 *, 0x2F1) = arg2;
         this->unk2E8 = (s32) arg3;
@@ -146,7 +146,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
             this->unk90.unk38 = arg0.unk8;
             this->unk90.unk3C = 1.0f;
             this->unk2E8 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
-            this->unk90.unk70 = 1.0f;
+            this->unk100 = 1.0f;
             var_r3_174 = 0;
             gb.unk381 = 1;
             var_ctr_176 = 3;
@@ -184,7 +184,7 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
             this->unk90.unk34 = unksp6C;
             this->unk90.unk38 = (f32) sp70;
             this->unk90.unk3C = 1.0f;
-            this->unk90.unk70 = 0.0f;
+            this->unk100 = 0.0f;
             var_ctr_239 = 3;
             do {
                 temp_r4_242 = *(this + (var_r3_219 + 0x130));
@@ -202,9 +202,9 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
                 var_ctr_239 -= 1;
             } while (var_ctr_239 != 0);
         }
-        this->unk90.unk68 = 0.0f;
-        this->unk90.unk6C = 0.0f;
-        this->unk90.unk74 = 1e-45f;
+        this->unkF8 = 0.0f;
+        this->unkFC = 0.0f;
+        this->unk104 = 1;
         temp_r3_268 = gameData.unk158 << 5;
         temp_r0_270 = *(&gameData.unk70 + (temp_r3_268 + 0x7C));
         temp_r5_272 = &gameData.unk70 + (temp_r3_268 + 0x64);
@@ -228,14 +228,14 @@ s32 FuryFXFire::Trigger(const MKVector3 &arg0, bool arg1, bool arg2, HeroHurtRea
 #if 0 // DRAFT: illegal use of non-static member
 void FuryFXFire::SetDefaults() {
     FuryFX::SetDefaults();
-    this->unk90.unk74 = 0.0f;
+    this->unk104 = 0;
     this->unk90.SetIdentity();
-    this->unk90.unk40 = 1.0f;
-    this->unk90.unk44 = 1.0f;
-    this->unk90.unk48 = 1.0f;
-    this->unk90.unk70 = 0.0f;
-    this->unk90.unk68 = -1.0f;
-    this->unk90.unk6C = 0.0f;
+    this->unkD0 = 1.0f;
+    this->unkD4 = 1.0f;
+    this->unkD8 = 1.0f;
+    this->unk100 = 0.0f;
+    this->unkF8 = -1.0f;
+    this->unkFC = 0.0f;
     M2C_FIELD(this, s8 *, 0x2F0) = 0;
     M2C_FIELD(this, s8 *, 0x2F1) = 0;
     this->unk2E8 = 1;
@@ -244,9 +244,9 @@ void FuryFXFire::SetDefaults() {
 
 #if 0 // DRAFT: illegal type
 void FuryFXFire::Deinit() {
-    f32 temp_r3_417;
-    f32 temp_r4_382;
-    f32 temp_r4_396;
+    Corona *temp_r4_396;
+    MKMaterial *temp_r3_417;
+    ManagedLight *temp_r4_382;
     s32 var_r29_368;
     s32 var_r31_369;
     void *temp_r30_371;
@@ -260,36 +260,36 @@ void FuryFXFire::Deinit() {
         var_r29_368 += 1;
         var_r31_369 += 0x80;
     } while (var_r29_368 < 3);
-    MKMaterial_Destroy(M2C_BITWISE(MKMaterial *, this->unk90.unk50));
-    temp_r4_382 = this->unk90.unk58;
-    if (M2C_BITWISE(u32, temp_r4_382) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_382), 0U);
-        gb.unk80->FreeManagedLight(M2C_BITWISE(ManagedLight *, this->unk90.unk58));
-        this->unk90.unk58 = 0.0f;
+    MKMaterial_Destroy(this->unkE0);
+    temp_r4_382 = this->unkE8;
+    if (temp_r4_382 != NULL) {
+        gb.unk80->EnableLight(temp_r4_382, 0U);
+        gb.unk80->FreeManagedLight(this->unkE8);
+        this->unkE8 = NULL;
     }
-    temp_r4_396 = this->unk90.unk64;
-    if (M2C_BITWISE(u32, temp_r4_396) != 0U) {
-        gb.unk64->Free(M2C_BITWISE(Corona *, temp_r4_396));
-        this->unk90.unk64 = 0.0f;
+    temp_r4_396 = this->unkF4;
+    if (temp_r4_396 != NULL) {
+        gb.unk64->Free(temp_r4_396);
+        this->unkF4 = NULL;
     }
-    MKModel_Destroy(this->unk90.unk5C);
-    MKModel_Destroy((MKModel *) this->unk90.unk60);
+    MKModel_Destroy(this->unkEC);
+    MKModel_Destroy(this->unkF0);
     gb.unk2CC.Disable(this->unk2E8);
     this->unk2E8 = -1;
-    temp_r3_417 = this->unk90.unk54;
-    if (M2C_BITWISE(u32, temp_r3_417) != 0U) {
-        MKMaterial_Destroy(M2C_BITWISE(MKMaterial *, temp_r3_417));
+    temp_r3_417 = this->unkE4;
+    if (temp_r3_417 != NULL) {
+        MKMaterial_Destroy(temp_r3_417);
     }
     FuryFX::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk74'
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void FuryFXFire::Draw() {
     f32 temp_f2_459;
-    f32 temp_r0_442;
-    temp_r0_442 = this->unk90.unk74;
-    switch (M2C_BITWISE(s32, temp_r0_442)) {        /* irregular */
+    s32 temp_r0_442;
+    temp_r0_442 = this->unk104;
+    switch (temp_r0_442) {                          /* irregular */
     case 1:
         return;
     default:
@@ -299,20 +299,20 @@ void FuryFXFire::Draw() {
         arg_sp10 = temp_f2_459;
         MKView_SetProjection(0.0f, temp_f2_459, 0.0f);
         M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) &this->unk8C + 4, 0x40);
-        arg_sp18 = 7.0f * this->unk90.unk40;
-        arg_sp20 = 7.0f * this->unk90.unk48;
-        arg_sp1C = 3.0f * this->unk90.unk44;
+        arg_sp18 = 7.0f * this->unkD0;
+        arg_sp20 = 7.0f * this->unkD8;
+        arg_sp1C = 3.0f * this->unkD4;
         arg_sp30 = (f64) arg_sp20;
         arg_sp28 = (f64) arg_sp18;
         arg_sp40.Scale3x3((Matrix *) &arg_sp40, *((MKVector3 *) &arg_sp28));
-        MKModel_SetWorldMatrix((MKModel *) this->unk90.unk60, *((Matrix *) &arg_sp40));
+        MKModel_SetWorldMatrix(this->unkF0, *((Matrix *) &arg_sp40));
         if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
-            gRenderState = this->unk90.unk54;
-            MKModel_Draw((MKModel *) this->unk90.unk60, NULL);
-            gRenderState = 0.0f;
-            MKModel_Draw((MKModel *) this->unk90.unk60, NULL);
+            gRenderState = this->unkE4;
+            MKModel_Draw(this->unkF0, NULL);
+            gRenderState = NULL;
+            MKModel_Draw(this->unkF0, NULL);
         } else {
-            MKModel_Draw((MKModel *) this->unk90.unk60, NULL);
+            MKModel_Draw(this->unkF0, NULL);
         }
         MKView_Pop();
         /* fallthrough */
@@ -323,17 +323,17 @@ void FuryFXFire::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'arg_sp48'
 void FuryFXFire::UpdateDragons() {
     MKVector3 *temp_r25_660;
+    ManagedLight *temp_r3_694;
+    ManagedLight *temp_r3_725;
+    ManagedLight *temp_r3_741;
     f32 temp_f1_602;
     f32 temp_f1_720;
     f32 temp_f22_586;
     f32 temp_f23_591;
     f32 temp_f24_600;
-    f32 temp_r3_694;
-    f32 temp_r3_725;
-    f32 temp_r3_741;
     f32 var_f1_592;
     s32 var_r26_565;
     s32 var_r28_563;
@@ -351,13 +351,13 @@ void FuryFXFire::UpdateDragons() {
         M2C_FIELD(temp_r30_570, f32 *, 0x110) = (f32) ((M2C_FIELD(temp_r30_570, f32 *, 0x114) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_570, f32 *, 0x110));
         M2C_FIELD(temp_r30_570, f32 *, 0x118) = (f32) ((2.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r30_570, f32 *, 0x118));
         M2C_FIELD(temp_r30_570, f32 *, 0x11C) = (f32) (M2C_FIELD(temp_r30_570, f32 *, 0x11C) + gUpdateTimeDelta);
-        temp_f22_586 = 400.0f * this->unk90.unk40;
+        temp_f22_586 = 400.0f * this->unkD0;
         temp_f23_591 = temp_f22_586 * -_table_sinf(1.5707964f + M2C_FIELD(temp_r30_570, f32 *, 0x110));
         var_f1_592 = _table_sinf(M2C_FIELD(temp_r30_570, f32 *, 0x118));
         if (var_f1_592 < 0.0f) {
             var_f1_592 = -var_f1_592;
         }
-        temp_f24_600 = (50.0f * this->unk90.unk44) + (300.0f * var_f1_592);
+        temp_f24_600 = (50.0f * this->unkD4) + (300.0f * var_f1_592);
         temp_f1_602 = temp_f22_586 * _table_sinf(M2C_FIELD(temp_r30_570, f32 *, 0x110));
         arg_sp48 = temp_f23_591;
         arg_sp40 = temp_f1_602;
@@ -376,7 +376,7 @@ void FuryFXFire::UpdateDragons() {
         arg_spD0 = (f32) arg_sp70;
         arg_spD4 = arg_sp74;
         arg_spD8 = (f32) arg_sp78;
-        MKModel_SetWorldMatrix(this->unk90.unk5C, *((Matrix *) &arg_spA0));
+        MKModel_SetWorldMatrix(this->unkEC, *((Matrix *) &arg_spA0));
         ((ShapedTrailFX *) (M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)))->UpdateTrail();
         temp_r3_648 = MKModel_GetWorldMatrix(M2C_FIELD(temp_r30_570, ShapedTrailFX **, 0x130)->unk78);
         M2C_FIELD(temp_r30_570, f64 *, 0x120) = (f64) M2C_FIELD(temp_r3_648, f64 *, 0x30);
@@ -397,15 +397,15 @@ void FuryFXFire::UpdateDragons() {
         var_r28_563 += 1;
         var_r26_565 += 0x80;
     } while (var_r28_563 < 3);
-    temp_r3_694 = this->unk90.unk58;
-    if (M2C_BITWISE(u32, temp_r3_694) != 0U) {
+    temp_r3_694 = this->unkE8;
+    if (temp_r3_694 != NULL) {
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        M2C_FIELD(temp_r3_694, f64 *, 0x10) = arg_sp20;
+        temp_r3_694->unk10 = arg_sp20;
         arg_sp28 = (f32) arg_sp98 + this->unk90.unk38;
         arg_sp60 = arg_sp20;
-        M2C_FIELD(temp_r3_694, f64 *, 0x18) = (f64) arg_sp28;
-        temp_r3_710 = M2C_FIELD(temp_r3_694, void **, 0x3C);
+        temp_r3_694->unk18 = (f64) arg_sp28;
+        temp_r3_710 = temp_r3_694->unk3C;
         arg_sp68 = (f64) arg_sp28;
         if (temp_r3_710 != NULL) {
             M2C_FIELD(temp_r3_710, f64 *, 0x10) = arg_sp20;
@@ -413,22 +413,22 @@ void FuryFXFire::UpdateDragons() {
         }
         temp_f1_720 = MKRand_Float(&gViewSeed, 0.25f, 0.5f);
         arg_sp10 = 0.75f;
-        temp_r3_725 = this->unk90.unk58;
+        temp_r3_725 = this->unkE8;
         arg_sp14 = temp_f1_720;
         arg_sp18 = 0.0f;
         arg_sp1C = 1.0f;
-        M2C_FIELD(temp_r3_725, f64 *, 0x20) = (f64) arg_sp10;
-        M2C_FIELD(temp_r3_725, f64 *, 0x28) = (f64) arg_sp18;
-        temp_r3_733 = M2C_FIELD(temp_r3_725, void **, 0x3C);
+        temp_r3_725->unk20 = (f64) arg_sp10;
+        temp_r3_725->unk28 = (f64) arg_sp18;
+        temp_r3_733 = temp_r3_725->unk3C;
         arg_sp50 = (f64) arg_sp10;
         arg_sp58 = (f64) arg_sp18;
         if (temp_r3_733 != NULL) {
             M2C_FIELD(temp_r3_733, f64 *, 0) = (f64) arg_sp10;
             M2C_FIELD(temp_r3_733, f64 *, 8) = (f64) arg_sp18;
         }
-        temp_r3_741 = this->unk90.unk58;
-        M2C_FIELD(temp_r3_741, f32 *, 0x38) = 1000.0f;
-        temp_r3_744 = M2C_FIELD(temp_r3_741, void **, 0x3C);
+        temp_r3_741 = this->unkE8;
+        temp_r3_741->unk38 = 1000.0f;
+        temp_r3_744 = temp_r3_741->unk3C;
         if (temp_r3_744 != NULL) {
             M2C_FIELD(temp_r3_744, f32 *, 0x20) = 1000.0f;
             M2C_FIELD(temp_r3_744, f32 *, 0x24) = 1000000.0f;
@@ -458,9 +458,23 @@ void FuryFXFire::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FuryFXFire::Update() {
+    Corona *temp_r3_1342;
+    Corona *temp_r3_1652;
+    Corona *temp_r3_1659;
+    Corona *temp_r3_2054;
+    Corona *temp_r3_2060;
+    Corona *temp_r4_1331;
+    Corona *temp_r4_1631;
+    Corona *temp_r4_2098;
     KDSynkerPlayer3 *temp_r3_2372;
+    ManagedLight *temp_r3_2341;
+    ManagedLight *temp_r3_2418;
+    ManagedLight *temp_r3_2449;
+    ManagedLight *temp_r3_2485;
+    ManagedLight *temp_r4_1131;
+    ManagedLight *temp_r4_2586;
     f32 temp_f19_2670;
     f32 temp_f1_1081;
     f32 temp_f1_1445;
@@ -503,25 +517,11 @@ void FuryFXFire::Update() {
     f32 temp_f3_860;
     f32 temp_f3_873;
     f32 temp_f4_2454;
-    f32 temp_r0_1041;
-    f32 temp_r3_1342;
-    f32 temp_r3_1652;
-    f32 temp_r3_1659;
-    f32 temp_r3_2054;
-    f32 temp_r3_2060;
-    f32 temp_r3_2341;
-    f32 temp_r3_2418;
-    f32 temp_r3_2449;
-    f32 temp_r3_2485;
-    f32 temp_r4_1131;
-    f32 temp_r4_1331;
-    f32 temp_r4_1631;
-    f32 temp_r4_2098;
-    f32 temp_r4_2586;
     f32 var_f0_2850;
     f32 var_f20_1061;
     f32 var_f27_2435;
     f64 temp_f2_2249;
+    s32 temp_r0_1041;
     s32 temp_r28_2647;
     s32 temp_r29_1403;
     s32 temp_r29_1739;
@@ -548,29 +548,29 @@ void FuryFXFire::Update() {
     void *temp_r4_2087;
     void *temp_r5_2082;
     void *temp_r6_1154;
-    this->unk90.unk70 -= gUpdateTimeDelta;
+    this->unk100 -= gUpdateTimeDelta;
     if ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0) {
-        temp_f3_860 = this->unk90.unk68;
+        temp_f3_860 = this->unkF8;
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (temp_f3_860 == 0.0f) {
-            this->unk90.unk68 = temp_f3_860 + gUpdateTimeDelta;
-            temp_f1_869 = this->unk90.unk68;
+            this->unkF8 = temp_f3_860 + gUpdateTimeDelta;
+            temp_f1_869 = this->unkF8;
             if (temp_f1_869 < 1.0f) {
-                this->unk90.unk6C = 0.0f;
-                temp_f3_873 = this->unk90.unk68;
+                this->unkFC = 0.0f;
+                temp_f3_873 = this->unkF8;
                 if ((temp_f3_873 > 0.0f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f3_873 == 0.5f) != 0))) {
-                    this->unk90.unk6C = (2.0f * temp_f3_873 * 0.0625f) + 0.0f;
+                    this->unkFC = (2.0f * temp_f3_873 * 0.0625f) + 0.0f;
                 } else if ((temp_f3_873 > 0.5f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f3_873 == 0.75f) != 0))) {
-                    this->unk90.unk6C = (4.0f * (temp_f3_873 - 0.5f) * 0.0625f) + 0.0625f;
+                    this->unkFC = (4.0f * (temp_f3_873 - 0.5f) * 0.0625f) + 0.0625f;
                 } else if ((temp_f3_873 > 0.75f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f3_873 == 0.875f) != 0))) {
-                    this->unk90.unk6C = (8.0f * (temp_f3_873 - 0.75f) * 0.125f) + 0.125f;
+                    this->unkFC = (8.0f * (temp_f3_873 - 0.75f) * 0.125f) + 0.125f;
                 } else if (temp_f3_873 > 0.875f) {
                     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                     if (temp_f3_873 == 1.0f) {
-                        this->unk90.unk6C = (8.0f * (temp_f3_873 - 0.875f) * 0.25f) + 0.25f;
+                        this->unkFC = (8.0f * (temp_f3_873 - 0.875f) * 0.25f) + 0.25f;
                     }
                 }
-                temp_f20_932 = this->unk90.unk6C;
+                temp_f20_932 = this->unkFC;
                 ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(temp_f20_932, temp_f20_932, 0.033f, 0, 4.0f, 0U);
             } else {
                 M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
@@ -585,23 +585,23 @@ void FuryFXFire::Update() {
                         if ((temp_f1_869 == 7.0f) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_869 == 7.4f) != 0)) && ((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0)) {
                             ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.3f, 0.0f, 0.05f, 0, 4.0f, 0U);
                         } else if (temp_f1_869 > 7.4f) {
-                            this->unk90.unk68 = -1.0f;
+                            this->unkF8 = -1.0f;
                         }
                     }
                 }
             }
         }
     }
-    if (M2C_BITWISE(s32, this->unk90.unk74) != 0) {
+    if ((s32) this->unk104 != 0) {
         UpdateDragons();
     }
-    temp_r0_1041 = this->unk90.unk74;
-    if (M2C_BITWISE(u32, temp_r0_1041) <= 6U) {
-        switch (M2C_BITWISE(s32, temp_r0_1041)) {
+    temp_r0_1041 = this->unk104;
+    if ((u32) temp_r0_1041 <= 6U) {
+        switch (temp_r0_1041) {
             return;
         case 1:
             if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
-                var_f20_1061 = this->unk90.unk70;
+                var_f20_1061 = this->unk100;
                 if (var_f20_1061 < 1.0f) {
 
                 } else {
@@ -619,20 +619,20 @@ void FuryFXFire::Update() {
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f32, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp870, 30.0f, 0.017453292f);
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk70 == 0.0f) {
-                this->unk90.unk74 = 3e-45f;
-                this->unk90.unk70 = 0.25f;
+            if (this->unk100 == 0.0f) {
+                this->unk104 = 2;
+                this->unk100 = 0.25f;
                 gb.unk2CC.Disable(this->unk2E8);
                 this->unk2E8 = -1;
-                this->unk90.unk40 = 0.05f;
-                this->unk90.unk44 = 1.0f;
-                this->unk90.unk48 = 0.05f;
+                this->unkD0 = 0.05f;
+                this->unkD4 = 1.0f;
+                this->unkD8 = 0.05f;
                 if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
                     KDSound_Play3d(GS_CynderFuryBuildUp2, (MKVector3 *) &this->unk90.unk30, 0U, -1, 0.0f, 0U);
                 }
-                temp_r4_1131 = this->unk90.unk58;
-                if (M2C_BITWISE(u32, temp_r4_1131) != 0U) {
-                    gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_1131), 1U);
+                temp_r4_1131 = this->unkE8;
+                if (temp_r4_1131 != NULL) {
+                    gb.unk80->EnableLight(temp_r4_1131, 1U);
                 }
                 var_r28_1141 = 0;
                 var_r29_1143 = 0;
@@ -671,7 +671,7 @@ void FuryFXFire::Update() {
                 arg_sp36C = 1.0f;
                 arg_sp7E0 = (f64) arg_sp360;
                 arg_sp7E8 = (f64) arg_sp368;
-                MKModel_SetColor((MKModel *) this->unk90.unk60, *((MKVector4 *) &arg_sp7E0));
+                MKModel_SetColor(this->unkF0, *((MKVector4 *) &arg_sp7E0));
                 return;
             }
             break;
@@ -688,7 +688,7 @@ void FuryFXFire::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp7B0 = arg_sp70;
-            arg_sp78 = this->unk90.unk48 + arg_sp7A8;
+            arg_sp78 = this->unkD8 + arg_sp7A8;
             arg_sp7B8 = (f64) arg_sp78;
             MKVector(0.0f, 0.0f, 0.0f);
             Min(*((MKVector3 *) &arg_sp150), *((MKVector3 *) &arg_sp7B0));
@@ -696,21 +696,21 @@ void FuryFXFire::Update() {
             M2C_FIELD(this, f32 *, 0xD0) = arg_sp7D0;
             M2C_FIELD(this, f32 *, 0xD8) = arg_sp7D8;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk70 == 0.0f) {
-                this->unk90.unk70 = 1.5f;
+            if (this->unk100 == 0.0f) {
+                this->unk100 = 1.5f;
                 if ((u8) M2C_FIELD(this, u8 *, 0x2F1) != 0) {
-                    this->unk90.unk70 -= 0.3f;
+                    this->unk100 -= 0.3f;
                 }
-                this->unk90.unk74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk90.unk74) + 1));
+                this->unk104 += 1;
                 if (((u8) M2C_FIELD(this, u8 *, 0x2F0) == 0) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
                     ((KDInput *) (M2C_FIELD(gb.unk0->__vptr, KDInput *(**)(HeroInterface *), 0x40)(gb.unk0)))->RumblePlay(0.5f, 0.5f, 0.33f, 0, 4.0f, 0U);
                 }
-                temp_r4_1331 = this->unk90.unk64;
-                if (M2C_BITWISE(u32, temp_r4_1331) != 0U) {
-                    M2C_FIELD(temp_r4_1331, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_1331, u8 *, 0x31) | 0x40);
-                    M2C_FIELD(this->unk90.unk64, f32 *, 0x24) = 0.0f;
-                    temp_r3_1342 = this->unk90.unk64;
-                    M2C_FIELD(temp_r3_1342, f32 *, 0x2C) = (f32) ((2.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r3_1342, f32 *, 0x2C));
+                temp_r4_1331 = this->unkF4;
+                if (temp_r4_1331 != NULL) {
+                    temp_r4_1331->unk31 |= 0x40;
+                    this->unkF4->unk24 = 0.0f;
+                    temp_r3_1342 = this->unkF4;
+                    temp_r3_1342->unk2C += 2.0f * gUpdateTimeDelta;
                     return;
                 }
             } else {
@@ -735,7 +735,7 @@ void FuryFXFire::Update() {
                 temp_f23_1419 = 6.2831855f / (f32) (temp_r29_1403 - 1);
 loop_71:
                 if (var_r26_1414 < temp_r29_1403) {
-                    temp_f30_1424 = this->unk90.unk40;
+                    temp_f30_1424 = this->unkD0;
                     temp_f22_1431 = (f32) var_r26_1414 * temp_f23_1419;
                     temp_f20_1433 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
                     temp_f21_1440 = -_table_sinf(1.5707964f + temp_f22_1431) * temp_f20_1433;
@@ -804,36 +804,36 @@ loop_71:
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp6C0 = arg_sp60;
-            arg_sp68 = this->unk90.unk48 + arg_sp6B8;
+            arg_sp68 = this->unkD8 + arg_sp6B8;
             arg_sp6C8 = (f64) arg_sp68;
             MKVector(0.1f, 0.0f, 0.1f);
             Min(*((MKVector3 *) &arg_sp130), *((MKVector3 *) &arg_sp6C0));
             Max(*((MKVector3 *) &arg_sp6E0), *((MKVector3 *) &arg_sp130));
             M2C_FIELD(this, f32 *, 0xD0) = arg_sp6E0;
             M2C_FIELD(this, f32 *, 0xD8) = arg_sp6E8;
-            temp_r4_1631 = this->unk90.unk64;
-            if (M2C_BITWISE(u32, temp_r4_1631) != 0U) {
-                M2C_FIELD(temp_r4_1631, f32 *, 0x24) = (f32) this->unk90.unk44;
-                MKVector(0.0f, 75.0f * this->unk90.unk44, 0.0f);
+            temp_r4_1631 = this->unkF4;
+            if (temp_r4_1631 != NULL) {
+                temp_r4_1631->unk24 = this->unkD4;
+                MKVector(0.0f, 75.0f * this->unkD4, 0.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                temp_r3_1652 = this->unk90.unk64;
-                M2C_FIELD(temp_r3_1652, f64 *, 0) = arg_sp120;
+                temp_r3_1652 = this->unkF4;
+                temp_r3_1652->unk0 = arg_sp120;
                 arg_sp128 = this->unk90.unk38 + arg_sp678;
                 arg_sp680 = arg_sp120;
-                M2C_FIELD(temp_r3_1652, f64 *, 8) = (f64) arg_sp128;
-                temp_r3_1659 = this->unk90.unk64;
+                temp_r3_1652->unk8 = (f64) arg_sp128;
+                temp_r3_1659 = this->unkF4;
                 arg_sp688 = (f64) arg_sp128;
-                M2C_FIELD(temp_r3_1659, f32 *, 0x2C) = (f32) ((2.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r3_1659, f32 *, 0x2C));
+                temp_r3_1659->unk2C += 2.0f * gUpdateTimeDelta;
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk70 == 0.0f) {
+            if (this->unk100 == 0.0f) {
                 if ((u8) M2C_FIELD(this, u8 *, 0x2F0) != 0) {
-                    this->unk90.unk70 = 3.0f;
+                    this->unk100 = 3.0f;
                 } else {
-                    this->unk90.unk70 = 0.2f;
+                    this->unk100 = 0.2f;
                 }
-                this->unk90.unk74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk90.unk74) + 1));
+                this->unk104 += 1;
             }
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 arg_sp8A4 = 0;
@@ -856,7 +856,7 @@ loop_71:
             temp_f23_1755 = 6.2831855f / (f32) (temp_r29_1739 - 1);
 loop_87:
             if (var_r26_1750 < temp_r29_1739) {
-                temp_f30_1760 = this->unk90.unk40;
+                temp_f30_1760 = this->unkD0;
                 temp_f22_1767 = (f32) var_r26_1750 * temp_f23_1755;
                 temp_f20_1769 = MKRand_Float(&gViewSeed, 0.8f, 1.0f);
                 temp_f21_1776 = -_table_sinf(1.5707964f + temp_f22_1767) * temp_f20_1769;
@@ -924,7 +924,7 @@ loop_87:
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 arg_sp5B0 = arg_sp50;
-                arg_sp58 = this->unk90.unk48 + arg_sp5A8;
+                arg_sp58 = this->unkD8 + arg_sp5A8;
                 arg_sp5B8 = (f64) arg_sp58;
                 MKVector(0.05f, 0.0f, 0.05f);
                 Min(*((MKVector3 *) &arg_sp100), *((MKVector3 *) &arg_sp5B0));
@@ -938,7 +938,7 @@ loop_87:
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 arg_sp550 = arg_sp40;
-                arg_sp48 = this->unk90.unk48 + arg_sp548;
+                arg_sp48 = this->unkD8 + arg_sp548;
                 arg_sp558 = (f64) arg_sp48;
                 MKVector(0.05f, 0.0f, 0.05f);
                 Min(*((MKVector3 *) &arg_spF0), *((MKVector3 *) &arg_sp550));
@@ -960,18 +960,18 @@ loop_87:
                 arg_sp518 = (f64) arg_spE8;
                 M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f64), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &arg_sp880, arg_spE0);
             }
-            temp_r3_2054 = this->unk90.unk64;
-            if (M2C_BITWISE(u32, temp_r3_2054) != 0U) {
-                M2C_FIELD(temp_r3_2054, f32 *, 0x24) = (f32) this->unk90.unk44;
-                temp_r3_2060 = this->unk90.unk64;
-                M2C_FIELD(temp_r3_2060, f32 *, 0x2C) = (f32) ((2.0f * gUpdateTimeDelta) + M2C_FIELD(temp_r3_2060, f32 *, 0x2C));
+            temp_r3_2054 = this->unkF4;
+            if (temp_r3_2054 != NULL) {
+                temp_r3_2054->unk24 = this->unkD4;
+                temp_r3_2060 = this->unkF4;
+                temp_r3_2060->unk2C += 2.0f * gUpdateTimeDelta;
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk70 == 0.0f) {
+            if (this->unk100 == 0.0f) {
                 var_r28_2072 = 0;
                 var_r31_2073 = 0;
-                this->unk90.unk70 = 0.6f;
-                this->unk90.unk74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk90.unk74) + 1));
+                this->unk100 = 0.6f;
+                this->unk104 += 1;
                 do {
                     temp_r26_2080 = this + var_r31_2073;
                     temp_r5_2082 = M2C_FIELD(temp_r26_2080, void **, 0x130);
@@ -983,9 +983,9 @@ loop_87:
                     var_r28_2072 += 1;
                     var_r31_2073 += 0x80;
                 } while (var_r28_2072 < 3);
-                temp_r4_2098 = this->unk90.unk64;
-                if (M2C_BITWISE(u32, temp_r4_2098) != 0U) {
-                    M2C_FIELD(temp_r4_2098, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2098, u8 *, 0x31) & ~0x40);
+                temp_r4_2098 = this->unkF4;
+                if (temp_r4_2098 != NULL) {
+                    temp_r4_2098->unk31 &= ~0x40;
                 }
                 arg_sp250 = 1.0f;
                 arg_sp254 = 1.0f;
@@ -1068,10 +1068,10 @@ loop_87:
                 }
                 KDSound_Play3d(var_r3_2323, (MKVector3 *) &this->unk290.unk10, 0U, -1, 0.0f, 0U);
                 KDSound_Play3d(GS_Rumble1, (MKVector3 *) &this->unk290.unk10, 0U, -1, 0.0f, 0U);
-                temp_r3_2341 = this->unk90.unk58;
-                if (M2C_BITWISE(u32, temp_r3_2341) != 0U) {
-                    M2C_FIELD(temp_r3_2341, f32 *, 0x38) = 10000.0f;
-                    temp_r3_2346 = M2C_FIELD(temp_r3_2341, void **, 0x3C);
+                temp_r3_2341 = this->unkE8;
+                if (temp_r3_2341 != NULL) {
+                    temp_r3_2341->unk38 = 10000.0f;
+                    temp_r3_2346 = temp_r3_2341->unk3C;
                     if (temp_r3_2346 != NULL) {
                         M2C_FIELD(temp_r3_2346, f32 *, 0x20) = 10000.0f;
                         M2C_FIELD(temp_r3_2346, f32 *, 0x24) = 1e8f;
@@ -1091,16 +1091,16 @@ loop_87:
                     ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->SetRage(0, 15.0f);
                 }
             }
-            if (M2C_BITWISE(u32, this->unk90.unk58) != 0U) {
+            if ((ManagedLight *) this->unkE8 != NULL) {
                 MKVector(0.0f, 500.0f, 0.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                temp_r3_2418 = this->unk90.unk58;
+                temp_r3_2418 = this->unkE8;
                 arg_sp490 = arg_spA0;
                 arg_spA8 = this->unk90.unk38 + arg_sp488;
-                M2C_FIELD(temp_r3_2418, f64 *, 0x10) = arg_spA0;
-                M2C_FIELD(temp_r3_2418, f64 *, 0x18) = (f64) arg_spA8;
-                temp_r3_2424 = M2C_FIELD(temp_r3_2418, void **, 0x3C);
+                temp_r3_2418->unk10 = arg_spA0;
+                temp_r3_2418->unk18 = (f64) arg_spA8;
+                temp_r3_2424 = temp_r3_2418->unk3C;
                 arg_sp498 = (f64) arg_spA8;
                 if (temp_r3_2424 != NULL) {
                     M2C_FIELD(temp_r3_2424, f64 *, 0x10) = arg_spA0;
@@ -1110,7 +1110,7 @@ loop_87:
             }
             break;
         case 5:
-            var_f27_2435 = this->unk90.unk70 / 0.6f;
+            var_f27_2435 = this->unk100 / 0.6f;
             if (var_f27_2435 < 1.0f) {
 
             } else {
@@ -1121,12 +1121,12 @@ loop_87:
             } else {
                 var_f27_2435 = 0.0f;
             }
-            temp_r3_2449 = this->unk90.unk58;
-            if (M2C_BITWISE(u32, temp_r3_2449) != 0U) {
+            temp_r3_2449 = this->unkE8;
+            if (temp_r3_2449 != NULL) {
                 temp_f4_2454 = 1.0f - var_f27_2435;
                 temp_f1_2456 = (4000.0f * temp_f4_2454) + 10000.0f;
-                M2C_FIELD(temp_r3_2449, f32 *, 0x38) = temp_f1_2456;
-                temp_r3_2458 = M2C_FIELD(temp_r3_2449, void **, 0x3C);
+                temp_r3_2449->unk38 = temp_f1_2456;
+                temp_r3_2458 = temp_r3_2449->unk3C;
                 if (temp_r3_2458 != NULL) {
                     M2C_FIELD(temp_r3_2458, f32 *, 0x20) = temp_f1_2456;
                     M2C_FIELD(temp_r3_2458, f32 *, 0x24) = (f32) (temp_f1_2456 * temp_f1_2456);
@@ -1136,12 +1136,12 @@ loop_87:
                 MKVector(0.0f, 17000.0f * temp_f4_2454, 0.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-                temp_r3_2485 = this->unk90.unk58;
+                temp_r3_2485 = this->unkE8;
                 arg_sp470 = arg_sp90;
                 arg_sp98 = this->unk90.unk38 + arg_sp468;
-                M2C_FIELD(temp_r3_2485, f64 *, 0x10) = arg_sp90;
-                M2C_FIELD(temp_r3_2485, f64 *, 0x18) = (f64) arg_sp98;
-                temp_r3_2491 = M2C_FIELD(temp_r3_2485, void **, 0x3C);
+                temp_r3_2485->unk10 = arg_sp90;
+                temp_r3_2485->unk18 = (f64) arg_sp98;
+                temp_r3_2491 = temp_r3_2485->unk3C;
                 arg_sp478 = (f64) arg_sp98;
                 if (temp_r3_2491 != NULL) {
                     M2C_FIELD(temp_r3_2491, f64 *, 0x10) = arg_sp90;
@@ -1154,7 +1154,7 @@ loop_87:
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             arg_sp430 = arg_sp30;
-            arg_sp38 = this->unk90.unk48 + arg_sp428;
+            arg_sp38 = this->unkD8 + arg_sp428;
             arg_sp438 = (f64) arg_sp38;
             MKVector(0.1f, 0.0f, 0.1f);
             Min(*((MKVector3 *) &arg_sp80), *((MKVector3 *) &arg_sp430));
@@ -1172,12 +1172,12 @@ loop_87:
                 }
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk70 == 0.0f) {
-                this->unk90.unk74 = 8e-45f;
-                this->unk90.unk70 = 1.4f;
-                temp_r4_2586 = this->unk90.unk58;
-                if (M2C_BITWISE(u32, temp_r4_2586) != 0U) {
-                    gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_2586), 0U);
+            if (this->unk100 == 0.0f) {
+                this->unk104 = 6;
+                this->unk100 = 1.4f;
+                temp_r4_2586 = this->unkE8;
+                if (temp_r4_2586 != NULL) {
+                    gb.unk80->EnableLight(temp_r4_2586, 0U);
                 }
                 if (((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) && ((u8) M2C_FIELD(this, u8 *, 0x2F1) == 0)) {
                     arg_sp2C = 0;
@@ -1193,7 +1193,7 @@ loop_87:
             arg_sp21C = 1.0f;
             arg_sp3F0 = (f64) arg_sp210;
             arg_sp3F8 = (f64) arg_sp218;
-            MKModel_SetColor((MKModel *) this->unk90.unk60, *((MKVector4 *) &arg_sp3F0));
+            MKModel_SetColor(this->unkF0, *((MKVector4 *) &arg_sp3F0));
             var_r25_2640 = 0;
             do {
                 temp_r28_2647 = MKRand_Int(&gViewSeed, 0xF, 0x1E);
@@ -1224,7 +1224,7 @@ loop_156:
                     arg_sp3C8 = (f64) arg_sp1F8;
                     M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f26 */);
                     arg_sp3D0 = arg_sp1E0;
-                    arg_sp1E8 = (f32) arg_sp3C8 * this->unk90.unk40;
+                    arg_sp1E8 = (f32) arg_sp3C8 * this->unkD0;
                     arg_sp3D8 = (f64) arg_sp1E8;
                     M2C_ERROR(/* unknown instruction: psq_lx $f2, $zero, $r26, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f1, $f2, $f1 */);
@@ -1274,7 +1274,7 @@ loop_156:
             } while (var_r25_2640 < 2);
             return;
         case 6:
-            var_f0_2850 = this->unk90.unk70;
+            var_f0_2850 = this->unk100;
             if (var_f0_2850 < 1.4f) {
 
             } else {
@@ -1285,10 +1285,10 @@ loop_156:
             } else {
                 var_f0_2850 = 0.0f;
             }
-            this->unk90.unk70 = var_f0_2850;
+            this->unk100 = var_f0_2850;
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (this->unk90.unk70 == 0.0f) {
-                this->unk90.unk74 = 0.0f;
+            if (this->unk100 == 0.0f) {
+                this->unk104 = 0;
                 gb.unkB8.unk18 = 0;
                 gb.unk381 = 0;
             }
@@ -1333,8 +1333,8 @@ void FuryFXFire::Resolve() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    f32 temp_r4_2975;
-    f32 temp_r4_3009;
+    Corona *temp_r4_3009;
+    ManagedLight *temp_r4_2975;
     s32 var_r28_3020;
     s32 var_r31_3021;
     void *temp_r29_3025;
@@ -1356,10 +1356,10 @@ void FuryFXFire::Resolve() {
     spB0 = (f64) sp50;
     spB8 = (f64) sp58;
     spC0 = (f64) sp60;
-    this->unk90.unk58 = M2C_BITWISE(f32, gb.unk80->AllocManagedLight(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), *((MKVector4 *) &sp98), 4000.0f, lit_761, lit_762));
-    temp_r4_2975 = this->unk90.unk58;
-    if (M2C_BITWISE(u32, temp_r4_2975) != 0U) {
-        gb.unk80->EnableLight(M2C_BITWISE(ManagedLight *, temp_r4_2975), 0U);
+    this->unkE8 = gb.unk80->AllocManagedLight(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), *((MKVector4 *) &sp98), 4000.0f, lit_761, lit_762);
+    temp_r4_2975 = this->unkE8;
+    if (temp_r4_2975 != NULL) {
+        gb.unk80->EnableLight(temp_r4_2975, 0U);
     }
     sp18 = 1.0f;
     sp1C = 1.0f;
@@ -1372,10 +1372,10 @@ void FuryFXFire::Resolve() {
     sp80 = (f64) sp20;
     sp88 = (f64) sp28;
     sp90 = (f64) sp30;
-    this->unk90.unk64 = M2C_BITWISE(f32, gb.unk64->Alloc(*((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 1.0f, lit_766, lit_767));
-    temp_r4_3009 = this->unk90.unk64;
-    if (M2C_BITWISE(u32, temp_r4_3009) != 0U) {
-        M2C_FIELD(temp_r4_3009, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_3009, u8 *, 0x31) & ~0x40);
+    this->unkF4 = gb.unk64->Alloc(*((MKVector3 *) &sp88), *((MKVector4 *) &sp78), 1.0f, lit_766, lit_767);
+    temp_r4_3009 = this->unkF4;
+    if (temp_r4_3009 != NULL) {
+        temp_r4_3009->unk31 &= ~0x40;
     }
     var_r28_3020 = 0;
     var_r31_3021 = 0;
@@ -1387,7 +1387,7 @@ void FuryFXFire::Resolve() {
         sp14 = 1.0f;
         sp68 = (f64) sp8;
         sp70 = (f64) sp10;
-        ((ShapedTrailFX *) (M2C_FIELD(temp_r29_3025, ShapedTrailFX **, 0x130)))->InitData(this->unk90.unk5C, lit_774, "FX_367", lit_775, *((MKVector4 *) &sp68), 2.5f, 0U, 1.0f);
+        ((ShapedTrailFX *) (M2C_FIELD(temp_r29_3025, ShapedTrailFX **, 0x130)))->InitData(this->unkEC, lit_774, "FX_367", lit_775, *((MKVector4 *) &sp68), 2.5f, 0U, 1.0f);
         ((KDSoundFader *) (temp_r29_3025 + 0x134))->Init(0.25f, 0.25f);
         ((KDSoundFader *) (temp_r29_3025 + 0x15C))->Init(0.25f, 0.25f);
         M2C_FIELD(temp_r29_3025, f32 *, 0x110) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
@@ -1407,12 +1407,12 @@ void FuryFXFire::Init() {
 
     FuryFX::Init();
     SetDefaults();
-    this->unk90.unk50 = M2C_BITWISE(f32, MKMaterial_Create("FX_FlameWall"));
-    this->unk90.unk58 = 0.0f;
-    this->unk90.unk60 = MKModel_Create("Fx0019_FireFuryBlast", NULL, 2, NULL);
-    this->unk90.unk68 = -1.0f;
-    this->unk90.unk6C = 0.0f;
-    this->unk90.unk5C = MKModel_Create("IceShard", NULL, 2, NULL);
+    this->unkE0 = MKMaterial_Create("FX_FlameWall");
+    this->unkE8 = NULL;
+    this->unkF0 = MKModel_Create("Fx0019_FireFuryBlast", NULL, 2, NULL);
+    this->unkF8 = -1.0f;
+    this->unkFC = 0.0f;
+    this->unkEC = MKModel_Create("IceShard", NULL, 2, NULL);
     var_r29_3123 = 0;
     var_r31_3124 = 0;
     do {
@@ -1421,7 +1421,7 @@ void FuryFXFire::Init() {
         var_r31_3124 += 0x80;
     } while (var_r29_3123 < 3);
     this->unk2E8 = -1;
-    this->unk90.unk54 = M2C_BITWISE(f32, MKMaterial_Create("fx_cynderFuryFlame"));
+    this->unkE4 = MKMaterial_Create("fx_cynderFuryFlame");
 }
 #endif
 

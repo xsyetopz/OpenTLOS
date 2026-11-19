@@ -172,7 +172,7 @@ void GiveColorPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void GiveColorPS::Init() {
     f64 sp40;
     f64 sp38;
@@ -190,14 +190,14 @@ void GiveColorPS::Init() {
     f32 temp_f31_409;
 
     MKParticleSystem::Init();
-    this->unk60.unk48 = 10.5f;
-    this->unk60.unk4C = 10.5f;
+    this->unkA8 = 10.5f;
+    this->unkAC = 10.5f;
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gGiveColorPSEnv, 5);
     SetMaxParticleAge(10.0f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
     this->unk188 = 0;
     temp_f31_381 = MKRand_Float(&gViewSeed, -1.0f, 1.0f);

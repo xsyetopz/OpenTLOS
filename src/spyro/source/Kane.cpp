@@ -2,32 +2,33 @@
 #include "common/Source/MKIni.h"
 #include "spyro/source/CharacterGraph.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/KaneGoal_Think.h"
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unkA04'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Kane::LoadLine(MKIniLine *arg0) {
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("StartEnabled", &this->unk110.unkA04, 0) != 0) || (arg0->LoadInt("StartNode", &this->unk110.unkA00, 0) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("StartEnabled", (u8 *) &this->unkAFC, 0) != 0) || (arg0->LoadInt("StartNode", &this->unkAF8, 0) != 0)) {
         return 1;
     }
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void Kane::Resolve() {
     s32 spC;
     s32 sp8;
     u32 temp_r3_91;
 
     Enemy::Resolve();
-    temp_r3_91 = checked_cast<CharacterGraphNodeProp *, MKProp>(this->unk110.unkA00->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_91 = checked_cast<CharacterGraphNodeProp *, MKProp>(this->unkAF8->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
     if (temp_r3_91 != 0U) {
-        this->unk110.unk970 = temp_r3_91 + 0x50;
+        this->unkA68 = M2C_BITWISE(f32, (temp_r3_91 + 0x50));
     }
-    this->unk110.unk92C->unk8 = 1;
-    if ((u8) this->unk110.unkA04 == 0) {
+    M2C_FIELD(this->unkA24, s8 *, 8) = 1;
+    if ((u8) M2C_FIELD(this, u8 *, 0xB14) == 0) {
         spC = 0;
         sp8 = 0xBF;
         Message(&sp8);
@@ -57,8 +58,8 @@ void Kane::Init() {
         temp_r31_139->__vptr = &__vt;
     }
     temp_r31_139->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_139;
-    this->unk110.unkA04 = 0;
-    this->unk110.unkA00 = 0;
+    this->unkA24 = (EnemyAttack *) temp_r31_139;
+    M2C_FIELD(this, s8 *, 0xB14) = 0;
+    this->unkAF8 = 0;
 }
 #endif

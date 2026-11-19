@@ -64,10 +64,10 @@ void Wake::Draw() {
     s32 temp_r28_114;
     s32 temp_r3_110;
     s32 temp_r3_132;
-    s32 temp_r3_143;
     s32 var_r0_133;
     s32 var_r26_118;
     s32 var_r27_105;
+    u32 temp_r3_143;
     void *var_r29_128;
 
     if ((s32) this->unk54 >= 2) {
@@ -93,10 +93,10 @@ loop_14:
                         }
                         var_r29_128 = this->unk5C + (var_r0_133 * 0x88);
                     }
-                    temp_r3_143 = this->unk60.unk60;
+                    temp_r3_143 = this->unkC0;
                     var_f30_148 = (f32) var_r26_118;
-                    if (((u32) temp_r3_143 != 0U) && (var_r29_128 == (u32) temp_r3_143)) {
-                        var_f30_148 += (this->unk60.unk70 / this->unk60.unk6C) - 1.0f;
+                    if ((temp_r3_143 != 0) && (var_r29_128 == temp_r3_143)) {
+                        var_f30_148 += (this->unkD0 / this->unkCC) - 1.0f;
                     }
                     MKSetColorV(*(var_r29_128 + 0x58));
                     MKSetTexCoord1F(M2C_FIELD(var_r29_128, f32 *, 0x18), var_f30_148);
@@ -191,7 +191,7 @@ loop_41:
                 }
                 var_r30_215 -= 1;
                 if ((s32) this->unk54 == 0) {
-                    this->unk60.unk60 = 0;
+                    this->unkC0 = 0;
                 }
             } else {
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
@@ -240,7 +240,7 @@ loop_41:
                     M2C_FIELD(var_r28_224, f32 *, 0x4C) = sp8;
                     M2C_FIELD(var_r28_224, f32 *, 0x4C) = (f32) (M2C_FIELD(var_r28_224, f32 *, 0x4C) + 1.0f);
                 }
-                temp_f3_395 = this->unk60.unk64;
+                temp_f3_395 = this->unkC4;
                 temp_f4_400 = 0.25f * temp_f3_395;
                 temp_f1_401 = (M2C_FIELD(&gb, f32 *, 0x30C) + temp_f3_395) - M2C_FIELD(var_r28_224, f32 *, 4);
                 if (temp_f1_401 < temp_f4_400) {
@@ -290,7 +290,7 @@ loop_41:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'sp8'
 void Wake::Reset() {
     f64 sp20;
     f64 sp18;
@@ -300,16 +300,16 @@ void Wake::Reset() {
     this->unk58 = 0;
     this->unk54 = 0;
     this->unk10 &= 0xFFFFFDFF;
-    this->unk60.unk40 = -1.0f;
-    this->unk60.unk44 = -1.0f;
-    this->unk60.unk48 = -1.0f;
+    this->unkA0 = -1.0f;
+    this->unkA4 = -1.0f;
+    this->unkA8 = -1.0f;
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
-    M2C_FIELD(this, f64 *, 0xB0) = sp8;
-    sp10 = this->unk60.unk48 * -2.0f;
+    this->unkB0 = sp8;
+    sp10 = this->unkA8 * -2.0f;
     sp18 = sp8;
     sp20 = (f64) sp10;
-    M2C_FIELD(this, f64 *, 0xB8) = (f64) sp10;
+    this->unkB8 = (f64) sp10;
 }
 #endif
 
@@ -335,7 +335,7 @@ void Wake::Deinit() {
     this->unk4C = NULL;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void Wake::Init() {
     MKHeap *temp_r3_587;
     void *var_r3_594;
@@ -349,7 +349,7 @@ void Wake::Init() {
     }
     this->unk5C = var_r3_594;
     this->unk50 = 0x14;
-    M2C_FIELD(this->unk0, f32 **, 0x1C) = &this->unk60.unk40;
+    M2C_FIELD(this->unk0, f32 **, 0x1C) = &this->unkA0;
     this->unk60.SetIdentity();
     this->unk8 = &this->unk60;
     this->unk4C = MKMaterial_Create("fx_077");

@@ -584,7 +584,7 @@ block_46:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk230'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
     MKVector3 sp58;
     f64 sp50;
@@ -621,7 +621,7 @@ void IceBossStalactite::StickInGround(const MKVector3 &arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk218'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceBossStalactite::Fire(const MKVector3 &arg0) {
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) | 0x80);
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~0x10);
@@ -656,7 +656,7 @@ void IceBossStalactite::Drop(bool arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk218'
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     f32 temp_f0_1219;
     f32 temp_f10_1217;
@@ -743,7 +743,7 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk220'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void IceBossStalactite::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     f32 temp_f1_1367;
     s32 var_r5_1364;
@@ -1286,7 +1286,7 @@ block_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk218'
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void IceBossStalactite::LoadDone() {
     Shatterable::LoadDone();
     Disable();

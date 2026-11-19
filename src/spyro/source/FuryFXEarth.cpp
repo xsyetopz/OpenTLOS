@@ -114,7 +114,7 @@ loop_31:
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 sp130 = sp80;
-                sp88 = (f32) spF8 - this->unkC0.unk58;
+                sp88 = (f32) spF8 - this->unk110.unk8;
                 sp138 = (f64) sp88;
                 var_f4_142 = ((f32) sp138 * (f32) sp138) + (((f32) sp130 * (f32) sp130) + (unksp134 * unksp134));
                 if (var_f4_142 > 0.000001f) {
@@ -213,7 +213,7 @@ loop_37:
             sp28 = 0.0f;
             sp20 = 0.0f;
             sp24 = 2000.0f;
-            sp38 = this->unkC0.unk58 + (f32) spB8;
+            sp38 = this->unk110.unk8 + (f32) spB8;
             sp110 = sp30;
             sp90 = (f64) sp20;
             sp118 = (f64) sp38;
@@ -237,9 +237,9 @@ void FuryFXEarth::ResetFury() {
     s32 spC;
     s32 sp8;
     Corona *temp_r4_410;
+    FallingLeaves *temp_r3_425;
     ManagedLight *temp_r4_450;
     SuckeyPS *temp_r3_445;
-    f32 temp_r3_425;
 
     SetDefaults();
     temp_r4_410 = this->unk164;
@@ -248,8 +248,8 @@ void FuryFXEarth::ResetFury() {
     }
     gb.unk2CC.Disable((s32) this->unk1C0);
     this->unk1C0 = (MKPropDescriptor *)-1;
-    temp_r3_425 = this->unkC0.unk40;
-    M2C_FIELD(M2C_FIELD(temp_r3_425, void **, 0x44), M2C_UNK (**)(f32), 0x34)(temp_r3_425);
+    temp_r3_425 = this->unk100;
+    temp_r3_425->Disable();
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         spC = 0;
         sp8 = 0x459;
@@ -264,7 +264,7 @@ void FuryFXEarth::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+#if 0 // DRAFT: undefined identifier 'identity'
 s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     f64 sp30;
     f64 sp28;
@@ -272,13 +272,13 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     f32 sp10;
     Corona *temp_r3_530;
     Corona *temp_r4_520;
+    FallingLeaves *temp_r3_546;
+    FallingLeaves *temp_r3_551;
     ManagedLight *temp_r3_641;
     ManagedLight *temp_r3_654;
     ManagedLight *temp_r4_616;
     SuckeyPS *temp_r3_556;
     SuckeyPS *temp_r3_561;
-    f32 temp_r3_546;
-    f32 temp_r3_551;
     f64 temp_f2_489;
     f64 temp_f3_485;
     s32 temp_r0_572;
@@ -290,23 +290,23 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     void *temp_r3_657;
     void *temp_r4_574;
 
-    if (M2C_BITWISE(s32, this->unkC0.unk44) != 0) {
+    if ((s32) this->unk104 != 0) {
         return 0;
     }
-    this->unkC0.unk44 = 1e-45f;
+    this->unk104 = 1;
     temp_f3_485 = M2C_FIELD(&arg0, f64 *, 0);
-    this->unkC0.unk48 = 1.0f;
+    this->unk108 = 1.0f;
     temp_f2_489 = M2C_FIELD(&arg0, f64 *, 8);
     this->unk90.unk20 = temp_f3_485;
     this->unk90.unk28 = temp_f2_489;
     this->unk90.unk10 = 50.0f;
     M2C_FIELD(this, f64 *, 0x110) = temp_f3_485;
     M2C_FIELD(this, f64 *, 0x118) = temp_f2_489;
-    KDSound_Play3d(GS_SpyroFuryEarth1, (MKVector3 *) &this->unkC0.unk50, 0U, -1, 0.0f, 0U);
-    M2C_STRUCT_COPY((s32) &this->unkC0.unk5C + 4, (s32) (&identity - 4) + 4, 0x40);
-    this->unk150 = this->unkC0.unk50;
-    this->unk154 = this->unkC0.unk54;
-    this->unk158 = this->unkC0.unk58;
+    KDSound_Play3d(GS_SpyroFuryEarth1, &this->unk110, 0U, -1, 0.0f, 0U);
+    M2C_STRUCT_COPY((s32) &this->unk110.unkC + 4, (s32) (&identity - 4) + 4, 0x40);
+    this->unk150 = this->unk110.unk0;
+    this->unk154 = this->unk110.unk4;
+    this->unk158 = this->unk110.unk8;
     this->unk15C = 1.0f;
     temp_r4_520 = this->unk164;
     if (temp_r4_520 != NULL) {
@@ -318,10 +318,10 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
     }
     M2C_FIELD(this, u8 *, 0x1C8) = arg1;
     this->unk1C0 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
-    temp_r3_546 = this->unkC0.unk40;
-    M2C_FIELD(M2C_FIELD(temp_r3_546, void **, 0x44), M2C_UNK (**)(f32), 0x20)(temp_r3_546);
-    temp_r3_551 = this->unkC0.unk40;
-    M2C_FIELD(M2C_FIELD(temp_r3_551, void **, 0x44), M2C_UNK (**)(f32), 0x30)(temp_r3_551);
+    temp_r3_546 = this->unk100;
+    temp_r3_546->Reset();
+    temp_r3_551 = this->unk100;
+    temp_r3_551->Enable();
     temp_r3_556 = this->unk160;
     temp_r3_556->Reset();
     temp_r3_561 = this->unk160;
@@ -348,7 +348,7 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         temp_r3_641 = M2C_FIELD(this, ManagedLight **, 0x1CC);
         sp28 = sp8;
-        sp10 = this->unkC0.unk58 + sp20;
+        sp10 = this->unk110.unk8 + sp20;
         temp_r3_641->unk10 = sp8;
         temp_r3_641->unk18 = (f64) sp10;
         temp_r3_647 = temp_r3_641->unk3C;
@@ -372,13 +372,11 @@ s32 FuryFXEarth::Trigger(const MKVector3 &arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk44'
 void FuryFXEarth::SetDefaults() {
     SetDefaults();
-    this->unkC0.unk44 = 0.0f;
-    this->unkC0.unk48 = 0.0f;
+    this->unk104 = 0;
+    this->unk108 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void FuryFXEarth::Deinit() {
@@ -404,7 +402,7 @@ void FuryFXEarth::Draw() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk4C'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FuryFXEarth::EmitLeaves() {
     f64 spC8;
     f64 spC0;
@@ -431,16 +429,16 @@ void FuryFXEarth::EmitLeaves() {
     s32 sp8;
     s32 var_r31_772;
 
-    if (!(this->unkC0.unk4C > 0.0f)) {
+    if (!(this->unk10C > 0.0f)) {
         var_r31_772 = 0;
-        this->unkC0.unk4C = 0.2f;
+        this->unk10C = 0.2f;
         do {
             MKVector(0.0f, 25.0f, 0.0f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r30, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp18 = 1.0f;
             sp28 = -1.0f;
-            sp38 = this->unkC0.unk58 + sp98;
+            sp38 = this->unk110.unk8 + sp98;
             sp10 = 1.0f;
             sp14 = 1.0f;
             sp20 = -1.0f;
@@ -461,14 +459,14 @@ void FuryFXEarth::EmitLeaves() {
             sp48 = (f32) spB8 * 220.0f;
             sp58 = (f64) sp48;
             sp8 = MKRand_Int(&gViewSeed, 0, 3);
-            ((FallingLeaves *) (M2C_BITWISE(FallingLeaves *, this->unkC0.unk40)))->Emit(*((MKVector3 *) &spC0), *((MKVector3 *) &sp50), 2.0f, sp8, 1U);
+            this->unk100->Emit(*((MKVector3 *) &spC0), *((MKVector3 *) &sp50), 2.0f, sp8, 1U);
             var_r31_772 += 1;
         } while (var_r31_772 < 0xA);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FuryFXEarth::Update() {
     f64 sp2A0;
     f64 sp298;
@@ -560,7 +558,6 @@ void FuryFXEarth::Update() {
     f32 temp_f1_1484;
     f32 temp_f1_1512;
     f32 temp_f31_1441;
-    f32 temp_r0_881;
     f32 var_f1_1424;
     f32 var_f1_975;
     f32 var_f3_1361;
@@ -569,6 +566,7 @@ void FuryFXEarth::Update() {
     f64 temp_f1_1306;
     f64 temp_f1_1310;
     f64 temp_f1_1385;
+    s32 temp_r0_881;
     s32 temp_r3_1329;
     s32 var_r0_1339;
     s32 var_r29_1071;
@@ -578,13 +576,13 @@ void FuryFXEarth::Update() {
     void *temp_r3_1468;
     void *temp_r3_1486;
 
-    this->unkC0.unk48 -= gUpdateTimeDelta;
-    this->unkC0.unk4C -= gUpdateTimeDelta;
-    temp_r0_881 = this->unkC0.unk44;
-    switch (M2C_BITWISE(s32, temp_r0_881)) {        /* switch 1; irregular */
+    this->unk108 -= gUpdateTimeDelta;
+    this->unk10C -= gUpdateTimeDelta;
+    temp_r0_881 = this->unk104;
+    switch (temp_r0_881) {                          /* switch 1; irregular */
     case 1:                                         /* switch 1 */
         EmitLeaves();
-        ((FallingLeaves *) (M2C_BITWISE(FallingLeaves *, this->unkC0.unk40)))->ApplyWind(&this->unk90);
+        this->unk100->ApplyWind(&this->unk90);
         var_r29_899 = 0;
         do {
             MKVector(1.0f, 1.0f, 1.0f);
@@ -612,7 +610,7 @@ void FuryFXEarth::Update() {
             temp_r3_969 = this->unk164;
             temp_r3_969->unk2C += 2.0f * gUpdateTimeDelta;
         }
-        var_f1_975 = this->unkC0.unk48;
+        var_f1_975 = this->unk108;
         if (var_f1_975 < 1.0f) {
 
         } else {
@@ -631,12 +629,12 @@ void FuryFXEarth::Update() {
             M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f32), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp288, 0.017453292f);
         }
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC0.unk48 == 0.0f) {
-            this->unkC0.unk44 = 3e-45f;
+        if (this->unk108 == 0.0f) {
+            this->unk104 = 2;
             if ((u8) M2C_FIELD(this, u8 *, 0x1C8) != 0) {
-                this->unkC0.unk48 = 3.25f;
+                this->unk108 = 3.25f;
             } else {
-                this->unkC0.unk48 = 1.8f;
+                this->unk108 = 1.8f;
             }
             gb.unk2CC.Disable((s32) this->unk1C0);
             this->unk1C0 = (MKPropDescriptor *)-1;
@@ -646,7 +644,7 @@ void FuryFXEarth::Update() {
         return;
     case 2:                                         /* switch 1 */
         EmitLeaves();
-        ((FallingLeaves *) (M2C_BITWISE(FallingLeaves *, this->unkC0.unk40)))->ApplyWind(&this->unk90);
+        this->unk100->ApplyWind(&this->unk90);
         if ((Corona *) this->unk164 != NULL) {
             this->unk164->unk24 = MKRand_Float(&gViewSeed, 8.0f, 8.5f);
             temp_r3_1059 = this->unk164;
@@ -687,7 +685,7 @@ void FuryFXEarth::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp1A8 = sp48;
-            sp50 = this->unkC0.unk58 + sp198.unk8;
+            sp50 = this->unk110.unk8 + sp198.unk8;
             sp278 = sp48;
             sp1B0 = (f64) sp50;
             sp280 = (f64) sp50;
@@ -706,7 +704,7 @@ void FuryFXEarth::Update() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             sp148 = sp38;
-            sp40 = this->unkC0.unk58 + sp138.unk8;
+            sp40 = this->unk110.unk8 + sp138.unk8;
             sp278 = sp38;
             sp150 = (f64) sp40;
             sp280 = (f64) sp40;
@@ -721,7 +719,7 @@ void FuryFXEarth::Update() {
             var_r29_1132 += 1;
         } while (var_r29_1132 < 4);
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC0.unk48 == 0.0f) {
+        if (this->unk108 == 0.0f) {
             var_r29_1246 = gb.unk20->Begin();
 loop_59:
             if (var_r29_1246 != NULL) {
@@ -734,7 +732,7 @@ loop_59:
                         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                         sp268 = sp78;
-                        sp80 = (f32) spF0 - this->unkC0.unk58;
+                        sp80 = (f32) spF0 - this->unk110.unk8;
                         sp270 = (f64) sp80;
                         var_f4_1294 = ((f32) sp270 * (f32) sp270) + (((f32) sp268 * (f32) sp268) + (unksp26C * unksp26C));
                         if (var_f4_1294 > 0.000001f) {
@@ -792,8 +790,8 @@ loop_59:
                     goto loop_59;
                 }
             }
-            this->unkC0.unk44 = 4e-45f;
-            this->unkC0.unk48 = 4.0f;
+            this->unk104 = 3;
+            this->unk108 = 4.0f;
             temp_r4_1406 = this->unk164;
             if (temp_r4_1406 != NULL) {
                 temp_r4_1406->unk31 &= ~0x40;
@@ -805,7 +803,7 @@ loop_59:
         }
         break;
     case 3:                                         /* switch 1 */
-        var_f1_1424 = this->unkC0.unk48;
+        var_f1_1424 = this->unk108;
         if (var_f1_1424 < 4.0f) {
 
         } else {
@@ -823,7 +821,7 @@ loop_59:
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             temp_r3_1462 = M2C_FIELD(this, ManagedLight **, 0x1CC);
             spD8 = sp28;
-            sp30 = this->unkC0.unk58 + spD0;
+            sp30 = this->unk110.unk8 + spD0;
             temp_r3_1462->unk10 = sp28;
             temp_r3_1462->unk18 = (f64) sp30;
             temp_r3_1468 = temp_r3_1462->unk3C;
@@ -854,8 +852,8 @@ loop_59:
             }
         }
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC0.unk48 == 0.0f) {
-            this->unkC0.unk44 = 0.0f;
+        if (this->unk108 == 0.0f) {
+            this->unk104 = 0;
             if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
                 sp20 = 0;
                 sp1C = 0x459;
@@ -977,12 +975,12 @@ void FuryFXEarth::Init() {
     M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&identity - 4) + 4, 0x40);
     temp_r3_1716 = &this->unkC0;
     temp_r3_1716->RotateYaw(temp_r3_1716, 0.3926991f);
-    this->unkC0.unk40 = M2C_BITWISE(f32, checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves")));
+    this->unk100 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
     SetDefaults();
-    this->unkC0.unk4C = 0.0f;
+    this->unk10C = 0.0f;
     this->unk160 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp("SuckeyPS"));
     var_r29_1742 = 0;
-    this->unk160->unk140 = (s32) &this->unkC0.unk60;
+    this->unk160->unk140 = (s32) &this->unk120;
     this->unk164 = NULL;
     do {
         M2C_FIELD(M2C_FIELD(gMK->CreateProp("SquishBoulder"), void **, 0x44), M2C_UNK (**)(), 0x34)();

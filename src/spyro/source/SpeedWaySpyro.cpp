@@ -400,7 +400,7 @@ void SpeedWaySpyro::Teleport(float arg0, bool arg1) {
     this->unk348 = this->unk358;
     this->unk2C0 = arg0;
     UpdateCameraAndSpyro(arg0, 1U, arg1);
-    M2C_STRUCT_COPY((s32) &this->unk1A0.unk7C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
 }
 #endif
 
@@ -570,7 +570,7 @@ void SpeedWaySpyro::UpdateDrift(float arg0) {
         this->unk358 = M2C_FIELD(&zero, f64 *, 8);
         if (arg0 != 0.0f) {
             var_r0_1400 = 0;
-            if (((f32) M2C_FIELD(&identity, f64 *, 0) == (f32) this->unk1A0.unk80) && ((f32) M2C_FIELD(&identity, f64 *, 8) == (f32) M2C_FIELD(this, f64 *, 0x228)) && ((f32) M2C_FIELD(&identity, f64 *, 0x10) == (f32) this->unk230) && ((f32) M2C_FIELD(&identity, f64 *, 0x18) == (f32) this->unk238) && ((f32) M2C_FIELD(&identity, f64 *, 0x20) == (f32) this->unk240) && ((f32) M2C_FIELD(&identity, f64 *, 0x28) == (f32) this->unk248) && ((f32) M2C_FIELD(&identity, f64 *, 0x30) == (f32) this->unk250) && ((f32) M2C_FIELD(&identity, f64 *, 0x38) == (f32) this->unk258)) {
+            if (((f32) M2C_FIELD(&identity, f64 *, 0) == (f32) this->unk220) && ((f32) M2C_FIELD(&identity, f64 *, 8) == (f32) this->unk228) && ((f32) M2C_FIELD(&identity, f64 *, 0x10) == (f32) this->unk230) && ((f32) M2C_FIELD(&identity, f64 *, 0x18) == (f32) this->unk238) && ((f32) M2C_FIELD(&identity, f64 *, 0x20) == (f32) this->unk240) && ((f32) M2C_FIELD(&identity, f64 *, 0x28) == (f32) this->unk248) && ((f32) M2C_FIELD(&identity, f64 *, 0x30) == (f32) this->unk250) && ((f32) M2C_FIELD(&identity, f64 *, 0x38) == (f32) this->unk258)) {
                 var_r0_1400 = 1;
             }
             if (var_r0_1400 != 0) {
@@ -584,12 +584,12 @@ block_12:
             this->unk358 = this->unk368;
             this->unk340 = this->unk350;
             this->unk348 = this->unk358;
-            M2C_STRUCT_COPY((s32) &this->unk1A0.unk7C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
+            M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
         }
-        temp_f2_1460 = this->unk1A0.unk44;
-        temp_f3_1462 = this->unk1A0.unk40;
-        temp_f5_1465 = this->unk1A0.unk48;
-        temp_f31_1469 = (temp_f5_1465 * this->unk1A0.unk88) + ((temp_f3_1462 * (f32) M2C_FIELD(this, f64 *, 0x220)) + (temp_f2_1460 * M2C_FIELD(this, f32 *, 0x224)));
+        temp_f2_1460 = this->unk1E4;
+        temp_f3_1462 = this->unk1E0;
+        temp_f5_1465 = this->unk1E8;
+        temp_f31_1469 = (temp_f5_1465 * (f32) M2C_FIELD(this, f64 *, 0x228)) + ((temp_f3_1462 * (f32) M2C_FIELD(this, f64 *, 0x220)) + (temp_f2_1460 * M2C_FIELD(this, f32 *, 0x224)));
         if (temp_f31_1469 < 0.999999f) {
             temp_f30_1478 = (temp_f5_1465 * (f32) M2C_FIELD(this, f64 *, 0x248)) + ((temp_f3_1462 * (f32) M2C_FIELD(this, f64 *, 0x240)) + (temp_f2_1460 * M2C_FIELD(this, f32 *, 0x244)));
             if ((s32) M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x15C) > 0) {
@@ -605,9 +605,9 @@ block_12:
             }
             M2C_FIELD(this, f64 *, 0x350) = (f32) (var_f1_1498 * ((1.0f - temp_f31_1469) * temp_f2_1496));
         }
-        temp_f2_1509 = this->unk1A0.unk54;
-        temp_f3_1511 = this->unk1A0.unk50;
-        temp_f5_1514 = this->unk1A0.unk58;
+        temp_f2_1509 = this->unk1F4;
+        temp_f3_1511 = this->unk1F0;
+        temp_f5_1514 = this->unk1F8;
         temp_f30_1518 = (temp_f5_1514 * (f32) M2C_FIELD(this, f64 *, 0x238)) + ((temp_f3_1511 * (f32) M2C_FIELD(this, f64 *, 0x230)) + (temp_f2_1509 * M2C_FIELD(this, f32 *, 0x234)));
         if (temp_f30_1518 < 0.999999f) {
             temp_f31_1527 = (temp_f5_1514 * (f32) M2C_FIELD(this, f64 *, 0x248)) + ((temp_f3_1511 * (f32) M2C_FIELD(this, f64 *, 0x240)) + (temp_f2_1509 * M2C_FIELD(this, f32 *, 0x244)));
@@ -756,7 +756,7 @@ u8 SpeedWaySpyro::GetBestMovementOffset(const MKVector3 &arg0, const MKVector3 &
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7C'
+#if 0 // DRAFT: undefined identifier 'unk21C'
 void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     f32 *temp_r29_2092;
     f32 temp_f1_2296;
@@ -775,10 +775,10 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     u8 var_r5_2134;
     void *temp_r7_2151;
     void *temp_r7_2168;
-    M2C_STRUCT_COPY((s32) &this->unk1A0.unk7C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) &this->unk1A0.unk3C + 4, 0x40);
     arg_sp390.GetPathMatrix(arg0);
     M2C_STRUCT_COPY((s32) &arg_sp44C + 4, (s32) &arg_sp38C + 4, 0x40);
-    this->unk1A0.unk40.CopyRotation((Matrix *) &arg_sp450);
+    this->unk1E0.CopyRotation((Matrix *) &arg_sp450);
     arg_sp2C0.operator*(M2C_FIELD(checked_cast<SpeedWaySpyroDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x188));
     if ((u8) bUsePulledBackCamera != 0) {
         var_f1_2017 = 3000.0f;
@@ -794,10 +794,10 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     arg_sp2F0 = arg_spA0;
     arg_spA8 = (f32) arg_sp2E8 - arg_sp2C8;
-    this->unk1A0.unk70 = (f32) arg_sp2F0;
+    this->unk210 = (f32) arg_sp2F0;
     arg_sp2F8 = (f64) arg_spA8;
-    this->unk1A0.unk74 = arg_sp2F4;
-    this->unk1A0.unk78 = (f32) arg_sp2F8;
+    this->unk214 = arg_sp2F4;
+    this->unk218 = (f32) arg_sp2F8;
     M2C_FIELD(this, f32 *, 0x21C) = 1.0f;
     if (arg1 == 0) {
         UpdateDrift(arg0);
@@ -812,11 +812,11 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
     arg_sp178 = arg_sp468 * M2C_FIELD(this, f32 *, 0x30C);
     arg_sp378 = (f64) arg_sp178;
     this->unk1A0.CopyRotation((Matrix *) &arg_sp450);
-    temp_r29_2092 = &this->unk1A0.unk70;
+    temp_r29_2092 = &this->unk210;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     arg_sp2A0 = arg_sp40;
-    arg_sp48 = this->unk1A0.unk78 + (f32) arg_sp388;
+    arg_sp48 = this->unk218 + (f32) arg_sp388;
     arg_sp2A8 = (f64) arg_sp48;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     arg_sp2B0 = arg_sp90;
@@ -837,14 +837,14 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         temp_r7_2151 = this->unk8;
         arg_sp290 = M2C_FIELD(temp_r7_2151, f64 *, 0x30);
         arg_sp298 = M2C_FIELD(temp_r7_2151, f64 *, 0x38);
-        if (GetBestMovementOffset(*((MKVector3 *) &arg_sp290), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1A0.unk40), &arg_sp18) != 0) {
+        if (GetBestMovementOffset(*((MKVector3 *) &arg_sp290), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1E0), &arg_sp18) != 0) {
             M2C_FIELD(this, f32 *, 0x318) = arg_sp18;
             M2C_FIELD(this, f32 *, 0x308) = arg_sp18;
         }
         temp_r7_2168 = this->unk8;
         arg_sp280 = M2C_FIELD(temp_r7_2168, f64 *, 0x30);
         arg_sp288 = M2C_FIELD(temp_r7_2168, f64 *, 0x38);
-        if (GetBestMovementOffset(*((MKVector3 *) &arg_sp280), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1A0.unk50), &arg_sp14) != 0) {
+        if (GetBestMovementOffset(*((MKVector3 *) &arg_sp280), *((MKVector3 *) temp_r29_2092), *((MKVector3 *) &this->unk1F0), &arg_sp14) != 0) {
             M2C_FIELD(this, f32 *, 0x31C) = arg_sp14;
             M2C_FIELD(this, f32 *, 0x30C) = arg_sp14;
         }
@@ -943,7 +943,7 @@ void SpeedWaySpyro::UpdateCameraAndSpyro(float arg0, bool arg1, bool arg2) {
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r29, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         arg_sp230 = arg_spD0;
-        arg_spD8 = this->unk1A0.unk78 + (f32) arg_sp228;
+        arg_spD8 = this->unk218 + (f32) arg_sp228;
         arg_sp238 = (f64) arg_spD8;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         arg_sp240 = arg_spC0;
@@ -2250,7 +2250,7 @@ void SpeedWaySpyro::ClearData() {
     this->unk17C.Reset();
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&identity - 4) + 4, 0x40);
     M2C_STRUCT_COPY((s32) &this->unk1A0.unk3C + 4, (s32) (&identity - 4) + 4, 0x40);
-    M2C_STRUCT_COPY((s32) &this->unk1A0.unk7C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) &this->unk21C + 4, (s32) (&identity - 4) + 4, 0x40);
     this->unk260 = M2C_FIELD(&identity, f64 *, 0);
     this->unk268 = M2C_FIELD(&identity, f64 *, 8);
     memset(&this->unk270, 0, 0x10U);

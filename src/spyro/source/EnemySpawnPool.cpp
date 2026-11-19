@@ -17,7 +17,7 @@ extern M2C_UNK gb;
 extern s32 iSpawnPools;
 extern MKHeap *pSpawnPools;
 
-#if 0 // DRAFT: undefined identifier 'unk928'
+#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to
 void EnemySpawnPool_Destroy(Enemy *arg0) {
     s32 spC;
     s32 sp8;
@@ -31,7 +31,7 @@ void EnemySpawnPool_Destroy(Enemy *arg0) {
 
     if ((arg0 != NULL) && (var_r31_18 = 0, var_ctr_20 = iSpawnPools, (((s32) iSpawnPools > 0) != 0))) {
 loop_2:
-        if ((s32) M2C_FIELD(arg0->unk110.unk928, s32 *, 0xF4) == (s32) *(pSpawnPools + var_r31_18)) {
+        if ((s32) M2C_FIELD(arg0->unkA20, s32 *, 0xF4) == (s32) *(pSpawnPools + var_r31_18)) {
             var_r30_30 = *(pSpawnPools + (var_r31_18 + 4));
 loop_7:
             if (var_r30_30 != NULL) {
@@ -90,7 +90,7 @@ loop_8:
                     goto block_12;
                 }
                 temp_r30_103 = *temp_r3_127;
-                temp_r3_104 = temp_r30_103->unk110.unk938;
+                temp_r3_104 = temp_r30_103->unkA48;
                 if (((temp_r3_104 == NULL) || (arg1 != (u32) *temp_r3_104)) && (temp_r30_103->IsActive() == 0)) {
                     temp_r30_103->Recycle();
                     return temp_r30_103;

@@ -17,8 +17,8 @@
 #include "spyro/source/KDRandom.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-void *malloc(s32);                                  /* extern */
+M2C_UNK free(SwarmEntity **);                       /* extern */
+SwarmEntity **malloc(s32);                          /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
@@ -184,8 +184,8 @@ void SwarmProp::DrawEntity(SwarmEntity *arg0, const Matrix &arg1, const MKVector
 
 #if 0 // DRAFT: undefined identifier 'arg_sp6C'
 void SwarmProp::Draw() {
+    SwarmEntity **var_r31_386;
     SwarmEntity *temp_r4_396;
-    f32 var_r31_386;
     KDProp::Draw();
     M2C_STRUCT_COPY((s32) &arg_sp6C + 4, MKView_GetCameraMatrix() - 4 + 4, 0x40);
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) &this->unk8C + 4, 0x40);
@@ -198,19 +198,19 @@ void SwarmProp::Draw() {
     arg_sp20 = (f64) arg_sp10;
     arg_sp28 = (f64) arg_sp18;
     MKPrimitive(0xC, 0);
-    var_r31_386 = this->unk90.unk64;
+    var_r31_386 = this->unkF4;
 loop_2:
     temp_r4_396 = *var_r31_386;
     if (temp_r4_396 != NULL) {
         DrawEntity(temp_r4_396, *((Matrix *) &arg_sp30), *((MKVector4 *) &arg_sp20), 10.0f);
-        var_r31_386 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r31_386) + 4));
+        var_r31_386 += 4;
         goto loop_2;
     }
     MKEndPrimitive();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void SwarmProp::Update() {
     f64 sp118;                                      /* compiler-managed */
     f64 sp110;
@@ -236,18 +236,18 @@ void SwarmProp::Update() {
     MKVector3 sp20;
     f32 sp18;
     f32 sp8;
-    MKVector3 *temp_r28_710;
+    SwarmEntity **temp_r24_453;
+    SwarmEntity **var_r27_429;
+    SwarmEntity **var_r3_454;
+    SwarmEntity *temp_r28_710;
     f32 temp_f0_495;
     f32 temp_f0_540;
     f32 temp_f1_539;
     f32 temp_f26_675;
     f32 temp_f28_631;
     f32 temp_f3_541;
-    f32 temp_r24_453;
     f32 var_f2_614;
     f32 var_f4_547;
-    f32 var_r27_429;
-    f32 var_r3_454;
     f64 temp_f1_553;
     f64 temp_f1_559;
     f64 temp_f1_563;
@@ -262,31 +262,31 @@ void SwarmProp::Update() {
     void *temp_r4_487;
 
     KDProp::Update();
-    var_r27_429 = this->unk90.unk64;
+    var_r27_429 = this->unkF4;
 loop_30:
     temp_r28_710 = *var_r27_429;
     if (temp_r28_710 != NULL) {
-        M2C_FIELD(temp_r28_710, f32 *, 0x30) = (f32) (M2C_FIELD(temp_r28_710, f32 *, 0x30) - gUpdateTimeDelta);
+        temp_r28_710->unk30 -= gUpdateTimeDelta;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (M2C_FIELD(temp_r28_710, f32 *, 0x30) == 0.0f) {
-            M2C_FIELD(temp_r28_710, f32 *, 0x30) = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
+        if (temp_r28_710->unk30 == 0.0f) {
+            temp_r28_710->unk30 = MKRand_Float(&gViewSeed, 1.0f, 3.0f);
             var_r23_450 = 0;
             var_r25_451 = 0;
             do {
-                temp_r24_453 = this->unk90.unk64;
+                temp_r24_453 = this->unkF4;
                 var_r3_454 = temp_r24_453;
 loop_5:
-                if ((u32) *var_r3_454 != 0U) {
-                    var_r3_454 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r3_454) + 4));
+                if ((SwarmEntity *) *var_r3_454 != NULL) {
+                    var_r3_454 += 4;
                     goto loop_5;
                 }
                 var_r23_450 += 1;
                 temp_r0_471 = var_r25_451 + 0x34;
                 var_r25_451 += 4;
-                *(temp_r28_710 + temp_r0_471) = *(M2C_BITWISE(s32, temp_r24_453) + (MKRand_Int(&gViewSeed, 0, (s32) (M2C_BITWISE(s32, var_r3_454) - M2C_BITWISE(s32, temp_r24_453)) / 4) * 4));
+                *(temp_r28_710 + temp_r0_471) = temp_r24_453[MKRand_Int(&gViewSeed, 0, (s32) (var_r3_454 - temp_r24_453) / 4)];
             } while (var_r23_450 < 3);
         }
-        temp_r4_477 = M2C_FIELD(temp_r28_710, void **, 0x34);
+        temp_r4_477 = temp_r28_710->unk34;
         var_r3_479 = 4;
         sp110 = M2C_FIELD(temp_r4_477, f64 *, 0);
         sp118 = M2C_FIELD(temp_r4_477, f64 *, 8);
@@ -306,15 +306,15 @@ loop_5:
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r28, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         spE0 = sp10;
-        sp18 = sp118 - temp_r28_710->unk8;
+        sp18 = sp118 - M2C_FIELD(temp_r28_710, f32 *, 8);
         spE8 = (f64) sp18;
-        KDMath_Smooth<MKVector3>(spF0, *(temp_r28_710 + 0x20), 5.0f, gUpdateTimeDelta);
+        KDMath_Smooth<MKVector3>(spF0, *((MKVector3 *) &temp_r28_710->unk20), 5.0f, gUpdateTimeDelta);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r31, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        M2C_FIELD(temp_r28_710, f64 *, 0x20) = sp60;
+        temp_r28_710->unk20 = sp60;
         sp68 = spF0.unk8 - spD0.unk8;
         sp100 = sp60;
-        M2C_FIELD(temp_r28_710, f64 *, 0x28) = (f64) sp68;
+        temp_r28_710->unk28 = (f64) sp68;
         temp_f1_539 = (f32) M2C_FIELD(temp_r28_710, f64 *, 0x20);
         temp_f0_540 = M2C_FIELD(temp_r28_710, f32 *, 0x24);
         temp_f3_541 = (f32) M2C_FIELD(temp_r28_710, f64 *, 0x28);
@@ -380,7 +380,7 @@ loop_5:
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r28, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $zero, $r28, 0x0, qr0 */);
-        temp_r28_710->unk8 += (f32) spA8;
+        M2C_FIELD(temp_r28_710, f32 *, 8) = (f32) (M2C_FIELD(temp_r28_710, f32 *, 8) + (f32) spA8);
         temp_f26_675 = gUpdateTimeDelta;
         sp80.operator*(0.1f);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r29, 0x0, qr0 */);
@@ -392,11 +392,11 @@ loop_5:
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         M2C_ERROR(/* unknown instruction: psq_stx $f0, $r28, $r0, 0x0, qr0 */);
         M2C_FIELD(temp_r28_710, f32 *, 0x18) = (f32) (M2C_FIELD(temp_r28_710, f32 *, 0x18) - (f32) sp98);
-        Min(sp20, *temp_r28_710);
+        Min(sp20, *((MKVector3 *) temp_r28_710));
         Max(sp70, sp20);
-        var_r27_429 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r27_429) + 4));
-        M2C_FIELD(temp_r28_710, f64 *, 0) = M2C_BITWISE(f64, sp70);
-        M2C_FIELD(temp_r28_710, f32 *, 8) = (f64) sp70.unk8;
+        var_r27_429 += 4;
+        temp_r28_710->unk0 = M2C_BITWISE(f64, sp70);
+        temp_r28_710->unk8 = (f64) sp70.unk8;
         goto loop_30;
     }
 }
@@ -425,15 +425,18 @@ void SwarmProp::LoadDone() {
     f32 sp8;
     MKHeap *temp_r3_902;
     Matrix *temp_r3_867;
-    f32 temp_r3_932;
-    f32 temp_r3_939;
-    f32 temp_r5_982;
-    f32 var_r3_983;
-    f32 var_r4_988;
-    f32 var_r5_924;
+    SwarmEntity **temp_r3_925;
+    SwarmEntity **temp_r3_932;
+    SwarmEntity **temp_r3_939;
+    SwarmEntity **temp_r4_955;
+    SwarmEntity **temp_r5_982;
+    SwarmEntity **var_r3_912;
+    SwarmEntity **var_r3_983;
+    SwarmEntity **var_r4_988;
+    SwarmEntity **var_r5_924;
+    SwarmEntity *temp_r29_958;
     f64 temp_f29_946;
     f64 temp_f30_949;
-    s32 *temp_r3_925;
     s32 temp_r0_968;
     s32 temp_r31_890;
     s32 var_ctr_928;
@@ -441,9 +444,6 @@ void SwarmProp::LoadDone() {
     s32 var_r31_948;
     s32 var_r3_956;
     u32 temp_r0_985;
-    void **temp_r4_955;
-    void *temp_r29_958;
-    void *var_r3_912;
 
     KDProp::LoadDone();
     M2C_STRUCT_COPY((s32) &this->unk8C + 4, (s32) (&identity - 4) + 4, 0x40);
@@ -459,14 +459,14 @@ void SwarmProp::LoadDone() {
     spC = 500.0f;
     M2C_FIELD(this, f64 *, 0xD8) = (f64) sp20;
     M2C_FIELD(this, f64 *, 0xE0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 0xE8) = (f64) sp10;
-    temp_r31_890 = this->unk90.unk60;
+    this->unkE8 = (f64) sp10;
+    temp_r31_890 = this->unkF0;
     sp48 = (f64) sp18;
     sp50 = (f64) sp20;
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;
     if (temp_r31_890 == 0) {
-        this->unk90.unk64 = M2C_BITWISE(f32, (&gEmptyPtrListDL + 4));
+        this->unkF4 = &gEmptyPtrListDL + 4;
     } else {
         temp_r3_902 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
         if (temp_r3_902 != NULL) {
@@ -474,53 +474,53 @@ void SwarmProp::LoadDone() {
         } else {
             var_r3_912 = malloc(((temp_r31_890 + 2) * 4) + (temp_r31_890 << 6));
         }
-        this->unk90.unk64 = M2C_BITWISE(f32, var_r3_912);
-        var_r5_924 = this->unk90.unk64;
-        temp_r3_925 = M2C_BITWISE(s32, var_r5_924) + (temp_r31_890 << 6);
-        this->unk90.unk64 = M2C_BITWISE(f32, temp_r3_925);
-        *temp_r3_925 = 0;
+        this->unkF4 = var_r3_912;
+        var_r5_924 = this->unkF4;
+        temp_r3_925 = var_r5_924 + (temp_r31_890 << 6);
+        this->unkF4 = temp_r3_925;
+        *temp_r3_925 = NULL;
         var_ctr_928 = temp_r31_890;
         if (temp_r31_890 > 0) {
             do {
-                temp_r3_932 = this->unk90.unk64;
-                this->unk90.unk64 = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r3_932) + 4));
-                M2C_FIELD(M2C_BITWISE(void *, temp_r3_932), f32 *, 4) = var_r5_924;
-                var_r5_924 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_924) + 0x40));
+                temp_r3_932 = this->unkF4;
+                this->unkF4 = temp_r3_932 + 4;
+                M2C_FIELD(temp_r3_932, SwarmEntity ***, 4) = var_r5_924;
+                var_r5_924 += 0x40;
                 var_ctr_928 -= 1;
             } while (var_ctr_928 != 0);
         }
-        temp_r3_939 = this->unk90.unk64;
-        this->unk90.unk64 = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r3_939) + 4));
-        M2C_FIELD(M2C_BITWISE(void *, temp_r3_939), s32 *, 4) = 0;
+        temp_r3_939 = this->unkF4;
+        this->unkF4 = temp_r3_939 + 4;
+        M2C_FIELD(temp_r3_939, SwarmEntity ***, 4) = NULL;
     }
     temp_f29_946 = M2C_FIELD(&zero, f64 *, 0);
     var_r31_948 = 0;
     temp_f30_949 = M2C_FIELD(&zero, f64 *, 8);
 loop_12:
-    temp_r5_982 = this->unk90.unk64;
+    temp_r5_982 = this->unkF4;
     var_r3_983 = temp_r5_982;
     do {
         temp_r0_985 = M2C_FIELD(var_r3_983, u32 *, -4);
-        var_r3_983 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r3_983) - 4));
+        var_r3_983 -= 4;
     } while (temp_r0_985 != 0U);
     var_r4_988 = temp_r5_982;
 loop_16:
-    if ((u32) *var_r4_988 != 0U) {
-        var_r4_988 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r4_988) + 4));
+    if ((SwarmEntity *) *var_r4_988 != NULL) {
+        var_r4_988 += 4;
         goto loop_16;
     }
-    if (var_r31_948 < (s32) ((((s32) (M2C_BITWISE(s32, temp_r5_982) - M2C_BITWISE(s32, var_r3_983)) / 4) + ((s32) (M2C_BITWISE(s32, var_r4_988) - M2C_BITWISE(s32, temp_r5_982)) / 4)) - 1)) {
-        temp_r4_955 = M2C_BITWISE(s32, this->unk90.unk64) - 4;
+    if (var_r31_948 < (s32) ((((s32) (temp_r5_982 - var_r3_983) / 4) + ((s32) (var_r4_988 - temp_r5_982) / 4)) - 1)) {
+        temp_r4_955 = this->unkF4 - 4;
         var_r3_956 = 0;
-        this->unk90.unk64 = M2C_BITWISE(f32, temp_r4_955);
+        this->unkF4 = temp_r4_955;
         temp_r29_958 = *temp_r4_955;
-        M2C_FIELD(temp_r29_958, f64 *, 0) = temp_f29_946;
-        M2C_FIELD(temp_r29_958, f64 *, 8) = temp_f30_949;
-        M2C_FIELD(temp_r29_958, f64 *, 0x10) = temp_f29_946;
-        M2C_FIELD(temp_r29_958, f64 *, 0x18) = temp_f30_949;
-        M2C_FIELD(temp_r29_958, f64 *, 0x20) = temp_f29_946;
-        M2C_FIELD(temp_r29_958, f64 *, 0x28) = temp_f30_949;
-        M2C_FIELD(temp_r29_958, f32 *, 0x30) = 0.0f;
+        temp_r29_958->unk0 = temp_f29_946;
+        temp_r29_958->unk8 = temp_f30_949;
+        temp_r29_958->unk10 = temp_f29_946;
+        temp_r29_958->unk18 = temp_f30_949;
+        temp_r29_958->unk20 = temp_f29_946;
+        temp_r29_958->unk28 = temp_f30_949;
+        temp_r29_958->unk30 = 0.0f;
         var_ctr_966 = 3;
         do {
             temp_r0_968 = var_r3_956 + 0x34;
@@ -528,73 +528,71 @@ loop_16:
             *(temp_r29_958 + temp_r0_968) = 0;
             var_ctr_966 -= 1;
         } while (var_ctr_966 != 0);
-        KDRand_Vector(sp28, *((MKVector3 *) &this->unk90.unk40));
+        KDRand_Vector(sp28, this->unkD0);
         var_r31_948 += 1;
-        M2C_FIELD(temp_r29_958, f64 *, 0) = M2C_BITWISE(f64, sp28);
-        M2C_FIELD(temp_r29_958, f64 *, 8) = (f64) sp28.unk8;
+        temp_r29_958->unk0 = M2C_BITWISE(f64, sp28);
+        temp_r29_958->unk8 = (f64) sp28.unk8;
         goto loop_12;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    return arg0->LoadInt("EntityCount", &this->unk90.unk60, 0);
+    return arg0->LoadInt("EntityCount", &this->unkF0, 0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: type mismatch
 void SwarmProp::Deinit() {
     MKHeap *temp_r3_1084;
-    f32 var_r31_1058;
-    f32 var_r3_1059;
-    f32 var_r4_1057;
-    u32 temp_r0_1062;
+    SwarmEntity **var_r31_1058;
+    SwarmEntity **var_r3_1059;
+    SwarmEntity **var_r4_1057;
+    SwarmEntity *temp_r0_1062;
+    SwarmEntity *temp_r0_1081;
     u32 temp_r0_1067;
-    u32 temp_r0_1081;
 
-    var_r4_1057 = this->unk90.unk64;
+    var_r4_1057 = this->unkF4;
     var_r31_1058 = var_r4_1057;
     var_r3_1059 = var_r4_1057;
 loop_3:
     temp_r0_1067 = M2C_FIELD(var_r3_1059, u32 *, -4);
-    var_r3_1059 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r3_1059) - 4));
+    var_r3_1059 -= 4;
     if (temp_r0_1067 != 0U) {
         temp_r0_1062 = *var_r3_1059;
-        if (temp_r0_1062 < M2C_BITWISE(u32, var_r31_1058)) {
-            var_r31_1058 = M2C_BITWISE(f32, temp_r0_1062);
+        if (temp_r0_1062 < var_r31_1058) {
+            var_r31_1058 = (SwarmEntity **) temp_r0_1062;
         }
         goto loop_3;
     }
-    if (M2C_BITWISE(u32, var_r3_1059) != &gEmptyPtrListDL) {
+    if (var_r3_1059 != &gEmptyPtrListDL) {
 loop_9:
         temp_r0_1081 = *var_r4_1057;
-        if (temp_r0_1081 != 0U) {
-            if (temp_r0_1081 < M2C_BITWISE(u32, var_r31_1058)) {
-                var_r31_1058 = M2C_BITWISE(f32, temp_r0_1081);
+        if (temp_r0_1081 != NULL) {
+            if (temp_r0_1081 < var_r31_1058) {
+                var_r31_1058 = (SwarmEntity **) temp_r0_1081;
             }
-            var_r4_1057 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r4_1057) + 4));
+            var_r4_1057 += 4;
             goto loop_9;
         }
-        temp_r3_1084 = ((MKHeap *) (M2C_BITWISE(MKHeap *, var_r3_1059)))->Current();
+        temp_r3_1084 = var_r3_1059->Current();
         if (temp_r3_1084 != NULL) {
-            ((MKHeap *) (temp_r3_1084->Current()))->Free(M2C_BITWISE(void *, var_r31_1058), NULL, 0);
+            ((MKHeap *) (temp_r3_1084->Current()))->Free(var_r31_1058, NULL, 0);
         } else {
-            free(M2C_BITWISE(MKHeap *, var_r31_1058));
+            free(var_r31_1058);
         }
     }
-    this->unk90.unk64 = 0.0f;
+    this->unkF4 = NULL;
     KDProp::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
 void SwarmProp::Init() {
     KDProp::Init();
-    this->unk90.unk60 = 5;
-    this->unkC = (BoundingVolume *) &this->unk90.unk40;
+    this->unkF0 = 5;
+    this->unkC = (BoundingVolume *) &this->unkD0;
 }
-#endif

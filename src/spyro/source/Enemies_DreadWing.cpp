@@ -1,16 +1,17 @@
 #include "spyro/source/Enemies_DreadWing.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
 #include "spyro/source/DropBox.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/SpawnerObject.h"
 #include "unplaced_templates.h"
-#include "common/Source/MKModel.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -21,89 +22,89 @@ extern void *gpTranslation_StringArray;
 static CharacterBodyFxInit dreadWingBodyFXInit;     /* unable to generate initializer: confusing struct layout */
 
 void DreadWing::DropDropBox() {
-    DropBox *temp_r3_67;
+    s32 temp_r3_67;
 
-    temp_r3_67 = this->unk110.unkA04;
-    if (temp_r3_67 != NULL) {
+    temp_r3_67 = this->unkAFC;
+    if ((u32) temp_r3_67 != 0U) {
         temp_r3_67->Drop();
-        this->unk110.unkA04 = NULL;
+        this->unkAFC = 0;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA04'
+#if 0 // DRAFT: pointer/array required
 s32 DreadWing::PickUpDropBox(int arg0) {
-    DropBox *temp_r3_108;
-    DropBox *temp_r3_215;
-    DropBox *temp_r4_90;
-    MKPropDescriptor *temp_r3_102;
-    MKPropDescriptor *temp_r3_209;
-    SpawnerObject **temp_r4_117;
-    SpawnerObject **temp_r4_224;
+    AttackSweepData *temp_r4_117;
+    AttackSweepData *temp_r4_224;
     s32 temp_r0_136;
+    s32 temp_r3_102;
+    s32 temp_r3_108;
+    s32 temp_r3_209;
+    s32 temp_r3_215;
+    s32 temp_r4_90;
 
-    temp_r4_90 = this->unk110.unkA04;
-    if (temp_r4_90 != NULL) {
-        temp_r4_90->unk18 = this->unk18;
-        this->unk110.unkA04->unk1C4->unk10.unk8 = M2C_BITWISE(f32, this->unk18);
+    temp_r4_90 = this->unkAFC;
+    if ((u32) temp_r4_90 != 0U) {
+        M2C_FIELD(temp_r4_90, s32 *, 0x18) = (s32) this->unk18;
+        M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk18 = this->unk18;
         return 0;
     }
-    temp_r3_102 = this->unk110.unkA00;
-    if (temp_r3_102 != NULL) {
-        this->unk110.unkA04 = checked_cast<DropBox *, MKProp>(temp_r3_102->CreateInstance());
-        temp_r3_108 = this->unk110.unkA04;
-        if (temp_r3_108 != NULL) {
+    temp_r3_102 = this->unkAF8;
+    if ((u32) temp_r3_102 != 0U) {
+        this->unkAFC = checked_cast<DropBox *, MKProp>(temp_r3_102->CreateInstance());
+        temp_r3_108 = this->unkAFC;
+        if ((u32) temp_r3_108 != 0U) {
             temp_r3_108->SetDefaults();
-            this->unk110.unkA04->unk200.unk0 = M2C_BITWISE(f32, arg0);
-            this->unk110.unkA04->unk1C4->unk10.unk14 = M2C_BITWISE(f32, arg0);
-            temp_r4_117 = this->unk110.unk938;
+            M2C_FIELD(this->unkAFC, s32 *, 0x210) = arg0;
+            M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk24 = arg0;
+            temp_r4_117 = this->unkA30;
             if (temp_r4_117 != NULL) {
-                this->unk110.unkA04->unk1C4->SetParentSpawner(*temp_r4_117);
+                ((SpawnerObject *) (M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)))->SetParentSpawner((SpawnerObject *) temp_r4_117->unk0);
             }
         }
-        this->unk110.unkA04->unk18 = this->unk18;
-        this->unk110.unkA04->unk1C4->unk10.unk8 = M2C_BITWISE(f32, this->unk18);
+        M2C_FIELD(this->unkAFC, s32 *, 0x18) = (s32) this->unk18;
+        M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk18 = this->unk18;
         return 1;
     }
-    temp_r0_136 = M2C_FIELD(this->unk110.unk928, s32 *, 0xF4);
+    temp_r0_136 = M2C_FIELD(this->unkA20, s32 *, 0xF4);
     switch (temp_r0_136) {                          /* irregular */
     case 35:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
         break;
     case 36:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
         break;
     case 37:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     case 38:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P5003_DropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P5003_DropBox"));
         break;
     case 39:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     }
-    temp_r3_209 = this->unk110.unkA00;
-    if (temp_r3_209 != NULL) {
-        this->unk110.unkA04 = checked_cast<DropBox *, MKProp>(temp_r3_209->CreateInstance());
-        temp_r3_215 = this->unk110.unkA04;
-        if (temp_r3_215 != NULL) {
+    temp_r3_209 = this->unkAF8;
+    if ((u32) temp_r3_209 != 0U) {
+        this->unkAFC = checked_cast<DropBox *, MKProp>(temp_r3_209->CreateInstance());
+        temp_r3_215 = this->unkAFC;
+        if ((u32) temp_r3_215 != 0U) {
             temp_r3_215->SetDefaults();
-            this->unk110.unkA04->unk200.unk0 = M2C_BITWISE(f32, arg0);
-            this->unk110.unkA04->unk1C4->unk10.unk14 = M2C_BITWISE(f32, arg0);
-            temp_r4_224 = this->unk110.unk938;
+            M2C_FIELD(this->unkAFC, s32 *, 0x210) = arg0;
+            M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk24 = arg0;
+            temp_r4_224 = this->unkA30;
             if (temp_r4_224 != NULL) {
-                this->unk110.unkA04->unk1C4->SetParentSpawner(*temp_r4_224);
+                ((SpawnerObject *) (M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)))->SetParentSpawner((SpawnerObject *) temp_r4_224->unk0);
             }
         }
-        this->unk110.unkA04->unk1C4->unk10.unk8 = M2C_BITWISE(f32, this->unk18);
+        M2C_FIELD(this->unkAFC, SpawnerObject **, 0x1D4)->unk18 = this->unk18;
         return 1;
     }
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA04'
+#if 0 // DRAFT: undefined identifier 'arg_spFC'
 void DreadWing::UpdateDropBox() {
     f32 var_f7_335;
     f32 var_f8_319;
@@ -113,7 +114,7 @@ void DreadWing::UpdateDropBox() {
     s32 temp_r3_377;
     s32 var_r0_387;
     void *temp_r4_315;
-    if ((DropBox *) this->unk110.unkA04 != NULL) {
+    if ((u32) this->unkAFC != 0U) {
         M2C_STRUCT_COPY((s32) &arg_spFC + 4, (s32) (&identity - 4) + 4, 0x40);
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "R_Foot"), (MKVector3 *) &arg_spE8);
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Foot"), (MKVector3 *) &arg_spD8);
@@ -187,19 +188,17 @@ void DreadWing::UpdateDropBox() {
         arg_sp134 = arg_sp5C;
         arg_sp138 = (f32) arg_sp60;
         arg_sp13C = 1.0f;
-        MKModel_SetWorldMatrix(this->unk110.unkA04->unk4, *((Matrix *) &arg_sp100));
+        MKModel_SetWorldMatrix(M2C_FIELD(this->unkAFC, MKModel **, 4), *((Matrix *) &arg_sp100));
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
 void DreadWing::CheckAnimEvents() {
-    if (this->unk110.unk520->CheckEvent(0) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0) != 0) {
         DropDropBox();
     }
     Enemy::CheckAnimEvents();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void DreadWing::Message(MKMessage *arg0) {
@@ -214,13 +213,13 @@ void DreadWing::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA04'
+#if 0 // DRAFT: pointer/array required
 void DreadWing::Despawn(bool arg0) {
-    DropBox *temp_r3_522;
+    s32 temp_r3_522;
 
     Enemy::Despawn(arg0);
-    temp_r3_522 = this->unk110.unkA04;
-    if (temp_r3_522 != NULL) {
+    temp_r3_522 = this->unkAFC;
+    if ((u32) temp_r3_522 != 0U) {
         temp_r3_522->Drop();
     }
 }
@@ -231,26 +230,26 @@ void DreadWing::Update() {
     UpdateDropBox();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk928'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[17]' to
 void DreadWing::Resolve() {
     s32 temp_r0_561;
 
-    temp_r0_561 = M2C_FIELD(this->unk110.unk928, s32 *, 0xF4);
+    temp_r0_561 = M2C_FIELD(this->unkA20, s32 *, 0xF4);
     switch (temp_r0_561) {                          /* irregular */
     case 35:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P3020_IceDropBox"));
         break;
     case 36:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P4008_EarthDropBox"));
         break;
     case 37:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     case 38:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "5003_DropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "5003_DropBox"));
         break;
     case 39:
-        this->unk110.unkA00 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
+        this->unkAF8 = checked_cast<DropBoxDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, void *), 0x5C)(gMK, "P0086_DropBox"));
         break;
     }
     Enemy::Resolve();
@@ -278,9 +277,9 @@ void DreadWing::Init() {
         temp_r31_656->__vptr = &__vt;
     }
     temp_r31_656->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_656;
-    this->unk110.unkA04 = NULL;
-    this->unk110.unkA00 = NULL;
+    this->unkA24 = (EnemyAttack *) temp_r31_656;
+    this->unkAFC = 0;
+    this->unkAF8 = 0;
 }
 #endif
 

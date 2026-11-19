@@ -378,16 +378,14 @@ void LavaSmashProp::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1E8'
 void LavaSmashProp::Reset() {
     Shatterable::Reset();
     this->unk1E8.unk4 = 1.5f;
     this->unk1E8.unk8 = 0.0f;
     this->unk1D0 = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1D8'
+#if 0 // DRAFT: undefined identifier 'unk108'
 void LavaSmashProp::LoadDone() {
     Shatterable::LoadDone();
     this->unk1D8 = M2C_FIELD(&loadInfo, f64 *, 0x40);
@@ -407,7 +405,6 @@ void LavaSmashProp::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1E8'
 void LavaSmashProp::Init() {
     Shatterable::Init();
     this->unk1E8.unk0 = 0.0f;
@@ -416,7 +413,6 @@ void LavaSmashProp::Init() {
     this->unk1D0 = 0;
     this->unk1E8.unkC = 0.0f;
 }
-#endif
 
 void LavaSmashPropDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();

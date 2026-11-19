@@ -35,23 +35,21 @@ void WaterVolume::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
 void WaterVolume::Resolve() {
     s8 sp14;
-    f32 *sp10;
+    MKCollisionInfo *sp10;
     s32 spC;
     s32 sp8;
-    f32 *temp_r5_98;
+    MKCollisionInfo *temp_r5_98;
 
     MKProp::Resolve();
-    temp_r5_98 = &this->unk50.unk40.unk50;
+    temp_r5_98 = &this->unkE0;
     spC = 0;
     sp8 = 0x40F;
     sp10 = temp_r5_98;
     sp14 = 1;
-    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, f32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_98, 0x40F);
+    M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, MKCollisionInfo *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_98, 0x40F);
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, int, int, int)' does not match
 void WaterVolume::LoadDone() {
@@ -61,7 +59,7 @@ void WaterVolume::LoadDone() {
     M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) &this->unk50.unk3C + 4, 0x40);
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp10));
     temp_r31_161 = MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "C_Collide");
-    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, temp_r31_161, (MKCollisionMode) 1, (MKCollisionInfo *) &this->unk50.unk40.unk50, 0U);
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(this->unk4, temp_r31_161, (MKCollisionMode) 1, &this->unkE0, 0U);
 }
 #endif
 
@@ -77,29 +75,27 @@ s32 WaterVolume::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
 void WaterVolume::Deinit() {
-    f32 *sp10;
+    MKCollisionInfo *sp10;
     s32 spC;
     s32 sp8;
 
     spC = 0;
     sp8 = 0x410;
-    sp10 = &this->unk50.unk40.unk50;
+    sp10 = &this->unkE0;
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, 0x410);
     KDWaterVolume::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void WaterVolume::Init() {
     MKProp::Init();
     PropFlagsSet((u32 *) &this->unk10, 0x160000U);
-    this->unk50.unk40.unk50 = 0.0f;
-    M2C_FIELD(this, s8 *, 0xE4) = 1;
-    this->unk50.unk40.unk58 = M2C_BITWISE(f32, this);
-    this->unk50.unk40.unk5C = 0;
-    M2C_FIELD(this, s8 *, 0xE4) = 0;
+    this->unkE0.unk0 = 0;
+    this->unkE0.unk4 = 1;
+    this->unkE0.unk8 = (MKProp *) this;
+    this->unkE0.unkC = 0;
+    this->unkE0.unk4 = 0;
 }
 #endif
 

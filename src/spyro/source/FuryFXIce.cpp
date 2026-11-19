@@ -77,8 +77,8 @@ loop_2:
     if (temp_r4_80 != NULL) {
         gb.unk80->EnableLight(temp_r4_80, 0U);
     }
-    gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk150.unk40));
-    this->unk150.unk40 = nanf;
+    gb.unk2CC.Disable((s32) this->unk190);
+    this->unk190 = (MKModel *)-1;
     if ((void *) M2C_FIELD(&gb, void **, 0x3B8) != NULL) {
         spC = 0;
         sp8 = 0x459;
@@ -314,11 +314,11 @@ void FuryFXIce::SpawnIcePatch(const MKVector3 &arg0, const MKVector3 &arg1, floa
         this->unk110 = temp_r6_529 - 4;
         temp_r31_535 = M2C_FIELD(temp_r6_529, Matrix **, -4);
         if (temp_r31_535 != NULL) {
-            temp_r31_535->unk40 = arg2;
-            temp_r31_535->unk44 = 0.0f;
-            temp_r31_535->unk50 = 1e-45f;
-            temp_r31_535->unk48 = 0.5f;
-            temp_r31_535->unk4C = 1.0f;
+            M2C_FIELD(temp_r31_535, f32 *, 0x40) = arg2;
+            M2C_FIELD(temp_r31_535, f32 *, 0x44) = 0.0f;
+            M2C_FIELD(temp_r31_535, s32 *, 0x50) = 1;
+            M2C_FIELD(temp_r31_535, f32 *, 0x48) = 0.5f;
+            M2C_FIELD(temp_r31_535, f32 *, 0x4C) = 1.0f;
             M2C_STRUCT_COPY(temp_r31_535, &identity, 0x40);
             sp10 = 1.0f;
             sp20 = -1.0f;
@@ -386,7 +386,7 @@ s32 FuryFXIce::Trigger(const MKVector3 &arg0, bool arg1) {
     temp_r4_661 = M2C_FIELD(gb.unk0->__vptr, MKProp *(**)(HeroInterface *), 0xC)(gb.unk0);
     sp8 = -1;
     this->unkB8.Init(temp_r4_661, 0, temp_r29_630, var_r28_646, temp_r27_653, temp_r27_653, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    this->unk150.unk40 = M2C_BITWISE(f32, gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f));
+    this->unk190 = gb.unk2CC.Enable(0.5f, 0.0f, 0.0f, -1.0f);
     this->unk120.unk18 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk120.unk20 = M2C_FIELD(&arg0, f64 *, 8);
     temp_r4_684 = this->unk98;
@@ -473,8 +473,8 @@ loop_9:
     MKMaterial_Destroy(this->unk114);
     MKMaterial_Destroy(M2C_BITWISE(MKMaterial *, this->unk150.unk3C));
     MKModel_Destroy(M2C_BITWISE(MKModel *, this->unk150.unk38));
-    gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk150.unk40));
-    this->unk150.unk40 = nanf;
+    gb.unk2CC.Disable((s32) this->unk190);
+    this->unk190 = (MKModel *)-1;
     FuryFX::Deinit();
 }
 #endif
@@ -600,8 +600,8 @@ void FuryFXIce::Update() {
                 arg_sp4E8 = M2C_FIELD(this, f32 *, 0xA8);
                 arg_sp4EC = 1.0f;
                 MKModel_SetWorldMatrix(M2C_BITWISE(MKModel *, this->unk150.unk38), *((Matrix *) &arg_sp4B0));
-                gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk150.unk40));
-                this->unk150.unk40 = nanf;
+                gb.unk2CC.Disable((s32) this->unk190);
+                this->unk190 = (MKModel *)-1;
             }
             break;
         case 2:
@@ -744,7 +744,7 @@ loop_31:
                 M2C_FIELD(this, f64 *, 0xC8) = temp_f2_1426;
                 M2C_FIELD(this, f64 *, 0xD0) = (f64) this->unkA8;
                 M2C_FIELD(*gMK, M2C_UNK (**)(void **, BreathHitMessage *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32, f64), 0x94)(gMK, &this->unkB8, 0, 0, &this->unkA0, 1, 3000.0f, temp_f2_1426);
-                this->unk150.unk40 = M2C_BITWISE(f32, gb.unk2CC.Enable(0.25f, 0.0f, 1.0f, -1.0f));
+                this->unk190 = gb.unk2CC.Enable(0.25f, 0.0f, 1.0f, -1.0f);
             }
             break;
         case 3:
@@ -783,11 +783,11 @@ loop_31:
                 M2C_STRUCT_COPY((s32) (this + 0x14C) + 4, (s32) (&identity - 4) + 4, 0x40);
                 temp_r3_1599 = &this->unk120.unk28;
                 temp_r3_1599->RotateYaw((Matrix *) temp_r3_1599, -0.3926991f);
-                gb.unk2CC.Disable(M2C_BITWISE(s32, this->unk150.unk40));
+                gb.unk2CC.Disable((s32) this->unk190);
                 var_r28_1609 = 0;
-                this->unk150.unk40 = nanf;
+                this->unk190 = (MKModel *)-1;
                 do {
-                    temp_r3_1614 = checked_cast<PooledShatterProp *, MKProp>(((MKPropDescriptor *) (M2C_BITWISE(MKPropDescriptor *, this->unk150.unk44)))->CreateInstance());
+                    temp_r3_1614 = checked_cast<PooledShatterProp *, MKProp>(this->unk194->CreateInstance());
                     if (temp_r3_1614 != NULL) {
                         M2C_FIELD(M2C_FIELD(temp_r3_1614, void **, 0x44), M2C_UNK (**)(), 0x20)();
                         M2C_FIELD(M2C_FIELD(temp_r3_1614, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r3_1614);
@@ -982,7 +982,7 @@ void FuryFXIce::Resolve() {
     if (temp_r4_2089 != NULL) {
         gb.unk80->EnableLight(temp_r4_2089, 0U);
     }
-    this->unk150.unk44 = M2C_BITWISE(f32, checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube")));
+    this->unk194 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
 }
 #endif
 
@@ -1054,7 +1054,7 @@ void FuryFXIce::Init() {
     M2C_FIELD(this, f32 *, 0x130) = 50.0f;
     this->unk150.unk38 = M2C_BITWISE(f32, MKModel_Create("Fx0020_earthshock", NULL, 2, NULL));
     this->unk150.unk3C = M2C_BITWISE(f32, MKMaterial_Create"FX_IceFuryMat");
-    this->unk150.unk40 = nanf;
+    this->unk190 = (MKModel *)-1;
 }
 #endif
 

@@ -31,7 +31,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void FuryFXIce2::ResetFury() {
     Matrix **temp_r3_60;
     Matrix **var_r6_55;
@@ -45,7 +45,7 @@ loop_2:
     if (var_r6_55 != NULL) {
         temp_r3_71 = *var_r6_55;
         if (temp_r3_71 != NULL) {
-            temp_r3_71->unk50 = 0.0f;
+            M2C_FIELD(temp_r3_71, s32 *, 0x50) = 0;
             temp_r3_60 = this->unk100;
             this->unk100 = temp_r3_60 + 4;
             temp_r5_63 = *temp_r3_60;
@@ -223,10 +223,10 @@ void FuryFXIce2::SpawnIceSpear(Targetable *arg0) {
             temp_r31_168->unk34 = unksp124;
             temp_r31_168->unk38 = sp128;
             temp_r31_168->unk3C = 1.0f;
-            temp_r31_168->unk50 = 1e-45f;
-            temp_r31_168->unk54 = 1.0f;
-            temp_r31_168->unk58 = M2C_BITWISE(f32, arg0);
-            if (M2C_BITWISE(u32, temp_r31_168->unk58) == 0U) {
+            M2C_FIELD(temp_r31_168, s32 *, 0x50) = 1;
+            M2C_FIELD(temp_r31_168, f32 *, 0x54) = 1.0f;
+            M2C_FIELD(temp_r31_168, Targetable **, 0x58) = arg0;
+            if ((Targetable *) M2C_FIELD(temp_r31_168, Targetable **, 0x58) == NULL) {
                 MKVector(1.0f, 0.0f, 1.0f);
                 MKVector(-1.0f, 0.0f, -1.0f);
                 KDRand_Vector(sp90, sp80);
@@ -321,11 +321,6 @@ void FuryFXIce2::UpdateIceSpears() {
     Matrix *temp_r4_925;
     f32 temp_f2_553;
     f32 temp_f31_473;
-    f32 temp_r0_454;
-    f32 temp_r3_504;
-    f32 temp_r3_704;
-    f32 temp_r3_805;
-    f32 temp_r3_820;
     f32 var_f1_897;
     f32 var_f2_729;
     f32 var_f3_640;
@@ -335,8 +330,13 @@ void FuryFXIce2::UpdateIceSpears() {
     f64 temp_f1_585;
     f64 temp_f1_589;
     f64 temp_f1_814;
+    s32 temp_r0_454;
     s32 temp_r3_608;
     s32 var_r0_618;
+    void **temp_r3_504;
+    void **temp_r3_704;
+    void **temp_r3_805;
+    void **temp_r3_820;
     void *temp_r26_850;
     void *temp_r3_812;
     void *temp_r3_840;
@@ -346,9 +346,9 @@ loop_56:
     if (var_r29_446 != NULL) {
         temp_r30_934 = *var_r29_446;
         if (temp_r30_934 != NULL) {
-            temp_r30_934->unk54 -= gUpdateTimeDelta;
-            temp_r0_454 = temp_r30_934->unk50;
-            switch (M2C_BITWISE(s32, temp_r0_454)) { /* switch 1; irregular */
+            M2C_FIELD(temp_r30_934, f32 *, 0x54) = (f32) (M2C_FIELD(temp_r30_934, f32 *, 0x54) - gUpdateTimeDelta);
+            temp_r0_454 = M2C_FIELD(temp_r30_934, s32 *, 0x50);
+            switch (temp_r0_454) {                  /* switch 1; irregular */
             case 1:                                 /* switch 1 */
                 temp_f31_473 = gUpdateTimeDelta;
                 sp20 = -temp_r30_934->unk20;
@@ -364,9 +364,9 @@ loop_56:
                 sp168 = (f64) sp58;
                 temp_r30_934->Translate(temp_r30_934, *((MKVector3 *) &sp160));
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_r30_934->unk54 == 0.0f) {
-                    temp_r3_504 = temp_r30_934->unk58;
-                    if (M2C_BITWISE(u32, temp_r3_504) != 0U) {
+                if (M2C_FIELD(temp_r30_934, f32 *, 0x54) == 0.0f) {
+                    temp_r3_504 = M2C_FIELD(temp_r30_934, void ***, 0x58);
+                    if (temp_r3_504 != NULL) {
                         M2C_FIELD(*temp_r3_504, M2C_UNK (**)(f32 *, f64 *), 0x2C)(&temp_r30_934->unk30, &sp1D0);
                     } else {
                         sp1D0 = M2C_FIELD(temp_r30_934, f64 *, 0x40);
@@ -443,14 +443,14 @@ loop_56:
                     temp_r30_934->unk34 = unksp1B4;
                     temp_r30_934->unk38 = (f32) sp1B8;
                     temp_r30_934->unk3C = 1.0f;
-                    temp_r30_934->unk50 = 3e-45f;
-                    temp_r30_934->unk54 = 2.0f;
+                    M2C_FIELD(temp_r30_934, s32 *, 0x50) = 2;
+                    M2C_FIELD(temp_r30_934, f32 *, 0x54) = 2.0f;
                     KDSound_Play3d(GS_SpyroFuryIce5, (MKVector3 *) &temp_r30_934->unk30, 0U, -1, 0.0f, 0U);
                 }
                 break;
             case 2:                                 /* switch 1 */
-                temp_r3_704 = temp_r30_934->unk58;
-                if (M2C_BITWISE(u32, temp_r3_704) != 0U) {
+                temp_r3_704 = M2C_FIELD(temp_r30_934, void ***, 0x58);
+                if (temp_r3_704 != NULL) {
                     M2C_FIELD(*temp_r3_704, M2C_UNK (**)(f32 *, f64 *), 0x2C)(&temp_r30_934->unk30, &sp190);
                 } else {
                     sp190 = M2C_FIELD(temp_r30_934, f64 *, 0x40);
@@ -458,7 +458,7 @@ loop_56:
                 }
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-                var_f2_729 = temp_r30_934->unk54;
+                var_f2_729 = M2C_FIELD(temp_r30_934, f32 *, 0x54);
                 sp180 = sp80;
                 sp88 = (f32) sp198 - temp_r30_934->unk38;
                 sp188 = (f64) sp88;
@@ -486,12 +486,12 @@ loop_56:
                 temp_r30_934->unk38 = (f32) sp178;
                 temp_r30_934->unk3C = 1.0f;
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if ((temp_r30_934->unk54 == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), (((((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184))) == 10000.0f) != 0))) {
-                    temp_r30_934->unk54 = 1.0f;
-                    temp_r30_934->unk50 = 4e-45f;
+                if ((M2C_FIELD(temp_r30_934, f32 *, 0x54) == 0.0f) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), (((((f32) sp188 * (f32) sp188) + (((f32) sp180 * (f32) sp180) + (unksp184 * unksp184))) == 10000.0f) != 0))) {
+                    M2C_FIELD(temp_r30_934, f32 *, 0x54) = 1.0f;
+                    M2C_FIELD(temp_r30_934, s32 *, 0x50) = 3;
                     this->unkA8.unk50 = 0;
-                    temp_r3_805 = temp_r30_934->unk58;
-                    if (M2C_BITWISE(u32, temp_r3_805) != 0U) {
+                    temp_r3_805 = M2C_FIELD(temp_r30_934, void ***, 0x58);
+                    if (temp_r3_805 != NULL) {
                         temp_r3_812 = M2C_FIELD(M2C_FIELD(*temp_r3_805, void *(**)(), 8)(), void **, 8);
                         temp_f1_814 = M2C_FIELD(temp_r3_812, f64 *, 0x30);
                         temp_f0_815 = M2C_FIELD(temp_r3_812, f64 *, 0x38);
@@ -499,9 +499,9 @@ loop_56:
                         M2C_FIELD(this, f64 *, 0xB8) = temp_f1_814;
                         M2C_FIELD(this, f64 *, 0xC0) = temp_f0_815;
                         this->unkA8.unk48 = 1;
-                        temp_r3_820 = temp_r30_934->unk58;
+                        temp_r3_820 = M2C_FIELD(temp_r30_934, void ***, 0x58);
                         spE8 = temp_f0_815;
-                        M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_820, void *(**)(f32, f64), 8)(temp_r3_820, temp_f1_814), void **, 0x44), M2C_UNK (**)(BreathHitMessage *), 0x2C)(&this->unkA8);
+                        M2C_FIELD(M2C_FIELD(M2C_FIELD(*temp_r3_820, void *(**)(void **, f64), 8)(temp_r3_820, temp_f1_814), void **, 0x44), M2C_UNK (**)(BreathHitMessage *), 0x2C)(&this->unkA8);
                     }
                     ((IceExplosion *) (M2C_BITWISE(IceExplosion *, this->unk110)))->Trigger(*((MKVector3 *) &temp_r30_934->unk30), 1.0f);
                     temp_r3_840 = M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x2A0), void **, 0x44), void *(**)(void *), 0x3C)(M2C_FIELD(&gb, void **, 0x2A0));
@@ -531,7 +531,7 @@ loop_56:
                 }
                 break;
             case 3:                                 /* switch 1 */
-                var_f1_897 = temp_r30_934->unk54;
+                var_f1_897 = M2C_FIELD(temp_r30_934, f32 *, 0x54);
                 if (var_f1_897 < 1.0f) {
 
                 } else {
@@ -544,8 +544,8 @@ loop_56:
                 }
                 temp_r30_934->Scale3x3(temp_r30_934, var_f1_897);
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (temp_r30_934->unk54 == 0.0f) {
-                    temp_r30_934->unk50 = 0.0f;
+                if (M2C_FIELD(temp_r30_934, f32 *, 0x54) == 0.0f) {
+                    M2C_FIELD(temp_r30_934, s32 *, 0x50) = 0;
                     temp_r3_922 = this->unk100;
                     this->unk100 = temp_r3_922 + 4;
                     temp_r4_925 = *temp_r3_922;
@@ -972,8 +972,8 @@ void FuryFXIce2::Init() {
     }
     this->unk104 = (MKModel *) var_r3_1632;
     var_r5_1641 = this->unk104;
-    this->unk104 = (MKModel *) &var_r5_1641->unk10.unk40;
-    var_r5_1641->unk10.unk40 = 0.0f;
+    this->unk104 = (MKModel *) &var_r5_1641->unk50;
+    M2C_FIELD(var_r5_1641, s32 *, 0x50) = 0;
     var_ctr_1645 = 0x14;
     do {
         temp_r3_1647 = this->unk104;

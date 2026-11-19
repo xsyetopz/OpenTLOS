@@ -79,17 +79,17 @@ void EmbersPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &a
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gEmbersPSEnv'
 void EmbersPS::Init() {
     MKParticleSystem::Init();
-    this->unk60.unk48 = 5.0f;
-    this->unk60.unk4C = 5.0f;
+    this->unkA8 = 5.0f;
+    this->unkAC = 5.0f;
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gEmbersPSEnv, 5);
     SetMaxParticleAge(0.85f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
     this->unk118 = 0.95f;
 }

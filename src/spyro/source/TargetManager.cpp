@@ -388,12 +388,12 @@ loop_4:
         this->unk0 = temp_r4_740;
         *temp_r4_740 = (TargetManager **) arg0;
         GetNewTargetID();
-        arg0->unk4 = M2C_ERROR(/* Read from unset register $r3 */);
+        M2C_FIELD(arg0, s32 *, 4) = (s32) M2C_ERROR(/* Read from unset register $r3 */);
     }
     if (arg0->Update() != 0) {
-        if (((void **(*)(TargetManager **, f64, f32)) arg0->unk4) == (void **(*)(TargetManager **, f64, f32))-1) {
+        if ((s32) M2C_FIELD(arg0, s32 *, 4) == -1) {
             GetNewTargetID();
-            arg0->unk4 = M2C_ERROR(/* Read from unset register $r3 */);
+            M2C_FIELD(arg0, s32 *, 4) = (s32) M2C_ERROR(/* Read from unset register $r3 */);
         }
         this->unk8.Set(arg0);
     }
@@ -479,11 +479,11 @@ void TargetManager::Init() {
 #if 0 // DRAFT: expression syntax error
 void Targetable::UnregisterTargetable() {
     pTargetManager.__vptr->Remove(this);
-    this->unk4 = (void **(*)(TargetManager **, f64, f32))-1;
+    M2C_FIELD(this, s32 *, 4) = -1;
 }
 #endif
 
-#if 0 // DRAFT: ';' expected
+#if 0 // DRAFT: expression syntax error
 void Targetable::RegisterTargetable() {
     pTargetManager.__vptr->Add(this);
 }
@@ -700,7 +700,7 @@ void TargetContext::Set(Targetable *arg0) {
     this->unk0 = (void **(*)(TargetManager **, f64, f32))-1;
     temp_r4_1278 = this->unk4;
     if (temp_r4_1278 != NULL) {
-        this->unk0 = temp_r4_1278->unk4;
+        this->unk0 = M2C_FIELD(temp_r4_1278, void **(**)(TargetManager **, f64, f32), 4);
     }
 }
 #endif
@@ -715,7 +715,7 @@ Targetable *TargetContext::Get() {
     var_r5_1290 = 0;
     if (temp_r6_1289 >= 0) {
         temp_r4_1293 = this->unk4;
-        if ((temp_r4_1293 != NULL) && (temp_r6_1289 == ((void **(*)(TargetManager **, f64, f32)) temp_r4_1293->unk4))) {
+        if ((temp_r4_1293 != NULL) && (temp_r6_1289 == (s32) M2C_FIELD(temp_r4_1293, s32 *, 4))) {
             var_r5_1290 = 1;
         }
     }

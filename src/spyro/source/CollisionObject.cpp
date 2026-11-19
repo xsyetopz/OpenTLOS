@@ -322,12 +322,12 @@ void CollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'double *' to
+#if 0 // DRAFT: illegal type
 void CollisionObject::SortResults() {
     M2C_UNK sp14;
     ContextInfo *sp10;
     ContextInfo *spC;
-    void **sp8;
+    f64 *sp8;
     f32 temp_f0_772;
     f32 var_f1_760;
     s32 temp_r7_796;
@@ -344,7 +344,7 @@ void CollisionObject::SortResults() {
     void *temp_r9_802;
 
     var_r4_749 = 0;
-    sp8 = M2C_FIELD(&lit_819, void ***, 0);
+    sp8 = M2C_FIELD(&lit_819, f64 **, 0);
     var_r5_751 = 0;
     spC = M2C_FIELD(&lit_819, ContextInfo **, 4);
     sp10 = M2C_FIELD(&lit_819, ContextInfo **, 8);

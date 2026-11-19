@@ -681,13 +681,13 @@ void SteamTrainCaboose::LoadDone() {
         if (temp_r26_1450 != NULL) {
             temp_r26_1450->__vptr = &__vt;
             temp_r26_1450->__vptr = &__vt;
-            temp_r26_1450->unk8 = 0;
+            M2C_FIELD(temp_r26_1450, s32 *, 8) = 0;
             ((EventMessage *) (temp_r26_1450 + 8))->Init();
-            temp_r26_1450->unkC = 0;
+            M2C_FIELD(temp_r26_1450, s32 *, 0xC) = 0;
             ((EventMessage *) (temp_r26_1450 + 0xC))->Init();
-            temp_r26_1450->unk10 = 0;
+            M2C_FIELD(temp_r26_1450, s32 *, 0x10) = 0;
             ((EventMessage *) (temp_r26_1450 + 0x10))->Init();
-            temp_r26_1450->unk14 = 0;
+            M2C_FIELD(temp_r26_1450, s32 *, 0x14) = 0;
             ((EventMessage *) (temp_r26_1450 + 0x14))->Init();
         }
         temp_r25_1476 = *(&sp8 + var_r28_1439);

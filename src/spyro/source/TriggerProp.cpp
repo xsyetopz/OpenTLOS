@@ -335,12 +335,11 @@ void TriggerProp::OnEnter() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk44'
 void TriggerProp::Update() {
     TriggerObject *temp_r3_834;
-    f32 temp_r3_879;
     s32 temp_cr0_eq_1015;
     s32 temp_cr0_eq_933;
+    s32 temp_r3_879;
     u32 var_r4_838;
     u64 temp_ret_838;
     u64 temp_ret_851;
@@ -354,7 +353,7 @@ void TriggerProp::Update() {
         temp_ret_838 = temp_r3_834->Update();
         var_r4_838 = (u32) temp_ret_838;
         if (temp_ret_838 != 0) {
-            if (M2C_BITWISE(s32, this->unkA8->unk10.unk44) == 0) {
+            if ((s32) this->unkA8->unk54 == 0) {
                 temp_ret_851 = M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u64 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0));
                 var_r4_838 = (u32) temp_ret_851;
                 if (temp_ret_851 != 0) {
@@ -369,32 +368,32 @@ void TriggerProp::Update() {
                     }
                 }
             }
-            temp_r3_879 = this->unkA8->unk10.unk40;
-            if (M2C_BITWISE(s32, temp_r3_879) & 2) {
+            temp_r3_879 = this->unkA8->unk50;
+            if (temp_r3_879 & 2) {
                 AddToActiveList((TriggerProp *) var_r4_838);
                 if ((u8) this->unkC0 != 0) {
-                    if ((M2C_BITWISE(s32, this->unkA8->unk10.unk44) == 0) && ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) == 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x60)(M2C_FIELD(&gb, void ***, 0)) != 0))) {
+                    if (((s32) this->unkA8->unk54 == 0) && ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) == 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x60)(M2C_FIELD(&gb, void ***, 0)) != 0))) {
                         this->unk4C |= 1;
                         return;
                     }
                     OnEnter();
                     return;
                 }
-                temp_cr0_eq_933 = M2C_BITWISE(s32, this->unkA8->unk10.unk44) == 0;
+                temp_cr0_eq_933 = (s32) this->unkA8->unk54 == 0;
                 if ((temp_cr0_eq_933 == 0) || ((temp_cr0_eq_933 != 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) != 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x60)(M2C_FIELD(&gb, void ***, 0)) == 0))) {
                     OnEnter();
                 }
-            } else if (M2C_BITWISE(s32, temp_r3_879) & 4) {
+            } else if (temp_r3_879 & 4) {
                 RemoveFromActiveList((TriggerProp *) var_r4_838);
                 if ((u8) this->unkC0 != 0) {
-                    if ((M2C_BITWISE(s32, this->unkA8->unk10.unk44) == 0) && ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) == 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0))) {
+                    if (((s32) this->unkA8->unk54 == 0) && ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) == 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0))) {
                         this->unk4C |= 2;
                         return;
                     }
                     OnExit();
                     return;
                 }
-                temp_cr0_eq_1015 = M2C_BITWISE(s32, this->unkA8->unk10.unk44) == 0;
+                temp_cr0_eq_1015 = (s32) this->unkA8->unk54 == 0;
                 if ((temp_cr0_eq_1015 == 0) || ((temp_cr0_eq_1015 != 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) != 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) == 0) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x60)(M2C_FIELD(&gb, void ***, 0)) == 0))) {
                     OnExit();
                 }
@@ -404,7 +403,6 @@ void TriggerProp::Update() {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'void' to
 void TriggerProp::Reset() {
@@ -417,7 +415,7 @@ void TriggerProp::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: function call 'memcpy(long, long, int)' does not match
 void TriggerProp::LoadDone() {
     TriggerObject *temp_r3_1100;
     TriggerObject *temp_r3_1108;
@@ -428,11 +426,11 @@ void TriggerProp::LoadDone() {
     temp_r3_1100->LoadDone();
     if ((u32) this->unkB0.unk0 != 0U) {
         temp_r3_1108 = this->unkA8;
-        temp_r3_1108->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_1108->unk10.unk40) | 0x10));
+        temp_r3_1108->unk50 |= 0x10;
     }
     M2C_STRUCT_COPY((s32) &this->unk4C + 4, (s32) (&loadInfo - 4) + 4, 0x40);
     this->unk8 = &this->unk50;
-    this->unkC = (BoundingVolume *) &this->unkA8->unk10.unk50;
+    this->unkC = (BoundingVolume *) &this->unkA8->unk60;
 }
 #endif
 

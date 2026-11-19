@@ -39,7 +39,7 @@ static s8 *pRightOarAnimEvents = "EnterWater";
 
 static s32 lit_853 = 0;
 
-#if 0 // DRAFT: undefined identifier 'unk234'
+#if 0 // DRAFT: pointer/array required
 void ShatterableBoat::SetDefaults() {
     Shatterable::Reset();
     this->unk234 = 1;
@@ -95,7 +95,7 @@ s32 ShatterableBoat::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk234'
+#if 0 // DRAFT: pointer/array required
 void ShatterableBoat::Deinit() {
     this->unk234->Destroy();
     this->unk240->Destroy();
@@ -460,7 +460,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk234'
+#if 0 // DRAFT: undefined identifier 'arg_sp1C'
 void ShatterableBoat::UpdateMove() {
     f32 temp_f31_1285;
     f32 temp_f4_1271;
@@ -1027,7 +1027,6 @@ void ShatterableBoat::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk218'
 void ShatterableBoat::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -1049,9 +1048,8 @@ void ShatterableBoat::LoadDone() {
     sp10 = temp_f0_2086;
     M2C_FIELD(this, f64 *, 0x330) = temp_f0_2086;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk218'
+#if 0 // DRAFT: ')' expected
 s32 ShatterableBoat::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_2160;
@@ -1084,7 +1082,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk234'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void ShatterableBoat::InitOars() {
     MKProp *temp_r29_2251;
     MKProp *temp_r29_2271;
@@ -1169,7 +1167,7 @@ void ShatterableBoat::InitOars() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk234'
+#if 0 // DRAFT: ')' expected
 void ShatterableBoat::Init() {
     ShatterablePlatform::Init();
     this->unk234 = 1;

@@ -125,17 +125,17 @@ void WeatherRainPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gWeatherRainPSEnv'
 void WeatherRainPS::Init() {
     MKParticleSystem::Init();
-    this->unk60.unk48 = 2.5f;
-    this->unk60.unk4C = 10.0f;
+    this->unkA8 = 2.5f;
+    this->unkAC = 10.0f;
     this->unk108 = 0.0f;
     this->unk10C = -980.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gWeatherRainPSEnv, 5);
     SetMaxParticleAge(5.0f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
 #endif

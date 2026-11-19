@@ -11,6 +11,7 @@
 #include "spyro/source/KDSynkerPlayer3.h"
 #include "spyro/source/SpawnPointData.h"
 #include "spyro/source/SpawnPointObject.h"
+#include "spyro/source/SpawnerObject.h"
 #include "unplaced_templates.h"
 #include "spyro/source/DataMap.h"
 #include "spyro/source/KDMath.h"
@@ -29,29 +30,29 @@ void EnemySpawner::Message(MKMessage *arg0) {
     case 0xB5:
         if (!(this->unk18 & 0x80000000)) {
             PropFlagsSet((u32 *) &this->unk10, 0x80000U);
-            this->unk50.unk40.FunctionOn();
+            this->unk90.FunctionOn();
         }
         break;
     case 0xB4:
         if (!(this->unk18 & 0x80000000)) {
             PropFlagsClear((u32 *) &this->unk10, 0x80000U);
-            this->unk50.unk40.FunctionOff();
+            this->unk90.FunctionOff();
         }
         break;
     case 0xE0:
-        this->unk50.unk40.KillAll();
+        this->unk90.KillAll();
         break;
     case 0x34:
-        M2C_FIELD(checked_cast<GetSpawnerObjectMsg *, MKMessage>(arg0), f32 **, 8) = &this->unk50.unk40;
+        M2C_FIELD(checked_cast<GetSpawnerObjectMsg *, MKMessage>(arg0), SpawnerObject **, 8) = &this->unk90;
         break;
     default:
-        this->unk50.unk40.SendMessageToActive(arg0);
+        this->unk90.SendMessageToActive(arg0);
         break;
     case 0xD5:
-        this->unk50.unk40.DespawnAll();
+        this->unk90.DespawnAll();
         break;
     case 0x15F:
-        this->unk50.unk40.DespawnAll();
+        this->unk90.DespawnAll();
         break;
     }
     MKProp::Message(arg0);
@@ -75,12 +76,12 @@ void EnemySpawner::Update() {
         if (var_r31_162 != 0) {
             return;
         }
-        if (this->unk50.unk40.IsSpawning() != 0) {
-            this->unk50.unk40.TrySpawnItems((s32) this->unkE4, 0U);
+        if (this->unk90.IsSpawning() != 0) {
+            this->unk90.TrySpawnItems(this->unkE0, 0U);
             return;
         }
-        if (this->unk50.unk40.IsDying() != 0) {
-            this->unk50.unk40.GetNumberActive();
+        if (this->unk90.IsDying() != 0) {
+            this->unk90.GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) <= 0) {
                 PropFlagsClear((u32 *) &this->unk10, 0x80000U);
             }
@@ -89,13 +90,11 @@ void EnemySpawner::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void EnemySpawner::Reset() {
     MKProp::Reset();
-    this->unk50.unk40.DespawnAll();
-    this->unk50.unk40.SetDefaults();
+    this->unk90.DespawnAll();
+    this->unk90.SetDefaults();
 }
-#endif
 
 #if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void EnemySpawner::LoadDone() {
@@ -108,34 +107,32 @@ void EnemySpawner::LoadDone() {
     this->unk50.unk34 = M2C_BITWISE(f32, loadInfo.__vptr);
     this->unk50.unk38 = loadInfo.unk48;
     this->unk50.unk3C = 1.0f;
-    this->unk50.unk40.LoadDone((u32) this->unk18);
-    this->unk50.unk40.AddSpawnPointBegin(this->unkE0);
+    this->unk90.LoadDone((u32) this->unk18);
+    this->unk90.AddSpawnPointBegin(this->unkE0);
 }
 #endif
 
 #if 0 // DRAFT: function call 'PropFlagsLoadLine(unsigned long *, MKIniLine *)' does not
 s32 EnemySpawner::LoadLine(MKIniLine *arg0) {
-    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("iMaxSpawnPoints", &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, "EnemyType", &enemyTypeDataMap, &this->unkE4) != 0) || (M2C_FIELD(this->unk50.unk40, u8 (**)(f32 *, MKIniLine *), 8)(&this->unk50.unk40, arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("iMaxSpawnPoints", &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, "EnemyType", &enemyTypeDataMap, (u32 *) &this->unkE0) != 0) || (this->unk90.LoadLine(arg0) != 0)) {
         return 1;
     }
     return 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void EnemySpawner::Deinit() {
     MKProp::Deinit();
-    this->unk50.unk40.Deinit();
+    this->unk90.Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'EnemySpawnPool_Action'
 void EnemySpawner::Init() {
     MKProp::Init();
     this->unk50.SetIdentity();
     this->unk8 = &this->unk50;
     this->unk10 |= 0x80000;
-    this->unk50.unk40.Init(EnemySpawnPool_Action, 0);
+    this->unk90.Init(EnemySpawnPool_Action, 0);
 }
 #endif
 
@@ -250,13 +247,13 @@ void SpawnPoint::Init() {
     if (temp_r31_612 != NULL) {
         temp_r31_612->__vptr = &__vt;
         temp_r31_612->__vptr = (struct __vt *) &__vt;
-        temp_r31_612->unk8 = 0;
+        M2C_FIELD(temp_r31_612, s32 *, 8) = 0;
         ((EventMessage *) (temp_r31_612 + 8))->Init();
-        temp_r31_612->unkC = 0;
+        M2C_FIELD(temp_r31_612, s32 *, 0xC) = 0;
         ((EventMessage *) (temp_r31_612 + 0xC))->Init();
-        temp_r31_612->unk10 = 0;
+        M2C_FIELD(temp_r31_612, s32 *, 0x10) = 0;
         ((EventMessage *) (temp_r31_612 + 0x10))->Init();
-        temp_r31_612->unk14 = 0;
+        M2C_FIELD(temp_r31_612, s32 *, 0x14) = 0;
         ((EventMessage *) (temp_r31_612 + 0x14))->Init();
     }
     this->unk50.Init(temp_r31_612);

@@ -40,7 +40,7 @@ void FallingLeaves::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'arg_spA0'
 void FallingLeaves::Draw() {
     MKParticleChunk *var_r27_169;
     f32 temp_f18_339;
@@ -55,8 +55,8 @@ void FallingLeaves::Draw() {
     s32 temp_r0_187;
     void *temp_r28_184;
     var_f23_113 = 0.0f;
-    temp_f8_114 = this->unk60.unk48;
-    temp_f3_116 = this->unk60.unk4C;
+    temp_f8_114 = this->unkA8;
+    temp_f3_116 = this->unkAC;
     var_f22_117 = 0.0f;
     temp_f1_118 = -temp_f8_114;
     arg_spA0 = 0.0f;
@@ -966,15 +966,15 @@ void FallingLeaves::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gFallingLeavesEnvelope'
 void FallingLeaves::Init() {
     s32 temp_r0_2027;
     s32 var_ctr_2025;
     s32 var_r3_2022;
 
     MKParticleSystem::Init();
-    this->unk60.unk48 = 15.0f;
-    this->unk60.unk4C = 15.0f;
+    this->unkA8 = 15.0f;
+    this->unkAC = 15.0f;
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;

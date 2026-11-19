@@ -1,4 +1,5 @@
 #include "spyro/source/SwampFlicker.h"
+#include "common/Source/MKAnimScript.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -51,8 +52,8 @@ void SwampFlicker::Draw() {
 loop_2:
     if (var_r30_89 < (s32) this->unk90) {
         temp_r29_97 = this->unk170 + var_r31_90;
-        this->unk80->SetAnim(temp_r29_97->unk50, 0.0f, 0.0f, 0, -1);
-        this->unk80->JumpToPos(temp_r29_97->unk54, -1);
+        this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
+        this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
         MKModel_SetWorldMatrix(this->unk4, *temp_r29_97);
         MKModel_Draw(this->unk4, NULL);
         var_r30_89 += 1;
@@ -66,7 +67,7 @@ loop_2:
 void SwampFlicker::Update() {
     s8 sp208;
     s32 sp204;
-    f32 sp200;
+    s32 sp200;
     s32 sp1FC;
     f32 sp1F8;
     s32 sp1F4;
@@ -148,26 +149,26 @@ void SwampFlicker::Update() {
 loop_16:
     if (var_r31_135 < (s32) this->unk90) {
         temp_r30_141 = this->unk170 + var_r28_136;
-        temp_r30_141->unk64 -= gUpdateTimeDelta;
-        temp_r0_145 = temp_r30_141->unk60;
+        M2C_FIELD(temp_r30_141, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_141, f32 *, 0x64) - gUpdateTimeDelta);
+        temp_r0_145 = M2C_FIELD(temp_r30_141, s32 *, 0x60);
         if (temp_r0_145 != 2) {
             if (temp_r0_145 < 2) {
                 if (temp_r0_145 < 0) {
 
                 } else {
-                    temp_r30_141->unk54 += temp_r30_141->unk58 * gUpdateTimeDelta;
-                    if (temp_r30_141->unk54 > 1.0f) {
-                        temp_r30_141->unk60 = MKRand_Int(&gViewSeed, 0, 1);
-                        temp_r27_167 = temp_r30_141->unk60;
-                        temp_r30_141->unk50 = *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_167 * 4) + 0x70));
-                        temp_r30_141->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_141->unk50, s16 *, 4) / 30.0f));
-                        temp_r30_141->unk54 = 0.0f;
+                    M2C_FIELD(temp_r30_141, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_141, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_141, f32 *, 0x54));
+                    if (M2C_FIELD(temp_r30_141, f32 *, 0x54) > 1.0f) {
+                        M2C_FIELD(temp_r30_141, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
+                        temp_r27_167 = M2C_FIELD(temp_r30_141, s32 *, 0x60);
+                        M2C_FIELD(temp_r30_141, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_167 * 4) + 0x70));
+                        M2C_FIELD(temp_r30_141, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_141, void **, 0x50), s16 *, 4) / 30.0f)));
+                        M2C_FIELD(temp_r30_141, f32 *, 0x54) = 0.0f;
                     } else {
                         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if (temp_r30_141->unk64 == 0.0f) {
-                            temp_r30_141->unk64 = 0.0f;
-                            temp_r30_141->unk60 = 2;
-                            temp_r30_141->unk50 = M2C_FIELD(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x78);
+                        if (M2C_FIELD(temp_r30_141, f32 *, 0x64) == 0.0f) {
+                            M2C_FIELD(temp_r30_141, f32 *, 0x64) = 0.0f;
+                            M2C_FIELD(temp_r30_141, s32 *, 0x60) = 2;
+                            M2C_FIELD(temp_r30_141, void **, 0x50) = (void *) M2C_FIELD(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x78);
                             spB0 = 0.0f;
                             sp80 = 0.0f;
                             sp78 = 0.0f;
@@ -176,8 +177,8 @@ loop_16:
                             spAC = 1.0f;
                             sp148 = (f64) sp78;
                             sp150 = (f64) sp80;
-                            temp_r30_141->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_141->unk50, s16 *, 4) / 30.0f));
-                            temp_r30_141->unk54 = 0.0f;
+                            M2C_FIELD(temp_r30_141, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_141, void **, 0x50), s16 *, 4) / 30.0f)));
+                            M2C_FIELD(temp_r30_141, f32 *, 0x54) = 0.0f;
                             sp1A8 = M2C_FIELD(temp_r30_141, f64 *, 0x30);
                             sp1B0 = M2C_FIELD(temp_r30_141, f64 *, 0x38);
                             sp198 = (f64) spA8;
@@ -200,7 +201,7 @@ loop_16:
                             sp1F4 = 0;
                             sp1F8 = 3.4028235e38f;
                             sp1FC = 0;
-                            sp200 = 0.0f;
+                            sp200 = 0;
                             sp204 = -1;
                             sp208 = 0;
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
@@ -267,15 +268,15 @@ loop_16:
             sp10 = spB8.unk8 * temp_f31_392;
             spD0 = (f64) sp10;
             temp_r30_141->Translate(temp_r30_141, *((MKVector3 *) &spC8));
-            temp_r30_141->unk54 += temp_r30_141->unk58 * gUpdateTimeDelta;
+            M2C_FIELD(temp_r30_141, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_141, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_141, f32 *, 0x54));
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (temp_r30_141->unk54 == 1.0f) {
-                temp_r30_141->unk64 = 5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                temp_r30_141->unk60 = MKRand_Int(&gViewSeed, 0, 1);
-                temp_r27_433 = temp_r30_141->unk60;
-                temp_r30_141->unk50 = *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_433 * 4) + 0x70));
-                temp_r30_141->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_141->unk50, s16 *, 4) / 30.0f));
-                temp_r30_141->unk54 = 0.0f;
+            if (M2C_FIELD(temp_r30_141, f32 *, 0x54) == 1.0f) {
+                M2C_FIELD(temp_r30_141, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+                M2C_FIELD(temp_r30_141, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
+                temp_r27_433 = M2C_FIELD(temp_r30_141, s32 *, 0x60);
+                M2C_FIELD(temp_r30_141, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_433 * 4) + 0x70));
+                M2C_FIELD(temp_r30_141, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_141, void **, 0x50), s16 *, 4) / 30.0f)));
+                M2C_FIELD(temp_r30_141, f32 *, 0x54) = 0.0f;
             }
         }
         var_r31_135 += 1;
@@ -287,6 +288,9 @@ loop_16:
 
 #if 0 // DRAFT: illegal type
 void SwampFlicker::LoadDone() {
+    s8 sp190;
+    s32 sp18C;
+    s32 sp188;
     Volume sp100;
     f64 spF8;
     f64 spF0;
@@ -352,12 +356,12 @@ void SwampFlicker::LoadDone() {
 loop_27:
     if (var_r31_517 < (s32) this->unk90) {
         temp_r30_536 = this->unk170 + var_r28_519;
-        temp_r30_536->unk60 = MKRand_Int(&gViewSeed, 0, 1);
-        temp_r26_539 = temp_r30_536->unk60;
-        temp_r30_536->unk50 = *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_539 * 4) + 0x70));
-        temp_r30_536->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_536->unk50, s16 *, 4) / 30.0f));
-        temp_r30_536->unk54 = 0.0f;
-        temp_r30_536->unk64 = 5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        M2C_FIELD(temp_r30_536, s32 *, 0x60) = MKRand_Int(&gViewSeed, 0, 1);
+        temp_r26_539 = M2C_FIELD(temp_r30_536, s32 *, 0x60);
+        M2C_FIELD(temp_r30_536, void **, 0x50) = (void *) *(checked_cast<SwampFlickerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_539 * 4) + 0x70));
+        M2C_FIELD(temp_r30_536, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_536, void **, 0x50), s16 *, 4) / 30.0f)));
+        M2C_FIELD(temp_r30_536, f32 *, 0x54) = 0.0f;
+        M2C_FIELD(temp_r30_536, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
         sp100.GetRandPos();
         sp50 = 0.0f;
         sp54 = -200.0f;
@@ -386,11 +390,11 @@ loop_27:
         unksp17A = 0;
         unksp17B = 0;
         sp100.unk40.unk3C = 0.0f;
-        sp100.unk40.unk40 = 3.4028235e38f;
-        sp100.unk40.unk44 = 0.0f;
-        sp100.unk40.unk48 = 0.0f;
-        sp100.unk40.unk4C = nanf;
-        sp100.unk40.unk50 = 0;
+        sp100.unk80 = 3.4028235e38f;
+        sp100.unk84 = 0.0f;
+        sp188 = 0;
+        sp18C = -1;
+        sp190 = 0;
         spC8 = (f64) sp58;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
         sp78 = 0.0f;

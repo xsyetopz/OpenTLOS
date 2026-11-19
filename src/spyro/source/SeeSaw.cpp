@@ -26,23 +26,21 @@ void SeeSaw::Detach(PlatformAttachment *arg0) {
     arg0->unk8 = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk88'
 void SeeSaw::Attach(PlatformAttachment *arg0) {
-    arg0->unk8 = (PlatformAttachment *) &this->unk90.unk88;
-    arg0->unkC = this->unk124;
-    this->unk124 = arg0;
+    arg0->unk8 = &this->unk118;
+    arg0->unkC = this->unk118.unkC;
+    this->unk118.unkC = arg0;
     arg0->unkC->unk8 = arg0;
     this->unk13C += 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: expression syntax error
 void SeeSaw::Message(MKMessage *arg0) {
     s32 temp_r0_111;
     void *temp_r3_120;
     void *temp_r3_130;
 
-    this->unk90.unk60.Message(arg0);
+    this->unkF0.Message(arg0);
     temp_r0_111 = arg0->unk0;
     switch (temp_r0_111) {                          /* irregular */
     case 35:
@@ -101,8 +99,8 @@ void SeeSaw::Update() {
     void *var_r3_199;
     this->unk90.Inverse((Matrix *) this->unk8);
     M2C_STRUCT_COPY((s32) &arg_sp14C + 4, (s32) &this->unk8C + 4, 0x40);
-    arg_sp190 = M2C_FIELD(this, f64 *, 0xD0);
-    arg_sp198 = M2C_FIELD(this, f64 *, 0xD8);
+    arg_sp190 = this->unkD0;
+    arg_sp198 = this->unkD8;
     arg_sp1A0 = M2C_FIELD(&zero, f64 *, 0);
     arg_sp1A8 = M2C_FIELD(&zero, f64 *, 8);
     temp_r0_187 = this->unk13C;
@@ -118,10 +116,10 @@ void SeeSaw::Update() {
     } else {
         arg_sp1B0 = NULL;
     }
-    var_r26_211 = this->unk120;
+    var_r26_211 = this->unk118.unk8;
     var_r28_213 = 0;
 loop_8:
-    if (var_r26_211 != &this->unk90.unk88) {
+    if (var_r26_211 != &this->unk118) {
         arg_spAC = 0;
         arg_spA8 = 0x5B;
         arg_spB0 = NULL;
@@ -170,19 +168,19 @@ loop_8:
             var_f0_330 = temp_f3_325;
         }
         arg_sp10 = temp_f3_325;
-        temp_f3_339 = this->unk90.unk48;
+        temp_f3_339 = (f32) M2C_FIELD(this, f64 *, 0xD8);
         arg_sp14 = (M2C_BITWISE(s32, arg_sp10) & 0x80000000) | 0x3F800000;
-        this->unk90.unk48 = (gUpdateTimeDelta * (this->unk134 * var_f0_330) * ((this->unk130 * M2C_BITWISE(f32, arg_sp14)) - temp_f3_339)) + temp_f3_339;
+        M2C_FIELD(this, f64 *, 0xD8) = (f32) ((gUpdateTimeDelta * (this->unk134 * var_f0_330) * ((this->unk130 * M2C_BITWISE(f32, arg_sp14)) - temp_f3_339)) + temp_f3_339);
     } else {
         this->unk128 = 0.0f;
-        temp_f3_355 = this->unk90.unk48;
-        this->unk90.unk48 = (0.1f * gUpdateTimeDelta * (this->unk128 - temp_f3_355)) + temp_f3_355;
+        temp_f3_355 = (f32) M2C_FIELD(this, f64 *, 0xD8);
+        M2C_FIELD(this, f64 *, 0xD8) = (f32) ((0.1f * gUpdateTimeDelta * (this->unk128 - temp_f3_355)) + temp_f3_355);
     }
-    this->unk90.unk44 += this->unk138 * gUpdateTimeDelta;
+    M2C_FIELD(this, f32 *, 0xD4) = (f32) ((this->unk138 * gUpdateTimeDelta) + M2C_FIELD(this, f32 *, 0xD4));
     if ((s32) M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x70) != 0) {
-        temp_f4_376 = this->unk90.unk44 - this->unk90.unk54;
-        temp_f3_378 = this->unk90.unk40 - this->unk90.unk50;
-        temp_f2_382 = this->unk90.unk48 - this->unk90.unk58;
+        temp_f4_376 = M2C_FIELD(this, f32 *, 0xD4) - this->unkE4;
+        temp_f3_378 = (f32) M2C_FIELD(this, f64 *, 0xD0) - this->unkE0;
+        temp_f2_382 = (f32) M2C_FIELD(this, f64 *, 0xD8) - this->unkE8;
         temp_f30_386 = (temp_f2_382 * temp_f2_382) + ((temp_f3_378 * temp_f3_378) + (temp_f4_376 * temp_f4_376));
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (temp_f30_386 == M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x84)) {
@@ -192,19 +190,19 @@ loop_8:
         }
         if ((s32) M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x70) != 0) {
             temp_r27_406 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-            KDSound_SetPitch(this->unk90.unk60, (temp_f30_386 * M2C_FIELD(temp_r27_406, f32 *, 0x80)) + M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x7C));
+            KDSound_SetPitch(this->unkF0, (temp_f30_386 * M2C_FIELD(temp_r27_406, f32 *, 0x80)) + M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x7C));
             temp_r4_417 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
             arg_sp8 = 1;
-            this->unk90.unk60.Update(M2C_FIELD(temp_r4_417, s32 *, 0x70), 1U, this->unk140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+            this->unkF0.Update(M2C_FIELD(temp_r4_417, s32 *, 0x70), 1U, this->unk140, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
         }
-        M2C_FIELD(this, f32 *, 0xE0) = (f64) M2C_FIELD(this, f64 *, 0xD0);
-        M2C_FIELD(this, f32 *, 0xE8) = (f64) M2C_FIELD(this, f64 *, 0xD8);
+        M2C_FIELD(this, f32 *, 0xE0) = (f64) this->unkD0;
+        M2C_FIELD(this, f32 *, 0xE8) = (f64) this->unkD8;
     }
     M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (this->unk8 - 4) + 4, 0x40);
-    arg_spD0.SetRotationPitch(this->unk90.unk40);
-    arg_sp110.SetRotationRoll(this->unk90.unk48);
+    arg_spD0.SetRotationPitch((f32) M2C_FIELD(this, f64 *, 0xD0));
+    arg_sp110.SetRotationRoll((f32) M2C_FIELD(this, f64 *, 0xD8));
     arg_spD0.Multiply3x3((Matrix *) &arg_spD0, (Matrix *) &arg_sp110);
-    arg_sp110.SetRotationYaw(this->unk90.unk44);
+    arg_sp110.SetRotationYaw(M2C_FIELD(this, f32 *, 0xD4));
     arg_spD0.Multiply3x3((Matrix *) &arg_spD0, (Matrix *) &arg_sp110);
     MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_spD0));
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk70.unkC);
@@ -213,13 +211,13 @@ loop_8:
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     var_r30_477 = 0;
     arg_sp88 = arg_sp28;
-    arg_sp30 = this->unk90.unk48 - (f32) arg_sp198;
+    arg_sp30 = (f32) M2C_FIELD(this, f64 *, 0xD8) - (f32) arg_sp198;
     arg_sp58 = arg_sp28;
     arg_sp90 = (f64) arg_sp30;
     arg_sp60 = (f64) arg_sp30;
-    var_r26_488 = this->unk120;
+    var_r26_488 = this->unk118.unk8;
 loop_24:
-    if (var_r26_488 != &this->unk90.unk88) {
+    if (var_r26_488 != &this->unk118) {
         temp_r7_496 = this->unk8;
         temp_r6_498 = arg_sp1B0 + var_r30_477;
         temp_f3_500 = M2C_FIELD(temp_r6_498, f32 *, 4);
@@ -317,9 +315,9 @@ void SeeSaw::LoadDone() {
     }
     this->unk12C = var_f4_609;
     this->unk128 = 0.0f;
-    this->unk90.unk44 = M2C_FIELD(&loadInfo, f32 *, 0x54);
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(this, f64 *, 0xD0);
-    M2C_FIELD(this, f64 *, 0xE8) = (f64) M2C_FIELD(this, f64 *, 0xD8);
+    M2C_FIELD(this, f32 *, 0xD4) = (f32) M2C_FIELD(&loadInfo, f32 *, 0x54);
+    M2C_FIELD(this, f64 *, 0xE0) = (f64) this->unkD0;
+    M2C_FIELD(this, f64 *, 0xE8) = (f64) this->unkD8;
 }
 #endif
 
@@ -333,17 +331,17 @@ s32 SeeSaw::LoadLine(MKIniLine *arg0) {
     return var_r31_699;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: expression syntax error
 void SeeSaw::Resolve() {
     void *temp_r31_751;
 
     MKProp::Resolve();
     temp_r31_751 = checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    this->unk90.unk60.Init(M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x74), M2C_FIELD(temp_r31_751, f32 *, 0x78));
+    this->unkF0.Init(M2C_FIELD(checked_cast<SeeSawDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x74), M2C_FIELD(temp_r31_751, f32 *, 0x78));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk120'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void SeeSaw::Deinit() {
     s32 spC;
     s32 sp8;
@@ -351,15 +349,15 @@ void SeeSaw::Deinit() {
     PlatformAttachment *temp_r3_787;
 
 loop_2:
-    temp_r3_787 = this->unk120;
-    if (temp_r3_787 != &this->unk90.unk88) {
+    temp_r3_787 = this->unk118.unk8;
+    if (temp_r3_787 != &this->unk118) {
         temp_r3_778 = temp_r3_787->unk0;
         spC = 0;
         sp8 = 0x26;
         temp_r3_778->Message(&sp8);
         goto loop_2;
     }
-    KDSound_Stop(&this->unk90.unk60);
+    KDSound_Stop(&this->unkF0);
     KDProp::Deinit();
 }
 #endif
@@ -367,8 +365,8 @@ loop_2:
 #if 0 // DRAFT: undefined identifier 'zero'
 void SeeSaw::Init() {
     KDProp::Init();
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xD8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkD0 = M2C_FIELD(&zero, f64 *, 0);
+    this->unkD8 = M2C_FIELD(&zero, f64 *, 8);
     this->unk140 = 0;
     this->unk130 = 0.7853982f;
     this->unk134 = 2.0f;

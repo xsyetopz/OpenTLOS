@@ -12,7 +12,6 @@
 #include "spyro/source/FireBombFX.h"
 #include "spyro/source/Game.h"
 #include "spyro/source/HeroInterface.h"
-#include "spyro/source/KDPath.h"
 #include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/LiquidFX.h"
@@ -25,7 +24,7 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK __destroy_arr(f32 *, BurnPoint *(*)(BurnPoint *, s16), M2C_UNK, M2C_UNK); /* extern */
+M2C_UNK __destroy_arr(M2C_UNK *, BurnPoint *(*)(BurnPoint *, s16), M2C_UNK, M2C_UNK); /* extern */
 s32 stricmp(s32, M2C_UNK *);                        /* extern */
 extern s32 GS_GunpowderBurnLP;
 extern f32 *KDSpline_PositionMixer;
@@ -38,7 +37,7 @@ extern GameGlobals gb;
 static s32 lit_743 = 2;
 static u8 lit_744 = 0;
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDSplinePathSegment'
 void GunPowderFuse::EmitBurn(float arg0) {
     f64 sp100;
     f64 spF8;
@@ -75,10 +74,10 @@ void GunPowderFuse::EmitBurn(float arg0) {
     f32 temp_f3_116;
 
     sp8 = 0.0f;
-    spD8.GetMeasure(arg0, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+    spD8.GetMeasure(arg0, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
     spF8 = M2C_BITWISE(f64, spD8);
     sp100 = (f64) spD8.unk8;
-    temp_f29_88 = 100.0f * (this->unk50.unk64 / 20.0f);
+    temp_f29_88 = 100.0f * (this->unkB4 / 20.0f);
     KDRand_UnitVectorXZ();
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f29 */);
@@ -86,16 +85,16 @@ void GunPowderFuse::EmitBurn(float arg0) {
     sp30 = spC0 * temp_f29_88;
     spC8 = sp28;
     spF0 = (f64) sp30;
-    temp_f3_105 = this->unk50.unk64;
+    temp_f3_105 = this->unkB4;
     spD0 = (f64) sp30;
     spEC = 100.0f * MKRand_Float(&gViewSeed, temp_f3_105 / 10.0f, temp_f3_105 / 3.3333f);
-    temp_f3_116 = this->unk50.unk64;
+    temp_f3_116 = this->unkB4;
     sp10 = MKRand_Float(&gViewSeed, temp_f3_116 / 40.0f, temp_f3_116 / 20.0f);
     gb.EmitDust(*((MKVector3 *) &spF8), *((MKVector3 *) &spD8.unk10), sp10, 0.0f);
-    temp_f2_128 = this->unk50.unk64;
+    temp_f2_128 = this->unkB4;
     temp_f29_135 = MKRand_Float(&gViewSeed, -temp_f2_128 / 10.0f, temp_f2_128 / 10.0f);
-    temp_f2_140 = this->unk50.unk64;
-    temp_f28_141 = MKRand_Float(&gViewSeed, 0.0f, this->unk50.unk64);
+    temp_f2_140 = this->unkB4;
+    temp_f28_141 = MKRand_Float(&gViewSeed, 0.0f, this->unkB4);
     MKVector(MKRand_Float(&gViewSeed, -temp_f2_140 / 10.0f, temp_f2_140 / 10.0f), temp_f28_141, temp_f29_135);
     Normalise(sp98);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
@@ -105,7 +104,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
     spA8 = sp18;
     spF0 = (f64) sp20;
     spB0 = (f64) sp20;
-    temp_f31_170 = this->unk50.unk64;
+    temp_f31_170 = this->unkB4;
     KDRand_UnitVectorXZ();
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
@@ -116,7 +115,7 @@ void GunPowderFuse::EmitBurn(float arg0) {
     sp78 = sp38;
     sp40 = (f32) sp100 + (f32) sp70;
     sp80 = (f64) sp40;
-    temp_f2_198 = this->unk50.unk64;
+    temp_f2_198 = this->unkB4;
     spC = MKRand_Float(&gViewSeed, temp_f2_198 / 6.6666f, temp_f2_198 / 3.3333f);
     gb.unk84->Emit(*((MKVector3 *) &sp78), *((MKVector3 *) &spD8.unk10), spC);
 }
@@ -643,7 +642,7 @@ loop_44:
                 MKSetTexCoord1F(temp_f18_998, 0.95f);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f26 */);
                 arg_sp288 = arg_sp128;
-                arg_sp130 = (f32) arg_sp310 * this->unk50.unk64;
+                arg_sp130 = (f32) arg_sp310 * this->unkB4;
                 arg_sp290 = (f64) arg_sp130;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 arg_sp298 = arg_sp118;
@@ -661,7 +660,7 @@ loop_44:
                 MKSetTexCoord1F(temp_f18_998, 0.05f);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f27 */);
                 arg_sp258 = arg_spF8;
-                arg_sp100 = (f32) arg_sp310 * this->unk50.unk64;
+                arg_sp100 = (f32) arg_sp310 * this->unkB4;
                 arg_sp260 = (f64) arg_sp100;
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 arg_sp268 = arg_spE8;
@@ -869,7 +868,7 @@ loop_114:
                 MKSetTexCoord1F(temp_f18_1504, 0.95f);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
                 arg_sp178 = arg_spC8;
-                arg_spD0 = (f32) arg_sp310 * this->unk50.unk64;
+                arg_spD0 = (f32) arg_sp310 * this->unkB4;
                 arg_sp180 = (f64) arg_spD0;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 arg_sp188 = arg_spB8;
@@ -887,7 +886,7 @@ loop_114:
                 MKSetTexCoord1F(temp_f18_1504, 0.05f);
                 M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
                 arg_sp148 = arg_sp98;
-                arg_spA0 = (f32) arg_sp310 * this->unk50.unk64;
+                arg_spA0 = (f32) arg_sp310 * this->unkB4;
                 arg_sp150 = (f64) arg_spA0;
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                 arg_sp158 = arg_sp88;
@@ -1011,16 +1010,16 @@ void GunPowderFuse::Update() {
                 temp_r3_1692 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
                 sp170 = M2C_FIELD(temp_r3_1692, f64 *, 0x30);
                 sp178 = M2C_FIELD(temp_r3_1692, f64 *, 0x38);
-                Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *((MKVector3 *) &sp170), this->unk2B4);
+                Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp170), this->unk2B4);
                 sp2C = 0.0f;
-                spD0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                spD0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                 sp160 = M2C_BITWISE(f64, spD0);
                 sp168 = (f64) spD0.unk8;
                 temp_f5_1716 = unksp174 - unksp164;
                 temp_f4_1720 = (f32) sp170 - (f32) sp160;
                 temp_f3_1724 = (f32) sp178 - (f32) sp168;
                 if (((temp_f3_1724 * temp_f3_1724) + ((temp_f4_1720 * temp_f4_1720) + (temp_f5_1716 * temp_f5_1716))) < 1000000.0f) {
-                    temp_f1_1735 = ((BaseBreathFX *) (M2C_FIELD(M2C_FIELD(temp_r3_1665, void **, 4), BaseBreathFX **, 0x14)))->SplineCollide((KDSplinePathSegment *) this->unk50.unk60, this->unk50.unk64);
+                    temp_f1_1735 = ((BaseBreathFX *) (M2C_FIELD(M2C_FIELD(temp_r3_1665, void **, 4), BaseBreathFX **, 0x14)))->SplineCollide(this->unkB0, this->unkB4);
                     if (temp_f1_1735 != -1.0f) {
                         Burn(temp_f1_1735);
                     }
@@ -1033,9 +1032,9 @@ loop_15:
                     temp_r3_1753 = M2C_FIELD(var_r28_1747, void **, 8);
                     sp150 = M2C_FIELD(temp_r3_1753, f64 *, 0x30);
                     sp158 = M2C_FIELD(temp_r3_1753, f64 *, 0x38);
-                    Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *((MKVector3 *) &sp150), this->unk2B4);
+                    Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp150), this->unk2B4);
                     sp28 = 0.0f;
-                    spC0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                    spC0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                     sp140 = spC0;
                     sp148 = spC8;
                     temp_f2_1786 = unksp154 - unksp144;
@@ -1053,7 +1052,7 @@ loop_15:
                         if (((temp_f3_1813 * temp_f3_1813) + ((temp_f2_1811 * temp_f2_1811) + (temp_f4_1809 * temp_f4_1809))) > 10000.0f) {
                             Tools_TestFloor(*((MKVector3 *) &sp150), NULL, 200.0f * temp_f9_1793, (MKCollisionMode) 4);
                             if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-                                Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *((MKVector3 *) &sp150), this->unk2B4);
+                                Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp150), this->unk2B4);
                                 Burn(M2C_ERROR(/* Read from unset register $f1 */));
                             }
                         }
@@ -1083,9 +1082,9 @@ loop_30:
                         if (((u8) M2C_FIELD(temp_r31_1874, u8 *, 0x159) != 0) && ((u8) M2C_FIELD(temp_r31_1874, u8 *, 0x158) != 0)) {
                             sp120 = M2C_FIELD(temp_r31_1874, f64 *, 0xC8);
                             sp128 = M2C_FIELD(temp_r31_1874, f64 *, 0xD0);
-                            Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *((MKVector3 *) &sp120), this->unk2B4);
+                            Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp120), this->unk2B4);
                             sp24 = 0.0f;
-                            spB0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                            spB0.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                             sp110 = spB0;
                             sp118 = spB8;
                             temp_f3_1904 = unksp124 - unksp114;
@@ -1093,7 +1092,7 @@ loop_30:
                             temp_f4_1912 = (f32) sp128 - (f32) sp118;
                             temp_f3_1915 = 150.0f * M2C_FIELD(temp_r31_1874, f32 *, 0xF8);
                             if (((temp_f4_1912 * temp_f4_1912) + ((temp_f5_1908 * temp_f5_1908) + (temp_f3_1904 * temp_f3_1904))) < (temp_f3_1915 * temp_f3_1915)) {
-                                Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *((MKVector3 *) &sp120), this->unk2B4);
+                                Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp120), this->unk2B4);
                                 Burn(M2C_ERROR(/* Read from unset register $f1 */));
                             }
                         }
@@ -1128,7 +1127,7 @@ loop_33:
                     EmitBurn(M2C_FIELD(temp_r31_1965, f32 *, 0xCC));
                     if ((void *) M2C_FIELD(temp_r31_1965, void **, 0xC4) != NULL) {
                         sp18 = 0.0f;
-                        spA0.GetMeasure(M2C_FIELD(temp_r31_1965, f32 *, 0xCC), this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                        spA0.GetMeasure(M2C_FIELD(temp_r31_1965, f32 *, 0xCC), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                         temp_r4_2000 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
                         M2C_FIELD(temp_r4_2000, f64 *, 0) = spA0;
                         M2C_FIELD(temp_r4_2000, f64 *, 8) = spA8;
@@ -1142,12 +1141,12 @@ loop_33:
                             temp_f1_2031 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
                             if (temp_f1_2031 > *(this + ((temp_r0_2021 * 0x3C) + 0xCC))) {
                                 sp20 = 0.0f;
-                                sp90.GetMeasure(temp_f1_2031, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                                sp90.GetMeasure(temp_f1_2031, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                                 sp100 = sp90;
                                 sp108 = sp98;
                                 sp44 = 0;
                                 sp40 = 0x162;
-                                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp40, 2, 1, &sp100, 1, 4.0f * this->unk50.unk64);
+                                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp40, 2, 1, &sp100, 1, 4.0f * this->unkB4);
                                 temp_r4_2065 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
                                 if (temp_r4_2065 != NULL) {
                                     M2C_FIELD(temp_r4_2065, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2065, u8 *, 0x31) & ~0x40);
@@ -1164,12 +1163,12 @@ loop_33:
                             temp_f1_2095 = M2C_FIELD(temp_r31_1965, f32 *, 0xCC);
                             if (temp_f1_2095 < *(this + ((temp_r0_2021 * 0x3C) + 0xCC))) {
                                 sp1C = 0.0f;
-                                sp80.GetMeasure(temp_f1_2095, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                                sp80.GetMeasure(temp_f1_2095, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                                 spF0 = sp80;
                                 spF8 = sp88;
                                 sp3C = 0;
                                 sp38 = 0x162;
-                                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp38, 2, 1, &spF0, 1, 4.0f * this->unk50.unk64);
+                                M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp38, 2, 1, &spF0, 1, 4.0f * this->unkB4);
                                 temp_r4_2129 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
                                 if (temp_r4_2129 != NULL) {
                                     M2C_FIELD(temp_r4_2129, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2129, u8 *, 0x31) & ~0x40);
@@ -1194,20 +1193,20 @@ loop_33:
                             if (M2C_FIELD(temp_r31_1965, f32 *, 0xCC) > 1.0f) {
                                 this->unk2B9 = 1;
                                 sp14 = 0.0f;
-                                sp70.GetMeasure(1.0f, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                                sp70.GetMeasure(1.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                                 spD0.unk10 = sp70;
                                 spE8 = sp78;
                             }
                             if (M2C_FIELD(temp_r31_1965, f32 *, 0xCC) < 0.0f) {
                                 this->unk2B8 = 1;
                                 sp10 = 0.0f;
-                                sp60.GetMeasure(0.0f, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+                                sp60.GetMeasure(0.0f, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
                                 spD0.unk10 = sp60;
                                 spE8 = sp68;
                             }
                             sp34 = 0;
                             sp30 = 0x162;
-                            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp30, 2, 1, &spD0.unk10, 1, 4.0f * this->unk50.unk64);
+                            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, f64 *, M2C_UNK, f32), 0x94)(gMK, &sp30, 2, 1, &spD0.unk10, 1, 4.0f * this->unkB4);
                             temp_r4_2227 = M2C_FIELD(temp_r31_1965, void **, 0xC4);
                             if (temp_r4_2227 != NULL) {
                                 M2C_FIELD(temp_r4_2227, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2227, u8 *, 0x31) & ~0x40);
@@ -1296,7 +1295,7 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDSplinePathSegment'
 void GunPowderFuse::Burn(float arg0) {
     f64 sp30;
     KDUniformSpline sp18;
@@ -1314,7 +1313,7 @@ void GunPowderFuse::Burn(float arg0) {
 
     if ((HasAvailableBurnPoints() != 0) && (TooClose(arg0) == 0) && (IsBurnable(arg0) != 0)) {
         if ((arg0 > this->unk2B0) && ((u8) this->unk2BA == 0)) {
-            this->unk50.unk70.Send(NULL);
+            this->unkC0.Send(NULL);
             this->unk2BA = 1;
         }
         var_r29_2388 = 0;
@@ -1345,12 +1344,12 @@ loop_7:
                 M2C_FIELD(temp_r4_2431, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_2431, u8 *, 0x31) | 0x40);
             }
             sp8 = 0.0f;
-            sp18.GetMeasure(arg0, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+            sp18.GetMeasure(arg0, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp18.unk10 = M2C_BITWISE(f64, sp18);
             sp30 = (f64) sp18.unk8;
             sp10 = 0;
             spC = 0x162;
-            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, u8 *, M2C_UNK, f32), 0x94)(gMK, &spC, 2, 1, &sp18.unk10, 1, 4.0f * this->unk50.unk64);
+            M2C_FIELD(*gMK, M2C_UNK (**)(void **, s32 *, M2C_UNK, M2C_UNK, u8 *, M2C_UNK, f32), 0x94)(gMK, &spC, 2, 1, &sp18.unk10, 1, 4.0f * this->unkB4);
             var_r29_2388 += 1;
             goto block_16;
         }
@@ -1366,7 +1365,7 @@ block_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDSplinePathSegment'
 void GunPowderFuse::Message(MKMessage *arg0) {
     MKVector3 *sp10;
     s32 spC;
@@ -1391,7 +1390,7 @@ void GunPowderFuse::Message(MKMessage *arg0) {
             sp8 = 0x5B;
             sp10 = NULL;
             M2C_FIELD(M2C_FIELD(temp_r3_2514, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0);
-            Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *sp10, this->unk2B4);
+            Tools_GetClosestSplineTime(&this->unkB0->unk30, *sp10, this->unk2B4);
             Burn(M2C_ERROR(/* Read from unset register $f1 */));
         }
     }
@@ -1422,8 +1421,8 @@ void GunPowderFuse::Resolve() {
     this->unk2A4 = MKMaterial_Create"FX_GunPowderFuse";
     var_r29_2569 = 0;
     var_r31_2571 = 0;
-    this->unk2A8 /= M2C_FIELD(this->unk50.unk60, f32 *, 0x38);
-    this->unk2AC = 2.0f * (this->unk50.unk64 / M2C_FIELD(this->unk50.unk60, f32 *, 0x38));
+    this->unk2A8 /= this->unkB0->unk30.unk8;
+    this->unk2AC = 2.0f * (this->unkB4 / this->unkB0->unk30.unk8);
     do {
         sp28 = 0.0f;
         sp10 = 1.0f;
@@ -1432,7 +1431,7 @@ void GunPowderFuse::Resolve() {
         sp1C = 1.0f;
         sp20 = 0.0f;
         sp24 = 0.0f;
-        sp8 = this->unk50.unk64 / 20.0f;
+        sp8 = this->unkB4 / 20.0f;
         sp30 = (f64) sp10;
         sp38 = (f64) sp18;
         sp40 = (f64) sp20;
@@ -1450,13 +1449,13 @@ void GunPowderFuse::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     if (SplineProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat("Width", &this->unk50.unk64, 0) != 0) {
-        this->unk50.unk64 *= 100.0f;
+    if (arg0->LoadFloat("Width", &this->unkB4, 0) != 0) {
+        this->unkB4 *= 100.0f;
         return 1U;
     }
     if (arg0->LoadFloat("BurnSpeed", &this->unk2A8, 0) != 0) {
@@ -1469,7 +1468,7 @@ s32 GunPowderFuse::LoadLine(MKIniLine *arg0) {
     if (arg0->LoadInt("Subdivisions", &this->unk2B4, 0) != 0) {
         return 1U;
     }
-    return (u8) (this->unk50.unk70.LoadLine(arg0, "OnNumSecondsBeforeBurnEnd") != 0);
+    return (u8) (this->unkC0.LoadLine(arg0, "OnNumSecondsBeforeBurnEnd") != 0);
 }
 #endif
 
@@ -1501,7 +1500,7 @@ void GunPowderFuse::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: illegal type
 void GunPowderFuse::Init() {
     s32 var_r29_2789;
     s32 var_r31_2787;
@@ -1509,7 +1508,7 @@ void GunPowderFuse::Init() {
 
     SplineProp::Init();
     var_r31_2787 = 0;
-    this->unk50.unk64 = 5.0f;
+    this->unkB4 = 5.0f;
     var_r29_2789 = 0;
     this->unk2A8 = 20.0f;
     this->unk2B8 = 0;

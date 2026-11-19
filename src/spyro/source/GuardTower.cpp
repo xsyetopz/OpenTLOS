@@ -9,7 +9,6 @@
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk1E8'
 void GuardTower::Update() {
     f32 temp_f1_62;
     f32 temp_f1_69;
@@ -26,11 +25,8 @@ void GuardTower::Update() {
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1F8'
 void GuardTower::Init() {
     LavaSmashProp::Init();
     this->unk1F8 = 0.0f;
 }
-#endif

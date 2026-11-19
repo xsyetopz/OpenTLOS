@@ -597,10 +597,10 @@ u8 KDCamera::SnapToDirection(const MKVector3 &arg0) {
     KDCameraDeltaStagesEx *temp_r31_1104;
     KDCameraDeltaStagesEx *temp_r3_1100;
     KDCameraHeroData *temp_r7_1140;
+    KDCameraPoint *temp_r4_1148;
     f32 temp_f1_1110;
     f32 temp_f31_1105;
     f32 temp_f31_1108;
-    f32 temp_r4_1148;
     u8 var_r0_1168;
 
     temp_r3_1100 = this->unk54;
@@ -625,7 +625,7 @@ u8 KDCamera::SnapToDirection(const MKVector3 &arg0) {
     sp58 = temp_r7_1140->unk50;
     sp60 = temp_r7_1140->unk58;
     if (IsPointSafeAndViewClear(*((MKVector3 *) &sp58), *((MKVector3 *) &sp68), NULL) != 0) {
-        temp_r4_1148 = this->unk60.unk44;
+        temp_r4_1148 = this->unkA4;
         M2C_FIELD(temp_r4_1148, f64 *, 0) = sp78;
         M2C_FIELD(temp_r4_1148, f64 *, 8) = sp80;
         UpdateLTW();
@@ -788,18 +788,17 @@ void KDCamera::GetCollisionObjectPos() {
     M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(temp_r4_1570, f64 *, 0x248);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void KDCamera::CameraWasTeleported(bool arg0) {
     f64 sp10;
     f64 sp8;
     KDCameraDeltaStagesEx *temp_r3_1598;
+    KDCameraPoint *temp_r4_1588;
     KDCollisionObject *temp_r5_1587;
-    f32 temp_r4_1588;
     f64 temp_f0_1590;
     f64 temp_f1_1589;
 
     temp_r5_1587 = this->unk200;
-    temp_r4_1588 = this->unk60.unk40;
+    temp_r4_1588 = this->unkA0;
     temp_f1_1589 = temp_r5_1587->unk240;
     temp_f0_1590 = temp_r5_1587->unk248;
     sp8 = temp_f1_1589;
@@ -816,7 +815,6 @@ void KDCamera::CameraWasTeleported(bool arg0) {
     this->unk124 = 0.0f;
     VisibleTargetDisable();
 }
-#endif
 
 s8 KDCamera::TryTeleport(const MKVector3 &arg0, bool arg1) {
     u8 spC;
@@ -844,14 +842,13 @@ void KDCamera::Teleport(const MKVector3 &arg0, bool arg1) {
     gAssertBool = TryTeleport(arg0, arg1);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void KDCamera::UpdateStoredCollisionData(bool arg0) {
     f64 sp20;
     f64 sp18;
     f64 sp10;
     f64 sp8;
-    f32 temp_r3_1705;
-    f32 temp_r3_1711;
+    KDCameraPoint *temp_r3_1705;
+    KDCameraPoint *temp_r3_1711;
     f64 temp_f0_1707;
     f64 temp_f0_1714;
     f64 temp_f1_1706;
@@ -862,13 +859,13 @@ void KDCamera::UpdateStoredCollisionData(bool arg0) {
         if (arg0 != 0) {
             this->unk20C = 0.0f;
             temp_r4_1704 = this->unk8;
-            temp_r3_1705 = this->unk60.unk40;
+            temp_r3_1705 = this->unkA0;
             temp_f1_1706 = M2C_FIELD(temp_r4_1704, f64 *, 0x30);
             temp_f0_1707 = M2C_FIELD(temp_r4_1704, f64 *, 0x38);
             sp18 = temp_f1_1706;
             M2C_FIELD(temp_r3_1705, f64 *, 0x10) = temp_f1_1706;
             M2C_FIELD(temp_r3_1705, f64 *, 0x18) = temp_f0_1707;
-            temp_r3_1711 = this->unk60.unk44;
+            temp_r3_1711 = this->unkA4;
             sp20 = temp_f0_1707;
             temp_f1_1713 = M2C_FIELD(temp_r3_1711, f64 *, 0);
             temp_f0_1714 = M2C_FIELD(temp_r3_1711, f64 *, 8);
@@ -881,7 +878,6 @@ void KDCamera::UpdateStoredCollisionData(bool arg0) {
         this->unk20C += gUpdateTimeDelta;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp10'
 void KDCamera::CollisionObjectUpdate(const MKVector3 &arg0) {
@@ -896,9 +892,9 @@ void KDCamera::CollisionObjectUpdate(const MKVector3 &arg0) {
     f32 sp18;
     u8 spC;
     KDCamera *sp8;
+    KDCameraPoint *temp_r4_1843;
     KDCollisionObject *temp_r3_1750;
     KDCollisionObject *temp_r5_1840;
-    f32 temp_r4_1843;
     f32 var_f0_1857;
     f64 temp_f0_1846;
     f64 temp_f1_1844;
@@ -964,7 +960,7 @@ block_23:
         this->unk200->PushOutOfThings((MKVector3) &sp30);
     }
     temp_r5_1840 = this->unk200;
-    temp_r4_1843 = this->unk60.unk40;
+    temp_r4_1843 = this->unkA0;
     temp_f1_1844 = temp_r5_1840->unk240;
     temp_f0_1846 = temp_r5_1840->unk248;
     temp_r30_1847 = this->unk200->Update((MKVector3 *) &sp50, 0.0f) == 7;
@@ -1130,11 +1126,9 @@ void KDCamera::CutSceneUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 void KDCamera::CutSceneExit() {
-    this->unk60.unk48 = 0.0f;
+    this->unkA8 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void KDCamera::ChaseUpdate() {
@@ -1144,18 +1138,18 @@ void KDCamera::ChaseUpdate() {
     f64 sp18;
     f64 sp10;
     f64 sp8;
+    KDCameraPoint *temp_r4_2232;
+    KDCameraPoint *temp_r4_2239;
+    KDCameraPoint *temp_r4_2259;
     f32 temp_f31_2241;
-    f32 temp_r4_2232;
-    f32 temp_r4_2239;
-    f32 temp_r4_2259;
     void *temp_r4_2246;
 
     sp38.GetUpdatedTarget();
-    temp_r4_2232 = this->unk60.unk44;
+    temp_r4_2232 = this->unkA4;
     M2C_FIELD(temp_r4_2232, f64 *, 0) = sp38;
     M2C_FIELD(temp_r4_2232, f64 *, 8) = sp40;
     UpdateLTW();
-    temp_r4_2239 = this->unk60.unk44;
+    temp_r4_2239 = this->unkA4;
     temp_f31_2241 = this->unk124;
     sp8 = M2C_FIELD(temp_r4_2239, f64 *, 0);
     sp10 = M2C_FIELD(temp_r4_2239, f64 *, 8);
@@ -1164,7 +1158,7 @@ void KDCamera::ChaseUpdate() {
     sp20 = M2C_FIELD(temp_r4_2246, f64 *, 0x38);
     GetForceDirectionPtr();
     sp28.GetUpdatedSource(*((MKVector3 *) this), *((MKVector3 *) &sp18), (MKVector3 *) &sp8, temp_f31_2241);
-    temp_r4_2259 = this->unk60.unk40;
+    temp_r4_2259 = this->unkA0;
     M2C_FIELD(temp_r4_2259, f64 *, 0) = sp28;
     M2C_FIELD(temp_r4_2259, f64 *, 8) = sp30;
     UpdateLTW();
@@ -1971,6 +1965,7 @@ void KDCamera::SnapToSafetyTryIdealPos(const MKVector3 &arg0, const MKVector3 &a
 }
 #endif
 
+#if 0 // DRAFT: ')' expected
 void KDCamera::SnapToSafetyTryDesiredPos(const MKVector3 &arg0, const MKVector3 &arg1) {
     void *temp_r6_3709;
 
@@ -1979,6 +1974,7 @@ void KDCamera::SnapToSafetyTryDesiredPos(const MKVector3 &arg0, const MKVector3 
         Teleport(arg0, 1U);
     }
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'sp8'
 void KDCamera::SnapToSafetyUpdate(const MKVector3 &arg0) {
@@ -2026,11 +2022,11 @@ void KDCamera::VisibleTargetDisable() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'long' to
+#if 0 // DRAFT: undefined identifier 'nanf'
 void KDCamera::VisibleTargetUpdate() {
     u8 sp138;
-    s32 sp134;
-    f32 sp130;
+    f32 sp134;
+    s32 sp130;
     f32 sp12C;
     f32 sp128;
     f32 sp124;
@@ -2126,8 +2122,8 @@ void KDCamera::VisibleTargetUpdate() {
     sp124 = 0.0f;
     sp128 = 3.4028235e38f;
     sp12C = 0.0f;
-    sp130 = 0.0f;
-    sp134 = -1;
+    sp130 = 0;
+    sp134 = nanf;
     sp138 = 0;
     SweepSphereCollide(*((MKVector3 *) &spC8), *((MKVector3 *) &spD8), 25.0f, (MKCollisionResult *) &spE8, (MKCollisionMode) M2C_FIELD(temp_r11_3914, s32 *, 8), temp_r31_3917, 1U);
     if ((sp138 != 0) && (IgnoreCollision(spE8) != 0)) {
@@ -2369,20 +2365,20 @@ u32 KDCamera::PlayerRotatedCamera() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+#if 0 // DRAFT: undefined identifier 'arg_sp80'
 void KDCamera::UpdateLTW() {
+    KDCameraPoint *temp_r3_4602;
+    KDCameraPoint *temp_r4_4601;
+    KDCameraPoint *temp_r6_4646;
     Matrix *temp_r31_4600;
     f32 temp_f1_4652;
-    f32 temp_r3_4602;
-    f32 temp_r4_4601;
-    f32 temp_r6_4646;
     f64 temp_f2_4608;
     f64 temp_f3_4604;
     f64 temp_f4_4606;
     f64 temp_f5_4603;
     temp_r31_4600 = &this->unk60;
-    temp_r4_4601 = this->unk60.unk44;
-    temp_r3_4602 = this->unk60.unk40;
+    temp_r4_4601 = this->unkA4;
+    temp_r3_4602 = this->unkA0;
     temp_f5_4603 = M2C_FIELD(temp_r4_4601, f64 *, 0);
     temp_f3_4604 = M2C_FIELD(temp_r3_4602, f64 *, 0);
     arg_sp80 = temp_f5_4603;
@@ -2412,11 +2408,11 @@ void KDCamera::UpdateLTW() {
     }
     arg_sp30 = arg_sp20;
     arg_sp38 = arg_sp28;
-    temp_r6_4646 = this->unk60.unk40;
+    temp_r6_4646 = this->unkA0;
     arg_sp40 = M2C_FIELD(temp_r6_4646, f64 *, 0);
     arg_sp48 = M2C_FIELD(temp_r6_4646, f64 *, 8);
     temp_r31_4600->SetLookAt(*((MKVector3 *) &arg_sp40), *((MKVector3 *) &arg_sp30));
-    temp_f1_4652 = this->unk60.unk48;
+    temp_f1_4652 = this->unkA8;
     if (temp_f1_4652 != 0.0f) {
         arg_spA0.SetRotationRoll(temp_f1_4652);
         temp_r31_4600->Multiply3x3((Matrix *) &arg_spA0, temp_r31_4600);
@@ -2432,20 +2428,20 @@ void KDCamera::SetLTW(const Matrix &arg0) {
     f64 sp28;
     MKVector3 sp18;
     f32 sp10;
-    f32 temp_r3_4698;
-    f32 temp_r3_4711;
-    f32 temp_r5_4689;
+    KDCameraPoint *temp_r3_4698;
+    KDCameraPoint *temp_r3_4711;
+    KDCameraPoint *temp_r5_4689;
 
     M2C_STRUCT_COPY((s32) &this->unk5C + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    temp_r5_4689 = this->unk60.unk40;
+    temp_r5_4689 = this->unkA0;
     M2C_FIELD(temp_r5_4689, f64 *, 0) = (f64) M2C_FIELD(this, f64 *, 0x90);
     M2C_FIELD(temp_r5_4689, f64 *, 8) = (f64) M2C_FIELD(this, f64 *, 0x98);
     sp18.operator*(200.0f);
-    temp_r3_4698 = this->unk60.unk40;
+    temp_r3_4698 = this->unkA0;
     sp28 = M2C_FIELD(temp_r3_4698, f64 *, 0);
     sp30 = M2C_FIELD(temp_r3_4698, f64 *, 8);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    temp_r3_4711 = this->unk60.unk44;
+    temp_r3_4711 = this->unkA4;
     sp38 = sp8;
     sp10 = (f32) sp30 + sp18.unk8;
     M2C_FIELD(temp_r3_4711, f64 *, 0) = sp8;
@@ -2481,14 +2477,14 @@ void KDCamera::Use() {
     arg_sp6C = 1.0f;
     MKView_SetCameraMatrix(*((Matrix *) &arg_sp30));
     temp_r3_4795 = MKView_GetWorldFrustum();
-    M2C_FIELD(this, f64 *, 0xB0) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0x10);
-    M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0x18);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0x20);
-    M2C_FIELD(this, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0x28);
-    M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0x30);
-    M2C_FIELD(this, f64 *, 0xE8) = (f64) M2C_FIELD(temp_r3_4795, f64 *, 0x38);
+    this->unkB0 = M2C_FIELD(temp_r3_4795, f64 *, 0);
+    this->unkB8 = M2C_FIELD(temp_r3_4795, f64 *, 8);
+    this->unkC0 = M2C_FIELD(temp_r3_4795, f64 *, 0x10);
+    this->unkC8 = M2C_FIELD(temp_r3_4795, f64 *, 0x18);
+    this->unkD0 = M2C_FIELD(temp_r3_4795, f64 *, 0x20);
+    this->unkD8 = M2C_FIELD(temp_r3_4795, f64 *, 0x28);
+    this->unkE0 = M2C_FIELD(temp_r3_4795, f64 *, 0x30);
+    this->unkE8 = M2C_FIELD(temp_r3_4795, f64 *, 0x38);
     this->unkF0 = M2C_FIELD(temp_r3_4795, f64 *, 0x40);
     this->unkF8 = M2C_FIELD(temp_r3_4795, f64 *, 0x48);
     this->unk100 = temp_r3_4795->unk50;
@@ -2517,7 +2513,7 @@ void KDCamera::DrawCamera() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'ClearData'
 void KDCamera::ClearData() {
     KDCameraDeltaStagesEx *temp_r5_4908;
     KDCameraHeroMoveYaw *temp_r3_4923;
@@ -2526,7 +2522,7 @@ void KDCamera::ClearData() {
     s32 var_r4_4907;
     void *temp_r6_4906;
 
-    this->unk60.unk48 = 0.0f;
+    this->unkA8 = 0.0f;
     this->unk124 = 0.0f;
     this->unk128 = 0.0f;
     this->unk12C = 0.0f;
@@ -2623,18 +2619,18 @@ void KDCamera::ResetCamera() {
     s32 sp8;
     KDCameraDeltaStagesEx *temp_r5_5068;
     KDCameraHeroData *temp_r8_5170;
+    KDCameraPoint *temp_r4_4995;
+    KDCameraPoint *temp_r4_5005;
+    KDCameraPoint *temp_r4_5042;
+    KDCameraPoint *temp_r4_5075;
+    KDCameraPoint *temp_r4_5085;
+    KDCameraPoint *temp_r4_5122;
+    KDCameraPoint *temp_r4_5201;
+    KDCameraPoint *temp_r7_5189;
+    KDCameraPoint *temp_r8_5029;
+    KDCameraPoint *temp_r8_5109;
+    KDCameraPoint *temp_r8_5175;
     f32 temp_f28_5158;
-    f32 temp_r4_4995;
-    f32 temp_r4_5005;
-    f32 temp_r4_5042;
-    f32 temp_r4_5075;
-    f32 temp_r4_5085;
-    f32 temp_r4_5122;
-    f32 temp_r4_5201;
-    f32 temp_r7_5189;
-    f32 temp_r8_5029;
-    f32 temp_r8_5109;
-    f32 temp_r8_5175;
     s32 var_r29_5145;
     void *temp_r3_5226;
     void *temp_r6_5053;
@@ -2645,12 +2641,12 @@ void KDCamera::ResetCamera() {
     MKProp::Reset();
     ClearData();
     sp190.GetUpdatedTarget();
-    temp_r4_4995 = this->unk60.unk44;
+    temp_r4_4995 = this->unkA4;
     M2C_FIELD(temp_r4_4995, f64 *, 0) = sp190;
     M2C_FIELD(temp_r4_4995, f64 *, 8) = sp198;
     M2C_FIELD(temp_r4_4995, f64 *, 0x10) = sp190;
     M2C_FIELD(temp_r4_4995, f64 *, 0x18) = sp198;
-    temp_r4_5005 = this->unk60.unk44;
+    temp_r4_5005 = this->unkA4;
     sp160 = M2C_FIELD(temp_r4_5005, f64 *, 0);
     sp168 = M2C_FIELD(temp_r4_5005, f64 *, 8);
     sp140.GetDir();
@@ -2659,12 +2655,12 @@ void KDCamera::ResetCamera() {
     sp150 = sp20;
     sp28 = sp148 * -1.0f;
     sp158 = (f64) sp28;
-    temp_r8_5029 = this->unk60.unk44;
+    temp_r8_5029 = this->unkA4;
     sp130 = M2C_FIELD(temp_r8_5029, f64 *, 0);
     sp138 = M2C_FIELD(temp_r8_5029, f64 *, 8);
     sp170.GetIdealSource(*((MKVector3 *) this), *((MKVector3 *) &sp160), (MKVector3 *) &sp150);
     sp170.unk10.GetUpdatedSource(*((MKVector3 *) this), *((MKVector3 *) &sp170), (MKVector3 *) &sp130, 0.0f);
-    temp_r4_5042 = this->unk60.unk40;
+    temp_r4_5042 = this->unkA0;
     M2C_FIELD(temp_r4_5042, f64 *, 0) = M2C_BITWISE(f64, sp170.unk10);
     M2C_FIELD(temp_r4_5042, f64 *, 8) = M2C_BITWISE(f64, sp170.unk18);
     M2C_FIELD(temp_r4_5042, f64 *, 0x10) = M2C_BITWISE(f64, sp170.unk10);
@@ -2680,12 +2676,12 @@ void KDCamera::ResetCamera() {
         M2C_FIELD(temp_r5_5068, f32 *, 0x30) = (f32) M2C_FIELD(temp_r6_5066, f32 *, 0x78);
         M2C_FIELD(temp_r5_5068, f32 *, 0x2C) = (f32) M2C_FIELD(temp_r6_5066, f32 *, 0x74);
         sp110.GetUpdatedTarget();
-        temp_r4_5075 = this->unk60.unk44;
+        temp_r4_5075 = this->unkA4;
         M2C_FIELD(temp_r4_5075, f64 *, 0) = sp110;
         M2C_FIELD(temp_r4_5075, f64 *, 8) = sp118;
         M2C_FIELD(temp_r4_5075, f64 *, 0x10) = sp110;
         M2C_FIELD(temp_r4_5075, f64 *, 0x18) = sp118;
-        temp_r4_5085 = this->unk60.unk44;
+        temp_r4_5085 = this->unkA4;
         spE0 = M2C_FIELD(temp_r4_5085, f64 *, 0);
         spE8 = M2C_FIELD(temp_r4_5085, f64 *, 8);
         spC0.GetDir();
@@ -2694,12 +2690,12 @@ void KDCamera::ResetCamera() {
         spD0 = sp10;
         sp18 = spC8 * -1.0f;
         spD8 = (f64) sp18;
-        temp_r8_5109 = this->unk60.unk44;
+        temp_r8_5109 = this->unkA4;
         spB0 = M2C_FIELD(temp_r8_5109, f64 *, 0);
         spB8 = M2C_FIELD(temp_r8_5109, f64 *, 8);
         spF0.GetIdealSource(*((MKVector3 *) this), *((MKVector3 *) &spE0), (MKVector3 *) &spD0);
         spF0.unk10.GetUpdatedSource(*((MKVector3 *) this), *((MKVector3 *) &spF0), (MKVector3 *) &spB0, 0.0f);
-        temp_r4_5122 = this->unk60.unk40;
+        temp_r4_5122 = this->unkA0;
         M2C_FIELD(temp_r4_5122, f64 *, 0) = M2C_BITWISE(f64, spF0.unk10);
         M2C_FIELD(temp_r4_5122, f64 *, 8) = M2C_BITWISE(f64, spF0.unk18);
         M2C_FIELD(temp_r4_5122, f64 *, 0x10) = M2C_BITWISE(f64, spF0.unk10);
@@ -2713,27 +2709,27 @@ void KDCamera::ResetCamera() {
 loop_3:
             temp_f28_5158 = 3.1415927f * (f32) var_r29_5145 * 0.25f;
             sp90.GetDeltaVectorAtPitch(temp_f28_5158);
-            spF0.unk60.unk60 = sp90;
-            spF0.unk60.unk68 = sp98;
+            spF0.unkC0 = sp90;
+            spF0.unkC8 = sp98;
             temp_r8_5170 = this->unk50;
             sp60 = temp_r8_5170->unk30;
             sp68 = temp_r8_5170->unk38;
-            temp_r8_5175 = this->unk60.unk44;
+            temp_r8_5175 = this->unkA4;
             sp70 = M2C_FIELD(temp_r8_5175, f64 *, 0);
             sp78 = M2C_FIELD(temp_r8_5175, f64 *, 8);
             sp80.GetIdealSource(*((MKVector3 *) this), *((MKVector3 *) &sp70), (MKVector3 *) &sp60);
-            spF0.unk60.unk50 = sp80;
-            spF0.unk60.unk58 = sp88;
-            temp_r7_5189 = this->unk60.unk44;
+            spF0.unkB0 = sp80;
+            spF0.unkB8 = sp88;
+            temp_r7_5189 = this->unkA4;
             sp50 = M2C_FIELD(temp_r7_5189, f64 *, 0);
             sp58 = M2C_FIELD(temp_r7_5189, f64 *, 8);
-            if (IsPointSafeAndViewClear(*((MKVector3 *) &sp50), *((MKVector3 *) &spF0.unk60.unk50), NULL) != 0) {
+            if (IsPointSafeAndViewClear(*((MKVector3 *) &sp50), *((MKVector3 *) &spF0.unkB0), NULL) != 0) {
                 this->unk54->EnablePitchOverride(temp_f28_5158, 0.0f);
-                temp_r4_5201 = this->unk60.unk40;
-                M2C_FIELD(temp_r4_5201, f64 *, 0) = (f64) spF0.unk60.unk50;
-                M2C_FIELD(temp_r4_5201, f64 *, 8) = (f64) spF0.unk60.unk58;
-                M2C_FIELD(temp_r4_5201, f64 *, 0x10) = (f64) spF0.unk60.unk50;
-                M2C_FIELD(temp_r4_5201, f64 *, 0x18) = (f64) spF0.unk60.unk58;
+                temp_r4_5201 = this->unkA0;
+                M2C_FIELD(temp_r4_5201, f64 *, 0) = spF0.unkB0;
+                M2C_FIELD(temp_r4_5201, f64 *, 8) = spF0.unkB8;
+                M2C_FIELD(temp_r4_5201, f64 *, 0x10) = spF0.unkB0;
+                M2C_FIELD(temp_r4_5201, f64 *, 0x18) = spF0.unkB8;
                 UpdateLTW();
             } else {
                 var_r29_5145 += 1;
@@ -2760,7 +2756,7 @@ loop_3:
     Message(&sp8);
     UpdateCameraStateRequests();
     HeroMoveYawUpdate();
-    memset(&this->unk60.unk50, 0, 0x70U);
+    memset(&this->unkB0, 0, 0x70U);
 }
 #endif
 
@@ -2775,7 +2771,7 @@ void KDCamera::LoadDone() {
     KDSound_SetListener((Matrix *) this->unk8);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void KDCamera::Deinit() {
     M2C_UNK *temp_r0_5382;
     M2C_UNK *temp_r0_5401;
@@ -2787,8 +2783,8 @@ void KDCamera::Deinit() {
 
     this->unk4C = 0;
     KDSound_SetListener(NULL);
-    safe_delete<KDCameraPoint>(*((KDCameraPoint **) &this->unk60.unk40));
-    safe_delete<KDCameraPoint>(*((KDCameraPoint **) &this->unk60.unk44));
+    safe_delete<KDCameraPoint>(this->unkA0);
+    safe_delete<KDCameraPoint>(this->unkA4);
     safe_delete<KDCameraHeroData>(this->unk50);
     safe_delete<KDCameraSimpleDelta>(*((KDCameraSimpleDelta **) &this->unk54));
     safe_delete<KDCameraHeroMoveYaw>(this->unk138);
@@ -2859,6 +2855,7 @@ void KDCamera::Init() {
     KDCameraHeroData *temp_r30_5443;
     KDCameraHeroData *temp_r30_5450;
     KDCameraHeroMoveYaw *temp_r6_5550;
+    KDCameraPoint *temp_r6_5507;
     KDCameraStateChangeRequest *temp_r4_5585;
     KDCameraStateStack *var_r0_5565;
     KDCollisionObject *temp_r4_5599;
@@ -2869,7 +2866,6 @@ void KDCamera::Init() {
     M2C_UNK *var_r5_5634;
     MKHeap *temp_r3_5612;
     Matrix *temp_r3_5487;
-    f32 temp_r6_5507;
     s32 temp_r30_5604;
     s32 var_ctr_5587;
     s32 var_ctr_5638;
@@ -2914,11 +2910,11 @@ void KDCamera::Init() {
     sp30 = 0.0f;
     sp28 = 100.0f;
     sp2C = 0.0f;
-    this->unk60.unk40 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unkA0 = M2C_ERROR(/* Read from unset register $r3 */);
     sp70 = (f64) sp30;
     sp68 = (f64) sp28;
-    ((KDCameraPoint *) (M2C_BITWISE(KDCameraPoint *, this->unk60.unk40)))->Init(*((MKVector3 *) &sp68));
-    temp_r6_5507 = this->unk60.unk40;
+    this->unkA0->Init(*((MKVector3 *) &sp68));
+    temp_r6_5507 = this->unkA0;
     sp58 = M2C_FIELD(temp_r6_5507, f64 *, 0);
     sp60 = M2C_FIELD(temp_r6_5507, f64 *, 8);
     this->unk60.unk30 = (f32) sp58;
@@ -2926,14 +2922,14 @@ void KDCamera::Init() {
     this->unk60.unk38 = (f32) sp60;
     this->unk60.unk3C = 1.0f;
     operator new(0x20U, NULL, 0);
-    this->unk60.unk44 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unkA4 = M2C_ERROR(/* Read from unset register $r3 */);
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = 0.0f;
     sp50 = (f64) sp20;
     sp48 = (f64) sp18;
-    ((KDCameraPoint *) (M2C_BITWISE(KDCameraPoint *, this->unk60.unk44)))->Init(*((MKVector3 *) &sp48));
-    this->unk60.unk48 = 0.0f;
+    this->unkA4->Init(*((MKVector3 *) &sp48));
+    this->unkA8 = 0.0f;
     UpdateLTW();
     this->unk120 = NULL;
     operator new(8U, NULL, 0);
@@ -3012,7 +3008,7 @@ void KDCamera::Init() {
     sp40 = (f64) sp10;
     temp_r29_5675 = M2C_FIELD(temp_r30_5665, void **, 0xA4);
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **, f64), 0x84)(gMK, (f64) sp8)))->AddSphere((MKVector3 *) &this->unk200->unk240, M2C_FIELD(temp_r29_5675, f32 *, 0), M2C_FIELD(temp_r29_5675, f32 *, 4), *((MKVector4 *) &sp38), (MKCollisionMode) M2C_FIELD(M2C_FIELD(temp_r30_5665, void **, 0xA4), s32 *, 8), (MKCollisionInfo *) &this->unk1F0, 0U);
-    memset(&this->unk60.unk50, 0, 0x70U);
+    memset(&this->unkB0, 0, 0x70U);
 }
 #endif
 

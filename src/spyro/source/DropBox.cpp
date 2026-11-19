@@ -30,7 +30,7 @@ void DropBox::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1D0), 1.0f, 0.0f, 0, -1);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1B8'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void DropBox::SetDefaults() {
     Enable();
     Activate();
@@ -46,7 +46,7 @@ void DropBox::SetDefaults() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B8'
+#if 0 // DRAFT: undefined identifier 'arg_sp58'
 void DropBox::Drop() {
     f32 temp_f4_135;
     f32 var_f0_329;
@@ -217,7 +217,7 @@ void DropBox::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1FD'
+#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 s32 DropBox::LoadLine(MKIniLine *arg0) {
     this->unk1FD = 0;
     PropFlagsClear((u32 *) &this->unk10, 0x40000U);
@@ -234,7 +234,7 @@ s32 DropBox::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B8'
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void DropBox::Message(MKMessage *arg0) {
     s8 spA9;
     s8 spA8;
@@ -328,7 +328,7 @@ void DropBox::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C4'
+#if 0 // DRAFT: undefined identifier 'RemoveAllSpawnPoints'
 void DropBox::SpawnEnemies() {
     MKModel *temp_r4_724;
     f32 temp_r0_747;
@@ -426,7 +426,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1FD'
+#if 0 // DRAFT: undefined identifier 'GetNumberActive'
 void DropBox::Update() {
     f32 temp_f0_1019;
     f32 temp_f29_927;
@@ -655,7 +655,6 @@ void DropBox::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C4'
 void DropBox::Resolve() {
     f64 sp10;
     f64 sp8;
@@ -685,16 +684,12 @@ void DropBox::Resolve() {
     this->unkD0.Init(this->unk1C4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unkD0.Show(0U);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C4'
 void DropBox::LoadDone() {
     Shatterable::LoadDone();
     this->unk1C4 = MKModel_Create("P9022_DropBoxShadow", NULL, 2, NULL);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B8'
 void DropBox::Init() {
     Shatterable::Init();
     this->unk1B8 = 0.0f;
@@ -706,7 +701,6 @@ void DropBox::Init() {
     this->unk200.unk4 = 0.0f;
     this->unk200.unk0 = 6e-45f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
 void DropBox::InitSpawnerObject() {
@@ -741,13 +735,13 @@ void DropBox::InitSpawnerObject() {
         if (temp_r28_1604 != NULL) {
             temp_r28_1604->__vptr = &__vt;
             temp_r28_1604->__vptr = &__vt;
-            temp_r28_1604->unk8 = 0;
+            M2C_FIELD(temp_r28_1604, s32 *, 8) = 0;
             ((EventMessage *) (temp_r28_1604 + 8))->Init();
-            temp_r28_1604->unkC = 0;
+            M2C_FIELD(temp_r28_1604, s32 *, 0xC) = 0;
             ((EventMessage *) (temp_r28_1604 + 0xC))->Init();
-            temp_r28_1604->unk10 = 0;
+            M2C_FIELD(temp_r28_1604, s32 *, 0x10) = 0;
             ((EventMessage *) (temp_r28_1604 + 0x10))->Init();
-            temp_r28_1604->unk14 = 0;
+            M2C_FIELD(temp_r28_1604, s32 *, 0x14) = 0;
             ((EventMessage *) (temp_r28_1604 + 0x14))->Init();
         }
         ((SpawnPointObject *) (M2C_FIELD(temp_r27_1593, SpawnPointObject **, 0x1DC)))->Init(temp_r28_1604);

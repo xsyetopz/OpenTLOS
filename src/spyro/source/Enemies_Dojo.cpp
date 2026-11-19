@@ -1,6 +1,7 @@
 #include "spyro/source/Enemies_Dojo.h"
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
+#include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -8,6 +9,7 @@
 #include "spyro/source/CharacterDojoFX.h"
 #include "spyro/source/DojoGoal_Think.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemySpawner.h"
 #include "spyro/source/FallingLeaves.h"
@@ -52,7 +54,7 @@ void DojoTier2::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: undefined identifier 'sp108'
 void DojoTier2::Despawn(bool arg0) {
     f64 sp460;
     f64 sp458;
@@ -204,15 +206,15 @@ void DojoTier2::Despawn(bool arg0) {
     void *temp_r28_101;
     void *temp_r3_342;
 
-    if (((u8) this->unk110.unk9F9 >> 7U) & 1) {
-        var_r26_100 = M2C_FIELD(this->unk110.unk928, u32 **, 0x27C);
+    if (((u8) M2C_FIELD(this, u8 *, 0xB09) >> 7U) & 1) {
+        var_r26_100 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
         temp_r28_101 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
 loop_49:
         if ((u32) *var_r26_100 != -1U) {
-            temp_r3_107 = this->unk110.unkA10;
+            temp_r3_107 = M2C_FIELD(this, s32 *, 0xB20);
             switch (temp_r3_107) {                  /* irregular */
             case 0x8000000:
-                KDSound_Play3d(GS_DDFireSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDFireSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r21_135 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -225,13 +227,13 @@ loop_49:
                     sp420 = (f64) sp110;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk68->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp34);
+                    gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                     sp3F8 = 1.0f;
                     sp3FC = 0.75f;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
                     sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk74->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                    gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                     var_r21_135 += 1;
                 } while (var_r21_135 < 0x1E);
                 var_r21_190 = 0;
@@ -245,7 +247,7 @@ loop_49:
                     sp3C0 = (f64) sp100;
                     sp420 = (f64) sp100;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                    gb.unk240.Emit(this->unk110.unk478, *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+                    gb.unk240.Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
                     var_r21_190 += 1;
                 } while (var_r21_190 < 0xF);
                 var_r21_228 = 0;
@@ -260,12 +262,12 @@ loop_49:
                     sp420 = (f64) spF0;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                     sp2C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), sp2C, 0.0f);
+                    gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp2C, 0.0f);
                     var_r21_228 += 1;
                 } while (var_r21_228 < 5);
                 break;
             case 0x10000000:
-                KDSound_Play3d(GS_DDIceSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDIceSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r21_277 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -278,7 +280,7 @@ loop_49:
                     sp420 = (f64) spE0;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 20.0f, 27.0f);
                     sp28 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    ((IceBitsPS *) (M2C_FIELD(temp_r28_101, IceBitsPS **, 0x2B4)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp28);
+                    ((IceBitsPS *) (M2C_FIELD(temp_r28_101, IceBitsPS **, 0x2B4)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp28);
                     var_r21_277 += 1;
                 } while (var_r21_277 < 0x14);
                 var_r21_315 = 0;
@@ -302,7 +304,7 @@ loop_49:
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         M2C_FIELD(temp_r3_342, f64 *, 0) = spB8;
-                        spC0 = this->unk110.unk478.unk8 + sp328.unk8;
+                        spC0 = this->unk588.unk4 + sp328.unk8;
                         sp338 = spB8;
                         M2C_FIELD(temp_r3_342, f64 *, 8) = (f64) spC0;
                         M2C_FIELD(temp_r3_342, f32 *, 0x20) = 0.0f;
@@ -323,7 +325,7 @@ loop_49:
                     *(&sp3E8 + var_r23_415) = checked_cast<PooledShatterProp *, MKProp>(temp_r20_413->CreateInstance());
                     temp_r22_421 = *(&sp3E8 + var_r23_415);
                     if (temp_r22_421 != NULL) {
-                        M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r22_421, &this->unk110.unk478);
+                        M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x38)(temp_r22_421, &this->unk588);
                         M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r22_421);
                         M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r22_421);
                         M2C_FIELD(M2C_FIELD(temp_r22_421, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r22_421, 0, 0, -1, 0, 1, 0);
@@ -333,7 +335,7 @@ loop_49:
                 } while (var_r19_414 < 3);
                 break;
             case 0x20000000:
-                KDSound_Play3d(GS_DDElecSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDElecSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r19_468 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -353,7 +355,7 @@ loop_49:
                     sp2C8 = (f64) sp178;
                     sp2D0 = (f64) sp180;
                     sp24 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
-                    ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
+                    ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
                     var_r19_468 += 1;
                 } while (var_r19_468 < 0xF);
                 var_r19_516 = 0;
@@ -379,7 +381,7 @@ loop_33:
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
-                        spA0 = this->unk110.unk478.unk8 + sp2A8.unk8;
+                        spA0 = this->unk588.unk4 + sp2A8.unk8;
                         sp170 = 1.0f;
                         sp174 = 1.0f;
                         sp2B8 = sp98;
@@ -417,7 +419,7 @@ loop_33:
                     sp268 = (f64) sp158;
                     sp270 = (f64) sp160;
                     sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.unk94->Trigger(this->unk110.unk478, *((MKVector3 *) &sp418), sp1C, lit_1411, (MKVector4) &sp268);
+                    gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1411, (MKVector4) &sp268);
                     var_r19_634 += 1;
                 } while (var_r19_634 < 3);
                 temp_f16_687 = up.unk8;
@@ -445,14 +447,14 @@ loop_33:
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                     sp238 = sp138;
-                    sp140 = this->unk110.unk478.unk8 - (f32) sp230;
+                    sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
                     gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                     var_r19_688 += 1;
                 } while (var_r19_688 < 0xF);
                 break;
             case 0x40000000:
-                KDSound_Play3d(GS_DDEarthSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 temp_f17_761 = up.unk8;
                 var_r19_764 = 0;
                 do {
@@ -474,7 +476,7 @@ loop_33:
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                     sp1F8 = sp118;
-                    sp120 = this->unk110.unk478.unk8 + (f32) sp1F0;
+                    sp120 = this->unk588.unk4 + (f32) sp1F0;
                     sp200 = (f64) sp120;
                     sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     sp14 = MKRand_Int(&gViewSeed, 0, 3);
@@ -493,7 +495,7 @@ loop_33:
                     sp420 = (f64) sp60;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
-                    gb.EmitSmallRocks(this->unk110.unk478, *((MKVector3 *) &sp418), sp10);
+                    gb.EmitSmallRocks(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp10);
                     var_r19_836 += 1;
                 } while (var_r19_836 < 0x1E);
                 var_r19_876 = 0;
@@ -508,7 +510,7 @@ loop_33:
                     sp420 = (f64) sp50;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                     spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), spC, 0.0f);
+                    gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), spC, 0.0f);
                     var_r19_876 += 1;
                 } while (var_r19_876 < 5);
                 var_r19_917 = 0;
@@ -523,7 +525,7 @@ loop_33:
                     sp420 = (f64) sp40;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                     sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                    gb.EmitCrud(this->unk110.unk478, *((MKVector3 *) &sp418), sp8);
+                    gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp8);
                     var_r19_917 += 1;
                 } while (var_r19_917 < 5);
                 break;
@@ -536,7 +538,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
+#if 0 // DRAFT: undefined identifier 'sp108'
 void DojoTier2::CheckAnimEvents() {
     f64 sp460;
     f64 sp458;
@@ -689,15 +691,15 @@ void DojoTier2::CheckAnimEvents() {
     void *temp_r3_1310;
 
     Enemy::CheckAnimEvents();
-    if ((this->unk110.unk520->CheckEvent(0x10) != 0) && ((u32 *) M2C_FIELD(this->unk110.unk928, u32 **, 0x27C) != NULL)) {
-        var_r26_1068 = M2C_FIELD(this->unk110.unk928, u32 **, 0x27C);
+    if ((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) && ((u32 *) M2C_FIELD(this->unkA20, u32 **, 0x27C) != NULL)) {
+        var_r26_1068 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
         temp_r28_1069 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
 loop_50:
         if ((u32) *var_r26_1068 != -1U) {
-            temp_r3_1075 = this->unk110.unkA10;
+            temp_r3_1075 = M2C_FIELD(this, s32 *, 0xB20);
             switch (temp_r3_1075) {                 /* irregular */
             case 0x8000000:
-                KDSound_Play3d(GS_DDFireSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDFireSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r22_1103 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -710,13 +712,13 @@ loop_50:
                     sp420 = (f64) sp110;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk68->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp34);
+                    gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                     sp3F8 = 1.0f;
                     sp3FC = 0.75f;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
                     sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk74->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                    gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                     var_r22_1103 += 1;
                 } while (var_r22_1103 < 0x1E);
                 var_r22_1158 = 0;
@@ -730,7 +732,7 @@ loop_50:
                     sp3C0 = (f64) sp100;
                     sp420 = (f64) sp100;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                    gb.unk240.Emit(this->unk110.unk478, *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+                    gb.unk240.Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
                     var_r22_1158 += 1;
                 } while (var_r22_1158 < 0xF);
                 var_r22_1196 = 0;
@@ -745,12 +747,12 @@ loop_50:
                     sp420 = (f64) spF0;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                     sp2C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), sp2C, 0.0f);
+                    gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp2C, 0.0f);
                     var_r22_1196 += 1;
                 } while (var_r22_1196 < 5);
                 break;
             case 0x10000000:
-                KDSound_Play3d(GS_DDIceSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDIceSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r22_1245 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -763,7 +765,7 @@ loop_50:
                     sp420 = (f64) spE0;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 20.0f, 27.0f);
                     sp28 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    ((IceBitsPS *) (M2C_FIELD(temp_r28_1069, IceBitsPS **, 0x2B4)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp28);
+                    ((IceBitsPS *) (M2C_FIELD(temp_r28_1069, IceBitsPS **, 0x2B4)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp28);
                     var_r22_1245 += 1;
                 } while (var_r22_1245 < 0x14);
                 var_r22_1283 = 0;
@@ -787,7 +789,7 @@ loop_50:
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         M2C_FIELD(temp_r3_1310, f64 *, 0) = spB8;
-                        spC0 = this->unk110.unk478.unk8 + sp328.unk8;
+                        spC0 = this->unk588.unk4 + sp328.unk8;
                         sp338 = spB8;
                         M2C_FIELD(temp_r3_1310, f64 *, 8) = (f64) spC0;
                         M2C_FIELD(temp_r3_1310, f32 *, 0x20) = 0.0f;
@@ -808,7 +810,7 @@ loop_50:
                     *(&sp3E8 + var_r24_1383) = checked_cast<PooledShatterProp *, MKProp>(temp_r21_1381->CreateInstance());
                     temp_r23_1389 = *(&sp3E8 + var_r24_1383);
                     if (temp_r23_1389 != NULL) {
-                        M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r23_1389, &this->unk110.unk478);
+                        M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x38)(temp_r23_1389, &this->unk588);
                         M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r23_1389);
                         M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r23_1389);
                         M2C_FIELD(M2C_FIELD(temp_r23_1389, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r23_1389, 0, 0, -1, 0, 1, 0);
@@ -818,7 +820,7 @@ loop_50:
                 } while (var_r20_1382 < 3);
                 break;
             case 0x20000000:
-                KDSound_Play3d(GS_DDElecSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDElecSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r20_1436 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -838,7 +840,7 @@ loop_50:
                     sp2C8 = (f64) sp178;
                     sp2D0 = (f64) sp180;
                     sp24 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
-                    ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
+                    ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
                     var_r20_1436 += 1;
                 } while (var_r20_1436 < 0xF);
                 var_r20_1484 = 0;
@@ -864,7 +866,7 @@ loop_34:
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
-                        spA0 = this->unk110.unk478.unk8 + sp2A8.unk8;
+                        spA0 = this->unk588.unk4 + sp2A8.unk8;
                         sp170 = 1.0f;
                         sp174 = 1.0f;
                         sp2B8 = sp98;
@@ -902,7 +904,7 @@ loop_34:
                     sp268 = (f64) sp158;
                     sp270 = (f64) sp160;
                     sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.unk94->Trigger(this->unk110.unk478, *((MKVector3 *) &sp418), sp1C, lit_1251, (MKVector4) &sp268);
+                    gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1251, (MKVector4) &sp268);
                     var_r20_1602 += 1;
                 } while (var_r20_1602 < 3);
                 temp_f16_1655 = up.unk8;
@@ -930,14 +932,14 @@ loop_34:
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                     sp238 = sp138;
-                    sp140 = this->unk110.unk478.unk8 - (f32) sp230;
+                    sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
                     gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                     var_r20_1656 += 1;
                 } while (var_r20_1656 < 0xF);
                 break;
             case 0x40000000:
-                KDSound_Play3d(GS_DDEarthSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 temp_f17_1729 = up.unk8;
                 var_r20_1732 = 0;
                 do {
@@ -959,7 +961,7 @@ loop_34:
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                     sp1F8 = sp118;
-                    sp120 = this->unk110.unk478.unk8 + (f32) sp1F0;
+                    sp120 = this->unk588.unk4 + (f32) sp1F0;
                     sp200 = (f64) sp120;
                     sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     sp14 = MKRand_Int(&gViewSeed, 0, 3);
@@ -978,7 +980,7 @@ loop_34:
                     sp420 = (f64) sp60;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
-                    gb.EmitSmallRocks(this->unk110.unk478, *((MKVector3 *) &sp418), sp10);
+                    gb.EmitSmallRocks(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp10);
                     var_r20_1804 += 1;
                 } while (var_r20_1804 < 0x1E);
                 var_r20_1844 = 0;
@@ -993,7 +995,7 @@ loop_34:
                     sp420 = (f64) sp50;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                     spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), spC, 0.0f);
+                    gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), spC, 0.0f);
                     var_r20_1844 += 1;
                 } while (var_r20_1844 < 5);
                 var_r20_1885 = 0;
@@ -1008,7 +1010,7 @@ loop_34:
                     sp420 = (f64) sp40;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                     sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                    gb.EmitCrud(this->unk110.unk478, *((MKVector3 *) &sp418), sp8);
+                    gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp8);
                     var_r20_1885 += 1;
                 } while (var_r20_1885 < 5);
                 break;
@@ -1020,7 +1022,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk934'
+#if 0 // DRAFT: pointer/array required
 s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1051,46 +1053,46 @@ s32 DojoTier2::Spawn(SpawnPointObject *arg0) {
     if (Enemy::Spawn(arg0) == 0) {
         return 0;
     }
-    this->unk110.unk934 = checked_cast<EnemySpawnPointData *, SpawnPointData>((SpawnPointData *) arg0->unk4);
-    temp_r3_1992 = M2C_FIELD(this->unk110.unk934, s32 *, 4);
+    this->unkA2C = checked_cast<EnemySpawnPointData *, SpawnPointData>((SpawnPointData *) arg0->unk4);
+    temp_r3_1992 = M2C_FIELD(this->unkA2C, s32 *, 4);
     if (temp_r3_1992 & 0x08000000) {
         sp38 = 1.0f;
         sp3C = 0.1f;
         sp40 = 0.0f;
         sp44 = 1.0f;
-        this->unk110.unkA10 = 0x08000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x08000000;
         sp78 = (f64) sp38;
         sp80 = (f64) sp40;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp78);
+        this->unkAF8->Enable(1U, (MKVector4) &sp78);
     } else if (temp_r3_1992 & 0x10000000) {
         sp28 = 0.5f;
         sp2C = 0.5f;
         sp30 = 1.0f;
         sp34 = 1.0f;
-        this->unk110.unkA10 = 0x10000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x10000000;
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp68);
+        this->unkAF8->Enable(1U, (MKVector4) &sp68);
     } else if (temp_r3_1992 & 0x20000000) {
         sp18 = 1.0f;
         sp1C = 1.0f;
         sp20 = 0.0f;
         sp24 = 1.0f;
-        this->unk110.unkA10 = 0x20000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x20000000;
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp58);
+        this->unkAF8->Enable(1U, (MKVector4) &sp58);
     } else if (temp_r3_1992 & 0x40000000) {
         sp8 = 0.25f;
         spC = 1.0f;
         sp10 = 0.25f;
         sp14 = 1.0f;
-        this->unk110.unkA10 = 0x40000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x40000000;
         sp48 = (f64) sp8;
         sp50 = (f64) sp10;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp48);
+        this->unkAF8->Enable(1U, (MKVector4) &sp48);
     } else {
-        this->unk110.unkA10 = 0;
+        M2C_FIELD(this, s32 *, 0xB20) = 0;
     }
     return 1;
 }
@@ -1117,7 +1119,7 @@ void DojoTier2::Init() {
         temp_r31_2099->__vptr = &__vt;
     }
     temp_r31_2099->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_2099;
+    this->unkA24 = (EnemyAttack *) temp_r31_2099;
 }
 #endif
 
@@ -1145,7 +1147,7 @@ void DojoTier1::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: undefined identifier 'sp108'
 void DojoTier1::Despawn(bool arg0) {
     f64 sp460;
     f64 sp458;
@@ -1297,15 +1299,15 @@ void DojoTier1::Despawn(bool arg0) {
     void *temp_r28_2249;
     void *temp_r3_2490;
 
-    if (((u8) this->unk110.unk9F9 >> 7U) & 1) {
-        var_r26_2248 = M2C_FIELD(this->unk110.unk928, u32 **, 0x27C);
+    if (((u8) M2C_FIELD(this, u8 *, 0xB09) >> 7U) & 1) {
+        var_r26_2248 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
         temp_r28_2249 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
 loop_49:
         if ((u32) *var_r26_2248 != -1U) {
-            temp_r3_2255 = this->unk110.unkA10;
+            temp_r3_2255 = M2C_FIELD(this, s32 *, 0xB20);
             switch (temp_r3_2255) {                 /* irregular */
             case 0x8000000:
-                KDSound_Play3d(GS_DDFireSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDFireSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r21_2283 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -1318,13 +1320,13 @@ loop_49:
                     sp420 = (f64) sp110;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk68->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp34);
+                    gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                     sp3F8 = 1.0f;
                     sp3FC = 0.75f;
                     sp400 = 0.75f;
                     sp404 = 1.0f;
                     sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    gb.unk74->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                    gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                     var_r21_2283 += 1;
                 } while (var_r21_2283 < 0x1E);
                 var_r21_2338 = 0;
@@ -1338,7 +1340,7 @@ loop_49:
                     sp3C0 = (f64) sp100;
                     sp420 = (f64) sp100;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                    gb.unk240.Emit(this->unk110.unk478, *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+                    gb.unk240.Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
                     var_r21_2338 += 1;
                 } while (var_r21_2338 < 0xF);
                 var_r21_2376 = 0;
@@ -1353,12 +1355,12 @@ loop_49:
                     sp420 = (f64) spF0;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                     sp2C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), sp2C, 0.0f);
+                    gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp2C, 0.0f);
                     var_r21_2376 += 1;
                 } while (var_r21_2376 < 5);
                 break;
             case 0x10000000:
-                KDSound_Play3d(GS_DDIceSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDIceSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r21_2425 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -1371,7 +1373,7 @@ loop_49:
                     sp420 = (f64) spE0;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 20.0f, 27.0f);
                     sp28 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                    ((IceBitsPS *) (M2C_FIELD(temp_r28_2249, IceBitsPS **, 0x2B4)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp28);
+                    ((IceBitsPS *) (M2C_FIELD(temp_r28_2249, IceBitsPS **, 0x2B4)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp28);
                     var_r21_2425 += 1;
                 } while (var_r21_2425 < 0x14);
                 var_r21_2463 = 0;
@@ -1395,7 +1397,7 @@ loop_49:
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         M2C_FIELD(temp_r3_2490, f64 *, 0) = spB8;
-                        spC0 = this->unk110.unk478.unk8 + sp328.unk8;
+                        spC0 = this->unk588.unk4 + sp328.unk8;
                         sp338 = spB8;
                         M2C_FIELD(temp_r3_2490, f64 *, 8) = (f64) spC0;
                         M2C_FIELD(temp_r3_2490, f32 *, 0x20) = 0.0f;
@@ -1416,7 +1418,7 @@ loop_49:
                     *(&sp3E8 + var_r23_2563) = checked_cast<PooledShatterProp *, MKProp>(temp_r20_2561->CreateInstance());
                     temp_r22_2569 = *(&sp3E8 + var_r23_2563);
                     if (temp_r22_2569 != NULL) {
-                        M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r22_2569, &this->unk110.unk478);
+                        M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x38)(temp_r22_2569, &this->unk588);
                         M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r22_2569);
                         M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r22_2569);
                         M2C_FIELD(M2C_FIELD(temp_r22_2569, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r22_2569, 0, 0, -1, 0, 1, 0);
@@ -1426,7 +1428,7 @@ loop_49:
                 } while (var_r19_2562 < 3);
                 break;
             case 0x20000000:
-                KDSound_Play3d(GS_DDElecSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDElecSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 var_r19_2616 = 0;
                 do {
                     KDRand_UnitVectorXZ();
@@ -1446,7 +1448,7 @@ loop_49:
                     sp2C8 = (f64) sp178;
                     sp2D0 = (f64) sp180;
                     sp24 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
-                    ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
+                    ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
                     var_r19_2616 += 1;
                 } while (var_r19_2616 < 0xF);
                 var_r19_2664 = 0;
@@ -1472,7 +1474,7 @@ loop_33:
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         sp168 = 1.0f;
                         sp16C = 1.0f;
-                        spA0 = this->unk110.unk478.unk8 + sp2A8.unk8;
+                        spA0 = this->unk588.unk4 + sp2A8.unk8;
                         sp170 = 1.0f;
                         sp174 = 1.0f;
                         sp2B8 = sp98;
@@ -1510,7 +1512,7 @@ loop_33:
                     sp268 = (f64) sp158;
                     sp270 = (f64) sp160;
                     sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.unk94->Trigger(this->unk110.unk478, *((MKVector3 *) &sp418), sp1C, lit_1044, (MKVector4) &sp268);
+                    gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_1044, (MKVector4) &sp268);
                     var_r19_2782 += 1;
                 } while (var_r19_2782 < 3);
                 temp_f16_2835 = up.unk8;
@@ -1538,14 +1540,14 @@ loop_33:
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                     sp238 = sp138;
-                    sp140 = this->unk110.unk478.unk8 - (f32) sp230;
+                    sp140 = this->unk588.unk4 - (f32) sp230;
                     sp240 = (f64) sp140;
                     gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                     var_r19_2836 += 1;
                 } while (var_r19_2836 < 0xF);
                 break;
             case 0x40000000:
-                KDSound_Play3d(GS_DDEarthSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                 temp_f17_2909 = up.unk8;
                 var_r19_2912 = 0;
                 do {
@@ -1567,7 +1569,7 @@ loop_33:
                     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r24, $r0, 0x0, qr0 */);
                     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                     sp1F8 = sp118;
-                    sp120 = this->unk110.unk478.unk8 + (f32) sp1F0;
+                    sp120 = this->unk588.unk4 + (f32) sp1F0;
                     sp200 = (f64) sp120;
                     sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                     sp14 = MKRand_Int(&gViewSeed, 0, 3);
@@ -1586,7 +1588,7 @@ loop_33:
                     sp420 = (f64) sp60;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                     sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
-                    gb.EmitSmallRocks(this->unk110.unk478, *((MKVector3 *) &sp418), sp10);
+                    gb.EmitSmallRocks(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp10);
                     var_r19_2984 += 1;
                 } while (var_r19_2984 < 0x1E);
                 var_r19_3024 = 0;
@@ -1601,7 +1603,7 @@ loop_33:
                     sp420 = (f64) sp50;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                     spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                    gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), spC, 0.0f);
+                    gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), spC, 0.0f);
                     var_r19_3024 += 1;
                 } while (var_r19_3024 < 5);
                 var_r19_3065 = 0;
@@ -1616,7 +1618,7 @@ loop_33:
                     sp420 = (f64) sp40;
                     unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                     sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                    gb.EmitCrud(this->unk110.unk478, *((MKVector3 *) &sp418), sp8);
+                    gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp8);
                     var_r19_3065 += 1;
                 } while (var_r19_3065 < 5);
                 break;
@@ -1629,7 +1631,7 @@ loop_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
+#if 0 // DRAFT: undefined identifier 'sp108'
 void DojoTier1::CheckAnimEvents() {
     f64 sp460;
     f64 sp458;
@@ -1784,16 +1786,16 @@ void DojoTier1::CheckAnimEvents() {
 
     Enemy::CheckAnimEvents();
     temp_r28_3203 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    if (this->unk110.unk520->CheckEvent(0x10) != 0) {
-        temp_r0_3210 = M2C_FIELD(this->unk110.unk928, u32 **, 0x27C);
+    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
+        temp_r0_3210 = M2C_FIELD(this->unkA20, u32 **, 0x27C);
         if (temp_r0_3210 != NULL) {
             var_r26_3216 = temp_r0_3210;
 loop_50:
             if ((u32) *var_r26_3216 != -1U) {
-                temp_r3_3222 = this->unk110.unkA10;
+                temp_r3_3222 = M2C_FIELD(this, s32 *, 0xB20);
                 switch (temp_r3_3222) {             /* irregular */
                 case 0x8000000:
-                    KDSound_Play3d(GS_DDFireSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDFireSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r22_3250 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1806,13 +1808,13 @@ loop_50:
                         sp420 = (f64) sp110;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                         sp34 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        gb.unk68->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp34);
+                        gb.unk68->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp34);
                         sp3F8 = 1.0f;
                         sp3FC = 0.75f;
                         sp400 = 0.75f;
                         sp404 = 1.0f;
                         sp30 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        gb.unk74->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
+                        gb.unk74->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp30, *((MKVector4 *) &sp3F8), 0.0f);
                         var_r22_3250 += 1;
                     } while (var_r22_3250 < 0x1E);
                     var_r22_3305 = 0;
@@ -1826,7 +1828,7 @@ loop_50:
                         sp3C0 = (f64) sp100;
                         sp420 = (f64) sp100;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
-                        gb.unk240.Emit(this->unk110.unk478, *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
+                        gb.unk240.Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 2.0f, 5.0f), 1.0f);
                         var_r22_3305 += 1;
                     } while (var_r22_3305 < 0xF);
                     var_r22_3343 = 0;
@@ -1841,12 +1843,12 @@ loop_50:
                         sp420 = (f64) spF0;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                         sp2C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), sp2C, 0.0f);
+                        gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp2C, 0.0f);
                         var_r22_3343 += 1;
                     } while (var_r22_3343 < 5);
                     break;
                 case 0x10000000:
-                    KDSound_Play3d(GS_DDIceSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDIceSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r22_3392 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1859,7 +1861,7 @@ loop_50:
                         sp420 = (f64) spE0;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 20.0f, 27.0f);
                         sp28 = MKRand_Float(&gViewSeed, 2.0f, 5.0f);
-                        ((IceBitsPS *) (M2C_FIELD(temp_r28_3203, IceBitsPS **, 0x2B4)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp28);
+                        ((IceBitsPS *) (M2C_FIELD(temp_r28_3203, IceBitsPS **, 0x2B4)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp28);
                         var_r22_3392 += 1;
                     } while (var_r22_3392 < 0x14);
                     var_r22_3430 = 0;
@@ -1883,7 +1885,7 @@ loop_50:
                             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                             M2C_FIELD(temp_r3_3457, f64 *, 0) = spB8;
-                            spC0 = this->unk110.unk478.unk8 + sp328.unk8;
+                            spC0 = this->unk588.unk4 + sp328.unk8;
                             sp338 = spB8;
                             M2C_FIELD(temp_r3_3457, f64 *, 8) = (f64) spC0;
                             M2C_FIELD(temp_r3_3457, f32 *, 0x20) = 0.0f;
@@ -1904,7 +1906,7 @@ loop_50:
                         *(&sp3E8 + var_r24_3530) = checked_cast<PooledShatterProp *, MKProp>(temp_r21_3528->CreateInstance());
                         temp_r23_3536 = *(&sp3E8 + var_r24_3530);
                         if (temp_r23_3536 != NULL) {
-                            M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *, MKVector3 *), 0x38)(temp_r23_3536, &this->unk110.unk478);
+                            M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK *), 0x38)(temp_r23_3536, &this->unk588);
                             M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r23_3536);
                             M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *), 0x30)(temp_r23_3536);
                             M2C_FIELD(M2C_FIELD(temp_r23_3536, void **, 0x44), M2C_UNK (**)(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK), 0x94)(temp_r23_3536, 0, 0, -1, 0, 1, 0);
@@ -1914,7 +1916,7 @@ loop_50:
                     } while (var_r20_3529 < 3);
                     break;
                 case 0x20000000:
-                    KDSound_Play3d(GS_DDElecSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDElecSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                     var_r20_3583 = 0;
                     do {
                         KDRand_UnitVectorXZ();
@@ -1934,7 +1936,7 @@ loop_50:
                         sp2C8 = (f64) sp178;
                         sp2D0 = (f64) sp180;
                         sp24 = MKRand_Float(&gViewSeed, 5.0f, 10.0f);
-                        ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(this->unk110.unk478, *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
+                        ((ZapPS *) (M2C_FIELD(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), ZapPS **, 0x2B8)))->Emit(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp24, (MKVector4) &sp2C8);
                         var_r20_3583 += 1;
                     } while (var_r20_3583 < 0xF);
                     var_r20_3631 = 0;
@@ -1960,7 +1962,7 @@ loop_34:
                             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                             sp168 = 1.0f;
                             sp16C = 1.0f;
-                            spA0 = this->unk110.unk478.unk8 + sp2A8.unk8;
+                            spA0 = this->unk588.unk4 + sp2A8.unk8;
                             sp170 = 1.0f;
                             sp174 = 1.0f;
                             sp2B8 = sp98;
@@ -1998,7 +2000,7 @@ loop_34:
                         sp268 = (f64) sp158;
                         sp270 = (f64) sp160;
                         sp1C = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.unk94->Trigger(this->unk110.unk478, *((MKVector3 *) &sp418), sp1C, lit_884, (MKVector4) &sp268);
+                        gb.unk94->Trigger(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp1C, lit_884, (MKVector4) &sp268);
                         var_r20_3749 += 1;
                     } while (var_r20_3749 < 3);
                     temp_f16_3802 = up.unk8;
@@ -2026,14 +2028,14 @@ loop_34:
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
                         sp238 = sp138;
-                        sp140 = this->unk110.unk478.unk8 - (f32) sp230;
+                        sp140 = this->unk588.unk4 - (f32) sp230;
                         sp240 = (f64) sp140;
                         gb.unk230->Emit(*((MKVector3 *) &sp238), *((MKVector3 *) &sp418), MKRand_Float(&gViewSeed, 5.0f, 10.0f), 0U);
                         var_r20_3803 += 1;
                     } while (var_r20_3803 < 0xF);
                     break;
                 case 0x40000000:
-                    KDSound_Play3d(GS_DDEarthSpawn, &this->unk110.unk478, 0U, -1, 0.0f, 0U);
+                    KDSound_Play3d(GS_DDEarthSpawn, (MKVector3 *) &this->unk588, 0U, -1, 0.0f, 0U);
                     temp_f17_3876 = up.unk8;
                     var_r20_3879 = 0;
                     do {
@@ -2055,7 +2057,7 @@ loop_34:
                         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r25, $r0, 0x0, qr0 */);
                         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                         sp1F8 = sp118;
-                        sp120 = this->unk110.unk478.unk8 + (f32) sp1F0;
+                        sp120 = this->unk588.unk4 + (f32) sp1F0;
                         sp200 = (f64) sp120;
                         sp18 = MKRand_Float(&gViewSeed, 1.0f, 1.5f);
                         sp14 = MKRand_Int(&gViewSeed, 0, 3);
@@ -2074,7 +2076,7 @@ loop_34:
                         sp420 = (f64) sp60;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 8.0f, 12.0f);
                         sp10 = MKRand_Float(&gViewSeed, 0.1f, 0.5f);
-                        gb.EmitSmallRocks(this->unk110.unk478, *((MKVector3 *) &sp418), sp10);
+                        gb.EmitSmallRocks(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp10);
                         var_r20_3951 += 1;
                     } while (var_r20_3951 < 0x1E);
                     var_r20_3991 = 0;
@@ -2089,7 +2091,7 @@ loop_34:
                         sp420 = (f64) sp50;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 1.0f, 8.0f);
                         spC = MKRand_Float(&gViewSeed, 1.0f, 2.0f);
-                        gb.EmitDust(this->unk110.unk478, *((MKVector3 *) &sp418), spC, 0.0f);
+                        gb.EmitDust(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), spC, 0.0f);
                         var_r20_3991 += 1;
                     } while (var_r20_3991 < 5);
                     var_r20_4032 = 0;
@@ -2104,7 +2106,7 @@ loop_34:
                         sp420 = (f64) sp40;
                         unksp41C = 100.0f * MKRand_Float(&gViewSeed, 2.0f, 4.0f);
                         sp8 = MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                        gb.EmitCrud(this->unk110.unk478, *((MKVector3 *) &sp418), sp8);
+                        gb.EmitCrud(*((MKVector3 *) &this->unk588), *((MKVector3 *) &sp418), sp8);
                         var_r20_4032 += 1;
                     } while (var_r20_4032 < 5);
                     break;
@@ -2117,7 +2119,7 @@ loop_34:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk934'
+#if 0 // DRAFT: pointer/array required
 s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
     f64 sp80;
     f64 sp78;
@@ -2148,46 +2150,46 @@ s32 DojoTier1::Spawn(SpawnPointObject *arg0) {
     if (Enemy::Spawn(arg0) == 0) {
         return 0;
     }
-    this->unk110.unk934 = checked_cast<EnemySpawnPointData *, SpawnPointData>((SpawnPointData *) arg0->unk4);
-    temp_r3_4139 = M2C_FIELD(this->unk110.unk934, s32 *, 4);
+    this->unkA2C = checked_cast<EnemySpawnPointData *, SpawnPointData>((SpawnPointData *) arg0->unk4);
+    temp_r3_4139 = M2C_FIELD(this->unkA2C, s32 *, 4);
     if (temp_r3_4139 & 0x08000000) {
         sp38 = 1.0f;
         sp3C = 0.1f;
         sp40 = 0.0f;
         sp44 = 1.0f;
-        this->unk110.unkA10 = 0x08000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x08000000;
         sp78 = (f64) sp38;
         sp80 = (f64) sp40;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp78);
+        this->unkAF8->Enable(1U, (MKVector4) &sp78);
     } else if (temp_r3_4139 & 0x10000000) {
         sp28 = 0.5f;
         sp2C = 0.5f;
         sp30 = 1.0f;
         sp34 = 1.0f;
-        this->unk110.unkA10 = 0x10000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x10000000;
         sp68 = (f64) sp28;
         sp70 = (f64) sp30;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp68);
+        this->unkAF8->Enable(1U, (MKVector4) &sp68);
     } else if (temp_r3_4139 & 0x20000000) {
         sp18 = 1.0f;
         sp1C = 1.0f;
         sp20 = 0.0f;
         sp24 = 1.0f;
-        this->unk110.unkA10 = 0x20000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x20000000;
         sp58 = (f64) sp18;
         sp60 = (f64) sp20;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp58);
+        this->unkAF8->Enable(1U, (MKVector4) &sp58);
     } else if (temp_r3_4139 & 0x40000000) {
         sp8 = 0.25f;
         spC = 1.0f;
         sp10 = 0.25f;
         sp14 = 1.0f;
-        this->unk110.unkA10 = 0x40000000;
+        M2C_FIELD(this, s32 *, 0xB20) = 0x40000000;
         sp48 = (f64) sp8;
         sp50 = (f64) sp10;
-        this->unk110.unkA00->Enable(1U, (MKVector4) &sp48);
+        this->unkAF8->Enable(1U, (MKVector4) &sp48);
     } else {
-        this->unk110.unkA10 = 0;
+        M2C_FIELD(this, s32 *, 0xB20) = 0;
     }
     return 1;
 }
@@ -2214,7 +2216,7 @@ void DojoTier1::Init() {
         temp_r31_4246->__vptr = &__vt;
     }
     temp_r31_4246->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_4246;
+    this->unkA24 = (EnemyAttack *) temp_r31_4246;
 }
 #endif
 
@@ -2274,7 +2276,7 @@ loop_11:
                 var_r3_4353 += 4;
                 goto loop_11;
             }
-            if ((var_r3_4353 == NULL) && ((CharacterBodyFX *) this->unk110.unk8F0 != NULL)) {
+            if ((var_r3_4353 == NULL) && ((u32) this->unk9E8.unk4 != 0)) {
                 temp_r30_4375 = checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
                 KDSound_Play3d(GS_DojoDummy01Extra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
                 var_r29_4383 = 0;
@@ -2283,7 +2285,7 @@ loop_11:
                     temp_r3_4389 = M2C_FIELD(M2C_FIELD(temp_r3_4385, void **, 0x44), void *(**)(void *), 0x3C)(temp_r3_4385);
                     if (temp_r3_4389 != NULL) {
                         temp_r28_4392 = M2C_FIELD(temp_r3_4389, void **, 0x2C);
-                        temp_r3_4395 = this->unk110.unk8F0->GetRandomNode(NULL);
+                        temp_r3_4395 = this->unk9E8.unk4->GetRandomNode(NULL);
                         M2C_FIELD(temp_r3_4389, f64 *, 0) = (f64) M2C_FIELD(temp_r3_4395, f64 *, 8);
                         M2C_FIELD(temp_r3_4389, f64 *, 8) = (f64) M2C_FIELD(temp_r3_4395, f64 *, 0x10);
                         M2C_FIELD(temp_r3_4389, f32 *, 0x20) = 0.0f;
@@ -2312,7 +2314,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void DojoEnemy::Despawn(bool arg0) {
     f64 sp20;
     f64 sp18;
@@ -2328,27 +2330,27 @@ void DojoEnemy::Despawn(bool arg0) {
     sp14 = 1.0f;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unk110.unkA00->Enable(0U, (MKVector4) &sp18);
+    this->unkAF8->Enable(0U, (MKVector4) &sp18);
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk2A8'
 void DojoEnemy::Deinit() {
-    gb.unk2A8.DestroyInstance((CharacterBodyFX *) this->unk110.unkA00);
+    gb.unk2A8.DestroyInstance((CharacterBodyFX *) this->unkAF8);
     Enemy::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: undefined identifier 'unk2A8'
 void DojoEnemy::LoadDone() {
-    CharacterDojoFX *temp_r3_4533;
     s32 temp_r31_4530;
+    s32 temp_r3_4533;
 
     Enemy::LoadDone();
-    this->unk110.unkA00 = checked_cast<CharacterDojoFX *, CharacterBodyFX>(gb.unk2A8.CreateInstance(4));
-    temp_r31_4530 = this->unk110.unk8F0->unk4;
-    temp_r3_4533 = this->unk110.unkA00;
-    temp_r3_4533->InitData(checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + 0x244, this->unk4, temp_r31_4530);
+    this->unkAF8 = checked_cast<CharacterDojoFX *, CharacterBodyFX>(gb.unk2A8.CreateInstance(4));
+    temp_r31_4530 = M2C_FIELD(this->unk9E8.unk4, s32 *, 4);
+    temp_r3_4533 = this->unkAF8;
+    M2C_FIELD(*temp_r3_4533, M2C_UNK (**)(s32, s32, MKModel *, s32), 0xC)(temp_r3_4533, checked_cast<DojoEnemyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + 0x244, this->unk4, temp_r31_4530);
 }
 #endif
 

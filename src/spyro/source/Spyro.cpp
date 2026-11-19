@@ -30,6 +30,7 @@
 #include "spyro/source/HitFX.h"
 #include "spyro/source/InputModifier.h"
 #include "spyro/source/KDCamera.h"
+#include "spyro/source/KDCameraPoint.h"
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSynkerPlayer2Messages.h"
@@ -1300,7 +1301,7 @@ loop_34:
                     if (((var_f31_2489 - temp_r3_2431->GetCollisionRadius(temp_r4_2562, (f32) sp20, (f32) sp28, temp_f3_2577, temp_f4_2567, temp_f5_2574)) < 400.0f) && (temp_f29_2592 > 0.0f) && (temp_f29_2592 > var_f30_2421)) {
                         var_r0_2606 = temp_r3_2431;
                         if (temp_r3_2431 != NULL) {
-                            var_r0_2606 = (Enemy *) &temp_r3_2431->unk110.unk5A8;
+                            var_r0_2606 = (Enemy *) &temp_r3_2431->unk6B0;
                         }
                         var_r31_2423 = var_r0_2606;
                         var_f30_2421 = temp_f29_2592;
@@ -5704,6 +5705,7 @@ void Spyro::Message(MKMessage *arg0) {
     HurtMessage *temp_r3_10986;
     HurtMessage *temp_r3_11095;
     KDCamera *temp_r3_11347;
+    KDCameraPoint *temp_r3_11349;
     KDS_Message_PropResolve *temp_r29_11281;
     Sparx *temp_r3_11560;
     Spyro *var_r0_11539;
@@ -5732,7 +5734,6 @@ void Spyro::Message(MKMessage *arg0) {
     void *temp_r3_11000;
     void *temp_r3_11010;
     void *temp_r3_11106;
-    void *temp_r3_11349;
     void *temp_r3_11525;
     void *temp_r3_11537;
     void *temp_r3_11569;
@@ -6046,7 +6047,7 @@ void Spyro::Message(MKMessage *arg0) {
             goto block_216;
         case 0x48:
             this->unk324 = M2C_FIELD(checked_cast<SetAlphaMessage *, MKMessage>(arg0), f32 *, 8);
-            if ((this->unk324 < 1.0f) || ((temp_r3_11347 = GetCamera(), temp_r4_11348 = temp_r3_11347->unk8, temp_r3_11349 = temp_r3_11347->unk60.unk44, sp50.unk30 = M2C_FIELD(temp_r4_11348, f64 *, 0x30), sp50.unk20 = M2C_FIELD(temp_r3_11349, f64 *, 0), sp50.unk38 = M2C_FIELD(temp_r4_11348, f64 *, 0x38), sp50.unk28 = M2C_FIELD(temp_r3_11349, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp50.unk10 = sp20, sp28 = M2C_BITWISE(f32, sp50.unk28) - M2C_BITWISE(f32, sp50.unk38), sp50.unk18 = (f64) sp28, ((KDMath_GetPitch(*((MKVector3 *) &sp50.unk10)) < 0.0f) != 0)) && (GetCamera()->unk20C > 0.0f))) {
+            if ((this->unk324 < 1.0f) || ((temp_r3_11347 = GetCamera(), temp_r4_11348 = temp_r3_11347->unk8, temp_r3_11349 = temp_r3_11347->unkA4, sp50.unk30 = M2C_FIELD(temp_r4_11348, f64 *, 0x30), sp50.unk20 = M2C_FIELD(temp_r3_11349, f64 *, 0), sp50.unk38 = M2C_FIELD(temp_r4_11348, f64 *, 0x38), sp50.unk28 = M2C_FIELD(temp_r3_11349, f64 *, 8), M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */), sp50.unk10 = sp20, sp28 = M2C_BITWISE(f32, sp50.unk28) - M2C_BITWISE(f32, sp50.unk38), sp50.unk18 = (f64) sp28, ((KDMath_GetPitch(*((MKVector3 *) &sp50.unk10)) < 0.0f) != 0)) && (GetCamera()->unk20C > 0.0f))) {
                 sp14 = 0;
                 sp10 = 0x4A;
                 Message(&sp10);

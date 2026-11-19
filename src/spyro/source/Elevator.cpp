@@ -13,7 +13,7 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: undefined identifier 'sp8'
 void Elevator::Move(float arg0) {
     s8 sp80;
     s32 sp7C;
@@ -39,37 +39,37 @@ void Elevator::Move(float arg0) {
     f32 temp_f30_81;
     f32 temp_f3_63;
     f32 temp_f4_51;
-    f32 temp_r3_80;
     f32 var_f0_52;
     f32 var_f0_64;
+    void **temp_r3_80;
     void *temp_r3_90;
     void *var_r30_87;
 
-    temp_f4_51 = this->unkE0.unk54;
-    var_f0_52 = (this->unkE0.unk58 * gUpdateTimeDelta) + this->unkE0.unk50;
+    temp_f4_51 = this->unk134;
+    var_f0_52 = (this->unk138 * gUpdateTimeDelta) + this->unk130;
     if (var_f0_52 < temp_f4_51) {
 
     } else {
         var_f0_52 = temp_f4_51;
     }
-    this->unkE0.unk50 = var_f0_52;
-    temp_f3_63 = this->unkE0.unk48;
-    var_f0_64 = (arg0 * this->unkE0.unk50) + this->unkE0.unk5C;
+    this->unk130 = var_f0_52;
+    temp_f3_63 = this->unk128;
+    var_f0_64 = (arg0 * this->unk130) + this->unk13C;
     if (var_f0_64 < temp_f3_63) {
 
     } else {
         var_f0_64 = temp_f3_63;
     }
-    temp_f1_71 = this->unkE0.unk4C;
+    temp_f1_71 = this->unk12C;
     if (var_f0_64 > temp_f1_71) {
 
     } else {
         var_f0_64 = temp_f1_71;
     }
-    this->unkE0.unk5C = var_f0_64;
-    temp_r3_80 = this->unkE0.unk40;
-    temp_f30_81 = this->unkE0.unk5C - this->unkE0.unk5C;
-    if (M2C_BITWISE(u32, temp_r3_80) != 0U) {
+    this->unk13C = var_f0_64;
+    temp_r3_80 = this->unk120;
+    temp_f30_81 = this->unk13C - this->unk13C;
+    if (temp_r3_80 != NULL) {
         var_r30_87 = M2C_FIELD(*temp_r3_80, void **, 0x28);
 loop_12:
         if (var_r30_87 != NULL) {
@@ -98,7 +98,7 @@ loop_12:
         }
     }
     sp48 = M2C_FIELD(this, f64 *, 0x110);
-    temp_f2_141 = this->unkE0.unk5C - 650.0f;
+    temp_f2_141 = this->unk13C - 650.0f;
     sp50 = M2C_FIELD(this, f64 *, 0x118);
     this->unkE0.unk30 = (f32) sp48;
     this->unkE0.unk34 = temp_f2_141;
@@ -108,21 +108,19 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
 void Elevator::WaitState() {
-    if (this->unkE0.unk68 < this->unkB8) {
-        if ((u8) M2C_FIELD(this, u8 *, 0x154) != 0) {
-            this->unkE0.unk70 = 4e-45f;
-            M2C_FIELD(this, u8 *, 0x154) = 0U;
+    if (this->unk148 < this->unkB8) {
+        if ((u8) this->unk154 != 0) {
+            this->unk150 = 3;
+            this->unk154 = 0;
         } else {
-            this->unkE0.unk70 = 3e-45f;
+            this->unk150 = 2;
         }
-        this->unkE0.unk6C = this->unkB8;
+        this->unk14C = this->unkB8;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk68'
+#if 0 // DRAFT: undefined identifier 'unkspC'
 void Elevator::ShudderState() {
     f64 sp10;
     f64 sp8;
@@ -133,66 +131,62 @@ void Elevator::ShudderState() {
     f32 var_f0_220;
     f32 var_f1_212;
 
-    temp_f1_196 = this->unkE0.unk68;
+    temp_f1_196 = this->unk148;
     temp_f4_197 = this->unkB8;
     temp_f31_203 = (temp_f1_196 - temp_f4_197) / 0.5f;
-    var_f1_212 = 10.0f * (this->unkE0.unk50 * _table_sinf(4.712389f / ((1.0f + temp_f1_196) - temp_f4_197)) * (temp_f31_203 * temp_f31_203));
+    var_f1_212 = 10.0f * (this->unk130 * _table_sinf(4.712389f / ((1.0f + temp_f1_196) - temp_f4_197)) * (temp_f31_203 * temp_f31_203));
     if (var_f1_212 < 0.0f) {
         var_f1_212 = -var_f1_212;
     }
-    if ((u8) M2C_FIELD(this, u8 *, 0x154) != 0) {
-        var_f0_220 = this->unkE0.unk48;
+    if ((u8) this->unk154 != 0) {
+        var_f0_220 = this->unk128;
     } else {
-        var_f0_220 = this->unkE0.unk4C;
+        var_f0_220 = this->unk12C;
     }
-    this->unkE0.unk5C = var_f1_212 + var_f0_220;
+    this->unk13C = var_f1_212 + var_f0_220;
     sp8 = M2C_FIELD(this, f64 *, 0x110);
-    temp_f2_233 = this->unkE0.unk5C - 650.0f;
+    temp_f2_233 = this->unk13C - 650.0f;
     sp10 = M2C_FIELD(this, f64 *, 0x118);
     this->unkE0.unk30 = (f32) sp8;
     this->unkE0.unk34 = temp_f2_233;
     this->unkE0.unk38 = (f32) sp10;
     this->unkE0.unk3C = 1.0f;
     unkspC = temp_f2_233;
-    if (this->unkE0.unk68 < this->unkB8) {
-        this->unkE0.unk70 = 1e-45f;
-        this->unkE0.unk68 = this->unkB8 + this->unkE0.unk64;
-        this->unkE0.unk50 = 0.0f;
+    if (this->unk148 < this->unkB8) {
+        this->unk150 = 1;
+        this->unk148 = this->unkB8 + this->unk144;
+        this->unk130 = 0.0f;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
 void Elevator::GoingDownState() {
     Move(-1.0f);
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-    if (this->unkE0.unk5C == this->unkE0.unk4C) {
-        this->unkE0.unk70 = 6e-45f;
-        this->unkE0.unk68 = 0.5f + this->unkB8;
+    if (this->unk13C == this->unk12C) {
+        this->unk150 = 4;
+        this->unk148 = 0.5f + this->unkB8;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk5C'
 void Elevator::GoingUpState() {
     Move(1.0f);
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (this->unkE0.unk5C == this->unkE0.unk48) {
-        M2C_FIELD(this, s8 *, 0x154) = 1;
-        this->unkE0.unk70 = 6e-45f;
-        this->unkE0.unk68 = 0.5f + this->unkB8;
+    if (this->unk13C == this->unk128) {
+        this->unk154 = 1;
+        this->unk150 = 4;
+        this->unk148 = 0.5f + this->unkB8;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: undefined identifier 'PlatformAttachDetachMsg'
 void Elevator::Message(MKMessage *arg0) {
     s32 spC;
     s32 sp8;
-    f32 temp_r3_379;
     s32 temp_r0_333;
     u32 *temp_r3_421;
     void ***temp_r3_362;
+    void **temp_r3_379;
     void **temp_r5_376;
     void *temp_r3_360;
     void *temp_r3_419;
@@ -203,11 +197,11 @@ void Elevator::Message(MKMessage *arg0) {
     switch (temp_r0_333) {                          /* irregular */
     case -3:
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-        if (M2C_BITWISE(f32, this->unkE0.unk60) == this->unkE0.unk48) {
-            M2C_FIELD(this, s8 *, 0x154) = 1;
+        if (this->unk140 == this->unk128) {
+            this->unk154 = 1;
         }
-        this->unkE0.unk70 = 0.0f;
-        this->unkE0.unk6C = this->unkB8;
+        this->unk150 = 0;
+        this->unk14C = this->unkB8;
         break;
     case 35:
         temp_r3_360 = checked_cast<PlatformAttachDetachMsg *, MKMessage>(arg0);
@@ -215,8 +209,8 @@ void Elevator::Message(MKMessage *arg0) {
         if ((temp_r3_362 != NULL) && ((void **) *temp_r3_362 != NULL)) {
             temp_r5_376 = *M2C_FIELD(temp_r3_360, void ****, 8);
             if (temp_r5_376 != M2C_FIELD(*gb, u32 (**)(void **), 0xC)(gb)) {
-                temp_r3_379 = this->unkE0.unk40;
-                if (M2C_BITWISE(u32, temp_r3_379) != 0U) {
+                temp_r3_379 = this->unk120;
+                if (temp_r3_379 != NULL) {
                     temp_r4_384 = M2C_FIELD(*temp_r3_379, void **, 0x28);
                     if (temp_r4_384 != (u32) M2C_FIELD(*temp_r5_376, u32 *, 0x28)) {
                         var_r26_388 = temp_r4_384;
@@ -228,11 +222,11 @@ loop_16:
                             var_r26_388 = M2C_FIELD(var_r26_388, void **, 0x38);
                             goto loop_16;
                         }
-                        this->unkE0.unk44 = 0.0f;
+                        this->unk124 = 0;
                     }
                 }
-                this->unkE0.unk44 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unkE0.unk44) + 1));
-                this->unkE0.unk40 = M2C_BITWISE(f32, *M2C_FIELD(temp_r3_360, void ****, 8));
+                this->unk124 += 1;
+                this->unk120 = *M2C_FIELD(temp_r3_360, void ****, 8);
                 M2C_FIELD(temp_r3_360, s8 *, 0xC) = 1;
             }
         }
@@ -241,9 +235,9 @@ loop_16:
         temp_r3_419 = checked_cast<PlatformAttachDetachMsg *, MKMessage>(arg0);
         temp_r3_421 = M2C_FIELD(temp_r3_419, u32 **, 8);
         if ((temp_r3_421 != NULL) && ((u32) *temp_r3_421 != 0U) && ((u32) *M2C_FIELD(temp_r3_419, u32 **, 8) != M2C_FIELD(*gb, u32 (**)(void **), 0xC)(gb))) {
-            this->unkE0.unk44 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unkE0.unk44) - 1));
-            if (M2C_BITWISE(s32, this->unkE0.unk44) <= 0) {
-                this->unkE0.unk40 = 0.0f;
+            this->unk124 -= 1;
+            if ((s32) this->unk124 <= 0) {
+                this->unk120 = NULL;
             }
         }
         break;
@@ -252,17 +246,17 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void Elevator::PropUpdate() {
-    f32 temp_r0_469;
+    s32 temp_r0_469;
 
     GameProp::PropUpdate();
     if (this->unk10 & 0x80000) {
-        temp_r0_469 = this->unkE0.unk70;
-        switch (M2C_BITWISE(s32, temp_r0_469)) {    /* irregular */
+        temp_r0_469 = this->unk150;
+        switch (temp_r0_469) {                      /* irregular */
         case 0:
-            this->unkE0.unk68 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
-            this->unkE0.unk70 = 1e-45f;
+            this->unk148 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
+            this->unk150 = 1;
             break;
         case 1:
             WaitState();
@@ -282,7 +276,7 @@ void Elevator::PropUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk60'
+#if 0 // DRAFT: undefined identifier 'unkspC'
 void Elevator::Reset() {
     f64 sp10;
     f64 sp8;
@@ -290,22 +284,22 @@ void Elevator::Reset() {
 
     GameProp::Reset();
     sp8 = M2C_FIELD(this, f64 *, 0x110);
-    temp_f3_540 = M2C_BITWISE(f32, this->unkE0.unk60) - 650.0f;
+    temp_f3_540 = this->unk140 - 650.0f;
     sp10 = M2C_FIELD(this, f64 *, 0x118);
     this->unkE0.unk30 = (f32) sp8;
     this->unkE0.unk34 = temp_f3_540;
     this->unkE0.unk38 = (f32) sp10;
     unkspC = temp_f3_540;
     this->unkE0.unk3C = 1.0f;
-    this->unkE0.unk68 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
-    this->unkE0.unk70 = 1e-45f;
+    this->unk148 = this->unkB8 + MKRand_Float(&gViewSeed, 0.0f, 2.0f);
+    this->unk150 = 1;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_BITWISE(f32, this->unkE0.unk60) == this->unkE0.unk48) {
-        M2C_FIELD(this, s8 *, 0x154) = 1;
+    if (this->unk140 == this->unk128) {
+        this->unk154 = 1;
     } else {
-        M2C_FIELD(this, s8 *, 0x154) = 0;
+        this->unk154 = 0;
     }
-    this->unkE0.unk5C = 50.0f;
+    this->unk13C = 50.0f;
     ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->ForceUpdate((u32) this->unk70.unkC);
 }
 #endif
@@ -328,57 +322,54 @@ void Elevator::LoadDone() {
     this->unkC8 = M2C_FIELD(temp_r3_608, f64 *, 0);
     this->unkD0 = M2C_FIELD(temp_r3_608, f64 *, 8);
     MKModel_SetSubObjectLocalMatrix(this->unk4, (SubObjectType) 0, MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "c_collide01"), &this->unkE0);
-    if (this->unkE0.unk48 > 600.0f) {
-        this->unkE0.unk48 = 600.0f;
+    if (this->unk128 > 600.0f) {
+        this->unk128 = 600.0f;
     }
-    if (this->unkE0.unk4C < 50.0f) {
-        this->unkE0.unk4C = 50.0f;
+    if (this->unk12C < 50.0f) {
+        this->unk12C = 50.0f;
     }
-    temp_f1_636 = M2C_BITWISE(f32, this->unkE0.unk60);
-    temp_f0_637 = this->unkE0.unk48;
+    temp_f1_636 = this->unk140;
+    temp_f0_637 = this->unk128;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if (temp_f1_636 == temp_f0_637) {
-        this->unkE0.unk60 = temp_f0_637;
-        M2C_FIELD(this, s8 *, 0x154) = 1;
+        this->unk140 = temp_f0_637;
+        this->unk154 = 1;
     } else {
-        temp_f0_646 = this->unkE0.unk4C;
+        temp_f0_646 = this->unk12C;
         if (temp_f1_636 < temp_f0_646) {
-            this->unkE0.unk60 = temp_f0_646;
+            this->unk140 = temp_f0_646;
         }
     }
     sp8 = M2C_FIELD(this, f64 *, 0x110);
-    temp_f2_658 = M2C_BITWISE(f32, this->unkE0.unk60) - 650.0f;
+    temp_f2_658 = this->unk140 - 650.0f;
     sp10 = M2C_FIELD(this, f64 *, 0x118);
     this->unkE0.unk30 = (f32) sp8;
     this->unkE0.unk34 = temp_f2_658;
     this->unkE0.unk38 = (f32) sp10;
     this->unkE0.unk3C = 1.0f;
     unkspC = temp_f2_658;
-    this->unkE0.unk70 = 0.0f;
+    this->unk150 = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 s32 Elevator::LoadLine(MKIniLine *arg0) {
     s32 var_r31_684;
 
     var_r31_684 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("maxHeight", &this->unkE0.unk48, 0) != 0) || (arg0->LoadFloat("minHeight", &this->unkE0.unk4C, 0) != 0) || (arg0->LoadFloat("startHeight", (f32 *) &this->unkE0.unk60, 0) != 0) || (arg0->LoadFloat("maxYSpeed", &this->unkE0.unk54, 0) != 0) || (arg0->LoadFloat("yAcceleration", &this->unkE0.unk58, 0) != 0) || (arg0->LoadFloat("waitTime", &this->unkE0.unk64, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("maxHeight", &this->unk128, 0) != 0) || (arg0->LoadFloat("minHeight", &this->unk12C, 0) != 0) || (arg0->LoadFloat("startHeight", &this->unk140, 0) != 0) || (arg0->LoadFloat("maxYSpeed", &this->unk134, 0) != 0) || (arg0->LoadFloat("yAcceleration", &this->unk138, 0) != 0) || (arg0->LoadFloat("waitTime", &this->unk144, 0) != 0)) {
         var_r31_684 = 1;
     }
     return var_r31_684;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
 void Elevator::Deinit() {
     s32 spC;
     s32 sp8;
-    f32 temp_r3_761;
+    void **temp_r3_761;
     void *var_r29_767;
 
-    temp_r3_761 = this->unkE0.unk40;
-    if (M2C_BITWISE(u32, temp_r3_761) != 0U) {
+    temp_r3_761 = this->unk120;
+    if (temp_r3_761 != NULL) {
         var_r29_767 = M2C_FIELD(*temp_r3_761, void **, 0x28);
 loop_3:
         if (var_r29_767 != NULL) {
@@ -388,29 +379,26 @@ loop_3:
             var_r29_767 = M2C_FIELD(var_r29_767, void **, 0x38);
             goto loop_3;
         }
-        this->unkE0.unk44 = 0.0f;
+        this->unk124 = 0;
     }
-    this->unkE0.unk40 = 0.0f;
+    this->unk120 = NULL;
     GameProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 void Elevator::Init() {
     GameProp::Init();
     this->unkE0.SetIdentity();
-    this->unkE0.unk48 = 400.0f;
-    this->unkE0.unk4C = 50.0f;
-    this->unkE0.unk50 = 0.0f;
-    this->unkE0.unk5C = 50.0f;
-    this->unkE0.unk60 = 50.0f;
-    this->unkE0.unk54 = 30.000002f;
-    this->unkE0.unk58 = 5.0f;
-    this->unkE0.unk64 = 3.0f;
-    this->unkE0.unk68 = 0.0f;
-    M2C_FIELD(this, s8 *, 0x154) = 0;
-    this->unkE0.unk6C = 0.0f;
-    this->unkE0.unk40 = 0.0f;
-    this->unkE0.unk44 = 0.0f;
+    this->unk128 = 400.0f;
+    this->unk12C = 50.0f;
+    this->unk130 = 0.0f;
+    this->unk13C = 50.0f;
+    this->unk140 = 50.0f;
+    this->unk134 = 30.000002f;
+    this->unk138 = 5.0f;
+    this->unk144 = 3.0f;
+    this->unk148 = 0.0f;
+    this->unk154 = 0;
+    this->unk14C = 0.0f;
+    this->unk120 = NULL;
+    this->unk124 = 0;
 }
-#endif

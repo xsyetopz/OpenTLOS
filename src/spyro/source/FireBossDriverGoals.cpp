@@ -5,28 +5,28 @@
 #include "spyro/source/EnemyDescriptor.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: undefined identifier '__vptr'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 
 void FireBossDriverGoal_Charge::Exit() {
-    AnimSequence *temp_r4_17;
     Enemy *temp_r3_16;
+    EnemyDescriptor *temp_r4_17;
 
     temp_r3_16 = this->unkC;
-    temp_r4_17 = temp_r3_16->unk110.unk940;
-    temp_r3_16->SetAnim(temp_r4_17, (AnimTransition *) &temp_r4_17->unk40, 0.0f, 0U);
+    temp_r4_17 = temp_r3_16->unkA38;
+    temp_r3_16->SetAnim((AnimSequence *) temp_r4_17, (AnimTransition *) &temp_r4_17->__vptr, 0.0f, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: illegal operand
 u8 FireBossDriverGoal_Charge::Update() {
-    AnimSequence *temp_r4_41;
-    AnimSequence *temp_r4_56;
-    AnimSequence *temp_r4_66;
     Enemy *temp_r29_35;
     Enemy *temp_r29_60;
     Enemy *temp_r3_53;
+    EnemyDescriptor *temp_r4_41;
+    EnemyDescriptor *temp_r4_56;
+    EnemyDescriptor *temp_r4_66;
     u8 var_r30_36;
     u8 var_r30_61;
 
@@ -34,21 +34,21 @@ u8 FireBossDriverGoal_Charge::Update() {
     temp_r29_35 = this->unkC;
     var_r30_36 = 0;
     if (temp_r29_35->HasAnimFinished() != 0) {
-        temp_r4_41 = temp_r29_35->unk110.unk940;
-        if ((temp_r4_41 != NULL) && ((u32) temp_r4_41->unk0 == (u32) M2C_FIELD(temp_r29_35->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_41 = temp_r29_35->unkA38;
+        if ((temp_r4_41 != NULL) && ((s8 *) temp_r4_41->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_35, void **, 0x630), u32 *, 0x20))) {
             var_r30_36 = 1;
         }
     }
     if (var_r30_36 != 0) {
         temp_r3_53 = this->unkC;
-        temp_r4_56 = temp_r3_53->unk110.unk940;
-        temp_r3_53->SetAnim(temp_r4_56, (AnimTransition *) &temp_r4_56->unk20, 0.0f, 0U);
+        temp_r4_56 = temp_r3_53->unkA38;
+        temp_r3_53->SetAnim((AnimSequence *) temp_r4_56, (AnimTransition *) &temp_r4_56->unk20, 0.0f, 0U);
     }
     temp_r29_60 = this->unkC;
     var_r30_61 = 0;
     if (temp_r29_60->HasAnimFinished() != 0) {
-        temp_r4_66 = temp_r29_60->unk110.unk940;
-        if ((temp_r4_66 != NULL) && ((u32) temp_r4_66->unk40 == (u32) M2C_FIELD(temp_r29_60->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_66 = temp_r29_60->unkA38;
+        if ((temp_r4_66 != NULL) && ((void *) temp_r4_66->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_60, void **, 0x630), u32 *, 0x20))) {
             var_r30_61 = 1;
         }
     }
@@ -66,25 +66,25 @@ void FireBossDriverGoal_Charge::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void FireBossDriverGoal_Crash::Exit() {
-    AnimSequence *temp_r4_120;
     Enemy *temp_r3_119;
+    EnemyDescriptor *temp_r4_120;
 
     temp_r3_119 = this->unkC;
-    temp_r4_120 = temp_r3_119->unk110.unk940;
-    temp_r3_119->SetAnim(temp_r4_120, (AnimTransition *) &temp_r4_120->unk40, 0.0f, 0U);
+    temp_r4_120 = temp_r3_119->unkA38;
+    temp_r3_119->SetAnim((AnimSequence *) temp_r4_120, (AnimTransition *) &temp_r4_120->__vptr, 0.0f, 0U);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: illegal operand
 u8 FireBossDriverGoal_Crash::Update() {
-    AnimSequence *temp_r4_144;
-    AnimSequence *temp_r4_159;
-    AnimSequence *temp_r4_169;
     Enemy *temp_r29_138;
     Enemy *temp_r29_163;
     Enemy *temp_r3_156;
+    EnemyDescriptor *temp_r4_144;
+    EnemyDescriptor *temp_r4_159;
+    EnemyDescriptor *temp_r4_169;
     u8 var_r30_139;
     u8 var_r30_164;
 
@@ -92,21 +92,21 @@ u8 FireBossDriverGoal_Crash::Update() {
     temp_r29_138 = this->unkC;
     var_r30_139 = 0;
     if (temp_r29_138->HasAnimFinished() != 0) {
-        temp_r4_144 = temp_r29_138->unk110.unk940;
-        if ((temp_r4_144 != NULL) && ((u32) temp_r4_144->unk0 == (u32) M2C_FIELD(temp_r29_138->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_144 = temp_r29_138->unkA38;
+        if ((temp_r4_144 != NULL) && ((s8 *) temp_r4_144->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_138, void **, 0x630), u32 *, 0x20))) {
             var_r30_139 = 1;
         }
     }
     if (var_r30_139 != 0) {
         temp_r3_156 = this->unkC;
-        temp_r4_159 = temp_r3_156->unk110.unk940;
-        temp_r3_156->SetAnim(temp_r4_159, (AnimTransition *) &temp_r4_159->unk20, 0.0f, 0U);
+        temp_r4_159 = temp_r3_156->unkA38;
+        temp_r3_156->SetAnim((AnimSequence *) temp_r4_159, (AnimTransition *) &temp_r4_159->unk20, 0.0f, 0U);
     }
     temp_r29_163 = this->unkC;
     var_r30_164 = 0;
     if (temp_r29_163->HasAnimFinished() != 0) {
-        temp_r4_169 = temp_r29_163->unk110.unk940;
-        if ((temp_r4_169 != NULL) && ((u32) temp_r4_169->unk40 == (u32) M2C_FIELD(temp_r29_163->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_169 = temp_r29_163->unkA38;
+        if ((temp_r4_169 != NULL) && ((void *) temp_r4_169->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_163, void **, 0x630), u32 *, 0x20))) {
             var_r30_164 = 1;
         }
     }
@@ -124,7 +124,7 @@ void FireBossDriverGoal_Crash::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 FireBossDriverGoal_Idle::Update() {
     AnimSequence *temp_r4_233;
     AnimSequence *temp_r4_246;
@@ -141,17 +141,17 @@ u8 FireBossDriverGoal_Idle::Update() {
         temp_r29_227 = this->unkC;
         var_r30_228 = 0;
         if (temp_r29_227->HasAnimFinished() != 0) {
-            temp_r4_233 = temp_r29_227->unk110.unk940;
-            if ((temp_r4_233 != NULL) && ((u32) temp_r4_233->unk0 == (u32) M2C_FIELD(temp_r29_227->unk110.unk520, u32 *, 0x20))) {
+            temp_r4_233 = temp_r29_227->unkA50;
+            if ((temp_r4_233 != NULL) && ((u32) temp_r4_233->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_227, void **, 0x630), u32 *, 0x20))) {
                 var_r30_228 = 1;
             }
         }
-        if ((var_r30_228 != 0) && (temp_r3_245 = this->unkC, temp_r4_246 = temp_r3_245->unk110.unk940, (((u32) temp_r4_246->unk20 == 0) == 0))) {
+        if ((var_r30_228 != 0) && (temp_r3_245 = this->unkC, temp_r4_246 = temp_r3_245->unkA50, (((u32) temp_r4_246->unk20 == 0) == 0))) {
             temp_r3_245->SetAnim(temp_r4_246, (AnimTransition *) &temp_r4_246->unk20, 0.15f, 0U);
         } else {
             temp_r3_256 = this->unkC;
-            temp_r4_257 = temp_r3_256->unk110.unk940;
-            if (((u32) temp_r4_257->unk40 != 0) && (temp_r6_261 = temp_r3_256->unk110.unk520, (((u32) M2C_FIELD(temp_r6_261, u32 *, 0x20) == (u32) temp_r4_257->unk20) != 0))) {
+            temp_r4_257 = temp_r3_256->unkA50;
+            if (((u32) temp_r4_257->unk40 != 0) && (temp_r6_261 = M2C_FIELD(temp_r3_256, void **, 0x630), (((u32) M2C_FIELD(temp_r6_261, u32 *, 0x20) == (u32) temp_r4_257->unk20) != 0))) {
                 if ((s32) M2C_FIELD(temp_r6_261, s32 *, 0x44) >= 3) {
                     temp_r3_256->SetAnim(temp_r4_257, (AnimTransition *) &temp_r4_257->unk40, 0.15f, 0U);
                 }

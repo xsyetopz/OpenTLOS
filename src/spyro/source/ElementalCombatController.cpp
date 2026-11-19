@@ -404,13 +404,13 @@ void ElementalCombatController::Init() {
         if (temp_r29_991 != NULL) {
             temp_r29_991->__vptr = &__vt;
             temp_r29_991->__vptr = &__vt;
-            temp_r29_991->unk8 = 0;
+            M2C_FIELD(temp_r29_991, s32 *, 8) = 0;
             ((EventMessage *) (temp_r29_991 + 8))->Init();
-            temp_r29_991->unkC = 0;
+            M2C_FIELD(temp_r29_991, s32 *, 0xC) = 0;
             ((EventMessage *) (temp_r29_991 + 0xC))->Init();
-            temp_r29_991->unk10 = 0;
+            M2C_FIELD(temp_r29_991, s32 *, 0x10) = 0;
             ((EventMessage *) (temp_r29_991 + 0x10))->Init();
-            temp_r29_991->unk14 = 0;
+            M2C_FIELD(temp_r29_991, s32 *, 0x14) = 0;
             ((EventMessage *) (temp_r29_991 + 0x14))->Init();
         }
         ((SpawnPointObject *) (this + (var_r30_985 + 0x120)))->Init(temp_r29_991);

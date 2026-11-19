@@ -1,4 +1,5 @@
 #include "spyro/source/Cynder.h"
+#include "common/Source/MKAnimScript.h"
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKBaseSceneManager.h"
 #include "common/Source/MKCollisionManager.h"
@@ -20,10 +21,12 @@
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyRegion.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FireBombFX.h"
 #include "spyro/source/FuryFXFire.h"
 #include "spyro/source/GameMessages.h"
 #include "spyro/source/KDPath.h"
+#include "spyro/source/KDSound.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/NodeLookAt.h"
 #include "spyro/source/ScreenWobbleFX.h"
@@ -38,7 +41,6 @@
 #include "common/Source/system_extras.h"
 #include "spyro/source/KDMath.h"
 #include "spyro/source/KDRandom.h"
-#include "spyro/source/KDSound.h"
 #include "spyro/source/PhrasePlayer.h"
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
@@ -68,30 +70,30 @@ extern void *gpTranslation_StringArray;
 static s32 lit_897 = 0;
 static u8 lit_898 = 0;
 
-#if 0 // DRAFT: undefined identifier 'unkD94'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 static M2C_UNK lit_780;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_781;                                /* unable to generate initializer: unknown type; const */
 
 void Cynder::ResetFury() {
-    Corona *temp_r4_161;
-    SuckeyPS *temp_r3_179;
+    f32 temp_r4_161;
+    s32 temp_r3_179;
 
     this->unkD94 = 0;
     this->unkF74 = 0.0f;
     this->unkF70 = 0.0f;
-    this->unkF1F = 0;
-    this->unkF1E = 0;
-    temp_r4_161 = this->unkF2C;
-    if (temp_r4_161 != NULL) {
-        temp_r4_161->unk31 &= ~0x40;
+    M2C_FIELD(this, s8 *, 0xF1F) = 0;
+    M2C_FIELD(this, s8 *, 0xF1E) = 0;
+    temp_r4_161 = this->unkF14;
+    if (M2C_BITWISE(u32, temp_r4_161) != 0U) {
+        M2C_FIELD(temp_r4_161, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_161, u8 *, 0x31) & ~0x40);
     }
     ((FuryFXFire *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0x3C)(gb), void **, 4), void **, 0x14), FuryFXFire **, 0x260)))->ResetFury();
-    temp_r3_179 = this->unkF28;
-    temp_r3_179->Disable();
+    temp_r3_179 = this->unkF10.unk0;
+    M2C_FIELD(M2C_FIELD(temp_r3_179, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_179);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF24'
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void Cynder::TriggerFury() {
     f64 sp10;
     f64 sp8;
@@ -102,11 +104,11 @@ void Cynder::TriggerFury() {
     temp_f1_203 = M2C_FIELD(temp_r4_200, f64 *, 0x30);
     sp8 = temp_f1_203;
     sp10 = M2C_FIELD(temp_r4_200, f64 *, 0x38);
-    ((FuryFXFire *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0x3C)(gb, temp_r4_200, temp_f1_203), void **, 4), void **, 0x14), FuryFXFire **, 0x260)))->Trigger(*((MKVector3 *) &sp8), 0U, 1U, (HeroHurtReactionType) this->unkF24);
+    ((FuryFXFire *) (M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **, void *, f64), 0x3C)(gb, temp_r4_200, temp_f1_203), void **, 4), void **, 0x14), FuryFXFire **, 0x260)))->Trigger(*((MKVector3 *) &sp8), 0U, 1U, (HeroHurtReactionType) this->unkF0C.unk0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF1F'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void Cynder::UpdateFuryPowerUp() {
     f64 spF8;
     f64 spF0;
@@ -136,27 +138,27 @@ void Cynder::UpdateFuryPowerUp() {
     f32 sp28;
     f32 sp18;
     f32 sp8;
-    Corona *temp_r3_412;
-    Corona *temp_r3_419;
-    Corona *temp_r4_266;
-    SuckeyPS *temp_r3_259;
     f32 temp_f28_354;
     f32 temp_f29_355;
+    f32 temp_r3_412;
+    f32 temp_r3_419;
+    f32 temp_r4_266;
     f32 var_f0_278;
+    s32 temp_r3_259;
     s32 var_r30_348;
 
-    if ((u8) this->unkF1F == 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0xF1F) == 0) {
         this->unkD94 = 0;
         return;
     }
     this->unkD94 = 1;
-    if (((u8) this->unkF1F != 0) && ((u8) M2C_FIELD(&gb, u8 *, 0xD0) != 0)) {
-        temp_r3_259 = this->unkF28;
-        temp_r3_259->Disable();
-        this->unkF1F = 0;
-        temp_r4_266 = this->unkF2C;
-        if (temp_r4_266 != NULL) {
-            temp_r4_266->unk31 &= ~0x40;
+    if (((u8) M2C_FIELD(this, u8 *, 0xF1F) != 0) && ((u8) M2C_FIELD(&gb, u8 *, 0xD0) != 0)) {
+        temp_r3_259 = this->unkF10.unk0;
+        M2C_FIELD(M2C_FIELD(temp_r3_259, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_259);
+        M2C_FIELD(this, u8 *, 0xF1F) = 0U;
+        temp_r4_266 = this->unkF14;
+        if (M2C_BITWISE(u32, temp_r4_266) != 0U) {
+            M2C_FIELD(temp_r4_266, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_266, u8 *, 0x31) & ~0x40);
         }
     } else {
         this->unkF70 -= gUpdateTimeDelta;
@@ -167,12 +169,12 @@ void Cynder::UpdateFuryPowerUp() {
             var_f0_278 = 0.0f;
         }
         this->unkF70 = var_f0_278;
-        if ((s32) this->unkF24 == 8) {
+        if ((s32) this->unkF0C.unk0 == 8) {
             MKVector(0.0f, 300.0f, 0.0f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             spE0 = sp20;
-            sp28 = this->unk110.unk480 + spD8;
+            sp28 = this->unk588.unk4 + spD8;
             this->unkF60 = (f32) spE0;
             spE8 = (f64) sp28;
             this->unkF64 = unkspE4;
@@ -183,7 +185,7 @@ void Cynder::UpdateFuryPowerUp() {
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $r29, $r0, 0x0, qr0 */);
             M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
             spC0 = sp10;
-            sp18 = this->unk110.unk480 + spB8;
+            sp18 = this->unk588.unk4 + spB8;
             this->unkF60 = (f32) spC0;
             spC8 = (f64) sp18;
             this->unkF64 = unkspC4;
@@ -216,15 +218,15 @@ void Cynder::UpdateFuryPowerUp() {
             sp38 = -(f32) spF8;
             sp70 = (f64) sp30;
             sp78 = (f64) sp38;
-            this->unkF28->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &sp70), sp8, 2.0f);
+            this->unkF10.unk0->Emit(*((MKVector3 *) &spF0), *((MKVector3 *) &sp70), sp8, 2.0f);
             var_r30_348 += 1;
         } while (var_r30_348 < 5);
-        temp_r3_412 = this->unkF2C;
-        if (temp_r3_412 != NULL) {
-            temp_r3_412->unk24 = (15.0f * temp_f28_354) + 1.0f;
-            temp_r3_419 = this->unkF2C;
-            temp_r3_419->unk0 = (f64) M2C_FIELD(this, f32 *, 0xF60);
-            temp_r3_419->unk8 = (f64) M2C_FIELD(this, f32 *, 0xF68);
+        temp_r3_412 = this->unkF14;
+        if (M2C_BITWISE(u32, temp_r3_412) != 0U) {
+            M2C_FIELD(temp_r3_412, f32 *, 0x24) = (f32) ((15.0f * temp_f28_354) + 1.0f);
+            temp_r3_419 = this->unkF14;
+            M2C_FIELD(temp_r3_419, f64 *, 0) = (f64) M2C_FIELD(this, f32 *, 0xF60);
+            M2C_FIELD(temp_r3_419, f64 *, 8) = (f64) M2C_FIELD(this, f32 *, 0xF68);
         }
     }
 }
@@ -232,45 +234,45 @@ void Cynder::UpdateFuryPowerUp() {
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'HeroHurtReactionType'
 void Cynder::TriggerFuryPowerUp(float arg0, HeroHurtReactionType arg1) {
-    Corona *temp_r3_490;
-    Corona *temp_r3_500;
-    Corona *temp_r3_505;
-    SuckeyPS *temp_r3_470;
-    SuckeyPS *temp_r3_475;
+    f32 temp_r3_490;
+    f32 temp_r3_500;
+    f32 temp_r3_505;
+    s32 temp_r3_470;
+    s32 temp_r3_475;
     void *temp_r3_458;
 
     this->unkF74 = arg0;
     this->unkF70 = arg0;
-    this->unkF1F = 1;
-    this->unkF24 = (s32) arg1;
+    M2C_FIELD(this, s8 *, 0xF1F) = 1;
+    this->unkF0C.unk0 = (s32) arg1;
     temp_r3_458 = this->unk8;
     this->unkF60 = M2C_FIELD(temp_r3_458, f32 *, 0x30);
     this->unkF64 = M2C_FIELD(temp_r3_458, f32 *, 0x34);
     this->unkF68 = M2C_FIELD(temp_r3_458, f32 *, 0x38);
     this->unkF6C = 1.0f;
     KDSound_Play3d(GS_CynderFuryBuildUp, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
-    temp_r3_470 = this->unkF28;
-    temp_r3_470->Reset();
-    temp_r3_475 = this->unkF28;
-    temp_r3_475->Enable();
-    if ((s32) this->unkF24 == 8) {
+    temp_r3_470 = this->unkF10.unk0;
+    M2C_FIELD(M2C_FIELD(temp_r3_470, void **, 0x44), M2C_UNK (**)(s32), 0x20)(temp_r3_470);
+    temp_r3_475 = this->unkF10.unk0;
+    M2C_FIELD(M2C_FIELD(temp_r3_475, void **, 0x44), M2C_UNK (**)(s32), 0x30)(temp_r3_475);
+    if ((s32) this->unkF0C.unk0 == 8) {
         gb.GetSpyro();
         ((Spyro *) (M2C_ERROR(/* Read from unset register $r3 */)))->UseCynderStrafeState(1U, 0U);
     }
-    temp_r3_490 = this->unkF2C;
-    if (temp_r3_490 != NULL) {
-        temp_r3_490->unk31 |= 0x40;
-        this->unkF2C->unk24 = 1.0f;
-        temp_r3_500 = this->unkF2C;
-        temp_r3_500->unk0 = (f64) M2C_FIELD(this, f32 *, 0xF60);
-        temp_r3_500->unk8 = (f64) M2C_FIELD(this, f32 *, 0xF68);
-        temp_r3_505 = this->unkF2C;
-        temp_r3_505->unk31 |= 0x10;
+    temp_r3_490 = this->unkF14;
+    if (M2C_BITWISE(u32, temp_r3_490) != 0U) {
+        M2C_FIELD(temp_r3_490, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r3_490, u8 *, 0x31) | 0x40);
+        M2C_FIELD(this->unkF14, f32 *, 0x24) = 1.0f;
+        temp_r3_500 = this->unkF14;
+        M2C_FIELD(temp_r3_500, f64 *, 0) = (f64) M2C_FIELD(this, f32 *, 0xF60);
+        M2C_FIELD(temp_r3_500, f64 *, 8) = (f64) M2C_FIELD(this, f32 *, 0xF68);
+        temp_r3_505 = this->unkF14;
+        M2C_FIELD(temp_r3_505, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r3_505, u8 *, 0x31) | 0x10);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: expression syntax error
 void Cynder::CalcLandingFlightPathData() {
     f32 temp_f3_848;
     f32 temp_f6_854;
@@ -284,29 +286,29 @@ void Cynder::CalcLandingFlightPathData() {
     void *temp_r3_847;
     void *temp_r5_559;
     void *temp_r6_583;
-    if (((u8) this->unk110.unk9F8 >> 7U) & 1) {
+    if (((u8) M2C_FIELD(this, u8 *, 0xB08) >> 7U) & 1) {
         var_f30_541 = -1.0f;
     } else {
         var_f30_541 = 1.0f;
     }
     var_r31_547 = 0;
-    if (((u8) this->unk110.unk7A8 == 2) || (this->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
         var_r31_547 = 1;
     }
     if (var_r31_547 != 0) {
         temp_r5_559 = this->unk8;
         arg_sp1D0 = M2C_FIELD(temp_r5_559, f64 *, 0x30);
         arg_sp1D8 = M2C_FIELD(temp_r5_559, f64 *, 0x38);
-        this->unk110.unk760.Update(*((MKVector3 *) &arg_sp1D0));
+        this->unk838.unk28.Update(*((MKVector3 *) &arg_sp1D0));
         arg_sp1C0.GetPos();
-        Tools_GetClosestSplineTimeXZ((KDUniformSpline *) &this->unkCC0, *((MKVector3 *) &arg_sp1C0), 0x14);
+        Tools_GetClosestSplineTimeXZ(&this->unkCC0, *((MKVector3 *) &arg_sp1C0), 0x14);
         var_f27_574 = M2C_ERROR(/* Read from unset register $f1 */);
         var_f29_580 = (f32) fmod(0.5f + var_f27_574, 1.0);
     } else {
         temp_r6_583 = this->unk8;
         arg_sp1B0 = M2C_FIELD(temp_r6_583, f64 *, 0x30);
         arg_sp1B8 = M2C_FIELD(temp_r6_583, f64 *, 0x38);
-        Tools_GetClosestSplineTimeXZ((KDUniformSpline *) &this->unkCC0, *((MKVector3 *) &arg_sp1B0), 0x14);
+        Tools_GetClosestSplineTimeXZ(&this->unkCC0, *((MKVector3 *) &arg_sp1B0), 0x14);
         var_f29_580 = M2C_ERROR(/* Read from unset register $f1 */);
         var_f27_574 = (f32) fmod(0.5f + var_f29_580, 1.0);
     }
@@ -404,7 +406,7 @@ void Cynder::CalcLandingFlightPathData() {
     arg_sp234 = arg_spE4;
     arg_sp238 = (f32) arg_spE8;
     arg_sp23C = 0.0f;
-    temp_r3_847 = this->unk110.unk928->GetAnimSequence(0xA, 0xDD, 0, NULL);
+    temp_r3_847 = this->unkA20->GetAnimSequence(0xA, 0xDD, 0, NULL);
     temp_f3_848 = M2C_FIELD(temp_r3_847, f32 *, 0xC);
     temp_f6_854 = M2C_FIELD(temp_r3_847, f32 *, 8);
     temp_f7_860 = M2C_FIELD(temp_r3_847, f32 *, 0x10);
@@ -416,15 +418,15 @@ void Cynder::CalcLandingFlightPathData() {
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     arg_sp1E8 = (f32) arg_sp1E8 - (f32) arg_spC8;
     this->unkFF8 = var_f29_580;
-    this->unkCDC = 0.0f;
-    this->unkCD8 = 0;
+    this->unkCC4 = 0.0f;
+    this->unkCC0 = 0;
     this->unkCD4.AddNode(*((MKVector3 *) &arg_sp200));
     this->unkCD4.AddNode(*((MKVector3 *) &arg_sp1F0));
     this->unkCD4.AddNode(*((MKVector3 *) &arg_sp1E0));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCC0'
+#if 0 // DRAFT: function call 'Tools_GetClosestSplineTimeXZ(long *, MKVector3, int)' does
 void Cynder::CalcFlightPathData2() {
     f64 sp2A0;
     f64 sp298;
@@ -532,7 +534,7 @@ void Cynder::CalcFlightPathData2() {
     temp_r6_941 = this->unk8;
     sp208 = M2C_FIELD(temp_r6_941, f64 *, 0x30);
     sp210 = M2C_FIELD(temp_r6_941, f64 *, 0x38);
-    Tools_GetClosestSplineTimeXZ((KDUniformSpline *) &this->unkCC0, *((MKVector3 *) &sp208), 0x14);
+    Tools_GetClosestSplineTimeXZ(&this->unkCC0, *((MKVector3 *) &sp208), 0x14);
     temp_f24_949 = M2C_ERROR(/* Read from unset register $f1 */);
     temp_f25_955 = (f32) fmod(0.5f + temp_f24_949, 1.0);
     sp20 = 0.0f;
@@ -748,14 +750,14 @@ void Cynder::CalcFlightPathData2() {
     sp130 = (f64) sp40;
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     this->unkFFC = 3;
-    this->unkFA0 = sp278;
+    M2C_FIELD(this, f64 *, 0xFA0) = sp278;
     sp270 = (f32) sp270 + (f32) sp130;
-    this->unkFA8 = sp280;
-    this->unkFB0 = sp268;
-    this->unkFB8 = (f64) sp270;
-    this->unkFC0 = sp258;
-    this->unkFC8 = sp260;
-    this->unkFF0 = (KDUniformSpline *) &this->unkCC0;
+    M2C_FIELD(this, f64 *, 0xFA8) = sp280;
+    M2C_FIELD(this, f64 *, 0xFB0) = sp268;
+    this->unkFA0 = (f64) sp270;
+    this->unkFA8 = sp258;
+    this->unkFB0 = sp260;
+    this->unkFF0 = &this->unkCC0;
     this->unkFF4 = temp_f25_955;
 }
 #endif
@@ -800,6 +802,7 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     f32 temp_f31_1646;
     f32 temp_f3_1691;
     f32 temp_f4_1694;
+    f32 temp_r3_1645;
     f32 var_f24_1714;
     f32 var_f25_1655;
     f32 var_f29_1715;
@@ -807,7 +810,6 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     u8 temp_r3_1562;
     u8 var_r30_1564;
     void *temp_r3_1635;
-    void *temp_r3_1645;
     void *temp_r5_1582;
     void *temp_r5_1608;
 
@@ -820,9 +822,9 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
     sp108 = M2C_FIELD(&zero, f64 *, 0);
     sp110 = M2C_FIELD(&zero, f64 *, 8);
     spD8.GetPos();
-    temp_r30_1556 = this->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &spD8));
+    temp_r30_1556 = this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &spD8));
     spC8.GetPos();
-    temp_r3_1562 = this->unk110.unk728.IsPointWithin(*((MKVector3 *) &spC8));
+    temp_r3_1562 = this->unk800.unk28.IsPointWithin(*((MKVector3 *) &spC8));
     var_r30_1564 = 0;
     if ((temp_r30_1556 == 0) || (temp_r3_1562 != 0)) {
         if (CalculateRegionEdgeMoveTarget(arg0, (MKVector3 *) &sp128) != 0) {
@@ -835,7 +837,7 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
         spB8 = M2C_FIELD(temp_r5_1582, f64 *, 0x30);
         spC0 = M2C_FIELD(temp_r5_1582, f64 *, 0x38);
         spA8.GetPos();
-        if (this->unk110.unk6F0.GetFirstIntersectionPlane(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
+        if (this->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &spB8), *((MKVector3 *) &spA8), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
             sp98.GetPos();
             var_r30_1564 = 1;
             sp108 = sp98;
@@ -845,7 +847,7 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
             sp88 = M2C_FIELD(temp_r5_1608, f64 *, 0x30);
             sp90 = M2C_FIELD(temp_r5_1608, f64 *, 0x38);
             sp78.GetPos();
-            if (this->unk110.unk728.GetFirstIntersectionPlane(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
+            if (this->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &sp88), *((MKVector3 *) &sp78), (MKVector3 *) &sp128, (MKVector3 *) &sp118) != 0) {
                 sp68.GetPos();
                 var_r30_1564 = 1;
                 sp108 = sp68;
@@ -857,21 +859,21 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
         temp_r3_1635 = this->unk8;
         sp58 = M2C_FIELD(temp_r3_1635, f64 *, 0x30);
         sp60 = M2C_FIELD(temp_r3_1635, f64 *, 0x38);
-        Tools_GetClosestSplineTimeXZ(this->unkF7C + 0x30, *((MKVector3 *) &sp58), 0x14);
-        temp_r3_1645 = this->unkF7C;
+        Tools_GetClosestSplineTimeXZ(M2C_BITWISE(s32, this->unkF64) + 0x30, *((MKVector3 *) &sp58), 0x14);
+        temp_r3_1645 = this->unkF64;
         temp_f31_1646 = M2C_ERROR(/* Read from unset register $f1 */);
         temp_f30_1652 = 300.0f * (1.0f / M2C_FIELD(temp_r3_1645, f32 *, 0x38));
         var_f25_1655 = temp_f31_1646 - temp_f30_1652;
-        temp_f1_1657 = (f32) fmod(M2C_BITWISE(f32, temp_r3_1645), M2C_BITWISE(f64, (temp_f31_1646 + temp_f30_1652)), 1.0, 300.0f);
+        temp_f1_1657 = (f32) fmod(temp_r3_1645, M2C_BITWISE(f64, (temp_f31_1646 + temp_f30_1652)), 1.0, 300.0f);
         if (var_f25_1655 < 0.0f) {
             var_f25_1655 += 1.0f;
         }
         sp10 = 0.0f;
-        sp48.GetMeasure(temp_f1_1657, this->unkF7C + 0x30, KDSpline_PositionMixer);
+        sp48.GetMeasure(temp_f1_1657, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
         spF8 = sp48;
         sp100 = sp50;
         spC = 0.0f;
-        sp38.GetMeasure(var_f25_1655, this->unkF7C + 0x30, KDSpline_PositionMixer);
+        sp38.GetMeasure(var_f25_1655, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
         spE8 = sp38;
         spF0 = sp40;
         temp_f3_1691 = (f32) sp100 - (f32) sp110;
@@ -879,9 +881,9 @@ s32 Cynder::FollowPathToTarget(AITargetData *arg0) {
         temp_f1_1696 = (f32) spE8 - (f32) sp108;
         temp_f0_1697 = (f32) spF8 - (f32) sp108;
         if (((temp_f0_1697 * temp_f0_1697) + (temp_f3_1691 * temp_f3_1691)) < ((temp_f1_1696 * temp_f1_1696) + (temp_f4_1694 * temp_f4_1694))) {
-            this->unkF90 = 1.0f;
+            this->unkF78 = 1.0f;
         } else {
-            this->unkF90 = -1.0f;
+            this->unkF78 = -1.0f;
         }
         var_f24_1714 = 0.0f;
         var_f29_1715 = temp_f31_1646;
@@ -891,32 +893,32 @@ loop_31:
             goto block_32;
         }
         sp8 = 0.0f;
-        sp28.GetMeasure(var_f29_1715, this->unkF7C + 0x30, KDSpline_PositionMixer);
+        sp28.GetMeasure(var_f29_1715, M2C_BITWISE(s32, this->unkF64) + 0x30, KDSpline_PositionMixer);
         spF8 = sp28;
         sp100 = sp30;
-        if ((this->unk110.unk6F0.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0) && (this->unk110.unk728.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0)) {
-            this->unkF80 = spF8;
+        if ((this->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0) && (this->unk800.unk28.GetFirstIntersectionPlane(*((MKVector3 *) &spF8), *((MKVector3 *) &sp108), (MKVector3 *) &sp128, (MKVector3 *) &sp118) == 0)) {
+            M2C_FIELD(this, f64 *, 0xF80) = spF8;
             M2C_FIELD(this, f64 *, 0xF88) = sp100;
-            this->unk110.unk7B0.Set(*((MKVector3 *) &sp108), 0U);
+            this->unk870.unk40.Set(*((MKVector3 *) &sp108), 0U);
             if (temp_f31_1646 > var_f29_1715) {
                 M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                 if ((temp_f31_1646 - var_f29_1715) == 0.5f) {
-                    this->unkF90 = 1.0f;
+                    this->unkF78 = 1.0f;
                 } else {
-                    this->unkF90 = -1.0f;
+                    this->unkF78 = -1.0f;
                 }
             }
             if (temp_f31_1646 < var_f29_1715) {
                 M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                 if ((var_f29_1715 - temp_f31_1646) == 0.5f) {
-                    this->unkF90 = -1.0f;
+                    this->unkF78 = -1.0f;
                 } else {
-                    this->unkF90 = 1.0f;
+                    this->unkF78 = 1.0f;
                 }
             }
             return 1;
         }
-        var_f29_1715 += temp_f30_1652 * this->unkF90;
+        var_f29_1715 += temp_f30_1652 * M2C_BITWISE(f32, this->unkF78);
         if (var_f29_1715 > 1.0f) {
             var_f29_1715 -= 1.0f;
         }
@@ -931,7 +933,7 @@ block_32:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk6F0'
+#if 0 // DRAFT: expression syntax error
 u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
     AITargetData sp138;
     M2C_UNK sp128;
@@ -974,9 +976,9 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
         return 0U;
     }
     sp138.GetPos();
-    temp_r30_1866 = this->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &sp138));
+    temp_r30_1866 = this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp138));
     sp128.GetPos();
-    temp_r31_1876 = this->unk110.unk728.IsPointWithin(*((MKVector3 *) &sp128));
+    temp_r31_1876 = this->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp128));
     sp8 = M2C_FIELD(&zero, f64 *, 0);
     sp10 = M2C_FIELD(&zero, f64 *, 8);
     sp138.unk40 = M2C_FIELD(&zero, f64 *, 0);
@@ -989,7 +991,7 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
     sp138.unk18 = M2C_FIELD(&zero, f64 *, 8);
     if (temp_r30_1866 == 0) {
         sp118.GetPos();
-        this->unk110.unk6F0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp118), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
+        this->unk750.unkA0.GetNearestPointOnBoundingRegion(*((MKVector3 *) &sp118), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
         spF8.operator*(600.0f);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f2, $f0 */);
         temp_f3_1905 = M2C_BITWISE(f32, sp138.unk40.unk8);
@@ -1006,7 +1008,7 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
         spE8 = sp68;
         sp70 = temp_f3_1905 + (f32) spE0;
         spF0 = (f64) sp70;
-        if (this->unk110.unk6F0.GetFirstIntersectionPlane(*((MKVector3 *) &spE8), *((MKVector3 *) &sp138.unk30), (MKVector3 *) &sp138.unk30, (MKVector3 *) &sp138.unk10) != 0) {
+        if (this->unk750.unkA0.GetFirstIntersectionPlane(*((MKVector3 *) &spE8), *((MKVector3 *) &sp138.unk30), (MKVector3 *) &sp138.unk30, (MKVector3 *) &sp138.unk10) != 0) {
             M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
             spB8 = sp18;
             sp20 = (f32) sp138.unk38 - M2C_BITWISE(f32, sp138.unk40.unk8);
@@ -1019,7 +1021,7 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
             sp138.unk40.unk8 = M2C_BITWISE(f32, sp138.unk40.unk8) + (f32) spD0;
         } else {
             var_r29_1979 = 0;
-            if (this->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &sp138.unk30)) != 0) {
+            if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp138.unk30)) != 0) {
                 sp58.GetRegionPos();
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
                 if ((f32) fabs(sp5C - sp138.unk34) == 500.0f) {
@@ -1033,7 +1035,7 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
         }
     } else if (temp_r31_1876 != 0) {
         spA8.GetPos();
-        this->unk110.unk728.GetNearestPointOnBoundingRegion(*((MKVector3 *) &spA8), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
+        this->unk800.unk28.GetNearestPointOnBoundingRegion(*((MKVector3 *) &spA8), (MKVector3 *) &sp138.unk40, (MKVector3 *) &sp138.unk20);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
         sp138.unk28 = (f32) sp138.unk28 * -1.0f;
         sp88.operator*(600.0f);
@@ -1059,7 +1061,7 @@ u8 Cynder::CalculateRegionEdgeMoveTarget(AITargetData *arg0, MKVector3 *arg1) {
 s32 Cynder::ShootFireBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2) {
     FireBombFX *temp_r3_2081;
 
-    temp_r3_2081 = checked_cast<FireBombFX *, MKProp>(this->unkCF0->CreateInstance());
+    temp_r3_2081 = checked_cast<FireBombFX *, MKProp>(this->unkCD8->CreateInstance());
     if (temp_r3_2081 == NULL) {
         return 0;
     }
@@ -1082,20 +1084,18 @@ void Cynder::GetCharacterName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9B8'
 void Cynder::UpdateEnemyHud() {
     EnemyHudData sp8;
     f32 temp_f31_2160;
 
     sp8.EnemyHudData();
-    temp_f31_2160 = this->unk110.unk9B8;
+    temp_f31_2160 = this->unkAB0;
     GetMaxHealth();
     sp8.Init((Enemy *) this, temp_f31_2160, M2C_ERROR(/* Read from unset register $f1 */));
     EnemyHud_Modified(sp8);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk928'
+#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 s32 Cynder::CanLeap(bool arg0) {
     f32 temp_f10_2300;
     f32 temp_f11_2302;
@@ -1107,7 +1107,7 @@ s32 Cynder::CanLeap(bool arg0) {
     if (arg0 != 0) {
         var_r5_2187 = 0x1C;
     }
-    temp_r3_2199 = this->unk110.unk928->GetAnimSequence(9, var_r5_2187, this->unk110.unk9D4, NULL);
+    temp_r3_2199 = this->unkA20->GetAnimSequence(9, var_r5_2187, M2C_BITWISE(s32, this->unkACC), NULL);
     if (temp_r3_2199 != NULL) {
         M2C_STRUCT_COPY((s32) &arg_sp15C + 4, (s32) (&identity - 4) + 4, 0x40);
         arg_sp130.GetDir();
@@ -1151,16 +1151,16 @@ s32 Cynder::CanLeap(bool arg0) {
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         var_r30_2326 = 0;
         arg_sp150 = arg_sp90;
-        arg_sp98 = this->unk110.unk480 + (f32) arg_spF8;
+        arg_sp98 = this->unk588.unk4 + (f32) arg_spF8;
         arg_sp158 = (f64) arg_sp98;
-        if (this->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &arg_sp150)) != 0) {
+        if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &arg_sp150)) != 0) {
             arg_sp80.GetRegionPos();
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if ((f32) fabs(arg_sp84 - arg_sp154) == 500.0f) {
                 var_r30_2326 = 1;
             }
         }
-        if ((var_r30_2326 != 0) && (this->unk110.unk728.IsPointWithin(*((MKVector3 *) &arg_sp150)) == 0)) {
+        if ((var_r30_2326 != 0) && (this->unk800.unk28.IsPointWithin(*((MKVector3 *) &arg_sp150)) == 0)) {
             arg_sp50 = 0.0f;
             arg_sp54 = 500.0f;
             arg_sp58 = 0.0f;
@@ -1190,7 +1190,7 @@ block_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
     AITargetData sp18;
     f64 sp8;
@@ -1205,7 +1205,7 @@ s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
 
     if ((arg0 != NULL) && (arg1 != NULL)) {
         var_r31_2441 = 0;
-        if (((u8) this->unk110.unk7A8 == 2) || (this->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
             var_r31_2441 = 1;
         }
         if (var_r31_2441 != 0) {
@@ -1214,7 +1214,7 @@ s32 Cynder::GetAttackHeading(EnemyAttack *arg0, MKVector3 *arg1) {
             temp_f28_2466 = NormaliseAngle(KDMath_GetYaw(*((MKVector3 *) &sp18)));
             temp_f30_2469 = NormaliseAngle(temp_f29_2456 + arg0->unk1C);
             temp_f31_2472 = NormaliseAngle(temp_f29_2456 + arg0->unk20);
-            this->unk110.unk760.GetDist();
+            this->unk838.unk28.GetDist();
             if (temp_f30_2469 > temp_f31_2472) {
                 var_r0_2479 = 0;
                 temp_f0_2480 = 6.2831855f - temp_f30_2469;
@@ -1251,12 +1251,10 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCF8'
 s32 Cynder::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     MKModel_CalculateNodeWorldPosition(this->unk4, this->unkCF8, arg1);
     return 1;
 }
-#endif
 
 void Cynder::Despawn(bool arg0) {
     Enemy::Despawn(arg0);
@@ -1264,7 +1262,7 @@ void Cynder::Despawn(bool arg0) {
     UpdateEnemyHud();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkF7C'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 s32 Cynder::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f64 sp40;
     f64 sp38;
@@ -1275,7 +1273,7 @@ s32 Cynder::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     f32 sp18;
     f32 sp10;
     M2C_UNK *temp_r5_2702;
-    MKSceneManager *temp_r3_2602;
+    f32 temp_r3_2602;
     s32 temp_r3_2672;
     s32 temp_r3_2686;
     s32 var_r28_2679;
@@ -1286,20 +1284,20 @@ s32 Cynder::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     u32 temp_r3_2606;
     void *temp_r4_2703;
 
-    this->unkF7C = NULL;
-    temp_r3_2602 = this->unkF78;
-    if (temp_r3_2602 != NULL) {
-        temp_r3_2606 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_2602->PropResolver_Resolve((s32) arg0));
+    this->unkF64 = 0.0f;
+    temp_r3_2602 = this->unkF60;
+    if (M2C_BITWISE(s32, temp_r3_2602) != 0) {
+        temp_r3_2606 = checked_cast<KDSplinePathSegmentProp *, MKProp>(((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_2602)))->PropResolver_Resolve((s32) arg0));
         if (temp_r3_2606 != 0U) {
-            this->unkF7C = temp_r3_2606 + 0x4C;
+            this->unkF64 = M2C_BITWISE(f32, (temp_r3_2606 + 0x4C));
         }
         var_r29_2613 = 0;
-        this->unkCC8 = 0.0f;
-        this->unkCC4 = 0;
-        if ((void *) this->unkF7C != NULL) {
+        this->unkCC0.unk8 = 0.0f;
+        this->unkCC0.unk4 = 0;
+        if (M2C_BITWISE(u32, this->unkF64) != 0U) {
             var_r30_2620 = 0;
 loop_6:
-            if (var_r30_2620 < (s32) M2C_FIELD(this->unkF7C, s32 *, 0x34)) {
+            if (var_r30_2620 < (s32) M2C_FIELD(this->unkF64, s32 *, 0x34)) {
                 sp18 = 0.0f;
                 sp1C = 800.0f;
                 sp20 = 0.0f;
@@ -1308,7 +1306,7 @@ loop_6:
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r4, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 sp38 = sp8;
-                sp10 = M2C_FIELD((M2C_FIELD(this->unkF7C, s32 *, 0x3C) + var_r29_2613), f32 *, 8) + (f32) sp30;
+                sp10 = M2C_FIELD((M2C_FIELD(this->unkF64, s32 *, 0x3C) + var_r29_2613), f32 *, 8) + (f32) sp30;
                 sp40 = (f64) sp10;
                 this->unkCC0.AddNode(*((MKVector3 *) &sp38));
                 var_r30_2620 += 1;
@@ -1320,10 +1318,10 @@ loop_6:
     if (Enemy::Spawn(arg0, arg1) != 0) {
         M2C_FIELD(&gb, Cynder **, 0x360) = this;
         UpdateEnemyHud();
-        if ((u8) this->unkD01 == 0) {
+        if ((u8) M2C_FIELD(this, u8 *, 0xD01) == 0) {
             temp_r3_2672 = checked_cast<KDLocalPathSegmentProp *, MKProp>(this->unkDA0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
             if (temp_r3_2672 != 0) {
-                this->unk110.unk728.SetupRegion(temp_r3_2672 + 0x4C);
+                this->unk800.unk28.SetupRegion(temp_r3_2672 + 0x4C);
             }
             var_r28_2679 = 0;
             var_r30_2680 = 0;
@@ -1337,15 +1335,15 @@ loop_6:
                 var_r29_2681 += 4;
                 var_r30_2680 += 0x38;
             } while (var_r28_2679 < 4);
-            temp_r5_2702 = &this->unk110.unk6FC;
+            temp_r5_2702 = &this->unk80C;
             temp_r4_2703 = this + 0xDC4;
-            M2C_FIELD(this, f64 *, 0x800) = (f64) this->unkDB8;
+            M2C_FIELD(this, f64 *, 0x800) = (f64) M2C_FIELD(this, f64 *, 0xDB8);
             M2C_FIELD(this, f64 *, 0x808) = (f64) this->unkDC0;
             M2C_STRUCT_COPY((s32) temp_r5_2702 + 4, (s32) temp_r4_2703 + 4, 0x18);
             M2C_FIELD((temp_r5_2702 + 0x18), s32 *, 4) = (s32) M2C_FIELD((temp_r4_2703 + 0x18), s32 *, 4);
-            this->unk110.unk71C = this->unkDE4;
-            this->unk110.unk720 = this->unkDE8;
-            this->unk110.unk721 = this->unkDE9;
+            this->unk800.unk1C = this->unkDE4;
+            this->unk800.unk20 = this->unkDE8;
+            this->unk800.unk21 = this->unkDE9;
             SetupExclusionRegion();
         }
         return 1;
@@ -1354,7 +1352,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD6C'
+#if 0 // DRAFT: expression syntax error
 void Cynder::Message(MKMessage *arg0) {
     f32 temp_f1_2861;
     f32 temp_f1_2893;
@@ -1368,7 +1366,7 @@ void Cynder::Message(MKMessage *arg0) {
     s32 temp_r31_3016;
     void *temp_r29_2982;
     void *temp_r3_2996;
-    this->unkD6C.Message(arg0);
+    ((KDSoundPlayer *) (this + 0xD6C))->Message(arg0);
     temp_r0_2754 = arg0->unk0;
     switch (temp_r0_2754) {                         /* irregular */
     case 181:
@@ -1378,12 +1376,12 @@ block_34:
         Enemy::Message(arg0);
         return;
     case 211:
-        if ((u8) this->unkF19 != 0) {
-            this->unkF1A = 1;
+        if ((u8) M2C_FIELD(this, u8 *, 0xF19) != 0) {
+            M2C_FIELD(this, s8 *, 0xF1A) = 1;
         }
         goto block_34;
     case -3:
-        if (!(((u8) this->unk110.unk9F9 >> 7U) & 1)) {
+        if (!(((u8) M2C_FIELD(this, u8 *, 0xB09) >> 7U) & 1)) {
             Enemy::Message(arg0);
             Deactivate();
             return;
@@ -1394,21 +1392,21 @@ block_34:
             GetMaxHealth();
             SetHealth(M2C_ERROR(/* Read from unset register $f1 */));
             UpdateEnemyHud();
-            this->unkF18 = 1;
-            this->unkF1B = 1;
-            this->unkF1E = 0;
-            this->unkF14 = 0.0f;
-            if ((s32) this->unk110.unk9D8 <= 2) {
-                this->unkEC8.Send(NULL);
+            M2C_FIELD(this, s8 *, 0xF18) = 1;
+            M2C_FIELD(this, s8 *, 0xF1B) = 1;
+            M2C_FIELD(this, s8 *, 0xF1E) = 0;
+            this->unkEFC.unk0 = 0.0f;
+            if (M2C_BITWISE(s32, this->unkAD0) <= 2) {
+                this->unkEB0.Send(NULL);
             }
-            temp_cr0_eq_2839 = (s32) this->unk110.unk9D8 == 3;
+            temp_cr0_eq_2839 = M2C_BITWISE(s32, this->unkAD0) == 3;
             if (temp_cr0_eq_2839 == 0) {
                 M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
-                temp_f6_2853 = this->unk110.unk4B8;
+                temp_f6_2853 = this->unk5C8;
                 arg_spE0 = temp_f6_2853;
-                temp_f1_2861 = this->unk110.unk4BC;
+                temp_f1_2861 = this->unk5C8;
                 arg_spE4 = temp_f1_2861;
-                temp_f5_2867 = this->unk110.unk4C0;
+                temp_f5_2867 = this->unk5CC;
                 arg_spE8 = temp_f5_2867;
                 arg_sp38 = (up.unk0 * temp_f1_2861) - (up.unk4 * temp_f6_2853);
                 arg_sp30 = (up.unk4 * temp_f5_2867) - (up.unk8 * temp_f1_2861);
@@ -1420,9 +1418,9 @@ block_34:
                 arg_spC4 = arg_sp64;
                 arg_spC8 = (f32) arg_sp68;
                 arg_spCC = 0.0f;
-                arg_spF0 = this->unk110.unk4A8;
-                arg_spF4 = this->unk110.unk4AC;
-                temp_f1_2893 = this->unk110.unk4B0;
+                arg_spF0 = this->unk5B8;
+                arg_spF4 = this->unk5B8;
+                temp_f1_2893 = this->unk5BC;
                 arg_spF8 = temp_f1_2893;
                 arg_spFC = 1.0f;
                 Teleport(&arg_spC0, &up, temp_f1_2893, arg_sp64, (f32) arg_sp60, 0.0f, temp_f5_2867, temp_f6_2853, up.unk8, up.unk4);
@@ -1432,7 +1430,7 @@ block_34:
                 arg_spA0 = temp_f5_2915;
                 temp_f1_2922 = this->unkEAC;
                 arg_spA4 = temp_f1_2922;
-                temp_f4_2928 = this->unkEB0;
+                temp_f4_2928 = this->unkE98.unk0;
                 arg_spA8 = temp_f4_2928;
                 arg_sp28 = (up.unk0 * temp_f1_2922) - (up.unk4 * temp_f5_2915);
                 arg_sp20 = (up.unk4 * temp_f4_2928) - (up.unk8 * temp_f1_2922);
@@ -1448,7 +1446,7 @@ block_34:
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 arg_sp40 = arg_sp10;
-                arg_sp18 = this->unkE98.unk8 + this->unkEC0;
+                arg_sp18 = this->unkE98.unk8 + this->unkEA8;
                 arg_sp48 = (f64) arg_sp18;
                 arg_spB0 = (f32) arg_sp40;
                 arg_spB4 = arg_sp44;
@@ -1492,7 +1490,7 @@ void Cynder::Draw() {
     Enemy::Draw();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkCF4'
+#if 0 // DRAFT: undefined identifier 'GetAnimSequence'
 void Cynder::CalculateDiveTrajectory() {
     f32 temp_f10_3206;
     f32 temp_f10_3253;
@@ -1501,6 +1499,7 @@ void Cynder::CalculateDiveTrajectory() {
     f32 temp_f4_3597;
     f32 temp_f8_3202;
     f32 temp_f9_3204;
+    f32 temp_r0_3068;
     f32 var_f0_3185;
     f32 var_f4_3096;
     f32 var_f4_3307;
@@ -1517,7 +1516,6 @@ void Cynder::CalculateDiveTrajectory() {
     f64 temp_f1_3503;
     f64 temp_f1_3507;
     f64 temp_f1_3582;
-    s32 temp_r0_3068;
     s32 temp_r3_3341;
     s32 temp_r3_3526;
     s32 temp_r4_3149;
@@ -1525,15 +1523,15 @@ void Cynder::CalculateDiveTrajectory() {
     s32 var_r0_3351;
     s32 var_r0_3536;
     void *temp_r3_3081;
-    temp_r0_3068 = this->unkCF4;
-    switch (temp_r0_3068) {                         /* switch 1; irregular */
+    temp_r0_3068 = this->unkCDC;
+    switch (M2C_BITWISE(s32, temp_r0_3068)) {       /* switch 1; irregular */
     case 1:                                         /* switch 1 */
-        temp_r3_3081 = this->unk110.unk928->GetAnimSequence(0xA, 0xDD, this->unk110.unk9D4, NULL);
+        temp_r3_3081 = this->unkA20->GetAnimSequence(0xA, 0xDD, M2C_BITWISE(s32, this->unkACC), NULL);
         M2C_STRUCT_COPY((s32) &arg_sp31C + 4, (s32) (&identity - 4) + 4, 0x40);
         var_f4_3096 = 0.0f;
         arg_sp164 = 0.0f;
-        arg_sp160 = this->unk110.unk4A8 - this->unk110.unk478;
-        arg_sp168 = this->unk110.unk4B0 - this->unk110.unk480;
+        arg_sp160 = this->unk5B8 - this->unk588;
+        arg_sp168 = this->unk5BC - this->unk588.unk4;
         arg_sp2A0 = (f64) arg_sp160;
         arg_sp2A8 = (f64) arg_sp168;
         var_f5_3115 = ((f32) arg_sp2A8 * (f32) arg_sp2A8) + (((f32) arg_sp2A0 * (f32) arg_sp2A0) + (arg_sp2A4 * arg_sp2A4));
@@ -1616,13 +1614,13 @@ void Cynder::CalculateDiveTrajectory() {
         M2C_ERROR(/* unknown instruction: psq_lx $f2, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f1, $f2, $f1 */);
         arg_sp134 = 0.0f;
-        this->unkD48 = arg_sp70;
-        arg_sp78 = this->unk110.unk4B0 - (f32) arg_sp308;
+        this->unkD30 = arg_sp70;
+        arg_sp78 = this->unk5BC - (f32) arg_sp308;
         arg_sp260 = arg_sp70;
-        this->unkD50 = (f64) arg_sp78;
+        this->unkD38 = (f64) arg_sp78;
         arg_sp268 = (f64) arg_sp78;
-        arg_sp130 = (f32) M2C_FIELD(this, f64 *, 0xD48) - this->unk110.unk478;
-        arg_sp138 = (f32) M2C_FIELD(this, f64 *, 0xD50) - this->unk110.unk480;
+        arg_sp130 = (f32) M2C_FIELD(this, f64 *, 0xD48) - this->unk588;
+        arg_sp138 = (f32) M2C_FIELD(this, f64 *, 0xD50) - this->unk588.unk4;
         arg_sp250 = (f64) arg_sp130;
         arg_sp258 = (f64) arg_sp138;
         var_f4_3307 = ((f32) arg_sp258 * (f32) arg_sp258) + (((f32) arg_sp250 * (f32) arg_sp250) + (arg_sp254 * arg_sp254));
@@ -1670,43 +1668,43 @@ void Cynder::CalculateDiveTrajectory() {
         arg_sp230.operator*(2000.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-        this->unkD38 = arg_sp60;
+        this->unkD20 = arg_sp60;
         arg_sp68 = (f32) M2C_FIELD(this, f64 *, 0xD50) - arg_sp238;
         arg_sp240 = arg_sp60;
-        this->unkD40 = (f64) arg_sp68;
+        this->unkD28 = (f64) arg_sp68;
         arg_sp248 = (f64) arg_sp68;
         M2C_FIELD(this, f32 *, 0xD3C) = (f32) (M2C_FIELD(this, f32 *, 0xD3C) + 200.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         arg_sp1F0 = arg_sp20;
-        arg_sp28 = this->unk110.unk480 - (f32) M2C_FIELD(this, f64 *, 0xD40);
+        arg_sp28 = this->unk588.unk4 - (f32) M2C_FIELD(this, f64 *, 0xD40);
         arg_sp1F8 = (f64) arg_sp28;
         Normalise(*((MKVector3 *) &arg_sp200));
         arg_sp210.operator*(2000.0f);
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-        this->unkD28 = arg_sp50;
+        this->unkD10 = arg_sp50;
         arg_sp58 = (f32) M2C_FIELD(this, f64 *, 0xD40) + arg_sp218;
         arg_sp220 = arg_sp50;
-        this->unkD30 = (f64) arg_sp58;
+        this->unkD18 = (f64) arg_sp58;
         arg_sp228 = (f64) arg_sp58;
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         arg_sp1D0 = arg_sp40;
-        arg_sp48 = (f32) M2C_FIELD(this, f64 *, 0xD30) - this->unk110.unk480;
+        arg_sp48 = (f32) M2C_FIELD(this, f64 *, 0xD30) - this->unk588.unk4;
         arg_sp1D8 = (f64) arg_sp48;
         Normalise(*((MKVector3 *) &arg_sp1E0));
-        this->unkD18 = arg_sp1E0;
-        this->unkD20 = arg_sp1E8;
+        M2C_FIELD(this, f64 *, 0xD18) = arg_sp1E0;
+        this->unkD08 = arg_sp1E8;
         return;
     case 0:                                         /* switch 1 */
         arg_sp1B0.GetPos();
         var_f4_3473 = 0.0f;
         arg_sp114 = 0.0f;
-        arg_sp110 = arg_sp1B0 - this->unk110.unk478;
-        arg_sp118 = arg_sp1B8 - this->unk110.unk480;
+        arg_sp110 = arg_sp1B0 - this->unk588;
+        arg_sp118 = arg_sp1B8 - this->unk588.unk4;
         arg_sp1C0 = (f64) arg_sp110;
         arg_sp1C8 = (f64) arg_sp118;
         var_f5_3492 = ((f32) arg_sp1C8 * (f32) arg_sp1C8) + (((f32) arg_sp1C0 * (f32) arg_sp1C0) + (arg_sp1C4 * arg_sp1C4));
@@ -1752,10 +1750,10 @@ void Cynder::CalculateDiveTrajectory() {
         arg_sp2E0 = (f64) arg_sp100;
         arg_sp2E8 = (f64) arg_sp108;
         arg_sp1C = 0.0f;
-        if (Tools_Line2DToCircleIntersect(*((MKVector3 *) &this->unk110.unk478), *((MKVector3 *) &arg_sp2E0), *((MKVector3 *) &this->unk110.unk4A8), 2750.0f, arg_sp1C) != 0) {
+        if (Tools_Line2DToCircleIntersect(*((MKVector3 *) &this->unk588), *((MKVector3 *) &arg_sp2E0), *((MKVector3 *) &this->unk5B8), 2750.0f, arg_sp1C) != 0) {
             temp_f1_3582 = (f64) M2C_FIELD(this, f32 *, 0x590);
             arg_spF0 = (f64) M2C_FIELD(this, f32 *, 0x588);
-            arg_spF4 = this->unk110.unk4AC;
+            arg_spF4 = this->unk5B8;
             arg_spF8 = temp_f1_3582;
             arg_sp2D0 = arg_spF0;
             arg_sp2D8 = temp_f1_3582;
@@ -1783,20 +1781,20 @@ void Cynder::CalculateDiveTrajectory() {
             arg_sp2B8 = (f64) arg_spA8;
             arg_sp2B4 += 500.0f;
             arg_sp170.GetPos();
-            this->unkD48 = arg_sp170;
-            this->unkD50 = arg_sp178;
+            this->unkD30 = arg_sp170;
+            this->unkD38 = arg_sp178;
             M2C_FIELD(this, f32 *, 0xD4C) = (f32) (M2C_FIELD(this, f32 *, 0xD4C) + 300.0f);
-            this->unkD28 = arg_sp2C0;
-            this->unkD30 = arg_sp2C8;
-            this->unkD38 = arg_sp2B0;
-            this->unkD40 = arg_sp2B8;
+            this->unkD10 = arg_sp2C0;
+            this->unkD18 = arg_sp2C8;
+            this->unkD20 = arg_sp2B0;
+            this->unkD28 = arg_sp2B8;
         }
         return;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
+#if 0 // DRAFT: undefined identifier 'sp38'
 void Cynder::CheckAnimEvents() {
     MKCollisionResult sp108;
     MKVector3 spF8;
@@ -1832,7 +1830,7 @@ void Cynder::CheckAnimEvents() {
     f32 sp10;
     s32 var_r29_3762;
 
-    if (this->unk110.unk520->CheckEvent(0xD) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0xD) != 0) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkD98, &spF8);
         sp48 = 0.0f;
         sp4C = -200.0f;
@@ -1881,9 +1879,9 @@ void Cynder::CheckAnimEvents() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk928'
+#if 0 // DRAFT: undefined identifier 'GetEnemySetting'
 void Cynder::UpdatePhrasesAndSounds() {
-    EnemyDescriptor *temp_r3_3840;
+    EnemyAttack *temp_r3_3840;
     MKVector3 *temp_r30_4010;
     f32 temp_f1_3977;
     f32 temp_f1_4045;
@@ -1900,19 +1898,19 @@ void Cynder::UpdatePhrasesAndSounds() {
     void **temp_r3_3992;
     void **temp_r3_4000;
 
-    temp_r3_3840 = this->unk110.unk928;
-    temp_f30_3847 = this->unk110.unk9B8;
-    temp_f31_3851 = (f32) temp_r3_3840->unk11C * this->unk110.unk928->GetEnemySetting((EnemySettingType) 0);
-    temp_f31_3866 = ((temp_f31_3851 - ((f32) (this->unk110.unk9D8 + 1) * temp_r3_3840->GetEnemySetting((EnemySettingType) 0))) + temp_f30_3847) / temp_f31_3851;
-    if (temp_f31_3866 > this->unkD64) {
-        this->unkD64 = temp_f31_3866;
+    temp_r3_3840 = this->unkA20;
+    temp_f30_3847 = this->unkAB0;
+    temp_f31_3851 = (f32) M2C_FIELD(temp_r3_3840, s32 *, 0x11C) * this->unkA20->GetEnemySetting((EnemySettingType) 0);
+    temp_f31_3866 = ((temp_f31_3851 - ((f32) (M2C_BITWISE(s32, this->unkAD0) + 1) * temp_r3_3840->GetEnemySetting((EnemySettingType) 0))) + temp_f30_3847) / temp_f31_3851;
+    if (temp_f31_3866 > M2C_FIELD(this, f32 *, 0xD64)) {
+        M2C_FIELD(this, f32 *, 0xD64) = temp_f31_3866;
     }
     var_r29_3872 = 0;
     var_r30_3873 = 0;
 loop_3:
-    if ((temp_f31_3866 != 0.0f) && (*(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4)) != 0.0f) && (this->unkD64 > *(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4))) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f31_3866 == *(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4))) != 0))) {
-        this->unkD68 = M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3B4);
-        this->unkD60 = checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2B4);
+    if ((temp_f31_3866 != 0.0f) && (*(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4)) != 0.0f) && (M2C_FIELD(this, f32 *, 0xD64) > *(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4))) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f31_3866 == *(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2D4))) != 0))) {
+        M2C_FIELD(this, f32 *, 0xD68) = (f32) M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3B4);
+        M2C_FIELD(this, s8 **, 0xD60) = (s8 *) (checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r30_3873 + 0x2B4));
     } else {
         var_r29_3872 += 1;
         var_r30_3873 += 0x24;
@@ -1920,64 +1918,64 @@ loop_3:
             goto loop_3;
         }
     }
-    if ((this->unkD68 < 0.0f) && ((s8 *) this->unkD60 != NULL) && (KDSound_IsVoicePlaying(this->unkD5C) == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
-        temp_r3_3928 = this->unk110.unk930;
-        if ((M2C_FIELD(*temp_r3_3928, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3928, 0xA4) == 0) && (temp_r3_3936 = this->unk110.unk930, ((M2C_FIELD(*temp_r3_3936, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3936, 0xAC) == 0) != 0)) && (temp_r3_3944 = this->unk110.unk930, ((M2C_FIELD(*temp_r3_3944, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3944, 0xC2) == 0) != 0))) {
-            this->unkD58 = PhrasePlayer_PlayEvent(this->unkD60);
-            this->unkD68 = 0.0f;
-            this->unkD60 = NULL;
+    if ((M2C_FIELD(this, f32 *, 0xD68) < 0.0f) && ((s8 *) M2C_FIELD(this, s8 **, 0xD60) != NULL) && (KDSound_IsVoicePlaying(M2C_FIELD(this, s32 *, 0xD5C)) == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
+        temp_r3_3928 = this->unkA28;
+        if ((M2C_FIELD(*temp_r3_3928, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3928, 0xA4) == 0) && (temp_r3_3936 = this->unkA28, ((M2C_FIELD(*temp_r3_3936, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3936, 0xAC) == 0) != 0)) && (temp_r3_3944 = this->unkA28, ((M2C_FIELD(*temp_r3_3944, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3944, 0xC2) == 0) != 0))) {
+            M2C_FIELD(this, s32 *, 0xD58) = PhrasePlayer_PlayEvent(M2C_FIELD(this, s8 **, 0xD60));
+            M2C_FIELD(this, f32 *, 0xD68) = 0.0f;
+            M2C_FIELD(this, s8 **, 0xD60) = NULL;
         } else {
-            this->unkD68 = M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3B4);
+            M2C_FIELD(this, f32 *, 0xD68) = (f32) M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x3B4);
         }
     }
-    if ((PhrasePlayer_IsAnyEventPlaying() == 0) && (temp_f31_3866 < this->unkD64) && (KDSound_IsVoicePlaying(this->unkD5C) == 0) && ((temp_f1_3977 = this->unkD68, ((temp_f1_3977 == 0.0f) != 0)) || (temp_f1_3977 > 0.85f))) {
-        temp_r3_3984 = this->unk110.unk930;
+    if ((PhrasePlayer_IsAnyEventPlaying() == 0) && (temp_f31_3866 < M2C_FIELD(this, f32 *, 0xD64)) && (KDSound_IsVoicePlaying(M2C_FIELD(this, s32 *, 0xD5C)) == 0) && ((temp_f1_3977 = M2C_FIELD(this, f32 *, 0xD68), ((temp_f1_3977 == 0.0f) != 0)) || (temp_f1_3977 > 0.85f))) {
+        temp_r3_3984 = this->unkA28;
         if (M2C_FIELD(*temp_r3_3984, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3984, 0xA4) == 0) {
-            temp_r3_3992 = this->unk110.unk930;
+            temp_r3_3992 = this->unkA28;
             if (M2C_FIELD(*temp_r3_3992, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_3992, 0xAC) == 0) {
-                temp_r3_4000 = this->unk110.unk930;
+                temp_r3_4000 = this->unkA28;
                 if (M2C_FIELD(*temp_r3_4000, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_4000, 0xC2) == 0) {
                     temp_r30_4010 = this->unk8 + 0x30;
-                    this->unkD5C = KDSound_Play3d(M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x3B0), temp_r30_4010, 0U, -1, 0.0f, 0U);
+                    M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(M2C_FIELD(checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x3B0), temp_r30_4010, 0U, -1, 0.0f, 0U);
                 }
             }
         }
     }
-    if (((this->unk110.unk520->CheckEvent(0x10) != 0) || (this->unk110.unk520->CheckEvent(0x16) != 0) || (this->unk110.unk520->CheckEvent(0x14) != 0)) && (KDSound_IsVoicePlaying(this->unkD5C) == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0) && ((temp_f1_4045 = this->unkD68, ((temp_f1_4045 == 0.0f) != 0)) || (temp_f1_4045 > 0.85f))) {
-        if (this->unk110.unk520->CheckEvent(0x10) != 0) {
-            this->unkD5C = KDSound_Play3d(GS_CynderTaunt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+    if (((((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) || (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) || (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x14) != 0)) && (KDSound_IsVoicePlaying(M2C_FIELD(this, s32 *, 0xD5C)) == 0) && (PhrasePlayer_IsAnyEventPlaying() == 0) && ((temp_f1_4045 = M2C_FIELD(this, f32 *, 0xD68), ((temp_f1_4045 == 0.0f) != 0)) || (temp_f1_4045 > 0.85f))) {
+        if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x10) != 0) {
+            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderTaunt, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         }
-        if (this->unk110.unk520->CheckEvent(0x16) != 0) {
-            this->unkD5C = KDSound_Play3d(GS_CynderMelee2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x16) != 0) {
+            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderMelee2, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         }
-        if (this->unk110.unk520->CheckEvent(0x14) != 0) {
-            this->unkD5C = KDSound_Play3d(GS_CynderExtra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
+        if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0x14) != 0) {
+            M2C_FIELD(this, s32 *, 0xD5C) = KDSound_Play3d(GS_CynderExtra1, this->unk8 + 0x30, 0U, -1, 0.0f, 0U);
         }
     }
-    this->unkD64 = temp_f31_3866;
-    temp_f1_4099 = this->unkD68;
+    M2C_FIELD(this, f32 *, 0xD64) = temp_f31_3866;
+    temp_f1_4099 = M2C_FIELD(this, f32 *, 0xD68);
     if (temp_f1_4099 > 0.0f) {
-        this->unkD68 = temp_f1_4099 - gUpdateTimeDelta;
+        M2C_FIELD(this, f32 *, 0xD68) = (f32) (temp_f1_4099 - gUpdateTimeDelta);
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: undefined identifier 'arg_sp30'
 void Cynder::UpdateMovementCustom() {
     f64 temp_f2_4130;
     f64 temp_f3_4129;
-    temp_f3_4129 = this->unk110.unk488;
-    temp_f2_4130 = this->unk110.unk490;
+    temp_f3_4129 = M2C_FIELD(this, f64 *, 0x598);
+    temp_f2_4130 = M2C_FIELD(this, f64 *, 0x5A0);
     arg_sp30 = temp_f3_4129;
     arg_sp38 = temp_f2_4130;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unk110.unk480 += (f32) arg_sp38;
+    this->unk588.unk4 += (f32) arg_sp38;
     this->unk100 = temp_f3_4129;
     this->unk108 = temp_f2_4130;
     M2C_STRUCT_COPY((s32) &arg_sp3C + 4, (s32) (&identity - 4) + 4, 0x40);
-    if ((u8) this->unkD02 != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0xD02) != 0) {
         UpdateFlyingRotation((Matrix *) &arg_sp40);
         arg_sp10 = -arg_sp60;
         arg_sp14 = -arg_sp64;
@@ -1988,15 +1986,15 @@ void Cynder::UpdateMovementCustom() {
         M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(this, f64 *, 0xE0);
         M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(this, f64 *, 0xE8);
         arg_sp28 = (f64) arg_sp18;
-        this->unk110.unk5A5 &= ~0x40;
+        this->unk6B5 &= ~0x40;
         M2C_FIELD(this, f64 *, 0xF0) = arg_sp50;
         M2C_FIELD(this, f64 *, 0xF8) = arg_sp58;
         M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(this, f64 *, 0xF0);
         M2C_FIELD(this, f64 *, 0xD8) = (f64) M2C_FIELD(this, f64 *, 0xF8);
-        this->unk110.unk5A5 &= ~0x40;
-        arg_sp70 = this->unk110.unk478;
-        arg_sp74 = this->unk110.unk47C;
-        arg_sp78 = this->unk110.unk480;
+        this->unk6B5 &= ~0x40;
+        arg_sp70 = this->unk588;
+        arg_sp74 = this->unk588.unk0;
+        arg_sp78 = this->unk588.unk4;
         arg_sp7C = 1.0f;
         MKModel_SetWorldMatrix(this->unk4, *((Matrix *) &arg_sp40));
         return;
@@ -2006,10 +2004,10 @@ void Cynder::UpdateMovementCustom() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD02'
+#if 0 // DRAFT: undefined identifier 'arg_sp5C'
 void Cynder::EnableFlyingRotation(bool arg0) {
-    this->unkD02 = arg0;
-    if ((u8) this->unkD02 != 0) {
+    M2C_FIELD(this, u8 *, 0xD02) = arg0;
+    if ((u8) M2C_FIELD(this, u8 *, 0xD02) != 0) {
         M2C_STRUCT_COPY((s32) &arg_sp5C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         arg_sp20 = -arg_sp60;
         arg_sp24 = -arg_sp64;
@@ -2030,13 +2028,13 @@ void Cynder::EnableFlyingRotation(bool arg0) {
         arg_sp88 = (f32) arg_sp48;
         arg_sp8C = 0.0f;
         arg_sp30.GetRotationRPY();
-        this->unkD08 = arg_sp30;
-        this->unkD10 = arg_sp38;
+        M2C_FIELD(this, f64 *, 0xD08) = arg_sp30;
+        M2C_FIELD(this, f64 *, 0xD10) = arg_sp38;
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7B0'
+#if 0 // DRAFT: expression syntax error
 void Cynder::UpdateFlyingRotation(Matrix *arg0) {
     f32 temp_f0_4767;
     f32 temp_f26_4723;
@@ -2061,11 +2059,11 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
     s32 var_r0_4620;
     u8 var_r31_4335;
     var_r31_4335 = 0;
-    if (((u8) M2C_FIELD(this, u8 *, 0x908) == 2) || (this->unk110.unk7B0.unk40.Get() != NULL)) {
+    if (((u8) M2C_FIELD(this, u8 *, 0x908) == 2) || (this->unk8C0.unk30.Get() != NULL)) {
         var_r31_4335 = 1;
     }
     if (var_r31_4335 != 0) {
-        this->unk110.unk7B0.Update(*((MKVector3 *) &this->unk110.unk478));
+        this->unk870.unk40.Update(*((MKVector3 *) &this->unk588));
         M2C_STRUCT_COPY((s32) &arg_sp2CC + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
         var_f0_4369 = 0.0f;
         arg_sp68 = -arg_sp2F0;
@@ -2238,19 +2236,19 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
         } else {
             var_f25_4766 = temp_f0_4767;
         }
-        KDMath_SmoothToAngle(M2C_FIELD(this, f32 *, 0xD0C), temp_f26_4723, 2.1991148f * gUpdateTimeDelta);
-        M2C_FIELD(this, f32 *, 0xD0C) = (f32) M2C_ERROR(/* Read from unset register $f1 */);
-        KDMath_SmoothToAngle(M2C_FIELD(this, f32 *, 0xD08), temp_f7_4729 * M2C_BITWISE(f32, arg_sp24), 2.1991148f * gUpdateTimeDelta);
-        M2C_FIELD(this, f32 *, 0xD08) = (f32) M2C_ERROR(/* Read from unset register $f1 */);
-        KDMath_SmoothToAngle(M2C_FIELD(this, f32 *, 0xD10), -M2C_BITWISE(f32, arg_sp1C) * (1.5707964f * var_f25_4766), 2.1991148f * gUpdateTimeDelta);
-        M2C_FIELD(this, f32 *, 0xD10) = (f32) M2C_ERROR(/* Read from unset register $f1 */);
+        KDMath_SmoothToAngle(M2C_BITWISE(f32, this->unkCF4), temp_f26_4723, 2.1991148f * gUpdateTimeDelta);
+        this->unkCF4 = M2C_ERROR(/* Read from unset register $f1 */);
+        KDMath_SmoothToAngle(M2C_BITWISE(f32, this->unkCF0), temp_f7_4729 * M2C_BITWISE(f32, arg_sp24), 2.1991148f * gUpdateTimeDelta);
+        this->unkCF0 = M2C_ERROR(/* Read from unset register $f1 */);
+        KDMath_SmoothToAngle(M2C_BITWISE(f32, this->unkCF8), -M2C_BITWISE(f32, arg_sp1C) * (1.5707964f * var_f25_4766), 2.1991148f * gUpdateTimeDelta);
+        this->unkCF8 = M2C_ERROR(/* Read from unset register $f1 */);
         M2C_STRUCT_COPY((s32) &arg_sp1CC + 4, (s32) (&identity - 4) + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp28C + 4, (s32) &arg_sp1CC + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp24C + 4, (s32) &arg_sp1CC + 4, 0x40);
         M2C_STRUCT_COPY((s32) &arg_sp20C + 4, (s32) &arg_sp1CC + 4, 0x40);
-        arg_sp290.RotatePitch((Matrix *) &arg_sp290, M2C_FIELD(this, f32 *, 0xD08));
-        arg_sp250.RotateRoll((Matrix *) &arg_sp250, -M2C_FIELD(this, f32 *, 0xD10));
-        arg_sp210.RotateYaw((Matrix *) &arg_sp210, M2C_FIELD(this, f32 *, 0xD0C));
+        arg_sp290.RotatePitch((Matrix *) &arg_sp290, M2C_BITWISE(f32, this->unkCF0));
+        arg_sp250.RotateRoll((Matrix *) &arg_sp250, -M2C_BITWISE(f32, this->unkCF8));
+        arg_sp210.RotateYaw((Matrix *) &arg_sp210, M2C_BITWISE(f32, this->unkCF4));
         arg_sp210.Multiply3x3((Matrix *) &arg_sp290, (Matrix *) &arg_sp210);
         arg_sp210.Multiply3x3((Matrix *) &arg_sp250, (Matrix *) &arg_sp210);
         arg_sp48 = -arg_sp210;
@@ -2276,19 +2274,19 @@ void Cynder::UpdateFlyingRotation(Matrix *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9D8'
+#if 0 // DRAFT: expression syntax error
 void Cynder::UpdateLookAtNodes() {
+    EnemyDescriptor *temp_r3_5003;
     s32 var_r30_5019;
     s32 var_r30_5031;
     s32 var_r31_5020;
     s32 var_r31_5032;
     u8 var_r31_4946;
     u8 var_r31_4963;
-    void *temp_r3_5003;
 
-    if ((s32) this->unk110.unk9D8 == 2) {
+    if (M2C_BITWISE(s32, this->unkAD0) == 2) {
         var_r31_4946 = 0;
-        if (((u8) this->unk110.unk7A8 == 2) || (this->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
             var_r31_4946 = 1;
         }
         if (var_r31_4946 == 0) {
@@ -2297,12 +2295,12 @@ void Cynder::UpdateLookAtNodes() {
         goto block_12;
     }
 block_5:
-    if ((u8) this->unkD00 == 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0xD00) == 0) {
         var_r31_4963 = 0;
-        if (((u8) this->unk110.unk7A8 == 2) || (this->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(this, u8 *, 0x8B8) == 2) || (this->unk870.unk30.Get() != NULL)) {
             var_r31_4963 = 1;
         }
-        if ((var_r31_4963 != 0) && (this->unk110.unk760.GetDist() < 4000.0f) && !(((u8) this->unk110.unk5A5 >> 4U) & 1)) {
+        if ((var_r31_4963 != 0) && (this->unk838.unk28.GetDist() < 4000.0f) && !(((u8) this->unk6B5 >> 4U) & 1)) {
             goto block_12;
         }
         var_r30_5031 = 0;
@@ -2315,20 +2313,20 @@ block_5:
         return;
     }
 block_12:
-    if ((u8) this->unkD00 != 0) {
-        this->unkC78 = 10.0f;
-        this->unkC84 = 0.0f;
+    if ((u8) M2C_FIELD(this, u8 *, 0xD00) != 0) {
+        this->unkC30.unk30 = 10.0f;
+        this->unkC30.unk3C = 0.0f;
     } else {
-        this->unkC78 = 5.0f;
-        M2C_FIELD(this->unk110.unk7A0.Get()->__vptr, M2C_UNK (**)(f32 *, MKVector3 *), 0x28)(&this->unk110.unk478, &this->unk110.unk5F0);
-        temp_r3_5003 = this->unk110.unk940;
-        if ((temp_r3_5003 != NULL) && ((s32) M2C_FIELD(temp_r3_5003, s32 *, 0x6C) == 5)) {
-            this->unkC84 = 0.0f;
+        this->unkC30.unk30 = 5.0f;
+        M2C_FIELD(this->unk870.unk30.Get()->__vptr, M2C_UNK (**)(f32 *, u8 *), 0x28)(&this->unk588, &this->unk6C0.unk38);
+        temp_r3_5003 = this->unkA38;
+        if ((temp_r3_5003 != NULL) && ((s32) temp_r3_5003->unk6C == 5)) {
+            this->unkC30.unk3C = 0.0f;
         } else {
-            this->unkC84 = 0.5235987f;
+            this->unkC30.unk3C = 0.5235987f;
         }
     }
-    this->unkC78.Update(&this->unk110.unk5F0);
+    this->unkC30.unk30.Update((MKVector3 *) &this->unk6C0.unk38);
     var_r30_5019 = 4;
     var_r31_5020 = 0x120;
     do {
@@ -2339,7 +2337,6 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD6C'
 void Cynder::Update() {
     s32 sp8;
 
@@ -2348,27 +2345,26 @@ void Cynder::Update() {
     UpdateEffects();
     UpdatePhrasesAndSounds();
     sp8 = 1;
-    this->unkD6C.Update(GS_CynderFuryPurpleLP, 1U, this->unkD94, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
-    if (((u8) M2C_FIELD(&gb, u8 *, 0x35D) != 0) && ((u8) this->unkF20 == 0) && ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(), 0x70)() != 0)) {
-        this->unkF20 = 1;
-        this->unkF00.Send((MKProp *) this);
+    ((KDSoundFader *) (this + 0xD6C))->Update(GS_CynderFuryPurpleLP, 1U, this->unkD94, (MKProp *) this, NULL, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    if (((u8) M2C_FIELD(&gb, u8 *, 0x35D) != 0) && ((u8) M2C_FIELD(this, u8 *, 0xF20) == 0) && ((void **) M2C_FIELD(&gb, void ***, 0) != NULL) && (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(), 0x70)() != 0)) {
+        M2C_FIELD(this, u8 *, 0xF20) = 1U;
+        this->unkEE8.Send((MKProp *) this);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unkD01'
+#if 0 // DRAFT: undefined identifier 'unkD1C'
 void Cynder::SetDefaults() {
     Enemy::SetDefaults();
-    if ((u8) this->unkD01 != 0) {
-        this->unk110.unk9D8 = 0;
+    if ((u8) M2C_FIELD(this, u8 *, 0xD01) != 0) {
+        this->unkAD0 = 0.0f;
     } else {
-        this->unk110.unk9D8 = 1;
+        this->unkAD0 = 1e-45f;
     }
-    this->unkCF4 = 0;
+    this->unkCDC = 0.0f;
     this->unkCFC = 0;
-    this->unkD00 = 0;
+    M2C_FIELD(this, s8 *, 0xD00) = 0;
     M2C_FIELD(this, f32 *, 0xD18) = 0.0f;
-    M2C_FIELD(this, f32 *, 0xD1C) = 0.0f;
+    this->unkD1C = 0.0f;
     M2C_FIELD(this, f32 *, 0xD20) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD28) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD2C) = 0.0f;
@@ -2379,26 +2375,26 @@ void Cynder::SetDefaults() {
     M2C_FIELD(this, f32 *, 0xD48) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD4C) = 0.0f;
     M2C_FIELD(this, f32 *, 0xD50) = 0.0f;
-    memset(&this->unkFA0, 0, 0x60U);
-    this->unkF94 = 0.0f;
-    this->unkF98 = 0.0f;
-    this->unkF18 = 0;
-    this->unkF19 = 1;
-    this->unkF1A = 0;
-    this->unkF1B = 1;
-    this->unkF1C = 1;
-    this->unkF1D = 0;
-    this->unkF1E = 0;
-    this->unkF1F = 0;
-    this->unkF20 = 0;
+    memset(&this->unkF88, 0, 0x60U);
+    this->unkF7C = 0.0f;
+    M2C_FIELD(this, f32 *, 0xF98) = 0.0f;
+    M2C_FIELD(this, s8 *, 0xF18) = 0;
+    M2C_FIELD(this, s8 *, 0xF19) = 1;
+    M2C_FIELD(this, s8 *, 0xF1A) = 0;
+    M2C_FIELD(this, s8 *, 0xF1B) = 1;
+    M2C_FIELD(this, s8 *, 0xF1C) = 1;
+    M2C_FIELD(this, s8 *, 0xF1D) = 0;
+    M2C_FIELD(this, s8 *, 0xF1E) = 0;
+    M2C_FIELD(this, s8 *, 0xF1F) = 0;
+    M2C_FIELD(this, s8 *, 0xF20) = 0;
     this->unkF74 = 0.0f;
     this->unkF70 = 0.0f;
-    this->unkF24 = 8;
-    this->unkF14 = 0.0f;
+    this->unkF0C.unk0 = 8;
+    this->unkEFC.unk0 = 0.0f;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk480'
+#if 0 // DRAFT: undefined identifier 'sp18'
 void Cynder::UpdateCollisionItems() {
     f64 sp60;
     f64 sp58;
@@ -2414,7 +2410,7 @@ void Cynder::UpdateCollisionItems() {
     sp48.operator*(300.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
-    temp_f2_5190 = this->unk110.unk480;
+    temp_f2_5190 = this->unk588.unk4;
     this->unk60 = sp18;
     sp20 = temp_f2_5190 + sp48.unk8;
     sp58 = sp18;
@@ -2424,7 +2420,7 @@ void Cynder::UpdateCollisionItems() {
     sp28.operator*(300.0f);
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
-    temp_f2_5217 = this->unk110.unk480;
+    temp_f2_5217 = this->unk588.unk4;
     this->unk70 = sp8;
     sp10 = temp_f2_5217 - sp28.unk8;
     sp38 = sp8;
@@ -2466,11 +2462,11 @@ void Cynder::SetupCollision() {
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
     temp_f31_5281 = GetCollisionRadius((f64) sp18, (f64) sp10, (f64) sp8);
-    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, temp_f31_5281, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, this->unk110.unk524, M2C_FIELD(temp_r31_5258, u32 *, 0x70));
+    ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddCapsule((MKVector3 *) &this->unk60, (MKVector3 *) &this->unk70, temp_f31_5281, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, this->unk634, M2C_FIELD(temp_r31_5258, u32 *, 0x70));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkF2C'
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void Cynder::Resolve() {
     f64 sp40;
     f64 sp38;
@@ -2483,8 +2479,8 @@ void Cynder::Resolve() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    Corona *temp_r4_5341;
     FireBombFX *temp_r3_5356;
+    f32 temp_r4_5341;
     s32 var_r30_5350;
 
     Enemy::Resolve();
@@ -2499,10 +2495,10 @@ void Cynder::Resolve() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    this->unkF2C = ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 1.0f, lit_897, lit_898);
-    temp_r4_5341 = this->unkF2C;
-    if (temp_r4_5341 != NULL) {
-        temp_r4_5341->unk31 &= ~0x40;
+    this->unkF14 = M2C_BITWISE(f32, ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Alloc(*((MKVector3 *) &sp38), *((MKVector4 *) &sp28), 1.0f, lit_897, lit_898));
+    temp_r4_5341 = this->unkF14;
+    if (M2C_BITWISE(u32, temp_r4_5341) != 0U) {
+        M2C_FIELD(temp_r4_5341, u8 *, 0x31) = (u8) (M2C_FIELD(temp_r4_5341, u8 *, 0x31) & ~0x40);
     }
     var_r30_5350 = 0;
     do {
@@ -2512,11 +2508,11 @@ void Cynder::Resolve() {
         }
         var_r30_5350 += 1;
     } while (var_r30_5350 < 8);
-    this->unkCF0 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "CynderFireBomb"));
+    this->unkCD8 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "CynderFireBomb"));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD01'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void Cynder::LoadDone() {
     f64 sp8;
     CynderBossGoal_Think *temp_r30_5434;
@@ -2539,7 +2535,7 @@ void Cynder::LoadDone() {
     void *temp_r6_5551;
 
     Enemy::LoadDone();
-    if ((u8) this->unkD01 != 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0xD01) != 0) {
         operator new(0x30U, NULL, 0);
         temp_r30_5399 = M2C_ERROR(/* Read from unset register $r3 */);
         if (temp_r30_5399 != NULL) {
@@ -2556,8 +2552,8 @@ void Cynder::LoadDone() {
             temp_r30_5399->__vptr = &__vt;
         }
         temp_r30_5399->Init(this);
-        this->unk110.unk92C = temp_r30_5399;
-        this->unk110.unk928->unkE8 = 200.0f;
+        this->unkA24 = (EnemyAttack *) temp_r30_5399;
+        M2C_FIELD(this->unkA20, f32 *, 0xE8) = 200.0f;
     } else {
         operator new(0x4CU, NULL, 0);
         temp_r30_5434 = M2C_ERROR(/* Read from unset register $r3 */);
@@ -2575,22 +2571,22 @@ void Cynder::LoadDone() {
             temp_r30_5434->__vptr = &__vt;
         }
         temp_r30_5434->Init(this);
-        this->unk110.unk92C = (CynderConcurrentGoal_Think *) temp_r30_5434;
+        this->unkA24 = (EnemyAttack *) temp_r30_5434;
     }
-    this->unk110.unk930 = &this->unk110.unk92C->__vptr;
-    if (!(this->unk110.unk570 & 0x160000)) {
+    this->unkA28 = (void **) this->unkA24;
+    if (!(this->unk680 & 0x160000)) {
         Disable();
     }
     this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
-    this->unkCEC = checked_cast<CynderBreathFX *, MKProp>(gMK->CreateProp("CynderBreathFX"));
-    SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>(this->unkCEC, &this->unk110.unk90C);
+    this->unkCD4 = checked_cast<CynderBreathFX *, MKProp>(gMK->CreateProp("CynderBreathFX"));
+    SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>((CynderBreathFX *) this->unkCD4, (MKPtrList<MKProp> *) &this->unkA04);
     this->unkCF8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Head");
-    this->unk110.unkA00.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));
-    this->unk110.unkA48.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck02"));
-    this->unkBA0.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck03"));
-    this->unkBE8.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck04"));
-    this->unkC30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck05"));
-    this->unkC78.Init(this->unk4, this->unkCF8);
+    this->unkAF8.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));
+    this->unkB10.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck02"));
+    this->unkB58.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck03"));
+    this->unkBA0.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck04"));
+    this->unkBE8.unk30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck05"));
+    this->unkC30.unk30.Init(this->unk4, this->unkCF8);
     var_r7_5546 = 1;
     var_r3_5547 = 0x48;
     var_ctr_5549 = 5;
@@ -2629,24 +2625,24 @@ void Cynder::LoadDone() {
         *(this + temp_r0_5601) = 5.0f;
         var_ctr_5599 -= 1;
     } while (var_ctr_5599 != 0);
-    this->unkC84 = 0.5235987f;
-    this->unkC88 = 2.8274333f;
+    this->unkC30.unk3C = 0.5235987f;
+    this->unkC30.unk40 = 2.8274333f;
     this->unkD98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Weapon06");
     this->unkD9C = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Spine03");
     KDMath_GetDirection(this->unkEAC);
     M2C_FIELD(this, f64 *, 0xEA8) = sp8;
     M2C_FIELD(this, f64 *, 0xEB0) = sp10;
-    temp_r3_5635 = this->unk110.unk928->GetAnimSequence(0xA, 0x140, 0, NULL);
+    temp_r3_5635 = this->unkA20->GetAnimSequence(0xA, 0x140, 0, NULL);
     if (temp_r3_5635 != NULL) {
-        this->unkEB8 = M2C_FIELD(temp_r3_5635, f64 *, 8);
+        M2C_FIELD(this, f64 *, 0xEB8) = (f64) M2C_FIELD(temp_r3_5635, f64 *, 8);
         M2C_FIELD(this, f64 *, 0xEC0) = (f64) M2C_FIELD(temp_r3_5635, f64 *, 0x10);
     }
-    this->unkF28 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp("cynderFuryPowerupPS"));
-    this->unkF28->unk140 = (s32) &this->unkF30;
+    this->unkF10.unk0 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp("cynderFuryPowerupPS"));
+    M2C_FIELD(this->unkF10.unk0, s8 **, 0x140) = &this->unkF18;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkD01'
+#if 0 // DRAFT: illegal implicit conversion from 'Cynder *' to
 s32 Cynder::LoadLine(MKIniLine *arg0) {
     f32 var_f1_5865;
     s32 temp_ret_5865;
@@ -2654,7 +2650,7 @@ s32 Cynder::LoadLine(MKIniLine *arg0) {
     s32 var_r27_5873;
     s32 var_r29_5875;
 
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", &this->unkD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (s32 *) &this->unkF78, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (this->unkED0.LoadLine(arg0, "OnStage2End") != 0) || (this->unkED4.LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (this->unkEC8.LoadLine(arg0, "OnReset") != 0) || (this->unkED8.LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEE0.LoadLine(arg0, "Fury1c") != 0) || (this->unkEE4.LoadLine(arg0, "Fury1d") != 0) || (this->unkEE8.LoadLine(arg0, "Fury1e") != 0) || (this->unkEEC.LoadLine(arg0, "Fury2a") != 0) || (this->unkEF0.LoadLine(arg0, "Fury2b") != 0) || (this->unkEF4.LoadLine(arg0, "Fury2c") != 0) || (this->unkEF8.LoadLine(arg0, "Fury2d") != 0) || (this->unkEFC.LoadLine(arg0, "Fury2e") != 0) || (this->unkF00.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkF04.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkF08.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkF0C.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkF10.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
+    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", this + 0xD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (s32 *) &this->unkF60, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (this->unkEB8.LoadLine(arg0, "OnStage2End") != 0) || (((EventMessage *) (this + 0xED4))->LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (this->unkEB0.LoadLine(arg0, "OnReset") != 0) || (this->unkEC0.LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEC8.LoadLine(arg0, "Fury1c") != 0) || (this->unkECC.LoadLine(arg0, "Fury1d") != 0) || (this->unkED0.LoadLine(arg0, "Fury1e") != 0) || (this->unkED4.LoadLine(arg0, "Fury2a") != 0) || (this->unkED8.LoadLine(arg0, "Fury2b") != 0) || (this->unkEDC.LoadLine(arg0, "Fury2c") != 0) || (this->unkEE0.LoadLine(arg0, "Fury2d") != 0) || (this->unkEE4.LoadLine(arg0, "Fury2e") != 0) || (this->unkEE8.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkEEC.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkEF0.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkEF4.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkEF8.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
         return 1;
     }
     var_r27_5873 = 0;
@@ -2674,25 +2670,25 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCC0'
+#if 0 // DRAFT: expression syntax error
 void Cynder::Deinit() {
     s32 sp14;
     s32 sp10;
     s32 spC;
     s32 sp8;
-    Corona *temp_r4_5928;
+    f32 temp_r4_5928;
 
     this->unkCC0.Deinit();
     this->unkCD4.Deinit();
-    PhrasePlayer_StopEvent(this->unkD58);
-    KDSound_Stop(&this->unkD6C);
+    PhrasePlayer_StopEvent(M2C_FIELD(this, s32 *, 0xD58));
+    KDSound_Stop(this + 0xD6C);
     ((ScreenWobbleFX *) ((ScreenWobbleFX *) (&gb + 0xB8)))->EnableSpeedEffect(0U, 1.0f, 1.0f);
-    temp_r4_5928 = this->unkF2C;
-    if (temp_r4_5928 != NULL) {
-        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(temp_r4_5928);
-        this->unkF2C = NULL;
+    temp_r4_5928 = this->unkF14;
+    if (M2C_BITWISE(u32, temp_r4_5928) != 0U) {
+        ((Coronas *) (M2C_FIELD(&gb, Coronas **, 0x64)))->Free(M2C_BITWISE(Corona *, temp_r4_5928));
+        this->unkF14 = 0.0f;
     }
-    if ((u8) this->unkD01 == 0) {
+    if ((u8) M2C_FIELD(this, u8 *, 0xD01) == 0) {
         gb.GetSpyro();
         sp14 = 0;
         sp10 = 0xAA;
@@ -2712,7 +2708,7 @@ void Cynder::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkCC0'
+#if 0 // DRAFT: expression syntax error
 void Cynder::Init() {
     s32 var_r28_6025;
     s32 var_r30_6027;
@@ -2721,21 +2717,21 @@ void Cynder::Init() {
     Enemy::Init();
     this->unkCC0.Init(0x21, 0U);
     this->unkCD4.Init(0xA, 0U);
-    this->unkCEC = NULL;
-    this->unkD01 = 0;
-    this->unkD58 = 0;
-    this->unkD5C = 0;
-    this->unkD60 = NULL;
-    this->unkD64 = 0.0f;
-    this->unkD68 = 0.0f;
+    this->unkCD4 = 0;
+    M2C_FIELD(this, s8 *, 0xD01) = 0;
+    M2C_FIELD(this, s32 *, 0xD58) = 0;
+    M2C_FIELD(this, s32 *, 0xD5C) = 0;
+    M2C_FIELD(this, s32 *, 0xD60) = 0;
+    M2C_FIELD(this, f32 *, 0xD64) = 0.0f;
+    M2C_FIELD(this, f32 *, 0xD68) = 0.0f;
     this->unkCF8 = 0xFFFF;
-    this->unkD6C.Init(0.25f, 0.25f);
+    ((KDSoundFader *) (this + 0xD6C))->Init(0.25f, 0.25f);
     var_r28_6025 = 0;
     this->unkD94 = 0;
     var_r30_6027 = 0;
     var_r31_6028 = 0;
-    this->unkF78 = NULL;
-    this->unkF7C = NULL;
+    this->unkF60 = 0.0f;
+    this->unkF64 = 0.0f;
     do {
         *(this + (var_r30_6027 + 0xDA4)) = 0;
         ((EnemyRegion *) (this + (var_r31_6028 + 0xDB8)))->Init();
@@ -2749,10 +2745,16 @@ void Cynder::Init() {
     this->unkE98.unk8 = 0.0f;
     this->unkEA8 = 0.0f;
     this->unkEAC = 0.0f;
-    this->unkEB0 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xEB8) = 0.0f;
-    M2C_FIELD(this, f32 *, 0xEBC) = 0.0f;
-    this->unkEC0 = 0.0f;
+    this->unkE98.unk0 = 0.0f;
+    this->unkE98.unk8 = 0.0f;
+    this->unkE98.unkC = 0.0f;
+    this->unkEA8 = 0.0f;
+    this->unkEB0.Init();
+    this->unkECC.Init();
+    this->unkEB8.Init();
+    ((EventMessage *) (this + 0xED4))->Init();
+    this->unkEC0.Init();
+    this->unkEDC.Init();
     this->unkEC8.Init();
     this->unkECC.Init();
     this->unkED0.Init();
@@ -2766,18 +2768,12 @@ void Cynder::Init() {
     this->unkEF0.Init();
     this->unkEF4.Init();
     this->unkEF8.Init();
-    this->unkEFC.Init();
-    this->unkF00.Init();
-    this->unkF04.Init();
-    this->unkF08.Init();
-    this->unkF0C.Init();
-    this->unkF10.Init();
-    this->unkF28 = NULL;
-    M2C_STRUCT_COPY((s32) &this->unkF2C + 4, (s32) (&identity - 4) + 4, 0x40);
+    this->unkF10.unk0 = 0;
+    M2C_STRUCT_COPY((s32) &this->unkF14 + 4, (s32) (&identity - 4) + 4, 0x40);
     this->unkF74 = 0.0f;
     this->unkF70 = 0.0f;
-    this->unkF1F = 0;
-    this->unkCF0 = NULL;
+    M2C_FIELD(this, s8 *, 0xF1F) = 0;
+    this->unkCD8 = 0;
 }
 #endif
 

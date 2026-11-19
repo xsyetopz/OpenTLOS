@@ -145,17 +145,17 @@ void WeatherSporesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const f
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gWeatherSporesPSEnv'
 void WeatherSporesPS::Init() {
     MKParticleSystem::Init();
-    this->unk60.unk48 = 10.5f;
-    this->unk60.unk4C = 10.5f;
+    this->unkA8 = 10.5f;
+    this->unkAC = 10.5f;
     this->unk108 = 0.0f;
     this->unk10C = -100.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gWeatherSporesPSEnv, 5);
     SetMaxParticleAge(5.0f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
 #endif

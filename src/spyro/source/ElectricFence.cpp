@@ -468,7 +468,7 @@ loop_27:
         M2C_FIELD(temp_r8_754, s32 *, 0xC) = 0;
         temp_r26_763 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r7_746), "c_collide");
         temp_r4_764 = this->unk4C + var_r27_732;
-        MKModel_SetWorldMatrix(temp_r4_764->unk40, *temp_r4_764);
+        MKModel_SetWorldMatrix(M2C_FIELD(temp_r4_764, MKModel **, 0x40), *temp_r4_764);
         temp_r29_770 = this->unk4C + var_r27_732;
         ((MKCollisionManager *) (M2C_FIELD(*gMK, MKCollisionManager *(**)(void **), 0x84)(gMK)))->AddModel(M2C_FIELD(temp_r29_770, MKModel **, 0x40), (s32) temp_r26_763, (MKCollisionMode) 1, temp_r29_770 + 0x44, 0U);
         *(this->unk4C + (var_r27_732 + 0x48)) = 1;

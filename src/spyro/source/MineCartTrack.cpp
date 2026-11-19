@@ -518,18 +518,18 @@ loop_9:
                 sp78 = temp_f1_1029;
                 sp80 = temp_f0_1030;
                 if ((u8) this->unk100 != 0) {
-                    M2C_FIELD(this, f64 *, 0xA0) = temp_f1_1029;
-                    M2C_FIELD(this, f64 *, 0xA8) = temp_f0_1030;
-                    M2C_FIELD(this, f64 *, 0xB0) = sp78;
-                    M2C_FIELD(this, f64 *, 0xB8) = sp80;
+                    this->unkA0 = temp_f1_1029;
+                    this->unkA8 = temp_f0_1030;
+                    this->unkB0 = sp78;
+                    this->unkB8 = sp80;
                     this->unk100 = 0;
                 } else {
-                    Min(sp48, *((MKVector3 *) &this->unk50.unk50));
-                    M2C_FIELD(this, f64 *, 0xA0) = M2C_BITWISE(f64, sp48);
-                    M2C_FIELD(this, f64 *, 0xA8) = (f64) sp48.unk8;
-                    Max(sp38, *((MKVector3 *) &this->unk50.unk60));
-                    M2C_FIELD(this, f64 *, 0xB0) = M2C_BITWISE(f64, sp38);
-                    M2C_FIELD(this, f64 *, 0xB8) = (f64) sp38.unk8;
+                    Min(sp48, *((MKVector3 *) &this->unkA0));
+                    this->unkA0 = M2C_BITWISE(f64, sp48);
+                    this->unkA8 = (f64) sp48.unk8;
+                    Max(sp38, *((MKVector3 *) &this->unkB0));
+                    this->unkB0 = M2C_BITWISE(f64, sp38);
+                    this->unkB8 = (f64) sp38.unk8;
                 }
                 this->unk50.AddNode(*((MKVector3 *) &sp78));
                 var_r30_1015 = var_r30_1015->unkC->GetNextLine(var_r30_1015);
@@ -551,18 +551,18 @@ loop_18:
                 sp68 = temp_f1_1103;
                 sp70 = temp_f0_1104;
                 if ((u8) this->unk100 != 0) {
-                    M2C_FIELD(this, f64 *, 0xA0) = temp_f1_1103;
-                    M2C_FIELD(this, f64 *, 0xA8) = temp_f0_1104;
-                    M2C_FIELD(this, f64 *, 0xB0) = sp68;
-                    M2C_FIELD(this, f64 *, 0xB8) = sp70;
+                    this->unkA0 = temp_f1_1103;
+                    this->unkA8 = temp_f0_1104;
+                    this->unkB0 = sp68;
+                    this->unkB8 = sp70;
                     this->unk100 = 0;
                 } else {
-                    Min(sp18, *((MKVector3 *) &this->unk50.unk50));
-                    M2C_FIELD(this, f64 *, 0xA0) = M2C_BITWISE(f64, sp18);
-                    M2C_FIELD(this, f64 *, 0xA8) = (f64) sp18.unk8;
-                    Max(sp8, *((MKVector3 *) &this->unk50.unk60));
-                    M2C_FIELD(this, f64 *, 0xB0) = M2C_BITWISE(f64, sp8);
-                    M2C_FIELD(this, f64 *, 0xB8) = (f64) sp8.unk8;
+                    Min(sp18, *((MKVector3 *) &this->unkA0));
+                    this->unkA0 = M2C_BITWISE(f64, sp18);
+                    this->unkA8 = (f64) sp18.unk8;
+                    Max(sp8, *((MKVector3 *) &this->unkB0));
+                    this->unkB0 = M2C_BITWISE(f64, sp8);
+                    this->unkB8 = (f64) sp8.unk8;
                 }
                 this->unk50.unk14.AddNode(*((MKVector3 *) &sp68));
                 var_r30_1089 = var_r30_1089->unkC->GetNextLine(var_r30_1089);
@@ -572,7 +572,7 @@ loop_18:
         return 1;
     }
     var_r31_1156 = 0;
-    if ((arg0->LoadInt("EntryDoorID_1", &this->unk104, 0) != 0) || (arg0->LoadInt("ExitDoorID_1", &this->unk108, 0) != 0) || (arg0->LoadInt("EntryDoorID_2", &this->unk10C, 0) != 0) || (arg0->LoadInt("ExitDoorID_2", &this->unk110, 0) != 0) || (arg0->LoadInt("EntryDoorID_3", &this->unk114, 0) != 0) || (arg0->LoadInt("ExitDoorID_3", &this->unk118, 0) != 0) || (arg0->LoadInt("EntryDoorID_4", &this->unk11C, 0) != 0) || (arg0->LoadInt("ExitDoorID_4", &this->unk120, 0) != 0) || (arg0->LoadBool("SpeedwayTrack", &this->unk4C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_1", &this->unk50.unk3C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_2", &this->unk50.unk40, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_3", &this->unk50.unk44, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_4", &this->unk50.unk48, 0) != 0)) {
+    if ((arg0->LoadInt("EntryDoorID_1", &this->unk104, 0) != 0) || (arg0->LoadInt("ExitDoorID_1", &this->unk108, 0) != 0) || (arg0->LoadInt("EntryDoorID_2", &this->unk10C, 0) != 0) || (arg0->LoadInt("ExitDoorID_2", &this->unk110, 0) != 0) || (arg0->LoadInt("EntryDoorID_3", &this->unk114, 0) != 0) || (arg0->LoadInt("ExitDoorID_3", &this->unk118, 0) != 0) || (arg0->LoadInt("EntryDoorID_4", &this->unk11C, 0) != 0) || (arg0->LoadInt("ExitDoorID_4", &this->unk120, 0) != 0) || (arg0->LoadBool("SpeedwayTrack", &this->unk4C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_1", &this->unk50.unk3C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_2", &this->unk90, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_3", &this->unk94, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_4", &this->unk98, 0) != 0)) {
         var_r31_1156 = 1;
     }
     return var_r31_1156;
@@ -587,7 +587,7 @@ void MineCartTrack::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk6C'
+#if 0 // DRAFT: undefined identifier 'identity'
 void MineCartTrack::Init() {
     s32 var_ctr_1332;
     s32 var_r3_1330;
@@ -596,9 +596,9 @@ void MineCartTrack::Init() {
     void *temp_r9_1334;
 
     MKProp::Init();
-    M2C_STRUCT_COPY((s32) &this->unk50.unk6C + 4, (s32) (&identity - 4) + 4, 0x40);
+    M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&identity - 4) + 4, 0x40);
     var_r4_1322 = 0;
-    this->unk8 = &this->unk50.unk70;
+    this->unk8 = &this->unkC0;
     var_r3_1330 = 0;
     var_ctr_1332 = 4;
     do {
@@ -615,11 +615,11 @@ void MineCartTrack::Init() {
         var_ctr_1332 -= 1;
     } while (var_ctr_1332 != 0);
     this->unk50.unk38 = 0.0f;
-    M2C_FIELD(this, f64 *, 0xA0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xA8) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    M2C_FIELD(this, f64 *, 0xB0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xB8) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unkC = (BoundingVolume *) &this->unk50.unk50;
+    this->unkA0 = M2C_FIELD(&zero, f64 *, 0);
+    this->unkA8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkB0 = M2C_FIELD(&zero, f64 *, 0);
+    this->unkB8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkC = (BoundingVolume *) &this->unkA0;
     this->unk100 = 1;
     this->unk144 = 0;
     this->unk4C = 0;

@@ -117,17 +117,17 @@ void IceBitsPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gIceBitsPSEnv'
 void IceBitsPS::Init() {
     MKParticleSystem::Init();
-    this->unk60.unk48 = 30.0f;
-    this->unk60.unk4C = 30.0f;
+    this->unkA8 = 30.0f;
+    this->unkAC = 30.0f;
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gIceBitsPSEnv, 5);
     SetMaxParticleAge(1.5f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.01f;
 }
 #endif

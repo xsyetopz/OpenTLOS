@@ -34,35 +34,29 @@ void SparxPath::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 void SparxPath::Resolve() {
     MKProp::Resolve();
-    this->unk50.unk70 *= 100.0f;
+    this->unkC0 *= 100.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 s32 SparxPath::LoadLine(MKIniLine *arg0) {
     s32 var_r31_123;
 
     var_r31_123 = 0;
-    if ((SplineProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("Speed", &this->unk50.unk70, 0) != 0) || (this->unk50.unk74.LoadLine(arg0, "OnComplete") != 0)) {
+    if ((SplineProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("Speed", &this->unkC0, 0) != 0) || (this->unkC4.LoadLine(arg0, "OnComplete") != 0)) {
         var_r31_123 = 1;
     }
     return var_r31_123;
 }
-#endif
 
 void SparxPath::Deinit() {
     SplineProp::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 void SparxPath::Init() {
-    this->unk50.unk70 = 200.0f;
+    this->unkC0 = 200.0f;
     SplineProp::Init();
 }
-#endif
 
 void SparxPath_cpp::__sinit() {
     f32 temp_f0_217;

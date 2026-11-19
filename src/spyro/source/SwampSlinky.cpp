@@ -1,4 +1,5 @@
 #include "spyro/source/SwampSlinky.h"
+#include "common/Source/MKAnimScript.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
 #include "common/Source/MKProp.h"
@@ -51,8 +52,8 @@ void SwampSlinky::Draw() {
 loop_2:
     if (var_r30_89 < (s32) this->unk90) {
         temp_r29_97 = this->unk170 + var_r31_90;
-        this->unk80->SetAnim(temp_r29_97->unk50, 0.0f, 0.0f, 0, -1);
-        this->unk80->JumpToPos(temp_r29_97->unk54, -1);
+        this->unk80->SetAnim(M2C_FIELD(temp_r29_97, MKAnim **, 0x50), 0.0f, 0.0f, 0, -1);
+        this->unk80->JumpToPos(M2C_FIELD(temp_r29_97, f32 *, 0x54), -1);
         MKModel_SetWorldMatrix(this->unk4, *temp_r29_97);
         MKModel_Draw(this->unk4, NULL);
         var_r30_89 += 1;
@@ -66,7 +67,7 @@ loop_2:
 void SwampSlinky::Update() {
     s8 sp208;
     s32 sp204;
-    f32 sp200;
+    s32 sp200;
     s32 sp1FC;
     f32 sp1F8;
     s32 sp1F4;
@@ -148,20 +149,20 @@ void SwampSlinky::Update() {
 loop_20:
     if (var_r31_138 < (s32) this->unk90) {
         temp_r30_144 = this->unk170 + var_r28_139;
-        temp_r30_144->unk54 += temp_r30_144->unk58 * gUpdateTimeDelta;
-        temp_f0_149 = temp_r30_144->unk54;
+        M2C_FIELD(temp_r30_144, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_144, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_144, f32 *, 0x54));
+        temp_f0_149 = M2C_FIELD(temp_r30_144, f32 *, 0x54);
         if (temp_f0_149 > 1.0f) {
-            temp_r30_144->unk54 = temp_f0_149 - 1.0f;
+            M2C_FIELD(temp_r30_144, f32 *, 0x54) = (f32) (temp_f0_149 - 1.0f);
         }
-        temp_r30_144->unk64 -= gUpdateTimeDelta;
-        temp_r0_159 = temp_r30_144->unk60;
+        M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_144, f32 *, 0x64) - gUpdateTimeDelta);
+        temp_r0_159 = M2C_FIELD(temp_r30_144, s32 *, 0x60);
         switch (temp_r0_159) {                      /* irregular */
         case 0:
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_144->unk64 == 0.0f) {
-                temp_r30_144->unk64 = 3.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                temp_r30_144->unk60 = 1;
-                temp_r30_144->unk50 = M2C_FIELD(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
+            if (M2C_FIELD(temp_r30_144, f32 *, 0x64) == 0.0f) {
+                M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (3.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+                M2C_FIELD(temp_r30_144, s32 *, 0x60) = 1;
+                M2C_FIELD(temp_r30_144, void **, 0x50) = (void *) M2C_FIELD(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x74);
                 spB0 = 0.0f;
                 sp80 = 0.0f;
                 sp78 = 0.0f;
@@ -170,8 +171,8 @@ loop_20:
                 spAC = 1.0f;
                 sp148 = (f64) sp78;
                 sp150 = (f64) sp80;
-                temp_r30_144->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_144->unk50, s16 *, 4) / 30.0f));
-                temp_r30_144->unk54 = 0.0f;
+                M2C_FIELD(temp_r30_144, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_144, void **, 0x50), s16 *, 4) / 30.0f)));
+                M2C_FIELD(temp_r30_144, f32 *, 0x54) = 0.0f;
                 sp1A8 = M2C_FIELD(temp_r30_144, f64 *, 0x30);
                 sp1B0 = M2C_FIELD(temp_r30_144, f64 *, 0x38);
                 sp198 = (f64) spA8;
@@ -194,7 +195,7 @@ loop_20:
                 sp1F4 = 0;
                 sp1F8 = 3.4028235e38f;
                 sp1FC = 0;
-                sp200 = 0.0f;
+                sp200 = 0;
                 sp204 = -1;
                 sp208 = 0;
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f3, $f0 */);
@@ -252,7 +253,7 @@ loop_20:
             break;
         case 1:
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_144->unk54 == 0.55f) {
+            if (M2C_FIELD(temp_r30_144, f32 *, 0x54) == 0.55f) {
                 temp_f30_378 = gUpdateTimeDelta;
                 spB8.operator*(75.0f);
                 M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r0, 0x0, qr0 */);
@@ -263,12 +264,12 @@ loop_20:
                 temp_r30_144->Translate(temp_r30_144, *((MKVector3 *) &spC8));
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if ((temp_r30_144->unk64 == 0.0f) && ((temp_f1_404 = temp_r30_144->unk54, M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_404 == 0.95f) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_404 == 0.05f) != 0)))) {
-                temp_r30_144->unk64 = 5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
-                temp_r30_144->unk60 = 0;
-                temp_r30_144->unk50 = M2C_FIELD(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), f32 *, 0x70);
-                temp_r30_144->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_144->unk50, s16 *, 4) / 30.0f));
-                temp_r30_144->unk54 = 0.0f;
+            if ((M2C_FIELD(temp_r30_144, f32 *, 0x64) == 0.0f) && ((temp_f1_404 = M2C_FIELD(temp_r30_144, f32 *, 0x54), M2C_ERROR(/* unknown instruction: cror eq, gt, eq */), ((temp_f1_404 == 0.95f) != 0)) || (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((temp_f1_404 == 0.05f) != 0)))) {
+                M2C_FIELD(temp_r30_144, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
+                M2C_FIELD(temp_r30_144, s32 *, 0x60) = 0;
+                M2C_FIELD(temp_r30_144, void **, 0x50) = (void *) M2C_FIELD(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), void **, 0x70);
+                M2C_FIELD(temp_r30_144, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_144, void **, 0x50), s16 *, 4) / 30.0f)));
+                M2C_FIELD(temp_r30_144, f32 *, 0x54) = 0.0f;
             }
             break;
         }
@@ -281,6 +282,9 @@ loop_20:
 
 #if 0 // DRAFT: illegal type
 void SwampSlinky::LoadDone() {
+    s8 sp190;
+    s32 sp18C;
+    s32 sp188;
     Volume sp100;
     f64 spF8;
     f64 spF0;
@@ -346,12 +350,12 @@ void SwampSlinky::LoadDone() {
 loop_27:
     if (var_r31_506 < (s32) this->unk90) {
         temp_r30_523 = this->unk170 + var_r28_508;
-        temp_r30_523->unk60 = 0;
-        temp_r26_525 = temp_r30_523->unk60;
-        temp_r30_523->unk50 = *(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_525 * 4) + 0x70));
-        temp_r30_523->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_523->unk50, s16 *, 4) / 30.0f));
-        temp_r30_523->unk54 = 0.0f;
-        temp_r30_523->unk64 = 5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f);
+        M2C_FIELD(temp_r30_523, s32 *, 0x60) = 0;
+        temp_r26_525 = M2C_FIELD(temp_r30_523, s32 *, 0x60);
+        M2C_FIELD(temp_r30_523, void **, 0x50) = (void *) *(checked_cast<SwampSlinkyDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r26_525 * 4) + 0x70));
+        M2C_FIELD(temp_r30_523, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_523, void **, 0x50), s16 *, 4) / 30.0f)));
+        M2C_FIELD(temp_r30_523, f32 *, 0x54) = 0.0f;
+        M2C_FIELD(temp_r30_523, f32 *, 0x64) = (f32) (5.0f * MKRand_Float(&gViewSeed, 0.5f, 1.0f));
         sp100.GetRandPos();
         sp50 = 0.0f;
         sp54 = -200.0f;
@@ -380,11 +384,11 @@ loop_27:
         unksp17A = 0;
         unksp17B = 0;
         sp100.unk40.unk3C = 0.0f;
-        sp100.unk40.unk40 = 3.4028235e38f;
-        sp100.unk40.unk44 = 0.0f;
-        sp100.unk40.unk48 = 0.0f;
-        sp100.unk40.unk4C = nanf;
-        sp100.unk40.unk50 = 0;
+        sp100.unk80 = 3.4028235e38f;
+        sp100.unk84 = 0.0f;
+        sp188 = 0;
+        sp18C = -1;
+        sp190 = 0;
         spC8 = (f64) sp58;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
         sp78 = 0.0f;

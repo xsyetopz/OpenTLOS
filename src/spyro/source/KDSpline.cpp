@@ -4,10 +4,27 @@
 #include "common/Source/Matrix.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'KDSpline_PositionMixer' redeclared
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(s32);                                    /* extern */
-static Matrix splinePosMixer;                       /* type too large by 0x4C; unable to generate initializer: not enough data */
+static Matrix splinePosMixer = {
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+    0.0f,
+};
+#if 0 // DRAFT: identifier 'KDSpline_PositionMixer' redeclared
 static Matrix *KDSpline_PositionMixer = &splinePosMixer;
 #endif
 
@@ -1883,7 +1900,6 @@ void KDSpline_GetMeasure(const MKVector3 &arg0, const MKVector3 &arg1, const MKV
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
 void KDSpline_cpp::__sinit() {
     f32 spC4;
     f32 spC0;
@@ -1933,7 +1949,10 @@ void KDSpline_cpp::__sinit() {
     f32 sp10;
     f32 spC;
     f32 sp8;
+    Matrix *temp_r3_3388;
+    Matrix *temp_r3_3460;
 
+    temp_r3_3388 = &splinePosMixer + 0x40;
     spB8 = 1.0f;
     spBC = 2.0f;
     spC0 = -2.0f;
@@ -1976,12 +1995,13 @@ void KDSpline_cpp::__sinit() {
     M2C_FIELD(&splinePosMixer, f64 *, 0x38) = (f64) sp90;
     M2C_FIELD(&splinePosMixer, f64 *, 0x40) = (f64) sp78;
     M2C_FIELD(&splinePosMixer, f64 *, 0x48) = (f64) sp80;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x50) = (f64) sp68;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x58) = (f64) sp70;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x60) = (f64) sp58;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x68) = (f64) sp60;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x70) = (f64) sp48;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x78) = (f64) sp50;
+    M2C_FIELD(temp_r3_3388, f64 *, 0x10) = (f64) sp68;
+    M2C_FIELD(temp_r3_3388, f64 *, 0x18) = (f64) sp70;
+    M2C_FIELD(temp_r3_3388, f64 *, 0x20) = (f64) sp58;
+    M2C_FIELD(temp_r3_3388, f64 *, 0x28) = (f64) sp60;
+    M2C_FIELD(temp_r3_3388, f64 *, 0x30) = (f64) sp48;
+    M2C_FIELD(temp_r3_3388, f64 *, 0x38) = (f64) sp50;
+    temp_r3_3460 = &splinePosMixer + 0x80;
     sp38 = 0.0f;
     sp3C = 0.0f;
     sp40 = 0.0f;
@@ -1998,13 +2018,12 @@ void KDSpline_cpp::__sinit() {
     spC = -6.0f;
     sp10 = 6.0f;
     sp14 = -2.0f;
-    splinePosMixer.unk80 = (f64) sp38;
+    M2C_FIELD(&splinePosMixer, f64 *, 0x80) = (f64) sp38;
     M2C_FIELD(&splinePosMixer, f64 *, 0x88) = (f64) sp40;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x90) = (f64) sp28;
-    M2C_FIELD(&splinePosMixer, f64 *, 0x98) = (f64) sp30;
-    M2C_FIELD(&splinePosMixer, f64 *, 0xA0) = (f64) sp18;
-    M2C_FIELD(&splinePosMixer, f64 *, 0xA8) = (f64) sp20;
-    M2C_FIELD(&splinePosMixer, f64 *, 0xB0) = (f64) sp8;
-    M2C_FIELD(&splinePosMixer, f64 *, 0xB8) = (f64) sp10;
+    M2C_FIELD(temp_r3_3460, f64 *, 0x10) = (f64) sp28;
+    M2C_FIELD(temp_r3_3460, f64 *, 0x18) = (f64) sp30;
+    M2C_FIELD(temp_r3_3460, f64 *, 0x20) = (f64) sp18;
+    M2C_FIELD(temp_r3_3460, f64 *, 0x28) = (f64) sp20;
+    M2C_FIELD(temp_r3_3460, f64 *, 0x30) = (f64) sp8;
+    M2C_FIELD(temp_r3_3460, f64 *, 0x38) = (f64) sp10;
 }
-#endif

@@ -814,6 +814,9 @@ loop_35:
 
 #if 0 // DRAFT: illegal type
 void LavaFiddlerCritter::Resolve() {
+    s8 sp190;
+    s32 sp18C;
+    s32 sp188;
     Volume sp100;
     f64 spF8;
     f64 spF0;
@@ -897,11 +900,11 @@ loop_24:
         unksp17A = 0;
         unksp17B = 0;
         sp100.unk40.unk3C = 0.0f;
-        sp100.unk40.unk40 = 3.4028235e38f;
-        sp100.unk40.unk44 = 0.0f;
-        sp100.unk40.unk48 = 0.0f;
-        sp100.unk40.unk4C = nanf;
-        sp100.unk40.unk50 = 0;
+        sp100.unk80 = 3.4028235e38f;
+        sp100.unk84 = 0.0f;
+        sp188 = 0;
+        sp18C = -1;
+        sp190 = 0;
         spC8 = (f64) sp58;
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f5, $f0 */);
         sp78 = 0.0f;

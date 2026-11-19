@@ -88,7 +88,7 @@ void ElectricBeam::Draw() {
     f32 temp_f2_137;
 
     if ((u8) this->unk1F4 != 0) {
-        MKModel_SetWorldMatrix(this->unk44, *((Matrix *) &this->unk1A0));
+        MKModel_SetWorldMatrix(this->unk44, this->unk1A0);
         temp_f1_133 = MKRand_Float(&gViewSeed, 0.0f, 1.0f);
         temp_f2_137 = 0.75f * temp_f1_133;
         temp_f1_139 = (0.25f * temp_f1_133) + 0.75f;
@@ -123,7 +123,7 @@ void ElectricBeam::Update() {
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
-    M2C_UNK *temp_r3_428;
+    Matrix *temp_r3_428;
     f32 temp_f4_281;
     f32 var_f31_300;
     f64 temp_f1_284;
@@ -204,15 +204,15 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
     arg_sp1C = 1.0f;
     arg_spA0 = (f64) arg_sp20;
     arg_sp98 = (f64) arg_sp18;
-    KDMath_BuildMatrixFromFwd((Matrix *) &this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_sp98);
+    KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_sp98);
     M2C_STRUCT_COPY((s32) &arg_spBC + 4, (s32) (&identity - 4) + 4, 0x40);
     arg_spC0.RotateRoll((Matrix *) &arg_spC0, this->unk1E8);
     temp_r3_428 = &this->unk1A0;
-    temp_r3_428->Multiply((Matrix *) temp_r3_428, (Matrix *) &arg_spC0);
-    this->unk1D0 = (f32) M2C_FIELD(arg0, f64 *, 0);
-    this->unk1D4 = M2C_FIELD(arg0, f32 *, 4);
-    this->unk1D8 = (f32) M2C_FIELD(arg0, f64 *, 8);
-    this->unk1DC = 1.0f;
+    temp_r3_428->Multiply(temp_r3_428, (Matrix *) &arg_spC0);
+    this->unk1A0.unk30 = (f32) M2C_FIELD(arg0, f64 *, 0);
+    this->unk1A0.unk34 = M2C_FIELD(arg0, f32 *, 4);
+    this->unk1A0.unk38 = (f32) M2C_FIELD(arg0, f64 *, 8);
+    this->unk1A0.unk3C = 1.0f;
     this->unk1E4 = 1;
     this->unk1F4 = 1;
 }
@@ -220,7 +220,7 @@ void ElectricBeam::SetBeamPositions(MKVector3 arg0, MKVector3 arg1, MKVector3 ar
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
-    M2C_UNK *temp_r3_664;
+    Matrix *temp_r3_664;
     f32 temp_f4_517;
     f32 var_f31_536;
     f64 temp_f1_520;
@@ -302,15 +302,15 @@ void ElectricBeam::UpdateBeam(MKVector3 arg0, MKVector3 arg1, MKVector3 arg2) {
     arg_sp1C = 1.0f;
     arg_spB0 = (f64) arg_sp20;
     arg_spA8 = (f64) arg_sp18;
-    KDMath_BuildMatrixFromFwd((Matrix *) &this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_spA8);
+    KDMath_BuildMatrixFromFwd(&this->unk1A0, *((MKVector3 *) arg2), (MKVector3 *) &arg_spA8);
     M2C_STRUCT_COPY((s32) &arg_spCC + 4, (s32) (&identity - 4) + 4, 0x40);
     arg_spD0.RotateRoll((Matrix *) &arg_spD0, this->unk1E8);
     temp_r3_664 = &this->unk1A0;
-    temp_r3_664->Multiply((Matrix *) temp_r3_664, (Matrix *) &arg_spD0);
-    this->unk1D0 = (f32) M2C_FIELD(arg0, f64 *, 0);
-    this->unk1D4 = M2C_FIELD(arg0, f32 *, 4);
-    this->unk1D8 = (f32) M2C_FIELD(arg0, f64 *, 8);
-    this->unk1DC = 1.0f;
+    temp_r3_664->Multiply(temp_r3_664, (Matrix *) &arg_spD0);
+    this->unk1A0.unk30 = (f32) M2C_FIELD(arg0, f64 *, 0);
+    this->unk1A0.unk34 = M2C_FIELD(arg0, f32 *, 4);
+    this->unk1A0.unk38 = (f32) M2C_FIELD(arg0, f64 *, 8);
+    this->unk1A0.unk3C = 1.0f;
     this->unk1E4 = 1;
     this->unk1F4 = 1;
 }

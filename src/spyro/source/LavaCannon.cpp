@@ -27,15 +27,13 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-#if 0 // DRAFT: undefined identifier 'unk250'
 void LavaCannon::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     if (M2C_BITWISE(s32, this->unk250) < 4) {
         SetState(4);
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
+#if 0 // DRAFT: ')' expected
 void LavaCannon::EmitExplodingEffects() {
     MKVector3 sp50;
     MKVector3 sp40;
@@ -177,7 +175,6 @@ void LavaCannon::EmitFiringEffects() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk250'
 void LavaCannon::SetState(int arg0) {
     if ((M2C_BITWISE(s32, this->unk250) != 4) || ((u8) M2C_FIELD(this, u8 *, 0x264) != 0)) {
         this->unk24C = 0.0f;
@@ -189,7 +186,6 @@ void LavaCannon::SetState(int arg0) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void LavaCannon::Message(MKMessage *arg0) {
@@ -210,7 +206,6 @@ void LavaCannon::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk24C'
 void LavaCannon::Reset() {
     Shatterable::Reset();
     M2C_FIELD(this, f32 *, 0x248) = 0.0f;
@@ -221,7 +216,6 @@ void LavaCannon::Reset() {
     this->unk244 = 0.0f;
     M2C_FIELD(this, s8 *, 0x264) = 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp90'
 void LavaCannon::Draw() {
@@ -269,7 +263,7 @@ void LavaCannon::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk250'
+#if 0 // DRAFT: ')' expected
 void LavaCannon::Update() {
     MKVector3 *temp_r29_1009;
     MKVector3 *temp_r29_1027;
@@ -441,7 +435,7 @@ void LavaCannon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1F8'
+#if 0 // DRAFT: undefined identifier 'Init'
 void LavaCannon::Resolve() {
     Shatterable::Resolve();
     this->unk1F8.Init(checked_cast<P20LavaCannonDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0x1A4);
@@ -449,7 +443,7 @@ void LavaCannon::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk234'
+#if 0 // DRAFT: undefined identifier 'arg_sp6C'
 void LavaCannon::LoadDone() {
     Shatterable::LoadDone();
     this->unk234 = M2C_FIELD(&loadInfo, f32 *, 0x54);
@@ -495,7 +489,7 @@ s32 LavaCannon::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk230'
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void LavaCannon::Deinit() {
     f32 temp_r4_1302;
 

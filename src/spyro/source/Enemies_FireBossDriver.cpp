@@ -6,41 +6,41 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 s32 FireBossDriver::IsCharging() {
+    s32 temp_r3_54;
     s32 var_r31_53;
-    void **temp_r3_54;
 
     var_r31_53 = 0;
-    temp_r3_54 = this->unk110.unkA00;
-    if ((M2C_FIELD(*temp_r3_54, u8 (**)(void **, M2C_UNK), 0x38)(temp_r3_54, 0x6E) != 0) && ((u32) M2C_FIELD(this->unk110.unk520, u32 *, 0x20) != (u32) M2C_FIELD(this->unk110.unk940, u32 *, 0x40))) {
+    temp_r3_54 = this->unkAF8;
+    if ((M2C_FIELD(*temp_r3_54, u8 (**)(s32, M2C_UNK), 0x38)(temp_r3_54, 0x6E) != 0) && ((u32) M2C_FIELD(M2C_FIELD(this, void **, 0x630), u32 *, 0x20) != (void *) this->unkA38->__vptr)) {
         var_r31_53 = 1;
     }
     return var_r31_53;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void FireBossDriver::CrashExit() {
-    this->unk110.unkA00->CrashExit();
+    this->unkAF8->CrashExit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void FireBossDriver::CrashEnter() {
-    this->unk110.unkA00->CrashEnter();
+    this->unkAF8->CrashEnter();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void FireBossDriver::ChargeExit() {
-    this->unk110.unkA00->ChargeExit();
+    this->unkAF8->ChargeExit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void FireBossDriver::ChargeEnter() {
-    this->unk110.unkA00->ChargeEnter();
+    this->unkAF8->ChargeEnter();
 }
 #endif
 
@@ -52,23 +52,19 @@ void FireBossDriver::Update() {
     Enemy::Update();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
 void FireBossDriver::Resolve() {
-    this->unk110.unk9F9 &= ~0x20;
+    M2C_FIELD(this, u8 *, 0xB09) = (u8) (M2C_FIELD(this, u8 *, 0xB09) & ~0x20);
     Enemy::Resolve();
 }
-#endif
 
 void FireBossDriver::LoadDone() {
     Enemy::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unkA04'
 void FireBossDriver::SetDefaults() {
     Enemy::SetDefaults();
-    this->unk110.unkA04 = 0;
+    M2C_FIELD(this, s8 *, 0xB14) = 0;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void FireBossDriver::Init() {
@@ -87,9 +83,9 @@ void FireBossDriver::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x14) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unk110.unkA00 = M2C_ERROR(/* Read from unset register $r3 */);
-    this->unk110.unkA00->Init((Enemy *) this);
-    this->unk110.unk92C = checked_cast<Goal<Enemy> *, FireBossDriverGoal_Think>((FireBossDriverGoal_Think *) this->unk110.unkA00);
+    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
+    this->unkAF8->Init((Enemy *) this);
+    this->unkA24 = checked_cast<Goal<Enemy> *, FireBossDriverGoal_Think>((FireBossDriverGoal_Think *) this->unkAF8);
 }
 #endif
 

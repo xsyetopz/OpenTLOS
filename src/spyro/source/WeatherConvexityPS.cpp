@@ -152,17 +152,17 @@ void WeatherConvexityPS::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gWeatherConvexityPSEnv'
 void WeatherConvexityPS::Init() {
     MKParticleSystem::Init();
-    this->unk60.unk48 = 10.5f;
-    this->unk60.unk4C = 10.5f;
+    this->unkA8 = 10.5f;
+    this->unkAC = 10.5f;
     this->unk108 = 0.0f;
     this->unk10C = -100.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gWeatherConvexityPSEnv, 5);
     SetMaxParticleAge(5.0f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
 #endif

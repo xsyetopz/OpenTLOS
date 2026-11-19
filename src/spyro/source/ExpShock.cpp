@@ -113,17 +113,17 @@ void ExpShock::LoadDone() {
     MKBaseParticleSystem::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'unk48'
+#if 0 // DRAFT: undefined identifier 'gExpShockEnv'
 void ExpShock::Init() {
     MKParticleSystem::Init();
-    this->unk60.unk48 = 200.5f;
-    this->unk60.unk4C = 200.5f;
+    this->unkA8 = 200.5f;
+    this->unkAC = 200.5f;
     this->unk108 = 0.0f;
     this->unk10C = 0.0f;
     this->unk110 = 0.0f;
     SetEnvelope(&gExpShockEnv, 5);
     SetMaxParticleAge(0.25f);
-    this->unk60.unk50 = 0.0f;
+    this->unkB0 = 0.0f;
     this->unkF0 = 0.0f;
 }
 #endif

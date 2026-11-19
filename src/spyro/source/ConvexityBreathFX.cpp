@@ -3,7 +3,6 @@
 #include "common/Source/MKCollision.h"
 #include "common/Source/MKCollisionResult.h"
 #include "common/Source/MKHeap.h"
-#include "common/Source/MKMaterial.h"
 #include "common/Source/MKModel.h"
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
@@ -16,6 +15,7 @@
 #include "spyro/source/KDInput.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/TargetManager.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/StdMath.h"
 #include "common/gc/MKModel_GC.h"
 #include "spyro/source/KDMath.h"
@@ -24,8 +24,8 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-M2C_UNK free(MKHeap *);                             /* extern */
-void *malloc(M2C_UNK);                              /* extern */
+M2C_UNK free(Matrix **);                            /* extern */
+Matrix **malloc(M2C_UNK);                           /* extern */
 extern s32 GS_SpyroConvexFireball;
 extern s32 GS_SpyroConvexFireballLP;
 extern M2C_UNK gEmptyPtrListDL;
@@ -33,7 +33,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 void ConvexityBreathFX::DrawRings() {
     f64 sp20;
     f64 sp18;
@@ -41,17 +40,17 @@ void ConvexityBreathFX::DrawRings() {
     f32 sp10;
     f32 spC;
     f32 sp8;
+    Matrix **var_r30_74;
     Matrix *temp_r31_111;
     f32 var_f0_87;
-    f32 var_r30_74;
 
-    var_r30_74 = this->unkD0.unk48;
+    var_r30_74 = this->unk118;
 loop_4:
-    if (M2C_BITWISE(u32, var_r30_74) != 0U) {
+    if (var_r30_74 != NULL) {
         temp_r31_111 = *var_r30_74;
         if (temp_r31_111 != NULL) {
-            MKModel_SetWorldMatrix(M2C_BITWISE(MKModel *, this->unkD0.unk40), *temp_r31_111);
-            var_f0_87 = 2.0f * ((temp_r31_111->unk40 / 0.75f) - 0.5f);
+            MKModel_SetWorldMatrix(this->unk110, *temp_r31_111);
+            var_f0_87 = 2.0f * ((M2C_FIELD(temp_r31_111, f32 *, 0x40) / 0.75f) - 0.5f);
             if (var_f0_87 < 0.0f) {
                 var_f0_87 = -var_f0_87;
             }
@@ -61,32 +60,30 @@ loop_4:
             sp14 = 1.0f - var_f0_87;
             sp18 = (f64) sp8;
             sp20 = (f64) sp10;
-            MKMaterial_SetColor(M2C_BITWISE(MKMaterial *, this->unkD0.unk44), *((MKVector4 *) &sp18));
-            MKModel_Draw(M2C_BITWISE(MKModel *, this->unkD0.unk40), NULL);
-            var_r30_74 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r30_74) + 4));
+            MKMaterial_SetColor(this->unk114, *((MKVector4 *) &sp18));
+            MKModel_Draw(this->unk110, NULL);
+            var_r30_74 += 4;
             goto loop_4;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 void ConvexityBreathFX::UpdateRings() {
     Matrix sp8;
+    Matrix **temp_r3_196;
+    Matrix **var_r30_155;
     Matrix *temp_r31_208;
     Matrix *temp_r4_199;
     f32 temp_f1_185;
     f32 temp_f25_183;
-    f32 temp_r3_196;
     f32 var_f0_165;
-    f32 var_r30_155;
 
-    var_r30_155 = this->unkD0.unk48;
+    var_r30_155 = this->unk118;
 loop_10:
-    if (M2C_BITWISE(u32, var_r30_155) != 0U) {
+    if (var_r30_155 != NULL) {
         temp_r31_208 = *var_r30_155;
         if (temp_r31_208 != NULL) {
-            var_f0_165 = temp_r31_208->unk40 - gUpdateTimeDelta;
+            var_f0_165 = M2C_FIELD(temp_r31_208, f32 *, 0x40) - gUpdateTimeDelta;
             if (var_f0_165 < 0.75f) {
 
             } else {
@@ -97,41 +94,39 @@ loop_10:
             } else {
                 var_f0_165 = 0.0f;
             }
-            temp_r31_208->unk40 = var_f0_165;
-            temp_f25_183 = temp_r31_208->unk40 / 0.75f;
+            M2C_FIELD(temp_r31_208, f32 *, 0x40) = var_f0_165;
+            temp_f25_183 = M2C_FIELD(temp_r31_208, f32 *, 0x40) / 0.75f;
             sp8.NormaliseScale();
             temp_f1_185 = 1.0f - temp_f25_183;
             temp_r31_208->Scale3x3(temp_r31_208, 1.0f + (temp_f1_185 * -((6.0f * temp_f1_185) - 20.0f)));
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r31_208->unk40 == 0.0f) {
-                temp_r3_196 = this->unkD0.unk48;
-                this->unkD0.unk48 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_196) + 4));
+            if (M2C_FIELD(temp_r31_208, f32 *, 0x40) == 0.0f) {
+                temp_r3_196 = this->unk118;
+                this->unk118 = temp_r3_196 + 4;
                 temp_r4_199 = *temp_r3_196;
-                *temp_r3_196 = (Matrix *) *var_r30_155;
+                *temp_r3_196 = *var_r30_155;
                 *var_r30_155 = temp_r4_199;
             }
-            var_r30_155 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r30_155) + 4));
+            var_r30_155 += 4;
             goto loop_10;
         }
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk48'
 void ConvexityBreathFX::SpawnRing(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp20;
     f64 sp18;
     f32 sp10;
     f32 spC;
     f32 sp8;
+    Matrix **temp_r6_241;
     Matrix **temp_r6_246;
     Matrix *temp_r31_252;
-    f32 temp_r6_241;
 
-    temp_r6_241 = this->unkD0.unk48;
+    temp_r6_241 = this->unk118;
     if ((u32) M2C_FIELD(temp_r6_241, u32 *, -4) != 0U) {
-        temp_r6_246 = M2C_BITWISE(s32, temp_r6_241) - 4;
-        this->unkD0.unk48 = M2C_BITWISE(f32, temp_r6_246);
+        temp_r6_246 = temp_r6_241 - 4;
+        this->unk118 = temp_r6_246;
         sp10 = 0.0f;
         temp_r31_252 = *temp_r6_246;
         sp8 = 0.0f;
@@ -144,12 +139,11 @@ void ConvexityBreathFX::SpawnRing(const MKVector3 &arg0, const MKVector3 &arg1) 
         temp_r31_252->unk34 = arg0.unk4;
         temp_r31_252->unk38 = arg0.unk8;
         temp_r31_252->unk3C = 1.0f;
-        temp_r31_252->unk40 = 0.75f;
+        M2C_FIELD(temp_r31_252, f32 *, 0x40) = 0.75f;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: undefined identifier 'unk16C'
 s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVector3 &arg2, const float &arg3) {
     f64 sp190;
     f64 sp188;
@@ -224,11 +218,11 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     s32 var_r28_698;
     void *temp_r3_407;
 
-    if (this->unkD0.unk50 > 0.0f) {
+    if (this->unk120 > 0.0f) {
         return 0;
     }
     sp80 = 0.0f;
-    this->unkD0.unk50 = 1.0f;
+    this->unk120 = 1.0f;
     this->unkAC = 1;
     this->unkB0 = 0.5f;
     this->unkB8 = 0.0f;
@@ -238,7 +232,7 @@ s32 ConvexityBreathFX::Trigger(MKProp *arg0, const MKVector3 &arg1, const MKVect
     sp7C = 1.0f;
     sp190 = (f64) sp80;
     sp188 = (f64) sp78;
-    this->unk170.unk40 = 0.25f;
+    this->unk1B0 = 0.25f;
     M2C_STRUCT_COPY((s32) &this->unk16C + 4, (s32) (&identity - 4) + 4, 0x40);
     sp70 = 0.0f;
     sp68 = 0.0f;
@@ -385,8 +379,8 @@ loop_32:
     temp_f0_670 = (f64) M2C_FIELD(&arg1, f32 *, 8);
     sp148 = temp_f2_668;
     sp150 = temp_f0_670;
-    this->unkD0.unk80 = temp_f2_668;
-    M2C_FIELD(this, f64 *, 0x158) = temp_f0_670;
+    this->unk150 = temp_f2_668;
+    this->unk158 = temp_f0_670;
     KDSound_Play3d(GS_SpyroConvexFireball, &arg1, 0U, -1, 0.0f, 0U);
     ((KDInput *) (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), KDInput *(**)(void **), 0x40)(M2C_FIELD(&gb, void ***, 0))))->RumblePlay(1.0f, 1.0f, 0.15f, 0, 4.0f, 0U);
     var_r28_698 = 0;
@@ -423,50 +417,50 @@ loop_32:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: type mismatch
 void ConvexityBreathFX::Deinit() {
     MKHeap *temp_r3_835;
-    f32 var_r31_809;
-    f32 var_r3_810;
-    f32 var_r4_808;
-    u32 temp_r0_813;
+    Matrix **var_r31_809;
+    Matrix **var_r3_810;
+    Matrix **var_r4_808;
+    Matrix *temp_r0_813;
+    Matrix *temp_r0_832;
     u32 temp_r0_818;
-    u32 temp_r0_832;
 
     MKModel_Destroy(this->unkA8);
-    MKModel_Destroy(M2C_BITWISE(MKModel *, this->unkD0.unk40));
-    var_r4_808 = this->unkD0.unk48;
+    MKModel_Destroy(this->unk110);
+    var_r4_808 = this->unk118;
     var_r31_809 = var_r4_808;
     var_r3_810 = var_r4_808;
 loop_3:
     temp_r0_818 = M2C_FIELD(var_r3_810, u32 *, -4);
-    var_r3_810 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r3_810) - 4));
+    var_r3_810 -= 4;
     if (temp_r0_818 != 0U) {
         temp_r0_813 = *var_r3_810;
-        if (temp_r0_813 < M2C_BITWISE(u32, var_r31_809)) {
-            var_r31_809 = M2C_BITWISE(f32, temp_r0_813);
+        if (temp_r0_813 < var_r31_809) {
+            var_r31_809 = (Matrix **) temp_r0_813;
         }
         goto loop_3;
     }
-    if (M2C_BITWISE(u32, var_r3_810) != &gEmptyPtrListDL) {
+    if (var_r3_810 != &gEmptyPtrListDL) {
 loop_9:
         temp_r0_832 = *var_r4_808;
-        if (temp_r0_832 != 0U) {
-            if (temp_r0_832 < M2C_BITWISE(u32, var_r31_809)) {
-                var_r31_809 = M2C_BITWISE(f32, temp_r0_832);
+        if (temp_r0_832 != NULL) {
+            if (temp_r0_832 < var_r31_809) {
+                var_r31_809 = (Matrix **) temp_r0_832;
             }
-            var_r4_808 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r4_808) + 4));
+            var_r4_808 += 4;
             goto loop_9;
         }
-        temp_r3_835 = ((MKHeap *) (M2C_BITWISE(MKHeap *, var_r3_810)))->Current();
+        temp_r3_835 = var_r3_810->Current();
         if (temp_r3_835 != NULL) {
-            ((MKHeap *) (temp_r3_835->Current()))->Free(M2C_BITWISE(void *, var_r31_809), NULL, 0);
+            ((MKHeap *) (temp_r3_835->Current()))->Free(var_r31_809, NULL, 0);
         } else {
-            free(M2C_BITWISE(MKHeap *, var_r31_809));
+            free(var_r31_809);
         }
     }
-    this->unkD0.unk48 = 0.0f;
-    KDSound_Stop((s32 *) &this->unkD0.unk54);
+    this->unk118 = NULL;
+    KDSound_Stop(&this->unk124);
     MKModel_Destroy(this->unk160);
     BaseBreathFX::Deinit();
 }
@@ -483,9 +477,9 @@ void ConvexityBreathFX::Draw() {
         MKModel_SetWorldMatrix(this->unkA8, *((Matrix *) &arg_sp70));
         MKModel_Draw(this->unkA8, NULL);
     }
-    if (this->unk170.unk40 > 0.0f) {
+    if (this->unk1B0 > 0.0f) {
         M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) &this->unk16C + 4, 0x40);
-        var_f1_912 = this->unk170.unk40;
+        var_f1_912 = this->unk1B0;
         if (var_f1_912 < 0.25f) {
 
         } else {
@@ -513,14 +507,14 @@ void ConvexityBreathFX::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: expression syntax error
 void ConvexityBreathFX::Message(MKMessage *arg0) {
-    this->unkD0.unk54.Message(arg0);
+    this->unk124.Message(arg0);
     KDProp::Message(arg0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk50'
+#if 0 // DRAFT: expression syntax error
 void ConvexityBreathFX::Update() {
     BreathHitMessage sp258;
     MKCollisionResult sp200;
@@ -595,10 +589,10 @@ void ConvexityBreathFX::Update() {
     s32 temp_r0_1038;
     void *var_r3_1214;
 
-    this->unkD0.unk50 = this->unkD0.unk50 - gUpdateTimeDelta;
-    this->unk170.unk40 -= gUpdateTimeDelta;
+    this->unk120 = this->unk120 - gUpdateTimeDelta;
+    this->unk1B0 -= gUpdateTimeDelta;
     sp8 = 1;
-    this->unkD0.unk54.Update(GS_SpyroConvexFireballLP, 1U, this->unkAC == 1, NULL, (MKVector3 *) &this->unkD0.unk80, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
+    this->unk124.Update(GS_SpyroConvexFireballLP, 1U, this->unkAC == 1, NULL, (MKVector3 *) &this->unk150, 0U, -1, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     UpdateRings();
     temp_r0_1038 = this->unkAC;
     switch (temp_r0_1038) {                         /* irregular */
@@ -656,8 +650,8 @@ void ConvexityBreathFX::Update() {
         sp1E0 = sp80;
         sp88 = temp_f2_1169 + (f32) sp198;
         sp1E8 = (f64) sp88;
-        this->unkD0.unk80 = sp80;
-        M2C_FIELD(this, f64 *, 0x158) = (f64) sp88;
+        this->unk150 = sp80;
+        this->unk158 = (f64) sp88;
         sp258.unk4 = 0;
         temp_r4_1188 = M2C_FIELD(*gb, MKProp *(**)(void **, f64, f32, f32, f64), 0xC)(gb, sp80, temp_f2_1169, temp_f3_1134, (f64) spC8);
         sp8 = -1;
@@ -675,10 +669,10 @@ void ConvexityBreathFX::Update() {
                 M2C_FIELD(M2C_FIELD(var_r3_1214, void **, 0x44), M2C_UNK (**)(BreathHitMessage *, f64), 0x2C)(&sp258, sp1F0);
             }
         }
-        this->unkD0.unk4C -= gUpdateTimeDelta;
+        this->unk11C -= gUpdateTimeDelta;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkD0.unk4C == 0.0f) {
-            this->unkD0.unk4C = 0.05f;
+        if (this->unk11C == 0.0f) {
+            this->unk11C = 0.05f;
             temp_f5_1248 = -this->unkD0.unk20;
             temp_f4_1250 = -this->unkD0.unk24;
             temp_f2_1252 = -this->unkD0.unk28;
@@ -754,21 +748,21 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'arg_sp4C'
 void ConvexityBreathFX::Init() {
     MKHeap *temp_r3_1473;
     MKModel *temp_r3_1523;
-    f32 temp_r3_1495;
-    f32 temp_r4_1501;
-    f32 var_r5_1489;
+    Matrix **temp_r3_1495;
+    Matrix **temp_r4_1501;
+    Matrix **var_r3_1480;
+    Matrix **var_r5_1489;
     s32 var_ctr_1493;
-    void *var_r3_1480;
     BaseBreathFX::Init();
     this->unkA8 = MKModel_Create("FX0015_EarthRocket", NULL, 2, NULL);
     this->unkAC = 0;
     this->unkB0 = 0.0f;
-    this->unkD0.unk40 = M2C_BITWISE(f32, MKModel_Create("fx0031_sonicring", NULL, 2, NULL));
-    this->unkD0.unk44 = M2C_BITWISE(f32, Tools_GetMatchingMaterial(M2C_BITWISE(MKModel *, this->unkD0.unk40), "fx0031_sonicring"));
+    this->unk110 = MKModel_Create("fx0031_sonicring", NULL, 2, NULL);
+    this->unk114 = Tools_GetMatchingMaterial(this->unk110, "fx0031_sonicring");
     M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&identity - 4) + 4, 0x40);
     arg_sp10 = 0.01f;
     arg_sp14 = -0.01f;
@@ -779,34 +773,34 @@ void ConvexityBreathFX::Init() {
     arg_sp84 = arg_sp44;
     arg_sp88 = (f32) arg_sp48;
     arg_sp8C = 1.0f;
-    MKMaterial_SetTextureMatrix(M2C_BITWISE(MKMaterial *, this->unkD0.unk44), (Matrix *) &arg_sp50);
+    MKMaterial_SetTextureMatrix(this->unk114, (Matrix *) &arg_sp50);
     temp_r3_1473 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_1473 != NULL) {
         var_r3_1480 = ((MKHeap *) (temp_r3_1473->Current()))->Alloc(0x4F4, NULL, 0);
     } else {
         var_r3_1480 = malloc(0x4F4);
     }
-    this->unkD0.unk48 = M2C_BITWISE(f32, var_r3_1480);
-    var_r5_1489 = this->unkD0.unk48;
-    this->unkD0.unk48 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_1489) + 0x4B0));
+    this->unk118 = var_r3_1480;
+    var_r5_1489 = this->unk118;
+    this->unk118 = var_r5_1489 + 0x4B0;
     M2C_FIELD(var_r5_1489, s32 *, 0x4B0) = 0;
     var_ctr_1493 = 0xF;
     do {
-        temp_r3_1495 = this->unkD0.unk48;
-        this->unkD0.unk48 = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r3_1495) + 4));
-        M2C_FIELD(M2C_BITWISE(void *, temp_r3_1495), f32 *, 4) = var_r5_1489;
-        var_r5_1489 = M2C_BITWISE(f32, (M2C_BITWISE(s32, var_r5_1489) + 0x50));
+        temp_r3_1495 = this->unk118;
+        this->unk118 = temp_r3_1495 + 4;
+        M2C_FIELD(temp_r3_1495, Matrix ***, 4) = var_r5_1489;
+        var_r5_1489 += 0x50;
         var_ctr_1493 -= 1;
     } while (var_ctr_1493 != 0);
-    temp_r4_1501 = this->unkD0.unk48;
-    this->unkD0.unk48 = M2C_BITWISE(f32, (M2C_BITWISE(void *, temp_r4_1501) + 4));
-    M2C_FIELD(M2C_BITWISE(void *, temp_r4_1501), s32 *, 4) = 0;
-    this->unkD0.unk4C = 0.0f;
-    this->unkD0.unk50 = 0.0f;
-    this->unkD0.unk54.Init(0.25f, 0.25f);
+    temp_r4_1501 = this->unk118;
+    this->unk118 = temp_r4_1501 + 4;
+    M2C_FIELD(temp_r4_1501, Matrix ***, 4) = NULL;
+    this->unk11C = 0.0f;
+    this->unk120 = 0.0f;
+    this->unk124.Init(0.25f, 0.25f);
     M2C_FIELD(this, f32 *, 0x150) = 0.0f;
     M2C_FIELD(this, f32 *, 0x154) = 0.0f;
-    this->unkD0.unk88 = 0.0f;
+    M2C_FIELD(this, f32 *, 0x158) = 0.0f;
     temp_r3_1523 = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
     arg_sp20 = 1.0f;
     arg_sp24 = 0.0f;
@@ -817,6 +811,6 @@ void ConvexityBreathFX::Init() {
     arg_sp38 = (f64) arg_sp28;
     MKModel_SetColor(this->unk160, *((MKVector4 *) &arg_sp30));
     this->unk170.SetIdentity();
-    this->unk170.unk40 = 0.0f;
+    this->unk1B0 = 0.0f;
 }
 #endif

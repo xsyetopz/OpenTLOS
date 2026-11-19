@@ -1403,7 +1403,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
         this->unk24 = NULL;
         this->unk60 = NULL;
         this->unk64 = NULL;
-        if ((u32) arg0->unk110.unk94C != 0U) {
+        if ((void *) arg0->unkA44 != NULL) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -1458,7 +1458,7 @@ void EnemyGoal_Think::Init(Enemy *arg0) {
             }
             this->unk5C = M2C_ERROR(/* Read from unset register $r3 */);
         }
-        if ((u32) arg0->unk110.unk93C != 0U) {
+        if ((u32) arg0->unkA4C != 0U) {
             operator new(0x1CU, NULL, 0);
             if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                 *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;

@@ -27,7 +27,7 @@ void ShatterWaypointSpawn::SetSpawnPos(int arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: type mismatch
 void ShatterWaypointSpawn::Resolve() {
     f64 sp10;
     f64 sp8;
@@ -52,7 +52,7 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: type mismatch
 void ShatterWaypointSpawn::LoadDone() {
     f64 sp10;
     f64 sp8;
@@ -77,13 +77,13 @@ loop_5:
             if (temp_r30_115 != NULL) {
                 temp_r30_115->__vptr = &__vt;
                 temp_r30_115->__vptr = &__vt;
-                temp_r30_115->unk8 = 0;
+                M2C_FIELD(temp_r30_115, s32 *, 8) = 0;
                 ((EventMessage *) (temp_r30_115 + 8))->Init();
-                temp_r30_115->unkC = 0;
+                M2C_FIELD(temp_r30_115, s32 *, 0xC) = 0;
                 ((EventMessage *) (temp_r30_115 + 0xC))->Init();
-                temp_r30_115->unk10 = 0;
+                M2C_FIELD(temp_r30_115, s32 *, 0x10) = 0;
                 ((EventMessage *) (temp_r30_115 + 0x10))->Init();
-                temp_r30_115->unk14 = 0;
+                M2C_FIELD(temp_r30_115, s32 *, 0x14) = 0;
                 ((EventMessage *) (temp_r30_115 + 0x14))->Init();
             }
             temp_r0_109->Init(temp_r30_115);
@@ -98,7 +98,7 @@ loop_5:
             temp_r0_109->unk4C = 1.0f;
             this->unk198.AddSpawnPoint(temp_r0_109);
             var_r29_102 += 1;
-            temp_r30_115->unk4 |= 0x220;
+            M2C_FIELD(temp_r30_115, s32 *, 4) = (s32) (M2C_FIELD(temp_r30_115, s32 *, 4) | 0x220);
             goto loop_5;
         }
         this->unk198.AddSpawnPointEnd();
@@ -178,7 +178,7 @@ void ShatterWaypointSpawn::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: expression syntax error
 void ShatterWaypointSpawn::Init() {
     Shatterable::Init();
     this->unk1A8.unk48 = NULL;

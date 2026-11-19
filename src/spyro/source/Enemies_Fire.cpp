@@ -9,6 +9,7 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/CrashFirePS.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/FireTier1Goal_Think.h"
@@ -181,7 +182,7 @@ void FireTier3::Init() {
         temp_r31_300->__vptr = &__vt;
     }
     temp_r31_300->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_300;
+    this->unkA24 = (EnemyAttack *) temp_r31_300;
 }
 #endif
 
@@ -308,19 +309,17 @@ void FireTier2::DoDeadFx() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk490'
 void FireTier2::UpdateMovementCustom() {
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r4, 0x0, qr0 */);
-    this->unk110.unk490 += this->unk98;
+    this->unk59C += this->unk98;
     UpdateRotation();
     UpdateModel();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk520'
+#if 0 // DRAFT: undefined identifier 'sp78'
 void FireTier2::CheckAnimEvents() {
     f64 sp140;
     f64 sp138;
@@ -370,7 +369,7 @@ void FireTier2::CheckAnimEvents() {
     void *temp_r29_662;
     void *temp_r3_797;
 
-    if (this->unk110.unk520->CheckEvent(0xD) != 0) {
+    if (((MKAnimScript *) (M2C_FIELD(this, MKAnimScript **, 0x630)))->CheckEvent(0xD) != 0) {
         temp_r29_662 = checked_cast<FireTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
         var_r28_666 = 0;
         do {
@@ -456,11 +455,11 @@ s32 FireTier2::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     arg_sp68 = temp_f1_869;
     arg_sp70 = temp_f0_871;
     arg_sp18 = temp_f1_869;
-    this->unk110.unkA00 &= ~0x80;
+    M2C_FIELD(this, u8 *, 0xB10) = (u8) (M2C_FIELD(this, u8 *, 0xB10) & ~0x80);
     arg_sp20 = temp_f0_871;
     arg_sp88 = temp_f1_869;
     arg_sp90 = temp_f0_871;
-    this->unk110.unkA00 &= ~0x40;
+    M2C_FIELD(this, u8 *, 0xB10) = (u8) (M2C_FIELD(this, u8 *, 0xB10) & ~0x40);
 loop_5:
     if ((var_r4_872 == 0) && (var_r28_874 < 0xA)) {
         var_r29_894 = 0;
@@ -490,16 +489,16 @@ loop_5:
             arg_spD4 = (f32) temp_f1_947;
             arg_spD8 = (f32) arg_sp80;
             arg_spDC = 1.0f;
-            this->unk110.unkA00 |= 0x80;
-            this->unk110.unkA00 |= 0x40;
+            M2C_FIELD(this, u8 *, 0xB10) = (u8) (M2C_FIELD(this, u8 *, 0xB10) | 0x80);
+            M2C_FIELD(this, u8 *, 0xB10) = (u8) (M2C_FIELD(this, u8 *, 0xB10) | 0x40);
         }
     }
     if (Enemy::Spawn((Matrix *) &arg_spA0, arg1) != 0) {
-        if (((u8) this->unk110.unkA00 >> 7U) & 1) {
+        if (((u8) M2C_FIELD(this, u8 *, 0xB10) >> 7U) & 1) {
             PropFlagsClear((u32 *) &this->unk10, 0x40000U);
         }
-        this->unk110.unk4A8 = arg_sp88;
-        this->unk110.unk4B0 = arg_sp90;
+        M2C_FIELD(this, f64 *, 0x5B8) = arg_sp88;
+        M2C_FIELD(this, f64 *, 0x5C0) = arg_sp90;
         return 1;
     }
     return 0;
@@ -534,7 +533,7 @@ void FireTier2::Init() {
         var_r31_1051 = ((FireTier2Goal_Think *) (M2C_ERROR(/* Read from unset register $r3 */)))->FireTier2Goal_Think();
     }
     var_r31_1051->Init((Enemy *) this);
-    this->unk110.unk92C = (EnemyGoal_Think *) var_r31_1051;
+    this->unkA24 = (EnemyAttack *) var_r31_1051;
 }
 #endif
 
@@ -661,14 +660,14 @@ s32 FireTier1::SelectFlyToWallPos(const MKVector3 &arg0, MKVector3 *arg1, MKVect
     arg_sp1B8 = M2C_FIELD(&zero, f64 *, 8);
     var_r26_1316 = 0;
 loop_1:
-    temp_r4_1325 = M2C_FIELD(this->unk110.unk934, void **, 0x1C);
-    temp_r3_1329 = M2C_FIELD(temp_r4_1325, s32 *, 0x24) + (MKRand_Int(&gViewSeed, 0, M2C_FIELD(M2C_FIELD(this->unk110.unk934, void **, 0x1C), s32 *, 0x20)) * M2C_FIELD(temp_r4_1325, s32 *, 0x1C));
+    temp_r4_1325 = M2C_FIELD(this->unkA2C, void **, 0x1C);
+    temp_r3_1329 = M2C_FIELD(temp_r4_1325, s32 *, 0x24) + (MKRand_Int(&gViewSeed, 0, M2C_FIELD(M2C_FIELD(this->unkA2C, void **, 0x1C), s32 *, 0x20)) * M2C_FIELD(temp_r4_1325, s32 *, 0x1C));
     arg_sp1B0 = M2C_FIELD(temp_r3_1329, f64 *, 0);
     arg_sp1B8 = M2C_FIELD(temp_r3_1329, f64 *, 8);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     arg_spF0 = arg_sp40;
-    arg_sp48 = (f32) arg_sp1B8 - this->unk110.unk480;
+    arg_sp48 = (f32) arg_sp1B8 - this->unk588.unk4;
     arg_sp100 = arg_sp40;
     arg_spF8 = (f64) arg_sp48;
     arg_sp108 = (f64) arg_sp48;
@@ -681,7 +680,7 @@ loop_1:
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
     arg_spD0 = arg_sp30;
-    arg_sp38 = (f32) arg_sp1B8 - this->unk110.unk480;
+    arg_sp38 = (f32) arg_sp1B8 - this->unk588.unk4;
     arg_spD8 = (f64) arg_sp38;
     arg_spE0 = arg_sp30;
     arg_spE8 = (f64) arg_sp38;
@@ -708,7 +707,7 @@ loop_1:
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $r27, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
         arg_sp150 = arg_spB0;
-        arg_spB8 = arg1->unk8 - this->unk110.unk480;
+        arg_spB8 = arg1->unk8 - this->unk588.unk4;
         arg_sp158 = (f64) arg_spB8;
         var_f4_1471 = ((f32) arg_sp158 * (f32) arg_sp158) + (((f32) arg_sp150 * (f32) arg_sp150) + (arg_sp154 * arg_sp154));
         if (var_f4_1471 > 1e-12f) {
@@ -925,22 +924,20 @@ void FireTier1::DoDeadFx() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk490'
 void FireTier1::UpdateMovementCustom() {
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r4, 0x0, qr0 */);
-    this->unk110.unk490 += this->unk98;
+    this->unk59C += this->unk98;
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $r31, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r4, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
     M2C_ERROR(/* unknown instruction: psq_stx $f0, $r31, $r0, 0x0, qr0 */);
-    this->unk110.unk480 += this->unk110.unk490;
+    this->unk588.unk4 += this->unk59C;
     UpdateRotation();
     UpdateModel();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp4C'
 s32 FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
@@ -948,8 +945,8 @@ s32 FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     u16 temp_r3_2058;
     void *var_r29_2045;
     M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (arg0 - 4) + 4, 0x40);
-    this->unk110.unkA30 &= ~0x80;
-    if (M2C_FIELD(this->unk110.unk934, s32 *, 4) & 0x20) {
+    M2C_FIELD(this, u8 *, 0xB40) = (u8) (M2C_FIELD(this, u8 *, 0xB40) & ~0x80);
+    if (M2C_FIELD(this->unkA2C, s32 *, 4) & 0x20) {
         arg_sp90 = 0.0f;
         arg_sp94 = 0.0f;
         arg_sp98 = 0.0f;
@@ -992,7 +989,7 @@ s32 FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
             if (var_r29_2045 != NULL) {
                 temp_r3_2058 = Tools_GetMatchingRefPointIndex(M2C_FIELD(var_r29_2045, MKModel **, 4), "spawn");
                 if ((temp_r3_2058 != -1U) && (MKModel_GetRefPointMatrix(M2C_FIELD(var_r29_2045, MKModel **, 4), (s32) temp_r3_2058, (Matrix *) &arg_sp50, 1U) != 0)) {
-                    this->unk110.unkA30 |= 0x80;
+                    M2C_FIELD(this, u8 *, 0xB40) = (u8) (M2C_FIELD(this, u8 *, 0xB40) | 0x80);
                 }
             }
         }
@@ -1001,20 +998,18 @@ s32 FireTier1::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void FireTier1::SetDefaults() {
     Enemy::SetDefaults();
-    this->unk110.unkA20 = 0.0f;
-    this->unk110.unkA24 = 0.0f;
-    this->unk110.unkA28 = 0.0f;
-    this->unk110.unkA10 = 0.0f;
-    this->unk110.unkA14 = 0.0f;
-    this->unk110.unkA18 = 0.0f;
-    M2C_FIELD(this, f32 *, 0xB10) = 0.0f;
-    this->unk110.unkA04 = 0.0f;
-    this->unk110.unkA08 = 0.0f;
+    this->unkB18 = 0.0f;
+    this->unkB34 = 0.0f;
+    this->unkB20 = 0.0f;
+    M2C_FIELD(this, f32 *, 0xB20) = 0.0f;
+    this->unkB24 = 0.0f;
+    this->unkB10 = 0.0f;
+    this->unkAF8 = 0.0f;
+    this->unkAFC = 0.0f;
+    M2C_FIELD(this, f32 *, 0xB18) = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 void FireTier1::GetCharacterName() {
@@ -1043,7 +1038,7 @@ void FireTier1::Init() {
         temp_r31_2133->__vptr = &__vt;
     }
     temp_r31_2133->Init((Enemy *) this);
-    this->unk110.unk92C = (EnemyGoal_Think *) temp_r31_2133;
+    this->unkA24 = (EnemyAttack *) temp_r31_2133;
 }
 #endif
 

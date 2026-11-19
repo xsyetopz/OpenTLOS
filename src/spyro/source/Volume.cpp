@@ -5,7 +5,7 @@
 
 extern s32 gViewSeed;
 #if 0 // DRAFT: expression syntax error
-static Volume boundingVolume__6Volume;              /* type too large by 0xAC; unable to generate initializer: confusing struct layout */
+static Volume boundingVolume__6Volume;              /* type too large by 0x68; unable to generate initializer: confusing struct layout */
 
 void Volume::GetRandPos() {
     f64 sp50;
@@ -120,13 +120,13 @@ void Volume::UpdateMatrix(Matrix &arg0) {
     } else {
         var_f0_218 = unksp5C;
     }
-    this->unk40.unk40 = var_f0_218;
+    this->unk80 = var_f0_218;
     if (var_f12_186 > unksp5C) {
 
     } else {
         var_f12_186 = unksp5C;
     }
-    this->unk40.unk44 = var_f12_186;
+    this->unk84 = var_f12_186;
 }
 #endif
 

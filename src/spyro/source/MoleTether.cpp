@@ -18,7 +18,7 @@ void MoleTether::SetWorldMatrix(Matrix &arg0) {
     MKModel_SetWorldMatrix(this->unk4, arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1F4'
+#if 0 // DRAFT: ')' expected
 void MoleTether::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3, bool arg4) {
     if ((EnergyBeam::Beam *) this->unk1F4 != NULL) {
         ((EnergyBeam *) (M2C_FIELD(checked_cast<MoleTetherDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x16C)))->FreeEnergyBeam(this->unk1F4);
@@ -29,7 +29,7 @@ void MoleTether::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3, 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1B8'
+#if 0 // DRAFT: expression syntax error
 void MoleTether::Message(MKMessage *arg0) {
     f64 sp10;
     f64 sp8;
@@ -86,7 +86,7 @@ void MoleTether::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: ')' expected
 void MoleTether::Deinit() {
     if ((EnergyBeam::Beam *) this->unk1F4 != NULL) {
         ((EnergyBeam *) (M2C_FIELD(checked_cast<MoleTetherDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), EnergyBeam **, 0x16C)))->FreeEnergyBeam(this->unk1F4);
@@ -97,7 +97,7 @@ void MoleTether::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1F0'
+#if 0 // DRAFT: expression syntax error
 void MoleTether::Update() {
     f64 sp18;
     f64 sp10;
@@ -123,14 +123,12 @@ void MoleTether::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1F8'
 void MoleTether::LoadDone() {
     Shatterable::LoadDone();
     this->unk1F8 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk1F4'
+#if 0 // DRAFT: expression syntax error
 void MoleTether::Init() {
     Shatterable::Init();
     this->unk1F4 = NULL;
@@ -141,7 +139,7 @@ void MoleTether::Init() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void MoleTetherDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
     this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));

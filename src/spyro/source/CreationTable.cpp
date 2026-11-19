@@ -4,7 +4,7 @@
 #include "spyro/source/TrainChaseSpyro.h"
 #include <m2c_macros.h>
 
-M2C_UNK __construct_array(f64 *, MKAnimScript *(*)(MKAnimScript *), SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK, void *, M2C_UNK); /* extern */
+M2C_UNK __construct_array(f32 *, MKAnimScript *(*)(MKAnimScript *), SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK, void *, M2C_UNK); /* extern */
 TrainChaseSpyro *malloc(s32);                       /* extern */
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;

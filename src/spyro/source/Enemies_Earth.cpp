@@ -2,6 +2,7 @@
 #include "common/Source/MKAnimScript.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/Enemy.h"
+#include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/EnemyGoal_Think.h"
 #include "spyro/source/Tools.h"
@@ -19,14 +20,14 @@ void EarthTier3::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA00'
+#if 0 // DRAFT: pointer/array required
 void EarthTier3::Deinit() {
-    void **temp_r3_64;
+    s32 temp_r3_64;
 
-    temp_r3_64 = this->unk110.unkA00;
-    if (temp_r3_64 != NULL) {
+    temp_r3_64 = this->unkAF8;
+    if ((u32) temp_r3_64 != 0U) {
         M2C_FIELD(*temp_r3_64, M2C_UNK (**)(), 0xC)();
-        operator delete(this->unk110.unkA00);
+        operator delete((void *) this->unkAF8);
     }
     Enemy::Deinit();
 }
@@ -35,7 +36,7 @@ void EarthTier3::Deinit() {
 #if 0 // DRAFT: function call 'operator new(unsigned int, int, int)' does not match
 void EarthTier3::Init() {
     EnemyGoal_Think *temp_r31_96;
-    void **temp_r4_144;
+    s32 temp_r4_144;
 
     Enemy::Init();
     operator new(0x74U, NULL, 0);
@@ -54,7 +55,7 @@ void EarthTier3::Init() {
         temp_r31_96->__vptr = &__vt;
     }
     temp_r31_96->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_96;
+    this->unkA24 = (EnemyAttack *) temp_r31_96;
     operator new(0x10U, NULL, 0);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt__12Goal<5Enemy>;
@@ -64,15 +65,15 @@ void EarthTier3::Init() {
         M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC) = 0;
         *M2C_ERROR(/* Read from unset register $r3 */) = &__vt;
     }
-    this->unk110.unkA00 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r4_144 = this->unk110.unkA00;
+    this->unkAF8 = M2C_ERROR(/* Read from unset register $r3 */);
+    temp_r4_144 = this->unkAF8;
     M2C_FIELD(temp_r4_144, s8 *, 8) = 1;
     M2C_FIELD(temp_r4_144, EarthTier3 **, 0xC) = this;
     M2C_FIELD(temp_r4_144, s32 *, 4) = 0x38;
     if ((EarthTier3 *) M2C_FIELD(temp_r4_144, EarthTier3 **, 0xC) != NULL) {
         M2C_FIELD(temp_r4_144, s8 *, 9) = 1;
     }
-    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_96, (Goal<Enemy> *) this->unk110.unkA00);
+    SetSpawnGoal__15EnemyGoal_ThinkFP12Goal<5Enemy>(temp_r31_96, (Goal<Enemy> *) this->unkAF8);
 }
 #endif
 
@@ -116,11 +117,11 @@ void EarthTier2::Init() {
         temp_r31_235->__vptr = &__vt;
     }
     temp_r31_235->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_235;
+    this->unkA24 = (EnemyAttack *) temp_r31_235;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: pointer/array required
 void EarthTier1::Update() {
     f64 sp38;                                       /* compiler-managed */
     f64 sp30;                                       /* compiler-managed */
@@ -128,23 +129,23 @@ void EarthTier1::Update() {
     f64 sp20;
     MKVector3 sp10;
     f32 sp8;
+    f32 temp_r3_291;
     f32 var_f0_422;
     f32 var_f3_383;
     f32 var_f4_316;
     f64 temp_f1_322;
     f64 temp_f1_328;
     f64 temp_f1_332;
-    s32 *temp_r3_291;
     s32 temp_r3_351;
     s32 var_r0_361;
     void **temp_r3_280;
 
     Enemy::Update();
-    if ((void *) this->unk110.unk940 != NULL) {
-        temp_r3_280 = this->unk110.unk930;
+    if ((EnemyDescriptor *) this->unkA38 != NULL) {
+        temp_r3_280 = this->unkA28;
         if ((temp_r3_280 != NULL) && (M2C_FIELD(*temp_r3_280, u8 (**)(M2C_UNK), 0x38)(0x14) == 0)) {
-            temp_r3_291 = M2C_FIELD(this->unk110.unk940, s32 **, 0x20);
-            if (temp_r3_291 != NULL) {
+            temp_r3_291 = this->unkA38->unk20;
+            if (M2C_BITWISE(u32, temp_r3_291) != 0U) {
                 if ((stricmp(*temp_r3_291, "Roll_Cycle") == 0) && ((s32) this->unk110.unk16C > 0)) {
                     sp30 = this->unk110.unk18;
                     sp38 = this->unk110.unk20;
@@ -193,8 +194,8 @@ void EarthTier1::Update() {
                     Tools_GetGradient(sp10);
                     sp20 = M2C_BITWISE(f64, sp10);
                     sp28 = (f64) sp10.unk8;
-                    this->unk110.unkA00 = M2C_BITWISE(f32, this->unk110.unkA00) + (gUpdateTimeDelta * (-(((f32) sp28 * up.unk8) + (((f32) sp20 * up.unk0) + (unksp24 * up.unk4))) * gUpdateTimeDelta));
-                    var_f0_422 = M2C_BITWISE(f32, this->unk110.unkA00);
+                    this->unkAF8 = M2C_BITWISE(f32, this->unkAF8) + (gUpdateTimeDelta * (-(((f32) sp28 * up.unk8) + (((f32) sp20 * up.unk0) + (unksp24 * up.unk4))) * gUpdateTimeDelta));
+                    var_f0_422 = M2C_BITWISE(f32, this->unkAF8);
                     if (var_f0_422 < 2.0f) {
 
                     } else {
@@ -205,12 +206,12 @@ void EarthTier1::Update() {
                     } else {
                         var_f0_422 = 1.0f;
                     }
-                    this->unk110.unkA00 = var_f0_422;
-                    M2C_FIELD(this->unk110.unk520, f32 *, 0x38) = M2C_BITWISE(f32, this->unk110.unkA00);
+                    this->unkAF8 = var_f0_422;
+                    M2C_FIELD(M2C_FIELD(this, void **, 0x630), f32 *, 0x38) = M2C_BITWISE(f32, this->unkAF8);
                 }
             } else {
-                this->unk110.unkA00 = 1.0f;
-                M2C_FIELD(this->unk110.unk520, f32 *, 0x38) = M2C_BITWISE(f32, this->unk110.unkA00);
+                this->unkAF8 = 1.0f;
+                M2C_FIELD(M2C_FIELD(this, void **, 0x630), f32 *, 0x38) = M2C_BITWISE(f32, this->unkAF8);
             }
         }
     }
@@ -239,9 +240,9 @@ void EarthTier1::Init() {
         temp_r31_471->__vptr = &__vt;
     }
     temp_r31_471->Init((Enemy *) this);
-    this->unk110.unk92C = temp_r31_471;
+    this->unkA24 = (EnemyAttack *) temp_r31_471;
     temp_r31_471->SetFollowSpawnPathParams((AnimSequenceType) 6, 0x13);
-    this->unk110.unkA00 = 1.0f;
+    this->unkAF8 = 1.0f;
 }
 #endif
 

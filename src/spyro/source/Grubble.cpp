@@ -412,6 +412,22 @@ void GrubbleCritter::Update() {
     f32 sp2C4;
     f32 sp2C0;
     f32 sp2BC;
+    f32 sp2B8;
+    f32 sp2B0;
+    f32 sp2AC;
+    f32 sp2A8;
+    f32 sp2A0;
+    f32 sp29C;
+    f32 sp298;
+    s8 sp290;
+    s32 sp28C;
+    s32 sp288;
+    s32 sp284;
+    f32 sp280;
+    s32 sp27C;
+    s8 sp27B;
+    s8 sp27A;
+    s16 sp278;
     Volume sp1F0;
     f64 sp1E8;
     f64 sp1E0;
@@ -499,9 +515,9 @@ void GrubbleCritter::Update() {
 loop_50:
     if (var_r31_599 < (s32) this->unk90) {
         temp_r30_605 = this->unk170 + var_r28_600;
-        temp_r30_605->unk64 -= gUpdateTimeDelta;
-        temp_r30_605->unk54 += temp_r30_605->unk58 * gUpdateTimeDelta;
-        temp_r0_614 = temp_r30_605->unk60;
+        M2C_FIELD(temp_r30_605, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r30_605, f32 *, 0x64) - gUpdateTimeDelta);
+        M2C_FIELD(temp_r30_605, f32 *, 0x54) = (f32) ((M2C_FIELD(temp_r30_605, f32 *, 0x58) * gUpdateTimeDelta) + M2C_FIELD(temp_r30_605, f32 *, 0x54));
+        temp_r0_614 = M2C_FIELD(temp_r30_605, s32 *, 0x60);
         switch (temp_r0_614) {                      /* switch 1; irregular */
         case 0:                                     /* switch 1 */
             sp1F0.GetRandPos();
@@ -517,13 +533,13 @@ loop_50:
             sp1F0.unk40.unk4 = M2C_FIELD(this->unk8, f32 *, 0x34);
             sp1B0 = (f64) spC0;
             sp1F0.unk40.unk8 = sp1F0.unk8;
-            sp1F0.unk40.unk68 = 0.0f;
-            sp1F0.unk40.unk6C = 0.0f;
-            sp1F0.unk40.unk70 = 0.0f;
-            sp1F0.unk40.unk78 = 0.0f;
-            sp1F0.unk40.unk7C = 0.0f;
-            sp1F0.unk40.unk80 = 0.0f;
-            sp1F0.unk40.unk88 = 0.0f;
+            sp298 = 0.0f;
+            sp29C = 0.0f;
+            sp2A0 = 0.0f;
+            sp2A8 = 0.0f;
+            sp2AC = 0.0f;
+            sp2B0 = 0.0f;
+            sp2B8 = 0.0f;
             sp2BC = 0.0f;
             sp2C0 = 0.0f;
             sp2C4 = 1.0f;
@@ -552,11 +568,11 @@ loop_50:
             sp1E0 = spD0;
             spD8 = sp1F0.unk40.unk8 + (f32) sp1D8;
             sp1E8 = (f64) spD8;
-            if (MKCollision_RayCollide(*((MKVector3 *) &sp1E0), *((MKVector3 *) &sp1C0), (MKCollisionResult *) &sp1F0.unk40.unk68, (MKCollisionMode) 4, 0x0C000000) != 0) {
-                sp1F0.unk40 = (f64) sp1F0.unk40.unk68;
-                sp1F0.unk40.unk8 = (f64) sp1F0.unk40.unk70;
-                sp1F0.unk30 = (f64) sp1F0.unk40.unk78;
-                sp1F0.unk38 = (f64) sp1F0.unk40.unk80;
+            if (MKCollision_RayCollide(*((MKVector3 *) &sp1E0), *((MKVector3 *) &sp1C0), (MKCollisionResult *) &sp298, (MKCollisionMode) 4, 0x0C000000) != 0) {
+                sp1F0.unk40 = (f64) sp298;
+                sp1F0.unk40.unk8 = (f64) sp2A0;
+                sp1F0.unk30 = (f64) sp2A8;
+                sp1F0.unk38 = (f64) sp2B0;
             }
             spA8 = -1.0f;
             sp98 = 1.0f;
@@ -619,7 +635,7 @@ loop_50:
             temp_r30_605->unk34 = sp1F0.unk40.unk4;
             temp_r30_605->unk38 = (f32) sp1F0.unk40.unk8;
             temp_r30_605->unk3C = 1.0f;
-            temp_r30_605->unk60 = 4;
+            M2C_FIELD(temp_r30_605, s32 *, 0x60) = 4;
             FindNewWalkParameters((Grubble *) temp_r30_605);
             break;
         case 4:                                     /* switch 1 */
@@ -638,9 +654,9 @@ loop_50:
             temp_r30_605->unk34 = unksp174;
             temp_r30_605->unk38 = (f32) sp178;
             temp_r30_605->unk3C = 1.0f;
-            temp_f0_899 = temp_r30_605->unk54;
+            temp_f0_899 = M2C_FIELD(temp_r30_605, f32 *, 0x54);
             if (temp_f0_899 > 1.0f) {
-                temp_r30_605->unk54 = temp_f0_899 - 1.0f;
+                M2C_FIELD(temp_r30_605, f32 *, 0x54) = (f32) (temp_f0_899 - 1.0f);
             }
             sp40 = 0.0f;
             sp44 = -500.0f;
@@ -655,17 +671,17 @@ loop_50:
             sp1F0.unk40.unk34 = 0.0f;
             sp1F0.unk40.unk38 = 0.0f;
             sp1F0.unk40.unk3C = 1.0f;
-            sp1F0.unk40.unk40 = 0.0f;
-            sp1F0.unk40.unk44 = 0.0f;
-            sp1F0.unk40.unk48 = 0;
-            unksp27A = 0;
-            unksp27B = 0;
-            sp1F0.unk40.unk4C = 0.0f;
-            sp1F0.unk40.unk50 = 3.4028235e38f;
-            sp1F0.unk40.unk54 = 0.0f;
-            sp1F0.unk40.unk58 = 0.0f;
-            sp1F0.unk40.unk5C = -1;
-            sp1F0.unk40.unk60 = 0;
+            sp1F0.unk80 = 0.0f;
+            sp1F0.unk84 = 0.0f;
+            sp278 = 0;
+            sp27A = 0;
+            sp27B = 0;
+            sp27C = 0;
+            sp280 = 3.4028235e38f;
+            sp284 = 0;
+            sp288 = 0;
+            sp28C = -1;
+            sp290 = 0;
             sp120 = (f64) sp40;
             sp128 = (f64) sp48;
             M2C_ERROR(/* unknown instruction: psq_lx $f5, $zero, $r4, 0x0, qr0 */);
@@ -690,42 +706,42 @@ loop_50:
                 temp_r30_605->unk3C = 1.0f;
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_605->unk64 == 0.0f) {
+            if (M2C_FIELD(temp_r30_605, f32 *, 0x64) == 0.0f) {
                 FindNewWalkParameters((Grubble *) temp_r30_605);
             }
             break;
         case 1:                                     /* switch 1 */
-            if (temp_r30_605->unk54 > 1.0f) {
-                temp_r30_605->unk60 = 2;
-                temp_r27_1003 = temp_r30_605->unk60;
-                temp_r30_605->unk50 = *(checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_1003 * 4) + 0x70));
-                temp_r30_605->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_605->unk50, s16 *, 4) / 30.0f));
-                temp_r30_605->unk54 = 0.0f;
-                temp_r30_605->unk64 = 5.0f;
+            if (M2C_FIELD(temp_r30_605, f32 *, 0x54) > 1.0f) {
+                M2C_FIELD(temp_r30_605, s32 *, 0x60) = 2;
+                temp_r27_1003 = M2C_FIELD(temp_r30_605, s32 *, 0x60);
+                M2C_FIELD(temp_r30_605, void **, 0x50) = (void *) *(checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_1003 * 4) + 0x70));
+                M2C_FIELD(temp_r30_605, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_605, void **, 0x50), s16 *, 4) / 30.0f)));
+                M2C_FIELD(temp_r30_605, f32 *, 0x54) = 0.0f;
+                M2C_FIELD(temp_r30_605, f32 *, 0x64) = 5.0f;
             }
             break;
         case 2:                                     /* switch 1 */
-            temp_f1_1030 = temp_r30_605->unk54;
+            temp_f1_1030 = M2C_FIELD(temp_r30_605, f32 *, 0x54);
             if (temp_f1_1030 > 1.0f) {
-                temp_r30_605->unk54 = temp_f1_1030 - 1.0f;
+                M2C_FIELD(temp_r30_605, f32 *, 0x54) = (f32) (temp_f1_1030 - 1.0f);
             }
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-            if (temp_r30_605->unk64 == 0.0f) {
-                temp_r30_605->unk60 = 3;
-                temp_r27_1044 = temp_r30_605->unk60;
-                temp_r30_605->unk50 = *(checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_1044 * 4) + 0x70));
-                temp_r30_605->unk58 = 30.0f / (30.0f * ((f32) M2C_FIELD(temp_r30_605->unk50, s16 *, 4) / 30.0f));
-                temp_r30_605->unk54 = 0.0f;
+            if (M2C_FIELD(temp_r30_605, f32 *, 0x64) == 0.0f) {
+                M2C_FIELD(temp_r30_605, s32 *, 0x60) = 3;
+                temp_r27_1044 = M2C_FIELD(temp_r30_605, s32 *, 0x60);
+                M2C_FIELD(temp_r30_605, void **, 0x50) = (void *) *(checked_cast<GrubbleCritterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + ((temp_r27_1044 * 4) + 0x70));
+                M2C_FIELD(temp_r30_605, f32 *, 0x58) = (f32) (30.0f / (30.0f * ((f32) M2C_FIELD(M2C_FIELD(temp_r30_605, void **, 0x50), s16 *, 4) / 30.0f)));
+                M2C_FIELD(temp_r30_605, f32 *, 0x54) = 0.0f;
             }
             break;
         case 3:                                     /* switch 1 */
-            if (temp_r30_605->unk54 > 1.0f) {
-                temp_r30_605->unk60 = 4;
+            if (M2C_FIELD(temp_r30_605, f32 *, 0x54) > 1.0f) {
+                M2C_FIELD(temp_r30_605, s32 *, 0x60) = 4;
                 FindNewWalkParameters((Grubble *) temp_r30_605);
             }
             break;
         }
-        if ((s32) temp_r30_605->unk60 == 4) {
+        if ((s32) M2C_FIELD(temp_r30_605, s32 *, 0x60) == 4) {
             temp_r3_1090 = M2C_FIELD(M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb), void **, 8);
             sp100 = M2C_FIELD(temp_r3_1090, f64 *, 0x30);
             sp108 = M2C_FIELD(temp_r3_1090, f64 *, 0x38);

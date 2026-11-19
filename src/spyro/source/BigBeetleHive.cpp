@@ -31,7 +31,7 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk1E8'
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void BigBeetleHive::EmitGoopDrips() {
     MKVector3 sp28;
     f64 sp20;
@@ -377,7 +377,6 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1E8'
 void BigBeetleHive::Init() {
     s32 var_ctr_707;
     s32 var_r3_704;
@@ -397,7 +396,6 @@ void BigBeetleHive::Init() {
     } while (var_ctr_707 != 0);
     this->unk1E8 = 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
 void BigBeetleHiveDescriptor::LoadDone() {

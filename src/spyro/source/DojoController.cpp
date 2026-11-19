@@ -136,10 +136,10 @@ block_17:
                 gb.GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_169 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
-                if ((temp_r3_169 != NULL) && (((Enemy *) (M2C_FIELD(temp_r3_169->unk44, Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
+                if ((temp_r3_169 != NULL) && (((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_169, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
                     spC = 0;
                     sp8 = 0xE1;
-                    M2C_FIELD(temp_r3_169->unk44, M2C_UNK (**)(Targetable *, s32 *), 0x2C)(temp_r3_169, &sp8);
+                    M2C_FIELD(M2C_FIELD(temp_r3_169, void **, 0x44), M2C_UNK (**)(Targetable *, s32 *), 0x2C)(temp_r3_169, &sp8);
                 }
             }
         }
@@ -1701,10 +1701,10 @@ block_37:
                 gb.GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_3347 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
-                if ((temp_r3_3347 != NULL) && (((Enemy *) (M2C_FIELD(temp_r3_3347->unk44, Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
+                if ((temp_r3_3347 != NULL) && (((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_3347, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsKnockedUp() != 0)) {
                     spC = 0;
                     sp8 = 0xE1;
-                    M2C_FIELD(temp_r3_3347->unk44, M2C_UNK (**)(Targetable *, s32 *), 0x2C)(temp_r3_3347, &sp8);
+                    M2C_FIELD(M2C_FIELD(temp_r3_3347, void **, 0x44), M2C_UNK (**)(Targetable *, s32 *), 0x2C)(temp_r3_3347, &sp8);
                 }
             }
         }
@@ -2840,7 +2840,7 @@ loop_44:
                 gb.GetSpyro();
                 ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
                 temp_r3_5541 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
-                if ((temp_r3_5541 != NULL) && ((s32) M2C_FIELD(temp_r3_5541->unkA38, s32 *, 0xF4) == 0x2D)) {
+                if ((temp_r3_5541 != NULL) && ((s32) M2C_FIELD(M2C_FIELD(temp_r3_5541, void **, 0xA38), s32 *, 0xF4) == 0x2D)) {
                     temp_r4_5548 = this->unk4;
                     if ((u8) M2C_FIELD(temp_r4_5548, u8 *, 0x3C2) == 0) {
                         M2C_FIELD(temp_r4_5548, u8 *, 0x3C2) = 1U;
@@ -2952,13 +2952,13 @@ block_37:
             ((CombatStateData *) (M2C_ERROR(/* Read from unset register $r3 */) + 0x460))->GetLastCombatEnemy();
             temp_r3_5749 = checked_cast<Enemy *, Targetable>(M2C_ERROR(/* Read from unset register $r3 */));
             if (temp_r3_5749 != NULL) {
-                ((Enemy *) (M2C_FIELD(temp_r3_5749->unk44, Enemy *(**)(), 0xD4)()))->IsFlinching();
+                ((Enemy *) (M2C_FIELD(M2C_FIELD(temp_r3_5749, void **, 0x44), Enemy *(**)(), 0xD4)()))->IsFlinching();
                 if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                     temp_r6_5763 = this->unkC + 1;
                     this->unkC = temp_r6_5763;
                     spC = 0;
                     sp8 = 0xE1;
-                    M2C_FIELD(temp_r3_5749->unk44, M2C_UNK (**)(Targetable *, s32 *, M2C_UNK, s32), 0x2C)(temp_r3_5749, &sp8, 0, temp_r6_5763);
+                    M2C_FIELD(M2C_FIELD(temp_r3_5749, void **, 0x44), M2C_UNK (**)(Targetable *, s32 *, M2C_UNK, s32), 0x2C)(temp_r3_5749, &sp8, 0, temp_r6_5763);
                     this->unk4->ClearCombatArcs();
                     temp_r4_5774 = this->unk4;
                     temp_r4_5774->unk668 = M2C_BITWISE(s32, temp_r4_5774->unk66C);
@@ -7094,13 +7094,13 @@ void DojoController::Init() {
         if (temp_r29_14593 != NULL) {
             temp_r29_14593->__vptr = &__vt;
             temp_r29_14593->__vptr = &__vt;
-            temp_r29_14593->unk8 = 0;
+            M2C_FIELD(temp_r29_14593, s32 *, 8) = 0;
             ((EventMessage *) (temp_r29_14593 + 8))->Init();
-            temp_r29_14593->unkC = 0;
+            M2C_FIELD(temp_r29_14593, s32 *, 0xC) = 0;
             ((EventMessage *) (temp_r29_14593 + 0xC))->Init();
-            temp_r29_14593->unk10 = 0;
+            M2C_FIELD(temp_r29_14593, s32 *, 0x10) = 0;
             ((EventMessage *) (temp_r29_14593 + 0x10))->Init();
-            temp_r29_14593->unk14 = 0;
+            M2C_FIELD(temp_r29_14593, s32 *, 0x14) = 0;
             ((EventMessage *) (temp_r29_14593 + 0x14))->Init();
         }
         ((SpawnPointObject *) (this + (var_r30_14587 + 0x80)))->Init(temp_r29_14593);

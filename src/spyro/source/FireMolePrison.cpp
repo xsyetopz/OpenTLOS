@@ -15,7 +15,7 @@ extern s32 GS_MoleScurry;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: type mismatch
 void FireMolePrison::Message(MKMessage *arg0) {
     f64 sp28;
     f64 sp20;
@@ -56,7 +56,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1F8'
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void FireMolePrison::Update() {
     f32 temp_f1_117;
 
@@ -78,14 +78,14 @@ void FireMolePrison::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk208'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void FireMolePrison::Deinit() {
     KDSound_Stop(&this->unk208);
     ShatterWaypointSpawn::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk208'
+#if 0 // DRAFT: illegal implicit conversion from 'float' to
 void FireMolePrison::Init() {
     ShatterWaypointSpawn::Init();
     this->unk208 = 0;

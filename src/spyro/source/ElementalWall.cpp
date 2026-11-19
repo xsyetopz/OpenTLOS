@@ -56,12 +56,10 @@ static s32 lit_917 = 1;
 
 static u8 lit_996 = 1;
 
-#if 0 // DRAFT: undefined identifier 'unk54'
 void ElementalWall::CalcBounds() {
     SplineProp::CalcBounds();
-    this->unk50.unk54 += this->unk110;
+    M2C_FIELD(this, f32 *, 0xA4) = (f32) (M2C_FIELD(this, f32 *, 0xA4) + this->unk110);
 }
-#endif
 
 void ElementalWall::StateEWOffExit() {
 
@@ -149,15 +147,21 @@ void ElementalWall::StateEWOnUpdate() {
     s32 spE0;
     f64 spD8;
     f64 spD0;
-    f64 spC8;                                       /* compiler-managed */
+    f64 spC8;
     f64 spC0;
     s32 spBC;
-    f32 spB8;
+    s32 spB8;
     s8 spB2;
     s8 spB1;
-    f32 sp94;
-    f64 sp88;                                       /* compiler-managed */
-    f64 sp80;                                       /* compiler-managed */
+    s8 spB0;
+    s8 spAC;
+    f32 spA8;
+    f64 spA0;
+    f64 sp98;
+    s32 sp94;
+    s32 sp90;
+    f64 sp88;
+    f64 sp80;
     f64 sp78;                                       /* compiler-managed */
     f64 sp70;                                       /* compiler-managed */
     f64 sp68;                                       /* compiler-managed */
@@ -194,17 +198,17 @@ void ElementalWall::StateEWOnUpdate() {
         }
         this->unk128 = var_r30_259;
     } else if (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) != 0) {
-        M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-        M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+        this->unkC0 = M2C_FIELD(&zero, f64 *, 0);
+        this->unkC8 = M2C_FIELD(&zero, f64 *, 8);
         this->unk128 = 1;
     }
     if (((HeroInterface *) gb.unk0 != NULL) && ((u8) this->unk128 != 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(), 0x54)() == 0) && (M2C_FIELD(gb.unk0->__vptr, u8 (**)(HeroInterface *), 0x60)(gb.unk0) == 0)) {
         temp_r3_329 = M2C_FIELD(M2C_FIELD(gb.unk0->__vptr, void *(**)(HeroInterface *), 0xC)(gb.unk0), void **, 8);
         sp80 = M2C_FIELD(temp_r3_329, f64 *, 0x30);
         sp88 = M2C_FIELD(temp_r3_329, f64 *, 0x38);
-        Tools_GetClosestSplineTime(this->unk50.unk60 + 0x30, *((MKVector3 *) &sp80), this->unk104);
+        Tools_GetClosestSplineTime(&this->unkB0->unk30, *((MKVector3 *) &sp80), this->unk104);
         spC = 0.0f;
-        sp50.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+        sp50.GetMeasure(M2C_ERROR(/* Read from unset register $f1 */), (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = M2C_BITWISE(f64, sp50);
         sp78 = (f64) sp50.unk8;
         M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -248,14 +252,14 @@ void ElementalWall::StateEWOnUpdate() {
             }
         }
         var_r0_437 = 0;
-        if ((this->unk50.unk70 == zero.unk0) && (this->unk50.unk74 == zero.unk4) && (this->unk50.unk78 == zero.unk8)) {
+        if (((f32) M2C_FIELD(this, f64 *, 0xC0) == zero.unk0) && (M2C_FIELD(this, f32 *, 0xC4) == zero.unk4) && ((f32) M2C_FIELD(this, f64 *, 0xC8) == zero.unk8)) {
             var_r0_437 = 1;
         }
         if (var_r0_437 != 0) {
-            M2C_FIELD(this, f64 *, 0xC0) = M2C_BITWISE(f64, sp50.unk10);
-            M2C_FIELD(this, f64 *, 0xC8) = sp68;
-            this->unk50.unk80 = sp80;
-            M2C_FIELD(this, f64 *, 0xD8) = sp88;
+            this->unkC0 = M2C_BITWISE(f64, sp50.unk10);
+            this->unkC8 = sp68;
+            this->unkD0 = sp80;
+            this->unkD8 = sp88;
         }
         if ((u8) this->unk11C != 0) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
@@ -264,8 +268,8 @@ void ElementalWall::StateEWOnUpdate() {
                 sp114 = 0;
                 sp138 = 2;
                 sp13C = this;
-                sp118 = M2C_FIELD(this, f64 *, 0xC0);
-                sp120 = M2C_FIELD(this, f64 *, 0xC8);
+                sp118 = this->unkC0;
+                sp120 = this->unkC8;
                 sp150 = 1;
                 sp15C = 2;
                 sp158 = 10.0f;
@@ -296,12 +300,12 @@ void ElementalWall::StateEWOnUpdate() {
                 var_f1_555 = -var_f1_555;
             }
             if (var_f1_555 < this->unk10C) {
-                spB8 = 1e-44f;
+                spB8 = 7;
                 spBC = 0;
                 spE0 = 2;
                 spE4 = this;
-                spC0 = M2C_FIELD(this, f64 *, 0xC0);
-                spC8 = M2C_FIELD(this, f64 *, 0xC8);
+                spC0 = this->unkC0;
+                spC8 = this->unkC8;
                 spF8 = 1;
                 sp104 = 2;
                 sp100 = 10.0f;
@@ -321,31 +325,31 @@ void ElementalWall::StateEWOnUpdate() {
                     spF0 = 0.0f;
                 }
                 sp109 = 0;
-                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, f32 *), 0x1C)(gb.unk0, &spB8);
+                M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *), 0x1C)(gb.unk0, &spB8);
                 return;
             }
             goto block_51;
         }
 block_51:
-        if (((this->unk50.unk78 * (f32) sp68) + ((this->unk50.unk70 * M2C_BITWISE(f32, sp50.unk10)) + (this->unk50.unk74 * 0.0f))) < 0.5f) {
-            sp94 = 0.0f;
+        if ((((f32) M2C_FIELD(this, f64 *, 0xC8) * (f32) sp68) + (((f32) M2C_FIELD(this, f64 *, 0xC0) * M2C_BITWISE(f32, sp50.unk10)) + (M2C_FIELD(this, f32 *, 0xC4) * 0.0f))) < 0.5f) {
+            sp94 = 0;
             M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *), 0xC)(gb.unk0);
             sp40.GetRotationPRY();
-            sp40.unk50 = 2e-44f;
-            temp_f1_646 = this->unk50.unk80;
+            sp90 = 0xE;
+            temp_f1_646 = this->unkD0;
             spB1 = 1;
-            sp40.unk58 = temp_f1_646;
-            sp40.unk60 = M2C_FIELD(this, f64 *, 0xD8);
-            sp40.unk68 = sp40.unk4;
-            sp40.unk6C = 0;
-            sp40.unk70 = 0;
+            sp98 = temp_f1_646;
+            spA0 = this->unkD8;
+            spA8 = sp40.unk4;
+            spAC = 0;
+            spB0 = 0;
             spB2 = 1;
             spB1 = 1;
-            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, f32 *, M2C_UNK, f64, f32), 0x1C)(gb.unk0, &sp40.unk50, 0, temp_f1_646, sp40.unk4);
+            M2C_FIELD(gb.unk0->__vptr, M2C_UNK (**)(HeroInterface *, s32 *, M2C_UNK, f64, f32), 0x1C)(gb.unk0, &sp90, 0, temp_f1_646, sp40.unk4);
             return;
         }
-        M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-        M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+        this->unkC0 = M2C_FIELD(&zero, f64 *, 0);
+        this->unkC8 = M2C_FIELD(&zero, f64 *, 8);
     }
 }
 #endif
@@ -424,7 +428,7 @@ void ElementalWall::EmitEarthParticles(float arg0, float arg1) {
     if (gb.unk30C == this->unkFC) {
         temp_f1_802 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
-        spF8.GetMeasure(temp_f1_802, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+        spF8.GetMeasure(temp_f1_802, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp118 = M2C_BITWISE(f64, spF8);
         sp120 = (f64) spF8.unk8;
         KDRand_UnitVectorXZ();
@@ -445,7 +449,7 @@ loop_3:
         if ((f32) var_r26_867 < (1.5f * (f32) this->unk104)) {
             temp_f1_874 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            spC8.GetMeasure(temp_f1_874, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+            spC8.GetMeasure(temp_f1_874, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp118 = M2C_BITWISE(f64, spC8);
             sp120 = (f64) spC8.unk8;
             KDRand_UnitVectorXZ();
@@ -462,7 +466,7 @@ loop_3:
             gb.EmitSmallRocks(*((MKVector3 *) &sp118), *((MKVector3 *) &spF8.unk10), sp18);
             temp_f1_920 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
-            sp98.GetMeasure(temp_f1_920, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+            sp98.GetMeasure(temp_f1_920, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp118 = M2C_BITWISE(f64, sp98);
             sp120 = (f64) sp98.unk8;
             KDRand_UnitVectorXZ();
@@ -519,7 +523,7 @@ void ElementalWall::EmitIceParticles(float arg0, float arg1) {
         temp_r29_1053 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, M2C_UNK *), 0x5C)(gMK, "IceCube"));
         temp_f1_1056 = MKRand_Float(&gViewSeed, arg0, arg1);
         spC = 0.0f;
-        sp50.GetMeasure(temp_f1_1056, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+        sp50.GetMeasure(temp_f1_1056, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = M2C_BITWISE(f64, sp50);
         sp78 = (f64) sp50.unk8;
         temp_r3_1071 = checked_cast<PooledShatterProp *, MKProp>(temp_r29_1053->CreateInstance());
@@ -536,7 +540,7 @@ loop_8:
     if (var_r28_1110 < (s32) ((s32) this->unk104 / 2)) {
         temp_f1_1116 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        sp40.GetMeasure(temp_f1_1116, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+        sp40.GetMeasure(temp_f1_1116, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp70 = sp40;
         sp78 = sp48;
         KDRand_UnitVector();
@@ -598,7 +602,7 @@ loop_3:
         if (var_r29_1232 < (s32) ((s32) this->unk104 / 2)) {
             temp_f1_1238 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            sp88.GetMeasure(temp_f1_1238, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+            sp88.GetMeasure(temp_f1_1238, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             spA8 = M2C_BITWISE(f64, sp88);
             spB0 = (f64) sp88.unk8;
             unkspAC += this->unk110 * MKRand_Float(&gViewSeed, 0.0f, 1.0f);
@@ -616,7 +620,7 @@ loop_3:
         }
         temp_f1_1292 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp8 = 0.0f;
-        sp58.GetMeasure(temp_f1_1292, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+        sp58.GetMeasure(temp_f1_1292, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         spA8 = M2C_BITWISE(f64, sp58);
         spB0 = (f64) sp58.unk8;
         unkspAC += this->unk10C * (this->unk118 * (f32) (s32) ((f32) this->unk108 * MKRand_Float(&gViewSeed, 0.0f, 1.0f)));
@@ -679,7 +683,7 @@ void ElementalWall::EmitFireParticles(float arg0, float arg1) {
     if (gb.unk30C == this->unkFC) {
         temp_f1_1420 = MKRand_Float(&gViewSeed, arg0, arg1);
         sp10 = 0.0f;
-        spF0.GetMeasure(temp_f1_1420, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+        spF0.GetMeasure(temp_f1_1420, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
         sp110 = M2C_BITWISE(f64, spF0);
         sp118 = (f64) spF0.unk8;
         KDRand_UnitVectorXZ();
@@ -698,7 +702,7 @@ loop_3:
         if (var_r27_1475 < (s32) this->unk104) {
             temp_f1_1481 = MKRand_Float(&gViewSeed, arg0, arg1);
             spC = 0.0f;
-            spC0.GetMeasure(temp_f1_1481, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+            spC0.GetMeasure(temp_f1_1481, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp110 = M2C_BITWISE(f64, spC0);
             sp118 = (f64) spC0.unk8;
             KDRand_UnitVectorXZ();
@@ -715,7 +719,7 @@ loop_3:
             gb.unk68->Emit(*((MKVector3 *) &sp110), *((MKVector3 *) &spF0.unk10), sp18);
             temp_f1_1526 = MKRand_Float(&gViewSeed, arg0, arg1);
             sp8 = 0.0f;
-            sp90.GetMeasure(temp_f1_1526, this->unk50.unk60 + 0x30, KDSpline_PositionMixer);
+            sp90.GetMeasure(temp_f1_1526, (Matrix *) &this->unkB0->unk30, KDSpline_PositionMixer);
             sp110 = M2C_BITWISE(f64, sp90);
             sp118 = (f64) sp90.unk8;
             KDRand_UnitVectorXZ();
@@ -1974,19 +1978,19 @@ void ElementalWall::Resolve() {
     case 0:
         this->unkF4 = MKMaterial_Create"FX_ElementalFlameWall";
         this->unkF8 = MKMaterial_Create"FX_ElementalFlameWall1";
-        this->unk130.Init(this->unk50.unk60 + 0x30, this->unk110, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_FireBarricadeLP, GS_FireBarricadeStart, GS_FireBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 1:
         this->unkF4 = MKMaterial_Create"FX_ElementalElectricityWall";
-        this->unk130.Init(this->unk50.unk60 + 0x30, this->unk110, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_ElecBarricadeLP, GS_ElecBarricadeStart, GS_ElecBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 2:
         this->unkF4 = MKMaterial_Create"FX_ElementalIceWall";
-        this->unk130.Init(this->unk50.unk60 + 0x30, this->unk110, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_IceBarricadeLP, GS_IceBarricadeStart, GS_IceBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     case 3:
         this->unkF4 = MKMaterial_Create"FX_ElementalEarthWall";
-        this->unk130.Init(this->unk50.unk60 + 0x30, this->unk110, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
+        this->unk130.Init(&this->unkB0->unk30, this->unk110, GS_EarthBarricadeLP, GS_EarthBarricadeStart, GS_EarthBarricadeStop, 0.25f, 0.25f, 0.0f, 0.0f);
         break;
     }
     this->unk114 = 1.0f / (f32) this->unk104;
@@ -2055,10 +2059,10 @@ void ElementalWall::Init() {
     this->unk110 = 200.0f;
     SplineProp::Init();
     this->unkFC = gb.unk30C + 0.0f;
-    M2C_FIELD(this, f64 *, 0xC0) = (f64) M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&zero, f64 *, 8);
-    this->unk50.unk80 = M2C_FIELD(&zero, f64 *, 0);
-    M2C_FIELD(this, f64 *, 0xD8) = (f64) M2C_FIELD(&zero, f64 *, 8);
+    this->unkC0 = M2C_FIELD(&zero, f64 *, 0);
+    this->unkC8 = M2C_FIELD(&zero, f64 *, 8);
+    this->unkD0 = M2C_FIELD(&zero, f64 *, 0);
+    this->unkD8 = M2C_FIELD(&zero, f64 *, 8);
 }
 #endif
 

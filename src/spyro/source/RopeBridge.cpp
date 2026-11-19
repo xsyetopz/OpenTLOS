@@ -946,7 +946,7 @@ loop_40:
         arg_sp29C = temp_f6_1544;
         arg_sp2A0 = temp_f5_1546;
         arg_sp2B0.RotateRoll((Matrix *) &arg_sp2B0, *(this->unk184 + (var_r24_1369 + 8)));
-        arg_sp2B0.Multiply3x3((Matrix *) &arg_sp2B0, (Matrix *) &this->unk90.unk80);
+        arg_sp2B0.Multiply3x3((Matrix *) &arg_sp2B0, &this->unk110);
         if (((u8) this->unk1A8 != 0) && (MKCollision_SphereCollide(*((MKVector3 *) &arg_sp2E0), 50.0f, (MKCollisionResult *) &arg_sp330, 1, (MKCollisionMode) 7, 0x7FFFFFFE) != 0)) {
             arg_sp1F8.operator*(30.000002f);
             M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r30, 0x0, qr0 */);
@@ -1073,7 +1073,7 @@ loop_38:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk58'
+#if 0 // DRAFT: illegal type
 void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     f64 sp80;
     f64 sp78;
@@ -1123,25 +1123,25 @@ void RopeBridge::ApplyForce(const MKVector3 &arg0, const MKVector3 &arg1) {
     void *temp_r6_2061;
 
     temp_f5_2032 = arg0.unk4;
-    temp_f26_2033 = this->unk90.unk58;
-    temp_f6_2034 = this->unk90.unk50;
+    temp_f26_2033 = this->unkE8;
+    temp_f6_2034 = this->unkE0;
     temp_f10_2036 = arg0.unk0;
-    temp_f1_2037 = this->unk90.unk48;
-    temp_f11_2039 = this->unk90.unk54;
+    temp_f1_2037 = this->unkD8;
+    temp_f11_2039 = this->unkE4;
     temp_f12_2041 = arg0.unk8;
     temp_f30_2043 = arg1.unk4;
-    temp_f2_2044 = this->unk90.unk68;
-    temp_f13_2045 = this->unk90.unk40;
-    temp_f29_2047 = this->unk90.unk44;
-    temp_f31_2051 = M2C_BITWISE(f32, this->unk90.unk60);
+    temp_f2_2044 = this->unkF8;
+    temp_f13_2045 = this->unkD0;
+    temp_f29_2047 = this->unkD4;
+    temp_f31_2051 = this->unkF0;
     temp_f28_2053 = arg1.unk0;
-    temp_f27_2055 = this->unk90.unk64;
-    sp40 = this->unk90.unk78 + ((temp_f12_2041 * temp_f2_2044) + ((temp_f10_2036 * temp_f1_2037) + (temp_f5_2032 * temp_f26_2033)));
+    temp_f27_2055 = this->unkF4;
+    sp40 = this->unk108 + ((temp_f12_2041 * temp_f2_2044) + ((temp_f10_2036 * temp_f1_2037) + (temp_f5_2032 * temp_f26_2033)));
     temp_r6_2061 = this->unk180;
     sp80 = (f64) sp40;
     temp_f11_2068 = arg1.unk8;
-    sp38 = this->unk90.unk70 + ((temp_f12_2041 * temp_f31_2051) + ((temp_f10_2036 * temp_f13_2045) + (temp_f5_2032 * temp_f6_2034)));
-    sp3C = this->unk90.unk74 + ((temp_f12_2041 * temp_f27_2055) + ((temp_f10_2036 * temp_f29_2047) + (temp_f5_2032 * temp_f11_2039)));
+    sp38 = this->unk100 + ((temp_f12_2041 * temp_f31_2051) + ((temp_f10_2036 * temp_f13_2045) + (temp_f5_2032 * temp_f6_2034)));
+    sp3C = this->unk104 + ((temp_f12_2041 * temp_f27_2055) + ((temp_f10_2036 * temp_f29_2047) + (temp_f5_2032 * temp_f11_2039)));
     sp30 = (temp_f11_2068 * temp_f2_2044) + ((temp_f28_2053 * temp_f1_2037) + (temp_f30_2043 * temp_f26_2033));
     sp28 = (temp_f11_2068 * temp_f31_2051) + ((temp_f28_2053 * temp_f13_2045) + (temp_f30_2043 * temp_f6_2034));
     sp2C = (temp_f11_2068 * temp_f27_2055) + ((temp_f28_2053 * temp_f29_2047) + (temp_f30_2043 * temp_f11_2039));
@@ -1749,7 +1749,7 @@ loop_8:
         goto loop_8;
     }
     KDMath_GetYaw((Matrix *) &this->unk50);
-    this->unk90.unk80.SetRotationYaw(M2C_ERROR(/* Read from unset register $f1 */));
+    this->unk110.SetRotationYaw(M2C_ERROR(/* Read from unset register $f1 */));
     UpdatePlankMatrices();
 }
 #endif
@@ -1867,13 +1867,13 @@ void RopeBridge::CalculateTranformationMatrices() {
     this->unk84 = this->unk154;
     this->unk88 = this->unk158;
     this->unk8C = 1.0f;
-    this->unk90.unk40.Inverse((Matrix *) &this->unk50);
+    this->unkD0.Inverse((Matrix *) &this->unk50);
     temp_f3_3253 = this->unk164;
     temp_f6_3259 = this->unk160;
     temp_f7_3265 = this->unk168;
-    sp8 = this->unk90.unk70 + ((temp_f7_3265 * M2C_BITWISE(f32, this->unk90.unk60)) + ((temp_f6_3259 * this->unk90.unk40) + (temp_f3_3253 * this->unk90.unk50)));
-    spC = this->unk90.unk74 + ((temp_f7_3265 * this->unk90.unk64) + ((temp_f6_3259 * this->unk90.unk44) + (temp_f3_3253 * this->unk90.unk54)));
-    sp10 = this->unk90.unk78 + ((temp_f7_3265 * this->unk90.unk68) + ((temp_f6_3259 * this->unk90.unk48) + (temp_f3_3253 * this->unk90.unk58)));
+    sp8 = this->unk100 + ((temp_f7_3265 * this->unkF0) + ((temp_f6_3259 * this->unkD0) + (temp_f3_3253 * this->unkE0)));
+    spC = this->unk104 + ((temp_f7_3265 * this->unkF4) + ((temp_f6_3259 * this->unkD4) + (temp_f3_3253 * this->unkE4)));
+    sp10 = this->unk108 + ((temp_f7_3265 * this->unkF8) + ((temp_f6_3259 * this->unkD8) + (temp_f3_3253 * this->unkE8)));
     this->unk170 = (f64) sp8;
     sp38 = (f64) sp8;
     sp40 = (f64) sp10;

@@ -1,14 +1,16 @@
 #include "spyro/source/SwampTier2Goal_Think.h"
 #include "common/Source/MKHeap.h"
+#include "common/Source/MKMaterial.h"
 #include "common/Source/MKVector3.h"
 #include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/CharacterFireFX.h"
+#include "spyro/source/CharacterZapFX.h"
 #include "spyro/source/Enemies_Swamp.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDataTypes.h"
 #include "spyro/source/EnemyDescriptor.h"
 #include "spyro/source/GameMessages.h"
-#include "spyro/source/SB2.h"
 #include "spyro/source/TargetManager.h"
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
@@ -19,26 +21,26 @@ extern void **gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: undefined identifier 'unk488'
+#if 0 // DRAFT: expression syntax error
 void SwampTier2Goal_MoveToTarget::Terminate() {
     Character *temp_r3_28;
-    SB2 *temp_r3_33;
+    void *temp_r3_33;
 
     temp_r3_28 = this->unkC;
-    temp_r3_28->unk110.unk488 = 0.0f;
-    temp_r3_28->unk110.unk48C = 0.0f;
-    temp_r3_28->unk110.unk490 = 0.0f;
-    temp_r3_33 = this->unkC->unk110.unk530;
-    temp_r3_33->unk464 &= ~0x80;
-    this->unkC->unk110.unk530->SeekOff();
-    this->unkC->unk110.unk530->ContainmentOff();
-    this->unkC->unk110.unk530->ObstacleAvoidanceOff();
-    this->unkC->unk110.unk530->WallAvoidanceOff();
+    temp_r3_28->unk588.unkC = 0.0f;
+    temp_r3_28->unk598 = 0.0f;
+    temp_r3_28->unk59C = 0.0f;
+    temp_r3_33 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_33, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_33, u8 *, 0x464) & ~0x80);
+    this->unkC->unk638->SeekOff();
+    this->unkC->unk638->ContainmentOff();
+    this->unkC->unk638->ObstacleAvoidanceOff();
+    this->unkC->unk638->WallAvoidanceOff();
     this->unk8 = 1;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: undefined identifier 'unk8B8'
 u8 SwampTier2Goal_MoveToTarget::Update() {
     f64 sp10;
     f64 sp8;
@@ -60,7 +62,7 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
     ActivateIfInactive();
     temp_r3_67 = this->unkC;
     var_r30_68 = 0;
-    if (((u8) temp_r3_67->unk110.unk7A8 == 2) || (temp_r3_67->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) temp_r3_67->unk8B8 == 2) || (temp_r3_67->unk8B0.Get() != NULL)) {
         var_r30_68 = 1;
     }
     if (var_r30_68 != 0) {
@@ -68,36 +70,36 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
         temp_r5_83 = temp_r3_81->unk8;
         sp8 = M2C_FIELD(temp_r5_83, f64 *, 0x30);
         sp10 = M2C_FIELD(temp_r5_83, f64 *, 0x38);
-        temp_r3_81->unk110.unk760.Update(*((MKVector3 *) &sp8));
+        temp_r3_81->unk870.Update(*((MKVector3 *) &sp8));
     }
     temp_r3_91 = this->unkC;
     var_r30_92 = 0;
-    if (((u8) temp_r3_91->unk110.unk7A8 == 2) || (temp_r3_91->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) temp_r3_91->unk8B8 == 2) || (temp_r3_91->unk8B0.Get() != NULL)) {
         var_r30_92 = 1;
     }
-    if ((var_r30_92 == 0) || (temp_r3_105 = this->unkC, (((((u8) temp_r3_105->unk110.unk7A9 >> 6U) & 1) == 0) != 0))) {
+    if ((var_r30_92 == 0) || (temp_r3_105 = this->unkC, (((((u8) temp_r3_105->unk8B9 >> 6U) & 1) == 0) != 0))) {
         this->unk8 = 3;
     } else {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_105->unk110.unk760.GetDist() == this->unk10) {
+        if (temp_r3_105->unk870.GetDist() == this->unk10) {
             this->unk8 = 2;
         } else {
             temp_r29_124 = this->unkC;
             var_r30_125 = 0;
             if (temp_r29_124->HasAnimFinished() != 0) {
-                temp_r4_130 = temp_r29_124->unk110.unk940;
-                if ((temp_r4_130 != NULL) && ((u32) temp_r4_130->unk0 == (u32) M2C_FIELD(temp_r29_124->unk110.unk520, u32 *, 0x20))) {
+                temp_r4_130 = temp_r29_124->unkA50;
+                if ((temp_r4_130 != NULL) && ((u32) temp_r4_130->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_124, void **, 0x630), u32 *, 0x20))) {
                     var_r30_125 = 1;
                 }
             }
             if (var_r30_125 != 0) {
                 temp_r3_142 = this->unkC;
-                temp_r4_145 = temp_r3_142->unk110.unk940;
+                temp_r4_145 = temp_r3_142->unkA50;
                 temp_r3_142->SetAnim(temp_r4_145, (AnimTransition *) &temp_r4_145->unk20, 0.0f, 0U);
             }
             temp_r5_149 = this->unkC;
-            if ((u32) temp_r5_149->unk110.unk944 == &temp_r5_149->unk110.unk940->unk20) {
-                var_f0_158 = temp_r5_149->unk110.unk580 / temp_r5_149->unk110.unk584;
+            if ((u32) temp_r5_149->unkA54 == &temp_r5_149->unkA50->unk20) {
+                var_f0_158 = M2C_BITWISE(f32, temp_r5_149->unk688) / temp_r5_149->unk68C;
                 if (var_f0_158 < 1.0f) {
 
                 } else {
@@ -108,7 +110,7 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
                 } else {
                     var_f0_158 = 0.5f;
                 }
-                M2C_FIELD(temp_r5_149->unk110.unk520, f32 *, 0x38) = var_f0_158;
+                M2C_FIELD(M2C_FIELD(temp_r5_149, void **, 0x630), f32 *, 0x38) = var_f0_158;
             }
         }
     }
@@ -116,32 +118,32 @@ u8 SwampTier2Goal_MoveToTarget::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA10'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SwampTier2Goal_MoveToTarget::Activate() {
     Character *temp_r3_196;
     Character *temp_r4_229;
-    SB2 *temp_r3_225;
     s32 var_r6_188;
+    void *temp_r3_225;
 
     var_r6_188 = 1;
     this->unk8 = 0;
     temp_r3_196 = this->unkC;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-    if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r3_196->unk110.unkA10) {
+    if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_FIELD(temp_r3_196, f32 *, 0xB20)) {
         var_r6_188 = 0;
-        temp_r3_196->unk110.unkA10 = M2C_FIELD(&gb, f32 *, 0x30C) + 5.0f;
+        M2C_FIELD(temp_r3_196, f32 *, 0xB20) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 5.0f);
     }
     this->unkC->SetAnim((AnimSequenceType) 6, 0, var_r6_188, 0.15f, 0U, 0U);
     this->unkC->StopMovement(1U);
     this->unkC->SetRunMovementSpeed(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
-    temp_r3_225 = this->unkC->unk110.unk530;
-    temp_r3_225->unk464 |= 0x80;
+    temp_r3_225 = this->unkC->unk638;
+    M2C_FIELD(temp_r3_225, u8 *, 0x464) = (u8) (M2C_FIELD(temp_r3_225, u8 *, 0x464) | 0x80);
     temp_r4_229 = this->unkC;
-    temp_r4_229->unk110.unk530->SeekOn((AITargetData *) &temp_r4_229->unk110.unk760);
-    this->unkC->unk110.unk530->ObstacleAvoidanceOn(NULL);
-    this->unkC->unk110.unk530->ContainmentOn();
-    this->unkC->unk110.unk530->WallAvoidanceOn();
+    temp_r4_229->unk638->SeekOn((AITargetData *) &temp_r4_229->unk870);
+    this->unkC->unk638->ObstacleAvoidanceOn(NULL);
+    this->unkC->unk638->ContainmentOn();
+    this->unkC->unk638->WallAvoidanceOn();
 }
 #endif
 
@@ -154,7 +156,7 @@ void SwampTier2Goal_MoveToTarget::Init(SwampTier2 *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: expression syntax error
 void SwampTier2Goal_Attack2::Terminate() {
     AttackerManager *var_r3_299;
     Enemy *temp_r3_274;
@@ -164,14 +166,14 @@ void SwampTier2Goal_Attack2::Terminate() {
 
     var_r31_273 = 0;
     temp_r3_274 = this->unkC;
-    temp_r3_274->unk110.unk9F8 &= ~0x10;
-    this->unkC->unk110.unk910 = NULL;
+    M2C_FIELD(temp_r3_274, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_274, u8 *, 0xB08) & ~0x10);
+    this->unkC->unkA08 = NULL;
     temp_r3_280 = this->unkC;
-    if (((u8) temp_r3_280->unk110.unk7A8 == 2) || (temp_r3_280->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_280, u8 *, 0x8B8) == 2) || (temp_r3_280->unk870.unk30.Get() != NULL)) {
         var_r31_273 = 1;
     }
     if (var_r31_273 != 0) {
-        var_r3_299 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_299 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_299 = NULL;
     }
@@ -188,12 +190,9 @@ void SwampTier2Goal_Attack2::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 u8 SwampTier2Goal_Attack2::Update() {
-    AnimSequence *temp_r4_366;
-    AnimSequence *temp_r4_381;
-    AnimSequence *temp_r4_397;
-    AnimSequence *temp_r4_423;
+    CharacterFireFX *temp_r4_402;
     Enemy *temp_r29_360;
     Enemy *temp_r29_417;
     Enemy *temp_r3_340;
@@ -202,52 +201,55 @@ u8 SwampTier2Goal_Attack2::Update() {
     Enemy *temp_r3_394;
     Enemy *temp_r3_401;
     Enemy *temp_r4_353;
-    EnemyAttack *temp_r4_402;
+    EnemyDescriptor *temp_r4_366;
+    EnemyDescriptor *temp_r4_381;
+    EnemyDescriptor *temp_r4_397;
+    EnemyDescriptor *temp_r4_423;
     u8 var_r30_339;
     u8 var_r30_361;
     u8 var_r30_418;
 
     var_r30_339 = 0;
     temp_r3_340 = this->unkC;
-    if (((u8) temp_r3_340->unk110.unk7A8 == 2) || (temp_r3_340->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_340, u8 *, 0x8B8) == 2) || (temp_r3_340->unk870.unk30.Get() != NULL)) {
         var_r30_339 = 1;
     }
     if (var_r30_339 != 0) {
         temp_r4_353 = this->unkC;
-        temp_r4_353->unk110.unk760.Update(temp_r4_353->unk110.unk478);
+        temp_r4_353->unk838.unk28.Update(*((MKVector3 *) &temp_r4_353->unk588));
     }
     ActivateIfInactive();
     temp_r29_360 = this->unkC;
     var_r30_361 = 0;
     if (temp_r29_360->HasAnimFinished() != 0) {
-        temp_r4_366 = temp_r29_360->unk110.unk940;
-        if ((temp_r4_366 != NULL) && ((u32) temp_r4_366->unk0 == (u32) M2C_FIELD(temp_r29_360->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_366 = temp_r29_360->unkA38;
+        if ((temp_r4_366 != NULL) && ((s8 *) temp_r4_366->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_360, void **, 0x630), u32 *, 0x20))) {
             var_r30_361 = 1;
         }
     }
     if (var_r30_361 != 0) {
         temp_r3_378 = this->unkC;
-        temp_r4_381 = temp_r3_378->unk110.unk940;
-        temp_r3_378->SetAnim(temp_r4_381, (AnimTransition *) &temp_r4_381->unk20, 0.0f, 0U);
+        temp_r4_381 = temp_r3_378->unkA38;
+        temp_r3_378->SetAnim((AnimSequence *) temp_r4_381, (AnimTransition *) &temp_r4_381->unk20, 0.0f, 0U);
     }
     temp_r3_385 = this->unkC;
-    if ((u32) temp_r3_385->unk110.unk944 == &temp_r3_385->unk110.unk940->unk20) {
+    if ((void **) temp_r3_385->unkA3C == &temp_r3_385->unkA38->unk20) {
         if (temp_r3_385->HasAnimFinished() != 0) {
             temp_r3_394 = this->unkC;
-            temp_r4_397 = temp_r3_394->unk110.unk940;
-            temp_r3_394->SetAnim(temp_r4_397, (AnimTransition *) &temp_r4_397->unk40, 0.0f, 0U);
+            temp_r4_397 = temp_r3_394->unkA38;
+            temp_r3_394->SetAnim((AnimSequence *) temp_r4_397, (AnimTransition *) &temp_r4_397->__vptr, 0.0f, 0U);
         }
         temp_r3_401 = this->unkC;
-        temp_r4_402 = temp_r3_401->unk110.unk910;
-        if (((s32) temp_r4_402->unk78 > 0) && (((u8) temp_r3_401->unk110.unk9F8 >> 4U) & 1) && (temp_r3_401->CheckMeleeHit(temp_r4_402, -1) != 0)) {
+        temp_r4_402 = temp_r3_401->unkA08;
+        if (((s32) M2C_FIELD(temp_r4_402, s32 *, 0x78) > 0) && (((u8) M2C_FIELD(temp_r3_401, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_401->CheckMeleeHit((EnemyAttack *) temp_r4_402, -1) != 0)) {
             this->unkC->SetHitTarget(1U);
         }
     }
     temp_r29_417 = this->unkC;
     var_r30_418 = 0;
     if (temp_r29_417->HasAnimFinished() != 0) {
-        temp_r4_423 = temp_r29_417->unk110.unk940;
-        if ((temp_r4_423 != NULL) && ((u32) temp_r4_423->unk40 == (u32) M2C_FIELD(temp_r29_417->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_423 = temp_r29_417->unkA38;
+        if ((temp_r4_423 != NULL) && ((void *) temp_r4_423->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_417, void **, 0x630), u32 *, 0x20))) {
             var_r30_418 = 1;
         }
     }
@@ -258,35 +260,35 @@ u8 SwampTier2Goal_Attack2::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk90C'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier2Goal_Attack2::Activate() {
-    AttackSweepData *temp_r3_472;
     AttackerManager *var_r3_497;
     Enemy *temp_r3_477;
     Enemy *temp_r3_512;
     Enemy *temp_r4_460;
     Enemy *var_r4_504;
+    MKMaterial *temp_r3_472;
     u8 var_r30_478;
 
     this->unk8 = 0;
     this->unkC->SelectAttack(0x10, 0x3D);
     temp_r4_460 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_460->unk110.unk90C != 0U) {
-        temp_r4_460->unk110.unk90C += 4;
+    if ((void *) temp_r4_460->unkA04->__vptr != NULL) {
+        temp_r4_460->unkA04 = (CharacterZapFX *) &temp_r4_460->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_472 = this->unkC->unk110.unk920;
+    temp_r3_472 = this->unkC->unkA18;
     if (temp_r3_472 != NULL) {
         temp_r3_472->SetDefaults();
     }
     temp_r3_477 = this->unkC;
     var_r30_478 = 0;
-    if (((u8) temp_r3_477->unk110.unk7A8 == 2) || (temp_r3_477->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_477, u8 *, 0x8B8) == 2) || (temp_r3_477->unk870.unk30.Get() != NULL)) {
         var_r30_478 = 1;
     }
     if (var_r30_478 != 0) {
-        var_r3_497 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_497 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_497 = NULL;
     }
@@ -298,7 +300,7 @@ loop_2:
         var_r3_497->Add((Targetable *) var_r4_504, 2);
     }
     temp_r3_512 = this->unkC;
-    if (temp_r3_512->unk110.unk910->unk38 & 0x40000000) {
+    if (M2C_FIELD(temp_r3_512->unkA08, s32 *, 0x38) & 0x40000000) {
         temp_r3_512->SetInvulnerableToMeleeAttacks(1U, 1U);
         this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     }
@@ -317,7 +319,7 @@ void SwampTier2Goal_Attack2::Init(SwampTier2 *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: expression syntax error
 void SwampTier2Goal_Attack1::Terminate() {
     AttackerManager *var_r3_595;
     Enemy *temp_r3_570;
@@ -327,14 +329,14 @@ void SwampTier2Goal_Attack1::Terminate() {
 
     var_r31_569 = 0;
     temp_r3_570 = this->unkC;
-    temp_r3_570->unk110.unk9F8 &= ~0x10;
-    this->unkC->unk110.unk910 = NULL;
+    M2C_FIELD(temp_r3_570, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_570, u8 *, 0xB08) & ~0x10);
+    this->unkC->unkA08 = NULL;
     temp_r3_576 = this->unkC;
-    if (((u8) temp_r3_576->unk110.unk7A8 == 2) || (temp_r3_576->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_576, u8 *, 0x8B8) == 2) || (temp_r3_576->unk870.unk30.Get() != NULL)) {
         var_r31_569 = 1;
     }
     if (var_r31_569 != 0) {
-        var_r3_595 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_595 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_595 = NULL;
     }
@@ -351,7 +353,7 @@ void SwampTier2Goal_Attack1::Terminate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk7A8'
+#if 0 // DRAFT: expression syntax error
 u8 SwampTier2Goal_Attack1::Update() {
     f64 sp50;
     f64 sp48;
@@ -360,10 +362,7 @@ u8 SwampTier2Goal_Attack1::Update() {
     f32 sp30;
     f32 sp20;
     M2C_UNK sp8;
-    AnimSequence *temp_r4_664;
-    AnimSequence *temp_r4_679;
-    AnimSequence *temp_r4_756;
-    AnimSequence *temp_r4_782;
+    CharacterFireFX *temp_r4_761;
     Enemy *temp_r29_658;
     Enemy *temp_r29_776;
     Enemy *temp_r30_693;
@@ -373,7 +372,10 @@ u8 SwampTier2Goal_Attack1::Update() {
     Enemy *temp_r3_753;
     Enemy *temp_r3_760;
     Enemy *temp_r4_651;
-    EnemyAttack *temp_r4_761;
+    EnemyDescriptor *temp_r4_664;
+    EnemyDescriptor *temp_r4_679;
+    EnemyDescriptor *temp_r4_756;
+    EnemyDescriptor *temp_r4_782;
     f32 temp_f1_702;
     u8 var_r29_715;
     u8 var_r30_637;
@@ -382,29 +384,29 @@ u8 SwampTier2Goal_Attack1::Update() {
 
     var_r30_637 = 0;
     temp_r3_638 = this->unkC;
-    if (((u8) temp_r3_638->unk110.unk7A8 == 2) || (temp_r3_638->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_638, u8 *, 0x8B8) == 2) || (temp_r3_638->unk870.unk30.Get() != NULL)) {
         var_r30_637 = 1;
     }
     if (var_r30_637 != 0) {
         temp_r4_651 = this->unkC;
-        temp_r4_651->unk110.unk760.Update(temp_r4_651->unk110.unk478);
+        temp_r4_651->unk838.unk28.Update(*((MKVector3 *) &temp_r4_651->unk588));
     }
     ActivateIfInactive();
     temp_r29_658 = this->unkC;
     var_r30_659 = 0;
     if (temp_r29_658->HasAnimFinished() != 0) {
-        temp_r4_664 = temp_r29_658->unk110.unk940;
-        if ((temp_r4_664 != NULL) && ((u32) temp_r4_664->unk0 == (u32) M2C_FIELD(temp_r29_658->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_664 = temp_r29_658->unkA38;
+        if ((temp_r4_664 != NULL) && ((s8 *) temp_r4_664->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_658, void **, 0x630), u32 *, 0x20))) {
             var_r30_659 = 1;
         }
     }
     if (var_r30_659 != 0) {
         temp_r3_676 = this->unkC;
-        temp_r4_679 = temp_r3_676->unk110.unk940;
-        temp_r3_676->SetAnim(temp_r4_679, (AnimTransition *) &temp_r4_679->unk20, 0.15f, 0U);
+        temp_r4_679 = temp_r3_676->unkA38;
+        temp_r3_676->SetAnim((AnimSequence *) temp_r4_679, (AnimTransition *) &temp_r4_679->unk20, 0.15f, 0U);
     }
     temp_r3_683 = this->unkC;
-    if ((u32) temp_r3_683->unk110.unk944 == &temp_r3_683->unk110.unk940->unk20) {
+    if ((void **) temp_r3_683->unkA3C == &temp_r3_683->unkA38->unk20) {
         temp_r30_693 = this->unkC;
         M2C_ERROR(/* unknown instruction: psq_lx $f0, $zero, $r3, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f31 */);
@@ -416,31 +418,31 @@ u8 SwampTier2Goal_Attack1::Update() {
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
         var_r29_715 = 0;
         sp48 = sp18;
-        sp20 = temp_r30_693->unk110.unk478.unk8 + (f32) sp40;
+        sp20 = temp_r30_693->unk588.unk4 + (f32) sp40;
         sp50 = (f64) sp20;
-        if (temp_r30_693->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
+        if (temp_r30_693->unk750.unkA0.IsPointWithin(*((MKVector3 *) &sp48)) != 0) {
             sp8.GetRegionPos();
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if ((f32) fabs(spC - unksp4C) == 500.0f) {
                 var_r29_715 = 1;
             }
         }
-        if ((var_r29_715 == 0) || (this->unkC->unk110.unk728.IsPointWithin(*((MKVector3 *) &sp48)) != 0) || ((s32) M2C_FIELD(this->unkC->unk110.unk520, s32 *, 0x44) >= 2)) {
+        if ((var_r29_715 == 0) || (this->unkC->unk800.unk28.IsPointWithin(*((MKVector3 *) &sp48)) != 0) || ((s32) M2C_FIELD(M2C_FIELD(this->unkC, void **, 0x630), s32 *, 0x44) >= 2)) {
             temp_r3_753 = this->unkC;
-            temp_r4_756 = temp_r3_753->unk110.unk940;
-            temp_r3_753->SetAnim(temp_r4_756, (AnimTransition *) &temp_r4_756->unk40, 0.15f, 0U);
+            temp_r4_756 = temp_r3_753->unkA38;
+            temp_r3_753->SetAnim((AnimSequence *) temp_r4_756, (AnimTransition *) &temp_r4_756->__vptr, 0.15f, 0U);
         }
         temp_r3_760 = this->unkC;
-        temp_r4_761 = temp_r3_760->unk110.unk910;
-        if (((s32) temp_r4_761->unk78 > 0) && (((u8) temp_r3_760->unk110.unk9F8 >> 4U) & 1) && (temp_r3_760->CheckMeleeHit(temp_r4_761, -1) != 0)) {
+        temp_r4_761 = temp_r3_760->unkA08;
+        if (((s32) M2C_FIELD(temp_r4_761, s32 *, 0x78) > 0) && (((u8) M2C_FIELD(temp_r3_760, u8 *, 0xB08) >> 4U) & 1) && (temp_r3_760->CheckMeleeHit((EnemyAttack *) temp_r4_761, -1) != 0)) {
             this->unkC->SetHitTarget(1U);
         }
     }
     temp_r29_776 = this->unkC;
     var_r30_777 = 0;
     if (temp_r29_776->HasAnimFinished() != 0) {
-        temp_r4_782 = temp_r29_776->unk110.unk940;
-        if ((temp_r4_782 != NULL) && ((u32) temp_r4_782->unk40 == (u32) M2C_FIELD(temp_r29_776->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_782 = temp_r29_776->unkA38;
+        if ((temp_r4_782 != NULL) && ((void *) temp_r4_782->__vptr == (u32) M2C_FIELD(M2C_FIELD(temp_r29_776, void **, 0x630), u32 *, 0x20))) {
             var_r30_777 = 1;
         }
     }
@@ -451,35 +453,35 @@ u8 SwampTier2Goal_Attack1::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk90C'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier2Goal_Attack1::Activate() {
-    AttackSweepData *temp_r3_833;
     AttackerManager *var_r3_858;
     Enemy *temp_r3_838;
     Enemy *temp_r3_873;
     Enemy *temp_r4_821;
     Enemy *var_r4_865;
+    MKMaterial *temp_r3_833;
     u8 var_r30_839;
 
     this->unk8 = 0;
     this->unkC->SelectAttack(0x10, 0x3C);
     temp_r4_821 = this->unkC;
 loop_2:
-    if ((u32) *temp_r4_821->unk110.unk90C != 0U) {
-        temp_r4_821->unk110.unk90C += 4;
+    if ((void *) temp_r4_821->unkA04->__vptr != NULL) {
+        temp_r4_821->unkA04 = (CharacterZapFX *) &temp_r4_821->unkA04->unk4;
         goto loop_2;
     }
-    temp_r3_833 = this->unkC->unk110.unk920;
+    temp_r3_833 = this->unkC->unkA18;
     if (temp_r3_833 != NULL) {
         temp_r3_833->SetDefaults();
     }
     temp_r3_838 = this->unkC;
     var_r30_839 = 0;
-    if (((u8) temp_r3_838->unk110.unk7A8 == 2) || (temp_r3_838->unk110.unk7A0.Get() != NULL)) {
+    if (((u8) M2C_FIELD(temp_r3_838, u8 *, 0x8B8) == 2) || (temp_r3_838->unk870.unk30.Get() != NULL)) {
         var_r30_839 = 1;
     }
     if (var_r30_839 != 0) {
-        var_r3_858 = M2C_FIELD(this->unkC->unk110.unk7A0.Get()->__vptr, AttackerManager *(**)(), 0x48)();
+        var_r3_858 = M2C_FIELD(this->unkC->unk870.unk30.Get()->__vptr, AttackerManager *(**)(), 0x48)();
     } else {
         var_r3_858 = NULL;
     }
@@ -491,7 +493,7 @@ loop_2:
         var_r3_858->Add((Targetable *) var_r4_865, 2);
     }
     temp_r3_873 = this->unkC;
-    if (temp_r3_873->unk110.unk910->unk38 & 0x40000000) {
+    if (M2C_FIELD(temp_r3_873->unkA08, s32 *, 0x38) & 0x40000000) {
         temp_r3_873->SetInvulnerableToMeleeAttacks(1U, 1U);
         this->unkC->SetInvulnerableToBreathAttacks(1U, 1U);
     }
@@ -510,19 +512,17 @@ void SwampTier2Goal_Attack1::Init(SwampTier2 *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
 void SwampTier2Goal_AlertMode::Terminate() {
     Enemy *temp_r5_930;
     Enemy *temp_r5_934;
 
     temp_r5_930 = this->unkC;
-    temp_r5_930->unk110.unk9F8 &= ~0x40;
+    M2C_FIELD(temp_r5_930, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r5_930, u8 *, 0xB08) & ~0x40);
     temp_r5_934 = this->unkC;
-    temp_r5_934->unk110.unk9F8 &= ~0x20;
+    M2C_FIELD(temp_r5_934, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r5_934, u8 *, 0xB08) & ~0x20);
     this->unk8 = 1;
     RemoveAllSubgoals();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to
 u8 SwampTier2Goal_AlertMode::Update() {
@@ -554,7 +554,7 @@ u8 SwampTier2Goal_AlertMode::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F8'
+#if 0 // DRAFT: undefined identifier 'unk4'
 void SwampTier2Goal_AlertMode::Activate() {
     IsInAlertRangeMsg sp18;
     f64 sp10;
@@ -592,7 +592,7 @@ void SwampTier2Goal_AlertMode::Activate() {
             goto block_5;
         }
         temp_r5_1038 = this->unkC;
-        if (!(((u8) temp_r5_1038->unk110.unk9F8 >> 6U) & 1) && ((Goal<SwampTier2> *) this->unk24 != NULL)) {
+        if (!(((u8) M2C_FIELD(temp_r5_1038, u8 *, 0xB08) >> 6U) & 1) && ((Goal<SwampTier2> *) this->unk24 != NULL)) {
             sp18.unk4 = NULL;
             temp_r5_1050 = temp_r5_1038->unk8;
             sp8 = M2C_FIELD(temp_r5_1050, f64 *, 0x30);
@@ -615,20 +615,20 @@ void SwampTier2Goal_AlertMode::Activate() {
             var_r30_1093 = 0;
         }
         temp_r3_1098 = this->unk20;
-        if ((((u8) M2C_FIELD(temp_r3_1098, u8 *, 0x49) >> 6U) & 1) && ((s32) this->unkC->unk110.unkA04 == 0)) {
+        if ((((u8) M2C_FIELD(temp_r3_1098, u8 *, 0x49) >> 6U) & 1) && ((s32) this->unkC->unkAFC == 0)) {
             temp_r3_1107 = this->unkC;
-            if ((temp_r3_1098->GetDist() < M2C_FIELD(temp_r3_1107->unk110.unk928, f32 *, 0x138)) && (var_r30_1093 <= 0)) {
+            if ((temp_r3_1098->GetDist() < M2C_FIELD(temp_r3_1107->unkA20, f32 *, 0x138)) && (var_r30_1093 <= 0)) {
                 temp_r3_1107->SelectAttack(0x10, 0x3C);
-                if (this->unk20->GetDist() > this->unkC->unk110.unk910->unk18) {
+                if (this->unk20->GetDist() > this->unkC->unkA08->unk18) {
                     AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk34);
-                    M2C_FIELD(this->unk34, f32 *, 0x10) = (f32) this->unkC->unk110.unk910->unk18;
-                } else if (this->unk20->GetDist() < this->unkC->unk110.unk910->unk14) {
+                    M2C_FIELD(this->unk34, f32 *, 0x10) = (f32) this->unkC->unkA08->unk18;
+                } else if (this->unk20->GetDist() < this->unkC->unkA08->unk14) {
                     this->unk40 = 1;
                     AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk38);
                     temp_r5_1146 = this->unkC;
                     temp_r3_1147 = this->unk38;
-                    M2C_FIELD(temp_r3_1147, M2C_UNK **, 0x10) = &temp_r5_1146->unk110.unk760;
-                    M2C_FIELD(temp_r3_1147, f32 *, 0x14) = (f32) temp_r5_1146->unk110.unk910->unk14;
+                    M2C_FIELD(temp_r3_1147, M2C_UNK **, 0x10) = &temp_r5_1146->unk838.unk28;
+                    M2C_FIELD(temp_r3_1147, f32 *, 0x14) = (f32) temp_r5_1146->unkA08->unk14;
                 }
                 AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk3C);
                 AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk2C);
@@ -639,27 +639,27 @@ void SwampTier2Goal_AlertMode::Activate() {
                 M2C_FIELD(temp_r7_1176, AITargetData **, 0x10) = (AITargetData *) this->unk20;
                 M2C_FIELD(temp_r7_1176, s32 *, 0x14) = 1;
                 M2C_FIELD(temp_r7_1176, s32 *, 0x18) = 0xA;
-                M2C_FIELD(temp_r7_1176, s32 *, 0x1C) = (s32) this->unkC->unk110.unk578;
+                M2C_FIELD(temp_r7_1176, u32 *, 0x1C) = (u32) this->unkC->unk680;
                 M2C_FIELD(temp_r7_1176, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r7_1176, u8 *, 0x20) & ~0x40);
-                this->unkC->unk110.unkA0C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+                this->unkC->unkB04 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
                 return;
             }
         }
         temp_r3_1192 = this->unk20;
-        if ((((u8) M2C_FIELD(temp_r3_1192, u8 *, 0x49) >> 6U) & 1) && ((s32) this->unkC->unk110.unkA04 == 1)) {
+        if ((((u8) M2C_FIELD(temp_r3_1192, u8 *, 0x49) >> 6U) & 1) && ((s32) this->unkC->unkAFC == 1)) {
             temp_r3_1201 = this->unkC;
-            if ((temp_r3_1192->GetDist() < M2C_FIELD(temp_r3_1201->unk110.unk928, f32 *, 0x138)) && (var_r30_1093 <= 0)) {
+            if ((temp_r3_1192->GetDist() < M2C_FIELD(temp_r3_1201->unkA20, f32 *, 0x138)) && (var_r30_1093 <= 0)) {
                 temp_r3_1201->SelectAttack(0x10, 0x3D);
-                if (this->unk20->GetDist() > this->unkC->unk110.unk910->unk18) {
+                if (this->unk20->GetDist() > this->unkC->unkA08->unk18) {
                     AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk34);
-                    M2C_FIELD(this->unk34, f32 *, 0x10) = (f32) this->unkC->unk110.unk910->unk18;
-                } else if (this->unk20->GetDist() < this->unkC->unk110.unk910->unk14) {
+                    M2C_FIELD(this->unk34, f32 *, 0x10) = (f32) this->unkC->unkA08->unk18;
+                } else if (this->unk20->GetDist() < this->unkC->unkA08->unk14) {
                     this->unk40 = 1;
                     AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk38);
                     temp_r5_1240 = this->unkC;
                     temp_r3_1241 = this->unk38;
-                    M2C_FIELD(temp_r3_1241, M2C_UNK **, 0x10) = &temp_r5_1240->unk110.unk760;
-                    M2C_FIELD(temp_r3_1241, f32 *, 0x14) = (f32) temp_r5_1240->unk110.unk910->unk14;
+                    M2C_FIELD(temp_r3_1241, M2C_UNK **, 0x10) = &temp_r5_1240->unk838.unk28;
+                    M2C_FIELD(temp_r3_1241, f32 *, 0x14) = (f32) temp_r5_1240->unkA08->unk14;
                 }
                 AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk3C);
                 AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk30);
@@ -670,9 +670,9 @@ void SwampTier2Goal_AlertMode::Activate() {
                 M2C_FIELD(temp_r7_1270, AITargetData **, 0x10) = (AITargetData *) this->unk20;
                 M2C_FIELD(temp_r7_1270, s32 *, 0x14) = 1;
                 M2C_FIELD(temp_r7_1270, s32 *, 0x18) = 0xA;
-                M2C_FIELD(temp_r7_1270, s32 *, 0x1C) = (s32) this->unkC->unk110.unk578;
+                M2C_FIELD(temp_r7_1270, u32 *, 0x1C) = (u32) this->unkC->unk680;
                 M2C_FIELD(temp_r7_1270, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r7_1270, u8 *, 0x20) & ~0x40);
-                this->unkC->unk110.unkA0C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+                this->unkC->unkB04 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
                 return;
             }
         }
@@ -681,7 +681,7 @@ void SwampTier2Goal_AlertMode::Activate() {
         M2C_FIELD(temp_r6_1291, AITargetData **, 0x10) = (AITargetData *) this->unk20;
         M2C_FIELD(temp_r6_1291, s32 *, 0x14) = 1;
         M2C_FIELD(temp_r6_1291, s32 *, 0x18) = 3;
-        M2C_FIELD(temp_r6_1291, s32 *, 0x1C) = (s32) this->unkC->unk110.unk578;
+        M2C_FIELD(temp_r6_1291, u32 *, 0x1C) = (u32) this->unkC->unk680;
         M2C_FIELD(temp_r6_1291, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r6_1291, u8 *, 0x20) & ~0x40);
         return;
     }
@@ -874,14 +874,12 @@ void SwampTier2Goal_AlertMode::Init(SwampTier2 *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA0C'
 void SwampTier2Goal_Hide::Terminate() {
-    this->unkC->unk110.unkA0C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+    M2C_FIELD(this->unkC, f32 *, 0xB1C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
     this->unk8 = 1;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk940'
+#if 0 // DRAFT: undefined identifier 'unkA50'
 u8 SwampTier2Goal_Hide::Update() {
     AnimSequence *temp_r4_1681;
     AnimSequence *temp_r4_1696;
@@ -900,31 +898,31 @@ u8 SwampTier2Goal_Hide::Update() {
     temp_r29_1675 = this->unkC;
     var_r30_1676 = 0;
     if (temp_r29_1675->HasAnimFinished() != 0) {
-        temp_r4_1681 = temp_r29_1675->unk110.unk940;
-        if ((temp_r4_1681 != NULL) && ((u32) temp_r4_1681->unk0 == (u32) M2C_FIELD(temp_r29_1675->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_1681 = temp_r29_1675->unkA50;
+        if ((temp_r4_1681 != NULL) && ((u32) temp_r4_1681->unk0 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1675, void **, 0x630), u32 *, 0x20))) {
             var_r30_1676 = 1;
         }
     }
     if (var_r30_1676 != 0) {
         temp_r3_1693 = this->unkC;
-        temp_r4_1696 = temp_r3_1693->unk110.unk940;
+        temp_r4_1696 = temp_r3_1693->unkA50;
         temp_r3_1693->SetAnim(temp_r4_1696, (AnimTransition *) &temp_r4_1696->unk20, 0.15f, 0U);
-        this->unkC->unk110.unkA00 = 2;
+        this->unkC->unkB10 = 2;
     }
     temp_r3_1703 = this->unk10;
     if ((temp_r3_1703 >> 7U) & 1) {
         this->unk10 = temp_r3_1703 & ~0x80;
         temp_r4_1711 = this->unkC;
-        temp_r4_1711->unk110.unkA00 = temp_r4_1711->unk110.unkA04 != 0;
+        temp_r4_1711->unkB10 = temp_r4_1711->unkB14 != 0;
         temp_r3_1716 = this->unkC;
-        temp_r4_1717 = temp_r3_1716->unk110.unk940;
+        temp_r4_1717 = temp_r3_1716->unkA50;
         temp_r3_1716->SetAnim(temp_r4_1717, (AnimTransition *) &temp_r4_1717->unk40, 0.15f, 0U);
     }
     temp_r29_1721 = this->unkC;
     var_r30_1722 = 0;
     if (temp_r29_1721->HasAnimFinished() != 0) {
-        temp_r4_1727 = temp_r29_1721->unk110.unk940;
-        if ((temp_r4_1727 != NULL) && ((u32) temp_r4_1727->unk40 == (u32) M2C_FIELD(temp_r29_1721->unk110.unk520, u32 *, 0x20))) {
+        temp_r4_1727 = temp_r29_1721->unkA50;
+        if ((temp_r4_1727 != NULL) && ((u32) temp_r4_1727->unk40 == (u32) M2C_FIELD(M2C_FIELD(temp_r29_1721, void **, 0x630), u32 *, 0x20))) {
             var_r30_1722 = 1;
         }
     }
@@ -935,11 +933,11 @@ u8 SwampTier2Goal_Hide::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA0C'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void SwampTier2Goal_Hide::Activate() {
     this->unk8 = 0;
     this->unk10 &= ~0x80;
-    this->unkC->unk110.unkA0C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+    M2C_FIELD(this->unkC, f32 *, 0xB1C) = (f32) (M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f);
     this->unkC->SetAnim((AnimSequenceType) 1, 0xC, 0, 0.15f, 0U, 0U);
     this->unkC->StopMovement(1U);
     this->unkC->SetMovementType((CharacterMoveType) 0);
@@ -955,38 +953,34 @@ void SwampTier2Goal_Hide::Init(SwampTier2 *arg0) {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
 void SwampTier2Goal_Think::StartFollowingSpawnGraph() {
     Enemy *temp_r4_1812;
 
     if (!(((u8) this->unk3C >> 7U) & 1)) {
         temp_r4_1812 = this->unkC;
-        temp_r4_1812->unk110.unk9F9 |= 8;
+        M2C_FIELD(temp_r4_1812, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r4_1812, u8 *, 0xB09) | 8);
         this->unk3C |= 0x80;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier2Goal_Think::StopFollowingSpawnGraph() {
     Enemy *temp_r3_1846;
     Enemy *temp_r5_1833;
 
     temp_r5_1833 = this->unkC;
-    temp_r5_1833->unk110.unk9F9 &= ~8;
+    M2C_FIELD(temp_r5_1833, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r5_1833, u8 *, 0xB09) & ~8);
     if (M2C_FIELD(this->__vptr, u8 (**)(M2C_UNK, Enemy *, M2C_UNK), 0x38)(0x2A, temp_r5_1833, 0) != 0) {
         RemoveAllSubgoals();
     }
     temp_r3_1846 = this->unkC;
-    temp_r3_1846->SetupEnemyRegion(temp_r3_1846->unk110.unk478, 1000.0f);
+    temp_r3_1846->SetupEnemyRegion(*((MKVector3 *) &temp_r3_1846->unk588), 1000.0f);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
 u8 SwampTier2Goal_Think::IsFollowingSpawnGraph() {
-    return ((u8) this->unkC->unk110.unk9F9 >> 3U) & 1;
+    return ((u8) M2C_FIELD(this->unkC, u8 *, 0xB09) >> 3U) & 1;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier2Goal_Think::AddGoal_FollowSpawnGraph() {
@@ -997,9 +991,9 @@ void SwampTier2Goal_Think::AddGoal_FollowSpawnGraph() {
         RemoveAllSubgoals();
         AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk38);
         temp_r3_1886 = this->unkC;
-        temp_r3_1886->unk110.unk9F9 |= 8;
+        M2C_FIELD(temp_r3_1886, u8 *, 0xB09) = (u8) (M2C_FIELD(temp_r3_1886, u8 *, 0xB09) | 8);
         temp_r3_1891 = this->unkC;
-        temp_r3_1891->unk110.unk9F8 |= 0x40;
+        M2C_FIELD(temp_r3_1891, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_1891, u8 *, 0xB08) | 0x40);
     }
 }
 #endif
@@ -1011,7 +1005,7 @@ void SwampTier2Goal_Think::AddGoal_AlertMode(bool arg0) {
             RemoveAllSubgoals();
         }
         AddSubgoal__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk34);
-        M2C_FIELD(this->unk34, M2C_UNK **, 0x20) = &this->unkC->unk110.unk760;
+        M2C_FIELD(this->unk34, M2C_UNK **, 0x20) = &this->unkC->unk838.unk28;
     }
 }
 #endif
@@ -1097,6 +1091,7 @@ void SwampTier2Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     s32 temp_r3_2369;
     s32 var_r25_2147;
     u32 temp_r0_2311;
+    u32 temp_r3_2274;
     u8 temp_r20_2167;
     u8 temp_r21_2174;
     u8 temp_r22_2181;
@@ -1107,7 +1102,6 @@ void SwampTier2Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
     u8 temp_r30_2209;
     u8 temp_r31_2160;
     u8 temp_r31_2217;
-    void *temp_r3_2274;
 
     var_r25_2147 = arg0->unk28;
     var_f31_2150 = 0.0f;
@@ -1154,23 +1148,23 @@ void SwampTier2Goal_Think::AddGoal_Hit(EnemyDamageFeedback *arg0) {
             break;
         }
     }
-    temp_r3_2274 = this->unkC->unk110.unk8F0;
-    if ((((temp_r3_2274 != NULL) && ((u8) M2C_FIELD(temp_r3_2274, u8 *, 0x20) != 0)) || (temp_r31_2217 != 0)) && ((temp_r31_2217 != 0) || (arg0->unk20 & 0x47F1))) {
+    temp_r3_2274 = this->unkC->unk9E8.unk4;
+    if ((((temp_r3_2274 != 0) && ((u8) M2C_FIELD(temp_r3_2274, u8 *, 0x20) != 0)) || (temp_r31_2217 != 0)) && ((temp_r31_2217 != 0) || (arg0->unk20 & 0x47F1))) {
         RemoveAllSubgoals();
     }
     if (var_r25_2147 == 9) {
-        temp_r3_2296 = this->unkC->unk110.unk9E4;
+        temp_r3_2296 = this->unkC->unkADC;
         if ((temp_r3_2296 >= 3) && (((temp_r0_2299 = arg0->unk28, ((temp_r0_2299 == 4) == 0)) && (temp_r0_2299 != 5)) || (temp_r3_2296 >= 6))) {
             var_r25_2147 = 0xE;
         }
     }
     temp_r0_2311 = ((u8) arg0->unk34 >> 4U) & 1;
-    if ((temp_r0_2311 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkC->unk110.unk9BC == 0.0f) != 0)) && ((var_r25_2147 == 0) || (var_r25_2147 == 4) || (var_r25_2147 == 5))) {
+    if ((temp_r0_2311 != 0) && (M2C_ERROR(/* unknown instruction: cror eq, lt, eq */), ((this->unkC->unkAB4 == 0.0f) != 0)) && ((var_r25_2147 == 0) || (var_r25_2147 == 4) || (var_r25_2147 == 5))) {
         var_r25_2147 = 7;
     } else if (temp_r0_2311 != 0) {
         temp_r3_2331 = this->unkC;
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (temp_r3_2331->unk110.unk9BC == 0.0f) {
+        if (temp_r3_2331->unkAB4 == 0.0f) {
             temp_r3_2331->Armour_Destroy();
         }
     }
@@ -1199,25 +1193,25 @@ block_52:
             arg0->unk28 = var_r25_2147;
             arg0->unk18 = var_f31_2150;
             temp_r4_2390 = this->unkC;
-            temp_r4_2390->unk110.unk800 = arg0->unk0;
-            temp_r4_2390->unk110.unk808 = arg0->unk8;
-            temp_r4_2390->unk110.unk810 = arg0->unk10;
-            temp_r4_2390->unk110.unk814 = arg0->unk14;
-            temp_r4_2390->unk110.unk818 = arg0->unk18;
-            temp_r4_2390->unk110.unk81C = arg0->unk1C;
-            temp_r4_2390->unk110.unk820 = arg0->unk20;
-            temp_r4_2390->unk110.unk824 = arg0->unk24;
-            temp_r4_2390->unk110.unk828 = arg0->unk28;
-            temp_r4_2390->unk110.unk82C = arg0->unk2C;
-            temp_r4_2390->unk110.unk830 = arg0->unk30;
-            temp_r4_2390->unk110.unk834 = arg0->unk34;
+            M2C_FIELD(temp_r4_2390, f64 *, 0x910) = (f64) arg0->unk0;
+            M2C_FIELD(temp_r4_2390, f64 *, 0x918) = (f64) arg0->unk8;
+            M2C_FIELD(temp_r4_2390, s32 *, 0x920) = (s32) arg0->unk10;
+            M2C_FIELD(temp_r4_2390, s32 *, 0x924) = (s32) arg0->unk14;
+            temp_r4_2390->unk918 = arg0->unk18;
+            temp_r4_2390->unk92C = arg0->unk1C;
+            temp_r4_2390->unk920 = arg0->unk20;
+            temp_r4_2390->unk924 = arg0->unk24;
+            temp_r4_2390->unk928 = M2C_BITWISE(f32, arg0->unk28);
+            temp_r4_2390->unk92C = M2C_BITWISE(f32, arg0->unk2C);
+            temp_r4_2390->unk930 = arg0->unk30;
+            M2C_FIELD(temp_r4_2390, u8 *, 0x944) = (u8) arg0->unk34;
             AddSubgoalToFront__27CompositeGoal<10SwampTier2>FP18Goal<10SwampTier2>((CompositeGoal<SwampTier2> *) this, (Goal<SwampTier2> *) this->unk24);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk9F9'
+#if 0 // DRAFT: illegal operands 'void' != 'int'
 void SwampTier2Goal_Think::Arbitrate() {
     EnemyDamageFeedback sp8;
     Enemy *temp_r3_2449;
@@ -1238,31 +1232,31 @@ void SwampTier2Goal_Think::Arbitrate() {
     u8 var_r30_2563;
 
     temp_r4_2436 = this->unkC;
-    if (!(((u8) temp_r4_2436->unk110.unk9F9 >> 7U) & 1)) {
+    if (!(((u8) M2C_FIELD(temp_r4_2436, u8 *, 0xB09) >> 7U) & 1)) {
         AddGoal_Respawn();
         return;
     }
     temp_r3_2445 = temp_r4_2436->IsInvulnerable();
     if (temp_r3_2445 != 0) {
         temp_r3_2449 = this->unkC;
-        temp_r3_2449->unk110.unk8C8 = 0;
-        temp_r3_2449->unk110.unk8C4 = 0;
+        temp_r3_2449->unk9D8 = 0;
+        temp_r3_2449->unk9D4 = 0;
     }
     if ((this->unkC->WasHit() != 0) && (temp_r3_2445 == 0)) {
         if (IsActive(0x79) != 0) {
-            this->unkC->unk110.unkA0C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+            this->unkC->unkB04 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
             temp_r6_2479 = this->unk30;
             M2C_FIELD(temp_r6_2479, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r6_2479, u8 *, 0x10) | 0x80);
             temp_r5_2483 = this->unkC;
-            temp_r5_2483->unk110.unk8C8 = 0;
-            temp_r5_2483->unk110.unk8C4 = 0;
+            temp_r5_2483->unk9D8 = 0;
+            temp_r5_2483->unk9D4 = 0;
             AddGoal_AlertMode(1U);
             goto block_16;
         }
         sp8.Init();
         this->unkC->TakeDamage(&sp8, 0U);
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if (this->unkC->unk110.unk9B8 == 0.0f) {
+        if (this->unkC->unkAB0 == 0.0f) {
             if (IsFollowingSpawnGraph() != 0) {
                 StopFollowingSpawnGraph();
             }
@@ -1284,28 +1278,28 @@ block_16:
         return;
     }
     temp_r3_2536 = this->unkC;
-    if ((temp_r3_2536->unk110.unk9B8 > 0.0f) && (M2C_FIELD(temp_r3_2536->__vptr, u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
+    if ((temp_r3_2536->unkAB0 > 0.0f) && (M2C_FIELD(temp_r3_2536->__vptr, u8 (**)(), 0x134)() == 0) && (this->unkC->IsFlinching(), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0))) {
         temp_r4_2551 = this->unkC;
-        if (((u8) temp_r4_2551->unk110.unk9F8 >> 6U) & 1) {
-            var_f31_2556 = M2C_FIELD(temp_r4_2551->unk110.unk928, f32 *, 0x134);
+        if (((u8) M2C_FIELD(temp_r4_2551, u8 *, 0xB08) >> 6U) & 1) {
+            var_f31_2556 = M2C_FIELD(temp_r4_2551->unkA20, f32 *, 0x134);
         } else {
-            var_f31_2556 = M2C_FIELD(temp_r4_2551->unk110.unk928, f32 *, 0x12C);
+            var_f31_2556 = M2C_FIELD(temp_r4_2551->unkA20, f32 *, 0x12C);
         }
         var_r30_2563 = 0;
-        if (((u8) temp_r4_2551->unk110.unk7A8 == 2) || (temp_r4_2551->unk110.unk7A0.Get() != NULL)) {
+        if (((u8) M2C_FIELD(temp_r4_2551, u8 *, 0x8B8) == 2) || (temp_r4_2551->unk870.unk30.Get() != NULL)) {
             var_r30_2563 = 1;
         }
-        if ((var_r30_2563 != 0) && (this->unkC->unk110.unk760.IsAttackable() != 0) && ((temp_r3_2580 = this->unkC, (((((u8) temp_r3_2580->unk110.unk9F8 >> 5U) & 1) == 0) == 0)) || ((temp_r3_2580->unk110.unk760.GetDist() < var_f31_2556) && ((temp_r3_2588 = this->unkC, (((((u8) temp_r3_2588->unk110.unk9F8 >> 6U) & 1) == 0) == 0)) || (((u8) temp_r3_2588->unk110.unk7A9 >> 4U) & 1) || (temp_r3_2588->unk110.unk760.GetDist() < M2C_FIELD(this->unkC->unk110.unk928, f32 *, 0x130))))) && (temp_r3_2603 = this->unkC, ((temp_r3_2603->IsTargetBehindWall() == 0) != 0))) {
+        if ((var_r30_2563 != 0) && (this->unkC->unk838.unk28.IsAttackable() != 0) && ((temp_r3_2580 = this->unkC, (((((u8) M2C_FIELD(temp_r3_2580, u8 *, 0xB08) >> 5U) & 1) == 0) == 0)) || ((temp_r3_2580->unk838.unk28.GetDist() < var_f31_2556) && ((temp_r3_2588 = this->unkC, (((((u8) M2C_FIELD(temp_r3_2588, u8 *, 0xB08) >> 6U) & 1) == 0) == 0)) || (((u8) M2C_FIELD(temp_r3_2588, u8 *, 0x8B9) >> 4U) & 1) || (temp_r3_2588->unk838.unk28.GetDist() < M2C_FIELD(this->unkC->unkA20, f32 *, 0x130))))) && (temp_r3_2603 = this->unkC, ((temp_r3_2603->IsTargetBehindWall() == 0) != 0))) {
             temp_r4_2613 = this->unkC;
-            if ((this->unkC->unk110.unk760.GetDist() < M2C_FIELD(temp_r4_2613->unk110.unk928, f32 *, 0x130)) || (temp_r4_2613->unk110.unk760.GetDist() < (0.5f * var_f31_2556))) {
+            if ((this->unkC->unk838.unk28.GetDist() < M2C_FIELD(temp_r4_2613->unkA20, f32 *, 0x130)) || (temp_r4_2613->unk838.unk28.GetDist() < (0.5f * var_f31_2556))) {
                 temp_r3_2625 = this->unkC;
-                temp_r3_2625->unk110.unk9F8 |= 0x40;
+                M2C_FIELD(temp_r3_2625, u8 *, 0xB08) = (u8) (M2C_FIELD(temp_r3_2625, u8 *, 0xB08) | 0x40);
             }
             if (IsActive(0x79) != 0) {
                 temp_r5_2639 = this->unkC;
                 M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-                if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r5_2639->unk110.unkA0C) {
-                    temp_r5_2639->unk110.unkA0C = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
+                if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_BITWISE(f32, temp_r5_2639->unkB04)) {
+                    temp_r5_2639->unkB04 = M2C_FIELD(&gb, f32 *, 0x30C) + 2.0f;
                     temp_r5_2653 = this->unk30;
                     M2C_FIELD(temp_r5_2653, u8 *, 0x10) = (u8) (M2C_FIELD(temp_r5_2653, u8 *, 0x10) | 0x80);
                     AddGoal_AlertMode(1U);
@@ -1315,7 +1309,7 @@ block_16:
             }
         } else {
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
-            if (M2C_FIELD(&gb, f32 *, 0x30C) == this->unkC->unk110.unkA0C) {
+            if (M2C_FIELD(&gb, f32 *, 0x30C) == M2C_BITWISE(f32, this->unkC->unkB04)) {
                 AddGoal_Hide();
             }
         }
@@ -1360,24 +1354,22 @@ void SwampTier2Goal_Think::Reset() {
     } else {
         var_r0_2765 = 0;
     }
-    this->unkC->unk110.unkA04 = var_r0_2765;
+    this->unkC->unkAFC = var_r0_2765;
     temp_r5_2774 = this->unkC;
-    temp_r5_2774->unk110.unkA00 = temp_r5_2774->unk110.unkA04 != 0;
-    this->unkC->unk110.unkA0C = 0.0f;
-    this->unkC->unk110.unkA10 = 0.0f;
+    temp_r5_2774->unkAF8 = temp_r5_2774->unkAFC != 0;
+    this->unkC->unkB04 = 0.0f;
+    M2C_FIELD(this->unkC, f32 *, 0xB20) = 0.0f;
     this->unk3C &= ~0x80;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk970'
 void SwampTier2Goal_Think::Activate() {
     this->unk8 = 0;
-    if ((u32) this->unkC->unk110.unk970 != 0U) {
+    if (M2C_BITWISE(u32, this->unkC->unkA68) != 0U) {
         StartFollowingSpawnGraph();
     }
     Arbitrate();
 }
-#endif
 
 void SwampTier2Goal_Think::Deinit() {
     Goal<SwampTier2> *temp_r3_2834;

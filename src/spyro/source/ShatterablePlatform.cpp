@@ -9,7 +9,7 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::Reset() {
     Shatterable::Reset();
     this->unk1A8.unk8.Reset();
@@ -23,14 +23,14 @@ void ShatterablePlatform::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::Deinit() {
     this->unk1A8.unk8.Deinit();
     Shatterable::Deinit();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x88) {
         this->unk1A8.unk8.Message(arg0);
@@ -61,7 +61,7 @@ void ShatterablePlatform::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1A8'
+#if 0 // DRAFT: expression syntax error
 void ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x50);

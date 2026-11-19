@@ -301,7 +301,7 @@ void SquishBoulder::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, float 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C8'
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SquishBoulder::Deinit() {
     KDSound_Stop((s32 *) &this->unk1C8);
     Shatterable::Deinit();
@@ -317,7 +317,7 @@ void SquishBoulder::Draw() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk1C8'
+#if 0 // DRAFT: expression syntax error
 void SquishBoulder::Message(MKMessage *arg0) {
     this->unk1C8.Message(arg0);
     Shatterable::Message(arg0);
@@ -404,7 +404,7 @@ block_15:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk1C8'
+#if 0 // DRAFT: expression syntax error
 void SquishBoulder::Init() {
     Shatterable::Init();
     this->unk198 = 0.0f;
