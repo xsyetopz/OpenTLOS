@@ -192,6 +192,12 @@ class Model:
         TU can add `MKVector3::unk394`. A field voted by a single TU that owns
         neither the class nor a descendant is dropped as such noise; the
         padding still covers its bytes.
+
+        A base class without a proven size ends where its own TU's accesses
+        end: m2c types an Enemy as the `Targetable *` a getter returns, so
+        EnemyGoal TUs gave the Targetable mixin fields out to 0xB08, and every
+        class embedding a CollisionObject (a Targetable) swallowed its
+        derived classes' members.
         """
         owners = defaultdict(set)
         for name, c in self.classes.items():
@@ -203,6 +209,9 @@ class Model:
             limit = c.get("size_max")
             mine = (c.get("owner") or "").rsplit(".", 1)[0]
             desc = owners[name] - {mine}
+            if not c.get("size") and desc:  # size_max is only an allocation upper bound
+                own = [int(o) for o, v in f["fields"].items() if mine in v["tus"]]
+                f["fields"] = {o: v for o, v in f["fields"].items() if mine in v["tus"] or int(o) <= max(own, default=0)}
             f["fields"] = {o: v for o, v in f["fields"].items()
                            if (limit is None or int(o) < limit) and not (desc and set(v["tus"]) <= desc)
                            and not (len(v["tus"]) == 1 and v["tus"][0] not in owners[name] | {mine})}
