@@ -39,7 +39,6 @@
 #include "unplaced_enums.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unksp1C'
 void ShatterablePlatform::Reset() {
     Matrix sp20;
     f64 sp18;
@@ -51,11 +50,10 @@ void ShatterablePlatform::Reset() {
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) this->unk210;
     sp10 = M2C_FIELD(this, f64 *, 0x1C8);
     sp18 = M2C_FIELD(this, f64 *, 0x1D0);
-    M2C_STRUCT_COPY((s32) &unksp1C + 4, MKModel_GetWorldMatrix(this->unk4) - 4 + 4, 0x40);
+    M2C_STRUCT_COPY(&sp20, MKModel_GetWorldMatrix(this->unk4), 0x40);
     sp20.SetRotationPYR(*((MKVector3 *) &sp10));
     MKModel_SetWorldMatrix(this->unk4, sp20);
 }
-#endif
 
 void ShatterablePlatform::Deinit() {
     this->unk1C0.Deinit();
@@ -73,37 +71,37 @@ void ShatterablePlatform::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: ')' expected
 void *ShatterablePlatform::Update() {
-    void *temp_r31_124;
+    ShatterableDescriptor *temp_r3;
+    ShatterableDescriptor *temp_r31;
+    u8 *temp_r3_2;
 
-    if ((s32) this->unk180 == (s32) M2C_FIELD(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x160)) {
-        temp_r31_124 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-        if ((u8) M2C_FIELD((M2C_FIELD(checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x11C) + (M2C_FIELD(temp_r31_124, s32 *, 0x160) * 0x17C)), u8 *, -4) != 0) {
-            Shatterable::Update();
-            return;
+    temp_r3 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if ((s32) this->unk180 == (s32) M2C_FIELD(temp_r3, s32 *, 0x160)) {
+        temp_r31 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        temp_r3 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        temp_r3_2 = (u8 *) M2C_FIELD(temp_r3, u8 **, 0x11C) + (M2C_FIELD(temp_r31, s32 *, 0x160) * 0x17C);
+        if ((u8) temp_r3_2[-4] != 0) {
+            return Shatterable::Update();
         }
     }
-    this->unk1C0.unk4 = ((u8 *) this->unk168) + ((this->unk180 << 7) + 0x68);
+    this->unk1C0.unk4 = (MKCollisionInfo *) (((u8 *) this->unk168) + ((this->unk180 << 7) + 0x68));
     this->unk1C0.BeginUpdate();
     this->unk1C0.UpdateTilt();
     UpdateMove();
     this->unk1C0.EndUpdate();
-    Shatterable::Update();
+    return Shatterable::Update();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'MKCollisionInfo *'
 s32 ShatterablePlatform::LoadDone() {
     Shatterable::LoadDone();
     this->unk208 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x50);
     this->unk210 = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x58);
-    this->unk1C0.Init(&this->unk1A8, ((u8 *) this->unk168) + ((this->unk180 << 7) + 0x68));
-    this->unk1C0.LoadDone((MKProp *) this, &MKProp::loadInfo + 0x60);
+    this->unk1C0.Init(&this->unk1A8, (MKCollisionInfo *) (((u8 *) this->unk168) + ((this->unk180 << 7) + 0x68)));
+    this->unk1C0.LoadDone((MKProp *) this, (MKVector3 *) ((s8 *) &MKProp::loadInfo + 0x60));
     M2C_FIELD(this, f64 *, 0x1C8) = (f64) this->unk208;
     M2C_FIELD(this, f64 *, 0x1D0) = (f64) this->unk210;
 }
-#endif
 
 void ShatterablePlatform::Init() {
     Shatterable::Init();

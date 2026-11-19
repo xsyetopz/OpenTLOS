@@ -74,25 +74,20 @@ void Shadow::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void Shadow::GetLightPos(MKVector3 *arg0) {
     MKVector3 sp38;
-    f64 sp30;
-    f64 sp28;
-    MKVector3 sp18;
-    f32 sp10;
-    f64 sp8;
+    f32 sp18x;
+    f32 sp18y;
+    f32 sp18z;
 
     MKModel_CalculateCentre(this->unk10, &sp38);
-    sp18.operator*(this->unk20);
-    sp8 = M2C_BITWISE(f64, sp38) - M2C_BITWISE(f64, sp18);
-    M2C_FIELD(arg0, f64 *, 0) = sp8;
-    sp10 = sp38.unk8 - sp18.unk8;
-    sp28 = sp8;
-    sp30 = (f64) sp10;
-    M2C_FIELD(arg0, f64 *, 8) = (f64) sp10;
+    sp18x = this->unk0 * this->unk20;
+    sp18y = this->unk4 * this->unk20;
+    sp18z = this->unk8 * this->unk20;
+    arg0->unk0 = sp38.unk0 - sp18x;
+    arg0->unk4 = sp38.unk4 - sp18y;
+    arg0->unk8 = sp38.unk8 - sp18z;
 }
-#endif
 
 void Shadow::Deinit() {
     Shadow *temp_r4_165;
@@ -249,10 +244,8 @@ void Shadow::Init(MKModel *arg0, MKProp *arg1, float arg2, MKVector3 *arg3, floa
 }
 #endif
 
-#if 0 // DRAFT: function call 'IsVisible(long, BoundingVolume *)' does not match 'Frustum::IsVisible(const Matrix *, const BoundingVolume *)const ' 'Frustum::IsVisible(const Bo
 void Shadow_Draw() {
     Frustum sp8;
-    M2C_UNK sp4;
     MKHeap **temp_r31_460;
     Shadow *var_r30_450;
     Shadow *var_r3_424;
@@ -269,13 +262,13 @@ loop_4:
         }
         if (var_r4_425 != 0) {
             Shadow_BeginDraw();
-            M2C_STRUCT_COPY((s32) &sp4 + 4, MKView_GetWorldFrustum() - 4 + 4, 0x70);
+            M2C_STRUCT_COPY(&sp8, MKView_GetWorldFrustum(), 0x70);
             var_r30_450 = pShadowList;
 loop_12:
             if (var_r30_450 != NULL) {
                 if ((u8) var_r30_450->unk2C != 0) {
                     temp_r31_460 = MKModel_GetBoundingVolume(var_r30_450->unk10, (SubObjectType) 0, -1);
-                    if (sp8.IsVisible(MKModel_GetWorldMatrix(var_r30_450->unk10), (BoundingVolume *) temp_r31_460) != 0) {
+                    if (sp8.IsVisible((Matrix *) MKModel_GetWorldMatrix(var_r30_450->unk10), (BoundingVolume *) temp_r31_460) != 0) {
                         var_r30_450->Draw();
                     }
                 }
@@ -286,7 +279,6 @@ loop_12:
         }
     }
 }
-#endif
 
 void Shadow_EndDraw() {
     f64 sp20;
