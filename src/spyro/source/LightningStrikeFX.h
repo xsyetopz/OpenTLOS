@@ -50,7 +50,7 @@ public:
     void SpawnStrikeArc(const MKVector3 &, const MKVector3 &, float, float);
     void DrawStrikeArc(LightningStrikeFXDescriptor::StrikeArc *);
     void DrawStrikeArcs(void);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ ManagedLight* unk60;
     /* 0x064 */ u8 pad64[0x14];
     /* 0x078 */ f64 unk78;

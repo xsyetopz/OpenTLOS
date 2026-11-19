@@ -46,7 +46,7 @@ public:
     virtual void Init(void);
     virtual void Update(void);
     virtual void Resolve(void);
-    /* 0x048 */ u8 pad48[0x98];
+    /* 0x044 */ u8 pad44[0x9c];
     /* 0x0e0 */ s32 unkE0;
     /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;

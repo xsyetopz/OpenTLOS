@@ -2,29 +2,54 @@
 #define SPYRO_SOURCE_ENEMY_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
+#include "spyro/source/AITargetData.h"
 #include "spyro/source/Character.h"
+#include "spyro/source/EnemyDataTypes.h"
+#include "spyro/source/EnemyRegion.h"
+#include "spyro/source/FireAndIceFX.h"
+#include "spyro/source/KDSoundTools.h"
+#include "spyro/source/Names.h"
+#include "spyro/source/NodeLookAt.h"
 
 class AITargetData;
 class AnimSequence;
 class AnimSequenceType;
 class AnimTransition;
+class AttackSweepData;
+class BoneBlurFX;
 class BreathHitMessage;
 class Character;
+class CharacterBreathFX;
+class CharacterFireFX;
+class CharacterGraphNode;
+class CharacterZapFX;
+class EAPManager;
 class Enemy;
 class EnemyAttack;
 class EnemyDamageFeedback;
+class EnemyDescriptor;
 class EnemyGeneratorDoor;
+class EnemyMovementManager;
+class EnemyRegion;
 class Enemy_cpp;
+class FireAndIceFX;
 class HurtMessage;
+class KDSound_LoopSoundEvent;
 class MKAnim;
 class MKCollisionInfo;
 class MKIniLine;
+class MKMaterial;
 class MKMessage;
 class MKProp;
 class MKVector3;
 class Matrix;
+class MeleeTrails;
+class Name;
+class NodeLookAt;
 class SpawnPointObject;
 class SpawnPointRef;
+class SpawnerObject;
 
 class AnimTransition {
 public:
@@ -200,6 +225,124 @@ public:
     u8 IsInsideEnemyRegion(void);
     void SetAnim(AnimSequence *, AnimTransition *, float, unsigned int);
     void SetAnim(AnimSequenceType, int, int, float, unsigned int, bool);
+    /* 0x6b6 */ u8 pad6B6[0xa];
+    /* 0x6c0 */ NodeLookAt unk6C0;
+    /* 0x6f9 */ u8 pad6F9[0x7];
+    /* 0x700 */ f64 unk700;
+    /* 0x708 */ u8 pad708[0x8];
+    /* 0x710 */ MKVector3 unk710;
+    /* 0x720 */ f32 unk720;
+    /* 0x724 */ f32 unk724;
+    /* 0x728 */ f32 unk728;
+    /* 0x72c */ u8 pad72C[0x4];
+    /* 0x730 */ MKVector3 unk730;
+    /* 0x740 */ f64 unk740;
+    /* 0x748 */ f64 unk748;
+    /* 0x750 */ FireAndIceFX unk750;
+    /* 0x7fc */ u8 pad7FC[0x4];
+    /* 0x800 */ EnemyRegion unk800;
+    /* 0x838 */ EnemyRegion unk838;
+    /* 0x870 */ AITargetData unk870;
+    /* 0x8c0 */ AITargetData unk8C0;
+    /* 0x910 */ f64 unk910;
+    /* 0x918 */ f32 unk918;
+    /* 0x91c */ u8 pad91C[0x4];
+    /* 0x920 */ s32 unk920;
+    /* 0x924 */ s32 unk924;
+    /* 0x928 */ f32 unk928;
+    /* 0x92c */ f32 unk92C;
+    /* 0x930 */ s32 unk930;
+    /* 0x934 */ f32 unk934;
+    /* 0x938 */ s32 unk938;
+    /* 0x93c */ s32 unk93C;
+    /* 0x940 */ s32 unk940;
+    /* 0x944 */ u8 unk944;
+    /* 0x945 */ u8 pad945[0x3];
+    /* 0x948 */ EnemyDamageFeedback unk948;
+    /* 0x97d */ u8 pad97D[0x3];
+    /* 0x980 */ KDSound_LoopSoundEvent unk980;
+    /* 0x9a8 */ s32 unk9A8;
+    /* 0x9ac */ u8 pad9AC[0x24];
+    /* 0x9d0 */ s32 unk9D0;
+    /* 0x9d4 */ s32 unk9D4;
+    /* 0x9d8 */ s32 unk9D8;
+    /* 0x9dc */ s32 unk9DC;
+    /* 0x9e0 */ Name unk9E0;
+    /* 0x9e8 */ EnemyMovementManager unk9E8;
+    /* 0x9fd */ u8 pad9FD[0x3];
+    /* 0xa00 */ void* unkA00;
+    /* 0xa04 */ CharacterZapFX* unkA04;
+    /* 0xa08 */ CharacterFireFX* unkA08;
+    /* 0xa0c */ CharacterBreathFX* unkA0C;
+    /* 0xa10 */ BoneBlurFX* unkA10;
+    /* 0xa14 */ MeleeTrails* unkA14;
+    /* 0xa18 */ MKMaterial* unkA18;
+    /* 0xa1c */ u32* unkA1C;
+    /* 0xa20 */ EnemyAttack* unkA20;
+    /* 0xa24 */ EnemyAttack* unkA24;
+    /* 0xa28 */ void** unkA28;
+    /* 0xa2c */ void* unkA2C;
+    /* 0xa30 */ AttackSweepData* unkA30;
+    /* 0xa34 */ u8 padA34[0x4];
+    /* 0xa38 */ EnemyDescriptor* unkA38;
+    /* 0xa3c */ void** unkA3C;
+    /* 0xa40 */ void** unkA40;
+    /* 0xa44 */ void* unkA44;
+    /* 0xa48 */ s32 unkA48;
+    /* 0xa4c */ SpawnerObject* unkA4C;
+    /* 0xa50 */ AnimSequence* unkA50;
+    /* 0xa54 */ AnimTransition* unkA54;
+    /* 0xa58 */ s32 unkA58;
+    /* 0xa5c */ EAPManager* unkA5C;
+    /* 0xa60 */ f32 unkA60;
+    /* 0xa64 */ u8 padA64[0x4];
+    /* 0xa68 */ f32 unkA68;
+    /* 0xa6c */ f32 unkA6C;
+    /* 0xa70 */ f32 unkA70;
+    /* 0xa74 */ f32 unkA74;
+    /* 0xa78 */ f32 unkA78;
+    /* 0xa7c */ f32 unkA7C;
+    /* 0xa80 */ u32 unkA80;
+    /* 0xa84 */ CharacterGraphNode* unkA84;
+    /* 0xa88 */ u8 padA88[0x8];
+    /* 0xa90 */ s32 unkA90;
+    /* 0xa94 */ Enemy* unkA94;
+    /* 0xa98 */ s32 unkA98;
+    /* 0xa9c */ u8 unkA9C;
+    /* 0xa9d */ u8 padA9D[0x3];
+    /* 0xaa0 */ f32 unkAA0;
+    /* 0xaa4 */ f32 unkAA4;
+    /* 0xaa8 */ f32 unkAA8;
+    /* 0xaac */ f32 unkAAC;
+    /* 0xab0 */ f32 unkAB0;
+    /* 0xab4 */ f32 unkAB4;
+    /* 0xab8 */ f32 unkAB8;
+    /* 0xabc */ f32 unkABC;
+    /* 0xac0 */ f32 unkAC0;
+    /* 0xac4 */ f32 unkAC4;
+    /* 0xac8 */ f32 unkAC8;
+    /* 0xacc */ f32 unkACC;
+    /* 0xad0 */ f32 unkAD0;
+    /* 0xad4 */ s32 unkAD4;
+    /* 0xad8 */ s32 unkAD8;
+    /* 0xadc */ s32 unkADC;
+    /* 0xae0 */ s32 unkAE0;
+    /* 0xae4 */ s32 unkAE4;
+    /* 0xae8 */ s32 unkAE8;
+    /* 0xaec */ s32 unkAEC;
+    /* 0xaf0 */ s32 unkAF0;
+    /* 0xaf4 */ s32 unkAF4;
+    /* 0xaf8 */ s32 unkAF8;
+    /* 0xafc */ s32 unkAFC;
+    /* 0xb00 */ u8 unkB00;
+    /* 0xb01 */ u8 unkB01;
+    /* 0xb02 */ u8 unkB02;
+    /* 0xb03 */ u8 padB03[0x1];
+    /* 0xb04 */ s32 unkB04;
+    /* 0xb08 */ u8 unkB08;
+    /* 0xb09 */ u8 unkB09;
+    /* 0xb0a */ u8 unkB0A;
+    /* 0xb0b */ u8 unkB0B;
 };
 
 class Enemy_cpp {
@@ -211,40 +354,40 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline Enemy::~Enemy() {
+    Character *temp_r0_5288;
     M2C_UNK *temp_r0_5272;
-    M2C_UNK *temp_r0_5288;
     M2C_UNK *temp_r4_5275;
-    M2C_UNK *temp_r4_5291;
+    SB2 **temp_r4_5291;
 
     if (this != NULL) {
-        this->unk110.vtable5A8 = &__vt + 0x84;
-        if ((&this->unk110.unk898 != NULL) && (&this->unk110.unk898 != NULL)) {
-            KDSound_Stop(&this->unk110.unk898);
+        M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+        if ((&this->unk980.unk14 != NULL) && (&this->unk980.unk14 != NULL)) {
+            KDSound_Stop(&this->unk980.unk14);
         }
         if (this != NULL) {
-            if (&this->unk110.unk560 != NULL) {
-                temp_r0_5272 = this->unk110.unk568;
+            if (&this->unk670 != NULL) {
+                temp_r0_5272 = this->unk678;
                 if (temp_r0_5272 != NULL) {
-                    temp_r4_5275 = &this->unk110.unk560;
+                    temp_r4_5275 = &this->unk670;
                     if (temp_r0_5272 != temp_r4_5275) {
-                        M2C_FIELD(this->unk110.unk56C, M2C_UNK **, 8) = temp_r0_5272;
-                        M2C_FIELD(this->unk110.unk568, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk110.unk56C;
-                        this->unk110.unk56C = temp_r4_5275;
-                        this->unk110.unk568 = temp_r4_5275;
+                        M2C_FIELD(this->unk67C, M2C_UNK **, 8) = temp_r0_5272;
+                        M2C_FIELD(this->unk678, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
+                        this->unk67C = temp_r4_5275;
+                        this->unk678 = temp_r4_5275;
                     }
                 }
             }
-            if (&this->unk110.unk538 != NULL) {
-                temp_r0_5288 = this->unk110.unk558;
+            if (&this->unk640 != NULL) {
+                temp_r0_5288 = this->unk660;
                 if (temp_r0_5288 != NULL) {
-                    temp_r4_5291 = &this->unk110.unk538;
+                    temp_r4_5291 = &this->unk640;
                     if (temp_r0_5288 != temp_r4_5291) {
-                        M2C_FIELD(this->unk110.unk55C, M2C_UNK **, 0x20) = temp_r0_5288;
-                        M2C_FIELD(this->unk110.unk558, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk110.unk55C;
-                        this->unk110.unk55C = temp_r4_5291;
-                        this->unk110.unk558 = temp_r4_5291;
+                        M2C_FIELD(this->unk664, Character **, 0x20) = temp_r0_5288;
+                        this->unk660->unk24 = M2C_BITWISE(f32, this->unk664);
+                        this->unk664 = temp_r4_5291;
+                        this->unk660 = (Character *) temp_r4_5291;
                     }
                 }
             }
@@ -258,53 +401,52 @@ inline Enemy::~Enemy() {
 #if 0 // DRAFT: undefined identifier '__vptr'
 inline Enemy::Enemy() {
     M2C_UNK *temp_r7_5347;
-    M2C_UNK *temp_r8_5345;
+    SB2 **temp_r8_5345;
 
     this->unk110.__vptr = &__vt;
-    this->unk110.unk478.MovementObject();
-    this->unk110.unk550 = 0;
-    temp_r8_5345 = &this->unk110.unk538;
-    this->unk110.unk554 = 0;
-    temp_r7_5347 = &this->unk110.unk560;
-    this->unk110.unk558 = temp_r8_5345;
-    this->unk110.unk55C = temp_r8_5345;
-    this->unk110.unk54C = 0;
-    this->unk110.unk548 = 0.0f;
+    this->unk660 = 0;
+    temp_r8_5345 = &this->unk640;
+    this->unk664 = 0;
+    temp_r7_5347 = &this->unk670;
+    this->unk660 = (Character *) temp_r8_5345;
+    this->unk664 = temp_r8_5345;
+    this->unk65C = 0;
+    this->unk658 = 0.0f;
     M2C_FIELD(this, s32 *, 0x670) = 0;
-    this->unk110.unk564 = 0;
-    this->unk110.unk568 = temp_r7_5347;
-    this->unk110.unk56C = temp_r7_5347;
-    this->unk110.unk59C = 0;
-    this->unk110.vtable5A8 = &__vt;
-    this->unk110.unk5AC = -1;
-    this->unk110.vtable5A8 = &__vt + 0x84;
-    this->unk110.unk700 = 0;
-    this->unk110.unk704 = 0;
-    this->unk110.unk708 = 0;
-    this->unk110.unk70C = 0.0f;
-    this->unk110.unk710 = 0.0f;
-    this->unk110.unk714 = 0.0f;
-    this->unk110.unk718 = 0.0f;
-    this->unk110.unk738 = 0;
-    this->unk110.unk73C = 0;
-    this->unk110.unk740 = 0;
-    this->unk110.unk744 = 0.0f;
-    this->unk110.unk748 = 0.0f;
-    this->unk110.unk74C = 0.0f;
-    this->unk110.unk750 = 0.0f;
-    this->unk110.unk898 = 0;
-    this->unk110.unk8CC = 0;
-    this->unk110.unk8C8 = 0;
-    this->unk110.unk8C0 = 0;
-    this->unk110.unk8C4 = 0;
-    this->unk110.unk938 = 0;
+    this->unk674 = 0;
+    this->unk678 = temp_r7_5347;
+    this->unk67C = temp_r7_5347;
+    this->unk6A4 = 0;
+    M2C_FIELD(this, struct __vt **, 0x6B8) = &__vt;
+    M2C_FIELD(this, s32 *, 0x6BC) = -1;
+    M2C_FIELD(this, struct __vt **, 0x6B8) = (struct __vt *) (&__vt + 0x84);
+    M2C_FIELD(this, s32 *, 0x810) = 0;
+    M2C_FIELD(this, s32 *, 0x814) = 0;
+    M2C_FIELD(this, s32 *, 0x818) = 0;
+    M2C_FIELD(this, f32 *, 0x81C) = 0.0f;
+    this->unk800.unk10 = 0.0f;
+    this->unk800.unk14 = 0.0f;
+    this->unk800.unk18 = 0.0f;
+    M2C_FIELD(this, s32 *, 0x848) = 0;
+    M2C_FIELD(this, s32 *, 0x84C) = 0;
+    M2C_FIELD(this, s32 *, 0x850) = 0;
+    M2C_FIELD(this, f32 *, 0x854) = 0.0f;
+    this->unk838.unk10 = 0.0f;
+    this->unk838.unk14 = 0.0f;
+    this->unk838.unk18 = 0.0f;
+    this->unk980.unk14 = 0;
+    this->unk9DC = 0;
+    this->unk9D8 = 0;
+    this->unk9D0 = 0;
+    this->unk9D4 = 0;
+    this->unkA30 = NULL;
     return this;
 }
 #endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 inline void Enemy::IsTargetBehindWall() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(AITargetData *), 0x110)(&this->unk110.unk760);
+    M2C_FIELD(this->__vptr, M2C_UNK (**)(M2C_UNK *), 0x110)(&this->unk838.unk28);
 }
 #endif
 
@@ -312,11 +454,9 @@ inline void Enemy::UpdateMovementCustom() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8D0'
 inline void Enemy::GetCharacterName() {
-    this->unk110.unk8D0.GetName();
+    this->unk9E0.GetName();
 }
-#endif
 
 inline s32 Enemy::TryFreezeBall() {
     return 0;
@@ -346,23 +486,21 @@ inline f32 Enemy::GetTimeLastHit() {
     return 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk928'
+#if 0 // DRAFT: undefined identifier 'unk64'
 inline f32 Enemy::GetCollisionHeight() {
-    return this->unk110.unk928->unk64;
+    return this->unkA20->unk64;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk928'
+#if 0 // DRAFT: undefined identifier 'unk60'
 inline f32 Enemy::GetCollisionRadius() {
-    return this->unk110.unk928->unk60;
+    return this->unkA20->unk60;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk524'
 inline void *Enemy::GetCollisionInfo() {
-    return this->unk110.unk524;
+    return this->unk634;
 }
-#endif
 
 inline void Enemy::GetVel() {
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x598);
@@ -410,16 +548,16 @@ inline void Enemy::GetProp() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk6F0'
+#if 0 // DRAFT: expression syntax error
 inline u8 Enemy::IsInsideEnemyRegion() {
     M2C_UNK sp8;
     u8 var_r31_10920;
 
     var_r31_10920 = 0;
-    if (this->unk110.unk6F0.IsPointWithin(*((MKVector3 *) &this->unk110.unk478)) != 0) {
+    if (this->unk750.unkA0.IsPointWithin(*((MKVector3 *) &this->unk588)) != 0) {
         sp8.GetRegionPos();
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((f32) fabs(spC - M2C_FIELD(this, f32 *, 0x58C)) == 500.0f) {
+        if ((f32) fabs(spC - this->unk588.unk0) == 500.0f) {
             var_r31_10920 = 1;
         }
     }

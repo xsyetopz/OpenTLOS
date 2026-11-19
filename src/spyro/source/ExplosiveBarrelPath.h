@@ -75,7 +75,7 @@ public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
     virtual void LoadDone(void);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ s32 unk60;
     /* 0x064 */ u8 pad64[0x14];
     /* 0x078 */ f64 unk78;

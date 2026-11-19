@@ -9,6 +9,7 @@
 class CynderBarracks;
 class CynderBarracksDescriptor;
 class CynderBarracksState;
+class EnemyGenerator;
 class EnemyGeneratorDescriptor;
 class MKIniLine;
 class MKMessage;
@@ -27,6 +28,11 @@ public:
     virtual void Message(MKMessage *);
     CynderBarracks(void);
     void SetState(CynderBarracksState);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ s32 unk1A8;
+    /* 0x1ac */ s32 unk1AC;
+    /* 0x1b0 */ f32 unk1B0;
+    /* 0x1b4 */ EnemyGenerator unk1B4;
 };
 
 class CynderBarracksDescriptor : public MKPropDescriptor {  // base: vtable prefix
@@ -36,7 +42,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     CynderBarracksDescriptor(void);
-    /* 0x048 */ u8 pad48[0x1c];
+    /* 0x044 */ u8 pad44[0x20];
     /* 0x064 */ s32 unk64;
     /* 0x068 */ u8 pad68[0x104];
     /* 0x16c */ EnemyGeneratorDescriptor unk16C;
@@ -46,7 +52,7 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk1B4'
+#if 0 // DRAFT: illegal implicit conversion from 'EnemyGenerator *' to
 inline CynderBarracks::CynderBarracks() {
     M2C_UNK *temp_r30_21742;
 

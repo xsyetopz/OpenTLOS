@@ -54,13 +54,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline ConvexityBreathFX::~ConvexityBreathFX() {
     s32 temp_cr0_eq_28;
 
     if (this != NULL) {
-        if ((&this->unkD0.unk54 != NULL) && (&this->unkD0.unk54 != NULL)) {
-            KDSound_Stop((s32 *) &this->unkD0.unk54);
+        if ((&this->unk124 != NULL) && (&this->unk124 != NULL)) {
+            KDSound_Stop(&this->unk124);
         }
         temp_cr0_eq_28 = this == NULL;
         if (temp_cr0_eq_28 == 0) {
@@ -73,9 +73,9 @@ inline ConvexityBreathFX::~ConvexityBreathFX() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk54'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline ConvexityBreathFX::ConvexityBreathFX() {
-    this->unkD0.unk54 = 0.0f;
+    this->unk124 = 0;
     return this;
 }
 #endif

@@ -39,7 +39,7 @@ public:
     virtual void Deinit(void);
     MeleeTrailsDescriptor(void);
     void InitMeleeTrailData(char *);
-    /* 0x048 */ u8 pad48[0x9c];
+    /* 0x044 */ u8 pad44[0xa0];
     /* 0x0e4 */ MKHeap* unkE4;
     /* 0x0e8 */ s8 unkE8;
     /* 0x0e9 */ u8 padE9[0x3e];

@@ -80,7 +80,7 @@ class TriggerPropDescriptor : public MKPropDescriptor {  // base: ctor/dtor vtab
 public:
     virtual void Init(void);
     virtual void Deinit(void);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ f32 unk60;
     /* 0x064 */ f32 unk64;
     /* 0x068 */ f32 unk68;

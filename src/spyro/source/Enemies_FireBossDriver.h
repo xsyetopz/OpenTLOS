@@ -26,6 +26,8 @@ public:
     void CrashEnter(void);
     void ChargeExit(void);
     void ChargeEnter(void);
+    /* 0xb0c */ u8 padB0C[0x8];
+    /* 0xb14 */ s8 unkB14;
 };
 
 class FireBossDriverDescriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -37,16 +39,18 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireBossDriver::FireBossDriver() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireBossDriver::~FireBossDriver() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 

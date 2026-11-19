@@ -49,7 +49,7 @@ public:
     virtual void Deinit(void);
     void DrawInstances(void);
     static u8 pFirstDesc[0x4];
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ void* unk60;
     /* 0x064 */ BoneBlurFXDescriptor* unk64;
     /* 0x068 */ BoneBlurFXDescriptor* unk68;

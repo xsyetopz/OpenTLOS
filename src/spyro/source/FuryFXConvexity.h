@@ -73,9 +73,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk6C'
+#if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline FuryFXConvexity::FuryFXConvexity() {
-    this->unk90.unk6C = 0.0f;
+    this->unkFC = 0;
     this->unk124 = 0;
     return this;
 }
@@ -89,8 +89,8 @@ inline FuryFXConvexity::~FuryFXConvexity() {
         if ((&this->unk124 != NULL) && (&this->unk124 != NULL)) {
             KDSound_Stop(&this->unk124);
         }
-        if ((&this->unk90.unk6C != NULL) && (&this->unk90.unk6C != NULL)) {
-            KDSound_Stop((s32 *) &this->unk90.unk6C);
+        if ((&this->unkFC != NULL) && (&this->unkFC != NULL)) {
+            KDSound_Stop(&this->unkFC);
         }
         temp_cr0_eq_35 = this == NULL;
         if (temp_cr0_eq_35 == 0) {

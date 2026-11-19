@@ -5,16 +5,19 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EventMessage.h"
 #include "spyro/source/FireAndIceFX.h"
 
 class EarthBoss;
 class EarthBossArm;
 class EarthBossArmDescriptor;
 class EarthBossDescriptor;
+class EarthShockwave;
 class Enemy;
 class EnemyAttack;
 class EnemyDamageFeedback;
 class EnemyDescriptor;
+class EventMessage;
 class FireAndIceFX;
 class MKAnimScript;
 class MKDynamicBone;
@@ -56,6 +59,23 @@ public:
     void TempDisableCollision(bool);
     void UpdateEnemyHud(void);
     void SetupCollisionSphere(int, const char *, const char *, float, const MKVector3 &);
+    /* 0xb0c */ u8 padB0C[0x1b4];
+    /* 0xcc0 */ EarthBossArm* unkCC0;
+    /* 0xcc4 */ EarthShockwave* unkCC4;
+    /* 0xcc8 */ f32 unkCC8;
+    /* 0xccc */ s32 unkCCC;
+    /* 0xcd0 */ s32 unkCD0;
+    /* 0xcd4 */ s32 unkCD4;
+    /* 0xcd8 */ u32 unkCD8;
+    /* 0xcdc */ s8 unkCDC;
+    /* 0xcdd */ u8 unkCDD;
+    /* 0xcde */ u8 padCDE[0x2];
+    /* 0xce0 */ s32 unkCE0;
+    /* 0xce4 */ s32 unkCE4;
+    /* 0xce8 */ s8* unkCE8;
+    /* 0xcec */ f32 unkCEC;
+    /* 0xcf0 */ f32 unkCF0;
+    /* 0xcf4 */ EventMessage unkCF4;
 };
 
 class EarthBossArm : public MKProp {  // base: ctor/dtor vtable stores
@@ -151,31 +171,31 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthBoss::EarthBoss() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
-    this->unkCF4.unk0 = 0;
-    this->unkCF4.Init();
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    M2C_FIELD(this, s32 *, 0xCF4) = 0;
+    this->unkCDC.Init();
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthBoss::~EarthBoss() {
-    this->unk110.unk5A8 = &__vt.unk84;
-    if (&this->unkCF4 != NULL) {
-        this->unkCF4.Deinit();
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    if (&this->unkCDC != NULL) {
+        this->unkCDC.Deinit();
     }
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unk4C'
 inline EarthBossArm::~EarthBossArm() {
     s32 temp_cr0_eq_5706;
 
     temp_cr0_eq_5706 = this == NULL;
     if (temp_cr0_eq_5706 == 0) {
-        M2C_FIELD(this, s32 **, 0x4C) = &__vt.unk38;
+        this->unk4C.__vptr = &__vt.unk38;
         if (temp_cr0_eq_5706 == 0) {
         }
     }

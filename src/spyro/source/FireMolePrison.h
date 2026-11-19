@@ -16,6 +16,10 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     FireMolePrison(void);
+    /* 0x204 */ u8 pad204[0x4];
+    /* 0x208 */ s32 unk208;
+    /* 0x20c */ f32 unk20C;
+    /* 0x210 */ u8 unk210;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

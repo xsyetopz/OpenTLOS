@@ -25,7 +25,7 @@ public:
 class IceExplosionDescriptor : public MKPropDescriptor {  // base: vtable prefix
 public:
     virtual void Init(void);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ MKProp* unk60;
     /* 0x064 */ MKProp* unk64;
 };

@@ -3,6 +3,8 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
+#include "spyro/source/EnergyBeam.h"
 #include "spyro/source/ShatterablePlatform.h"
 
 class AssaultCannon;
@@ -61,6 +63,51 @@ public:
     void TakeDamage(float, const MKVector3 &);
     void SetDefaults(void);
     static u8 states[0xb4];
+    /* 0x218 */ u8 pad218[0x18];
+    /* 0x230 */ MKVector3 unk230;
+    /* 0x240 */ f64 unk240;
+    /* 0x248 */ f64 unk248;
+    /* 0x250 */ f64 unk250;
+    /* 0x258 */ f64 unk258;
+    /* 0x260 */ f32 unk260;
+    /* 0x264 */ u8 pad264[0x4];
+    /* 0x268 */ s32 unk268;
+    /* 0x26c */ s32 unk26C;
+    /* 0x270 */ u8 pad270[0x24];
+    /* 0x294 */ s32 unk294;
+    /* 0x298 */ u8 pad298[0x24];
+    /* 0x2bc */ u32 unk2BC;
+    /* 0x2c0 */ u32 unk2C0;
+    /* 0x2c4 */ u32 unk2C4;
+    /* 0x2c8 */ u32 unk2C8;
+    /* 0x2cc */ u32 unk2CC;
+    /* 0x2d0 */ u32 unk2D0;
+    /* 0x2d4 */ u32 unk2D4;
+    /* 0x2d8 */ f32 unk2D8;
+    /* 0x2dc */ f32 unk2DC;
+    /* 0x2e0 */ void* unk2E0;
+    /* 0x2e4 */ f32 unk2E4;
+    /* 0x2e8 */ s32 unk2E8;
+    /* 0x2ec */ f32 unk2EC;
+    /* 0x2f0 */ u8 unk2F0;
+    /* 0x2f1 */ u8 unk2F1;
+    /* 0x2f2 */ u8 pad2F2[0x2];
+    /* 0x2f4 */ f32 unk2F4;
+    /* 0x2f8 */ s32 unk2F8;
+    /* 0x2fc */ EnergyBeam::Beam* unk2FC;
+    /* 0x300 */ EnergyBeam::Beam* unk300;
+    /* 0x304 */ u8 pad304[0x4];
+    /* 0x308 */ MKVector3 unk308;
+    /* 0x318 */ MKVector3 unk318;
+    /* 0x328 */ f64 unk328;
+    /* 0x330 */ f64 unk330;
+    /* 0x338 */ f64 unk338;
+    /* 0x340 */ f64 unk340;
+    /* 0x348 */ f64 unk348;
+    /* 0x350 */ f32 unk350;
+    /* 0x354 */ u8 pad354[0x4];
+    /* 0x358 */ f64 unk358;
+    /* 0x360 */ f64 unk360;
 };
 
 class AssaultCannonDescriptor : public MKPropDescriptor {  // base: vtable prefix
@@ -70,7 +117,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     AssaultCannonDescriptor(void);
-    /* 0x048 */ u8 pad48[0x124];
+    /* 0x044 */ u8 pad44[0x128];
     /* 0x16c */ s8* unk16C;
     /* 0x170 */ u8 pad170[0x4];
     /* 0x174 */ s32 unk174;

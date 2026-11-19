@@ -118,7 +118,7 @@ public:
     virtual void Deinit(void);
     ShatterableDescriptor(void);
     void EmitHitEffects(const MKVector3 &, const MKVector3 &, const MKVector4 &, MKProp *, int);
-    /* 0x048 */ u8 pad48[0x2c];
+    /* 0x044 */ u8 pad44[0x30];
     /* 0x074 */ KDPropertySet unk74;
     /* 0x084 */ u8 pad84[0x60];
     /* 0x0e4 */ s8* unkE4;

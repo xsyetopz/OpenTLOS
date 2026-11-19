@@ -72,20 +72,20 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: undefined identifier 'unk110'
 inline FuryFXFire::FuryFXFire() {
-    __construct_array(&this->unk90.unk80, (MKAnimScript *(*)(MKAnimScript *)) &FuryFXFire::DragonStruct::DragonStruct, (SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16)) &FuryFXFire::DragonStruct::~DragonStruct, 0x80, 3);
+    __construct_array(&this->unk110, (MKAnimScript *(*)(MKAnimScript *)) &FuryFXFire::DragonStruct::DragonStruct, (SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16)) &FuryFXFire::DragonStruct::~DragonStruct, 0x80, 3);
     this->unk290.unk4 = 0;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk80'
+#if 0 // DRAFT: undefined identifier 'unk110'
 inline FuryFXFire::~FuryFXFire() {
     s32 temp_cr0_eq_27;
 
     if (this != NULL) {
-        __destroy_arr(&this->unk90.unk80, &FuryFXFire::DragonStruct::~DragonStruct, 0x80, 3);
+        __destroy_arr(&this->unk110, &FuryFXFire::DragonStruct::~DragonStruct, 0x80, 3);
         temp_cr0_eq_27 = this == NULL;
         if (temp_cr0_eq_27 == 0) {
             if (temp_cr0_eq_27 == 0) {

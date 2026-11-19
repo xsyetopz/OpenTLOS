@@ -2,22 +2,30 @@
 #define SPYRO_SOURCE_ENEMIES_FIREBOSS_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKAnimScript.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/EventMessage.h"
+#include "spyro/source/KDSpline.h"
+#include "spyro/source/SteamTrain.h"
 
 class Enemies_FireBoss_cpp;
 class Enemy;
 class EnemyDescriptor;
+class EventMessage;
 class FireBoss;
 class FireBossDescriptor;
 class FireBossDirectedGraph;
+class FireBossDriver;
 class FireBossGraphEdge;
 class FireBossGraphNode;
 class KDUniformSpline;
+class MKAnimScript;
 class MKHeap;
 class MKIniLine;
 class MKMessage;
 class MKVector3;
+class SteamTrainEffects;
 
 class Enemies_FireBoss_cpp {
 public:
@@ -64,6 +72,70 @@ public:
     void CreateInsideSplines(void);
     void CreateOutsideSpline(void);
     void UpdatePhrasesAndSounds(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ s32 unkB10;
+    /* 0xb14 */ s32 unkB14;
+    /* 0xb18 */ f32 unkB18;
+    /* 0xb1c */ f32 unkB1C;
+    /* 0xb20 */ f32 unkB20;
+    /* 0xb24 */ f32 unkB24;
+    /* 0xb28 */ f32 unkB28;
+    /* 0xb2c */ f32 unkB2C;
+    /* 0xb30 */ f32 unkB30;
+    /* 0xb34 */ f32 unkB34;
+    /* 0xb38 */ KDUniformSpline unkB38;
+    /* 0xb4c */ KDUniformSpline unkB4C;
+    /* 0xb60 */ KDUniformSpline unkB60;
+    /* 0xb74 */ u8 padB74[0xa0];
+    /* 0xc14 */ void* unkC14;
+    /* 0xc18 */ FireBossDirectedGraph* unkC18;
+    /* 0xc1c */ FireBossGraphEdge* unkC1C;
+    /* 0xc20 */ u8* unkC20;
+    /* 0xc24 */ s32 unkC24;
+    /* 0xc28 */ u8 padC28[0x10];
+    /* 0xc38 */ s32 unkC38;
+    /* 0xc3c */ s32 unkC3C;
+    /* 0xc40 */ s8 unkC40;
+    /* 0xc41 */ u8 unkC41;
+    /* 0xc42 */ s8 unkC42;
+    /* 0xc43 */ u8 unkC43;
+    /* 0xc44 */ s8 unkC44;
+    /* 0xc45 */ s8 unkC45;
+    /* 0xc46 */ u8 padC46[0x2];
+    /* 0xc48 */ f32 unkC48;
+    /* 0xc4c */ u8 padC4C[0xc4];
+    /* 0xd10 */ SteamTrainEffects unkD10;
+    /* 0xf4c */ u8 padF4C[0x4];
+    /* 0xf50 */ f32 unkF50;
+    /* 0xf54 */ f32 unkF54;
+    /* 0xf58 */ f32 unkF58;
+    /* 0xf5c */ f32 unkF5C;
+    /* 0xf60 */ f32 unkF60;
+    /* 0xf64 */ FireBossDriver* unkF64;
+    /* 0xf68 */ void* unkF68;
+    /* 0xf6c */ u8 padF6C[0x4];
+    /* 0xf70 */ MKAnimScript unkF70;
+    /* 0xfc8 */ u8 unkFC8;
+    /* 0xfc9 */ u8 unkFC9;
+    /* 0xfca */ u8 unkFCA;
+    /* 0xfcb */ u8 unkFCB;
+    /* 0xfcc */ s32 unkFCC;
+    /* 0xfd0 */ u8 padFD0[0x24];
+    /* 0xff4 */ s32 unkFF4;
+    /* 0xff8 */ u8 padFF8[0x24];
+    /* 0x101c */ s32 unk101C;
+    /* 0x1020 */ u8 pad1020[0x24];
+    /* 0x1044 */ s32 unk1044;
+    /* 0x1048 */ u8 pad1048[0x24];
+    /* 0x106c */ s32 unk106C;
+    /* 0x1070 */ s32 unk1070;
+    /* 0x1074 */ s32 unk1074;
+    /* 0x1078 */ s8* unk1078;
+    /* 0x107c */ f32 unk107C;
+    /* 0x1080 */ f32 unk1080;
+    /* 0x1084 */ EventMessage unk1084;
+    /* 0x1088 */ void** unk1088;
+    /* 0x108c */ s32 unk108C;
 };
 
 class FireBossDescriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -125,30 +197,32 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireBoss::FireBoss() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
-    this->unk110.unkA28 = 0;
-    this->unk110.unkA2C = 0;
-    this->unk110.unkA30 = 0.0f;
-    this->unk110.unkA34 = 0;
-    __construct_array(&this->unk110.unkA3C, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
-    __construct_array(&this->unk110.unkA64, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 8);
-    this->unkFCC = 0;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unkB20 = 0.0f;
+    this->unkB24 = 0.0f;
+    this->unkB28 = 0.0f;
+    this->unkB2C = 0.0f;
+    __construct_array(&this->unkB34, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
+    __construct_array((f32 *) &this->unkB4C.unk10, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 8);
+    this->unkF70.unk44 = 0;
     this->unkFF4 = 0;
     this->unk101C = 0;
     this->unk1044 = 0;
-    this->unk1084.unk0 = 0;
-    this->unk1084.Init();
+    this->unk106C = 0;
+    this->unk106C.Init();
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireBoss::~FireBoss() {
-    this->unk110.unk5A8 = &__vt.unk84;
-    if (&this->unk1084 != NULL) {
-        this->unk1084.Deinit();
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    if (&this->unk106C != NULL) {
+        this->unk106C.Deinit();
     }
     if ((&this->unk1044 != NULL) && (&this->unk1044 != NULL)) {
         KDSound_Stop(&this->unk1044);
@@ -159,8 +233,8 @@ inline FireBoss::~FireBoss() {
     if ((&this->unkFF4 != NULL) && (&this->unkFF4 != NULL)) {
         KDSound_Stop(&this->unkFF4);
     }
-    if ((&this->unkFCC != NULL) && (&this->unkFCC != NULL)) {
-        KDSound_Stop(&this->unkFCC);
+    if ((&this->unkF70.unk44 != NULL) && (&this->unkF70.unk44 != NULL)) {
+        KDSound_Stop(&this->unkF70.unk44);
     }
 }
 #endif

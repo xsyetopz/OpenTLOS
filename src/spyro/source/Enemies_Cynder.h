@@ -2,9 +2,12 @@
 #define SPYRO_SOURCE_ENEMIES_CYNDER_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/Goal.h"
 
+class Ball;
 class CynderTier1;
 class CynderTier1Descriptor;
 class CynderTier2;
@@ -21,6 +24,8 @@ class EnemyTest;
 class EnemyTestDescriptor;
 class MKIniLine;
 class MKMessage;
+class MKPropDescriptor;
+class MKVector3;
 class SpawnPointObject;
 
 class CynderTier1 : public Enemy {  // base: vtable prefix
@@ -40,6 +45,11 @@ public:
     virtual void DefrostBall(void);
     virtual s32 IsInFrozenBall(void);
     CynderTier1(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ Goal<Enemy>* unkB10;
+    /* 0xb14 */ Goal<Enemy>* unkB14;
+    /* 0xb18 */ MKPropDescriptor* unkB18;
+    /* 0xb1c */ Ball* unkB1C;
 };
 
 class CynderTier1Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -60,6 +70,8 @@ public:
     virtual void Update(void);
     virtual void Spawn(EnemyGeneratorDoor *);
     CynderTier2(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ Goal<Enemy>* unkB10;
 };
 
 class CynderTier2Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -96,6 +108,13 @@ public:
     virtual void Spawn(EnemyGeneratorDoor *);
     CynderTier3(void);
     void EmitClubEffects(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ Goal<Enemy>* unkB10;
+    /* 0xb14 */ u8 padB14[0x4];
+    /* 0xb18 */ MKVector3 unkB18;
+    /* 0xb28 */ s32 unkB28;
+    /* 0xb2c */ u8 padB2C[0x24];
+    /* 0xb50 */ f32 unkB50;
 };
 
 class CynderTier3Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -135,24 +154,22 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier1::CynderTier1() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier1::~CynderTier1() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA08'
 inline s32 CynderTier1::IsInFrozenBall() {
-    return M2C_BITWISE(s32, this->unk110.unkA08.unk4) != 0;
+    return this->unkB04 != 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal return value in void/constructor/destructor function
 inline CynderTier1Descriptor::CynderTier1Descriptor() {
@@ -160,16 +177,16 @@ inline CynderTier1Descriptor::CynderTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier2::CynderTier2() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier2::~CynderTier2() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
 }
 #endif
 
@@ -179,16 +196,16 @@ inline CynderTier2Descriptor::CynderTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier2Train::CynderTier2Train() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier2Train::~CynderTier2Train() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
@@ -198,19 +215,19 @@ inline CynderTier2TrainDescriptor::CynderTier2TrainDescriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier3::CynderTier3() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
-    this->unk110.unkA18 = 0;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unkB10 = NULL;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline CynderTier3::~CynderTier3() {
-    this->unk110.unk5A8 = &__vt.unk84;
-    if ((&this->unk110.unkA18 != NULL) && (&this->unk110.unkA18 != NULL)) {
-        KDSound_Stop(&this->unk110.unkA18.unk0);
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    if ((&this->unkB10 != NULL) && (&this->unkB10 != NULL)) {
+        KDSound_Stop((s32 *) &this->unkB10);
     }
 }
 #endif
@@ -221,16 +238,16 @@ inline CynderTier3Descriptor::CynderTier3Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EnemyTest::EnemyTest() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EnemyTest::~EnemyTest() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 

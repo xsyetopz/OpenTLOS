@@ -127,7 +127,7 @@ public:
     virtual void Deinit(void);
     u8 LoadDeltaStages(MKIniLine *);
     KDCameraDeltaStages * GetDeltaStages(int);
-    /* 0x048 */ u8 pad48[0x34];
+    /* 0x044 */ u8 pad44[0x38];
     /* 0x07c */ f32 unk7C;
     /* 0x080 */ u8 pad80[0x14];
     /* 0x094 */ s32 unk94;

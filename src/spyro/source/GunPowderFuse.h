@@ -55,14 +55,14 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk74'
+#if 0 // DRAFT: undefined identifier 'unkC4'
 inline GunPowderFuse::~GunPowderFuse() {
     s32 temp_cr0_eq_32;
 
     if (this != NULL) {
-        __destroy_arr(&this->unk50.unk74, &BurnPoint::~BurnPoint, 0x3C, 8);
-        if (&this->unk50.unk70 != NULL) {
-            this->unk50.unk70.Deinit();
+        __destroy_arr(&this->unkC4, &BurnPoint::~BurnPoint, 0x3C, 8);
+        if (&this->unkC0 != NULL) {
+            this->unkC0.Deinit();
         }
         temp_cr0_eq_32 = this == NULL;
         if (temp_cr0_eq_32 == 0) {

@@ -217,9 +217,9 @@ inline TrainChaseSpyro::TrainChaseSpyro() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unkC8'
 inline TrainChaseSpyro::~TrainChaseSpyro() {
-    M2C_FIELD(this, s32 **, 0xC8) = &__vt.unk48;
+    this->unkC8.__vptr = &__vt.unk48;
     if (&this->unk2A8 != NULL) {
         __destroy_arr(&this->unk2A8, &SpyroSoundPlayer::SpyroLoopSounds::~SpyroLoopSounds, 0x58, 0xD);
     }

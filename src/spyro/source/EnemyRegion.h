@@ -40,7 +40,7 @@ f32 PolygonArea(KDPathSegment *);
 #if 0 // DRAFT: undefined identifier 'unk14'
 inline EnemyRegion::EnemyRegion() {
     this->unk10 = 0;
-    this->unk14 = 0;
+    this->unk14 = 0.0f;
     this->unk18 = 0;
     this->unk1C = 0.0f;
     this->unk20 = 0.0f;

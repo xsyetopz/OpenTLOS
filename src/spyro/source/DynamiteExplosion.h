@@ -36,7 +36,7 @@ class DynamiteExplosionDescriptor : public MKPropDescriptor {  // base: vtable p
 public:
     virtual void Init(void);
     virtual void Deinit(void);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ s32 unk60;
     /* 0x064 */ s32 unk64;
     /* 0x068 */ s32 unk68;

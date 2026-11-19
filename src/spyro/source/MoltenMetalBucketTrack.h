@@ -39,7 +39,7 @@ class MoltenMetalBucketTrackDescriptor : public MKPropDescriptor {  // base: vta
 public:
     virtual void Init(void);
     virtual void Deinit(void);
-    /* 0x048 */ u8 pad48[0x20];
+    /* 0x044 */ u8 pad44[0x24];
     /* 0x068 */ f64 unk68;
     /* 0x070 */ f64 unk70;
     /* 0x078 */ f64 unk78;

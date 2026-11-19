@@ -5,6 +5,7 @@
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
 
+class CharacterDojoFX;
 class DojoEnemy;
 class DojoEnemyDescriptor;
 class DojoTier1;
@@ -27,6 +28,8 @@ public:
     virtual void Despawn(bool);
     virtual void Recycle(void);
     DojoEnemy(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ CharacterDojoFX* unkB10;
 };
 
 class DojoEnemyDescriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -48,6 +51,10 @@ public:
     virtual s32 Spawn(SpawnPointObject *);
     virtual void GetCharacterName(void);
     DojoTier1(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ CharacterDojoFX* unkB10;
+    /* 0xb14 */ u8 padB14[0xc];
+    /* 0xb20 */ s32 unkB20;
 };
 
 class DojoTier1Descriptor : public EnemyDescriptor {  // base: vtable prefix
@@ -66,6 +73,10 @@ public:
     virtual s32 Spawn(SpawnPointObject *);
     virtual void GetCharacterName(void);
     DojoTier2(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ CharacterDojoFX* unkB10;
+    /* 0xb14 */ u8 padB14[0xc];
+    /* 0xb20 */ s32 unkB20;
 };
 
 class DojoTier2Descriptor : public EnemyDescriptor {  // base: vtable prefix
@@ -85,15 +96,17 @@ extern u8 dojoMovementThresholds[0x3c];
 extern u8 dojoMovementAnims[0xf0];
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline DojoEnemy::~DojoEnemy() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline DojoEnemy::DojoEnemy() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
@@ -104,16 +117,16 @@ inline DojoEnemyDescriptor::DojoEnemyDescriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline DojoTier1::DojoTier1() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline DojoTier1::~DojoTier1() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
@@ -123,16 +136,16 @@ inline DojoTier1Descriptor::DojoTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline DojoTier2::DojoTier2() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline DojoTier2::~DojoTier2() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 

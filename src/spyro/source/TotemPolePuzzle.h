@@ -84,9 +84,9 @@ inline TotemPolePiece::TotemPolePiece() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vt'
+#if 0 // DRAFT: undefined identifier 'unkC8'
 inline TotemPolePiece::~TotemPolePiece() {
-    M2C_FIELD(this, s32 **, 0xC8) = &__vt.unk48;
+    this->unkC8.__vptr = &__vt.unk48;
 }
 #endif
 

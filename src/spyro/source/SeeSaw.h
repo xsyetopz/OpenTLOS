@@ -70,27 +70,27 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk88'
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline SeeSaw::~SeeSaw() {
     PlatformAttachment *temp_r0_23;
-    f32 *temp_r4_26;
+    PlatformAttachment *temp_r4_26;
     s32 temp_cr0_eq_44;
 
     if (this != NULL) {
-        if (&this->unk90.unk88 != NULL) {
-            temp_r0_23 = this->unk120;
+        if (&this->unk118 != NULL) {
+            temp_r0_23 = this->unk118.unk8;
             if (temp_r0_23 != NULL) {
-                temp_r4_26 = &this->unk90.unk88;
+                temp_r4_26 = &this->unk118;
                 if (temp_r0_23 != temp_r4_26) {
-                    this->unk124->unk8 = temp_r0_23;
-                    this->unk120->unkC = this->unk124;
-                    this->unk124 = (PlatformAttachment *) temp_r4_26;
-                    this->unk120 = (PlatformAttachment *) temp_r4_26;
+                    this->unk118.unkC->unk8 = temp_r0_23;
+                    this->unk118.unk8->unkC = this->unk118.unkC;
+                    this->unk118.unkC = temp_r4_26;
+                    this->unk118.unk8 = temp_r4_26;
                 }
             }
         }
-        if ((&this->unk90.unk60 != NULL) && (&this->unk90.unk60 != NULL)) {
-            KDSound_Stop(&this->unk90.unk60);
+        if ((&this->unkF0 != NULL) && (&this->unkF0 != NULL)) {
+            KDSound_Stop(&this->unkF0);
         }
         temp_cr0_eq_44 = this == NULL;
         if (temp_cr0_eq_44 == 0) {

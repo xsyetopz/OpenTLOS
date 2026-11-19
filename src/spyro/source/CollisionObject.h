@@ -202,7 +202,7 @@ inline void CollisionObject::Reset(const MKVector3 &arg0, const MKVector3 &arg1)
 
 inline void CollisionObject::GetPos() {
     M2C_FIELD(this, f64 *, 0) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x450);
-    M2C_FIELD(this, f64 *, 8) = (f64) M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x458);
+    this->unk8 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), f64 *, 0x458);
 }
 
 inline void CollisionObject::GetOffset() {
@@ -214,7 +214,7 @@ inline void CollisionObject::GetOffset() {
     sp10 = 0.0f;
     spC = M2C_FIELD(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), void **, 0x460), f32 *, 4);
     M2C_FIELD(this, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(this, f64 *, 8) = (f64) sp10;
+    this->unk8 = (f64) sp10;
 }
 
 inline s32 CollisionObject::GetOwner() {

@@ -37,7 +37,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     CynderPortcullisDescriptor(void);
-    /* 0x048 */ u8 pad48[0x1c];
+    /* 0x044 */ u8 pad44[0x20];
     /* 0x064 */ s32 unk64;
     /* 0x068 */ u8 pad68[0x7c];
     /* 0x0e4 */ EnemyGeneratorDescriptor unkE4;

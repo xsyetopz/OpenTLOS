@@ -2,12 +2,14 @@
 #define SPYRO_SOURCE_LAVASMASHPROP_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "spyro/source/Shatterable.h"
 
 class LavaSmashProp;
 class LavaSmashPropDescriptor;
 class MKIniLine;
 class MKMessage;
+class MKVector3;
 class Shatterable;
 class ShatterableDescriptor;
 
@@ -23,6 +25,19 @@ public:
     virtual void Message(MKMessage *);
     virtual void PostShatter(void);
     LavaSmashProp(void);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ s32 unk1A8;
+    /* 0x1ac */ u8 pad1AC[0x24];
+    /* 0x1d0 */ u8 unk1D0;
+    /* 0x1d1 */ u8 pad1D1[0x7];
+    /* 0x1d8 */ f64 unk1D8;
+    /* 0x1e0 */ f32 unk1E0;
+    /* 0x1e4 */ u8 pad1E4[0x4];
+    /* 0x1e8 */ MKVector3 unk1E8;
+    /* 0x1f8 */ f32 unk1F8;
+    /* 0x1fc */ f32 unk1FC;
+    /* 0x200 */ f32 unk200;
+    /* 0x204 */ f32 unk204;
 };
 
 class LavaSmashPropDescriptor : public ShatterableDescriptor {  // base: vtable prefix

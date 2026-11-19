@@ -65,7 +65,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     GondolaDescriptor(void);
-    /* 0x048 */ u8 pad48[0xdc];
+    /* 0x044 */ u8 pad44[0xe0];
     /* 0x124 */ EnemyGeneratorDescriptor unk124;
 };
 

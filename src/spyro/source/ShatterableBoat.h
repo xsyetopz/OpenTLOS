@@ -5,13 +5,18 @@
 #include "spyro/source/Shatterable.h"
 #include "spyro/source/ShatterablePlatform.h"
 
+class MKAnim;
+class MKAnimScript;
 class MKIniLine;
 class MKMessage;
+class MKModel;
+class MKProp;
 class MKVector3;
 class ShatterableBoat;
 class ShatterableBoatDescriptor;
 class ShatterableDescriptor;
 class ShatterablePlatform;
+class WaterSurfaceFX;
 
 class ShatterableBoat : public ShatterablePlatform {  // base: vtable prefix
 public:
@@ -41,6 +46,38 @@ public:
     void SetDefaults(void);
     void EmitWaterSpray(void);
     void InitOars(void);
+    /* 0x218 */ s32 unk218;
+    /* 0x21c */ u8 pad21C[0x4];
+    /* 0x220 */ f32 unk220;
+    /* 0x224 */ s32 unk224;
+    /* 0x228 */ u8 pad228[0x4];
+    /* 0x22c */ f32 unk22C;
+    /* 0x230 */ f32 unk230;
+    /* 0x234 */ s32 unk234;
+    /* 0x238 */ s32 unk238;
+    /* 0x23c */ f32 unk23C;
+    /* 0x240 */ MKProp* unk240;
+    /* 0x244 */ WaterSurfaceFX* unk244;
+    /* 0x248 */ f32 unk248;
+    /* 0x24c */ MKAnimScript* unk24C;
+    /* 0x250 */ MKAnim* unk250;
+    /* 0x254 */ MKAnim* unk254;
+    /* 0x258 */ MKAnimScript* unk258;
+    /* 0x25c */ MKAnim* unk25C;
+    /* 0x260 */ MKAnim* unk260;
+    /* 0x264 */ u8 pad264[0xac];
+    /* 0x310 */ MKModel* unk310;
+    /* 0x314 */ f32 unk314;
+    /* 0x318 */ f32 unk318;
+    /* 0x31c */ f32 unk31C;
+    /* 0x320 */ f32 unk320;
+    /* 0x324 */ u8 pad324[0x4];
+    /* 0x328 */ f64 unk328;
+    /* 0x330 */ f64 unk330;
+    /* 0x338 */ s32 unk338;
+    /* 0x33c */ u8 pad33C[0x24];
+    /* 0x360 */ s32 unk360;
+    /* 0x364 */ s32 unk364;
 };
 
 class ShatterableBoatDescriptor : public ShatterableDescriptor {  // base: vtable prefix

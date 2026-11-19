@@ -25,7 +25,7 @@ public:
 class ExpShockDescriptor : public MKPropDescriptor {  // base: vtable prefix
 public:
     virtual void Init(void);
-    /* 0x048 */ u8 pad48[0x38];
+    /* 0x044 */ u8 pad44[0x3c];
     /* 0x080 */ s32 unk80;
     /* 0x084 */ f32 unk84;
 };

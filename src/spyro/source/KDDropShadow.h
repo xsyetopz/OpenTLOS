@@ -28,7 +28,7 @@ class KDDropShadowDescriptor : public MKPropDescriptor {  // base: vtable prefix
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ s32 unk60;
     /* 0x064 */ f32 unk64;
 };

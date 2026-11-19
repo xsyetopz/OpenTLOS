@@ -169,19 +169,19 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+#if 0 // DRAFT: illegal implicit conversion from 'MKSceneManager *' to
 inline s32 TriggerBoxObject::CheckTarget() {
     f64 sp10;
     f64 sp8;
-    f32 temp_r3_439;
     f64 temp_f1_459;
+    s32 temp_r3_439;
     s32 var_r31_454;
     void *temp_r5_456;
     void *var_r3_442;
 
-    temp_r3_439 = this->unk10.unk44;
-    if (M2C_BITWISE(s32, temp_r3_439) > 0) {
-        var_r3_442 = ((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_439)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+    temp_r3_439 = this->unk54;
+    if (temp_r3_439 > 0) {
+        var_r3_442 = temp_r3_439->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
     } else {
         var_r3_442 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }
@@ -220,28 +220,28 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
     temp_f6_484 = arg0.unk4;
     temp_f7_488 = arg0.unk0;
     temp_f8_494 = arg0.unk8;
-    sp8 = this->unkB0 + ((temp_f8_494 * this->unkA0) + ((temp_f7_488 * this->unk10.unk70) + (temp_f6_484 * this->unk10.unk80)));
-    spC = this->unkB4 + ((temp_f8_494 * this->unkA4) + ((temp_f7_488 * this->unk10.unk74) + (temp_f6_484 * this->unk10.unk84)));
-    temp_f4_512 = this->unk10.unk50;
+    sp8 = this->unkB0 + ((temp_f8_494 * this->unkA0) + ((temp_f7_488 * this->unk80) + (temp_f6_484 * this->unk90)));
+    spC = this->unkB4 + ((temp_f8_494 * this->unkA4) + ((temp_f7_488 * this->unk84) + (temp_f6_484 * this->unk94)));
+    temp_f4_512 = this->unk60;
     sp28 = (f64) sp8;
-    sp10 = this->unkB8 + ((temp_f8_494 * this->unkA8) + ((temp_f7_488 * this->unk10.unk78) + (temp_f6_484 * this->unk10.unk88)));
+    sp10 = this->unkB8 + ((temp_f8_494 * this->unkA8) + ((temp_f7_488 * this->unk88) + (temp_f6_484 * this->unk98)));
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     sp30 = (f64) sp10;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
     if ((f32) sp28 == temp_f4_512) {
         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-        if ((f32) sp28 == (temp_f4_512 + M2C_BITWISE(f32, this->unk10.unk60))) {
-            temp_f1_531 = this->unk10.unk54;
+        if ((f32) sp28 == (temp_f4_512 + this->unk70)) {
+            temp_f1_531 = this->unk64;
             M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
             if (unksp2C == temp_f1_531) {
                 M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                if (unksp2C == (temp_f1_531 + this->unk10.unk64)) {
-                    temp_f1_541 = this->unk10.unk58;
+                if (unksp2C == (temp_f1_531 + this->unk74)) {
+                    temp_f1_541 = this->unk68;
                     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
                     if ((f32) sp30 == temp_f1_541) {
                         M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
-                        if ((f32) sp30 == (temp_f1_541 + this->unk10.unk68)) {
+                        if ((f32) sp30 == (temp_f1_541 + this->unk78)) {
                             var_r0_483 = 1;
                         }
                     }
@@ -256,7 +256,7 @@ inline s32 TriggerBoxObject::CheckPos(const MKVector3 &arg0) {
 #if 0 // DRAFT: undefined identifier 'unkC'
 inline void TriggerBoxObject::SetPos(const Matrix &arg0) {
     M2C_STRUCT_COPY((s32) &this->unkC + 4, (s32) (&arg0 - 4) + 4, 0x40);
-    this->unk10.unk70.InverseSimple(&this->unk10);
+    this->unk80.InverseSimple(&this->unk10);
 }
 #endif
 
@@ -266,7 +266,7 @@ inline void TriggerBoxObject::SetPos(const MKVector3 &arg0) {
     this->unk10.unk34 = arg0.unk4;
     this->unk10.unk38 = arg0.unk8;
     this->unk10.unk3C = 1.0f;
-    this->unk10.unk70.InverseSimple(&this->unk10);
+    this->unk80.InverseSimple(&this->unk10);
 }
 #endif
 
@@ -301,37 +301,33 @@ inline s32 TriggerPlaneGroupObject::CheckPos(const MKVector3 &arg0) {
     return 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 inline f32 TriggerSphereObject::GetRadiusSquared() {
-    return this->unk10.unk70;
+    return this->unk80;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk70'
 inline void TriggerSphereObject::SetRadius(float arg0) {
-    this->unk10.unk70 = arg0 * arg0;
+    this->unk80 = arg0 * arg0;
 }
-#endif
 
 inline s32 TriggerSphereObject::CheckPos(const MKVector3 &arg0) {
     return (u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1FU;
 }
 
-#if 0 // DRAFT: undefined identifier 'unk44'
+#if 0 // DRAFT: illegal implicit conversion from 'MKSceneManager *' to
 inline s32 TriggerSphereObject::CheckTarget() {
     f64 sp10;
     f64 sp8;
     f32 temp_f3_1397;
     f32 temp_f4_1392;
     f32 temp_f5_1391;
-    f32 temp_r3_1365;
+    s32 temp_r3_1365;
     s32 var_r0_1380;
     void *temp_r3_1382;
     void *var_r3_1368;
 
-    temp_r3_1365 = this->unk10.unk44;
-    if (M2C_BITWISE(s32, temp_r3_1365) > 0) {
-        var_r3_1368 = ((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_1365)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+    temp_r3_1365 = this->unk54;
+    if (temp_r3_1365 > 0) {
+        var_r3_1368 = temp_r3_1365->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
     } else {
         var_r3_1368 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }
@@ -343,7 +339,7 @@ inline s32 TriggerSphereObject::CheckTarget() {
         temp_f5_1391 = this->unk10.unk34 - unkspC;
         temp_f4_1392 = this->unk10.unk30 - (f32) sp8;
         temp_f3_1397 = this->unk10.unk38 - (f32) sp10;
-        if (((temp_f3_1397 * temp_f3_1397) + ((temp_f4_1392 * temp_f4_1392) + (temp_f5_1391 * temp_f5_1391))) < this->unk10.unk70) {
+        if (((temp_f3_1397 * temp_f3_1397) + ((temp_f4_1392 * temp_f4_1392) + (temp_f5_1391 * temp_f5_1391))) < this->unk80) {
             var_r0_1380 = 1;
         }
     }

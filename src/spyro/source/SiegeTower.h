@@ -3,10 +3,13 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/EnemyGenerator.h"
+#include "spyro/source/EnergyBeam.h"
 #include "spyro/source/Shatterable.h"
 
 class Ball;
+class EnemyGenerator;
 class EnemyGeneratorDescriptor;
 class MKDynamicBone;
 class MKIniLine;
@@ -37,6 +40,36 @@ public:
     void AllocElecBeams(void);
     void UpdateTurning(MKVector3);
     void UpdateTurretBone(MKDynamicBone *, void *);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ f64 unk1A8;
+    /* 0x1b0 */ f64 unk1B0;
+    /* 0x1b8 */ f32 unk1B8;
+    /* 0x1bc */ u8 pad1BC[0x4];
+    /* 0x1c0 */ EnemyGenerator unk1C0;
+    /* 0x246 */ u8 pad246[0x2];
+    /* 0x248 */ void* unk248;
+    /* 0x24c */ EnergyBeam::Beam* unk24C;
+    /* 0x250 */ MKVector3 unk250;
+    /* 0x260 */ MKVector3 unk260;
+    /* 0x270 */ MKVector3 unk270;
+    /* 0x280 */ MKVector3 unk280;
+    /* 0x290 */ f32 unk290;
+    /* 0x294 */ f32 unk294;
+    /* 0x298 */ u32 unk298;
+    /* 0x29c */ s32 unk29C;
+    /* 0x2a0 */ s32 unk2A0;
+    /* 0x2a4 */ u8 pad2A4[0x24];
+    /* 0x2c8 */ s32 unk2C8;
+    /* 0x2cc */ u8 pad2CC[0x24];
+    /* 0x2f0 */ s32 unk2F0;
+    /* 0x2f4 */ u8 pad2F4[0x24];
+    /* 0x318 */ f32 unk318;
+    /* 0x31c */ f32 unk31C;
+    /* 0x320 */ f32 unk320;
+    /* 0x324 */ u32 unk324;
+    /* 0x328 */ s32 unk328;
+    /* 0x32c */ u8 unk32C;
+    /* 0x32d */ u8 unk32D;
 };
 
 class SiegeTowerDescriptor : public MKPropDescriptor {  // base: vtable prefix
@@ -46,7 +79,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     SiegeTowerDescriptor(void);
-    /* 0x048 */ u8 pad48[0x1c];
+    /* 0x044 */ u8 pad44[0x20];
     /* 0x064 */ s32 unk64;
     /* 0x068 */ u8 pad68[0x104];
     /* 0x16c */ s32 unk16C;
@@ -65,7 +98,7 @@ void SiegeTower_InitModule(void);
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk1B0'
+#if 0 // DRAFT: undefined identifier 'unkC8'
 inline SiegeTower::SiegeTower() {
     f64 *temp_r30_21900;
 

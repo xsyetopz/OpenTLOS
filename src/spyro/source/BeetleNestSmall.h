@@ -19,6 +19,8 @@ public:
     virtual void Update(void);
     virtual void Message(MKMessage *);
     BeetleNestSmall(void);
+    /* 0x204 */ u8 pad204[0x4];
+    /* 0x208 */ u32 unk208;
 };
 
 class BeetleNestSmallDescriptor : public ShatterableDescriptor {  // base: vtable prefix

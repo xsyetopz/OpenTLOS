@@ -4,6 +4,7 @@
 #include <dolphin/types.h>
 #include "spyro/source/Shatterable.h"
 
+class BurningWick;
 class ExplosiveBarrel;
 class ExplosiveBarrelDescriptor;
 class ExplosiveBarrelPath;
@@ -38,6 +39,16 @@ public:
     f32 GetRadius(void);
     void SetOwner(ExplosiveBarrelPath *);
     void SetDefaults(void);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ ExplosiveBarrelPath* unk1A8;
+    /* 0x1ac */ BurningWick* unk1AC;
+    /* 0x1b0 */ f32 unk1B0;
+    /* 0x1b4 */ s32 unk1B4;
+    /* 0x1b8 */ u8 unk1B8;
+    /* 0x1b9 */ u8 unk1B9;
+    /* 0x1ba */ u8 unk1BA;
+    /* 0x1bb */ u8 pad1BB[0x1];
+    /* 0x1bc */ s32 unk1BC;
 };
 
 class ExplosiveBarrelDescriptor : public ShatterableDescriptor {  // base: vtable prefix

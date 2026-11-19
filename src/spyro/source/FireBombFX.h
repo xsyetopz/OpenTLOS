@@ -80,7 +80,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     FireBombFXDescriptor(void);
-    /* 0x048 */ u8 pad48[0x9c];
+    /* 0x044 */ u8 pad44[0xa0];
     /* 0x0e4 */ s8* unkE4;
     /* 0x0e8 */ s8* unkE8;
     /* 0x0ec */ MKMaterial* unkEC;

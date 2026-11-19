@@ -123,7 +123,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     static u8 bDrawLocator[0x1];
-    /* 0x048 */ u8 pad48[0x1c];
+    /* 0x044 */ u8 pad44[0x20];
     /* 0x064 */ s8 unk64;
     /* 0x065 */ u8 pad65[0x1];
     /* 0x066 */ s32 unk66;
@@ -179,7 +179,7 @@ class CollectableSpawnerDescriptor : public MKPropDescriptor {  // base: vtable 
 public:
     virtual void Init(void);
     virtual s32 LoadLine(MKIniLine *);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ s8* unk60;
 };
 

@@ -73,24 +73,6 @@ public:
     void UnregisterTargetable(void);
     void RegisterTargetable(void);
     static u8 pTargetManager[0x4];
-    /* 0x004 */ u8 pad4[0x4];
-    /* 0x008 */ void* unk8;
-    /* 0x00c */ u8 padC[0x38];
-    /* 0x044 */ void* unk44;
-    /* 0x048 */ u8 pad48[0x90];
-    /* 0x0d8 */ f32 unkD8;
-    /* 0x0dc */ u8 padDC[0x5d9];
-    /* 0x6b5 */ u8 unk6B5;
-    /* 0x6b6 */ u8 pad6B6[0x42];
-    /* 0x6f8 */ s8 unk6F8;
-    /* 0x6f9 */ u8 pad6F9[0x1b7];
-    /* 0x8b0 */ TargetContext unk8B0;
-    /* 0x8c0 */ u8 pad8C0[0x160];
-    /* 0xa20 */ void* unkA20;
-    /* 0xa24 */ u8 padA24[0x14];
-    /* 0xa38 */ void* unkA38;
-    /* 0xa3c */ u8 padA3C[0x40];
-    /* 0xa7c */ f32 unkA7C;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

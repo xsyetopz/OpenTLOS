@@ -2,8 +2,10 @@
 #define SPYRO_SOURCE_ENEMIES_ELEC_H
 
 #include <dolphin/types.h>
+#include "common/Source/Matrix.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
+#include "spyro/source/PlatformObject.h"
 
 class ElecTier1;
 class ElecTier1Descriptor;
@@ -19,6 +21,8 @@ class MKMaterial;
 class MKMessage;
 class MKVector3;
 class Matrix;
+class PlatformObject;
+class SlimeTrailFX;
 class SpawnPointRef;
 
 class ElecTier1 : public Enemy {  // base: vtable prefix
@@ -33,6 +37,12 @@ public:
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
     virtual void GetCharacterName(void);
     ElecTier1(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ SlimeTrailFX* unkB10;
+    /* 0xb14 */ u8 padB14[0x4];
+    /* 0xb18 */ f64 unkB18;
+    /* 0xb20 */ f64 unkB20;
+    /* 0xb28 */ s32 unkB28;
 };
 
 class ElecTier1Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -62,6 +72,16 @@ public:
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
     ElecTier2(void);
     s32 FindLandingPos(MKVector3 *);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ u8 unkB10;
+    /* 0xb11 */ u8 unkB11;
+    /* 0xb12 */ s8 unkB12;
+    /* 0xb13 */ s8 unkB13;
+    /* 0xb14 */ s32 unkB14;
+    /* 0xb18 */ f32 unkB18;
+    /* 0xb1c */ f32 unkB1C;
+    /* 0xb20 */ u8 padB20[0x8];
+    /* 0xb28 */ PlatformObject unkB28;
 };
 
 class ElecTier2Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -102,6 +122,11 @@ public:
     void DrawScan(void);
     void UpdateScan(void);
     void EnableScan(bool);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ Matrix unkB10;
+    /* 0xb50 */ f32 unkB50;
+    /* 0xb54 */ u8 unkB54;
+    /* 0xb55 */ u8 unkB55;
 };
 
 class ElecTier3Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -124,19 +149,19 @@ public:
 
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline ElecTier1::ElecTier1() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
-    this->unk110.unkA18 = 0;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unkB10 = NULL;
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline ElecTier1::~ElecTier1() {
-    this->unk110.unk5A8 = &__vt.unk84;
-    if ((&this->unk110.unkA18 != NULL) && (&this->unk110.unkA18 != NULL)) {
-        KDSound_Stop((s32 *) &this->unk110.unkA18);
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+    if ((&this->unkB10 != NULL) && (&this->unkB10 != NULL)) {
+        KDSound_Stop((s32 *) &this->unkB10);
     }
 }
 #endif
@@ -147,36 +172,36 @@ inline ElecTier1Descriptor::ElecTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unkA40'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline ElecTier2::ElecTier2() {
-    M2C_UNK *temp_r0_6579;
+    f32 *temp_r0_6579;
 
-    temp_r0_6579 = &this->unk110.unkA40;
-    this->unk110.vtable5A8 = &__vt + 0x84;
-    M2C_FIELD(this, s32 *, 0xB50) = 0;
-    this->unk110.unkA44 = 0;
-    this->unk110.unkA48 = temp_r0_6579;
-    this->unk110.unkA4C = temp_r0_6579;
+    temp_r0_6579 = &this->unkB28.unk10;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
+    this->unkB28.unk10 = 0.0f;
+    this->unkB28.unk14 = 0;
+    this->unkB28.unk18.unk0 = M2C_BITWISE(f32, temp_r0_6579);
+    this->unkB28.unk18.unk4 = M2C_BITWISE(f32, temp_r0_6579);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline ElecTier2::~ElecTier2() {
-    f32 *temp_r0_2119;
     f32 *temp_r4_2117;
+    f32 temp_r0_2119;
 
     if (this != NULL) {
-        this->unk110.unk5A8 = &__vt.unk84;
-        if (&this->unk110.unkA18 != NULL) {
-            temp_r4_2117 = &this->unk110.unkA40;
+        M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
+        if (&this->unkB10 != NULL) {
+            temp_r4_2117 = &this->unkB28.unk10;
             if (temp_r4_2117 != NULL) {
-                temp_r0_2119 = this->unk110.unkA48;
-                if ((temp_r0_2119 != NULL) && (temp_r0_2119 != temp_r4_2117)) {
-                    M2C_FIELD(this->unk110.unkA4C, f32 **, 8) = temp_r0_2119;
-                    M2C_FIELD(this->unk110.unkA48, f32 **, 0xC) = (f32 *) this->unk110.unkA4C;
-                    this->unk110.unkA4C = temp_r4_2117;
-                    this->unk110.unkA48 = temp_r4_2117;
+                temp_r0_2119 = this->unkB28.unk18.unk0;
+                if ((M2C_BITWISE(u32, temp_r0_2119) != 0U) && (M2C_BITWISE(u32, temp_r0_2119) != temp_r4_2117)) {
+                    M2C_FIELD(this->unkB28.unk18.unk4, f32 *, 8) = temp_r0_2119;
+                    M2C_FIELD(this->unkB28.unk18.unk0, f32 *, 0xC) = (f32) this->unkB28.unk18.unk4;
+                    this->unkB28.unk18.unk4 = M2C_BITWISE(f32, temp_r4_2117);
+                    this->unkB28.unk18.unk0 = M2C_BITWISE(f32, temp_r4_2117);
                 }
             }
         }
@@ -190,16 +215,16 @@ inline ElecTier2Descriptor::ElecTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline ElecTier3::ElecTier3() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline ElecTier3::~ElecTier3() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 

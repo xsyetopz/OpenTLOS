@@ -13,6 +13,7 @@ public:
     virtual void Init(void);
     virtual void Update(void);
     GuardTower(void);
+    /* 0x208 */ f32 unk208;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

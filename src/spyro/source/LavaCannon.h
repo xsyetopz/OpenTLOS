@@ -2,11 +2,13 @@
 #define SPYRO_SOURCE_LAVACANNON_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
 #include "spyro/source/AnimUtils.h"
 #include "spyro/source/Shatterable.h"
 
 class AnimEventDesc;
 class AnimEventEntry;
+class AnimEventManager;
 class LavaCannon;
 class LavaCannonDescriptor;
 class MKIniLine;
@@ -37,6 +39,41 @@ public:
     void EmitExplodingEffects(void);
     void EmitFiringEffects(void);
     void SetState(int);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ f64 unk1A8;
+    /* 0x1b0 */ f64 unk1B0;
+    /* 0x1b8 */ f64 unk1B8;
+    /* 0x1c0 */ f64 unk1C0;
+    /* 0x1c8 */ f64 unk1C8;
+    /* 0x1d0 */ f64 unk1D0;
+    /* 0x1d8 */ f32 unk1D8;
+    /* 0x1dc */ f32 unk1DC;
+    /* 0x1e0 */ f32 unk1E0;
+    /* 0x1e4 */ u8 pad1E4[0x4];
+    /* 0x1e8 */ f64 unk1E8;
+    /* 0x1f0 */ f32 unk1F0;
+    /* 0x1f4 */ u8 pad1F4[0x4];
+    /* 0x1f8 */ MKVector3 unk1F8;
+    /* 0x208 */ AnimEventManager unk208;
+    /* 0x214 */ u8 pad214[0x4];
+    /* 0x218 */ MKVector3 unk218;
+    /* 0x228 */ s32 unk228;
+    /* 0x22c */ f32 unk22C;
+    /* 0x230 */ f32 unk230;
+    /* 0x234 */ f32 unk234;
+    /* 0x238 */ u8 unk238;
+    /* 0x239 */ u8 unk239;
+    /* 0x23a */ u8 pad23A[0x6];
+    /* 0x240 */ void* unk240;
+    /* 0x244 */ f32 unk244;
+    /* 0x248 */ f32 unk248;
+    /* 0x24c */ f32 unk24C;
+    /* 0x250 */ f32 unk250;
+    /* 0x254 */ f32 unk254;
+    /* 0x258 */ f32 unk258;
+    /* 0x25c */ s32 unk25C;
+    /* 0x260 */ s32 unk260;
+    /* 0x264 */ u8 unk264;
 };
 
 class LavaCannonDescriptor : public ShatterableDescriptor {  // base: vtable prefix

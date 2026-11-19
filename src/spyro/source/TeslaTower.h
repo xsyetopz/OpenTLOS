@@ -84,8 +84,8 @@ inline TeslaTower::~TeslaTower() {
         if ((&this->unk13C != NULL) && (&this->unk13C != NULL)) {
             KDSound_Stop(&this->unk13C);
         }
-        if ((&this->unk90.unk84 != NULL) && (&this->unk90.unk84 != NULL)) {
-            KDSound_Stop(&this->unk90.unk84);
+        if ((&this->unk114 != NULL) && (&this->unk114 != NULL)) {
+            KDSound_Stop(&this->unk114);
         }
         temp_cr0_eq_49 = this == NULL;
         if (temp_cr0_eq_49 == 0) {

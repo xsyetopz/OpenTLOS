@@ -63,9 +63,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk64'
+#if 0 // DRAFT: undefined identifier 'unk4'
 inline FuryFXFire2::FuryFXFire2() {
-    this->unk90.unk64 = 0.0f;
+    this->unkF0.unk4 = 0;
     return this;
 }
 #endif

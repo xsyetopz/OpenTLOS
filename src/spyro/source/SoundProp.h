@@ -28,15 +28,15 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline SoundProp::~SoundProp() {
     s32 temp_cr0_eq_15;
 
     temp_cr0_eq_15 = this == NULL;
     if (temp_cr0_eq_15 == 0) {
         if (temp_cr0_eq_15 == 0) {
-            if (&this->unk60.unk40 != NULL) {
-                KDSound_Stop((s32 *) &this->unk60.unk40);
+            if (&this->unkA0 != NULL) {
+                KDSound_Stop(&this->unkA0);
             }
             if (this != NULL) {
             }

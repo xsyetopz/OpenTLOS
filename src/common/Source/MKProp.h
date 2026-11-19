@@ -83,7 +83,6 @@ public:
     virtual void Resolve(void);
     void * CreateInstance(void);
     void ParseGMSection(MKIni *, MKIniLine *);
-    /* 0x044 */ MKPropDescriptor* unk44;
 };
 
 class MKPropLoadInfo {

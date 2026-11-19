@@ -20,6 +20,8 @@ public:
     virtual void Init(void);
     virtual void Update(void);
     EarthTier1(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ f32 unkB10;
 };
 
 class EarthTier1Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -60,16 +62,18 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthTier1::EarthTier1() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthTier1::~EarthTier1() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
@@ -79,29 +83,29 @@ inline EarthTier1Descriptor::EarthTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthTier2::EarthTier2() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthTier2::~EarthTier2() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthTier3::EarthTier3() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline EarthTier3::~EarthTier3() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 

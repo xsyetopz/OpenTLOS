@@ -68,7 +68,7 @@ public:
     virtual void Init(void);
     virtual void LoadDone(void);
     virtual void Deinit(void);
-    /* 0x048 */ u8 pad48[0x1c];
+    /* 0x044 */ u8 pad44[0x20];
     /* 0x064 */ f32 unk64;
     /* 0x068 */ f32 unk68;
     /* 0x06c */ u8 pad6C[0x4];
@@ -92,8 +92,6 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 inline EnemySpawnPointData::~EnemySpawnPointData() {
     if (&this->unk14 != NULL) {
         this->unk14.Deinit();
@@ -111,19 +109,19 @@ inline EnemySpawnPointData::~EnemySpawnPointData() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier '__vptr'
 inline EnemySpawner::~EnemySpawner() {
     EventMessage *temp_r3_24;
     EventMessage *temp_r3_30;
 
     if (this != NULL) {
-        if (&this->unk50.unk40 != NULL) {
-            temp_r3_24 = &this->unk50.unk80;
-            this->unk50.unk40 = M2C_BITWISE(f32, &__vt);
+        if (&this->unk90 != NULL) {
+            temp_r3_24 = &this->unk90.unk40;
+            this->unk90.__vptr = &__vt;
             if (temp_r3_24 != NULL) {
                 temp_r3_24->Deinit();
             }
-            temp_r3_30 = &this->unk50.unk7C;
+            temp_r3_30 = &this->unk90.unk3C;
             if (temp_r3_30 != NULL) {
                 temp_r3_30->Deinit();
             }

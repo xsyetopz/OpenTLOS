@@ -36,7 +36,7 @@ public:
 class KDSoundPropDescriptor : public MKPropDescriptor {  // base: vtable prefix
 public:
     virtual void Init(void);
-    /* 0x048 */ u8 pad48[0x1c];
+    /* 0x044 */ u8 pad44[0x20];
     /* 0x064 */ f32 unk64;
     /* 0x068 */ f32 unk68;
     /* 0x06c */ u8 pad6C[0x4];
@@ -48,10 +48,10 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'unk40'
+#if 0 // DRAFT: undefined identifier 'KDSound_Stop'
 inline KDSoundProp::~KDSoundProp() {
-    if (&this->unk60.unk40 != NULL) {
-        KDSound_Stop((s32 *) &this->unk60.unk40);
+    if (&this->unkA0 != NULL) {
+        KDSound_Stop(&this->unkA0);
     }
     if (this != NULL) {
     }

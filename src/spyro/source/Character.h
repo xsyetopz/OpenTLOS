@@ -3,7 +3,9 @@
 
 #include <dolphin/types.h>
 #include "common/Source/MKProp.h"
+#include "common/Source/MKVector3.h"
 #include "spyro/source/CollisionObject.h"
+#include "spyro/source/Shadow.h"
 
 class Character;
 class CharacterMoveType;
@@ -12,11 +14,14 @@ class MKAnim;
 class MKCollisionInfo;
 class MKCollisionResult;
 class MKIniLine;
+class MKMaterial;
 class MKMessage;
 class MKProp;
 class MKVector3;
 class MKVector4;
 class Matrix;
+class SB2;
+class Shadow;
 class SpawnPointRef;
 
 class Character : public MKProp {  // base: ctor/dtor vtable stores
@@ -116,6 +121,53 @@ public:
     /* 0x100 */ f64 unk100;
     /* 0x108 */ f64 unk108;
     /* 0x110 */ CollisionObject unk110;
+    /* 0x584 */ u8 pad584[0x4];
+    /* 0x588 */ MKVector3 unk588;
+    /* 0x598 */ f32 unk598;
+    /* 0x59c */ f32 unk59C;
+    /* 0x5a0 */ f32 unk5A0;
+    /* 0x5a4 */ u8 pad5A4[0x14];
+    /* 0x5b8 */ f32 unk5B8;
+    /* 0x5bc */ f32 unk5BC;
+    /* 0x5c0 */ f32 unk5C0;
+    /* 0x5c4 */ u8 pad5C4[0x4];
+    /* 0x5c8 */ f32 unk5C8;
+    /* 0x5cc */ f32 unk5CC;
+    /* 0x5d0 */ f32 unk5D0;
+    /* 0x5d4 */ u8 pad5D4[0x4];
+    /* 0x5d8 */ void* unk5D8;
+    /* 0x5dc */ u8 pad5DC[0x8];
+    /* 0x5e4 */ f32 unk5E4;
+    /* 0x5e8 */ u8 pad5E8[0x8];
+    /* 0x5f0 */ s32 unk5F0;
+    /* 0x5f4 */ u8 pad5F4[0xc];
+    /* 0x600 */ Shadow unk600;
+    /* 0x62d */ u8 pad62D[0x3];
+    /* 0x630 */ void* unk630;
+    /* 0x634 */ void* unk634;
+    /* 0x638 */ void* unk638;
+    /* 0x63c */ MKProp* unk63C;
+    /* 0x640 */ SB2* unk640;
+    /* 0x644 */ MKMaterial* unk644;
+    /* 0x648 */ u8 pad648[0x18];
+    /* 0x660 */ Character* unk660;
+    /* 0x664 */ void* unk664;
+    /* 0x668 */ u8 pad668[0x18];
+    /* 0x680 */ u32 unk680;
+    /* 0x684 */ s32 unk684;
+    /* 0x688 */ s32 unk688;
+    /* 0x68c */ f32 unk68C;
+    /* 0x690 */ f32 unk690;
+    /* 0x694 */ f32 unk694;
+    /* 0x698 */ f32 unk698;
+    /* 0x69c */ f32 unk69C;
+    /* 0x6a0 */ f32 unk6A0;
+    /* 0x6a4 */ s32 unk6A4;
+    /* 0x6a8 */ u8 pad6A8[0x8];
+    /* 0x6b0 */ s8 unk6B0;
+    /* 0x6b1 */ u8 pad6B1[0x3];
+    /* 0x6b4 */ u8 unk6B4;
+    /* 0x6b5 */ u8 unk6B5;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
@@ -126,35 +178,35 @@ inline void Character::UpdateMovementCustom() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'unk560'
+#if 0 // DRAFT: undefined identifier 'unk670'
 inline Character::~Character() {
+    Character *temp_r0_5423;
     M2C_UNK *temp_r0_5407;
-    M2C_UNK *temp_r0_5423;
     M2C_UNK *temp_r5_5410;
-    M2C_UNK *temp_r5_5426;
+    SB2 **temp_r5_5426;
 
     if (this != NULL) {
-        if (&this->unk110.unk560 != NULL) {
-            temp_r0_5407 = this->unk110.unk568;
+        if (&this->unk670 != NULL) {
+            temp_r0_5407 = this->unk678;
             if (temp_r0_5407 != NULL) {
-                temp_r5_5410 = &this->unk110.unk560;
+                temp_r5_5410 = &this->unk670;
                 if (temp_r0_5407 != temp_r5_5410) {
-                    M2C_FIELD(this->unk110.unk56C, M2C_UNK **, 8) = temp_r0_5407;
-                    M2C_FIELD(this->unk110.unk568, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk110.unk56C;
-                    this->unk110.unk56C = temp_r5_5410;
-                    this->unk110.unk568 = temp_r5_5410;
+                    M2C_FIELD(this->unk67C, M2C_UNK **, 8) = temp_r0_5407;
+                    M2C_FIELD(this->unk678, M2C_UNK **, 0xC) = (M2C_UNK *) this->unk67C;
+                    this->unk67C = temp_r5_5410;
+                    this->unk678 = temp_r5_5410;
                 }
             }
         }
-        if (&this->unk110.unk538 != NULL) {
-            temp_r0_5423 = this->unk110.unk558;
+        if (&this->unk640 != NULL) {
+            temp_r0_5423 = this->unk660;
             if (temp_r0_5423 != NULL) {
-                temp_r5_5426 = &this->unk110.unk538;
+                temp_r5_5426 = &this->unk640;
                 if (temp_r0_5423 != temp_r5_5426) {
-                    M2C_FIELD(this->unk110.unk55C, M2C_UNK **, 0x20) = temp_r0_5423;
-                    M2C_FIELD(this->unk110.unk558, M2C_UNK **, 0x24) = (M2C_UNK *) this->unk110.unk55C;
-                    this->unk110.unk55C = temp_r5_5426;
-                    this->unk110.unk558 = temp_r5_5426;
+                    M2C_FIELD(this->unk664, Character **, 0x20) = temp_r0_5423;
+                    this->unk660->unk24 = M2C_BITWISE(f32, this->unk664);
+                    this->unk664 = temp_r5_5426;
+                    this->unk660 = (Character *) temp_r5_5426;
                 }
             }
         }

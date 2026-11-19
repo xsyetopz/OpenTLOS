@@ -3,6 +3,7 @@
 
 #include <dolphin/types.h>
 #include "spyro/source/Shatterable.h"
+#include "spyro/source/SpawnerObject.h"
 
 class MKIniLine;
 class MKVector3;
@@ -10,6 +11,7 @@ class ShatterWaypointSpawn;
 class ShatterWaypointSpawnDescriptor;
 class Shatterable;
 class ShatterableDescriptor;
+class SpawnerObject;
 
 class ShatterWaypointSpawn : public Shatterable {  // base: vtable prefix
 public:
@@ -22,6 +24,12 @@ public:
     virtual s32 LoadWaypoints(MKIniLine *, const char *);
     ShatterWaypointSpawn(void);
     void SetSpawnPos(int, const MKVector3 &);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ SpawnerObject unk1A8;
+    /* 0x1f5 */ u8 pad1F5[0x3];
+    /* 0x1f8 */ void* unk1F8;
+    /* 0x1fc */ s32 unk1FC;
+    /* 0x200 */ s32 unk200;
 };
 
 class ShatterWaypointSpawnDescriptor : public ShatterableDescriptor {  // base: vtable prefix

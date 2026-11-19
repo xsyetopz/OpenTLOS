@@ -63,7 +63,7 @@ public:
     virtual void LoadDone(void);
     virtual void Deinit(void);
     DynamiteDescriptor(void);
-    /* 0x048 */ u8 pad48[0xa8];
+    /* 0x044 */ u8 pad44[0xac];
     /* 0x0f0 */ s32 unkF0;
     /* 0x0f4 */ s32 unkF4;
 };

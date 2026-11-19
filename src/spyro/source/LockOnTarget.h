@@ -36,7 +36,7 @@ public:
     virtual void Init(void);
     virtual void LoadDone(void);
     virtual void Deinit(void);
-    /* 0x048 */ u8 pad48[0x18];
+    /* 0x044 */ u8 pad44[0x1c];
     /* 0x060 */ MKMaterial* unk60;
     /* 0x064 */ MKMaterial* unk64;
     /* 0x068 */ f32 unk68;

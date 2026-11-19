@@ -36,6 +36,20 @@ public:
     FireTier1(void);
     s32 SelectMoveToWallPos(const MKVector3 &, const MKVector3 &, MKVector3 *);
     s32 SelectFlyToWallPos(const MKVector3 &, MKVector3 *, MKVector3 *, MKVector3 *);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ f32 unkB10;
+    /* 0xb14 */ f32 unkB14;
+    /* 0xb18 */ f32 unkB18;
+    /* 0xb1c */ u8 padB1C[0x4];
+    /* 0xb20 */ f32 unkB20;
+    /* 0xb24 */ f32 unkB24;
+    /* 0xb28 */ f32 unkB28;
+    /* 0xb2c */ u8 padB2C[0x4];
+    /* 0xb30 */ f32 unkB30;
+    /* 0xb34 */ f32 unkB34;
+    /* 0xb38 */ f32 unkB38;
+    /* 0xb3c */ u8 padB3C[0x4];
+    /* 0xb40 */ u8 unkB40;
 };
 
 class FireTier1Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -56,6 +70,8 @@ public:
     virtual s32 Spawn(const Matrix *, SpawnPointRef *);
     virtual void DoDeadFx(void);
     FireTier2(void);
+    /* 0xb0c */ u8 padB0C[0x4];
+    /* 0xb10 */ u8 unkB10;
 };
 
 class FireTier2Descriptor : public EnemyDescriptor {  // base: ctor/dtor vtable stores
@@ -83,16 +99,18 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#include <m2c_macros.h>
+
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireTier1::FireTier1() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireTier1::~FireTier1() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
@@ -102,16 +120,16 @@ inline FireTier1Descriptor::FireTier1Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireTier2::FireTier2() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireTier2::~FireTier2() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 
@@ -121,16 +139,16 @@ inline FireTier2Descriptor::FireTier2Descriptor() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'vtable5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireTier3::FireTier3() {
-    this->unk110.vtable5A8 = &__vt + 0x84;
+    M2C_FIELD(this, void **, 0x6B8) = (void *) (&__vt + 0x84);
     return this;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk5A8'
+#if 0 // DRAFT: undefined identifier '__vt'
 inline FireTier3::~FireTier3() {
-    this->unk110.unk5A8 = &__vt.unk84;
+    M2C_FIELD(this, s32 **, 0x6B8) = &__vt.unk84;
 }
 #endif
 

@@ -33,7 +33,7 @@ inline Conveyor::~Conveyor() {
 
 #if 0 // DRAFT: '(' expected
 inline Conveyor::Conveyor() {
-    __construct_array((f64 *) &this->unk118, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
+    __construct_array(&this->unk118.unk0, (MKAnimScript *(*)(MKAnimScript *)) &KDUniformSpline::KDUniformSpline, NULL, 0x14, 2);
     return this;
 }
 #endif

@@ -2,6 +2,8 @@
 #define SPYRO_SOURCE_GUARDIANCAGECRYSTAL_H
 
 #include <dolphin/types.h>
+#include "common/Source/MKVector3.h"
+#include "spyro/source/EnergyBeam.h"
 #include "spyro/source/Shatterable.h"
 
 class GuardianCageCrystal;
@@ -26,6 +28,18 @@ public:
     virtual void Shatter(bool, MKVector3 *, int, MKVector3 *, bool, bool);
     GuardianCageCrystal(void);
     void Explode(void);
+    /* 0x1a3 */ u8 pad1A3[0x5];
+    /* 0x1a8 */ MKVector3 unk1A8;
+    /* 0x1b8 */ f64 unk1B8;
+    /* 0x1c0 */ f64 unk1C0;
+    /* 0x1c8 */ EnergyBeam::Beam* unk1C8;
+    /* 0x1cc */ s32 unk1CC;
+    /* 0x1d0 */ void* unk1D0;
+    /* 0x1d4 */ u8 unk1D4;
+    /* 0x1d5 */ u8 pad1D5[0x3];
+    /* 0x1d8 */ s32 unk1D8;
+    /* 0x1dc */ u8 pad1DC[0x24];
+    /* 0x200 */ MKVector3 unk200;
 };
 
 class GuardianCageCrystalDescriptor : public ShatterableDescriptor {  // base: vtable prefix
