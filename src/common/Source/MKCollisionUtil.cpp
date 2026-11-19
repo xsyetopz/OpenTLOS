@@ -1053,21 +1053,18 @@ loop_50:
     return arg2->unk50;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'float *'
 s32 MKCollision_Clip3D(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, float &arg3, float &arg4) {
     s32 var_r31_1590;
 
     var_r31_1590 = 0;
-    &arg3 = 0.0f;
-    &arg4 = 1.0f;
+    arg3 = 0.0f;
+    arg4 = 1.0f;
     if ((Clip(arg1.unk0, -arg0.unk0, arg2.unk0, arg3, arg4) != 0) && (Clip(arg1.unk4, -arg0.unk4, arg2.unk4, arg3, arg4) != 0) && (Clip(arg1.unk8, -arg0.unk8, arg2.unk8, arg3, arg4) != 0)) {
         var_r31_1590 = 1;
     }
     return var_r31_1590;
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 u8 Clip(float arg0, float arg1, float arg2, float &arg3, float &arg4) {
     f32 temp_f0_1643;
     f32 temp_f0_1673;
@@ -1079,14 +1076,14 @@ u8 Clip(float arg0, float arg1, float arg2, float &arg3, float &arg4) {
 
     temp_f4_1631 = arg1 - arg2;
     if (arg0 > 0.0f) {
-        temp_f5_1635 = arg0 * &arg4;
+        temp_f5_1635 = arg0 * arg4;
         if (temp_f4_1631 > temp_f5_1635) {
             return 0U;
         }
         temp_f2_1642 = arg1 + arg2;
-        temp_f0_1643 = arg0 * &arg3;
+        temp_f0_1643 = arg0 * arg3;
         if (temp_f4_1631 > temp_f0_1643) {
-            &arg3 = temp_f4_1631 / arg0;
+            arg3 = temp_f4_1631 / arg0;
             goto block_7;
         }
         if (temp_f2_1642 < temp_f0_1643) {
@@ -1094,19 +1091,19 @@ u8 Clip(float arg0, float arg1, float arg2, float &arg3, float &arg4) {
         }
 block_7:
         if (temp_f2_1642 < temp_f5_1635) {
-            &arg4 = temp_f2_1642 / arg0;
+            arg4 = temp_f2_1642 / arg0;
         }
         return 1U;
     }
     if (arg0 < 0.0f) {
-        temp_f5_1665 = arg0 * &arg3;
+        temp_f5_1665 = arg0 * arg3;
         if (temp_f4_1631 > temp_f5_1665) {
             return 0U;
         }
         temp_f2_1672 = arg1 + arg2;
-        temp_f0_1673 = arg0 * &arg4;
+        temp_f0_1673 = arg0 * arg4;
         if (temp_f4_1631 > temp_f0_1673) {
-            &arg4 = temp_f4_1631 / arg0;
+            arg4 = temp_f4_1631 / arg0;
             goto block_17;
         }
         if (temp_f2_1672 < temp_f0_1673) {
@@ -1114,7 +1111,7 @@ block_7:
         }
 block_17:
         if (temp_f2_1672 < temp_f5_1665) {
-            &arg3 = temp_f2_1672 / arg0;
+            arg3 = temp_f2_1672 / arg0;
         }
         return 1U;
     }
@@ -1123,7 +1120,6 @@ block_17:
     }
     return 0U;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 u8 SweepToPlane(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector3 &arg3, const MKVector3 &arg4, MKCollisionResult *arg5) {
@@ -1714,13 +1710,8 @@ void MKCollisionBox::Init(const Matrix &arg0, const MKVector3 &arg1, unsigned in
 }
 #endif
 
-#if 0 // DRAFT: illegal function overloading
-void VectorAbs(const MKVector3 &arg1) {
+MKVector3 VectorAbs(const MKVector3 &arg1) {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
     f32 var_f1_2572;
     f32 var_f2_2559;
     f32 var_f3_2566;
@@ -1737,14 +1728,11 @@ void VectorAbs(const MKVector3 &arg1) {
     if (var_f1_2572 < 0.0f) {
         var_f1_2572 = -var_f1_2572;
     }
-    sp8 = var_f1_2572;
-    spC = var_f3_2566;
-    sp10 = var_f2_2559;
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
+    result.unk0 = var_f1_2572;
+    result.unk4 = var_f3_2566;
+    result.unk8 = var_f2_2559;
     return result;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void MKCollisionRay::Init(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, unsigned int arg3) {
