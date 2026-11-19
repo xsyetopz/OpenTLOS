@@ -20,9 +20,9 @@ public:
     virtual void * Update(void);
     virtual void Draw(void);
     u8 UpdateElec(DynamiteExplosion::Explosion *);
-    u8 UpdateIce(DynamiteExplosion::Explosion *);
-    u8 UpdateEarth(DynamiteExplosion::Explosion *);
-    u8 UpdateFire(DynamiteExplosion::Explosion *);
+    static u8 UpdateIce(DynamiteExplosion::Explosion *);
+    static u8 UpdateEarth(DynamiteExplosion::Explosion *);
+    static u8 UpdateFire(DynamiteExplosion::Explosion *);
     void TriggerElec(const MKVector3 &, float, bool);
     void TriggerIce(const MKVector3 &, float, bool);
     void TriggerEarth(const MKVector3 &, float, bool);

@@ -861,13 +861,13 @@ void EventCamera::GetTargetStart() {
     f64 sp10;
     f32 spC;
     f32 sp8;
-    MKSceneManager *temp_r3_1348;
     f64 temp_f0_1369;
     f64 temp_f0_1381;
     f64 temp_f1_1368;
     f64 temp_f1_1380;
     f64 temp_f2_1399;
     f64 temp_f3_1398;
+    s32 temp_r3_1348;
     s32 temp_r3_1355;
     u32 temp_r6_1331;
     u8 temp_r0_1409;
@@ -887,10 +887,10 @@ void EventCamera::GetTargetStart() {
         sp90 = sp80;
         sp98 = sp88;
     } else {
-        temp_r3_1348 = M2C_FIELD(temp_r30_1325, MKSceneManager **, 0xF0);
-        if (temp_r3_1348 != NULL) {
+        temp_r3_1348 = M2C_FIELD(temp_r30_1325, s32 *, 0xF0);
+        if (temp_r3_1348 != 0) {
             if ((u8) M2C_FIELD(temp_r30_1325, u8 *, 0x102) != 0) {
-                temp_r3_1355 = (long) (checked_cast<EnemySpawner *, MKProp>(temp_r3_1348->PropResolver_Resolve((s32) &MKVector3::zero)));
+                temp_r3_1355 = (long) (checked_cast<EnemySpawner *, MKProp>(MKSceneManager::PropResolver_Resolve(temp_r3_1348)));
                 ((SpawnerObject *) (temp_r3_1355 + 0x90))->GetNumberActive();
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                     if ((u8) M2C_FIELD(temp_r30_1325, u8 *, 0x104) != 0) {
@@ -913,7 +913,7 @@ void EventCamera::GetTargetStart() {
                     (*(f32 *) ((u8 *) &sp90 + 0x4)) += M2C_FIELD(temp_r30_1325, f32 *, 0xEC);
                 }
             } else {
-                temp_r3_1393 = temp_r3_1348->PropResolver_Resolve((s32) &MKVector3::zero);
+                temp_r3_1393 = MKSceneManager::PropResolver_Resolve(temp_r3_1348);
                 if (temp_r3_1393 != NULL) {
                     temp_r3_1396 = M2C_FIELD(temp_r3_1393, void **, 8);
                     temp_f3_1398 = M2C_FIELD(temp_r3_1396, f64 *, 0x30);
@@ -1215,9 +1215,6 @@ void *EventCamera::Update() {
     s32 temp_cr0_eq_1999;
     s32 temp_r3_1512;
     s32 temp_r3_2607;
-    u32 var_r4_1483;
-    u64 temp_ret_1483;
-    u64 temp_ret_1492;
     u8 temp_r4_2818;
     u8 var_r30_1504;
     void *temp_r0_2803;
@@ -1229,16 +1226,14 @@ void *EventCamera::Update() {
     void *temp_r4_2705;
 
     MKProp::Update();
-    temp_ret_1483 = gb.unk0->IsDying();
-    var_r4_1483 = (u32) temp_ret_1483;
-    if (((temp_ret_1483 != 0) || (temp_ret_1492 = gb.unk0->IsRespawning(), var_r4_1483 = (u32) temp_ret_1492, ((temp_ret_1492 == 0) == 0))) && (this == (EventCamera *) pCurrentCamera)) {
+    if (((gb.unk0->IsDying() != 0) || (gb.unk0->IsRespawning() != 0)) && (this == (EventCamera *) pCurrentCamera)) {
         FunctionOff();
         return;
     }
     var_r30_1504 = 1;
     if ((u8) this->unk101 != 0) {
         if ((u8) this->unk102 != 0) {
-            temp_r3_1512 = (long) (checked_cast<EnemySpawner *, MKProp>(this->unkF0->PropResolver_Resolve((s32) var_r4_1483)));
+            temp_r3_1512 = (long) (checked_cast<EnemySpawner *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkF0)));
             ((SpawnerObject *) (temp_r3_1512 + 0x90))->GetNumberActive();
             if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                 if ((u8) this->unk103 != 0) {
@@ -1579,7 +1574,7 @@ void *EventCamera::Update() {
                 this->unkF0 = (MKSceneManager *)1;
             }
             if ((u8) this->unk102 != 0) {
-                ((SpawnerObject *) (checked_cast<P12EnemySpawner))->GetNumberActive(6MKProp>__FP6MKProp(this->unkF0->PropResolver_Resolve((s32) temp_r4_2319)) + 0x90);
+                ((SpawnerObject *) (checked_cast<P12EnemySpawner))->GetNumberActive(6MKProp>__FP6MKProp(MKSceneManager::PropResolver_Resolve((s32) this->unkF0)) + 0x90);
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                     ((EventCamera *) &sp380.unkD0)->GetTargetStart();
                     var_r30_1504 = 0;
@@ -1587,7 +1582,7 @@ void *EventCamera::Update() {
                     M2C_FIELD(this, f64 *, 0x68) = (f64) sp380.unkD8;
                 }
             } else {
-                temp_r3_2388 = this->unkF0->PropResolver_Resolve((s32) temp_r4_2319);
+                temp_r3_2388 = MKSceneManager::PropResolver_Resolve((s32) this->unkF0);
                 if (temp_r3_2388 != NULL) {
                     temp_r3_2391 = M2C_FIELD(temp_r3_2388, void **, 8);
                     var_r30_1504 = 0;
@@ -1667,7 +1662,7 @@ void *EventCamera::Update() {
         }
         if ((u8) this->unk103 != 0) {
             if (((u8) this->unk104 != 0) && ((u8) this->unk102 != 0)) {
-                temp_r3_2607 = checked_cast<EnemySpawner *, MKProp>(this->unkF0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+                temp_r3_2607 = checked_cast<EnemySpawner *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkF0));
                 ((SpawnerObject *) (temp_r3_2607 + 0x90))->GetNumberActive();
                 if ((s32) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
                     ((Matrix *) (((SpawnerObject *) (temp_r3_2607 + 0x90))->GetActive(0)->unk8))->ZAxis3();
@@ -1914,15 +1909,15 @@ f32 EventCamera::Resolve() {
     MKProp::Resolve();
     temp_r3_3223 = this->unkB0;
     if (temp_r3_3223 != NULL) {
-        this->unkB0 = checked_cast<KDSplinePathSegmentProp *, MKProp>(((MKSceneManager *) temp_r3_3223)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkB0 = checked_cast<KDSplinePathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_3223));
     }
     temp_r3_3230 = this->unkB4;
     if (temp_r3_3230 != NULL) {
-        this->unkB4 = checked_cast<KDSplinePathSegmentProp *, MKProp>(((MKSceneManager *) temp_r3_3230)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkB4 = checked_cast<KDSplinePathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_3230));
     }
     temp_r3_3237 = this->unkB8;
     if (temp_r3_3237 != NULL) {
-        this->unkB8 = checked_cast<EventCamera *, MKProp>(((MKSceneManager *) temp_r3_3237)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkB8 = checked_cast<EventCamera *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_3237));
     }
     if ((u8) this->unkFB != 0) {
         this->unkF0 = (MKSceneManager *)1;

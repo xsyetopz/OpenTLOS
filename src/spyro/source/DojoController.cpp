@@ -111,12 +111,12 @@ extern s32 gViewSeed;
 extern void **gb;
 #endif
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<DojoController>::State'
 static M2C_UNK lit_761;                                /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<DojoController>::State'
 static KDStateMachine<DojoController>::State dojoStates; /* unable to generate initializer: confusing struct layout */
+#endif
 
 static s32 lit_2532 = 0;
-#endif
 static s32 lit_2534 = 0;
 static s32 lit_2536 = 0;
 static s32 lit_2555 = 0;
@@ -6552,7 +6552,7 @@ void DojoController::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
+#if 0 // DRAFT: illegal implicit conversion from 'DojoController' to 'int'
 f32 DojoController::Resolve() {
     s32 sp24;
     s32 sp20;
@@ -6562,38 +6562,22 @@ f32 DojoController::Resolve() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    DragonStatue *temp_ret_12937;
     MKSceneManager *temp_r3_12850;
     MKSceneManager *temp_r3_12857;
     MKSceneManager *temp_r3_12867;
     MKSceneManager *temp_r3_12877;
-    MKSceneManager *temp_ret_12829;
-    MKSceneManager *temp_ret_12833;
-    MKSceneManager *temp_ret_12837;
-    MKSceneManager *temp_ret_12841;
-    MKSceneManager *temp_ret_12904;
-    MKSceneManager *temp_ret_12908;
-    MKSceneManager *temp_ret_12912;
-    MKSceneManager *temp_ret_12916;
     s32 temp_r29_12921;
     s32 var_r28_12918;
     s32 var_r30_12919;
-    u32 var_r4_12916;
-    u64 temp_ret_12889;
-    u64 temp_ret_12894;
-    u64 temp_ret_12899;
     void *temp_r3_12926;
 
     this->unk3BE = 0;
-    temp_ret_12829 = checked_cast<TriggerProp *, MKProp>(this->unk60->PropResolver_Resolve((s32) (u32) this->unk360.SetState(this, 0, 0U)));
-    this->unk60 = temp_ret_12829;
-    temp_ret_12833 = (MKSceneManager *) (checked_cast<EventCamera *, MKProp>(this->unk5C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12829)));
-    this->unk5C = temp_ret_12833;
-    temp_ret_12837 = (MKSceneManager *) (checked_cast<TriggerProp *, MKProp>(this->unk64->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12833)));
-    this->unk64 = temp_ret_12837;
-    temp_ret_12841 = (MKSceneManager *) (checked_cast<SparxHint *, MKProp>(this->unk68->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12837)));
-    this->unk68 = temp_ret_12841;
-    this->unk6C = (MKSceneManager *) (checked_cast<SparxHint *, MKProp>(this->unk6C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12841)));
+    this->unk360.SetState(this, 0, 0U);
+    this->unk60 = (MKSceneManager *) (checked_cast<TriggerProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk60)));
+    this->unk5C = (MKSceneManager *) (checked_cast<EventCamera *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk5C)));
+    this->unk64 = (MKSceneManager *) (checked_cast<TriggerProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk64)));
+    this->unk68 = (MKSceneManager *) (checked_cast<SparxHint *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk68)));
+    this->unk6C = (MKSceneManager *) (checked_cast<SparxHint *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk6C)));
     temp_r3_12850 = this->unk60;
     sp24 = 0;
     sp20 = 0xBF;
@@ -6609,34 +6593,26 @@ f32 DojoController::Resolve() {
     temp_r3_12877 = this->unk6C;
     spC = 0;
     sp8 = 0xB4;
-    temp_ret_12889 = (unsigned long long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3D8)->PropResolver_Resolve((s32) (u32) M2C_FIELD(temp_r3_12877->unk44, u64 (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0))));
-    this->unk3D8 = (CharacterGraphNode *) (temp_ret_12889 + 0x50);
-    temp_ret_12894 = (unsigned long long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3DC)->PropResolver_Resolve((s32) (u32) temp_ret_12889)));
-    this->unk3DC = (CharacterGraphNode *) (temp_ret_12894 + 0x50);
-    temp_ret_12899 = (unsigned long long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unk3E0)->PropResolver_Resolve((s32) (u32) temp_ret_12894)));
-    this->unk3E0 = (CharacterGraphNode *) (temp_ret_12899 + 0x50);
-    temp_ret_12904 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3E4->PropResolver_Resolve((s32) (u32) temp_ret_12899)));
-    this->unk3E4 = temp_ret_12904;
-    temp_ret_12908 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3E8->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12904)));
-    this->unk3E8 = temp_ret_12908;
-    temp_ret_12912 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3EC->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12908)));
-    this->unk3EC = temp_ret_12912;
-    temp_ret_12916 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(this->unk3F0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12912)));
-    var_r4_12916 = (u32) (u64) temp_ret_12916;
-    this->unk3F0 = temp_ret_12916;
+    M2C_FIELD(temp_r3_12877->unk44, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK), 0x2C)(temp_r3_12877, &sp8, 0);
+    this->unk3D8 = (CharacterGraphNode *) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3D8)) + 0x50);
+    this->unk3DC = (CharacterGraphNode *) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3DC)) + 0x50);
+    this->unk3E0 = (CharacterGraphNode *) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3E0)) + 0x50);
+    this->unk3E4 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3E4)));
+    this->unk3E8 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3E8)));
+    this->unk3EC = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3EC)));
+    this->unk3F0 = (MKSceneManager *) (checked_cast<ElementalWall *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk3F0)));
     var_r28_12918 = 0;
     var_r30_12919 = 0;
     do {
         temp_r29_12921 = var_r30_12919 + 0x3F4;
-        *(this + temp_r29_12921) = checked_cast<Shatterable *, MKProp>(((MKSceneManager *) (*(this + temp_r29_12921)))->PropResolver_Resolve((s32) var_r4_12916));
+        *(this + temp_r29_12921) = checked_cast<Shatterable *, MKProp>(MKSceneManager::PropResolver_Resolve(*(this + temp_r29_12921)));
         temp_r3_12926 = *(this + temp_r29_12921);
-        var_r4_12916 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_12926, void **, 0x44), u64 (**)(void *), 0x34)(temp_r3_12926);
+        M2C_FIELD(M2C_FIELD(temp_r3_12926, void **, 0x44), M2C_UNK (**)(void *), 0x34)(temp_r3_12926);
         var_r28_12918 += 1;
         var_r30_12919 += 4;
     } while (var_r28_12918 < 4);
-    temp_ret_12937 = checked_cast<DragonStatue *, MKProp>(((MKSceneManager *) this->unk404)->PropResolver_Resolve((s32) var_r4_12916));
-    this->unk404 = temp_ret_12937;
-    this->unk408 = (MKSceneManager *) (checked_cast<MKProp *, MKProp>(this->unk408->PropResolver_Resolve((s32) (u32) (u64) temp_ret_12937)));
+    this->unk404 = checked_cast<DragonStatue *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk404));
+    this->unk408 = (MKSceneManager *) (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk408)));
     MKProp::Resolve();
 }
 #endif
@@ -7278,7 +7254,6 @@ DojoController::DojoController() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_761'
 void DojoController_cpp::__sinit() {
     s32 sp50;
     s32 sp4C;
@@ -7412,4 +7387,3 @@ void DojoController_cpp::__sinit() {
     M2C_FIELD(temp_r17_15313, s32 *, 0x118) = (s32) M2C_FIELD(&lit_761, s32 *, 0x118);
     M2C_FIELD(temp_r17_15313, s32 *, 0x11C) = (s32) M2C_FIELD(&lit_761, s32 *, 0x11C);
 }
-#endif

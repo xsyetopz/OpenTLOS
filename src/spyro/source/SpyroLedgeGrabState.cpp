@@ -396,7 +396,7 @@ void SpyroLedgeGrabState::Enter(SpyroStateMessages &arg0) {
     }
     temp_r3_736 = M2C_FIELD(temp_r29_717, MKProp **, 0x28);
     var_r30_737 = 0;
-    if ((temp_r3_736 != NULL) && (((MobilePlatformDescriptor *) temp_r3_736->unk0)->IsDescriptor(M2C_ERROR(/* Read from unset register $r4 */)) != 0)) {
+    if ((temp_r3_736 != NULL) && (MobilePlatformDescriptor::IsDescriptor((MKPropDescriptor *) temp_r3_736->unk0) != 0)) {
         var_r30_737 = 1;
     }
     this->unk58 = var_r30_737;

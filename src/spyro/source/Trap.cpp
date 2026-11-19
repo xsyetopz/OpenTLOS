@@ -199,7 +199,7 @@ f32 Trap::Resolve() {
     KDPropEx::Resolve();
     temp_r3_291 = this->unkD4;
     if (temp_r3_291 != NULL) {
-        this->unkD4 = (MKSceneManager *) (checked_cast<TrapSystem *, MKProp>(temp_r3_291->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+        this->unkD4 = (MKSceneManager *) (checked_cast<TrapSystem *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_291)));
         temp_r3_297 = this->unkD4;
         if (temp_r3_297 != NULL) {
             ((TrapSystem *) temp_r3_297)->Add((MKProp *) this);

@@ -34,10 +34,10 @@ extern M2C_UNK gDisplay;
 #if 0 // DRAFT: identifier 'Texture_filterType' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 Texture_filterType = 2;
 #endif
-#if 0 // DRAFT: undefined identifier 'saved_reg_r31'
 static M2C_UNK lit_515;                                /* unable to generate initializer: unknown type; const */
 static MKResource lit_stringBase0;                     /* type too large by 0x1D; unable to generate initializer: non-zero padding; const */
 
+#if 0 // DRAFT: undefined identifier 'saved_reg_r31'
 void Texture::ReloadGuts(float arg0) {
     s32 spC;
     u32 sp8;
@@ -154,13 +154,13 @@ block_35:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match 'Str_CopyString(const char *, int)'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s8 *Texture::CreateMpegTarget(const char *arg0, void *arg1, int arg2, int arg3) {
     MKHeap *var_r31_280;
     s8 *temp_r4_300;
     s8 *var_r3_294;
 
-    var_r31_280 = Find(arg0);
+    var_r31_280 = (const char *) (Texture::Find(&this->unk0));
     if (var_r31_280 != NULL) {
         var_r31_280->unk2C += 1;
     } else {
@@ -304,20 +304,20 @@ void Texture::CreateRenderTarget(const char *arg0, int arg1, int arg2, int arg3)
     s32 var_r30_749;
     s8 *var_r3_768;
 
-    var_r30_749 = arg1;
-    if (stricmp(&lit_stringBase0, this, &lit_stringBase0) == 0) {
-        var_r3_768 = (const char *) (CreateFromRawData(&MKMat_MK2_Standard_CaptureTextureData, (void *) arg2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x10) / 2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x14) / 2, 0, M2C_ERROR(/* Read from unset register $r9 */)));
+    var_r30_749 = arg2;
+    if (stricmp(&lit_stringBase0, (Texture *) arg0, &lit_stringBase0) == 0) {
+        var_r3_768 = (const char *) (((Texture *) arg0)->CreateFromRawData(&MKMat_MK2_Standard_CaptureTextureData, (void *) arg3, (s32) M2C_FIELD(&gDisplay, s32 *, 0x10) / 2, (s32) M2C_FIELD(&gDisplay, s32 *, 0x14) / 2, 0, M2C_ERROR(/* Read from unset register $r9 */)));
     } else {
         if (var_r30_749 > 0x80) {
             var_r30_749 = 0x80;
         }
-        var_r3_768 = CreateFromRawData(NULL, (void *) arg2, (s32) arg0, var_r30_749, 0, M2C_ERROR(/* Read from unset register $r9 */));
+        var_r3_768 = ((Texture *) arg0)->CreateFromRawData(NULL, (void *) arg3, arg1, var_r30_749, 0, M2C_ERROR(/* Read from unset register $r9 */));
     }
     M2C_FIELD(var_r3_768, s8 *, 0x30) = 1;
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match 'Str_CopyString(const char *, int)'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3, int arg4, int arg5) {
     MKHeap *temp_r6_890;
     MKHeap *var_r31_805;
@@ -334,7 +334,7 @@ s8 *Texture::CreateFromRawData(const char *arg0, void *arg1, int arg2, int arg3,
     s8 *var_r3_998;
 
     var_r30_800 = (signed char *) (arg0);
-    var_r31_805 = Find(arg0);
+    var_r31_805 = (const char *) (Texture::Find(&this->unk0));
     if (var_r31_805 != NULL) {
         var_r31_805->unk2C += 1;
     } else {
@@ -453,13 +453,13 @@ void Texture::Use() {
     GXLoadTexObj(&this->unk60, GX_TEXMAP0);
 }
 
-#if 0 // DRAFT: function call 'Str_CopyString(signed char *, int)' does not match 'Str_CopyString(const char *, int)'
+#if 0 // DRAFT: function call 'stricmp(MKResource *, Texture *)' does not match 'stricmp(MKResource *, Texture *, MKResource *)'
 MKHeap *Texture::Find(const char *arg0) {
     s8 *var_r30_1114;
     u8 *temp_r31_1115;
 
     var_r30_1114 = Texture_pTextures;
-    temp_r31_1115 = Str_CopyString(&this->unk0, 0x1F);
+    temp_r31_1115 = Str_CopyString(arg0, 0x1F);
 loop_5:
     if (var_r30_1114 == NULL) {
         return NULL;
@@ -507,12 +507,12 @@ void Texture::Destroy() {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 s8 *Texture::Create(const char *arg0, float arg1) {
     MKHeap *var_r31_1215;
     s8 *temp_r3_1241;
 
-    var_r31_1215 = Find(arg0);
+    var_r31_1215 = (const char *) (Texture::Find(&this->unk0));
     if (var_r31_1215 != NULL) {
         var_r31_1215->unk2C += 1;
     } else {

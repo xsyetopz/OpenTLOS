@@ -113,6 +113,7 @@ static struct _struct_groups_0x28 groups[8];
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_ballProperties_0x3'
 static struct _struct_ballProperties_0x3 ballProperties[4]; /* unable to generate initializer: non-zero padding; const */
+#endif
 
 void Ball::BridgeHit(float arg0, float arg1) {
     f64 spD8;
@@ -191,7 +192,6 @@ void Ball::BridgeHit(float arg0, float arg1) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void Ball::PlatformAttach(MKProp *arg0, MKCollisionInfo *arg1) {
@@ -1002,13 +1002,14 @@ void Ball::CheckForHero() {
     f64 temp_f2_1868;
     f64 temp_f2_1874;
     f64 temp_f2_1878;
+    s32 temp_r3_1628;
     s32 temp_r3_1746;
     s32 temp_r3_1897;
     s32 var_r0_1638;
     s32 var_r0_1756;
     s32 var_r0_1907;
-    std *var_r3_1550;
     void *temp_r3_1518;
+    void *temp_r3_1550;
     void *temp_r3_1820;
     void *temp_r4_1517;
     void *temp_r4_1687;
@@ -1036,21 +1037,18 @@ void Ball::CheckForHero() {
         sp180 = (f64) sp90;
         temp_f1_1547 = ((f32) sp180 * (f32) sp180) + (((f32) sp178 * (f32) sp178) + ((*(f32 *) ((u8 *) &sp170 + 0xc)) * (*(f32 *) ((u8 *) &sp170 + 0xc))));
         if (temp_f1_1547 < (temp_f28_1512 * temp_f28_1512)) {
-            var_r3_1550 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), std **, 0x27C);
-            if ((var_r3_1550 + 8) != 0) {
-                var_r3_1550 = M2C_FIELD(var_r3_1550, std **, 0x4C);
-                if ((void *) (var_r3_1550 + 0xFFFF0000) == (void *)2U) {
-                    sp128.GetPos();
-                    sp48 = this->unkE0 - M2C_BITWISE(f64, sp128);
-                    this->unkF0 = sp48;
-                    sp50 = this->unkE8 - sp130;
-                    sp138 = sp48;
-                    M2C_FIELD(this, f64 *, 0xF8) = (f64) sp50;
-                    M2C_FIELD(this, f32 *, 0xF4) = 0.0f;
-                    sp140 = (f64) sp50;
-                    this->unk2AC |= 0x80;
-                    return;
-                }
+            temp_r3_1550 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), void **, 0x27C);
+            if (((((u8 *) temp_r3_1550) + 8) != 0) && ((u32) (M2C_FIELD(temp_r3_1550, s32 *, 0x4C) + 0xFFFF0000) == 2U)) {
+                sp128.GetPos();
+                sp48 = this->unkE0 - M2C_BITWISE(f64, sp128);
+                this->unkF0 = sp48;
+                sp50 = this->unkE8 - sp130;
+                sp138 = sp48;
+                M2C_FIELD(this, f64 *, 0xF8) = (f64) sp50;
+                M2C_FIELD(this, f32 *, 0xF4) = 0.0f;
+                sp140 = (f64) sp50;
+                this->unk2AC |= 0x80;
+                return;
             }
             var_f5_1585 = 0.0f;
             (*(f32 *) ((u8 *) &sp170 + 0xc)) = 0.0f;
@@ -1062,12 +1060,11 @@ void Ball::CheckForHero() {
                     temp_f2_1609 = 0.5 * temp_f2_1605 * -(((f64) var_f6_1594 * (temp_f2_1605 * temp_f2_1605)) - 3.0);
                     var_f6_1594 = (f32) ((f64) var_f6_1594 * (0.5 * temp_f2_1609 * -(((f64) var_f6_1594 * (temp_f2_1609 * temp_f2_1609)) - 3.0)));
                 } else if (var_f6_1594 < M2C_BITWISE(f32, 0.0)) {
-                    var_r3_1550 = &__float_nan;
                     var_f6_1594 = __float_nan;
                 } else {
                     spC = var_f6_1594;
-                    var_r3_1550 = (std *) (M2C_BITWISE(s32, spC) & 0x7F800000);
-                    switch (var_r3_1550) {          /* switch 1; irregular */
+                    temp_r3_1628 = M2C_BITWISE(s32, spC) & 0x7F800000;
+                    switch (temp_r3_1628) {         /* switch 1; irregular */
                     case 0x7F800000:                /* switch 1 */
                         if (M2C_BITWISE(s32, spC) & 0x7FFFFF) {
                             var_r0_1638 = 1;
@@ -1087,7 +1084,6 @@ void Ball::CheckForHero() {
                         break;
                     }
                     if (var_r0_1638 == 1) {
-                        var_r3_1550 = &__float_nan;
                         var_f6_1594 = __float_nan;
                     }
                 }
@@ -1226,7 +1222,7 @@ void Ball::CheckForHero() {
                 }
             } else {
                 temp_f31_1978 = gUpdateTimeDelta;
-                sp98.operator*(var_r3_1550->sqrtf(temp_f1_1547));
+                sp98.operator*(std::sqrtf(temp_f1_1547));
                 spA8.operator*(5.0f);
                 temp_f0_1989 = spA8 * (f64) temp_f31_1978;
                 sp18 = temp_f0_1989;

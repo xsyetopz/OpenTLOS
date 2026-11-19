@@ -62,10 +62,10 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'unk0'
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
 SpyroIdleState states__14SpyroIdleState;            /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroIdleState::AnyToBreathingTranistion() {
     EventCamera *temp_r3_31;
     EventCamera *temp_r3_71;
@@ -545,7 +545,6 @@ void SpyroIdleState::Init(Spyro *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroIdleState_cpp::__sinit() {
     f64 temp_f0_1466;
     f64 temp_f1_1433;
@@ -616,4 +615,3 @@ void SpyroIdleState_cpp::__sinit() {
     M2C_FIELD(temp_r3_1424, s32 *, 0xAC) = (s32) M2C_FIELD(&lit_728, s32 *, 0xAC);
     M2C_FIELD(temp_r3_1424, s32 *, 0xB0) = (s32) M2C_FIELD(&lit_728, s32 *, 0xB0);
 }
-#endif

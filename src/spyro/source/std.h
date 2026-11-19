@@ -7,7 +7,7 @@ class std;
 
 class std {
 public:
-    f32 sqrtf(float);
+    static f32 sqrtf(float);
     f32 sin(float);
 };
 
@@ -16,7 +16,7 @@ public:
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier '__float_nan'
-inline f32 std::sqrtf(float arg0) {
+inline f32 std::sqrtf(float farg0) {
     f32 sp8;
     f32 var_f1_0;
     f64 temp_f2_10156;
@@ -25,7 +25,7 @@ inline f32 std::sqrtf(float arg0) {
     s32 temp_r3_10185;
     s32 var_r0_10195;
 
-    var_f1_0 = arg0;
+    var_f1_0 = farg0;
     if (var_f1_0 > 0.0f) {
         temp_f2_10156 = __frsqrte(var_f1_0);
         temp_f2_10162 = 0.5 * temp_f2_10156 * -(((f64) var_f1_0 * (temp_f2_10156 * temp_f2_10156)) - 3.0);

@@ -60,11 +60,11 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'ConsoleCmds_pSenderProp' redeclared was declared as: 'MKProp *' now declared as: 'long'
 f64 atof(u8 *, f32);                                /* extern */
-MKSceneManager *atoi(u8 *);                         /* extern */
+s32 atoi(u8 *);                                     /* extern */
 s32 sscanf(s8 *, f32 *, f32 *);                     /* extern */
 s32 stricmp(s8 *, u8 *);                            /* extern */
+#if 0 // DRAFT: identifier 'ConsoleCmds_pSenderProp' redeclared was declared as: 'MKProp *' now declared as: 'long'
 extern s32 ConsoleCmds_pSenderProp;
 #endif
 extern GameStateMachine gGMState;
@@ -110,7 +110,7 @@ f32 CmdAutosave(int arg0, char **arg1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x228), M2C_FIELD(arg1, s8 **, 0));
         return 0.0f;
     }
-    ((GameData *) GameData::gameData)->SetSaveChunk(((Level *) (M2C_FIELD(arg1, Level **, 4)))->GetChunkByName((s8 *) arg1));
+    ((GameData *) GameData::gameData)->SetSaveChunk(Level::GetChunkByName(M2C_FIELD(arg1, s8 **, 4)));
     Autosave_Activate();
     return 1.0f;
 }
@@ -248,15 +248,15 @@ f32 CmdHoldBlank(int arg0, char **arg1) {
 
 #if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdPlayThrough(int arg0, char **arg1) {
-    MKSceneManager *temp_r3_433;
+    s32 temp_r3_433;
 
     if (arg0 < 2) {
         Console_Print((s8 *) (lit_stringBase0 + 0x2A3), M2C_FIELD(arg1, s8 **, 0));
         return 0.0f;
     }
     temp_r3_433 = atoi(M2C_FIELD(arg1, u8 **, 4));
-    GameData::gameData[0x18A] = (GameData::gameData[0x18A] & ~0x40) | (((temp_r3_433 != NULL) << 6) & 0x40);
-    M2C_FIELD(GameData::gameData, s32 *, 0x3C) = (s32) (temp_r3_433 != NULL);
+    GameData::gameData[0x18A] = (GameData::gameData[0x18A] & ~0x40) | (((temp_r3_433 != 0) << 6) & 0x40);
+    M2C_FIELD(GameData::gameData, s32 *, 0x3C) = (s32) (temp_r3_433 != 0);
     return 1.0f;
 }
 #endif
@@ -461,7 +461,6 @@ f32 CmdTeleport(int arg0, char **arg1) {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKSceneManager *temp_ret_876;
     f32 temp_f1_898;
     f32 temp_f2_909;
     f32 temp_f30_892;
@@ -473,8 +472,7 @@ f32 CmdTeleport(int arg0, char **arg1) {
         Console_Print((s8 *) (lit_stringBase0 + 0x2DD), M2C_FIELD(arg1, s8 **, 0));
         return 0.0f;
     }
-    temp_ret_876 = atoi(M2C_FIELD(arg1, u8 **, 4));
-    temp_ret_877 = temp_ret_876->PropResolver_Resolve((s32) (u32) (u64) temp_ret_876);
+    temp_ret_877 = MKSceneManager::PropResolver_Resolve(atoi(M2C_FIELD(arg1, u8 **, 4)));
     temp_r3_877 = temp_ret_877;
     if (temp_r3_877 == NULL) {
         Console_Print((s8 *) (lit_stringBase0 + 0x30E), M2C_FIELD(arg1, s8 **, 0), M2C_FIELD(arg1, u8 **, 4), M2C_BITWISE(f32, temp_ret_877));
@@ -530,25 +528,19 @@ f32 CmdHeroAlive(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
+#if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdChunkLoad(int arg0, char **arg1) {
     ChunkInfo *sp8;
     Level *temp_r29_1072;
-    f32 temp_f1_1047;
     s32 temp_r30_1040;
     s32 var_r28_1041;
     s32 var_r31_1042;
-    s8 **temp_r27_1025;
-    s8 **var_r4_0;
     u8 var_r3_1084;
-    void *temp_r3_1047;
     void *temp_r4_1090;
     void *temp_ret_1047;
 
-    var_r4_0 = (signed char **) (arg1);
-    temp_r27_1025 = var_r4_0;
     if ((arg0 < 2) || (arg0 > 4)) {
-        Console_Print((s8 *) (lit_stringBase0 + 0x33E), *temp_r27_1025);
+        Console_Print((s8 *) (lit_stringBase0 + 0x33E), *arg1);
         return 0.0f;
     }
     temp_r30_1040 = arg0 - 1;
@@ -573,13 +565,10 @@ loop_7:
         }
         return 1.0f;
     }
-    temp_ret_1047 = (const char *) (((Level *) (*(temp_r27_1025 + (var_r31_1042 + 4))))->GetChunkByName((s8 *) var_r4_0));
-    temp_f1_1047 = M2C_BITWISE(f32, temp_ret_1047);
-    temp_r3_1047 = temp_ret_1047;
-    var_r4_0 = (s8 **) (u32) (u64) temp_ret_1047;
-    *(&sp8 + var_r31_1042) = (ChunkInfo *) (temp_r3_1047);
+    temp_ret_1047 = Level::GetChunkByName(*(arg1 + (var_r31_1042 + 4)));
+    *(&sp8 + var_r31_1042) = (ChunkInfo *) (temp_ret_1047);
     if ((u32) *(&sp8 + var_r31_1042) == 0U) {
-        Console_Print((s8 *) (lit_stringBase0 + 0x367), *temp_r27_1025, M2C_FIELD((temp_r27_1025 + var_r31_1042), s32 *, 4), lit_stringBase0, temp_f1_1047);
+        Console_Print((s8 *) (lit_stringBase0 + 0x367), *arg1, M2C_FIELD((arg1 + var_r31_1042), s32 *, 4), lit_stringBase0, M2C_BITWISE(f32, temp_ret_1047));
         return 0.0f;
     }
     var_r28_1041 += 1;
@@ -657,10 +646,10 @@ f32 StatAccessor(int arg0, char **arg1, Stat *arg2) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)' Too many errors printed, aborting program
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdTask(int arg0, char **arg1) {
-    MKSceneManager *temp_r31_1346;
-    MKSceneManager *temp_r3_1361;
+    s32 temp_r31_1346;
+    s32 temp_r3_1361;
     u8 *temp_r4_1373;
     u8 temp_r0_1363;
 
@@ -684,7 +673,7 @@ f32 CmdTask(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
+#if 0 // DRAFT: undefined identifier 'GetBreathType'
 f32 CmdActionGive(int arg0, char **arg1) {
     s32 temp_r3_1460;
     s32 temp_r3_1466;
@@ -736,7 +725,7 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
+#if 0 // DRAFT: function call 'stricmp(signed char *)' does not match 'stricmp(signed char *, unsigned char *)'
 s32 GetBreathType(const char *arg0) {
     s32 var_r3_1616;
 
@@ -760,7 +749,7 @@ s32 GetBreathType(const char *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
+#if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdGemGive(int arg0, char **arg1) {
     if ((arg0 > 1) && (stricmp(M2C_FIELD(arg1, s8 **, 4), lit_stringBase0 + 0x44A) == 0)) {
         GameData::gameData[0x169] |= 4;
@@ -881,7 +870,6 @@ f32 CmdSoundPlay(int arg0, char **arg1) {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKSceneManager *temp_ret_1984;
     f32 temp_f1_1953;
     f32 temp_f1_2018;
     f32 temp_f30_2012;
@@ -914,8 +902,7 @@ f32 CmdSoundPlay(int arg0, char **arg1) {
         var_r30_1947 = KDSound_Play(temp_r3_1953, 0U, -1);
         break;
     case 3:
-        temp_ret_1984 = atoi(M2C_FIELD(arg1, u8 **, 8));
-        temp_ret_1985 = temp_ret_1984->PropResolver_Resolve((s32) (u32) (u64) temp_ret_1984);
+        temp_ret_1985 = MKSceneManager::PropResolver_Resolve(atoi(M2C_FIELD(arg1, u8 **, 8)));
         temp_r3_1985 = temp_ret_1985;
         if ((temp_r3_1985 != NULL) && (temp_r4_1988 = M2C_FIELD(temp_r3_1985, u32 *, 8), ((temp_r4_1988 == 0U) == 0))) {
             var_r30_1947 = KDSound_Play3d(temp_r3_1953, temp_r4_1988 + 0x30, 0U, -1, 0.0f, 0U);
@@ -991,9 +978,8 @@ block_11:
 
 #if 0 // DRAFT: function call 'Console_Print(signed char *, char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdEnableDisable(int arg0, char **arg1) {
-    MKSceneManager *temp_r3_2201;
-    MKSceneManager *temp_ret_2201;
     f32 var_f31_2189;
+    s32 temp_r3_2201;
     s32 var_r29_2195;
     s32 var_r31_2197;
     u8 temp_r30_2196;
@@ -1010,10 +996,9 @@ f32 CmdEnableDisable(int arg0, char **arg1) {
     var_r31_2197 = 4;
 loop_10:
     if (var_r29_2195 < arg0) {
-        temp_ret_2201 = atoi(*(arg1 + var_r31_2197));
-        temp_r3_2201 = temp_ret_2201;
+        temp_r3_2201 = atoi(*(arg1 + var_r31_2197));
         if (temp_r3_2201 > 0) {
-            temp_ret_2204 = temp_r3_2201->PropResolver_Resolve((s32) (u32) (u64) temp_ret_2201);
+            temp_ret_2204 = MKSceneManager::PropResolver_Resolve(temp_r3_2201);
             temp_r3_2204 = temp_ret_2204;
             if (temp_r3_2204 != NULL) {
                 if (temp_r30_2196 != 0) {
@@ -1039,11 +1024,10 @@ f32 CmdSendArg(int arg0, char **arg1) {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    MKSceneManager *temp_r3_2292;
-    MKSceneManager *temp_ret_2292;
     f32 var_f31_2269;
     s32 temp_r0_2274;
     s32 temp_r3_2272;
+    s32 temp_r3_2292;
     s32 var_ctr_2282;
     s32 var_r3_2279;
     void *temp_r3_2295;
@@ -1069,10 +1053,9 @@ f32 CmdSendArg(int arg0, char **arg1) {
             var_ctr_2282 -= 1;
         } while (var_ctr_2282 != 0);
     }
-    temp_ret_2292 = atoi(M2C_FIELD(arg1, u8 **, 8));
-    temp_r3_2292 = temp_ret_2292;
+    temp_r3_2292 = atoi(M2C_FIELD(arg1, u8 **, 8));
     if (temp_r3_2292 > 0) {
-        temp_ret_2295 = temp_r3_2292->PropResolver_Resolve((s32) (u32) (u64) temp_ret_2292);
+        temp_ret_2295 = MKSceneManager::PropResolver_Resolve(temp_r3_2292);
         temp_r3_2295 = temp_ret_2295;
         if (temp_r3_2295 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_2295, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -1091,10 +1074,9 @@ f32 CmdSendArg(int arg0, char **arg1) {
 f32 CmdSend(int arg0, char **arg1) {
     s32 spC;
     s32 sp8;
-    MKSceneManager *temp_r3_2366;
-    MKSceneManager *temp_ret_2366;
     f32 var_f31_2352;
     s32 temp_r3_2355;
+    s32 temp_r3_2366;
     s32 var_r30_2359;
     s32 var_r31_2360;
     void *temp_r3_2369;
@@ -1113,10 +1095,9 @@ f32 CmdSend(int arg0, char **arg1) {
     spC = (long) (ConsoleCmds_pSenderProp);
 loop_9:
     if (var_r30_2359 < arg0) {
-        temp_ret_2366 = atoi(*(arg1 + var_r31_2360));
-        temp_r3_2366 = temp_ret_2366;
+        temp_r3_2366 = atoi(*(arg1 + var_r31_2360));
         if (temp_r3_2366 > 0) {
-            temp_ret_2369 = temp_r3_2366->PropResolver_Resolve((s32) (u32) (u64) temp_ret_2366);
+            temp_ret_2369 = MKSceneManager::PropResolver_Resolve(temp_r3_2366);
             temp_r3_2369 = temp_ret_2369;
             if (temp_r3_2369 != NULL) {
                 M2C_FIELD(M2C_FIELD(temp_r3_2369, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
@@ -1148,7 +1129,6 @@ void CmdCutsceneSubtitlesGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2455;
@@ -1175,7 +1155,6 @@ f32 CmdCutsceneSubtitles(int arg0, char **arg1) {
     }
     return 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *, float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdScrWideGetStr(char *arg0, int arg1) {
@@ -1191,7 +1170,6 @@ void CmdScrWideGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdScrWide(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2574;
@@ -1218,7 +1196,6 @@ f32 CmdScrWide(int arg0, char **arg1) {
     }
     return 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdCamInvertXGetStr(char *arg0, int arg1) {
@@ -1233,7 +1210,6 @@ void CmdCamInvertXGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdCamInvertX(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2700;
@@ -1260,7 +1236,6 @@ f32 CmdCamInvertX(int arg0, char **arg1) {
     }
     return 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, unsigned char *)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSpeedwayInvertYGetStr(char *arg0, int arg1) {
@@ -1275,7 +1250,6 @@ void CmdSpeedwayInvertYGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_2824;
@@ -1302,7 +1276,6 @@ f32 CmdSpeedwayInvertY(int arg0, char **arg1) {
     }
     return 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Console_Print(signed char *, signed char *)' does not match 'Console_Print(const char *, ...)'
 f32 CmdInputVibrate(int arg0, char **arg1) {
@@ -1333,7 +1306,6 @@ void CmdInputVibrationGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
 f32 CmdInputVibration(int arg0, char **arg1) {
     f32 sp8;
     u8 var_r31_3002;
@@ -1361,7 +1333,6 @@ f32 CmdInputVibration(int arg0, char **arg1) {
     }
     return 0.0f;
 }
-#endif
 
 #if 0 // DRAFT: function call 'Str_snPrintf(char *, int, signed char *, float)' does not match 'Str_snPrintf(char *, int, const char *, ...)'
 void CmdSndModeGetStr(char *arg0, int arg1) {
@@ -1369,7 +1340,7 @@ void CmdSndModeGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sscanf'
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 CmdSndMode(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -1444,7 +1415,7 @@ void CmdSndSoundVolGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sscanf'
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 CmdSndSoundVol(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;
@@ -1501,7 +1472,7 @@ void CmdSndMusicVolGetStr(char *arg0, int arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'sscanf'
+#if 0 // DRAFT: function call 'sscanf(signed char *, float *)' does not match 'sscanf(signed char *, float *, float *)'
 f32 CmdSndMusicVol(int arg0, char **arg1) {
     f32 spC;
     f32 sp8;

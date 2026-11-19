@@ -171,8 +171,8 @@ u8 KDCollisionObject::IsFloorCollision(MKCollisionResult *arg0) {
     return ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1EU) & 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
-void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float arg2, KDContextInfo *arg3, MKCollisionResult *arg4, const MKVector3 &arg5) {
+#if 0 // DRAFT: undefined identifier 'unk0'
+void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *arg1, float farg0, KDContextInfo *arg2, MKCollisionResult *arg3, const MKVector3 &arg4) {
     f64 sp1F8;
     f64 sp1F0;
     f64 sp1E8;
@@ -270,19 +270,19 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
     s32 var_r0_551;
     void *temp_r31_272;
 
-    temp_r0_263 = M2C_FIELD(arg1, s32 *, 0xB8);
-    temp_r31_272 = (void *) (arg1 + (((M2C_BITWISE(s32, arg1->unk0) - 1) * 0x58) + 8));
+    temp_r0_263 = M2C_FIELD(arg2, s32 *, 0xB8);
+    temp_r31_272 = arg2 + (((arg2->unk0 - 1) * 0x58) + 8);
     switch (temp_r0_263) {                          /* switch 1; irregular */
     case 1:                                         /* switch 1 */
-        temp_f0_286 = M2C_FIELD(arg0, f64 *, 0) * (f64) arg2;
+        temp_f0_286 = M2C_FIELD(arg1, f64 *, 0) * (f64) farg0;
         spA0 = temp_f0_286;
         sp180 = temp_f0_286;
-        spA8 = arg0->unk8 * arg2;
+        spA8 = arg1->unk8 * farg0;
         sp188 = (f64) spA8;
-        sp190 = NProjection(*((MKVector3 *) &sp180), *((MKVector3 *) arg4));
-        *(MKVector3 *) &this->unk0 = sp190;
+        sp190 = NProjection(*((MKVector3 *) &sp180), arg4);
+        M2C_FIELD(arg0, MKVector3 *, 0) = sp190;
         temp_f4_311 = M2C_FIELD(temp_r31_272, f32 *, 0x18);
-        temp_f29_314 = -(((f32) M2C_FIELD(this, f64 *, 8) * temp_f4_311) + (((f32) M2C_FIELD(this, f64 *, 0) * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (M2C_FIELD(this, f32 *, 4) * M2C_FIELD(temp_r31_272, f32 *, 0x14))));
+        temp_f29_314 = -((arg0->unk8 * temp_f4_311) + ((arg0->unk0 * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (arg0->unk4 * M2C_FIELD(temp_r31_272, f32 *, 0x14))));
         sp14 = temp_f29_314;
         sp18 = (M2C_BITWISE(s32, sp14) & 0x80000000) | 0x3F800000;
         temp_f29_321 = (0.05f * M2C_BITWISE(f32, sp18)) + temp_f29_314;
@@ -292,16 +292,16 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         sp170 = sp90;
         sp178 = (f64) sp98;
         sp1F8 = (f64) sp98;
-        this->unk0 += sp1F0;
-        M2C_FIELD(this, f64 *, 8) = (f32) ((f32) M2C_FIELD(this, f64 *, 8) + (f32) sp1F8);
-        if ((arg3 != NULL) && (((arg3->unk18 * (f32) M2C_FIELD(this, f64 *, 8)) + ((arg3->unk10 * (f32) M2C_FIELD(this, f64 *, 0)) + (arg3->unk14 * M2C_FIELD(this, f32 *, 4)))) < 0.0f)) {
-            temp_f0_356 = M2C_FIELD(arg0, f64 *, 0) * (f64) arg2;
+        M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + sp1F0);
+        arg0->unk8 += (f32) sp1F8;
+        if ((arg3 != NULL) && (((arg3->unk18 * arg0->unk8) + ((arg3->unk10 * arg0->unk0) + (arg3->unk14 * arg0->unk4))) < 0.0f)) {
+            temp_f0_356 = M2C_FIELD(arg1, f64 *, 0) * (f64) farg0;
             sp80 = temp_f0_356;
             sp150 = temp_f0_356;
-            sp88 = arg0->unk8 * arg2;
+            sp88 = arg1->unk8 * farg0;
             sp158 = (f64) sp88;
-            sp160 = NProjection(*((MKVector3 *) &sp150), *((MKVector3 *) arg4));
-            *(MKVector3 *) &this->unk0 = sp160;
+            sp160 = NProjection(*((MKVector3 *) &sp150), arg4);
+            M2C_FIELD(arg0, MKVector3 *, 0) = sp160;
             temp_f5_373 = arg3->unk18;
             temp_f8_374 = M2C_FIELD(temp_r31_272, f32 *, 0x10);
             temp_f1_375 = M2C_FIELD(temp_r31_272, f32 *, 0x18);
@@ -313,11 +313,11 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
             spD8 = (temp_f8_374 * temp_f7_376) - (temp_f6_379 * temp_f2_378);
             sp1E0 = (f64) spD0;
             sp1E8 = (f64) spD8;
-            temp_f30_400 = ((f32) M2C_FIELD(this, f64 *, 8) * (f32) sp1E8) + (((f32) M2C_FIELD(this, f64 *, 0) * (f32) sp1E0) + (M2C_FIELD(this, f32 *, 4) * (*(f32 *) ((u8 *) &sp1E0 + 0x4))));
+            temp_f30_400 = (arg0->unk8 * (f32) sp1E8) + ((arg0->unk0 * (f32) sp1E0) + (arg0->unk4 * (*(f32 *) ((u8 *) &sp1E0 + 0x4))));
             sp70 = (f64) spD0 * (f64) temp_f30_400;
             sp78 = (f32) sp1E8 * temp_f30_400;
-            this->unk0 = sp70;
-            this->unk8 = (f64) sp78;
+            M2C_FIELD(arg0, f64 *, 0) = sp70;
+            M2C_FIELD(arg0, f64 *, 8) = (f64) sp78;
             sp140 = sp70;
             sp148 = (f64) sp78;
             temp_f0_415 = (f64) M2C_FIELD(arg3, f32 *, 0x10) + (f64) M2C_FIELD(temp_r31_272, f32 *, 0x10);
@@ -330,30 +330,30 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
             sp1D0 = temp_f0_427;
             spB8 = (f32) sp138 * 0.1f;
             sp1D8 = (f64) spB8;
-            this->unk0 += temp_f0_427;
-            M2C_FIELD(this, f64 *, 8) = (f32) ((f32) M2C_FIELD(this, f64 *, 8) + (f32) sp1D8);
+            M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + temp_f0_427);
+            arg0->unk8 += (f32) sp1D8;
             return;
         }
         return;
     case 2:                                         /* switch 1 */
-        sp60 = M2C_FIELD(arg0, f64 *, 0) * (f64) arg2;
-        this->unk0 = sp60;
-        sp68 = arg0->unk8 * arg2;
-        this->unk8 = (f64) sp68;
+        sp60 = M2C_FIELD(arg1, f64 *, 0) * (f64) farg0;
+        M2C_FIELD(arg0, f64 *, 0) = sp60;
+        sp68 = arg1->unk8 * farg0;
+        M2C_FIELD(arg0, f64 *, 8) = (f64) sp68;
         temp_f5_462 = M2C_FIELD(temp_r31_272, f32 *, 0x14);
         temp_f9_465 = M2C_FIELD(temp_r31_272, f32 *, 0x10);
         temp_f10_468 = M2C_FIELD(temp_r31_272, f32 *, 0x18);
         sp120 = sp60;
         sp128 = (f64) sp68;
-        M2C_FIELD(this, f32 *, 4) = (f32) (M2C_FIELD(this, f32 *, 4) + (0.05f + ((((f32) M2C_FIELD(this, f64 *, 8) * temp_f10_468) + (((f32) M2C_FIELD(this, f64 *, 0) * temp_f9_465) + (M2C_FIELD(this, f32 *, 4) * temp_f5_462))) / ((MKVector3::up.unk8 * temp_f10_468) + ((MKVector3::up.unk0 * temp_f9_465) + (MKVector3::up.unk4 * temp_f5_462))))));
+        arg0->unk4 += 0.05f + (((arg0->unk8 * temp_f10_468) + ((arg0->unk0 * temp_f9_465) + (arg0->unk4 * temp_f5_462))) / ((MKVector3::up.unk8 * temp_f10_468) + ((MKVector3::up.unk0 * temp_f9_465) + (MKVector3::up.unk4 * temp_f5_462))));
         /* fallthrough */
     case 3:                                         /* switch 1 */
-        sp50 = M2C_FIELD(arg0, f64 *, 0) * (f64) arg2;
+        sp50 = M2C_FIELD(arg1, f64 *, 0) * (f64) farg0;
         var_f8_488 = 0.0f;
-        this->unk0 = sp50;
-        sp58 = arg0->unk8 * arg2;
+        M2C_FIELD(arg0, f64 *, 0) = sp50;
+        sp58 = arg1->unk8 * farg0;
         sp110 = sp50;
-        this->unk8 = (f64) sp58;
+        M2C_FIELD(arg0, f64 *, 8) = (f64) sp58;
         sp1C0 = (f64) M2C_FIELD(temp_r31_272, f32 *, 0x10);
         sp1C8 = (f64) M2C_FIELD(temp_r31_272, f32 *, 0x18);
         sp118 = (f64) sp58;
@@ -401,7 +401,7 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         sp1C0 = (f32) sp1C0 * var_f8_488;
         (*(f32 *) ((u8 *) &sp1B8 + 0xc)) *= var_f8_488;
         sp1C8 = temp_f4_593;
-        temp_f1_598 = -(((f32) M2C_FIELD(this, f64 *, 8) * M2C_FIELD(temp_r31_272, f32 *, 0x18)) + (((f32) M2C_FIELD(this, f64 *, 0) * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (M2C_FIELD(this, f32 *, 4) * M2C_FIELD(temp_r31_272, f32 *, 0x14)))) / var_f0_507;
+        temp_f1_598 = -((arg0->unk8 * M2C_FIELD(temp_r31_272, f32 *, 0x18)) + ((arg0->unk0 * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (arg0->unk4 * M2C_FIELD(temp_r31_272, f32 *, 0x14)))) / var_f0_507;
         spC = temp_f1_598;
         sp10 = (M2C_BITWISE(s32, spC) & 0x80000000) | 0x3F800000;
         temp_f1_605 = (0.05f * M2C_BITWISE(f32, sp10)) + temp_f1_598;
@@ -411,32 +411,32 @@ void KDCollisionObject::CalculateNewVelocity(MKVector3 *arg0, const MKVector3 *a
         sp100 = sp40;
         sp108 = (f64) sp48;
         sp1B8 = (f64) sp48;
-        this->unk0 += sp1B0;
-        M2C_FIELD(this, f64 *, 8) = (f32) ((f32) M2C_FIELD(this, f64 *, 8) + (f32) sp1B8);
+        M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + sp1B0);
+        arg0->unk8 += (f32) sp1B8;
         return;
     case 4:                                         /* switch 1 */
-        M2C_FIELD(this, f64 *, 0) = 0.0f;
-        M2C_FIELD(this, f32 *, 4) = 0.0f;
-        M2C_FIELD(this, f64 *, 8) = 0.0f;
+        arg0->unk0 = 0.0f;
+        arg0->unk4 = 0.0f;
+        arg0->unk8 = 0.0f;
         return;
     case 5:                                         /* switch 1 */
-        temp_f0_634 = M2C_FIELD(arg0, f64 *, 0) * (f64) arg2;
+        temp_f0_634 = M2C_FIELD(arg1, f64 *, 0) * (f64) farg0;
         sp30 = temp_f0_634;
-        this->unk0 = temp_f0_634;
-        sp38 = arg0->unk8 * arg2;
+        M2C_FIELD(arg0, f64 *, 0) = temp_f0_634;
+        sp38 = arg1->unk8 * farg0;
         spF0 = temp_f0_634;
-        this->unk8 = (f64) sp38;
+        M2C_FIELD(arg0, f64 *, 8) = (f64) sp38;
         temp_f7_652 = M2C_FIELD(temp_r31_272, f32 *, 0x18);
         spF8 = (f64) sp38;
-        temp_f6_657 = 2.0f * -(((f32) M2C_FIELD(this, f64 *, 8) * temp_f7_652) + (((f32) M2C_FIELD(this, f64 *, 0) * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (M2C_FIELD(this, f32 *, 4) * M2C_FIELD(temp_r31_272, f32 *, 0x14))));
+        temp_f6_657 = 2.0f * -((arg0->unk8 * temp_f7_652) + ((arg0->unk0 * M2C_FIELD(temp_r31_272, f32 *, 0x10)) + (arg0->unk4 * M2C_FIELD(temp_r31_272, f32 *, 0x14))));
         sp20 = (f64) M2C_FIELD(temp_r31_272, f32 *, 0x10) * (f64) temp_f6_657;
         sp28 = temp_f7_652 * temp_f6_657;
         sp1A0 = sp20;
         spE0 = sp20;
         spE8 = (f64) sp28;
         sp1A8 = (f64) sp28;
-        this->unk0 += sp1A0;
-        M2C_FIELD(this, f64 *, 8) = (f32) ((f32) M2C_FIELD(this, f64 *, 8) + (f32) sp1A8);
+        M2C_FIELD(arg0, f64 *, 0) = (f64) (M2C_FIELD(arg0, f64 *, 0) + sp1A0);
+        arg0->unk8 += (f32) sp1A8;
         break;
     }
 }
@@ -845,7 +845,7 @@ loop_65:
             temp_f1_1210 = var_f24_981 - var_f25_1184;
             if (!(temp_f1_1210 < 0.05f)) {
                 temp_r0_1215 = 0 - var_r30_872;
-                ((KDCollisionObject *) arg1)->CalculateNewVelocity((MKVector3 *) &sp70, var_r5_1117, temp_f1_1210, (KDContextInfo *) ((s32) &spE8 & ((temp_r0_1215 - temp_r0_1215) - !M2C_CARRY)), (MKCollisionResult *) &sp80, *(M2C_ERROR(/* Read from unset register $r8 */)));
+                KDCollisionObject::CalculateNewVelocity(arg1, (MKVector3 *) &sp70, temp_f1_1210, (KDContextInfo *) var_r5_1117, (MKCollisionResult *) ((s32) &spE8 & ((temp_r0_1215 - temp_r0_1215) - !M2C_CARRY)), *((MKVector3 *) &sp80));
                 var_r30_872 = 1;
                 var_r29_955 += 1;
                 spE8 = (f64) sp90;
@@ -920,8 +920,8 @@ MKVector3 *KDCollisionObject::StoreResult(MKCollisionResult *arg0, MKVector3 *ar
     return (MKVector3 *) var_r9_1307;
 }
 
-void KDCollisionObject::CalcPushOutPos(const MKVector3 &arg1, MKVector3 *arg2, KDColObjDescriptor *arg3, float farg0, KDCollisionObject::UpdateResult *arg4) {
-    CalcPushOutPos(arg1, M2C_FIELD(arg2, MKVector3 **, 0x10), M2C_BITWISE(s32, arg2->unk8), farg0, (MKCollisionMode) M2C_FIELD(arg2, s32 *, 0x18), (s32) arg3, M2C_ERROR(/* Read from unset register $r9 */));
+void KDCollisionObject::CalcPushOutPos(const MKVector3 &arg0, MKVector3 *arg1, KDColObjDescriptor *arg2, float farg0, KDCollisionObject::UpdateResult *arg3) {
+    ((KDCollisionObject *) &arg0)->CalcPushOutPos(*arg1, (MKVector3 *) arg2->unk10, arg2->unk8, farg0, (MKCollisionMode) arg2->unk18, (s32) arg3, M2C_ERROR(/* Read from unset register $r9 */));
 }
 
 #if 0 // DRAFT: illegal operands 'MKCollisionResult' < 'MKCollisionResult'

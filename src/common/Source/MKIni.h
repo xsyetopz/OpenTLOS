@@ -10,7 +10,7 @@ class MKVector4;
 
 class MKIni {
 public:
-    s32 Exists(const char *);
+    static s32 Exists(const char *);
     u8 IsMaskedOut(MKIniLine *);
     void ReadBinary(const char *);
     MKIniLine * GetSubLine(MKIniLine *);

@@ -25,12 +25,12 @@ extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: identifier 'gbInitialiseMK2StandardGlow' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 gbInitialiseMK2StandardGlow;
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialTypeInfo'
 static M2C_UNK platformDataXB;                      /* unable to generate initializer: unknown type */
 static M2C_UNK platformDataPC;                      /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialTypeInfo'
 static MKMaterialTypeInfo typeInfoGC;               /* unable to generate initializer: confusing struct layout */
-static f32 weight64 = 0.8f;
 #endif
+static f32 weight64 = 0.8f;
 static f32 weight128 = 0.8f;
 
 void MKMat_MK2_SetGlowWeights(float arg0, float arg1) {
@@ -332,7 +332,6 @@ void MKMat_MK2_Standard_DESTROY(MKMaterial *arg0) {
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
-    MKHeap *temp_r3_608;
     MKHeap *temp_ret_608;
     MKMaterial *var_r30_590;
     MKMaterial *var_r5_659;
@@ -342,7 +341,6 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     MKMaterial *var_r5_799;
     MKMaterial *var_r5_827;
     Texture *temp_r29_602;
-    f32 temp_f1_608;
     s32 temp_r0_841;
     s32 temp_ret_619;
     u32 var_r4_600;
@@ -356,7 +354,7 @@ MKMaterial *MKMat_MK2_Standard_INIT(MatInfo *arg0) {
     var_r4_600 = (u32) (u64) memset(var_r30_590, 0, 0x40U);
     var_r30_590->unk24 = arg0;
     temp_r29_602 = &arg0->unkE8;
-    if (((s8) (u8) arg0->unkE8.unk0 != 0) && ((temp_ret_608 = temp_r29_602->Find((s8 *) var_r4_600), temp_f1_608 = M2C_BITWISE(f32, temp_ret_608), temp_r3_608 = temp_ret_608, var_r4_600 = (u32) (u64) temp_ret_608, ((temp_r3_608 == NULL) == 0)) || (temp_ret_619 = MKArchive_Exists(Str_Printf("%s%s", temp_r29_602, ".tex", temp_f1_608), NULL), var_r4_600 = (u32) (u64) temp_ret_619, ((temp_ret_619 == 0) == 0)))) {
+    if (((s8) (u8) arg0->unkE8.unk0 != 0) && ((temp_ret_608 = Texture::Find(&temp_r29_602->unk0), var_r4_600 = (u32) (u64) temp_ret_608, ((temp_ret_608 == NULL) == 0)) || (temp_ret_619 = MKArchive_Exists(Str_Printf("%s%s", temp_r29_602, ".tex", M2C_BITWISE(f32, temp_ret_608)), NULL), var_r4_600 = (u32) (u64) temp_ret_619, ((temp_ret_619 == 0) == 0)))) {
         var_r30_590->unk38 = (const char *) (temp_r29_602->Create((s8 *) var_r4_600, 0.0f));
     } else {
         var_r30_590->unk38 = (const char *) (((Texture *) ("MKWhite"))->Create((s8 *) var_r4_600, 0.0f));
@@ -455,7 +453,6 @@ Texture *MKMat_MK2_GetBaseTexture(MKMaterial *arg0) {
     return arg0->unk38;
 }
 
-#if 0 // DRAFT: undefined identifier 'platformDataXB'
 void MKMat_MK2_Standard_cpp::__sinit() {
     f32 sp84;
     f32 sp80;
@@ -539,4 +536,3 @@ void MKMat_MK2_Standard_cpp::__sinit() {
     M2C_FIELD(&platformDataPC, f64 *, 0x78) = (f64) sp8;
     M2C_FIELD(&platformDataPC, f64 *, 0x80) = (f64) sp10;
 }
-#endif

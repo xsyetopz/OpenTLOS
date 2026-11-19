@@ -46,7 +46,6 @@ void MCQueryScreen::Update() {
     s32 temp_r0_57;
     s32 temp_r30_71;
     s32 temp_r3_183;
-    s32 temp_ret_95;
     s32 var_r3_313;
     void **temp_r3_194;
     void **temp_r3_204;
@@ -76,11 +75,10 @@ void MCQueryScreen::Update() {
             ExamineCard();
             return;
         }
-        temp_ret_95 = KDMemoryCard::GetNextCard();
-        if (temp_ret_95 != 0U) {
+        if (KDMemoryCard::GetNextCard() != 0U) {
             ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
         } else {
-            ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_95)))->SetState((KDMCState) 2);
+            ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
         }
         goto block_20;
     }

@@ -43,7 +43,7 @@ public:
     virtual void SetHitList(MKPtrList<MKProp> *);
     virtual void SetAttachment(MKAttachment *);
     Projectile(void);
-    s32 CreateInstance(ProjectileType);
+    static s32 CreateInstance(ProjectileType);
     /* 0x0c8 */ f64 unkC8;
     /* 0x0d0 */ f64 unkD0;
     /* 0x0d8 */ f64 unkD8;

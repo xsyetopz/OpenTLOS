@@ -104,9 +104,9 @@
 #include "spyro/source/UITools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'DialogBox_bAllowOverCutscene' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 M2C_UNK free(TargetManager *);                      /* extern */
 TargetManager *malloc(s32);                         /* extern */
+#if 0 // DRAFT: identifier 'DialogBox_bAllowOverCutscene' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 DialogBox_bAllowOverCutscene;
 #endif
 extern s8 Dialog_bEnableDraw;
@@ -125,10 +125,12 @@ extern s8 gbGoldMaster;
 #endif
 extern s8 *gpBuildVersion;
 extern M2C_UNK input;
-extern Level *pStartChunkName;
-extern Level *pStartLevelName;
+extern s8 *pStartChunkName;
+extern s8 *pStartLevelName;
 #if 0 // DRAFT: identifier 'gClearColor' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 static M2C_UNK gClearColor;                         /* unable to generate initializer: unknown type */
+#endif
+#if 0 // DRAFT: identifier 'gameStates' redeclared was declared as: 'GameStateMachineState' now declared as: 'GameStateMachineState[72]'
 static GameStateMachineState gameStates[0x48] = {
     { 0 },
     { (s32) &.L_803580AE },
@@ -205,8 +207,8 @@ static GameStateMachineState gameStates[0x48] = {
 };
 #endif
 static GameStateMachineInit gameStateInit = { 0, 0.5f, 0.5f, 0x80000000 };
-#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long *[240]'
-static M2C_UNK *gb[0xF0];
+#if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'signed char **[240]'
+static s8 **gb[0xF0];
 #endif
 #if 0 // DRAFT: identifier 'cutsceneSys' redeclared was declared as: 'CutsceneSystem' now declared as: 'long'
 static M2C_UNK cutsceneSys;
@@ -220,19 +222,36 @@ static s8 *buildNumber = (signed char *) ("053b3(ret)");
 static M2C_UNK *platformCode = &.L_803580AB;
 #endif
 
-#if 0 // DRAFT: declaration syntax error
 static M2C_UNK lit_877;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_934;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580AB;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580AE;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580C2;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580D1;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580DE;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580E7;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580F4;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_803580FD;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_80358107;                         /* unable to generate initializer: unknown type; const */
+#endif
 
 s32 SpawnerType_ResolveFromStatType(int arg0) {
     switch (arg0) {                                 /* irregular */
@@ -248,7 +267,6 @@ s32 SpawnerType_ResolveFromStatType(int arg0) {
         return 0;
     }
 }
-#endif
 
 f32 GameGlobals::KillRate::GetRate() {
     return (f32) M2C_FIELD(this, s32 *, 4) / M2C_FIELD(this, f32 *, 0x10);
@@ -314,7 +332,6 @@ void GameGlobals::KillRate::AddKill() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'free'
 void GameGlobals::KillRate::Deinit() {
     TargetManager *temp_r31_152;
 
@@ -331,9 +348,7 @@ void GameGlobals::KillRate::Deinit() {
     M2C_FIELD(this, s32 *, 8) = 0;
     M2C_FIELD(this, s32 *, 4) = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'malloc'
 void GameGlobals::KillRate::Init(int arg1, float farg0) {
     TargetManager *var_r3_200;
 
@@ -346,7 +361,6 @@ void GameGlobals::KillRate::Init(int arg1, float farg0) {
     M2C_FIELD(this, s32 *, 0) = arg1;
     M2C_FIELD(this, f32 *, 0x10) = farg0;
 }
-#endif
 
 void GameGlobals::Fade::FadeOut(const MKVector4 *arg1) {
     MKVector4 *var_r4_0;
@@ -508,13 +522,11 @@ void GameGlobals::Capture::Deinit() {
     ((Texture *) (M2C_FIELD(this, Texture **, 4)))->Destroy();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void GameGlobals::Capture::Init(char *arg1, int arg2) {
-    ((Texture *) arg1)->CreateRenderTarget((s8 *) arg2, arg2, 0, M2C_ERROR(/* Read from unset register $r7 */));
+    Texture::CreateRenderTarget(arg1, arg2, arg2, 0);
     M2C_FIELD(this, s32 *, 4) = (s32) M2C_ERROR(/* Read from unset register $r3 */);
     M2C_FIELD(this, MKResource **, 0) = MKMaterial_Create(arg1);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'const float *' to 'float'
 void GameGlobals::EmitFairyDandruf(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const MKVector4 &arg3) {
@@ -634,7 +646,7 @@ void GameGlobals::EmitCrud(const MKVector3 &arg0, const MKVector3 &arg1, const f
 
 #if 0 // DRAFT: pointer/array required
 void GameGlobals::GetSpyro() {
-    checked_cast<Spyro *, MKProp>(M2C_FIELD(**gb, MKProp *(**)(M2C_UNK *), 0xC)(*gb));
+    checked_cast<Spyro *, MKProp>(M2C_FIELD(**gb, MKProp *(**)(s8 **), 0xC)(*gb));
 }
 #endif
 
@@ -888,7 +900,7 @@ void LoadGlobalResources_Deinit() {
 #if 0 // DRAFT: pointer/array required
 void LoadGlobalResources_Update() {
     MemoryCard_InitModule();
-    if ((M2C_UNK *) gb[0xCF] != NULL) {
+    if ((s8 **) gb[0xCF] != NULL) {
         ((GameData *) GameData::gameData)->ClearData();
         ((Level *) gb[0xCB])->SwitchTo((ChunkInfo *) gb[0xCC]);
         return;
@@ -899,30 +911,30 @@ void LoadGlobalResources_Update() {
 
 #if 0 // DRAFT: pointer/array required
 void Game_CheckCommandLineParameters() {
-    M2C_UNK *var_r0_1418;
+    s8 **var_r0_1418;
 
     System_GetCommandLineParameter("", 0U);
     pStartLevelName = M2C_ERROR(/* Read from unset register $r3 */);
     System_GetCommandLineParameter("", 0U);
     pStartChunkName = M2C_ERROR(/* Read from unset register $r3 */);
     System_GetCommandLineParameter("", 0U);
-    gb[0xCE] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
+    gb[0xCE] = (s8 **) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
     System_GetCommandLineParameter("", 1U);
-    gb[0xCF] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) == 0);
+    gb[0xCF] = (s8 **) (M2C_ERROR(/* Read from unset register $r3 */) == 0);
     System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         System_GetCommandLineParameter("", 0U);
-        var_r0_1418 = (long *) ((M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1);
+        var_r0_1418 = (signed char **) ((M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1);
     } else {
         var_r0_1418 = NULL;
     }
     gb[0xD0] = var_r0_1418;
     System_GetCommandLineParameter("", 0U);
-    gb[0xD1] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
+    gb[0xD1] = (s8 **) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
     System_GetCommandLineParameter("", 1U);
-    gb[0xD2] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
+    gb[0xD2] = (s8 **) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
     System_GetCommandLineParameter("", 1U);
-    gb[0xD3] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
+    gb[0xD3] = (s8 **) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
     System_GetCommandLineParameter("", 1U);
     Hud_bDisableDraw = (M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0;
     System_GetCommandLineParameter("", 1U);
@@ -930,12 +942,12 @@ void Game_CheckCommandLineParameters() {
     System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         System_GetCommandLineParameter("", 0U);
-        gb[0xD1] = (M2C_UNK *)1;
+        gb[0xD1] = (s8 **)1;
         gb[0xD0] = (M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1;
     }
     System_GetCommandLineParameter("", 1U);
-    gb[0xD4] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
-    if ((M2C_UNK *) gb[0xD0] != NULL) {
+    gb[0xD4] = (s8 **) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
+    if ((s8 **) gb[0xD0] != NULL) {
         gb[0xD4] = NULL;
     }
     System_GetCommandLineParameter("", 0U);
@@ -980,7 +992,7 @@ void Game_InitSystem() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_934'
+#if 0 // DRAFT: illegal operand
 void Game_Draw() {
     s32 sp18;
     f32 sp14;
@@ -988,10 +1000,10 @@ void Game_Draw() {
     f32 spC;
     Tools_Ortho sp8;
     KDSynkerPlayer3 *temp_r3_1671;
-    M2C_UNK *temp_r29_1668;
     f32 var_f0_1644;
     f32 var_f0_1652;
     f32 var_f1_1626;
+    s8 **temp_r29_1668;
     u8 temp_r3_1622;
     u8 var_r30_1672;
 
@@ -1049,8 +1061,8 @@ block_17:
 #if 0 // DRAFT: pointer/array required
 u8 Game_Update() {
     KDSynkerPlayer3 *temp_r3_1785;
-    M2C_UNK *temp_r29_1782;
     f32 temp_f31_1729;
+    s8 **temp_r29_1782;
     u8 var_r31_1786;
 
     temp_f31_1729 = gUpdateTimeDelta;
@@ -1059,7 +1071,7 @@ u8 Game_Update() {
     ((Level *) gb[0xCB])->UpdateState();
     gGMState.Update();
     GameSounds_Update();
-    if (((u8) M2C_FIELD(gb, u8 *, 0x395) == 0) && ((M2C_UNK *) gb[0xD6] == (M2C_UNK *)-1)) {
+    if (((u8) M2C_FIELD(gb, u8 *, 0x395) == 0) && ((s8 **) gb[0xD6] == (s8 **)-1)) {
         ((TimeDeltaModifier *) &gb[0xB3])->Begin();
         Console_UpdateDelayedCmds();
         ((TimeDeltaModifier *) &gb[0xB3])->End();
@@ -1125,8 +1137,7 @@ void Game_Deinit() {
 void Game_Init() {
     KDPropModuleInfo sp8;
     M2C_UNK sp4;
-    ChunkInfo *temp_r4_1957;
-    Level *var_r3_1950;
+    ChunkInfo *var_r3_1950;
     void *temp_r3_2007;
 
     MKMaterial_InitMaterialIDs();
@@ -1161,39 +1172,36 @@ void Game_Init() {
     gb[0xEE] = NULL;
     GameSounds_InitModule();
     gb[0xCC] = NULL;
-    if ((M2C_UNK *) gb[0xD0] != NULL) {
-        if (((Level *) pStartChunkName == NULL) && ((Level *) pStartLevelName == NULL)) {
-            NULL->GetNextLevel(M2C_ERROR(/* Read from unset register $r4 */));
-            var_r3_1950 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), Level **, 0x11C);
+    if ((s8 **) gb[0xD0] != NULL) {
+        if (((s8 *) pStartChunkName == NULL) && ((s8 *) pStartLevelName == NULL)) {
+            Level::GetNextLevel(NULL);
+            var_r3_1950 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), ChunkInfo **, 0x11C);
 loop_5:
-            if (var_r3_1950 != NULL) {
-                temp_r4_1957 = (ChunkInfo *) (var_r3_1950->unk4);
-                if ((u8) M2C_FIELD(temp_r4_1957, u8 *, 0x1A) != 0) {
-                    var_r3_1950 = var_r3_1950->GetNextChunk(temp_r4_1957);
-                    goto loop_5;
-                }
+            if ((var_r3_1950 != NULL) && ((u8) M2C_FIELD(var_r3_1950->unk4, u8 *, 0x1A) != 0)) {
+                var_r3_1950 = (ChunkInfo *) (Level::GetNextChunk(var_r3_1950));
+                goto loop_5;
             }
-            gb[0xCC] = (M2C_UNK *) var_r3_1950;
-        } else if ((Level *) pStartChunkName != NULL) {
-            gb[0xCC] = pStartChunkName->GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
-        } else if ((Level *) pStartLevelName != NULL) {
-            gb[0xCC] = M2C_FIELD(pStartLevelName->GetLevelByName(M2C_ERROR(/* Read from unset register $r4 */)), M2C_UNK **, 0x11C);
+            gb[0xCC] = &var_r3_1950->unk0;
+        } else if ((s8 *) pStartChunkName != NULL) {
+            gb[0xCC] = Level::GetChunkByName(pStartChunkName);
+        } else if ((s8 *) pStartLevelName != NULL) {
+            gb[0xCC] = M2C_FIELD(Level::GetLevelByName(pStartLevelName), s8 ***, 0x11C);
         }
         if ((s32) M2C_FIELD(gb[0xCC], s32 *, 0xC) == 2) {
-            gb[0xCC] = ((Level *) gb[0xCC])->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
+            gb[0xCC] = Level::GetNextChunk((ChunkInfo *) gb[0xCC]);
         }
-    } else if ((Level *) pStartChunkName != NULL) {
-        gb[0xCC] = pStartChunkName->GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
-        gb[0xCF] = (M2C_UNK *)1;
+    } else if ((s8 *) pStartChunkName != NULL) {
+        gb[0xCC] = Level::GetChunkByName(pStartChunkName);
+        gb[0xCF] = (s8 **)1;
         M2C_FIELD(gb, s8 *, 0x334) = 1;
-    } else if ((Level *) pStartLevelName != NULL) {
-        gb[0xCC] = M2C_FIELD(pStartLevelName->GetLevelByName(M2C_ERROR(/* Read from unset register $r4 */)), M2C_UNK **, 0x114);
-        gb[0xCF] = (M2C_UNK *)1;
+    } else if ((s8 *) pStartLevelName != NULL) {
+        gb[0xCC] = M2C_FIELD(Level::GetLevelByName(pStartLevelName), s8 ***, 0x114);
+        gb[0xCF] = (s8 **)1;
         M2C_FIELD(gb, s8 *, 0x334) = 1;
     } else {
         temp_r3_2007 = Level::GetStartLevelInfo();
         if (temp_r3_2007 != NULL) {
-            gb[0xCC] = M2C_FIELD(temp_r3_2007, M2C_UNK **, 0x114);
+            gb[0xCC] = M2C_FIELD(temp_r3_2007, s8 ***, 0x114);
         }
     }
     GameData::ModuleInit();
@@ -1208,7 +1216,7 @@ loop_5:
     Music_Init();
     PhrasePlayer_Init();
     ((CutsceneSystem *) (gb + 0x3C0))->InitModule();
-    gb[3] = &*(gb + 0x3C0);
+    gb[3] = (s8 **) (gb + 0x3C0);
     ((GameStateMachine *) (gb + 0x490))->Init(gameStates, &gameStateInit);
 }
 #endif

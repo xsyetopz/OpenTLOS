@@ -103,16 +103,21 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit cynderTier1BodyFXInit;   /* unable to generate initializer: confusing struct layout */
-static CharacterBodyFxInit cynderTier2BodyFXInit;   /* unable to generate initializer: confusing struct layout */
-static CharacterBodyFxInit cynderTier3BodyFXInit;   /* unable to generate initializer: confusing struct layout */
-static BoneBlurFXNodeDef cynderTier1NodeBlurDef;    /* unable to generate initializer: confusing struct layout */
-static s32 cynderTier1NodeBlurArmLeft[5] = { 4, 0, 1, 2, 3 };
 #endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
+static CharacterBodyFxInit cynderTier2BodyFXInit;   /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
+static CharacterBodyFxInit cynderTier3BodyFXInit;   /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoneBlurFXNodeDef'
+static BoneBlurFXNodeDef cynderTier1NodeBlurDef;    /* unable to generate initializer: confusing struct layout */
+#endif
+static s32 cynderTier1NodeBlurArmLeft[5] = { 4, 0, 1, 2, 3 };
 static s32 cynderTier1NodeBlurArmRight[5] = { 4, 4, 5, 6, 7 };
 static s32 cynderTier1NodeBlurLegLeft[4] = { 3, 8, 9, 0xA };
 static s32 cynderTier1NodeBlurLegRight[4] = { 3, 0xB, 0xC, 0xD };
 static s32 cynderTier1NodeBlurBack[6] = { 5, 0xE, 0xF, 0x10, 0x11, 0x12 };
-#if 0 // DRAFT: undefined identifier 'cynderTier1NodeBlurArmLeft'
 static s32 *cynderTier1NodeBlurChains[5] = {
     cynderTier1NodeBlurArmLeft,
     cynderTier1NodeBlurArmRight,
@@ -120,16 +125,14 @@ static s32 *cynderTier1NodeBlurChains[5] = {
     cynderTier1NodeBlurLegRight,
     cynderTier1NodeBlurBack,
 };
-#endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoneBlurFXNodeDef'
 static BoneBlurFXNodeDef cynderTier2NodeBlurDef;    /* unable to generate initializer: confusing struct layout */
-static s32 cynderTier2NodeBlurArmLeft[5] = { 4, 0, 1, 2, 3 };
 #endif
+static s32 cynderTier2NodeBlurArmLeft[5] = { 4, 0, 1, 2, 3 };
 static s32 cynderTier2NodeBlurArmRight[5] = { 4, 4, 5, 6, 7 };
 static s32 cynderTier2NodeBlurLegLeft[4] = { 3, 8, 9, 0xA };
 static s32 cynderTier2NodeBlurLegRight[4] = { 3, 0xB, 0xC, 0xD };
 static s32 cynderTier2NodeBlurBack[6] = { 5, 0xE, 0xF, 0x10, 0x11, 0x12 };
-#if 0 // DRAFT: undefined identifier 'cynderTier2NodeBlurArmLeft'
 static s32 *cynderTier2NodeBlurChains[5] = {
     cynderTier2NodeBlurArmLeft,
     cynderTier2NodeBlurArmRight,
@@ -137,16 +140,14 @@ static s32 *cynderTier2NodeBlurChains[5] = {
     cynderTier2NodeBlurLegRight,
     cynderTier2NodeBlurBack,
 };
-#endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'BoneBlurFXNodeDef'
 static BoneBlurFXNodeDef cynderTier3NodeBlurDef;    /* unable to generate initializer: confusing struct layout */
-static s32 cynderTier3NodeBlurArmLeft[5] = { 4, 0, 1, 2, 3 };
 #endif
+static s32 cynderTier3NodeBlurArmLeft[5] = { 4, 0, 1, 2, 3 };
 static s32 cynderTier3NodeBlurArmRight[5] = { 4, 4, 5, 6, 7 };
 static s32 cynderTier3NodeBlurLegLeft[4] = { 3, 8, 9, 0xA };
 static s32 cynderTier3NodeBlurLegRight[4] = { 3, 0xB, 0xC, 0xD };
 static s32 cynderTier3NodeBlurBack[7] = { 6, 0xE, 0xF, 0x10, 0x11, 0x12, 0x13 };
-#if 0 // DRAFT: undefined identifier 'cynderTier3NodeBlurArmLeft'
 static s32 *cynderTier3NodeBlurChains[5] = {
     cynderTier3NodeBlurArmLeft,
     cynderTier3NodeBlurArmRight,
@@ -154,7 +155,6 @@ static s32 *cynderTier3NodeBlurChains[5] = {
     cynderTier3NodeBlurLegRight,
     cynderTier3NodeBlurBack,
 };
-#endif
 static u8 lit_895 = 1;
 static u8 lit_1140 = 1;
 

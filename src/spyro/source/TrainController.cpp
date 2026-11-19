@@ -56,28 +56,21 @@ extern f32 gUpdateTimeDelta;
 
 void TrainController::SetStage(int arg0) {
     SteamTrain *temp_r3_74;
-    u32 var_r4_61;
-    u64 temp_ret_65;
     void *temp_r3_61;
-    void *temp_ret_61;
 
     this->unk5C = (u32) arg0;
-    temp_ret_61 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk58->PropResolver_Resolve(arg0));
-    temp_r3_61 = temp_ret_61;
-    var_r4_61 = (u32) (u64) temp_ret_61;
+    temp_r3_61 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk58));
     if (temp_r3_61 != NULL) {
-        temp_ret_65 = (unsigned long long) (checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
-        var_r4_61 = (u32) temp_ret_65;
-        M2C_FIELD(temp_r3_61, f32 *, 0xDC) = (f32) M2C_FIELD((temp_ret_65 + (this->unk5C * 0xC)), f32 *, 0x60);
+        M2C_FIELD(temp_r3_61, f32 *, 0xDC) = (f32) M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x60);
     }
-    temp_r3_74 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve((s32) var_r4_61));
+    temp_r3_74 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
     if (temp_r3_74 != NULL) {
         temp_r3_74->unk10C = M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x64);
     }
     this->unk60 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void TrainController::Message(MKMessage *arg0) {
     s32 sp54;
     s32 sp50;
@@ -104,13 +97,6 @@ void TrainController::Message(MKMessage *arg0) {
     SteamTrain *temp_r3_402;
     SteamTrain *temp_r3_411;
     s32 temp_r0_104;
-    u32 var_r4_166;
-    u32 var_r4_180;
-    u32 var_r4_194;
-    u32 var_r4_227;
-    u32 var_r4_241;
-    u32 var_r4_255;
-    u32 var_r4_369;
     void *temp_r3_166;
     void *temp_r3_180;
     void *temp_r3_194;
@@ -124,44 +110,32 @@ void TrainController::Message(MKMessage *arg0) {
     void *temp_r3_379;
     void *temp_r3_390;
     void *temp_r3_419;
-    void *temp_ret_166;
-    void *temp_ret_180;
-    void *temp_ret_194;
-    void *temp_ret_227;
-    void *temp_ret_241;
-    void *temp_ret_255;
-    void *temp_ret_369;
 
     MKProp::Message(arg0);
     temp_r0_104 = arg0->unk0;
     switch (temp_r0_104) {                          /* irregular */
     case 0xB5:
         Enable();
-        temp_ret_166 = this->unk50->PropResolver_Resolve((s32) (u32) Reset());
-        temp_r3_166 = temp_ret_166;
-        var_r4_166 = (u32) (u64) temp_ret_166;
+        Reset();
+        temp_r3_166 = MKSceneManager::PropResolver_Resolve((s32) this->unk50);
         if (temp_r3_166 != NULL) {
             sp4C = 0;
             sp48 = 0xB5;
-            var_r4_166 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_166, void **, 0x44), u64 (**)(s32 *), 0x2C)(&sp48);
+            M2C_FIELD(M2C_FIELD(temp_r3_166, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp48);
         }
-        temp_ret_180 = this->unk4C->PropResolver_Resolve((s32) var_r4_166);
-        temp_r3_180 = temp_ret_180;
-        var_r4_180 = (u32) (u64) temp_ret_180;
+        temp_r3_180 = MKSceneManager::PropResolver_Resolve((s32) this->unk4C);
         if (temp_r3_180 != NULL) {
             sp44 = 0;
             sp40 = 0xB5;
-            var_r4_180 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_180, void **, 0x44), u64 (**)(s32 *), 0x2C)(&sp40);
+            M2C_FIELD(M2C_FIELD(temp_r3_180, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp40);
         }
-        temp_ret_194 = this->unk54->PropResolver_Resolve((s32) var_r4_180);
-        temp_r3_194 = temp_ret_194;
-        var_r4_194 = (u32) (u64) temp_ret_194;
+        temp_r3_194 = MKSceneManager::PropResolver_Resolve((s32) this->unk54);
         if (temp_r3_194 != NULL) {
             sp3C = 0;
             sp38 = 0xB5;
-            var_r4_194 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_194, void **, 0x44), u64 (**)(s32 *), 0x2C)(&sp38);
+            M2C_FIELD(M2C_FIELD(temp_r3_194, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp38);
         }
-        temp_r3_208 = this->unk58->PropResolver_Resolve((s32) var_r4_194);
+        temp_r3_208 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_208 != NULL) {
             sp34 = 0;
             sp30 = 0xB5;
@@ -170,31 +144,25 @@ void TrainController::Message(MKMessage *arg0) {
         this->unk68.Send((MKProp *) this);
         return;
     case 0xB4:
-        temp_ret_227 = this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
-        temp_r3_227 = temp_ret_227;
-        var_r4_227 = (u32) (u64) temp_ret_227;
+        temp_r3_227 = MKSceneManager::PropResolver_Resolve((s32) this->unk50);
         if (temp_r3_227 != NULL) {
             sp2C = 0;
             sp28 = 0xB4;
-            var_r4_227 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_227, void **, 0x44), u64 (**)(s32 *), 0x2C)(&sp28);
+            M2C_FIELD(M2C_FIELD(temp_r3_227, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp28);
         }
-        temp_ret_241 = this->unk4C->PropResolver_Resolve((s32) var_r4_227);
-        temp_r3_241 = temp_ret_241;
-        var_r4_241 = (u32) (u64) temp_ret_241;
+        temp_r3_241 = MKSceneManager::PropResolver_Resolve((s32) this->unk4C);
         if (temp_r3_241 != NULL) {
             sp24 = 0;
             sp20 = 0xB4;
-            var_r4_241 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_241, void **, 0x44), u64 (**)(s32 *), 0x2C)(&sp20);
+            M2C_FIELD(M2C_FIELD(temp_r3_241, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp20);
         }
-        temp_ret_255 = this->unk54->PropResolver_Resolve((s32) var_r4_241);
-        temp_r3_255 = temp_ret_255;
-        var_r4_255 = (u32) (u64) temp_ret_255;
+        temp_r3_255 = MKSceneManager::PropResolver_Resolve((s32) this->unk54);
         if (temp_r3_255 != NULL) {
             sp1C = 0;
             sp18 = 0xB4;
-            var_r4_255 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_255, void **, 0x44), u64 (**)(s32 *), 0x2C)(&sp18);
+            M2C_FIELD(M2C_FIELD(temp_r3_255, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp18);
         }
-        temp_r3_269 = this->unk58->PropResolver_Resolve((s32) var_r4_255);
+        temp_r3_269 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_269 != NULL) {
             sp14 = 0;
             sp10 = 0xB4;
@@ -212,7 +180,7 @@ void TrainController::Message(MKMessage *arg0) {
         SetStage(2);
         return;
     case 0x13B:
-        temp_r3_306 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_306 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_306 != NULL) {
             temp_r3_306->unk131 = 0;
         }
@@ -228,7 +196,7 @@ void TrainController::Message(MKMessage *arg0) {
         SetStage(6);
         return;
     case 0x13F:
-        temp_r3_334 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_334 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_334 != NULL) {
             temp_r3_334->Stop(0U);
         }
@@ -241,48 +209,46 @@ void TrainController::Message(MKMessage *arg0) {
         this->unk6C = 1;
         return;
     case 0x149:
-        temp_r3_355 = this->unk58->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_355 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_355 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_355, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
         }
         this->unk6C = 0;
         return;
     case 0x14A:
-        temp_ret_369 = this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
-        temp_r3_369 = temp_ret_369;
-        var_r4_369 = (u32) (u64) temp_ret_369;
+        temp_r3_369 = MKSceneManager::PropResolver_Resolve((s32) this->unk50);
         if (temp_r3_369 != NULL) {
-            var_r4_369 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_369, void **, 0x44), u64 (**)(MKMessage *), 0x2C)(arg0);
+            M2C_FIELD(M2C_FIELD(temp_r3_369, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
         }
-        temp_r3_379 = this->unk58->PropResolver_Resolve((s32) var_r4_369);
+        temp_r3_379 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_379 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_379, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
             return;
         }
         return;
     case 0x14B:
-        temp_r3_390 = this->unk58->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_390 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_390 != NULL) {
             M2C_FIELD(M2C_FIELD(temp_r3_390, void **, 0x44), M2C_UNK (**)(MKMessage *), 0x2C)(arg0);
             return;
         }
         break;
     case 0x142:
-        temp_r3_402 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_402 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_402 != NULL) {
             temp_r3_402->unk131 = 1;
             return;
         }
         break;
     case 0x141:
-        temp_r3_411 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_411 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_411 != NULL) {
             temp_r3_411->Stop(1U);
             return;
         }
         break;
     case 0x143:
-        temp_r3_419 = this->unk58->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_419 = MKSceneManager::PropResolver_Resolve((s32) this->unk58);
         if (temp_r3_419 != NULL) {
             sp54 = 0;
             sp50 = 0x148;
@@ -301,16 +267,12 @@ void TrainController::Message(MKMessage *arg0) {
 
 void *TrainController::Update() {
     SteamTrainCaboose *temp_r3_482;
-    u64 temp_ret_471;
 
     MKProp::Update();
-    if (M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x68) >= 0.0f) {
-        temp_ret_471 = (unsigned long long) (checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0));
-        if (this->unk60 >= M2C_FIELD((temp_ret_471 + (this->unk5C * 0xC)), f32 *, 0x68)) {
-            temp_r3_482 = checked_cast<SteamTrainCaboose *, MKProp>(this->unk54->PropResolver_Resolve((s32) (u32) temp_ret_471));
-            if ((temp_r3_482 != NULL) && (temp_r3_482->IsBlownUp() == 0)) {
-                temp_r3_482->BlowUp();
-            }
+    if ((M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x68) >= 0.0f) && (this->unk60 >= M2C_FIELD((checked_cast<TrainControllerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unk5C * 0xC)), f32 *, 0x68))) {
+        temp_r3_482 = checked_cast<SteamTrainCaboose *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk54));
+        if ((temp_r3_482 != NULL) && (temp_r3_482->IsBlownUp() == 0)) {
+            temp_r3_482->BlowUp();
         }
     }
     this->unk60 += gUpdateTimeDelta;
@@ -321,21 +283,15 @@ void TrainController::Reset() {
     s32 spC;
     s32 sp8;
     SteamTrain *temp_r3_532;
-    u32 var_r4_522;
-    u8 temp_ret_517;
     void *temp_r3_522;
-    void *temp_ret_522;
 
     MKProp::Reset();
-    temp_ret_517 = M2C_FIELD(*gMK, u8 (**)(void **, TrainController *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID);
-    if (temp_ret_517 != 0) {
-        temp_ret_522 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk58->PropResolver_Resolve((s32) (u32) (u64) temp_ret_517));
-        temp_r3_522 = temp_ret_522;
-        var_r4_522 = (u32) (u64) temp_ret_522;
+    if (M2C_FIELD(*gMK, u8 (**)(void **, TrainController *, s32), 0x9C)(gMK, this, *MKResource::sWorkingChunkID) != 0) {
+        temp_r3_522 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk58));
         if (temp_r3_522 != NULL) {
-            var_r4_522 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_522, void **, 0x44), u64 (**)(), 0x20)();
+            M2C_FIELD(M2C_FIELD(temp_r3_522, void **, 0x44), M2C_UNK (**)(), 0x20)();
         }
-        temp_r3_532 = checked_cast<SteamTrain *, MKProp>(this->unk50->PropResolver_Resolve((s32) var_r4_522));
+        temp_r3_532 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk50));
         if (temp_r3_532 != NULL) {
             M2C_FIELD(temp_r3_532->__vptr, M2C_UNK (**)(), 0x20)();
         }

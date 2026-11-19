@@ -85,10 +85,10 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 static M2C_UNK lit_727;                                /* unable to generate initializer: unknown type */
 SpyroHurtState states__14SpyroHurtState;            /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 s32 SpyroHurtState::CynderFuryDazedTransition() {
     Spyro *temp_r4_40;
     Spyro *temp_r4_58;
@@ -1300,7 +1300,6 @@ void SpyroHurtState::Init(Spyro *arg0) {
     Hurt_pKnockToSafePosTime = &this->unk84;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_727'
 void SpyroHurtState_cpp::__sinit() {
     s32 sp50;
     s32 sp4C;
@@ -1434,4 +1433,3 @@ void SpyroHurtState_cpp::__sinit() {
     M2C_FIELD(temp_r17_2570, s32 *, 0x118) = (s32) M2C_FIELD(&lit_727, s32 *, 0x118);
     M2C_FIELD(temp_r17_2570, s32 *, 0x11C) = (s32) M2C_FIELD(&lit_727, s32 *, 0x11C);
 }
-#endif

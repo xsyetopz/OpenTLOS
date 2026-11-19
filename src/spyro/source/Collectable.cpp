@@ -2271,7 +2271,7 @@ f32 Collectable::Resolve() {
     MKProp::Resolve();
     temp_r3_4468 = this->unk104;
     if ((temp_r3_4468 > 0) && !(this->unk18 & 0x80000000)) {
-        this->unkC4 = temp_r3_4468->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        this->unkC4 = MKSceneManager::PropResolver_Resolve((s32) temp_r3_4468);
         PlatformAttach(this->unkC4);
     } else {
         this->unkC4 = NULL;

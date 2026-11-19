@@ -17,12 +17,12 @@
 #include "common/Source/FileSys.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal operand
 s32 atoi(u8 *);                                     /* extern */
 s32 strcmpi(s32, s8 *);                             /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 s8 *strtok(s8 *, M2C_UNK *);                        /* extern */
 
+#if 0 // DRAFT: illegal operand
 void KDSP_Subtitles::Update(KDSP_ActorList *arg0, int arg1) {
     s32 temp_r0_14;
     s32 temp_r12_30;
@@ -228,7 +228,7 @@ void KDSP_ActorList::Update(float arg0, KDSP_EnvelopeList *arg1, const MKVector3
     s32 var_r31_355;
     s32 var_r31_370;
 
-    ((KDSP_Actor *) arg1)->SetEnvelopeList(arg1);
+    KDSP_Actor::SetEnvelopeList(arg1);
     var_r31_355 = this->unk4;
     var_r30_356 = 0;
 loop_2:
@@ -430,7 +430,7 @@ void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *
     s32 var_r27_726;
     void *temp_r5_714;
 
-    ((KDSP_Actor *) arg3)->SetInput((KDInput *) arg0);
+    KDSP_Actor::SetInput(arg3);
     temp_r28_706 = this->unkC;
     if (temp_r28_706 != NULL) {
         temp_r0_709 = this->unk0;

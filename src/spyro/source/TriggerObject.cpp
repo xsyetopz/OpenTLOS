@@ -52,7 +52,7 @@ s32 TriggerPolyObject::CheckTarget() {
 
     temp_r3_32 = this->unk54;
     if (temp_r3_32 > 0) {
-        var_r3_35 = ((MKSceneManager *) temp_r3_32)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_35 = MKSceneManager::PropResolver_Resolve(temp_r3_32);
     } else {
         var_r3_35 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }
@@ -196,7 +196,6 @@ s32 TriggerPlaneGroupObject::CheckTarget() {
     s32 temp_r3_382;
     s32 temp_r3_392;
     u8 temp_r3_321;
-    u8 temp_ret_321;
     void *temp_r3_341;
     void *var_r3_330;
 
@@ -205,12 +204,11 @@ loop_17:
     temp_r3_418 = *var_r30_313;
     if (temp_r3_418 != NULL) {
         temp_r29_316 = *temp_r3_418;
-        temp_ret_321 = temp_r29_316->CheckTarget();
-        temp_r3_321 = temp_ret_321;
+        temp_r3_321 = temp_r29_316->CheckTarget();
         if (temp_r3_321 != (u8) temp_r29_316->unkC0) {
             temp_r3_327 = temp_r29_316->unk54;
             if (temp_r3_327 > 0) {
-                var_r3_330 = ((MKSceneManager *) temp_r3_327)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_321);
+                var_r3_330 = MKSceneManager::PropResolver_Resolve(temp_r3_327);
             } else {
                 var_r3_330 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
             }

@@ -101,6 +101,7 @@ extern s32 usedNormalMem_752;
 extern s32 usedTempMem_753;
 #if 0 // DRAFT: identifier 'gMKDefaults' redeclared was declared as: 'MKHeap' now declared as: 'long'
 static M2C_UNK gMKDefaults;                         /* unable to generate initializer: unknown type */
+#endif
 static M2C_UNK gDisplay;                            /* unable to generate initializer: unknown type */
 static s8 cmdLine_795[0x100] = {
     0,
@@ -360,7 +361,6 @@ static s8 cmdLine_795[0x100] = {
     0,
     0,
 };
-#endif
 static M2C_UNK IdleThreadStack;
 static DVDFileInfo seekHack;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_TMEMCacheSegments_0x18'
@@ -380,11 +380,11 @@ static s32 lit_1003 = 0x180;
 
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E6A3;                         /* unable to generate initializer: unknown type; const */
+#endif
 
 s32 System_GetWideScreenPreference() {
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 void MKZRequest_CheckRequest(MKZRequest *arg0) {

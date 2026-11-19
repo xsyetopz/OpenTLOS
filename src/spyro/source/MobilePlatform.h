@@ -74,7 +74,7 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
     MobilePlatformDescriptor(void);
-    s32 IsDescriptor(MKPropDescriptor *);
+    static s32 IsDescriptor(MKPropDescriptor *);
     static u8 pFirstDesc[0x4];
     /* 0x128 */ f32 unk128;
     /* 0x12c */ s32 unk12C;

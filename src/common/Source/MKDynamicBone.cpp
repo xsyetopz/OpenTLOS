@@ -15,10 +15,10 @@
 #include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'gDynamicBones' redeclared was declared as: 'MKDynamicBoneSystem' now declared as: 'void **'
 f64 atan2(f32, f32, f32, f32, f32);                 /* extern */
 M2C_UNK free(MKDynamicBone **);                     /* extern */
 MKDynamicBone **malloc(s32);                        /* extern */
+#if 0 // DRAFT: identifier 'gDynamicBones' redeclared was declared as: 'MKDynamicBoneSystem' now declared as: 'void **'
 extern void **gDynamicBones;
 #endif
 extern M2C_UNK gEmptyPtrListDL;
@@ -1068,7 +1068,6 @@ loop_22:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'malloc'
 void MKDynamicBoneSystem::Init() {
     MKDynamicBone **temp_r3_1580;
     MKDynamicBone **temp_r3_1587;
@@ -1137,7 +1136,6 @@ void MKDynamicBoneSystem::Init() {
     }
     this->unk4 = 0;
 }
-#endif
 
 #if 0 // DRAFT: identifier 'arg2' redeclared
 void MKDynamicBone_SetUpdater(MKDynamicBone *arg0, void (*arg2)(MKDynamicBone *, void *), void *arg2) {

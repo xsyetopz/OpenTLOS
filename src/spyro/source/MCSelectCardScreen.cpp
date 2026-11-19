@@ -79,7 +79,7 @@ void MCSelectCardScreen::ClearDisplay() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'KDMemoryCard *' and 'int'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'UIMessage *'
 void MCSelectCardScreen::UpdateDisplay() {
     s32 spB4;
     s32 spB0;
@@ -125,9 +125,8 @@ void MCSelectCardScreen::UpdateDisplay() {
     s32 sp10;
     s32 spC;
     s32 sp8;
-    KDMemoryCard *var_r29_195;
     UIContainer *temp_r3_339;
-    u32 var_r4_193;
+    s32 var_r29_195;
     void **temp_r3_104;
     void **temp_r3_114;
     void **temp_r3_124;
@@ -186,18 +185,18 @@ void MCSelectCardScreen::UpdateDisplay() {
         temp_r3_184 = this->unkE4;
         sp70 = 4;
         sp74 = 0;
-        var_r4_193 = (u32) M2C_FIELD(M2C_FIELD(temp_r3_184, void **, 0), u64 (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_184, &sp70, 4);
-        var_r29_195 = NULL;
+        M2C_FIELD(M2C_FIELD(temp_r3_184, void **, 0), M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_184, &sp70, 4);
+        var_r29_195 = 0;
         var_r30_196 = M2C_FIELD(this->unkE4, void **, 0x60);
         do {
-            if ((u8) M2C_FIELD(var_r29_195->GetCard((s32) var_r4_193), u8 *, 9) != 0) {
+            if ((u8) M2C_FIELD(KDMemoryCard::GetCard(var_r29_195), u8 *, 9) != 0) {
                 sp68 = 4;
                 sp6C = 0;
-                var_r4_193 = (u32) M2C_FIELD(M2C_FIELD(var_r30_196, void **, 0), u64 (**)(void *, s32 *), 0x2C)(var_r30_196, &sp68);
+                M2C_FIELD(M2C_FIELD(var_r30_196, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(var_r30_196, &sp68);
             } else {
                 sp60 = 5;
                 sp64 = 0;
-                var_r4_193 = (u32) M2C_FIELD(M2C_FIELD(var_r30_196, void **, 0), u64 (**)(void *, s32 *), 0x2C)(var_r30_196, &sp60);
+                M2C_FIELD(M2C_FIELD(var_r30_196, void **, 0), M2C_UNK (**)(void *, s32 *), 0x2C)(var_r30_196, &sp60);
             }
             var_r29_195 += 1;
             var_r30_196 = M2C_FIELD(var_r30_196, void **, 0x10);
@@ -258,8 +257,6 @@ void MCSelectCardScreen::UpdateDisplay() {
 void MCSelectCardScreen::Update() {
     KDMemoryCard *temp_r3_499;
     s32 temp_r0_418;
-    s32 temp_ret_415;
-    s32 temp_ret_535;
 
     UIScreen::Update();
     if ((s32) this->unkD0 == 3) {
@@ -277,14 +274,14 @@ void MCSelectCardScreen::Update() {
             return;
         }
         if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) && ((u32) *KDMemoryCard::numCardsPresent != 0U)) {
-            *MemoryCardScreen::selectedCard = (unsigned char) (((KDMemoryCard *) (M2C_FIELD(this->unkE4, KDMemoryCard **, 0x68)))->GetCard((s32) (u32) (u64) KDSound_Play(GS_MenuSelect, 0U, -1)));
+            KDSound_Play(GS_MenuSelect, 0U, -1);
+            *MemoryCardScreen::selectedCard = (unsigned char) (KDMemoryCard::GetCard(M2C_FIELD(this->unkE4, s32 *, 0x68)));
             this->unkD0 = 4;
         }
         goto block_10;
     }
 block_10:
-    temp_ret_415 = KDMemoryCard::Update();
-    if (temp_ret_415 == 0) {
+    if (KDMemoryCard::Update() == 0) {
         temp_r0_418 = this->unkD0;
         switch (temp_r0_418) {                      /* irregular */
         case 0:
@@ -294,7 +291,7 @@ block_10:
                 ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "AutosaveCardRemoved");
                 return;
             }
-            ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_415)))->SetState((KDMCState) 2);
+            ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
         default:
 block_54:
             this->unkD0 += 1;
@@ -329,12 +326,11 @@ block_54:
                 return;
             }
             UpdateDisplay();
-            temp_ret_535 = KDMemoryCard::GetNextCard();
-            if (temp_ret_535 != 0U) {
+            if (KDMemoryCard::GetNextCard() != 0U) {
                 ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
                 return;
             }
-            ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_535)))->SetState((KDMCState) 2);
+            ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
             return;
         case 4:
             if ((u8) (*MemoryCardScreen::selectedCard)->unk9 == 0) {

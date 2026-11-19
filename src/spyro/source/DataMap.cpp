@@ -2,9 +2,9 @@
 #include "common/Source/MKIni.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'DataMap_GetValue(const DataMap *, long)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 stricmp(s8 *);                                  /* extern */
 
+#if 0 // DRAFT: function call 'DataMap_GetValue(const DataMap *, long)' does not match 'DataMap_GetValue(const DataMap *, const char *)'
 s32 DataMap_LoadLineBitfield(MKIniLine *arg0, const char *arg1, const DataMap *arg2, unsigned int *arg3) {
     s16 temp_r31_21;
     s32 temp_r3_32;

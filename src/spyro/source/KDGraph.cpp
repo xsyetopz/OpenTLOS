@@ -12,9 +12,9 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'KDGraphNodeProp' to 'MKSceneManager *'
+#if 0 // DRAFT: illegal implicit conversion from 'KDGraphNodeProp' to 'long'
 f32 KDGraphNodeProp::Resolve() {
-    MKSceneManager *temp_r3_63;
+    s32 temp_r3_63;
     s32 temp_r3_67;
     s32 var_r30_59;
     s32 var_r31_60;
@@ -23,8 +23,8 @@ f32 KDGraphNodeProp::Resolve() {
     var_r31_60 = 0;
     do {
         temp_r3_63 = *(this + (var_r31_60 + 0x90));
-        if (temp_r3_63 != NULL) {
-            temp_r3_67 = (long) (checked_cast<KDGraphNodeProp *, MKProp>(temp_r3_63->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+        if (temp_r3_63 != 0) {
+            temp_r3_67 = (long) (checked_cast<KDGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve(temp_r3_63)));
             if (temp_r3_67 != 0) {
                 M2C_FIELD(M2C_FIELD(this, void **, 0x50), M2C_UNK (**)(u8 *, s32, s32), 0xC)(&this->unk50, temp_r3_67 + 0x50, var_r30_59);
             }

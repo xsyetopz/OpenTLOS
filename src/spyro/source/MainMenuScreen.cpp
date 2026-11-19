@@ -53,9 +53,6 @@ void MainMenuScreen::Update() {
     UIObject *temp_r3_196;
     UIObject *temp_r3_208;
     s32 temp_r0_81;
-    s32 temp_ret_124;
-    s32 temp_ret_43;
-    u32 var_r4_43;
     u8 temp_r4_159;
 
     UIScreen::Update();
@@ -64,7 +61,7 @@ void MainMenuScreen::Update() {
         M2C_FIELD(UIInput(-1), s8 *, 4) = 0;
         UIControls_Reset();
     }
-    if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) || (temp_ret_43 = UIControls_Pressed((FrontEndControls) 3, -1), var_r4_43 = (u32) (u64) temp_ret_43, ((temp_ret_43 == 0) == 0))) {
+    if ((UIControls_Pressed((FrontEndControls) 0xE, -1) != 0) || (UIControls_Pressed((FrontEndControls) 3, -1) != 0)) {
         temp_r3_47 = this->unkD8;
         if (stricmp(temp_r3_47->GetChild(M2C_FIELD(temp_r3_47, s32 *, 0x68))->unk4, "NewGame") == 0) {
             pLoadChunkInfo = M2C_FIELD(&gb, ChunkInfo **, 0x330);
@@ -75,7 +72,7 @@ void MainMenuScreen::Update() {
         temp_r3_70 = this->unkD8;
         sp18 = 6;
         sp1C = 0;
-        var_r4_43 = (UIMessage *) ((u32) temp_r3_70->Message(&sp18, 6));
+        temp_r3_70->Message(&sp18, 6);
     }
     temp_r0_81 = this->unkC8;
     switch (temp_r0_81) {                           /* irregular */
@@ -85,7 +82,7 @@ void MainMenuScreen::Update() {
             if (this->unkD4 <= 0.0f) {
                 this->unkD4 = 0.0f;
                 this->unkCC = NULL;
-                this->unkD0 = (KDMemoryCard *) (this->unkCC->GetCard((s32) var_r4_43));
+                this->unkD0 = (KDMemoryCard *) (KDMemoryCard::GetCard((s32) this->unkCC));
                 if (this->unkD0->IsBusy() == 0) {
                     this->unkD0->SetState((KDMCState) 2);
                     this->unkC8 = 1;
@@ -95,12 +92,11 @@ void MainMenuScreen::Update() {
         }
         return;
     case 1:
-        temp_ret_124 = KDMemoryCard::Update();
-        if (temp_ret_124 == 0) {
+        if (KDMemoryCard::Update() == 0) {
             this->unkCC += 1;
             temp_r3_130 = this->unkCC;
             if (temp_r3_130 < 2) {
-                this->unkD0 = (KDMemoryCard *) (temp_r3_130->GetCard((s32) (u32) (u64) temp_ret_124));
+                this->unkD0 = (KDMemoryCard *) (KDMemoryCard::GetCard((s32) temp_r3_130));
                 this->unkD0->SetState((KDMCState) 2);
                 return;
             }
@@ -122,7 +118,7 @@ void MainMenuScreen::Update() {
             if ((temp_r4_159 != 0) && ((u8) temp_r3_158->unk8 != 0)) {
                 temp_r3_158->SetState((KDMCState) 3);
             } else if ((temp_r4_159 == 0) || (((s32) temp_r3_158->unk1C != 0) && ((s32) temp_r3_158->unk20 == 0))) {
-                this->unkD0 = (KDMemoryCard *) (temp_r3_158->GetNextAvailable((KDMemoryCard *) temp_r4_159));
+                this->unkD0 = (KDMemoryCard *) (KDMemoryCard::GetNextAvailable(temp_r3_158));
                 temp_r3_180 = this->unkD0;
                 if (temp_r3_180 != NULL) {
                     temp_r3_180->SetState((KDMCState) 3);
@@ -139,7 +135,7 @@ void MainMenuScreen::Update() {
                 M2C_FIELD(temp_r3_208->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
                 this->unkD0 = NULL;
             } else {
-                this->unkD0 = (KDMemoryCard *) (temp_r3_158->GetNextAvailable((KDMemoryCard *) temp_r4_159));
+                this->unkD0 = (KDMemoryCard *) (KDMemoryCard::GetNextAvailable(temp_r3_158));
                 temp_r3_224 = this->unkD0;
                 if (temp_r3_224 != NULL) {
                     temp_r3_224->SetState((KDMCState) 3);

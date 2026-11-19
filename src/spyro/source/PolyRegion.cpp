@@ -14,10 +14,10 @@
 #include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 M2C_UNK free(MKVector3 *);                          /* extern */
 MKVector3 *malloc(s32);                             /* extern */
 
+#if 0 // DRAFT: illegal implicit conversion from 'MKVector3' to 'float'
 s32 PolyRegion::LoadLine(char *arg0, MKIniLine *arg1) {
     MKIniLine *var_r27_42;
     MKVector3 *var_r3_31;
@@ -67,7 +67,6 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'free'
 void PolyRegion::Deinit() {
     MKVector3 *temp_r31_128;
 
@@ -81,7 +80,6 @@ void PolyRegion::Deinit() {
         this->unk0 = NULL;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__float_max'
 void PolyRegion::Init() {

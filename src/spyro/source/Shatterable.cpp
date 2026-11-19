@@ -83,8 +83,8 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
 static M2C_UNK pShatterAnimNames;                   /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'DataMap'
 static DataMap ShatterableHitFXDataMap[8] = {
     { 0, "None" },
     { 1, "Metal" },
@@ -1674,11 +1674,9 @@ void Shatterable::Message(MKMessage *arg0) {
     s32 var_r28_3783;
     u32 temp_r3_3870;
     u32 temp_r3_3881;
-    u32 temp_r4_3686;
-    u64 temp_r28_3688;
-    u64 temp_ret_3686;
     void **temp_r3_3461;
     void *temp_r28_2595;
+    void *temp_r28_3688;
     void *temp_r31_2713;
     void *temp_r3_2606;
     void *temp_r3_2968;
@@ -2178,7 +2176,7 @@ loop_223:
         }
         break;
     case 48:                                        /* switch 1 */
-        if (((s32) this->unk16C == 2) && ((temp_ret_3686 = checked_cast<ShatterExtendedMsg *, MKMessage>(arg0), temp_r4_3686 = (u32) temp_ret_3686, temp_r0_3687 = this->unk184, temp_r28_3688 = temp_ret_3686, ((temp_r0_3687 == NULL) != 0)) || (temp_r0_3687->PropResolver_Resolve((s32) temp_r4_3686) == (u32) M2C_FIELD(temp_r28_3688, u32 *, 0x28)))) {
+        if (((s32) this->unk16C == 2) && ((temp_r0_3687 = this->unk184, temp_r28_3688 = checked_cast<ShatterExtendedMsg *, MKMessage>(arg0), ((temp_r0_3687 == NULL) != 0)) || (MKSceneManager::PropResolver_Resolve((s32) temp_r0_3687) == (u32) M2C_FIELD(temp_r28_3688, u32 *, 0x28)))) {
             M2C_FIELD(temp_r28_3688, s8 *, 0x18) = 1;
             sp118 = M2C_FIELD(temp_r28_3688, f64 *, 8);
             sp120 = M2C_FIELD(temp_r28_3688, f64 *, 0x10);
@@ -2474,7 +2472,7 @@ f32 Shatterable::Resolve() {
     KDPropEx::Resolve();
     temp_r3_4283 = this->unk174;
     if (temp_r3_4283 != NULL) {
-        temp_r3_4287 = checked_cast<KDProp *, MKProp>(temp_r3_4283->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_4287 = checked_cast<KDProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_4283));
         PlatformAttach(temp_r3_4287, temp_r3_4287 + 0x70);
     }
 }

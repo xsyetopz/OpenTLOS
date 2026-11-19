@@ -32,7 +32,7 @@ public:
     void IsAttached_Update(int);
     void IsAttached_Init(void);
     s32 IsBusy(void);
-    void * GetNextAvailable(KDMemoryCard *);
+    static void * GetNextAvailable(KDMemoryCard *);
     static void * GetFirstAvailable(void);
     void SetState(KDMCState);
     static s32 Update(void);
@@ -41,7 +41,7 @@ public:
     void Init(int);
     static void InitModule(void);
     static s32 GetNextCard(void);
-    void * GetCard(int);
+    static void * GetCard(int);
     static KDMemoryCard stateData;
     static u8 state[0x4];
     static u8 numCardsPresent[0x4];

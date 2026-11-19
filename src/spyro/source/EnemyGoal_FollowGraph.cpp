@@ -57,6 +57,7 @@
 #include "spyro/source/KDSoundTools.h"
 #include "spyro/source/KDSpline.h"
 #include "spyro/source/Level.h"
+#include "spyro/source/Lever.h"
 #include "spyro/source/MeleeTrails.h"
 #include "spyro/source/Names.h"
 #include "spyro/source/NodeLookAt.h"
@@ -79,20 +80,18 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void EnemyGoal_GraphBarricade::AddGoal_Summon() {
     Goal<Enemy> *temp_r5_36;
-    MKSceneManager *temp_r3_30;
     s32 temp_r0_38;
-    u32 temp_r4_27;
+    s32 temp_r3_30;
     void *temp_r3_34;
 
     if (IsPresent(0x4A) == 0) {
         RemoveAllSubgoals();
-        temp_r4_27 = (u32) AddSubgoal((Goal<Enemy> *) this->unk3C);
-        temp_r3_30 = M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x48);
-        if (temp_r3_30 != NULL) {
-            temp_r3_34 = checked_cast<SpawnPoint *, MKProp>(temp_r3_30->PropResolver_Resolve((s32) temp_r4_27));
+        AddSubgoal((Goal<Enemy> *) this->unk3C);
+        temp_r3_30 = M2C_FIELD(this->unkC->unkA80, s32 *, 0x48);
+        if (temp_r3_30 != 0) {
+            temp_r3_34 = checked_cast<SpawnPoint *, MKProp>(MKSceneManager::PropResolver_Resolve(temp_r3_30));
             temp_r5_36 = this->unk3C;
             temp_r0_38 = M2C_FIELD(M2C_FIELD(M2C_FIELD(temp_r3_34, void **, 0x54), void **, 0x18), s32 *, 0x20);
             M2C_FIELD(temp_r5_36, s32 *, 0x14) = temp_r0_38;
@@ -103,7 +102,6 @@ void EnemyGoal_GraphBarricade::AddGoal_Summon() {
         this->unkC->unkA4C->unk20 = 0;
     }
 }
-#endif
 
 void EnemyGoal_GraphBarricade::AddGoal_GiveOrders() {
     SB2 *temp_r3_86;
@@ -509,30 +507,25 @@ void EnemyGoal_BarricadeKick::Terminate() {
     this->unk8 = 1;
 }
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 u8 EnemyGoal_BarricadeKick::Update() {
     s32 spC;
     s32 sp8;
     AnimSequence *temp_r4_982;
     Enemy *temp_r29_976;
-    u32 temp_r4_954;
-    u64 temp_ret_954;
-    u64 var_r3_961;
-    u8 temp_ret_943;
+    Lever *var_r3_961;
     u8 var_r30_977;
 
     ActivateIfInactive();
-    temp_ret_943 = ((MKAnimScript *) this->unkC->unk630)->CheckEvent(0xE);
-    if (temp_ret_943 != 0) {
+    if (((MKAnimScript *) this->unkC->unk630)->CheckEvent(0xE) != 0) {
         spC = 0;
         sp8 = 0x15E;
-        temp_ret_954 = (unsigned long long) (checked_cast<MKProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x3C)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_943)));
-        temp_r4_954 = (u32) temp_ret_954;
-        if (temp_ret_954 != 0) {
-            var_r3_961 = (unsigned long long) (checked_cast<MKProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(this->unkC->unkA80, MKSceneManager **, 0x3C)))->PropResolver_Resolve((s32) temp_r4_954)));
+        if (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(this->unkC->unkA80, s32 *, 0x3C))) != NULL) {
+            var_r3_961 = (Lever *) (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(this->unkC->unkA80, s32 *, 0x3C))));
         } else {
-            var_r3_961 = (unsigned long long) (checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) temp_r4_954)));
+            var_r3_961 = (Lever *) (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(this->unkC->unkA84->unk3C)));
         }
-        M2C_FIELD(M2C_FIELD(var_r3_961, void **, 0x44), M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        M2C_FIELD(var_r3_961->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
     }
     temp_r29_976 = this->unkC;
     var_r30_977 = 0;
@@ -547,6 +540,7 @@ u8 EnemyGoal_BarricadeKick::Update() {
     }
     return this->unk8;
 }
+#endif
 
 void EnemyGoal_BarricadeKick::Activate() {
     SB2 *temp_r3_1025;
@@ -818,7 +812,7 @@ void EnemyGoal_GraphTurn::Activate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'P6MKProp'
+#if 0 // DRAFT: declaration syntax error
 void EnemyGoal_FollowGraph::AddGoal_OperateLever() {
     Character *temp_r4_1611;
     Character *temp_r4_1617;
@@ -826,7 +820,8 @@ void EnemyGoal_FollowGraph::AddGoal_OperateLever() {
     SB2 *temp_r3_1631;
 
     if (IsPresent(0x47) == 0) {
-        ((EnemyGoal_OperateLever *) this->unk70)->SetParams(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk70))));
+        AddSubgoalToFront((Goal<Enemy> *) this->unk70);
+        ((EnemyGoal_OperateLever *) this->unk70)->SetParams(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(MKSceneManager::PropResolver_Resolve(this->unkC->unkA80->unk3C)));
         temp_r4_1611 = this->unkC;
         temp_r0_1613 = temp_r4_1611->unk640->unk448;
         if (temp_r0_1613 != NULL) {
@@ -879,9 +874,6 @@ void EnemyGoal_FollowGraph::AddGoal_SummonWall() {
     CharacterGraphNode *temp_r3_1746;
     CharacterGraphNode *temp_r3_1765;
     SB2 *temp_r3_1793;
-    u32 var_r4_1744;
-    u64 temp_r3_1751;
-    u64 temp_ret_1751;
 
     if (IsPresent(0x4B) == 0) {
         temp_r4_1731 = this->unkC;
@@ -891,14 +883,14 @@ void EnemyGoal_FollowGraph::AddGoal_SummonWall() {
             temp_r4_1737 = this->unkC;
             temp_r4_1737->unkA84 = temp_r4_1737->unk640->unk44C;
         }
-        var_r4_1744 = (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk6C);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk6C);
         temp_r3_1746 = this->unkC->unkA84;
-        if ((temp_r3_1746 != NULL) && (temp_ret_1751 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) temp_r3_1746->unk3C)->PropResolver_Resolve((s32) var_r4_1744)), temp_r3_1751 = temp_ret_1751, var_r4_1744 = (u32) temp_ret_1751, ((temp_r3_1751 == 0) == 0))) {
-            M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) var_r4_1744)));
+        if ((temp_r3_1746 != NULL) && (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(temp_r3_1746->unk3C)) != NULL)) {
+            M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(MKSceneManager::PropResolver_Resolve(this->unkC->unkA84->unk3C)));
         } else {
             temp_r3_1765 = this->unkC->unkA80;
             if (temp_r3_1765 != NULL) {
-                M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) temp_r3_1765->unk3C)->PropResolver_Resolve((s32) var_r4_1744)));
+                M2C_FIELD(this->unk6C, s32 *, 0x10) = checked_cast<ElementalSpline *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(MKSceneManager::PropResolver_Resolve(temp_r3_1765->unk3C)));
             }
         }
         this->unk95 &= ~0x80;
@@ -926,7 +918,6 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
     s32 temp_r0_1889;
     s32 temp_r5_1861;
     s32 temp_r5_1902;
-    u64 temp_ret_1877;
     void *temp_r3_1885;
 
     if ((IsPresent(0x4A) == 0) && (IsPresent(0x7B) == 0)) {
@@ -947,9 +938,9 @@ void EnemyGoal_FollowGraph::AddGoal_Summon() {
             M2C_FIELD(temp_r4_1859, void **, 0x10) = NULL;
             M2C_FIELD(M2C_FIELD(M2C_FIELD(temp_r4_1859, void **, 0xC), void **, 0xA4C), s32 *, 0x28) = temp_r5_1861;
         } else {
-            temp_ret_1877 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk64)));
-            if (temp_ret_1877 != 0) {
-                temp_r3_1885 = checked_cast<SpawnPoint *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) (u32) temp_ret_1877)));
+            AddSubgoalToFront((Goal<Enemy> *) this->unk64);
+            if (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(this->unkC->unkA84->unk3C)) != NULL) {
+                temp_r3_1885 = checked_cast<SpawnPoint *, MKProp>(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(MKSceneManager::PropResolver_Resolve(this->unkC->unkA80->unk3C)));
                 temp_r5_1887 = this->unk64;
                 temp_r0_1889 = this->unkC->unkA80->unk48;
                 M2C_FIELD(temp_r5_1887, s32 *, 0x14) = temp_r0_1889;
@@ -1608,7 +1599,6 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
     f64 temp_f1_3300;
     s32 temp_r3_3319;
     s32 var_r0_3329;
-    u64 temp_ret_3245;
     void *temp_r3_3255;
     void *temp_r5_3254;
 
@@ -1620,9 +1610,9 @@ void EnemyGoal_FollowGraph::AddGoal_Turn() {
             temp_r4_3233 = this->unkC;
             temp_r4_3233->unkA84 = temp_r4_3233->unk640->unk44C;
         }
-        temp_ret_3245 = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) AddSubgoalToFront((Goal<Enemy> *) this->unk48)));
-        if (temp_ret_3245 != 0) {
-            temp_r5_3254 = M2C_FIELD(checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unkC->unkA84->unk3C)->PropResolver_Resolve((s32) (u32) temp_ret_3245)), void **, 8);
+        AddSubgoalToFront((Goal<Enemy> *) this->unk48);
+        if (checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(this->unkC->unkA84->unk3C)) != NULL) {
+            temp_r5_3254 = checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve(this->unkC->unkA84->unk3C))->unk8;
             temp_r3_3255 = this->unkC->unk8;
             temp_f1_3257 = M2C_FIELD(temp_r3_3255, f64 *, 0x30);
             sp20 = M2C_FIELD(temp_r5_3254, f64 *, 0x30);
@@ -1769,7 +1759,7 @@ void EnemyGoal_FollowGraph::AddGoal_Barricade() {
             temp_r4_3569 = this->unkC;
             temp_r4_3569->unkA84 = temp_r4_3569->unk640->unk44C;
         }
-        ((TargetContext *) (this->unk5C + 0x20))->Set(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(((MKSceneManager *) this->unkC->unkA80->unk3C)->PropResolver_Resolve((s32) this->unkC)));
+        ((TargetContext *) (this->unk5C + 0x20))->Set(checked_cast<P6MKProp, 6MKProp>__FP6MKProp(MKSceneManager::PropResolver_Resolve(this->unkC->unkA80->unk3C)));
         if (((TargetContext *) (this->unk5C + 0x20))->Get() != NULL) {
             AddSubgoalToFront((Goal<Enemy> *) this->unk5C);
         }
@@ -1977,7 +1967,7 @@ void EnemyGoal_FollowGraph::AddGoal_Fly() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier '__vptr' Too many errors printed, aborting program
 void EnemyGoal_FollowGraph::AddGoal_Flee() {
     Character *temp_r4_4006;
     Character *temp_r4_4010;

@@ -11,10 +11,10 @@ public:
     void ReloadGuts(float);
     s8 * CreateMpegTarget(const char *, void *, int, int);
     void CaptureDrawBuffer(float, float, float, float);
-    void CreateRenderTarget(const char *, int, int, int);
+    static void CreateRenderTarget(const char *, int, int, int);
     s8 * CreateFromRawData(const char *, void *, int, int, int, int);
     void Use(void);
-    MKHeap * Find(const char *);
+    static MKHeap * Find(const char *);
     void Destroy(void);
     s8 * Create(const char *, float);
     static void InitModule(void);

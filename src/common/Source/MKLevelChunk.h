@@ -50,7 +50,7 @@ public:
     virtual f32 GetDistanceFromPoint(const MKVector3 &) = 0;
     virtual void EnableTerrainModel(const char *, bool) = 0;
     virtual s32 GetPropsInRange(MKProp **, int, const MKVector3 &, float, int, bool) = 0;
-    void * Game_ChunkChooser(MKChunkRequest *, char **, int, MKLevelChunk **, int);
+    static void * Game_ChunkChooser(MKChunkRequest *, char **, int, MKLevelChunk **, int);
     s32 Game_ChunkInitComplete(MKLevelChunk *, bool);
     s32 Game_UserInit(MKLevelChunk *, bool);
     s32 Update_AppLocked(void);

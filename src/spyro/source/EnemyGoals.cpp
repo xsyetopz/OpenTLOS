@@ -82,9 +82,9 @@ static struct _struct_FrozenInfo_0x10 FrozenInfo[6] = {
     { 2, 0x28, 0x4B0, 0x4BF },
 };
 #endif
-#if 0 // DRAFT: undefined identifier 'unkA4C'
 static M2C_UNK fVanguardAngles;                     /* unable to generate initializer: unknown type */
 
+#if 0 // DRAFT: undefined identifier 'unkA4C'
 void EnemyGoal_Summon::Terminate() {
     this->unk14 = 3;
     this->unkC->unkA4C->unk28 = 3;

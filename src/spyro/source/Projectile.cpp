@@ -133,10 +133,10 @@ void Projectile::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3)
 
 }
 
-#if 0 // DRAFT: type mismatch 'Projectile *' and 'unsigned int'
+#if 0 // DRAFT: pointer/array required
 s32 Projectile::CreateInstance(ProjectileType arg0) {
-    if (this <= 0x15U) {
-        switch ((s32) this) {
+    if ((u32) arg0 <= 0x15U) {
+        switch ((s32) arg0) {
         case 1:
             return NULL->CreateInstance((s32) &jumptable_847);
         case 2:

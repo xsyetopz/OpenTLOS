@@ -75,6 +75,7 @@ extern void **gMK;
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit dreadWingBodyFXInit;     /* unable to generate initializer: confusing struct layout */
+#endif
 
 void DreadWing::DropDropBox() {
     DropBox *temp_r3_67;
@@ -85,7 +86,6 @@ void DreadWing::DropDropBox() {
         this->unkB14 = NULL;
     }
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 s32 DreadWing::PickUpDropBox(int arg0) {

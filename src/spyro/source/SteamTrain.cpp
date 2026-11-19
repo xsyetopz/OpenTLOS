@@ -391,7 +391,7 @@ void SteamTrain::StateRamUpdate() {
     if ((u8) this->unk130 != 0) {
         this->unk38C -= gUpdateTimeDelta;
     }
-    temp_r3_314 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+    temp_r3_314 = (long) (checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk124)));
     if (temp_r3_314 != 0) {
         sp138.GetTrackZAxis(temp_r3_314, this->unk110);
         sp138.unk10 = M2C_BITWISE(f64, sp138);
@@ -400,7 +400,7 @@ void SteamTrain::StateRamUpdate() {
         sp138.unk18 = M2C_BITWISE(f64, sp138.unk8);
         temp_f3_331 = M2C_BITWISE(f32, sp138.unk18);
         if (!(((temp_f3_331 * temp_f3_331) + ((temp_f2_326 * temp_f2_326) + (temp_f3_327 * temp_f3_327))) < 0.0001f)) {
-            temp_r3_339 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk12C->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+            temp_r3_339 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk12C));
             if (temp_r3_339 != NULL) {
                 temp_f2_342 = M2C_FIELD(temp_r3_339, f32 *, 0xDC);
                 temp_r0_344 = this->unk130;
@@ -661,13 +661,13 @@ void SteamTrain::StateChaseUpdate() {
     void *temp_r3_1004;
     void *temp_r3_793;
 
-    temp_r3_768 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+    temp_r3_768 = (long) (checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk124)));
     if (temp_r3_768 != 0) {
         ((TrainTrack *) &sp108)->GetTrackZAxis(temp_r3_768, this->unk110);
         sp118 = sp108;
         sp120 = sp110;
         if (!((((f32) sp120 * (f32) sp120) + (((f32) sp118 * (f32) sp118) + ((*(f32 *) ((u8 *) &sp118 + 0x4)) * (*(f32 *) ((u8 *) &sp118 + 0x4))))) < 0.0001f)) {
-            temp_r3_793 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk12C->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+            temp_r3_793 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk12C));
             if (temp_r3_793 != NULL) {
                 temp_f1_799 = M2C_FIELD(temp_r3_793, f32 *, 0xE0) - this->unk110;
                 if (temp_f1_799 < 1000.0f) {
@@ -838,7 +838,7 @@ void SteamTrain::StateFallBackUpdate() {
     void *temp_r3_1273;
     void *temp_r3_1282;
 
-    temp_r3_1070 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+    temp_r3_1070 = (long) (checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk124)));
     if (temp_r3_1070 != 0) {
         temp_f2_1075 = this->unk108;
         this->unk108 = -((0.8f * temp_f2_1075 * gUpdateTimeDelta) - temp_f2_1075);
@@ -923,7 +923,7 @@ void SteamTrain::StateFallBackUpdate() {
                 M2C_FIELD(temp_r3_1273, f64 *, 0x18) = (f64) sp28;
             }
         }
-        temp_r3_1282 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk12C->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_1282 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk12C));
         if (temp_r3_1282 != NULL) {
             this->unk3EC = (this->unk110 - M2C_FIELD(temp_r3_1282, f32 *, 0xE0)) >= 4500.0f;
         }
@@ -1008,7 +1008,7 @@ void SteamTrain::StateFleeUpdate() {
     void *temp_r3_1373;
     void *temp_r3_1649;
 
-    temp_r3_1330 = (long) (checked_cast<TrainTrack *, MKProp>(this->unk124->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+    temp_r3_1330 = (long) (checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk124)));
     if (temp_r3_1330 != 0) {
         ((TrainTrack *) &sp100)->GetTrackZAxis(temp_r3_1330, this->unk110);
         sp110 = sp100;
@@ -1028,7 +1028,7 @@ void SteamTrain::StateFleeUpdate() {
             }
             var_f31_1343 = (0.5f * ((f32) asin(var_f1_1349) / 1.5707964f)) + 1.0f;
         }
-        temp_r3_1373 = checked_cast<TrainChaseSpyro *, MKProp>(this->unk12C->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        temp_r3_1373 = checked_cast<TrainChaseSpyro *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk12C));
         if (temp_r3_1373 != NULL) {
             var_f2_1378 = 0.0f;
             temp_f4_1379 = this->unk110 - M2C_FIELD(temp_r3_1373, f32 *, 0xE0);
@@ -1561,7 +1561,7 @@ void SteamTrain::Reset() {
     this->unk3EE = 0;
     this->unk130 = 0;
     this->unk131 = 0;
-    temp_r3_2424 = this->unk128->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+    temp_r3_2424 = MKSceneManager::PropResolver_Resolve((s32) this->unk128);
     if (temp_r3_2424 != NULL) {
         M2C_FIELD(M2C_FIELD(temp_r3_2424, void **, 0x44), M2C_UNK (**)(), 0x20)();
     }

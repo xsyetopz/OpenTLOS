@@ -2,10 +2,10 @@
 #include "common/Source/MKIni.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 stricmp(s8 *, s32);                             /* extern */
 static MessageMap globalMessageMap = { 0xA8, 0xC4 }; /* extra bytes: 4 */
 
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 MessageMap_LoadLine(MKIniLine *arg0, char *arg1, int *arg2) {
     s8 *sp8;
 

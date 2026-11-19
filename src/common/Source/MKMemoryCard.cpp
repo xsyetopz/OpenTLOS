@@ -46,9 +46,9 @@ static CARDFileInfo fileInfo_609;
 static CARDStat fileStat_663;
 static CARDFileInfo fileInfo_664;
 static CARDStat stat_786;
-#if 0 // DRAFT: undefined identifier 'SetFinishedStep'
 static M2C_UNK lit_303;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: undefined identifier 'SetFinishedStep'
 void Step_CheckFileSystem() {
     s32 temp_r3_34;
 
@@ -1469,7 +1469,7 @@ void MKMemoryCard_Load(int arg0, int arg1, void *arg2, int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_303'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 void MKMemoryCard_Save(int arg0, int arg1, void *arg2, int arg3, const char *arg4, TimerInfo *arg5) {
     s8 sp8;
     M2C_UNK sp4;

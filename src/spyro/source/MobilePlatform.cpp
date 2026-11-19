@@ -709,7 +709,7 @@ loop_12:
     if (var_r4_1682 == NULL) {
         return 0;
     }
-    if (var_r4_1682 == this) {
+    if (var_r4_1682 == arg0) {
         return 1;
     }
     var_r5_1690 = M2C_FIELD(var_r4_1682, void **, 0x14C);

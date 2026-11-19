@@ -49,8 +49,8 @@ s32 stricmp(s8 *);                                  /* extern */
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: identifier 'gUpdateCameraAlpha' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static M2C_UNK modInfo;                             /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: identifier 'gUpdateCameraAlpha' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static u8 gUpdateCameraAlpha = 1;
 #endif
 
@@ -227,7 +227,6 @@ void KDProp::Enable() {
     this->unk70.unk4 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'modInfo'
 void KDProp::Draw() {
     f32 temp_f0_385;
     f32 var_f1_398;
@@ -265,7 +264,6 @@ void KDProp::Draw() {
         MKModel_Draw(this->unk4, NULL);
     }
 }
-#endif
 
 void *KDProp::Update() {
     MKAnimScript *temp_r3_426;
@@ -363,17 +361,17 @@ s32 KDProp::LoadDone() {
     MKResource *var_r3_603;
     f32 temp_f31_742;
     f64 *temp_r0_744;
+    s32 var_r29_594;
     s32 var_r29_768;
     s32 var_r29_791;
-    s8 *var_r29_594;
     void *temp_r3_584;
 
     temp_r3_584 = checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     temp_r3_586 = M2C_FIELD(temp_r3_584, MKAnimScript **, 0x34);
     if ((temp_r3_586 != NULL) || ((MKResource *) *KDProp::pCustomAnimScrName != NULL)) {
-        var_r29_594 = NULL;
+        var_r29_594 = 0;
         if ((temp_r3_586 != NULL) && ((u32) MKModel_GetAnimation(temp_r3_586->unk8)->unk18 != 0U)) {
-            var_r29_594 = (s8 *)1;
+            var_r29_594 = 1;
         }
         var_r3_603 = (MKResource *) (*KDProp::pCustomAnimScrName);
         if (var_r3_603 != NULL) {
@@ -381,7 +379,7 @@ s32 KDProp::LoadDone() {
         } else {
             var_r3_603 = ((MKAnimScript *) (M2C_FIELD(temp_r3_584, MKAnimScript **, 0x34)))->GetName();
         }
-        this->unk80 = (const char *) (((MKAnimScript *) var_r3_603)->Create(var_r29_594, M2C_ERROR(/* Read from unset register $r5 */)));
+        this->unk80 = (const char *) (MKAnimScript::Create(&var_r3_603->unk0, var_r29_594));
         this->unk4 = this->unk80->unk8;
         temp_r29_619 = this->unk80;
         if (temp_r29_619->Exists("idle01") != 0) {
@@ -546,7 +544,6 @@ void KDPropDescriptor::Init() {
     this->unk6C = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'modInfo'
 void KDProp_InitModule(KDPropModuleInfo *arg0) {
     M2C_FIELD(&modInfo, s32 *, 0) = (s32) arg0->unk0;
     M2C_FIELD(&modInfo, s32 *, 4) = (s32) arg0->unk4;
@@ -556,4 +553,3 @@ void KDProp_InitModule(KDPropModuleInfo *arg0) {
     M2C_FIELD(&modInfo, u8 *, 0x14) = (u8) arg0->unk14;
     M2C_FIELD(&modInfo, u8 *, 0x15) = (u8) arg0->unk15;
 }
-#endif

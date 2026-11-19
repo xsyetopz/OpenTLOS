@@ -27,7 +27,7 @@ public:
     virtual void * Update(void);
     virtual void Draw(void);
     virtual void Message(MKMessage *);
-    void SetCurrentCheckPoint(CheckPoint *);
+    static void SetCurrentCheckPoint(CheckPoint *);
     static u8 pCurrentCheckPoint[0x4];
     /* 0x090 */ u8 unk90;
     /* 0x091 */ u8 pad91[0x3f];

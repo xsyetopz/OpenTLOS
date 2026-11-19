@@ -5,6 +5,7 @@
 #include "common/Source/MKIni.h"
 #include "common/Source/MKMemoryCard.h"
 #include "common/Source/MKModel.h"
+#include "common/Source/MKProp.h"
 #include "common/Source/MKSoftBody.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/MKVector4.h"
@@ -27,19 +28,24 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 extern void *pLoadChunkInfo;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_breathColors_0x10'
 static M2C_UNK coverEffects;                        /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_breathColors_0x10'
 static struct _struct_breathColors_0x10 breathColors[4] = { { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 } };
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_breathShot_0x8'
 static struct _struct_breathShot_0x8 breathShot[4]; /* unable to generate initializer: non-zero padding */
-static struct _struct_breathCost_0x10 breathCost[4]; /* unable to generate initializer: non-zero padding */
-static struct _struct_breathDamage_0x20 breathDamage[4]; /* unable to generate initializer: non-zero padding */
-u8 gameData__8GameData[0x1B4];
 #endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_breathCost_0x10'
+static struct _struct_breathCost_0x10 breathCost[4]; /* unable to generate initializer: non-zero padding */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_breathDamage_0x20'
+static struct _struct_breathDamage_0x20 breathDamage[4]; /* unable to generate initializer: non-zero padding */
+#endif
+u8 gameData__8GameData[0x1B4];
 
 static s32 lit_829 = 0;
 
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void GameData::CopyToGameData(void *arg0) {
     M2C_UNK sp18;
     M2C_UNK sp8;
@@ -96,8 +102,9 @@ void GameData::CopyToGameData(void *arg0) {
     MKRumble_Enable(var_r30_66);
     GetGameSettings();
     Tools_EnableWideScreen(M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 0x11));
-    pLoadChunkInfo = this->unk190.GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
+    pLoadChunkInfo = (const char *) (Level::GetChunkByName((s8 *) &this->unk190));
 }
+#endif
 
 void GameData::CopyFromGameData(void *arg0) {
     memcpy(arg0, this, 0x1B0U);

@@ -47,8 +47,8 @@ loop_1:
 #endif
 
 void LineSegmentTrailPool::Free(LSTrail *arg0) {
-    if (this != NULL) {
-        this->unk24 = 0;
+    if (arg0 != NULL) {
+        M2C_FIELD(arg0, s8 *, 0x24) = 0;
     }
 }
 
@@ -365,7 +365,7 @@ void LineSegmentTrail::FreeActiveTrail(LSTrail *arg0) {
         temp_r3_623 = var_r31_617 + 0x58;
         if ((u32) *(this + temp_r3_623) == arg0) {
             *(this + temp_r3_623) = 0;
-            ((LineSegmentTrailPool *) arg0)->Free(M2C_ERROR(/* Read from unset register $r4 */));
+            LineSegmentTrailPool::Free(arg0);
         }
         var_r29_620 += 1;
         var_r31_617 += 4;

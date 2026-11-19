@@ -54,57 +54,125 @@ static M2C_UNK gLanguageOptionLanguages;
 static s32 gCurrentLanguage = -1;
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036DFA5;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036DFAD;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036DFC9;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036DFD6;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036DFF9;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E002;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E009;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E024;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E02C;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E034;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E050;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E058;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E05F;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E07A;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E083;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E08B;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0A7;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0B2;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0B8;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0D2;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0DB;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0F8;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E0FE;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E105;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E120;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E128;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E130;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E14C;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E152;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E15C;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E17A;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E180;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error Too many errors printed, aborting program
 static M2C_UNK .L_8036E188;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E1A4;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8036E1AC;                         /* unable to generate initializer: unknown type; const */
+#endif
 
 void Translation_GetLanguageCode(TranslationLanguage arg0) {
 
 }
-#endif
 
 void Translation_GetLanguageLocalName(TranslationLanguage arg0) {
 

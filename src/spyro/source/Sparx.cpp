@@ -85,7 +85,9 @@ static struct _struct_localOffset_0x10 localOffset[0xF] = {
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<Sparx>::State'
 static KDStateMachine<Sparx>::State sparxStates;    /* unable to generate initializer: confusing struct layout */
+#endif
 
+#if 0 // DRAFT: pointer/array required
 void Sparx::StateAction_StrafeTargetUpdate() {
     f64 sp50;
     f64 sp48;

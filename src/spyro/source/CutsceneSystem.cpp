@@ -80,9 +80,10 @@ extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: identifier 'pLoadChunkInfo' redeclared was declared as: 'ChunkInfo *' now declared as: 'void *'
 extern void *pLoadChunkInfo;
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<CutsceneSystem>::State'
 static M2C_UNK lit_752;                                /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<CutsceneSystem>::State'
 static KDStateMachine<CutsceneSystem>::State cutsceneStates; /* unable to generate initializer: confusing struct layout */
+#endif
 
 void CutsceneSystem::SetCustomSubtitle(const char *arg0, int arg1, bool arg2) {
     f32 var_f0_24;
@@ -102,7 +103,6 @@ void CutsceneSystem::SetCustomSubtitle(const char *arg0, int arg1, bool arg2) {
     this->unk90 = var_f0_24;
     this->unk8C = arg1;
 }
-#endif
 
 void CutsceneSystem::SetDuckValue(float arg0) {
     f32 var_f1_0;

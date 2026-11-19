@@ -98,10 +98,10 @@ extern s32 gViewSeed;
 #if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
 extern M2C_UNK gb;
 #endif
-#if 0 // DRAFT: identifier 'bAirCombatSlowMo' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static M2C_UNK lit_764;                                /* unable to generate initializer: unknown type */
 SpyroAirCombatState states__19SpyroAirCombatState;  /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: identifier 'bAirCombatSlowMo' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static u8 bAirCombatSlowMo = 1;
 #endif
 #if 0 // DRAFT: identifier 'HornDiveZSpeed' redeclared was declared as: 'unsigned char[4]' now declared as: 'float'
@@ -2547,7 +2547,6 @@ void SpyroAirCombatState::Init(Spyro *arg0) {
     this->unk38 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_764'
 void SpyroAirCombatState_cpp::__sinit() {
     s32 sp50;
     s32 sp4C;
@@ -2681,4 +2680,3 @@ void SpyroAirCombatState_cpp::__sinit() {
     M2C_FIELD(temp_r17_4803, s32 *, 0x118) = (s32) M2C_FIELD(&lit_764, s32 *, 0x118);
     M2C_FIELD(temp_r17_4803, s32 *, 0x11C) = (s32) M2C_FIELD(&lit_764, s32 *, 0x11C);
 }
-#endif

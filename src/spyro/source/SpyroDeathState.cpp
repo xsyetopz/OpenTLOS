@@ -71,10 +71,10 @@ extern void **gMK;
 #if 0 // DRAFT: identifier 'gb' redeclared was declared as: 'GameGlobals' now declared as: 'long'
 extern M2C_UNK gb;
 #endif
-#if 0 // DRAFT: undefined identifier 'unk0'
 static M2C_UNK lit_779;                                /* unable to generate initializer: unknown type */
 SpyroDeathState states__15SpyroDeathState;          /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: undefined identifier 'unk0'
 s32 SpyroDeathState::SpawnTransition() {
     if (((u32) *CheckPoint::pCurrentCheckPoint != 0U) && ((s32) this->unk14.unk0 != 3)) {
         this->unk14.SetState(this, 3, 0U);
@@ -547,7 +547,7 @@ void SpyroDeathState::Init(Spyro *arg0) {
     this->unk14.Init((KDStateMachine<SpyroDeathState>::State *) &SpyroDeathState::states, NULL);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_779'
+#if 0 // DRAFT: undefined identifier '__ptmf_null'
 void SpyroDeathState_cpp::__sinit() {
     s32 sp10;
     s32 spC;

@@ -14,10 +14,10 @@
 #include "spyro/source/GameConsole.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'Console_AddMacro(signed char *, signed char *)' does not match 'Console_AddMacro(const char *, const char *)'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 
+#if 0 // DRAFT: function call 'Console_AddMacro(signed char *, signed char *)' does not match 'Console_AddMacro(const char *, const char *)'
 s32 ConsoleProp::LoadDone() {
     s32 temp_r0_57;
     s32 var_r29_48;

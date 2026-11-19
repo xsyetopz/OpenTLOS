@@ -2506,11 +2506,11 @@ f32 Character::Resolve() {
     temp_r3_4440 = this->unk63C;
     if (temp_r3_4440 != NULL) {
         this->unk63C = NULL;
-        PlatformAttach(((MKSceneManager *) temp_r3_4440)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)), NULL);
+        PlatformAttach(MKSceneManager::PropResolver_Resolve((s32) temp_r3_4440), NULL);
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to 'const char *'
 s32 Character::LoadDone() {
     f64 sp20;
     MKVector3 sp10;
@@ -2521,7 +2521,7 @@ s32 Character::LoadDone() {
     f64 temp_f1_4629;
     f64 temp_f2_4621;
     f64 temp_f3_4620;
-    s8 *var_r30_4473;
+    s32 var_r30_4473;
     void *temp_r30_4558;
     void *temp_r3_4469;
     void *temp_r3_4560;
@@ -2531,11 +2531,11 @@ s32 Character::LoadDone() {
     temp_r4_4468 = this->unk0;
     temp_r3_4469 = M2C_FIELD(temp_r4_4468, void **, 0x34);
     if (temp_r3_4469 != NULL) {
-        var_r30_4473 = NULL;
+        var_r30_4473 = 0;
         if ((u32) MKModel_GetAnimation(M2C_FIELD(temp_r3_4469, MKModel **, 8))->unk18 != 0U) {
-            var_r30_4473 = (s8 *)1;
+            var_r30_4473 = 1;
         }
-        this->unk630 = (const char *) (((MKAnimScript *) (((MKAnimScript *) (M2C_FIELD(this->unk0, MKAnimScript **, 0x34)))->GetName()))->Create(var_r30_4473, M2C_ERROR(/* Read from unset register $r5 */)));
+        this->unk630 = (const char *) (MKAnimScript::Create(((MKAnimScript *) (M2C_FIELD(this->unk0, MKAnimScript **, 0x34)))->GetName(), var_r30_4473));
         this->unk4 = M2C_FIELD(this->unk630, MKModel **, 8);
         this->unk10 &= 0xFFFFFFFB;
     } else {

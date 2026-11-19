@@ -295,7 +295,7 @@ void EnemySpawnPointData::Resolve() {
 
     temp_r3_679 = this->unk20;
     if (temp_r3_679 != NULL) {
-        temp_r3_683 = (unsigned long) (checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_679->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+        temp_r3_683 = (unsigned long) (checked_cast<KDSplinePathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_679)));
         if (temp_r3_683 != 0U) {
             this->unk20 = (MKSceneManager *) (temp_r3_683 + 0x4C);
         } else {
@@ -304,7 +304,7 @@ void EnemySpawnPointData::Resolve() {
     }
     temp_r3_693 = this->unk24;
     if (temp_r3_693 != NULL) {
-        temp_r3_697 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_693->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+        temp_r3_697 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_693)));
         if (temp_r3_697 != 0U) {
             this->unk24 = (MKSceneManager *) (temp_r3_697 + 0x50);
             return;

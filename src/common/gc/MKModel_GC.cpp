@@ -32,9 +32,9 @@ extern M2C_UNK gShockWaveData;
 extern s32 gpMKcurrentMaterialEffectorMask;
 static M2C_UNK explorer_784;
 
-#if 0 // DRAFT: pointer/array required
 static M2C_UNK lit_806;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: pointer/array required
 void MKModel_BlobDraw(const MKModel *arg0, int arg1, const MKModel_Blob *arg2) {
     s32 spC;
     s32 sp8;

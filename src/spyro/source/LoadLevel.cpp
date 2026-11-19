@@ -81,9 +81,15 @@ static s32 hPackage = -1;
 
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BDC1;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BDE2;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BE03;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: ')' expected
 void LoadLevel_Draw() {
     RenderContext sp20;
     Tools_Ortho sp10;

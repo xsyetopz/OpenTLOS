@@ -29,7 +29,6 @@ void CopyrightScreen::Update() {
     s32 temp_r0_115;
     s32 temp_r0_21;
     s32 temp_r0_257;
-    s32 temp_ret_123;
     u8 temp_r4_158;
     void **temp_r3_86;
 
@@ -80,12 +79,11 @@ void CopyrightScreen::Update() {
     temp_r0_115 = this->unkD0;
     switch (temp_r0_115) {                          /* switch 2; irregular */
     case 1:                                         /* switch 2 */
-        temp_ret_123 = KDMemoryCard::Update();
-        if (temp_ret_123 == 0) {
+        if (KDMemoryCard::Update() == 0) {
             this->unkD4 += 1;
             temp_r3_129 = this->unkD4;
             if (temp_r3_129 < 2) {
-                this->unkD8 = (KDMemoryCard *) (temp_r3_129->GetCard((s32) (u32) (u64) temp_ret_123));
+                this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetCard((s32) temp_r3_129));
                 this->unkD8->SetState((KDMCState) 2);
             } else {
                 this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetFirstAvailable());
@@ -106,7 +104,7 @@ void CopyrightScreen::Update() {
             if ((temp_r4_158 != 0) && ((u8) temp_r3_157->unk8 != 0)) {
                 temp_r3_157->SetState((KDMCState) 3);
             } else if ((temp_r4_158 == 0) || (((s32) temp_r3_157->unk1C != 0) && ((s32) temp_r3_157->unk20 == 0))) {
-                this->unkD8 = (KDMemoryCard *) (temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158));
+                this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetNextAvailable(temp_r3_157));
                 temp_r3_179 = this->unkD8;
                 if (temp_r3_179 != NULL) {
                     temp_r3_179->SetState((KDMCState) 3);
@@ -115,7 +113,7 @@ void CopyrightScreen::Update() {
                 M2C_FIELD(&gb, s8 *, 0x382) = 1;
                 this->unkD8 = NULL;
             } else {
-                this->unkD8 = (KDMemoryCard *) (temp_r3_157->GetNextAvailable((KDMemoryCard *) temp_r4_158));
+                this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetNextAvailable(temp_r3_157));
                 temp_r3_199 = this->unkD8;
                 if (temp_r3_199 != NULL) {
                     temp_r3_199->SetState((KDMCState) 3);
@@ -160,7 +158,7 @@ void CopyrightScreen::OnEnter() {
     if ((u8) *CopyrightScreen::bMemoryCardCheckDone == 0) {
         this->unkD0 = 1;
         this->unkD4 = NULL;
-        this->unkD8 = (KDMemoryCard *) (this->unkD4->GetCard(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unkD8 = (KDMemoryCard *) (KDMemoryCard::GetCard((s32) this->unkD4));
         this->unkD8->SetState((KDMCState) 2);
     }
 }

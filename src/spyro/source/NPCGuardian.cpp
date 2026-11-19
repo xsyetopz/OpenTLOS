@@ -79,7 +79,7 @@ f32 NPCGuardian::Resolve() {
     Enemy::Resolve();
     temp_r3_74 = this->unkB18;
     if (temp_r3_74 != NULL) {
-        temp_r3_78 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(temp_r3_74->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+        temp_r3_78 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_74)));
         if (temp_r3_78 != 0U) {
             this->unkA80 = temp_r3_78 + 0x50;
             this->unkA90 = 0;

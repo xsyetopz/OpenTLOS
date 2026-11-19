@@ -42,9 +42,9 @@ extern UIStringTable levelstringTable;
 static s8 phraseData[0x50];
 #endif
 static s32 lit_771 = 0;
-#if 0 // DRAFT: function call 'strcmp(signed char, const char[1])' does not match 'strcmp(const char *, const char *)'
 static M2C_UNK lit_740;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: function call 'strcmp(signed char, const char[1])' does not match 'strcmp(const char *, const char *)'
 s8 *PhrasePlayer_GetCurrentActor() {
     s32 temp_r0_29;
     s32 var_r4_28;

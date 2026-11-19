@@ -22,13 +22,13 @@
 #include "common/gc/MKMaterial_GC.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'drawStringChars' redeclared was declared as: 'MKHeap *' now declared as: 'TextCharStrip **'
 f64 atof(s8 *, s32, s32, M2C_UNK, s32);             /* extern */
 s32 atoi(s8 *, s8 *, s8 *);                         /* extern */
 M2C_UNK free(M2C_UNK *);                            /* extern */
 TextCharStrip **malloc(s32);                        /* extern */
 s32 stricmp(s32, MKFont *);                         /* extern */
 s32 strnicmp(s8 *, s32, s32);                       /* extern */
+#if 0 // DRAFT: identifier 'drawStringChars' redeclared was declared as: 'MKHeap *' now declared as: 'TextCharStrip **'
 extern TextCharStrip **drawStringChars;
 #endif
 extern M2C_UNK gEmptyPtrListDL;
@@ -992,7 +992,6 @@ loop_4:
     MKMaterial_RenderImmediateEnd();
 }
 
-#if 0 // DRAFT: undefined identifier 'free'
 void MKFont::DeinitModule() {
     M2C_UNK *temp_r0_1787;
     M2C_UNK *temp_r0_1806;
@@ -1047,9 +1046,7 @@ loop_15:
     *MKFont::fontList = NULL;
     *MKFont::bInitialised = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'malloc'
 void MKFont::InitModule() {
     TextCharStrip **temp_r4_1920;
     TextCharStrip **var_r3_1850;
@@ -1128,7 +1125,6 @@ void MKFont::InitModule() {
     }
     *MKFont::fontColours = (unsigned char) (var_r3_1971);
 }
-#endif
 
 f32 MKFont::CalcLength(const char *arg0) {
     s32 spC;
@@ -1227,7 +1223,7 @@ loop_17:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
+#if 0 // DRAFT: function call 'stricmp(unsigned char *, MKFont *)' does not match 'stricmp(long, MKFont *)'
 void *MKFont::Find(const char *arg0) {
     void **var_r31_2167;
     void *temp_r3_2180;

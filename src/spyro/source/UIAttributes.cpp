@@ -7,9 +7,9 @@
 #include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 stricmp(s8 *, s8 *);                            /* extern */
 
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 s32 Attributes::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r30_116;

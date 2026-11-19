@@ -39,12 +39,12 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 M2C_UNK __construct_array(void *, MKProp *(*)(MKProp *), MKProp *(*)(MKProp *, s16), M2C_UNK, M2C_UNK); /* extern */
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(s32);                                    /* extern */
 s32 stricmp(s8 *, s8 *);                            /* extern */
 
+#if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 void MKChunkSceneManager::PostDrawWater() {
     s32 temp_r0_29;
     s32 var_r30_23;
@@ -399,15 +399,13 @@ void MKChunkSceneManager::UnlockChunk(MKLevelChunk *arg0) {
     M2C_FIELD(arg0->unk8, M2C_UNK (**)(MKLevelChunk *), 0x44)(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'char **'
 MKLevelChunk *MKChunkSceneManager::LockChunk(MKChunkRequest *arg0, char **arg1, int arg2) {
     MKLevelChunk *temp_r3_588;
 
-    temp_r3_588 = (char **) (((MKLevelChunk *) arg0)->Game_ChunkChooser((MKChunkRequest *) arg1, (s8 **) arg2, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */)));
+    temp_r3_588 = (MKLevelChunk *) (MKLevelChunk::Game_ChunkChooser(arg0, arg1, arg2, (MKLevelChunk **) this->unkE8, (s32) this->unkEC));
     M2C_FIELD(temp_r3_588->unk8, M2C_UNK (**)(s32, u8), 0x40)(arg0->unk0, arg0->unkC);
     return temp_r3_588;
 }
-#endif
 
 #if 0 // DRAFT: type mismatch 'long' and 'MKLevelChunk **'
 MKLevelChunk *MKChunkSceneManager::QueueChunkLoad(const char *arg0, MKChunkRequest *arg1, char **arg2, int arg3, const char *arg4, bool arg5, bool arg6) {
@@ -423,7 +421,7 @@ loop_10:
     if (var_r31_617 >= (MKLevelChunk **) this->unkEC) {
         arg1->unkC = 0;
         arg1->unk8 = 0;
-        temp_r3_678 = (char **) (((MKLevelChunk *) arg1)->Game_ChunkChooser((MKChunkRequest *) arg2, (s8 **) arg3, this->unkE8, this->unkEC, M2C_ERROR(/* Read from unset register $r8 */)));
+        temp_r3_678 = (MKLevelChunk *) (MKLevelChunk::Game_ChunkChooser(arg1, arg2, arg3, (MKLevelChunk **) this->unkE8, (s32) this->unkEC));
         temp_r3_678->QueueChunkLoad(arg0, arg1->unk4, arg6);
         return temp_r3_678;
     }

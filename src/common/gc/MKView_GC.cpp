@@ -18,10 +18,10 @@ static struct _struct_lightDirs_0x10 lightDirs[3];
 static u8 lit_423 = 0xFF;
 static u8 lit_425 = 0xFF;
 static u8 lit_427 = 0xFF;
-#if 0 // DRAFT: undefined identifier 'lightDirs'
 static s32 lit_435 = 0xFF;                             /* const */
 static s32 lit_458 = 0xFF;                             /* const */
 
+#if 0 // DRAFT: undefined identifier 'lightDirs'
 void *MKView_GetLightDirection(int arg0) {
     return &lightDirs[arg0];
 }

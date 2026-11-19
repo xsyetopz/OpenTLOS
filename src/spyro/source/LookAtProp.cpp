@@ -94,7 +94,7 @@ void LookAtProp::Message(MKMessage *arg0) {
 }
 
 f32 LookAtProp::Resolve() {
-    this->unk4C = checked_cast<MKProp *, MKProp>(((MKSceneManager *) this->unk4C)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    this->unk4C = checked_cast<MKProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk4C));
     MKProp::Resolve();
 }
 

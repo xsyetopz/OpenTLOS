@@ -96,8 +96,8 @@ void CharacterGraphNodeProp::Message(MKMessage *arg0) {
 #if 0 // DRAFT: illegal implicit conversion from 'long' to 'CharacterGraphNode *'
 f32 CharacterGraphNodeProp::Resolve() {
     KDSplinePathSegmentProp *var_r29_147;
-    MKSceneManager *temp_r3_155;
     s32 temp_r0_178;
+    s32 temp_r3_155;
     s32 temp_r3_164;
     s32 var_r28_148;
     s32 var_r31_149;
@@ -108,12 +108,12 @@ f32 CharacterGraphNodeProp::Resolve() {
     var_r31_149 = 0;
     do {
         temp_r30_151 = this + var_r31_149;
-        if ((MKSceneManager *) M2C_FIELD(temp_r30_151, MKSceneManager **, 0xDC) != NULL) {
-            temp_r3_155 = M2C_FIELD(temp_r30_151, MKSceneManager **, 0xF4);
-            if (temp_r3_155 != NULL) {
-                var_r29_147 = checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_155->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        if ((s32) M2C_FIELD(temp_r30_151, s32 *, 0xDC) != 0) {
+            temp_r3_155 = M2C_FIELD(temp_r30_151, s32 *, 0xF4);
+            if (temp_r3_155 != 0) {
+                var_r29_147 = checked_cast<KDSplinePathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve(temp_r3_155));
             }
-            temp_r3_164 = (long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r30_151, MKSceneManager **, 0xDC)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+            temp_r3_164 = (long) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r30_151, s32 *, 0xDC))));
             if (temp_r3_164 != 0) {
                 this->unk50.Link(temp_r3_164 + 0x50, var_r28_148, (LinkInformation) M2C_FIELD(temp_r30_151, s32 *, 0xA0), var_r29_147);
             }

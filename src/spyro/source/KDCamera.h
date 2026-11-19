@@ -65,11 +65,11 @@ public:
     void GetYaw(void);
     void GetXZDir(void);
     void GetTarget(void);
-    f32 GetSafePitch(float, float);
+    static f32 GetSafePitch(float, float);
     void GetSmoothToAngleDelta(float, float, float);
     void GetSmoothedAngleOffset(float, float, float);
     void GetIdealSource(const MKVector3 &, const MKVector3 &, MKVector3 *);
-    f32 GetUpdatedSourceY(const MKVector3 &, const MKVector3 &, int);
+    static f32 GetUpdatedSourceY(const MKVector3 &, const MKVector3 &, int);
     void GetUpdatedSource(const MKVector3 &, const MKVector3 &, const MKVector3 *, float);
     void GetUpdatedTarget(void);
     void SetCameraCollisionInfoItems(bool);

@@ -20,12 +20,9 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 #if 0 // DRAFT: undefined identifier 'MKInputDevices'
 inline f32 KDInput::GetRightMag() {
     f32 temp_f1_10132;
-    f32 temp_ret_10128;
     f32 var_f1_10121;
     f32 var_f31_10099;
     u8 var_r3_10087;
@@ -47,11 +44,9 @@ inline f32 KDInput::GetRightMag() {
     if (var_r3_10110 != 0) {
         var_f1_10121 = 0.0f;
     } else {
-        temp_ret_10128 = MKInput_GetState(0x13, (MKInputDevices) this->unk0, NULL, NULL);
-        var_f1_10121 = temp_ret_10128;
-        var_r3_10110 = M2C_BITWISE(u8, temp_ret_10128);
+        var_f1_10121 = MKInput_GetState(0x13, (MKInputDevices) this->unk0, NULL, NULL);
     }
-    temp_f1_10132 = ((std *) var_r3_10110)->sqrtf((var_f1_10121 * var_f1_10121) + (var_f31_10099 * var_f31_10099));
+    temp_f1_10132 = std::sqrtf((var_f1_10121 * var_f1_10121) + (var_f31_10099 * var_f31_10099));
     if (temp_f1_10132 < 1.0f) {
         return temp_f1_10132;
     }
@@ -62,7 +57,6 @@ inline f32 KDInput::GetRightMag() {
 #if 0 // DRAFT: undefined identifier 'MKInputDevices'
 inline f32 KDInput::GetLeftMag() {
     f32 temp_f1_5020;
-    f32 temp_ret_5016;
     f32 var_f1_5009;
     f32 var_f31_4987;
     u8 var_r3_4975;
@@ -84,11 +78,9 @@ inline f32 KDInput::GetLeftMag() {
     if (var_r3_4998 != 0) {
         var_f1_5009 = 0.0f;
     } else {
-        temp_ret_5016 = MKInput_GetState(0x11, (MKInputDevices) this->unk0, NULL, NULL);
-        var_f1_5009 = temp_ret_5016;
-        var_r3_4998 = M2C_BITWISE(u8, temp_ret_5016);
+        var_f1_5009 = MKInput_GetState(0x11, (MKInputDevices) this->unk0, NULL, NULL);
     }
-    temp_f1_5020 = ((std *) var_r3_4998)->sqrtf((var_f1_5009 * var_f1_5009) + (var_f31_4987 * var_f31_4987));
+    temp_f1_5020 = std::sqrtf((var_f1_5009 * var_f1_5009) + (var_f31_4987 * var_f31_4987));
     if (temp_f1_5020 < 1.0f) {
         return temp_f1_5020;
     }

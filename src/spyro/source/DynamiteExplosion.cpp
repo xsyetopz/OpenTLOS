@@ -315,15 +315,15 @@ block_51:
 }
 #endif
 
-u8 DynamiteExplosion::UpdateIce(DynamiteExplosion::Explosion *arg1) {
+u8 DynamiteExplosion::UpdateIce(DynamiteExplosion::Explosion *arg0) {
     return 1U;
 }
 
-u8 DynamiteExplosion::UpdateEarth(DynamiteExplosion::Explosion *arg1) {
+u8 DynamiteExplosion::UpdateEarth(DynamiteExplosion::Explosion *arg0) {
     return 1U;
 }
 
-u8 DynamiteExplosion::UpdateFire(DynamiteExplosion::Explosion *arg1) {
+u8 DynamiteExplosion::UpdateFire(DynamiteExplosion::Explosion *arg0) {
     return 1U;
 }
 
@@ -2614,7 +2614,7 @@ loop_17:
             temp_r0_4234 = M2C_FIELD(temp_r4_4302, s32 *, 0x1C);
             switch (temp_r0_4234) {                 /* irregular */
             case 0:
-                if (UpdateFire(temp_r4_4302) == 0) {
+                if (DynamiteExplosion::UpdateFire((DynamiteExplosion::Explosion *) this) == 0) {
                     temp_r3_4251 = this->unk50;
                     this->unk50 = temp_r3_4251 + 4;
                     temp_r4_4254 = *temp_r3_4251;
@@ -2632,7 +2632,7 @@ loop_17:
                 }
                 break;
             case 2:
-                if (UpdateIce(temp_r4_4302) == 0) {
+                if (DynamiteExplosion::UpdateIce((DynamiteExplosion::Explosion *) this) == 0) {
                     temp_r3_4277 = this->unk50;
                     this->unk50 = temp_r3_4277 + 4;
                     temp_r4_4280 = *temp_r3_4277;
@@ -2641,7 +2641,7 @@ loop_17:
                 }
                 break;
             case 3:
-                if (UpdateEarth(temp_r4_4302) == 0) {
+                if (DynamiteExplosion::UpdateEarth((DynamiteExplosion::Explosion *) this) == 0) {
                     temp_r3_4290 = this->unk50;
                     this->unk50 = temp_r3_4290 + 4;
                     temp_r4_4293 = *temp_r3_4290;

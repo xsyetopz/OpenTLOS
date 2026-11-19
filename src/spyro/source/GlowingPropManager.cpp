@@ -17,20 +17,22 @@
 M2C_UNK free(MKProp ***);                           /* extern */
 MKProp ***malloc(M2C_UNK);                          /* extern */
 extern M2C_UNK gEmptyPtrListDL;
-extern GlowingPropManager gGlowingPropManager;
+#if 0 // DRAFT: identifier 'gGlowingPropManager' redeclared was declared as: 'GlowingPropManager' now declared as: 'MKProp'
+extern MKProp gGlowingPropManager;
+#endif
 extern MKMaterial *gRenderState;
 
 u8 GlowingPropManager::AddProp(MKProp *arg0) {
-    MKProp ***temp_r5_11;
-    MKProp ***temp_r5_18;
+    s32 **temp_r5_18;
+    void *temp_r5_11;
 
-    temp_r5_11 = this->unk0;
+    temp_r5_11 = arg0->unk0;
     if ((u32) M2C_FIELD(temp_r5_11, u32 *, -4) == 0U) {
         return 0U;
     }
-    temp_r5_18 = temp_r5_11 - 4;
-    this->unk0 = temp_r5_18;
-    **temp_r5_18 = arg0;
+    temp_r5_18 = (long **) (((u8 *) temp_r5_11) - 4);
+    arg0->unk0 = temp_r5_18;
+    **temp_r5_18 = M2C_ERROR(/* Read from unset register $r4 */);
     return 1U;
 }
 
@@ -198,7 +200,7 @@ void GlowingProp::BeginGlowingPropDraw(MKProp *arg0) {
                 var_f30_219 = __float_nan;
             }
         }
-        if ((var_f30_219 > 1500.0f) && (gGlowingPropManager.AddProp(arg0) != 0)) {
+        if ((var_f30_219 > 1500.0f) && (GlowingPropManager::AddProp(&gGlowingPropManager) != 0)) {
             var_f1_292 = var_f30_219 - 1500.0f;
             if (var_f1_292 < 1500.0f) {
 

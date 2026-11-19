@@ -27,7 +27,6 @@ extern void *autosaveCard;
 void MCSelectFileScreen::Update() {
     s32 temp_r0_107;
     s32 temp_r30_129;
-    s32 temp_ret_60;
     void *temp_r3_111;
 
     UIScreen::Update();
@@ -42,11 +41,10 @@ void MCSelectFileScreen::Update() {
             ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
             return;
         }
-        temp_ret_60 = KDMemoryCard::GetNextCard();
-        if (temp_ret_60 != 0U) {
+        if (KDMemoryCard::GetNextCard() != 0U) {
             ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
         } else {
-            ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_60)))->SetState((KDMCState) 2);
+            ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
         }
         goto block_11;
     }

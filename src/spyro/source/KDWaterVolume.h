@@ -21,7 +21,7 @@ public:
     virtual void Deinit(void);
     virtual s32 IsEnabled(void);
     f32 GetWaterSurface(const MKVector3 &);
-    s32 GetWaterHeight(const MKVector3 &, float, float *, MKCollisionResult *, int);
+    static s32 GetWaterHeight(const MKVector3 &, float, float *, MKCollisionResult *, int);
     s32 IsWithin(const MKVector3 &, float *, int *);
     /* 0x04c */ u8 pad4C[0x4];
     /* 0x050 */ KDVolume unk50;

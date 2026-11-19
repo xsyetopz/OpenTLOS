@@ -82,7 +82,7 @@ public:
 
 class Level {
 public:
-    void GetNextLevel(LevelInfo *);
+    static void GetNextLevel(LevelInfo *);
     static void GetWorldInfo(void);
     void EnvDomeChanged(void);
     static void * GetStartLevelInfo(void);
@@ -94,13 +94,13 @@ public:
     void DOFSetPlanes(float, float, float, float);
     void DOFApplyEffect(void);
     MKModel * GetEnvDome(void);
-    void * GetLevelByName(const char *);
+    static void * GetLevelByName(const char *);
     void SwitchTo(ChunkInfo *);
     void SetEnvChunk(ChunkInfo *);
     void LoadChunk(ChunkInfo *, int);
     s32 SetDesiredChunks(ChunkInfo **, int);
-    Level * GetNextChunk(ChunkInfo *);
-    void * GetChunkByName(const char *);
+    static Level * GetNextChunk(ChunkInfo *);
+    static void * GetChunkByName(const char *);
     void ResolveGameSpecificProps(void);
     void ApplyViewParameters(void);
     void SetProjectionToDefaults(void);
@@ -123,7 +123,7 @@ public:
     static TerrainInfo * AllocTerrainInfo(void);
     ChunkInfo * AllocChunkInfo(void);
     static LevelInfo * AllocLevelInfo(void);
-    void * GetLevelInfo(int);
+    static void * GetLevelInfo(int);
     static s32 GetLevelCount(void);
     static u8 pGlobalLevelIni[0x4];
     static u8 pGlobalModelIni[0x4];
@@ -332,7 +332,7 @@ inline ChunkProp::~ChunkProp() {
 }
 
 inline void *Level::GetLevelInfo(int arg0) {
-    return (void *) (*Level::pLevelInfo + ((s32) this * 0x128));
+    return (void *) (*Level::pLevelInfo + (arg0 * 0x128));
 }
 
 inline s32 Level::GetLevelCount() {
@@ -340,7 +340,7 @@ inline s32 Level::GetLevelCount() {
 }
 
 inline void Level::GetNextLevel(LevelInfo *arg0) {
-    if (this != NULL) {
+    if (arg0 != NULL) {
 
     }
 }

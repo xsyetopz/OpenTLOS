@@ -93,7 +93,6 @@ void MCFileInfo::Reset() {
     UIObject *var_r30_340;
     f32 temp_f31_431;
     s32 temp_r30_288;
-    s32 temp_ret_412;
     s32 temp_ret_506;
     s32 var_r3_364;
     s32 var_r3_532;
@@ -181,11 +180,10 @@ loop_28:
         var_r30_403 = NULL;
         this->unk78 = 0;
         if ((s8) M2C_FIELD(temp_r4_274, u8 *, 0x20) != 0) {
-            temp_ret_412 = stricmp(temp_r4_274 + 0x20, "swamp_07");
-            if (temp_ret_412 == 0) {
+            if (stricmp(temp_r4_274 + 0x20, "swamp_07") == 0) {
                 strcpy(&this->unk78, M2C_FIELD(gpTranslation_StringArray, s8 **, 0x38));
             } else {
-                var_r30_403 = (const char *) (M2C_FIELD(((Level *) (temp_r4_274 + 0x20))->GetChunkByName((s8 *) (u32) (u64) temp_ret_412), void **, 4));
+                var_r30_403 = (const char *) (M2C_FIELD(Level::GetChunkByName(temp_r4_274 + 0x20), void **, 4));
                 strcpy(&this->unk78, *(gpTranslation_StringArray + (M2C_FIELD(var_r30_403, s32 *, 0x10) * 4)));
             }
         }

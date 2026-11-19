@@ -89,7 +89,7 @@ void SiegeTower::ZapBall(Ball *arg0) {
     if (temp_r3_95 != NULL) {
         M2C_FIELD(temp_r3_95, s32 *, 0x130) = 0;
     }
-    this->unk248 = (void *) (((Projectile *)0x11)->CreateInstance((ProjectileType) arg0));
+    this->unk248 = (void *) (Projectile::CreateInstance((ProjectileType) 0x11));
     if ((void *) this->unk248 != NULL) {
         this->unk298 = (u32) arg0;
         this->unk290 = 0.5f;
@@ -151,7 +151,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
     void *temp_r6_198;
 
     if (((void *) this->unk248 == NULL) && (arg0 != NULL)) {
-        this->unk248 = (void *) (((Projectile *)0x11)->CreateInstance((ProjectileType) arg0));
+        this->unk248 = (void *) (Projectile::CreateInstance((ProjectileType) 0x11));
         if ((void *) this->unk248 != NULL) {
             this->unk290 = 2.0f;
             M2C_FIELD(this->unk248, SiegeTower **, 0x130) = this;

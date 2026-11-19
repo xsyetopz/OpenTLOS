@@ -241,8 +241,8 @@ void *KDMemoryCard::GetNextAvailable(KDMemoryCard *arg0) {
     s32 var_r6_631;
     void *temp_r3_644;
 
-    if (this != NULL) {
-        var_r6_631 = this->unk0 + 1;
+    if (arg0 != NULL) {
+        var_r6_631 = arg0->unk0 + 1;
     } else {
         var_r6_631 = 0;
     }
@@ -380,7 +380,7 @@ s32 KDMemoryCard::GetNextCard() {
 
 #if 0 // DRAFT: undefined identifier 'card'
 void *KDMemoryCard::GetCard(int arg0) {
-    return &card[(s32) this];
+    return &card[arg0];
 }
 #endif
 

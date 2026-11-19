@@ -60,9 +60,9 @@ extern M2C_UNK gb;
 static s32 lit_688 = 0;
 static u8 lit_689 = 1;
 
-#if 0 // DRAFT: undefined identifier '__float_nan'
 static f32 IMPACT_LIGHT_RADIUS = 1000.0f;           /* const */
 
+#if 0 // DRAFT: undefined identifier '__float_nan'
 void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
     f64 sp130;                                      /* compiler-managed */
     f64 sp128;                                      /* compiler-managed */
@@ -2447,7 +2447,6 @@ void *LiquidFX::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'IMPACT_LIGHT_RADIUS'
 f32 LiquidFX::Resolve() {
     f64 sp60;
     f64 sp58;
@@ -2490,7 +2489,6 @@ f32 LiquidFX::Resolve() {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_3898, 0U);
     }
 }
-#endif
 
 s32 LiquidFX::LoadDone() {
     GameProp::LoadDone();

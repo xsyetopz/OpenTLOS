@@ -7,9 +7,11 @@
 #include "spyro/source/UIStringTable.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'UIMessageStrings' redeclared was declared as: 'unsigned char[64]' now declared as: 'long'
 s32 stricmp(s8 *);                                  /* extern */
+#if 0 // DRAFT: identifier 'UIMessageStrings' redeclared was declared as: 'unsigned char[64]' now declared as: 'long'
 static M2C_UNK UIMessageStrings;                    /* unable to generate initializer: unknown type */
+#endif
+#if 0 // DRAFT: identifier 'UIMessageArgType' redeclared was declared as: 'unsigned char[64]' now declared as: 'long[16]'
 static s32 UIMessageArgType[0x10] = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 0 };
 #endif
 

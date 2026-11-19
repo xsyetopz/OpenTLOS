@@ -45,9 +45,9 @@ void KDPathManager::NearestPointLocalSegment(int arg0, const MKVector3 &arg1) {
 
     var_f31_101 = 3.4028235e38f;
     sp48.Init();
-    sp48.SetTo(((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */)), 0);
+    sp48.SetTo(KDPathManager::GetPathList(arg0), 0);
     temp_f30_115 = arg1.unk8;
-    var_r28_116 = ((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */));
+    var_r28_116 = KDPathManager::GetPathList(arg0);
 loop_10:
     if (var_r28_116 != NULL) {
         var_r30_119 = var_r28_116->unk30;
@@ -107,9 +107,9 @@ void KDPathManager::NearestPoint(int arg0, const MKVector3 &arg1) {
 
     var_f29_235 = 1e11f;
     sp28.Init();
-    sp28.SetTo(((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */)), 0);
+    sp28.SetTo(KDPathManager::GetPathList(arg0), 0);
     temp_f31_249 = arg1.unk8;
-    var_r30_250 = ((KDPathManager *) arg0)->GetPathList(M2C_ERROR(/* Read from unset register $r4 */));
+    var_r30_250 = KDPathManager::GetPathList(arg0);
 loop_7:
     if (var_r30_250 != NULL) {
         var_r31_253 = 0;
@@ -140,7 +140,7 @@ loop_5:
 
 #if 0 // DRAFT: pointer/array required
 KDPathSegment *KDPathManager::GetPathList(int arg0) {
-    return *(*KDPathManager::pPathLists + ((s32) this * 4));
+    return *(*KDPathManager::pPathLists + (arg0 * 4));
 }
 #endif
 
@@ -209,12 +209,12 @@ void KDPathManager::AddPath(KDPathSegment *arg0) {
     void *temp_r5_421;
 
     var_r4_379 = NULL;
-    var_r3_382 = (KDPathNode **) (*KDPathManager::pPathLists + (this->unk18 * 4));
+    var_r3_382 = (KDPathNode **) (*KDPathManager::pPathLists + (arg0->unk18 * 4));
     var_r31_383 = *var_r3_382;
 loop_10:
     if (var_r31_383 != NULL) {
         temp_r3_386 = var_r31_383->unk24;
-        temp_r4_387 = this->unk24;
+        temp_r4_387 = arg0->unk24;
         sp38 = M2C_FIELD(temp_r4_387, f64 *, 0) - M2C_FIELD(temp_r3_386, f64 *, 0);
         spA8 = sp38;
         sp40 = M2C_FIELD(temp_r4_387, f32 *, 8) - M2C_FIELD(temp_r3_386, f32 *, 8);
@@ -222,9 +222,9 @@ loop_10:
         spB0 = (f64) sp40;
         spC0 = (f64) sp40;
         if ((((f32) spB0 * (f32) spB0) + (((f32) spA8 * (f32) spA8) + ((*(f32 *) ((u8 *) &spA8 + 0x4)) * (*(f32 *) ((u8 *) &spA8 + 0x4))))) < 10000.0f) {
-            ((KDPathNode *) this)->Link(var_r31_383);
+            ((KDPathNode *) arg0)->Link(var_r31_383);
         }
-        temp_r5_421 = this->unk24;
+        temp_r5_421 = arg0->unk24;
         temp_r3_422 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
         sp28 = M2C_FIELD(temp_r5_421, f64 *, 0) - M2C_FIELD(temp_r3_422, f64 *, 0);
         sp88 = sp28;
@@ -233,10 +233,10 @@ loop_10:
         sp98 = sp28;
         spA0 = (f64) sp30;
         if ((((f32) sp90 * (f32) sp90) + (((f32) sp88 * (f32) sp88) + ((*(f32 *) ((u8 *) &sp88 + 0x4)) * (*(f32 *) ((u8 *) &sp88 + 0x4))))) < 10000.0f) {
-            ((KDPathNode *) this)->Link((KDPathNode *) &var_r31_383->unk8);
+            ((KDPathNode *) arg0)->Link((KDPathNode *) &var_r31_383->unk8);
         }
         temp_r3_456 = var_r31_383->unk24;
-        temp_r4_457 = ((u8 *) this->unk24) + ((this->unk20 - 1) * this->unk1C);
+        temp_r4_457 = arg0->unk24 + ((arg0->unk20 - 1) * arg0->unk1C);
         sp18 = M2C_FIELD(temp_r4_457, f64 *, 0) - M2C_FIELD(temp_r3_456, f64 *, 0);
         sp68 = sp18;
         sp20 = M2C_FIELD(temp_r4_457, f32 *, 8) - M2C_FIELD(temp_r3_456, f32 *, 8);
@@ -244,10 +244,10 @@ loop_10:
         sp78 = sp18;
         sp80 = (f64) sp20;
         if ((((f32) sp70 * (f32) sp70) + (((f32) sp68 * (f32) sp68) + ((*(f32 *) ((u8 *) &sp68 + 0x4)) * (*(f32 *) ((u8 *) &sp68 + 0x4))))) < 10000.0f) {
-            ((KDPathNode *) &this->unk8)->Link(var_r31_383);
+            ((KDPathNode *) &arg0->unk8)->Link(var_r31_383);
         }
         temp_r3_496 = var_r31_383->unk24 + ((var_r31_383->unk20 - 1) * var_r31_383->unk1C);
-        temp_r4_497 = ((u8 *) this->unk24) + ((this->unk20 - 1) * this->unk1C);
+        temp_r4_497 = arg0->unk24 + ((arg0->unk20 - 1) * arg0->unk1C);
         sp8 = M2C_FIELD(temp_r4_497, f64 *, 0) - M2C_FIELD(temp_r3_496, f64 *, 0);
         sp48 = sp8;
         sp10 = M2C_FIELD(temp_r4_497, f32 *, 8) - M2C_FIELD(temp_r3_496, f32 *, 8);
@@ -255,15 +255,15 @@ loop_10:
         sp50 = (f64) sp10;
         sp60 = (f64) sp10;
         if ((((f32) sp50 * (f32) sp50) + (((f32) sp48 * (f32) sp48) + ((*(f32 *) ((u8 *) &sp48 + 0x4)) * (*(f32 *) ((u8 *) &sp48 + 0x4))))) < 10000.0f) {
-            ((KDPathNode *) &this->unk8)->Link((KDPathNode *) &var_r31_383->unk8);
+            ((KDPathNode *) &arg0->unk8)->Link((KDPathNode *) &var_r31_383->unk8);
         }
         var_r4_379 = var_r31_383;
         var_r3_382 = &var_r31_383->unk28;
         var_r31_383 = var_r31_383->unk28;
         goto loop_10;
     }
-    this->unk2C = var_r4_379;
-    *var_r3_382 = (KDPathNode *) this;
+    arg0->unk2C = (s32) var_r4_379;
+    *var_r3_382 = (KDPathNode *) arg0;
 }
 #endif
 
@@ -328,7 +328,7 @@ void KDPathIterator::Init() {
 s32 KDSplinePathSegmentProp::LoadDone() {
     MKProp::LoadDone();
     ((KDSplinePathSegment *) &this->unk4C)->LoadDone();
-    ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
+    KDPathManager::AddPath((KDPathSegment *) &this->unk4C);
 }
 
 void KDSplinePathSegmentProp::Deinit() {
@@ -619,7 +619,7 @@ void KDSplinePathSegment::Init() {
     this->unk1A = 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'float' to 'MKSceneManager *'
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp *' to 'float'
 f32 KDLocalPathSegmentProp::Resolve() {
     Matrix sp30;
     M2C_UNK sp2C;
@@ -642,7 +642,7 @@ f32 KDLocalPathSegmentProp::Resolve() {
     MKProp::Resolve();
     temp_r3_1240 = this->unk4C.unk34;
     if (M2C_BITWISE(u32, temp_r3_1240) != 0U) {
-        this->unk4C.unk34 = M2C_BITWISE(f32, ((MKSceneManager *) (M2C_BITWISE(MKSceneManager *, temp_r3_1240)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unk4C.unk34 = M2C_BITWISE(f32, MKSceneManager::PropResolver_Resolve(M2C_BITWISE(s32, temp_r3_1240)));
         temp_r3_1245 = this->unk4C.unk34;
         if (M2C_BITWISE(u32, temp_r3_1245) != 0U) {
             this->unk4C.unk2C = M2C_FIELD(temp_r3_1245, s32 *, 8);
@@ -678,7 +678,7 @@ f32 KDLocalPathSegmentProp::Resolve() {
 s32 KDLocalPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
     ((KDPathSegment *) &this->unk4C)->LoadDone();
-    ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
+    KDPathManager::AddPath((KDPathSegment *) &this->unk4C);
 }
 
 s32 KDLocalPathSegmentProp::LoadLine(MKIniLine *arg0) {
@@ -714,7 +714,7 @@ void KDLocalPathSegment::Init(KDLocalPathSegmentProp *arg0) {
 s32 KDPathSegmentProp::LoadDone() {
     MKProp::LoadDone();
     ((KDPathSegment *) &this->unk4C)->LoadDone();
-    ((KDPathManager *) &this->unk4C)->AddPath(M2C_ERROR(/* Read from unset register $r4 */));
+    KDPathManager::AddPath((KDPathSegment *) &this->unk4C);
 }
 
 void KDPathSegmentProp::Deinit() {

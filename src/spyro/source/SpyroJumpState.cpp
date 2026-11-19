@@ -47,10 +47,10 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: undefined identifier '__vptr'
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
 SpyroJumpState states__14SpyroJumpState;            /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroJumpState::SetStrafeJump(bool arg0) {
     s32 sp14;
     s32 sp10;
@@ -1210,7 +1210,6 @@ void SpyroJumpState::Init(Spyro *arg0) {
     this->unk60 = &this->unk50;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroJumpState_cpp::__sinit() {
     f64 temp_f0_2609;
     f64 temp_f1_2579;
@@ -1270,4 +1269,3 @@ void SpyroJumpState_cpp::__sinit() {
     M2C_FIELD(temp_r3_2570, s32 *, 0x88) = (s32) M2C_FIELD(&lit_728, s32 *, 0x88);
     M2C_FIELD(temp_r3_2570, s32 *, 0x8C) = (s32) M2C_FIELD(&lit_728, s32 *, 0x8C);
 }
-#endif

@@ -201,20 +201,20 @@ void ElementalCombatController::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to 'MKSceneManager *'
+#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to 'unsigned long'
 f32 ElementalCombatController::Resolve() {
-    MKSceneManager *temp_r3_382;
     s32 temp_r30_381;
     s32 var_r29_378;
     s32 var_r31_379;
+    u32 temp_r3_382;
 
     var_r29_378 = 0;
     var_r31_379 = 0;
     do {
         temp_r30_381 = var_r31_379 + 0x360;
         temp_r3_382 = *(this + temp_r30_381);
-        if (temp_r3_382 != NULL) {
-            *(this + temp_r30_381) = checked_cast<SpawnPoint *, MKProp>(temp_r3_382->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        if (temp_r3_382 != 0U) {
+            *(this + temp_r30_381) = checked_cast<SpawnPoint *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_382));
         }
         var_r29_378 += 1;
         var_r31_379 += 4;

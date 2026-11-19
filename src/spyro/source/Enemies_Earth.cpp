@@ -61,13 +61,15 @@ s32 stricmp(s32, void *);                           /* extern */
 extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit earthTier1BodyFXInit;    /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit earthTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
+#endif
 
 void *EarthTier3::Update() {
     Enemy::Update();
     TestForSpikes();
 }
-#endif
 
 void EarthTier3::Deinit() {
     void **temp_r3_64;

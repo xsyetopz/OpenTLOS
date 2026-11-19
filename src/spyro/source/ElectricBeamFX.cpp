@@ -33,8 +33,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: undefined identifier 'sp38'
-static MKAnimScript lit_stringBase0;                   /* type too large by 0x26; unable to generate initializer: non-zero padding; const */
-
 void ElectricBeam::EmitSparks() {
     f64 sp68;
     f64 sp60;
@@ -608,38 +606,38 @@ void ElectricBeam::UpdateWiggleBone(MKDynamicBone *arg0, void *arg1) {
     ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this, MKModel **, 0x24))))->SetCustomMatrix((s32) temp_r31_1256, &sp10, (AnimationMatrixPosition) 4, 0U);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKAnimScript *' to 'const char *'
+#if 0 // DRAFT: function call 'Tools_GetMatchingNodeIndex(MKModel *, signed char *)' does not match 'Tools_GetMatchingNodeIndex(MKModel *, const char *)'
 void ElectricBeam::Init() {
     Animation sp8;
     MKAnim *var_r4_1304;
     MKAnimScript *temp_r27_1294;
     MKAnimScript *temp_r27_1372;
-    MKAnimScript *var_r5_1315;
     s32 var_r25_1318;
     s32 var_r26_1364;
     s32 var_r30_1322;
     s32 var_r30_1366;
     s8 *temp_r3_1371;
+    s8 *var_r5_1315;
     u16 temp_r24_1331;
     void *temp_r26_1339;
     void *temp_r5_1350;
     void *var_r3_1381;
 
     ((KDUniformSpline *) &this->unk30)->Init(3, 0U);
-    this->unk48 = lit_stringBase0.Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
+    this->unk48 = MKAnimScript::Create("FX0016_ElectricStream", 0);
     this->unk44 = this->unk48->unk8;
     temp_r27_1294 = this->unk48;
-    if (temp_r27_1294->Exists(&lit_stringBase0 + 0x16) != 0) {
-        var_r4_1304 = temp_r27_1294->GetAnim(&lit_stringBase0 + 0x16);
+    if (temp_r27_1294->Exists("idle01") != 0) {
+        var_r4_1304 = (MKAnim *) (temp_r27_1294->GetAnim("idle01"));
     } else {
         var_r4_1304 = NULL;
     }
     this->unk48->SetAnim(var_r4_1304, 1.0f, 0.0f, 0, -1);
-    var_r5_1315 = &lit_stringBase0;
+    var_r5_1315 = (signed char *) ("FX0016_ElectricStream");
     var_r25_1318 = 1;
     var_r30_1322 = 0x50;
     do {
-        temp_r24_1331 = Tools_GetMatchingNodeIndex(this->unk44, Str_Printf(&lit_stringBase0 + 0x1D, var_r25_1318 + 1, var_r5_1315));
+        temp_r24_1331 = Tools_GetMatchingNodeIndex(this->unk44, Str_Printf("%d", var_r25_1318 + 1, var_r5_1315));
         sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk44));
         temp_r26_1339 = this + var_r30_1322;
         M2C_FIELD(temp_r26_1339, f64 *, 0x60) = M2C_BITWISE(f64, sp8);
@@ -654,7 +652,7 @@ void ElectricBeam::Init() {
     var_r26_1364 = 0;
     var_r30_1366 = 0;
     do {
-        temp_r3_1371 = Str_Printf(&lit_stringBase0 + 0x1D, var_r26_1364);
+        temp_r3_1371 = Str_Printf("%d", var_r26_1364);
         temp_r27_1372 = this->unk48;
         if (temp_r27_1372->Exists(temp_r3_1371) != 0) {
             var_r3_1381 = temp_r27_1372->GetAnim(temp_r3_1371);
@@ -669,7 +667,7 @@ void ElectricBeam::Init() {
     this->unk1E8 = MKRand_Float((int *) &gViewSeed, 0.0f, 6.2831855f);
     this->unk1EC = MKRand_Float((int *) &gViewSeed, -6.2831855f, 6.2831855f);
     this->unk1E4 = 0;
-    this->unk1F0 = MKMaterial_Create((s8 *) &lit_stringBase0.unk20);
+    this->unk1F0 = MKMaterial_Create("p_white_lightning");
     this->unk1F4 = 0;
     M2C_STRUCT_COPY((s32) &this->unk19C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
 }

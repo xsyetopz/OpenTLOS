@@ -79,11 +79,11 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<ElementalSpline>::State'
 static M2C_UNK lit_685;                                /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<ElementalSpline>::State'
 static KDStateMachine<ElementalSpline>::State ElementalSplineStates; /* unable to generate initializer: confusing struct layout */
-static s32 lit_812 = 1;
 #endif
+static s32 lit_812 = 1;
 
 static s32 lit_878 = 1;
 
@@ -1988,7 +1988,7 @@ loop_65:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_812'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'Matrix *'
 void ElementalSpline::DrawFireSpline(float arg0, float arg1) {
     s32 sp304;
     s32 sp300;
@@ -2672,7 +2672,6 @@ void ElementalSplineDescriptor::LoadDone() {
     this->unk60 = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_685'
 void ElementalSpline_cpp::__sinit() {
     s32 sp2C;
     s32 sp28;
@@ -2734,4 +2733,3 @@ void ElementalSpline_cpp::__sinit() {
     M2C_FIELD(temp_r20_5216, s32 *, 0x8C) = (s32) M2C_FIELD(&lit_685, s32 *, 0x8C);
     sp28 = M2C_FIELD(&lit_685, s32 *, 0x8C);
 }
-#endif

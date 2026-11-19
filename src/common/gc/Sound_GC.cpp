@@ -21,7 +21,6 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal function overloading
 M2C_UNK AXARTAddArticulator(M2C_UNK *, M2C_UNK *, struct _struct_voiceList_0xB0 *, s32); /* extern */
 M2C_UNK AXARTAddSound(M2C_UNK *, u16, struct _struct_voiceList_0xB0 *); /* extern */
 M2C_UNK AXARTInit();                                /* extern */
@@ -36,9 +35,15 @@ M2C_UNK AXARTSet3DDopplerScale(f32);                /* extern */
 void *AXAcquireVoice(M2C_UNK, void (*)(void *), M2C_UNK, void (*)(void *)); /* extern */
 M2C_UNK AXFreeVoice(void *);                        /* extern */
 u32 AXGetMode();                                    /* extern */
+#if 0 // DRAFT: illegal function overloading
 M2C_UNK AXInit();                                   /* extern */
+#endif
+#if 0 // DRAFT: illegal function overloading
 M2C_UNK AXQuit();                                   /* extern */
+#endif
+#if 0 // DRAFT: illegal function overloading
 M2C_UNK AXRegisterCallback(void (*)());             /* extern */
+#endif
 M2C_UNK AXSetMode(M2C_UNK);                         /* extern */
 M2C_UNK AXSetVoiceAddr(void *, s16 *);              /* extern */
 M2C_UNK AXSetVoiceAdpcm(void *, M2C_UNK *);         /* extern */
@@ -50,15 +55,21 @@ M2C_UNK AXSetVoiceSrcRatio(void *, SoundBankHeader *, f32); /* extern */
 M2C_UNK AXSetVoiceSrcType(void *, M2C_UNK);         /* extern */
 M2C_UNK AXSetVoiceState(void *, M2C_UNK, struct _struct_voiceList_0xB0 *); /* extern */
 M2C_UNK AXSetVoiceType(void *, M2C_UNK);            /* extern */
+#if 0 // DRAFT: illegal function overloading
 M2C_UNK MIXInit();                                  /* extern */
+#endif
 M2C_UNK MIXInitChannel(void *, M2C_UNK, M2C_UNK, M2C_UNK, M2C_UNK, u8, M2C_UNK, s32); /* extern */
+#if 0 // DRAFT: illegal function overloading
 M2C_UNK MIXQuit();                                  /* extern */
+#endif
 M2C_UNK MIXReleaseChannel(void *);                  /* extern */
 M2C_UNK MIXSetFader(void *, s32, s16 *, f32, f32);  /* extern */
 M2C_UNK MIXSetInput(void *, M2C_UNK);               /* extern */
 M2C_UNK MIXSetPan(void *, u8);                      /* extern */
 M2C_UNK MIXSetSoundMode(M2C_UNK);                   /* extern */
+#if 0 // DRAFT: illegal function overloading
 M2C_UNK MIXUpdateSettings();                        /* extern */
+#endif
 f64 atan2(f32, f32);                                /* extern */
 M2C_UNK free(SoundBankHeader *);                    /* extern */
 f64 log(f64);                                       /* extern */
@@ -66,7 +77,6 @@ f64 log10(f32);                                     /* extern */
 SoundBankHeader *malloc(s32);                       /* extern */
 s32 stricmp(s8 *, void *);                          /* extern */
 extern s32 Sound_CurrentState;
-#endif
 extern u32 asyncBankBaseSoundAddress_989;
 extern u32 asyncCurrentSoundAddress_992;
 extern u8 bSoundBankIsStreaming;
@@ -510,7 +520,6 @@ void StreamingBuffer_Start(int arg0, bool arg1) {
     M2C_FIELD(gStreamingBuffer, u8 *, 0x20069) = arg1;
 }
 
-#if 0 // DRAFT: function call 'AXSetVoiceAdpcmLoop(void *, unsigned short *, unsigned char)' does not match 'AXSetVoiceAdpcmLoop(_AXVPB *, _AXPBADPCMLOOP *)'
 void StreamingBuffer_Update() {
     s16 spC;
     s16 spA;
@@ -648,7 +657,6 @@ loop_31:
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'AXSetVoiceState(void *, int)' does not match 'AXSetVoiceState(_AXVPB *, unsigned short)' 'AXSetVoiceState(void *, long, _struct_voiceList_0xB0 *)
 void StreamingMusic_Update() {
@@ -992,17 +1000,13 @@ void Refresh3DSoundPosition(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'atan2'
 f32 GetVerticalAngle(MKVector3 *arg0) {
     return (f32) atan2(arg0->unk4, arg0->unk8);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'atan2'
 f32 GetHorizontalAngle(MKVector3 *arg0) {
     return (f32) atan2(arg0->unk0, arg0->unk8);
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'voiceList'
 void Sound_Update3d(int arg0, int arg1, MKVector3 *arg2) {
@@ -1636,6 +1640,7 @@ s32 Sound_GetAcousticProperty() {
     return 0;
 }
 
+#if 0 // DRAFT: ambiguous access to overloaded function 'AXSetMode(long)' 'AXSetMode(unsigned long)'
 void Sound_SetSystemAudioMode(int arg0) {
     u32 temp_r3_2549;
 
@@ -1657,12 +1662,12 @@ void Sound_SetSystemAudioMode(int arg0) {
     }
     currentAudioMode = arg0;
 }
+#endif
 
 s32 Sound_GetSystemAudioMode() {
     return currentAudioMode;
 }
 
-#if 0 // DRAFT: undefined identifier 'AXARTServiceSounds'
 void AudioCallbackNormal() {
     s32 temp_r31_2599;
 
@@ -1671,7 +1676,6 @@ void AudioCallbackNormal() {
     AXARTServiceSounds();
     OSRestoreInterrupts(temp_r31_2599);
 }
-#endif
 
 s32 Sound_IsBankLoading() {
     return soundBankLoadingState != 0;
@@ -1827,7 +1831,7 @@ void Sound_SetVolume(int arg0, unsigned char arg1, unsigned char arg2) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'voiceList' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier 'voiceList'
 void Sound_Stop(int arg0) {
     struct _struct_voiceList_0xB0 *temp_r29_2942;
     struct _struct_voiceList_0xB0 *temp_r30_2938;
@@ -1955,7 +1959,7 @@ loop_13:
             goto loop_13;
         }
     }
-    temp_r24_3092 = &voiceList[var_r29_3061];
+    temp_r24_3092 = (_struct_voiceList_0xB0 *) (&voiceList[var_r29_3061]);
     var_r22_3093 = 0;
     temp_r24_3092->unk0 = arg0;
     temp_r24_3092->unk4 = temp_r3_3052;
@@ -2027,7 +2031,7 @@ loop_13:
     AXSetVoiceAdpcm(temp_r3_3052, &sp20);
     AXSetVoiceAdpcmLoop(temp_r3_3052, &sp8);
     AXSetVoiceAddr(temp_r3_3052, &sp10);
-    temp_r4_3245 = &voiceList[var_r29_3061];
+    temp_r4_3245 = (_struct_voiceList_0xB0 *) (&voiceList[var_r29_3061]);
     temp_r4_3245->unk48 = 0;
     if (arg3 != NULL) {
         temp_r22_3249 = &temp_r24_3092->unk80;
@@ -2045,19 +2049,19 @@ loop_13:
         temp_r28_3269 = &temp_r24_3092->unk58;
         AXARTInitArtVolumeEnv(temp_r28_3269);
         temp_r6_3280 = *(&decibelTable + ((ScaleVolume(arg1, soundMasterVolumeMultiplier) * 4) & 0x3FC));
-        temp_r5_3281 = &voiceList[var_r29_3061];
+        temp_r5_3281 = (_struct_voiceList_0xB0 *) (&voiceList[var_r29_3061]);
         temp_r5_3281->unk68 = temp_r6_3280;
         temp_r5_3281->unk64 = temp_r6_3280;
         temp_r5_3281->unk60 = 0x640000;
         AXARTAddArticulator(temp_r23_3265, temp_r28_3269, temp_r5_3281, temp_r6_3280);
         temp_r22_3289 = &temp_r24_3092->unk6C;
         AXARTInitArtPitchEnv(temp_r22_3289);
-        temp_r5_3298 = &voiceList[var_r29_3061];
+        temp_r5_3298 = (_struct_voiceList_0xB0 *) (&voiceList[var_r29_3061]);
         temp_r5_3298->unk74 = 0xA3D70A;
         temp_r5_3298->unk78 = 0;
         temp_r5_3298->unk7C = 0;
         AXARTAddArticulator(temp_r23_3265, temp_r22_3289, temp_r5_3298, 0xA3D70A);
-        temp_r5_3308 = &voiceList[var_r29_3061];
+        temp_r5_3308 = (_struct_voiceList_0xB0 *) (&voiceList[var_r29_3061]);
         temp_r5_3308->unk40 = temp_r24_3092->unk4;
         temp_r4_3314 = M2C_FIELD((soundList + temp_r26_3128), u16 *, 0x30);
         temp_r5_3308->unk44 = (f32) temp_r4_3314;
@@ -2183,7 +2187,7 @@ loop_6:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'free'
+#if 0 // DRAFT: undefined identifier 'soundBankReadBuffer'
 void Sound_DeinitModule() {
     SoundBankHeader *temp_r31_3550;
     SoundBankHeader *temp_r31_3566;
@@ -2219,7 +2223,7 @@ void Sound_DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'AXARTInit'
+#if 0 // DRAFT: ambiguous access to overloaded function 'AXSetMode(long)' 'AXSetMode(unsigned long)'
 void Sound_InitModule() {
     SoundBankHeader *var_r3_3694;
     SoundBankHeader *var_r3_3771;

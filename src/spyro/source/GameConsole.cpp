@@ -300,20 +300,32 @@ static s32 asciiToKey[0x100] = {
     0,
     0,
 };
-#if 0 // DRAFT: undefined identifier 'Pool'
 static M2C_UNK keyNames;                            /* unable to generate initializer: unknown type */
 static ConVar conCmds;                              /* extra bytes: 0xB0; unable to generate initializer: cannot parse .L_8035DEB3 as integer */
+#if 0 // DRAFT: undefined identifier 'Pool'
 static Pool<char> commandBuffer;
 #endif
 static f32 fLastResult = 1.0f;
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035DD7D;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035DD84;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035DD8A;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035DD92;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035DD98;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static u8 .L_8035DEAE[5] = { 0x65, 0x78, 0x65, 0x63, 0 }; /* const */
+#endif
 
+#if 0 // DRAFT: illegal explicit conversion from 'ConCmd *' to 'float'
 void Console_RemoveMacro(const char *arg0) {
     ConCmd *temp_r3_16;
     ConCmd *temp_ret_16;
@@ -1412,7 +1424,7 @@ void ConCmd::Compare(ConCmd *arg0) {
     stricmp((s8 *) *temp_r5_1957, (s8 *) *this->unk0, temp_r5_1957);
 }
 
-#if 0 // DRAFT: function call 'sscanf(signed char *, const char[3], long *)' does not match 'sscanf(signed char *, float *, long *)'
+#if 0 // DRAFT: function call 'sscanf(signed char *, const char[3], long *)' does not match 'sscanf(signed char *, float *, long *)' Too many errors printed, aborting program
 s32 ConCmd::AsInt() {
     f32 sp8;                                        /* compiler-managed */
     s32 temp_r0_1977;
@@ -1900,7 +1912,7 @@ f32 CmdBind(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int *)' does not match 'MKArchive_Exists(const char *, int *)'
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int *)' does not match 'MKArchive_Exists(const char *, int *)' Too many errors printed, aborting program
 f32 CmdExec(int arg0, char **arg1) {
     s32 sp8;
     ConVar *var_r31_3173;
@@ -1915,7 +1927,7 @@ f32 CmdExec(int arg0, char **arg1) {
         if (MKArchive_Exists(M2C_FIELD(arg1, s8 **, 4), (int *) &sp8) != 0) {
             temp_r31_3163 = sp8 + 1;
             if (MKHeap::Current() != NULL) {
-                var_r31_3173 = (ConVar *) (((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U));
+                var_r31_3173 = ((MKHeap *) (MKHeap::Main()))->TAlloc(temp_r31_3163, NULL, 0, 0U);
             } else {
                 var_r31_3173 = malloc(temp_r31_3163);
             }
@@ -1938,7 +1950,7 @@ f32 CmdExec(int arg0, char **arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'keyNames'
+#if 0 // DRAFT: function call 'stricmp(char *)' does not match 'stricmp(signed char *, signed char *, unsigned char **)'
 s32 KeyByName(char *arg0) {
     M2C_UNK *var_r31_3238;
 

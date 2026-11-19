@@ -3,11 +3,11 @@
 #include "common/Source/THPPlayer.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'ActivePlayer' redeclared was declared as: 'DVDCommandBlock' now declared as: 'long'
 THPReadBuffer *PopReadedBuffer();                   /* extern */
 THPReadBuffer *PopReadedBuffer2();                  /* extern */
 M2C_UNK PushFreeReadBuffer(THPReadBuffer *);        /* extern */
 s32 THPVideoDecode(s32, s32, s32, s32, s32);        /* extern */
+#if 0 // DRAFT: identifier 'ActivePlayer' redeclared was declared as: 'DVDCommandBlock' now declared as: 'long'
 extern M2C_UNK ActivePlayer;
 #endif
 extern s32 First;
@@ -40,7 +40,6 @@ void *PopFreeTextureSet() {
     return sp8;
 }
 
-#if 0 // DRAFT: undefined identifier 'THPVideoDecode'
 void VideoDecode(THPReadBuffer *arg0) {
     s32 *var_r28_98;
     s32 temp_r0_144;
@@ -87,7 +86,6 @@ loop_9:
         First = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'long'
 void VideoDecoderForOnMemory(void *arg0) {
@@ -144,7 +142,6 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'PopReadedBuffer2'
 void VideoDecoder(void *arg0) {
     THPReadBuffer *temp_r3_271;
     THPReadBuffer *var_r30_304;
@@ -174,7 +171,6 @@ loop_7:
     PushFreeReadBuffer(var_r30_304);
     goto loop_1;
 }
-#endif
 
 void VideoDecodeThreadCancel() {
     if ((s32) VideoDecodeThreadCreated != 0) {

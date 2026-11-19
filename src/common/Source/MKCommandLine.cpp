@@ -4,9 +4,9 @@
 s32 stricmp(s8 *, u8 *);                            /* extern */
 extern u8 init_221;
 extern u8 *pPositive_220;
-#if 0 // DRAFT: illegal explicit conversion from 'MKCommandLine' to 'unsigned long'
 static u8 lit_stringBase0[4] = { 0x2B, 0, 0x2D, 0 };   /* const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'MKCommandLine' to 'unsigned long'
 void MKCommandLine::ParseArgument(char *arg0) {
     s32 var_ctr_40;
     s32 var_r28_39;

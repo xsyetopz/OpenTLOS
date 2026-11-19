@@ -582,10 +582,9 @@ void *MineCartTrack::Update() {
 }
 #endif
 
-#if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 f32 MineCartTrack::Resolve() {
-    MKSceneManager *temp_r3_901;
-    MKSceneManager *temp_r3_907;
+    s32 temp_r3_901;
+    s32 temp_r3_907;
     s32 var_r29_897;
     s32 var_r31_898;
     void *temp_r30_900;
@@ -595,19 +594,18 @@ f32 MineCartTrack::Resolve() {
     var_r31_898 = 0;
     do {
         temp_r30_900 = this + var_r31_898;
-        temp_r3_901 = M2C_FIELD(temp_r30_900, MKSceneManager **, 0x104);
+        temp_r3_901 = M2C_FIELD(temp_r30_900, s32 *, 0x104);
         if (temp_r3_901 > -1) {
-            M2C_FIELD(temp_r30_900, void **, 0x124) = temp_r3_901->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+            M2C_FIELD(temp_r30_900, void **, 0x124) = MKSceneManager::PropResolver_Resolve(temp_r3_901);
         }
-        temp_r3_907 = M2C_FIELD(temp_r30_900, MKSceneManager **, 0x108);
+        temp_r3_907 = M2C_FIELD(temp_r30_900, s32 *, 0x108);
         if (temp_r3_907 > -1) {
-            M2C_FIELD(temp_r30_900, void **, 0x128) = temp_r3_907->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+            M2C_FIELD(temp_r30_900, void **, 0x128) = MKSceneManager::PropResolver_Resolve(temp_r3_907);
         }
         var_r29_897 += 1;
         var_r31_898 += 8;
     } while (var_r29_897 < 4);
 }
-#endif
 
 s32 MineCartTrack::LoadDone() {
     s32 var_r29_936;

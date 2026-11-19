@@ -119,10 +119,10 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 static M2C_UNK lit_750;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_751;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'double'
 void FireBoss::TriggerExplosion() {
     f64 sp58;
     f64 sp50;
@@ -500,7 +500,8 @@ void FireBoss::LaunchFireball() {
         temp_r4_683 = this->unkF68;
         if ((temp_r4_683 != NULL) && ((u32) M2C_FIELD(temp_r4_683, u32 *, 0x84) != -1U) && ((u32) M2C_FIELD(temp_r4_683, u32 *, 0) != 0U)) {
             sp40.SetIdentity();
-            temp_r3_702 = ((Projectile *) (M2C_FIELD(this->unkF68, Projectile **, 0x80)))->CreateInstance((ProjectileType) (u32) (u64) MKModel_GetRefPointMatrix(this->unk4, this->unkD10.unk200, &sp40, 1U));
+            MKModel_GetRefPointMatrix(this->unk4, this->unkD10.unk200, &sp40, 1U);
+            temp_r3_702 = Projectile::CreateInstance((ProjectileType) M2C_FIELD(this->unkF68, s32 *, 0x80));
             if (temp_r3_702 != 0) {
                 sp30 = (f64) sp40.unk30;
                 sp38 = (f64) sp40.unk38;
@@ -2646,7 +2647,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_750'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s32 FireBossDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp3A;
     s8 sp30;

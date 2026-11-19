@@ -56,8 +56,8 @@ extern MKMaterial *pWidgetBlank;
 extern f32 timestamp;
 #if 0 // DRAFT: identifier 'gMKWidgetMetrics' redeclared was declared as: 'unsigned char[736]' now declared as: 'long'
 static M2C_UNK gMKWidgetMetrics;                    /* unable to generate initializer: unknown type */
-static MKVector3 clickPos = { 0.0f, 0.0f, 0.0f, 0.0f };
 #endif
+static MKVector3 clickPos = { 0.0f, 0.0f, 0.0f, 0.0f };
 static MKVector3 startPos;
 #if 0 // DRAFT: identifier 'gShowCursor' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 static u8 gShowCursor = 1;
@@ -74,12 +74,16 @@ static s32 lit_2883 = 0;
 
 static s32 lit_3214 = 0x10;
 static s32 lit_3216 = 2;
-#if 0 // DRAFT: identifier 'MKWIDGETTYPE_TEXTBOX' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static M2C_UNK gIdentityAttributes;                 /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: identifier 'MKWIDGETTYPE_TEXTBOX' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static s8 *MKWIDGETTYPE_TEXTBOX = "MKWidgetTextBox";      /* const */
+#endif
+#if 0 // DRAFT: illegal implicit conversion from 'const char[15]' to 'signed char *'
 static s8 *MKWidgetSystemName = "MKWidgetSystem";        /* const */
+#endif
 
+#if 0 // DRAFT: function call 'stricmp(const char *, long)' does not match 'stricmp(signed char *, long)'
 void *MKWidget_FindMessageHook(const char *arg0) {
     void *var_r31_113;
 
@@ -9100,7 +9104,6 @@ MKWidget::~MKWidget() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vt'
 MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
     s8 **temp_r5_17042;
 
@@ -9111,7 +9114,7 @@ MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
     this->unk1C = NULL;
     this->unk20 = 0;
     this->unk24 = 0;
-    this->unk8 = ((MKWidgetSerialise *) &this->unk4)->GetMetaData(*(M2C_FIELD(this->unkC, MKWidgetMetaData ***, 4)), (u32) &__vt);
+    this->unk8 = MKWidgetSerialise::GetMetaData(*((MKWidgetMetaData **) &this->unk4), M2C_FIELD(this->unkC, u32 *, 4));
     if ((u8) this->unk8 == 0) {
         M2C_FIELD(this->unk4, s8 **, 0) = NULL;
         temp_r5_17042 = this->unk4;
@@ -9129,7 +9132,6 @@ MKWidget::MKWidget(MKWidgetDescriptor *arg0) {
         MKWidget_SetFlags(this, 7U);
     }
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKSetColorV(void)' does not match 'MKSetColorV(const MKVector4 &)'
 void WidgetDrawBox(const MKVector3 &arg0, const MKVector3 &arg1, int arg2) {
@@ -9386,16 +9388,16 @@ u8 MKWidgetSerialise::GetMetaData(MKWidgetMetaData *&arg0, unsigned int arg1) {
     s8 *var_r3_17758;
 
     if ((MKMetadata *) *MKWidgetSerialise::pMetaDataFile != NULL) {
-        this->unk0 = MKMetadata_Resolve(*MKWidgetSerialise::pMetaDataFile, *MKWidgetSerialise::metaDataResolveIndex, NULL);
+        &arg0 = MKMetadata_Resolve(*MKWidgetSerialise::pMetaDataFile, *MKWidgetSerialise::metaDataResolveIndex, NULL);
         *MKWidgetSerialise::metaDataResolveIndex += 1;
         return 1U;
     }
     if (MKHeap::Current() != NULL) {
-        var_r3_17758 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) &arg0, NULL, 0);
+        var_r3_17758 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) arg1, NULL, 0);
     } else {
-        var_r3_17758 = malloc((u32) &arg0);
+        var_r3_17758 = malloc(arg1);
     }
-    this->unk0 = var_r3_17758;
+    &arg0 = (MKWidgetMetaData *) var_r3_17758;
     return 0U;
 }
 #endif

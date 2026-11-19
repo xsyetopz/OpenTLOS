@@ -1276,7 +1276,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to 'const char **'
 void ShatterableBoat::InitOars() {
     MKAnim *var_r3_2218;
     MKAnim *var_r3_2236;
@@ -1297,7 +1297,7 @@ void ShatterableBoat::InitOars() {
     s32 var_r3_2312;
     u16 temp_r3_2332;
 
-    this->unk24C = (const char *) (((MKAnimScript *) "p7007_ship_oar_left")->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */)));
+    this->unk24C = MKAnimScript::Create("p7007_ship_oar_left", 1);
     this->unk24C->InitEvents(&pLeftOarAnimEvents);
     temp_r29_2206 = this->unk24C;
     if (temp_r29_2206->Exists("row") != 0) {
@@ -1313,7 +1313,7 @@ void ShatterableBoat::InitOars() {
         var_r3_2236 = NULL;
     }
     this->unk254 = var_r3_2236;
-    this->unk258 = (const char *) (((MKAnimScript *) "p7008_ship_oar_right")->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */)));
+    this->unk258 = MKAnimScript::Create("p7008_ship_oar_right", 1);
     this->unk258->InitEvents(&pRightOarAnimEvents);
     temp_r29_2251 = this->unk258;
     if (temp_r29_2251->Exists("row") != 0) {

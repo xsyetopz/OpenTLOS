@@ -65,7 +65,7 @@ public:
     s32 GetVerts(unsigned int, MKVector3 *);
     MKVector3 * GetVerts(MKVector3 *, const unsigned short *);
     s32 Load(void *, int);
-    MKCollisionModel * Create(void *, int);
+    static MKCollisionModel * Create(void *, int);
     MKCollisionModel * Create(const char *, MKModel *);
     /* 0x004 */ u8 pad4[0x4];
     /* 0x008 */ MKCollisionAABB unk8;

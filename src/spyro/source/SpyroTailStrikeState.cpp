@@ -63,10 +63,10 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK iMeleeAttackTypeMap;
-#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 static M2C_UNK lit_762;                                /* unable to generate initializer: unknown type */
 SpyroTailStrikeState states__20SpyroTailStrikeState; /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to 'MKMessage *'
 void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
     u8 sp56;
     s8 sp55;
@@ -476,7 +476,6 @@ void SpyroTailStrikeState::Init(Spyro *arg0) {
     this->unk28.Init((MKProp *) this->unk10);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_762'
 void SpyroTailStrikeState_cpp::__sinit() {
     f64 temp_f0_1107;
     f64 temp_f1_1067;
@@ -531,4 +530,3 @@ void SpyroTailStrikeState_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (temp_f4_1097 * temp_f3_1100));
     SPYRO_MIN_JUMP_Y_VELOCITY = (f32) (380000.0 * (temp_f1_1103 * temp_f0_1107));
 }
-#endif

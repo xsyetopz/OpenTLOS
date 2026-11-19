@@ -22,7 +22,7 @@ public:
 
 class GlowingPropManager {
 public:
-    u8 AddProp(MKProp *);
+    static u8 AddProp(MKProp *);
     void Deinit(void);
     void Draw(void);
     void Init(void);

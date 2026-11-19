@@ -18,7 +18,6 @@
 #include "common/Source/system_extras.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'gAssertBool' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 u64 __shl2i(M2C_UNK, M2C_UNK, s32);                 /* extern */
 M2C_UNK free(MKResource *);                         /* extern */
 MKResource *malloc(s32);                            /* extern */
@@ -26,13 +25,13 @@ s32 sscanf(s8 *, void *, f32 *, f32 *, s8 *);       /* extern */
 s32 strcmpi(s8 *, s8 *);                            /* extern */
 s32 stricmp(MKAnim *, s8 *, M2C_UNK);               /* extern */
 s8 *strrchr(M2C_UNK);                               /* extern */
+#if 0 // DRAFT: identifier 'gAssertBool' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 gAssertBool;
 #endif
 extern M2C_UNK gEmptyPtrList;
 extern f32 gUpdateTimeDelta;
 extern MKResource **mkAnimScriptTemplates;
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 u8 pSoundEventKeyWord__19MKAnimScriptedEvent[4];    /* unable to generate initializer: cannot parse "MKSound" as integer; const */
 u8 pSubObjectEnableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DAA8 as integer; const */
 u8 pSubObjectDisableEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate initializer: cannot parse .L_8036DABA as integer; const */
@@ -42,6 +41,7 @@ u8 pAliasMaterialEventKeyWord__19MKAnimScriptedEvent[4]; /* unable to generate i
 u8 pOnEnterKeyWord__19MKAnimScriptedEvent[4];       /* unable to generate initializer: cannot parse .L_8036DB08 as integer; const */
 u8 pOnExitKeyWord__19MKAnimScriptedEvent[4];        /* unable to generate initializer: cannot parse .L_8036DB10 as integer; const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'int' to 'MKAnimScriptedEvent::EventType'
 void MKAnimScriptTemplate::DeinitMKAnimScriptData() {
     MKAnim *temp_r30_22;
     MKAnimScriptedEvent *var_r28_27;
@@ -446,7 +446,7 @@ MKAnimScript *MKAnimScript::Create(const char *arg0, int arg1) {
     if (var_r30_910 != NULL) {
         var_r30_910 = ((MKAnimScript *) (M2C_ERROR(/* Read from unset register $r3 */)))->MKAnimScript();
     }
-    var_r30_910->Init((s8 *) this, NULL);
+    var_r30_910->Init(arg0, NULL);
     var_r30_910->unk0 = 1;
     temp_r31_923 = var_r30_910->GetAnimName();
     var_r30_910->unk8 = MKModel_Create(var_r30_910->GetMeshName(), temp_r31_923, 2, NULL);
@@ -729,7 +729,6 @@ loop_8:
     return 0U;
 }
 
-#if 0 // DRAFT: undefined identifier '__shl2i'
 void MKAnimScript::Check(int arg0, int arg1, MKAnimScriptedEvent &arg2) {
     s16 temp_r0_1509;
     s32 temp_r3_1511;
@@ -754,7 +753,6 @@ void MKAnimScript::Check(int arg0, int arg1, MKAnimScriptedEvent &arg2) {
         }
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKAnimScriptedEvent::AnimationSwitch'
 void MKAnimScript::CheckSwitch(MKAnimScriptedEvent::AnimationSwitch arg1) {
@@ -779,7 +777,7 @@ void MKAnimScript::CheckSwitch(MKAnimScriptedEvent::AnimationSwitch arg1) {
         var_r27_1571 = 0;
 loop_5:
         if (var_r30_1570 < (s16) M2C_FIELD(temp_r31_1567, s16 *, 0xE)) {
-            temp_r3_1575 = M2C_FIELD(temp_r31_1567, s32 *, 0x10) + var_r27_1571;
+            temp_r3_1575 = (void *) (M2C_FIELD(temp_r31_1567, s32 *, 0x10) + var_r27_1571);
             if ((s16) M2C_FIELD(temp_r3_1575, s16 *, 6) == (s32) arg1) {
                 temp_ret_1582 = __shl2i(0, 1, M2C_FIELD(temp_r3_1575, s32 *, 8));
                 this->unk4C |= (u32) temp_ret_1582;
@@ -923,16 +921,14 @@ loop_27:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__shl2i'
 u8 MKAnimScript::CheckEvent(int arg0) {
     u64 temp_ret_1848;
 
     temp_ret_1848 = __shl2i(0, 1, arg0);
     return (u8) (((((u32) temp_ret_1848 & this->unk4C) ^ 0) | ((temp_ret_1848 & this->unk48) ^ 0)) != 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
+#if 0 // DRAFT: function call 'stricmp(MKAnim *, signed char *)' does not match 'stricmp(MKAnim *, signed char *, long)'
 void MKAnimScript::InitEvents(const char **arg0) {
     s32 var_r24_1885;
     s32 var_r25_1880;
@@ -1390,12 +1386,11 @@ loop_51:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'stricmp'
+#if 0 // DRAFT: function call 'stricmp(MKAnim *)' does not match 'stricmp(MKAnim *, signed char *, long)'
 void MKAnimScript::Init(const char *arg0, MKModel *arg1) {
     MKIni sp2C;
     s8 spC;
     s32 sp8;
-    MKIni *temp_r3_2600;
     MKResource **temp_r3_2631;
     MKResource **var_r30_2551;
     MKResource *temp_r0_2569;
@@ -1403,7 +1398,7 @@ void MKAnimScript::Init(const char *arg0, MKModel *arg1) {
     MKResource *temp_r4_2573;
     s32 temp_ret_2587;
     s8 *temp_r3_2584;
-    s8 *temp_ret_2600;
+    s8 *temp_r3_2600;
 
     this->unk0 = 0;
     this->unk8 = arg1;
@@ -1428,10 +1423,9 @@ loop_4:
         ReadBinary(temp_r3_2584);
         goto block_12;
     }
-    temp_ret_2600 = Str_Printf("%s.bad", arg0, M2C_BITWISE(f32, temp_ret_2587));
-    temp_r3_2600 = (MKIni *) (temp_ret_2600);
-    if (temp_r3_2600->Exists((s8 *) (u32) (u64) temp_ret_2600) != 0) {
-        strcpy(&spC, &temp_r3_2600->unk0);
+    temp_r3_2600 = Str_Printf("%s.bad", arg0, M2C_BITWISE(f32, temp_ret_2587));
+    if (MKIni::Exists(temp_r3_2600) != 0) {
+        strcpy(&spC, temp_r3_2600);
         MKHeap::ActivateTempMemOverride();
         sp2C.Init(&spC, 0, NULL);
         MKHeap::DeactivateTempMemOverride();
@@ -1883,7 +1877,7 @@ loop_99:
                 var_r30_3261->unkC = M2C_BITWISE(s16, sp20);
                 var_r30_3261->unk4 = (var_r30_3261->unk4 + M2C_BITWISE(s32, sp20)) - M2C_BITWISE(s32, sp24);
             } else if (var_r26_3268->IsField("event") != 0) {
-                *MKAnimScriptedEvent::pSrcAnim = var_r30_3261;
+                *MKAnimScriptedEvent::pSrcAnim = (unsigned char) (var_r30_3261);
                 if (sp30.ParseEvent(var_r26_3268, temp_r29_3262) != 0) {
                     switch (sp30.unk4) {            /* switch 3; irregular */
                     case 0:                         /* switch 3 */
@@ -2052,7 +2046,7 @@ void MKAnimScript_DeinitModule() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'malloc'
+#if 0 // DRAFT: illegal operand
 void MKAnimScript_InitModule() {
     MKResource *var_r3_3943;
     s32 var_ctr_3955;

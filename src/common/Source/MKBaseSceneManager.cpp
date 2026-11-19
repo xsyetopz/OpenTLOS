@@ -377,16 +377,16 @@ void *MKSceneManager::PropResolver_Resolve(int arg0) {
     u32 temp_r4_739;
     void *temp_r4_759;
 
-    if (this <= 0) {
+    if (arg0 <= 0) {
         return NULL;
     }
-    temp_r4_727 = (u32) this >> 0x1FU;
-    temp_r0_728 = ((s32) this << 0x16) - temp_r4_727;
+    temp_r4_727 = (u32) arg0 >> 0x1FU;
+    temp_r0_728 = (arg0 << 0x16) - temp_r4_727;
     var_r6_731 = 0;
     var_r4_732 = ((temp_r0_728 << 0xA) | (temp_r0_728 >> 0x16U)) + temp_r4_727;
 loop_5:
     temp_r31_747 = var_r4_732 * 0x28;
-    if (this == (s32) *(*MKSceneManager::pPropMapping + temp_r31_747)) {
+    if (arg0 == (s32) *(*MKSceneManager::pPropMapping + temp_r31_747)) {
         temp_r3_755 = M2C_FIELD(*gMK, s32 (**)(void **), 0x2C)(gMK);
         temp_r4_759 = M2C_FIELD((*MKSceneManager::pPropMapping + temp_r31_747), void **, 4);
         temp_r5_760 = M2C_FIELD(temp_r4_759, s32 *, 0x48);
@@ -424,7 +424,7 @@ void MKSceneManager::PropResolver_Remove(MKProp *arg0) {
     u32 temp_r3_797;
     u32 temp_r3_801;
 
-    temp_r4_785 = this->unk14;
+    temp_r4_785 = arg0->unk14;
     if (temp_r4_785 >= 1) {
         temp_r3_789 = (u32) temp_r4_785 >> 0x1FU;
         temp_r0_790 = (temp_r4_785 << 0x16) - temp_r3_789;
@@ -462,7 +462,7 @@ void MKSceneManager::PropResolver_Add(MKProp *arg0, const char *arg1) {
     u32 temp_r5_840;
     u32 temp_r5_842;
 
-    temp_r6_829 = this->unk14;
+    temp_r6_829 = arg0->unk14;
     if (temp_r6_829 >= 1) {
         temp_r5_833 = (u32) temp_r6_829 >> 0x1FU;
         temp_r0_834 = (temp_r6_829 << 0x16) - temp_r5_833;
@@ -477,11 +477,11 @@ loop_3:
             goto loop_3;
         }
         *(*MKSceneManager::pPropMapping + temp_r5_847) = temp_r6_829;
-        M2C_FIELD((*MKSceneManager::pPropMapping + temp_r5_847), MKSceneManager **, 4) = this;
-        if ((arg0 != NULL) && ((s8) *arg0 != 0)) {
-            strcpy(*MKSceneManager::pPropMapping + ((*MKSceneManager::nmbrOfMappings * 0x28) + 8), (s8 *) arg0);
+        M2C_FIELD((*MKSceneManager::pPropMapping + temp_r5_847), MKProp **, 4) = arg0;
+        if ((arg1 != NULL) && ((s8) (u8) *arg1 != 0)) {
+            strcpy(*MKSceneManager::pPropMapping + ((*MKSceneManager::nmbrOfMappings * 0x28) + 8), arg1);
         } else {
-            strcpy(*MKSceneManager::pPropMapping + ((*MKSceneManager::nmbrOfMappings * 0x28) + 8), *this->__vptr);
+            strcpy(*MKSceneManager::pPropMapping + ((*MKSceneManager::nmbrOfMappings * 0x28) + 8), *arg0->unk0);
         }
         *MKSceneManager::nmbrOfMappings += 1;
     }

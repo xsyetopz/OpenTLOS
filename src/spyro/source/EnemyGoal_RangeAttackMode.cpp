@@ -551,7 +551,7 @@ loop_6:
     if (temp_r3_798 != NULL) {
         M2C_FIELD(temp_r3_798, s32 *, 0x130) = 0;
     }
-    this->unkC->unkA2C = ((Projectile *) temp_r31_696->unk80)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */));
+    this->unkC->unkA2C = Projectile::CreateInstance((ProjectileType) temp_r31_696->unk80);
     temp_r4_808 = this->unkC;
     temp_r3_809 = temp_r4_808->unkA2C;
     if (temp_r3_809 != NULL) {

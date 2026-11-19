@@ -65,16 +65,22 @@ extern void **gb;
 extern s8 *pCollisionName;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_collectableTypes_0x14'
 static struct _struct_collectableTypes_0x14 collectableTypes[4]; /* unable to generate initializer: non-zero padding */
-static M2C_UNK crateDescFlags;                      /* unable to generate initializer: unknown type */
-static s8 *unshatteredNames[0x10];
 #endif
+#if 0 // DRAFT: identifier 'crateDescFlags' redeclared was declared as: 'unsigned char[80]' now declared as: 'long'
+static M2C_UNK crateDescFlags;                      /* unable to generate initializer: unknown type */
+#endif
+static s8 *unshatteredNames[0x10];
 static s8 *CRATE_REF_TARGET = (signed char *) ("r_target");
 
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_80359889;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035989D;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: illegal type
 u8 ShatterObject::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     f64 sp20;
     f64 sp18;

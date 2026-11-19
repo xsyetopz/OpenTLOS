@@ -36,7 +36,7 @@ void *FightElevatorAnchor::Update() {
 
     Shatterable::Update();
     if ((s32) this->unk17C != 3) {
-        temp_r3_51 = this->unk1A8->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_51 = MKSceneManager::PropResolver_Resolve((s32) this->unk1A8);
         if (temp_r3_51 != NULL) {
             spC = NULL;
             sp8 = 0x94;

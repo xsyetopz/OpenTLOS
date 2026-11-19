@@ -16,7 +16,7 @@ public:
     virtual void Deinit(void);
     virtual void * Update(void);
     virtual void Draw(void);
-    void DrawWhirlWind(WhirlWindFX::WhirlWind *);
+    static void DrawWhirlWind(WhirlWindFX::WhirlWind *);
     /* 0x04c */ MKHeap* unk4C;
 };
 

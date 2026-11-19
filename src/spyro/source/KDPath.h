@@ -85,9 +85,9 @@ class KDPathManager {
 public:
     void NearestPointLocalSegment(int, const MKVector3 &);
     void NearestPoint(int, const MKVector3 &);
-    KDPathSegment * GetPathList(int);
+    static KDPathSegment * GetPathList(int);
     void RemovePath(KDPathSegment *);
-    void AddPath(KDPathSegment *);
+    static void AddPath(KDPathSegment *);
     void Deinit(void);
     void Init(int);
     static u8 pPathLists[0x4];

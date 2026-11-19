@@ -27,11 +27,11 @@ extern MKIniLine *pIni_CurrentLineArray;
 s32 MKIni::Exists(const char *arg0) {
     s8 *temp_r31_28;
 
-    if (this == NULL) {
+    if (arg0 == NULL) {
         return 0;
     }
-    temp_r31_28 = Str_Printf("%s%s", this, ".bni");
-    if ((MKArchive_Exists(&this->unk0, NULL) != 0) || (MKArchive_Exists(temp_r31_28, NULL) != 0)) {
+    temp_r31_28 = Str_Printf("%s%s", arg0, ".bni");
+    if ((MKArchive_Exists(arg0, NULL) != 0) || (MKArchive_Exists(temp_r31_28, NULL) != 0)) {
         return 1;
     }
     return 0;

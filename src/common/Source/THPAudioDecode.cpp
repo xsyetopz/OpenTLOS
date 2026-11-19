@@ -74,7 +74,6 @@ loop_1:
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'long'
 void AudioDecoderForOnMemory(void *arg0) {
     s32 spC;
     void *sp8;
@@ -90,20 +89,19 @@ loop_1:
     AudioDecode((THPReadBuffer *) &sp8);
     if ((u32) ((var_r31_153 + M2C_FIELD(&ActivePlayer, s32 *, 0xC0)) % M2C_FIELD(&ActivePlayer, u32 *, 0x50)) == (u32) (M2C_FIELD(&ActivePlayer, u32 *, 0x50) - 1)) {
         if (M2C_FIELD(&ActivePlayer, u8 *, 0xA6) & 1) {
-            var_r29_155 = *sp8;
+            var_r29_155 = *(s32 *) sp8;
             sp8 = M2C_FIELD(&ActivePlayer, void **, 0xB4);
         } else {
             OSSuspendThread(&AudioDecodeThread);
         }
     } else {
-        temp_r4_184 = *sp8;
-        sp8 += var_r29_155;
+        temp_r4_184 = *(s32 *) sp8;
+        sp8 = (u8 *) sp8 + var_r29_155;
         var_r29_155 = temp_r4_184;
     }
     var_r31_153 += 1;
     goto loop_1;
 }
-#endif
 
 void AudioDecoder(void *arg0) {
     THPReadBuffer *temp_r3_201;
@@ -128,21 +126,19 @@ void AudioDecodeThreadStart() {
     }
 }
 
-#if 0 // DRAFT: function call 'OSInitMessageQueue(OSThread *, OSThread *, int)' does not match 'OSInitMessageQueue(OSMessageQueue *, void *, long)'
 s32 CreateAudioDecodeThread(long arg0, unsigned char *arg1) {
     if (arg1 != NULL) {
-        if (OSCreateThread(&AudioDecodeThread, (void *(*)(void *)) AudioDecoderForOnMemory, arg1, &AudioDecodeThread + 0x318 + 0x1000, 0x1000U, arg0, 1U) == 0) {
+        if (OSCreateThread(&AudioDecodeThread, (void *(*)(void *)) AudioDecoderForOnMemory, arg1, (u8 *) &AudioDecodeThread + 0x318 + 0x1000, 0x1000U, arg0, 1U) == 0) {
             return 0;
         }
         goto block_5;
     }
-    if (OSCreateThread(&AudioDecodeThread, (void *(*)(void *)) AudioDecoder, NULL, &AudioDecodeThread + 0x318 + 0x1000, 0x1000U, arg0, 1U) == 0) {
+    if (OSCreateThread(&AudioDecodeThread, (void *(*)(void *)) AudioDecoder, NULL, (u8 *) &AudioDecodeThread + 0x318 + 0x1000, 0x1000U, arg0, 1U) == 0) {
         return 0;
     }
 block_5:
-    OSInitMessageQueue(&AudioDecodeThread + 0x1318, &AudioDecodeThread + 0x1358, 3);
-    OSInitMessageQueue(&AudioDecodeThread + 0x1338, &AudioDecodeThread + 0x1364, 3);
+    OSInitMessageQueue((OSMessageQueue *) ((u8 *) &AudioDecodeThread + 0x1318), (u8 *) &AudioDecodeThread + 0x1358, 3);
+    OSInitMessageQueue((OSMessageQueue *) ((u8 *) &AudioDecodeThread + 0x1338), (u8 *) &AudioDecodeThread + 0x1364, 3);
     AudioDecodeThreadCreated = 1;
     return 1;
 }
-#endif

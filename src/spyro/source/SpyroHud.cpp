@@ -65,8 +65,8 @@
 M2C_UNK __construct_array(M2C_UNK *, HudData *(*)(HudData *), M2C_UNK, M2C_UNK, M2C_UNK); /* extern */
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vEnemyHealthBarColour_0x10'
 static M2C_UNK HUD_BAR_BACKGROUND;                  /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vEnemyHealthBarColour_0x10'
 static struct _struct_vEnemyHealthBarColour_0x10 vEnemyHealthBarColour[5] = { { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 }, { 0.0, 0.0 } };
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_vEnemyHealthBarSize_0x8'

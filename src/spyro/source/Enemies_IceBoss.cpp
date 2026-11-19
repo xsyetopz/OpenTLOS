@@ -1977,23 +1977,15 @@ f32 IceBoss::Resolve() {
     f32 sp10;
     f32 spC;
     f32 sp8;
-    MKSceneManager *temp_ret_3875;
     ManagedLight *temp_r4_3915;
     Shatterable *temp_r3_3891;
-    Shatterable *temp_ret_3879;
-    Shatterable *temp_ret_3883;
-    Shatterable *temp_ret_3887;
 
     Enemy::Resolve();
-    temp_ret_3875 = (MKSceneManager *) (checked_cast<EventCamera *, MKProp>(this->unkB10->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
-    this->unkB10 = temp_ret_3875;
-    temp_ret_3879 = checked_cast<Shatterable *, MKProp>(this->unkF98->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3875));
-    this->unkF98 = (MKSceneManager *) (temp_ret_3879);
-    temp_ret_3883 = checked_cast<Shatterable *, MKProp>(this->unkF9C->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3879));
-    this->unkF9C = (MKSceneManager *) (temp_ret_3883);
-    temp_ret_3887 = checked_cast<Shatterable *, MKProp>(this->unkFA0->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3883));
-    this->unkFA0 = (MKSceneManager *) (temp_ret_3887);
-    temp_r3_3891 = checked_cast<Shatterable *, MKProp>(this->unkFA4->PropResolver_Resolve((s32) (u32) (u64) temp_ret_3887));
+    this->unkB10 = (MKSceneManager *) (checked_cast<EventCamera *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkB10)));
+    this->unkF98 = (MKSceneManager *) (checked_cast<Shatterable *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkF98)));
+    this->unkF9C = (MKSceneManager *) (checked_cast<Shatterable *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkF9C)));
+    this->unkFA0 = (MKSceneManager *) (checked_cast<Shatterable *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkFA0)));
+    temp_r3_3891 = checked_cast<Shatterable *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkFA4));
     sp8 = 0.5f;
     spC = 0.5f;
     this->unkFA4 = (MKSceneManager *) temp_r3_3891;

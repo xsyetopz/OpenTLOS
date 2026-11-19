@@ -3,9 +3,9 @@
 #include "spyro/source/PhrasePlayer.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: pointer/array required
 s32 stricmp(s8 *, M2C_UNK *);                       /* extern */
 
+#if 0 // DRAFT: pointer/array required
 void PhrasePlayerProperty::Command(int arg0) {
     s32 temp_r30_51;
     s32 temp_r31_52;

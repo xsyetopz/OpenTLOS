@@ -48,8 +48,12 @@ static M2C_UNK *pAnimScriptPropertyName = &.L_8035FAB2;
 #endif
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035FAA5;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035FAB2;                         /* unable to generate initializer: unknown type; const */
+#endif
 
+#if 0 // DRAFT: ')' expected
 void *KDPropEx::Update() {
     KDPropEx *sp8;
     KDPropEx *temp_r0_16;

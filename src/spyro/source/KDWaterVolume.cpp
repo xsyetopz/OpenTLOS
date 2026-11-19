@@ -61,11 +61,10 @@ loop_8:
     return var_f31_63;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void *' to 'float'
-s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2, MKCollisionResult *arg3, int arg4) {
+s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float farg0, float *arg1, MKCollisionResult *arg2, int arg3) {
     u8 sp98;
     s32 sp94;
-    s32 sp90;
+    void *sp90;
     s32 sp8C;
     f32 sp88;
     s32 sp84;
@@ -96,7 +95,7 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
     f64 temp_f0_158;
 
     sp20 = 0.0f;
-    sp1C = -arg1;
+    sp1C = -farg0;
     sp18 = 0.0f;
     sp48 = 0.0f;
     sp4C = 0.0f;
@@ -116,17 +115,17 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
     sp84 = 0;
     sp88 = 3.4028235e38f;
     sp8C = 0;
-    sp90 = 0;
+    sp90 = NULL;
     sp94 = -1;
     sp98 = 0;
     sp28 = (f64) sp18;
     sp30 = (f64) sp20;
-    temp_f0_158 = M2C_FIELD(this, f64 *, 0) + sp28;
+    temp_f0_158 = M2C_FIELD(&arg0, f64 *, 0) + sp28;
     sp8 = temp_f0_158;
     sp38 = temp_f0_158;
-    sp10 = M2C_BITWISE(f32, this->unk8) + (f32) sp30;
+    sp10 = arg0.unk8 + (f32) sp30;
     sp40 = (f64) sp10;
-    if (MKCollision_RayCollide(*((MKVector3 *) this), *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 1, (s32) arg3) != 0) {
+    if (MKCollision_RayCollide(arg0, *((MKVector3 *) &sp38), (MKCollisionResult *) &sp48, (MKCollisionMode) 1, arg3) != 0) {
         if (arg2 != NULL) {
             M2C_FIELD(arg2, f64 *, 0) = (f64) sp48;
             M2C_FIELD(arg2, f64 *, 8) = (f64) sp50;
@@ -134,21 +133,20 @@ s32 KDWaterVolume::GetWaterHeight(const MKVector3 &arg0, float arg1, float *arg2
             M2C_FIELD(arg2, f64 *, 0x18) = (f64) sp60;
             M2C_FIELD(arg2, f64 *, 0x20) = (f64) sp68;
             M2C_FIELD(arg2, f64 *, 0x28) = (f64) sp70;
-            M2C_FIELD(arg2, f32 *, 0x30) = sp78;
-            M2C_FIELD(arg2, f32 *, 0x34) = sp7C;
-            M2C_FIELD(arg2, s32 *, 0x38) = (s32) sp80;
-            M2C_FIELD(arg2, s32 *, 0x3C) = sp84;
-            M2C_FIELD(arg2, f32 *, 0x40) = sp88;
-            M2C_FIELD(arg2, s32 *, 0x44) = sp8C;
-            M2C_FIELD(arg2, s32 *, 0x48) = sp90;
-            M2C_FIELD(arg2, s32 *, 0x4C) = sp94;
-            M2C_FIELD(arg2, u8 *, 0x50) = sp98;
+            arg2->unk30 = sp78;
+            arg2->unk34 = sp7C;
+            arg2->unk38 = (s32) sp80;
+            arg2->unk3C = sp84;
+            arg2->unk40 = sp88;
+            arg2->unk44 = sp8C;
+            arg2->unk48 = sp90;
+            arg2->unk4C = sp94;
+            arg2->unk50 = sp98;
         }
-        return ((KDWaterVolume *) &sp48)->IsWithin(arg0, NULL, M2C_ERROR(/* Read from unset register $r6 */));
+        return ((KDWaterVolume *) &sp48)->IsWithin(*((MKVector3 *) arg1), NULL, M2C_ERROR(/* Read from unset register $r6 */));
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal assignment to constant
 s32 KDWaterVolume::IsWithin(const MKVector3 &arg0, float *arg1, int *arg2) {

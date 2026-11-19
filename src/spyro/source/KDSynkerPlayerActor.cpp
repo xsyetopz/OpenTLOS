@@ -653,10 +653,9 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
     f32 temp_f0_1213;
     f32 temp_f0_1280;
     f32 temp_f0_1286;
-    f32 temp_f1_1133;
     f32 temp_f1_1176;
     f32 temp_f30_1144;
-    f32 temp_ret_1133;
+    f32 temp_f31_1137;
     f32 var_f1_1119;
     f32 var_f1_1162;
     f32 var_f1_1251;
@@ -669,6 +668,7 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
     s32 temp_r3_1006;
     s32 temp_r5_1072;
     s32 var_r4_1074;
+    s32 var_r4_1090;
     u8 var_r27_1080;
     void *temp_r29_1068;
     void *temp_r31_1014;
@@ -703,15 +703,15 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
                 l_bVoiceStarted_1396 = 1;
             }
             if (var_r27_1080 < (u8) l_prevAwfFrame_1399) {
-                var_r4_1074 = lit_1411;
+                var_r4_1090 = lit_1411;
                 temp_r0_1091 = l_prevAwfFrame_1399 - var_r27_1080;
-                if (temp_r0_1091 < var_r4_1074) {
-                    var_r4_1074 = temp_r0_1091;
+                if (temp_r0_1091 < var_r4_1090) {
+                    var_r4_1090 = temp_r0_1091;
                 }
-                var_r27_1080 = l_prevAwfFrame_1399 - (u8) var_r4_1074;
+                var_r27_1080 = l_prevAwfFrame_1399 - (u8) var_r4_1090;
             }
             l_prevAwfFrame_1399 = var_r27_1080;
-            ((KDSP_Actor *) (M2C_FIELD(temp_r31_1014, KDSP_Actor **, 0x14)))->GetEnvelope(var_r4_1074);
+            KDSP_Actor::GetEnvelope(M2C_FIELD(temp_r31_1014, s32 *, 0x14));
             var_f1_1119 = (arg0 - (f32) M2C_FIELD(temp_r31_1014, s32 *, 0)) / (f32) M2C_FIELD(temp_r31_1014, s32 *, 4);
             if (var_f1_1119 < 1.0f) {
 
@@ -723,10 +723,9 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
             } else {
                 var_f1_1119 = 0.0f;
             }
-            temp_ret_1133 = ((KDBasicEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetValue(var_f1_1119);
-            temp_f1_1133 = temp_ret_1133;
+            temp_f31_1137 = ((KDBasicEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetValue(var_f1_1119);
             temp_f30_1144 = (f32) var_r27_1080 / 255.0f;
-            ((KDSP_Actor *) (M2C_FIELD(temp_r29_1068, KDSP_Actor **, 0x20)))->GetEnvelope((s32) (u32) M2C_BITWISE(u64, temp_ret_1133));
+            KDSP_Actor::GetEnvelope(M2C_FIELD(temp_r29_1068, s32 *, 0x20));
             var_f1_1162 = (arg0 - (f32) M2C_FIELD(temp_r29_1068, s32 *, 0)) / (f32) M2C_FIELD(temp_r29_1068, s32 *, 4);
             if (var_f1_1162 < 1.0f) {
 
@@ -740,11 +739,11 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
             }
             temp_f1_1176 = ((KDBasicEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetValue(var_f1_1162);
             if ((u8) M2C_FIELD(temp_r29_1068, u8 *, 0x10) != 0) {
-                var_f30_1183 = (temp_f30_1144 * temp_f1_1176) + (temp_f1_1133 * (1.0f - temp_f1_1176));
+                var_f30_1183 = (temp_f30_1144 * temp_f1_1176) + (temp_f31_1137 * (1.0f - temp_f1_1176));
             } else if (temp_f1_1176 < 0.1f) {
-                var_f30_1183 = temp_f1_1133;
+                var_f30_1183 = temp_f31_1137;
             } else {
-                var_f30_1183 = temp_f30_1144 * temp_f1_1133;
+                var_f30_1183 = temp_f30_1144 * temp_f31_1137;
             }
             sp34 = sp8 ^ 0x80000000;
             sp30 = 0x43300000;
@@ -759,7 +758,7 @@ void KDSP_Actor::UpdateLipAnim(float arg0) {
             return;
         }
         l_bVoiceStarted_1396 = 1;
-        ((KDSP_Actor *) (M2C_FIELD(temp_r31_1014, KDSP_Actor **, 0x14)))->GetEnvelope(M2C_ERROR(/* Read from unset register $r4 */));
+        KDSP_Actor::GetEnvelope(M2C_FIELD(temp_r31_1014, s32 *, 0x14));
         var_f1_1251 = (arg0 - (f32) M2C_FIELD(temp_r31_1014, s32 *, 0)) / (f32) M2C_FIELD(temp_r31_1014, s32 *, 4);
         if (var_f1_1251 < 1.0f) {
 
@@ -844,7 +843,7 @@ void KDSP_Actor::UpdateHeadAnim(float arg0) {
             ((Animation *) (MKModel_GetAnimation(this->unk38->unk8)))->TweenNode((f32) spA, M2C_FIELD(temp_r31_1409, f32 *, 0xC), this->unk7C, 0U, 0U);
             return;
         }
-        ((KDSP_Actor *) (M2C_FIELD(temp_r31_1409, KDSP_Actor **, 0x14)))->GetEnvelope(M2C_ERROR(/* Read from unset register $r4 */));
+        KDSP_Actor::GetEnvelope(M2C_FIELD(temp_r31_1409, s32 *, 0x14));
         var_f1_1458 = (arg0 - (f32) M2C_FIELD(temp_r31_1409, s32 *, 0)) / (f32) M2C_FIELD(temp_r31_1409, s32 *, 4);
         if (var_f1_1458 < 1.0f) {
 
@@ -942,7 +941,7 @@ void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
                 } else {
                     var_f30_1668 = (arg0 - (f32) M2C_FIELD(temp_r31_1538, s32 *, 0)) / (f32) M2C_FIELD(temp_r31_1538, s32 *, 4);
                     temp_f31_1670 = (f32) temp_r0_1620;
-                    ((KDSP_Actor *) (M2C_FIELD(temp_r31_1538, KDSP_Actor **, 0x14)))->GetEnvelope(0x43300000);
+                    KDSP_Actor::GetEnvelope(M2C_FIELD(temp_r31_1538, s32 *, 0x14));
                     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
                         var_f30_1668 = ((KDBasicEnvelope *) (M2C_ERROR(/* Read from unset register $r3 */)))->GetValue(var_f30_1668);
                     }
@@ -961,7 +960,7 @@ void KDSP_Actor::UpdateBodyAnim(float arg0, bool arg1, bool arg2) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'Matrix *'
+#if 0 // DRAFT: illegal implicit conversion from 'KDSP_Actor *' to 'int'
 void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     s8 sp280;
     s32 sp27C;
@@ -1043,7 +1042,7 @@ void KDSP_Actor::UpdatePosRot(float arg0, bool *arg1, int *arg2) {
     if (temp_r0_1753 != -1) {
         temp_r27_1758 = (KDSP_Bar *) (((u8 *) this->unkB4) + (temp_r0_1753 * 0x10));
         temp_r31_1759 = temp_r27_1758->unk8;
-        temp_r27_1758->unkC->GetEnvelope((s32) arg1);
+        KDSP_Actor::GetEnvelope(temp_r27_1758->unkC);
         temp_r26_1765 = M2C_ERROR(/* Read from unset register $r3 */);
         var_f1_1779 = (arg0 - (f32) temp_r27_1758->unk0) / (f32) temp_r27_1758->unk4;
         if (var_f1_1779 < 1.0f) {
@@ -1591,15 +1590,15 @@ s32 KDSP_Actor::GetMatchingNodeIndex(const char *arg0) {
 }
 
 void KDSP_Actor::GetEnvelope(int arg0) {
-    ((KDSP_EnvelopeList *) (*KDSP_Actor::pEnvelopeData))->GetEnvelope((s32) this);
+    ((KDSP_EnvelopeList *) (*KDSP_Actor::pEnvelopeData))->GetEnvelope(arg0);
 }
 
 void KDSP_Actor::SetInput(KDInput *arg0) {
-    *KDSP_Actor::pInput = (unsigned char) (this);
+    *KDSP_Actor::pInput = (unsigned char) (arg0);
 }
 
 void KDSP_Actor::SetEnvelopeList(KDSP_EnvelopeList *arg0) {
-    *KDSP_Actor::pEnvelopeData = (unsigned char) (this);
+    *KDSP_Actor::pEnvelopeData = (unsigned char) (arg0);
 }
 
 MKModel *KDSP_Actor::GetModel() {
@@ -1908,7 +1907,7 @@ void KDSP_Actor::ResolveLipsBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int a
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal type Too many errors printed, aborting program
 void KDSP_Actor::ResolveVoiceBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int arg2, int arg3) {
     s32 temp_r31_3236;
     s32 temp_r3_3226;
@@ -1942,7 +1941,7 @@ void KDSP_Actor::ResolveVoiceBar(KDSynkerHeap *arg0, KDSP_GenericBar *arg1, int 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'GetSubLine__5MKIniFP9MKIniLine' Too many errors printed, aborting program
+#if 0 // DRAFT: undefined identifier 'GetSubLine__5MKIniFP9MKIniLine'
 void ProcessBars__10KDSP_ActorFP12KDSynkerHeapM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vP9MKIniLineRi(KDSP_Actor *arg0, KDSynkerHeap *arg1, s32 *arg2, MKIniLine *arg3, s32 *arg4) {
     s32 sp1C;
     s32 sp18;
@@ -2235,7 +2234,7 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
                 this->unk38 = this->unk70;
             } else {
                 this->unk40 |= 0x20;
-                this->unk74 = ((MKAnimScript *) &sp8)->Create(NULL, M2C_ERROR(/* Read from unset register $r5 */));
+                this->unk74 = (const char *) (MKAnimScript::Create(&sp8, 0));
                 this->unk38 = this->unk74;
                 ((Animation *) (MKModel_GetAnimation(this->unk74->unk8)))->EnableCustomMatrices(1U);
                 MKModel_EnableTrivialRejection(this->unk74->unk8, 1U);
@@ -2440,7 +2439,7 @@ u8 LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSy
 }
 #endif
 
-#if 0 // DRAFT: function call 'LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12K DSynkerHeapP15KDSP_GenericBarii_vRi(KDSP_Actor *, KDSynkerHeap *, MKIn
+#if 0 // DRAFT: undefined identifier 'LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12K DSynkerHeapP15KDSP_GenericBarii_vRi'
 void KDSP_Actor::LoadActorSection(KDSynkerHeap *arg0, MKIniLine *arg1, int &arg2) {
     s32 sp64;
     s32 sp60;
@@ -2760,14 +2759,12 @@ u8 KDSP_Actor::LoadADSBadRef(MKIniLine *arg0) {
 #if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 u8 KDSP_Actor::LoadADSPropID(MKIniLine *arg0) {
     MKSceneManager *temp_r3_5181;
-    s32 temp_ret_5179;
 
     if (arg0->IsField("PropID") != 0) {
-        temp_ret_5179 = arg0->GetInt(0);
-        this->unk64 = (MKSceneManager *) (temp_ret_5179);
+        this->unk64 = (MKSceneManager *) (arg0->GetInt(0));
         temp_r3_5181 = this->unk64;
         if (temp_r3_5181 > 0) {
-            this->unk30 = (unsigned long) (temp_r3_5181->PropResolver_Resolve((s32) (u32) (u64) temp_ret_5179));
+            this->unk30 = (unsigned long) (MKSceneManager::PropResolver_Resolve((s32) temp_r3_5181));
         }
         return 1U;
     }

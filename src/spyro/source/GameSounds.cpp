@@ -16,8 +16,8 @@
 extern s32 hint;
 #if 0 // DRAFT: identifier 'soundIDs' redeclared was declared as: 'unsigned char[16864]' now declared as: 'long'
 static M2C_UNK soundIDs;                            /* unable to generate initializer: unknown type */
-static M2C_UNK *pCurrentID = (long *) (&soundIDs);
 #endif
+static M2C_UNK *pCurrentID = (long *) (&soundIDs);
 
 #if 0 // DRAFT: function call 'KDSound_ResolveSound(signed char *, int *)' does not match 'KDSound_ResolveSound(const char *, int *)'
 void GameSounds_Update() {

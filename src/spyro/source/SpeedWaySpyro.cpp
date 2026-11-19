@@ -3029,7 +3029,7 @@ f32 SpeedWaySpyro::Resolve() {
     void *temp_r3_6045;
 
     MKProp::Resolve();
-    this->unk2F0 = (MKSceneManager *) (checked_cast<SpeedWay *, MKProp>(this->unk2F0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+    this->unk2F0 = (MKSceneManager *) (checked_cast<SpeedWay *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unk2F0)));
     temp_r5_6010 = this->unk2F0;
     temp_f2_6013 = temp_r5_6010->unk84;
     temp_f1_6017 = 0.5f * (temp_f2_6013 + M2C_BITWISE(f32, temp_r5_6010->unkCC));

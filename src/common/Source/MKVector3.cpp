@@ -3,93 +3,47 @@
 
 MKVector3 zero__9MKVector3 = { 0.0f, 0.0f, 0.0f, 0.0f };
 
-#if 0 // DRAFT: illegal function overloading
-void Max(const MKVector3 &arg1, const MKVector3 &arg2) {
+MKVector3 Max(const MKVector3 &arg1, const MKVector3 &arg2) {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f1_12;
-    f32 temp_f2_21;
-    f32 temp_f2_30;
-    f32 var_f0_11;
-    f32 var_f0_29;
-    f32 var_f1_20;
 
-    var_f0_11 = arg1.unk0;
-    temp_f1_12 = arg2.unk0;
-    if (var_f0_11 > temp_f1_12) {
-
+    result.unk0 = arg1.unk0;
+    if (result.unk0 > arg2.unk0) {
     } else {
-        var_f0_11 = temp_f1_12;
+        result.unk0 = arg2.unk0;
     }
-    var_f1_20 = arg1.unk4;
-    temp_f2_21 = arg2.unk4;
-    sp8 = var_f0_11;
-    if (var_f1_20 > temp_f2_21) {
-
+    result.unk4 = arg1.unk4;
+    if (result.unk4 > arg2.unk4) {
     } else {
-        var_f1_20 = temp_f2_21;
+        result.unk4 = arg2.unk4;
     }
-    var_f0_29 = arg1.unk8;
-    temp_f2_30 = arg2.unk8;
-    spC = var_f1_20;
-    if (var_f0_29 > temp_f2_30) {
-
+    result.unk8 = arg1.unk8;
+    if (result.unk8 > arg2.unk8) {
     } else {
-        var_f0_29 = temp_f2_30;
+        result.unk8 = arg2.unk8;
     }
-    sp10 = var_f0_29;
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
     return result;
 }
-#endif
 
-#if 0 // DRAFT: illegal function overloading
-void Min(const MKVector3 &arg1, const MKVector3 &arg2) {
+MKVector3 Min(const MKVector3 &arg1, const MKVector3 &arg2) {
     MKVector3 result;
-    MKVector3 *sret = &result;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f1_51;
-    f32 temp_f2_60;
-    f32 temp_f2_69;
-    f32 var_f0_50;
-    f32 var_f0_68;
-    f32 var_f1_59;
 
-    var_f0_50 = arg1.unk0;
-    temp_f1_51 = arg2.unk0;
-    if (var_f0_50 < temp_f1_51) {
-
+    result.unk0 = arg1.unk0;
+    if (result.unk0 < arg2.unk0) {
     } else {
-        var_f0_50 = temp_f1_51;
+        result.unk0 = arg2.unk0;
     }
-    var_f1_59 = arg1.unk4;
-    temp_f2_60 = arg2.unk4;
-    sp8 = var_f0_50;
-    if (var_f1_59 < temp_f2_60) {
-
+    result.unk4 = arg1.unk4;
+    if (result.unk4 < arg2.unk4) {
     } else {
-        var_f1_59 = temp_f2_60;
+        result.unk4 = arg2.unk4;
     }
-    var_f0_68 = arg1.unk8;
-    temp_f2_69 = arg2.unk8;
-    spC = var_f1_59;
-    if (var_f0_68 < temp_f2_69) {
-
+    result.unk8 = arg1.unk8;
+    if (result.unk8 < arg2.unk8) {
     } else {
-        var_f0_68 = temp_f2_69;
+        result.unk8 = arg2.unk8;
     }
-    sp10 = var_f0_68;
-    M2C_FIELD(sret, f64 *, 0) = (f64) sp8;
-    M2C_FIELD(sret, f64 *, 8) = (f64) sp10;
     return result;
 }
-#endif
 
 void MKVector3_cpp::__sinit() {
     f32 sp74;

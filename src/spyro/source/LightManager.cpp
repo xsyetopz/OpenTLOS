@@ -14,10 +14,10 @@
 #include "spyro/source/ManagedLight.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: undefined identifier 'unk34'
 M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 
+#if 0 // DRAFT: undefined identifier 'unk34'
 void LightManager::EnableLight(ManagedLight *arg0, bool arg1) {
     f32 temp_f3_74;
     s32 var_ctr_111;
@@ -248,7 +248,6 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'free'
 void LightManager::Deinit() {
     void *temp_r31_390;
 
@@ -262,7 +261,6 @@ void LightManager::Deinit() {
     }
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'ManagedLight *'
 void LightManager::DisableAllLights() {

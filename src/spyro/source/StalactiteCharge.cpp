@@ -62,14 +62,14 @@ extern f32 *KDSpline_PositionMixer;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<StalactiteCharge>::State'
 static M2C_UNK lit_672;                                /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<StalactiteCharge>::State'
 static KDStateMachine<StalactiteCharge>::State StalactiteChargeStates; /* unable to generate initializer: confusing struct layout */
+#endif
 
 void StalactiteCharge::StateSCResetExit() {
 
 }
-#endif
 
 void StalactiteCharge::StateSCResetUpdate() {
     this->unk50.SetState(this, 0, 0U);
@@ -905,19 +905,16 @@ void StalactiteCharge::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 f32 StalactiteCharge::Resolve() {
     MKSceneManager *temp_r3_1606;
-    u32 temp_r4_1605;
 
-    temp_r4_1605 = (u32) this->unk50.SetState(this, 0, 0U);
+    this->unk50.SetState(this, 0, 0U);
     temp_r3_1606 = this->unkF0;
     if (temp_r3_1606 != NULL) {
-        this->unkF0 = (MKSceneManager *) (checked_cast<CutsceneProp *, MKProp>(temp_r3_1606->PropResolver_Resolve((s32) temp_r4_1605)));
+        this->unkF0 = (MKSceneManager *) (checked_cast<CutsceneProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_1606)));
     }
     MKProp::Resolve();
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'KDUniformSpline' to 'float'
 s32 StalactiteCharge::LoadDone() {
@@ -988,7 +985,7 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadInt("CutscenePlayerID", (int *) &this->unkF0, 0) != 0);
 }
 
-#if 0 // DRAFT: ')' expected Too many errors printed, aborting program
+#if 0 // DRAFT: ')' expected
 void StalactiteCharge::Deinit() {
     IceBossStalactiteSpawner *temp_r31_1841;
     KDSplinePathSegment *temp_r3_1855;
@@ -1077,7 +1074,6 @@ void StalactiteChargeDescriptor::Init() {
     this->unk60 = GS_PLACEHOLDER;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_672'
 void StalactiteCharge_cpp::__sinit() {
     s32 sp2C;
     s32 sp28;
@@ -1139,4 +1135,3 @@ void StalactiteCharge_cpp::__sinit() {
     M2C_FIELD(temp_r20_2258, s32 *, 0x8C) = (s32) M2C_FIELD(&lit_672, s32 *, 0x8C);
     sp28 = M2C_FIELD(&lit_672, s32 *, 0x8C);
 }
-#endif

@@ -99,17 +99,17 @@ void KDSP_Camera::ParseCAD(KDSynkerHeap *arg0, const char *arg1) {
     MKIniLine *temp_r3_159;
     MKIniLine *var_r28_175;
     MKIniLine *var_r30_165;
-    s32 *var_r29_157;
     s32 temp_r7_149;
     void *temp_r8_148;
+    void *var_r29_157;
 
-    if ((MKIni *) this->unk80 != NULL) {
-        temp_r8_148 = arg0->unk18;
-        temp_r7_149 = arg0->unk20 - 1;
-        arg0->unk18 = ((u8 *) temp_r8_148) + (((this->unk7C * 0xC) + temp_r7_149) & ~temp_r7_149);
-        this->unk84 = (s32 *) temp_r8_148;
-        var_r29_157 = this->unk84;
-        temp_r3_159 = this->unk80->GotoLine("Camera", NULL);
+    if ((MKIni *) M2C_FIELD(arg0, MKIni **, 0x80) != NULL) {
+        temp_r8_148 = M2C_FIELD(arg1, void **, 0x18);
+        temp_r7_149 = M2C_FIELD(arg1, s32 *, 0x20) - 1;
+        M2C_FIELD(arg1, void **, 0x18) = (void *) (((u8 *) temp_r8_148) + (((M2C_FIELD(arg0, s32 *, 0x7C) * 0xC) + temp_r7_149) & ~temp_r7_149));
+        M2C_FIELD(arg0, void **, 0x84) = temp_r8_148;
+        var_r29_157 = M2C_FIELD(arg0, void **, 0x84);
+        temp_r3_159 = ((MKIni *) (M2C_FIELD(arg0, MKIni **, 0x80)))->GotoLine("Camera", NULL);
         if (temp_r3_159 != NULL) {
             var_r30_165 = temp_r3_159->unkC->GetSubLine(temp_r3_159);
 loop_9:
@@ -162,7 +162,7 @@ void KDSP_Camera::HeapAddSizeCAD(KDSynkerHeap *arg0, const char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal type
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &arg3) {
     MKIniLine sp18;
     MKIniLine sp8;
@@ -193,7 +193,7 @@ void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &
     void *temp_r5_568;
     void *temp_r6_338;
 
-    ParseCAD(arg0, arg1);
+    KDSP_Camera::ParseCAD((KDSynkerHeap *) this, (s8 *) arg0);
     if ((s32) this->unk74 > 0) {
         temp_r3_331 = arg2->GotoLine("CAMERA_NODES", NULL);
         if (temp_r3_331 != NULL) {

@@ -2,15 +2,15 @@
 #include "common/Source/MKMaterial_Util.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialTypeInfo'
 static M2C_UNK platformDataXB;                      /* unable to generate initializer: unknown type */
 static M2C_UNK platformDataPC;                      /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKMaterialTypeInfo'
 static MKMaterialTypeInfo typeInfoGC;               /* unable to generate initializer: confusing struct layout */
+#endif
 
 void MKMaterial_LinkMaterial_MK2_FFTWater() {
     MKMaterial_LinkMaterialGC_MK2_FFTWater();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'typeInfoGC'
 void MKMaterial_LinkMaterialGC_MK2_FFTWater() {
@@ -18,7 +18,6 @@ void MKMaterial_LinkMaterialGC_MK2_FFTWater() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'platformDataXB'
 void MKMat_MK2_FFTWater_cpp::__sinit() {
     f32 sp84;
     f32 sp80;
@@ -102,4 +101,3 @@ void MKMat_MK2_FFTWater_cpp::__sinit() {
     M2C_FIELD(&platformDataPC, f64 *, 0x78) = (f64) sp8;
     M2C_FIELD(&platformDataPC, f64 *, 0x80) = (f64) sp10;
 }
-#endif

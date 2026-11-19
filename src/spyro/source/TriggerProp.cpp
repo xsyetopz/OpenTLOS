@@ -95,7 +95,7 @@ f32 TriggerPlaneProp::Resolve() {
     if (var_r3_198 != NULL) {
 
     } else {
-        var_r3_198 = this->unk1A4->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_198 = MKSceneManager::PropResolver_Resolve((s32) this->unk1A4);
     }
     temp_r31_211 = checked_cast<TriggerPlaneGroupObject *, TriggerObject>(M2C_FIELD(checked_cast<TriggerProp *, MKProp>(var_r3_198), TriggerObject **, 0xA8));
     temp_r31_211->AddPlane(checked_cast<P18TriggerPlaneObject, 13TriggerObject>__FP13TriggerObject(this->unkA8));
@@ -188,19 +188,19 @@ void TriggerProp::RemoveFromActiveList(TriggerProp *arg0) {
     MKPropDescriptor *temp_r4_467;
     TriggerProp *temp_r4_473;
 
-    if ((MKPropDescriptor *) *TriggerProp::pFirstActiveTrigger == this) {
-        *TriggerProp::pFirstActiveTrigger = (unsigned char) (this->unk90);
+    if ((MKPropDescriptor *) *TriggerProp::pFirstActiveTrigger == arg0) {
+        *TriggerProp::pFirstActiveTrigger = (unsigned char) (arg0->unk90);
     }
-    temp_r4_467 = this->unk90;
+    temp_r4_467 = arg0->unk90;
     if (temp_r4_467 != NULL) {
-        M2C_FIELD(temp_r4_467, TriggerProp **, 0x94) = (TriggerProp *) this->unk94;
+        M2C_FIELD(temp_r4_467, TriggerProp **, 0x94) = (TriggerProp *) arg0->unk94;
     }
-    temp_r4_473 = this->unk94;
+    temp_r4_473 = arg0->unk94;
     if (temp_r4_473 != NULL) {
-        temp_r4_473->unk90 = this->unk90;
+        temp_r4_473->unk90 = arg0->unk90;
     }
-    this->unk90 = NULL;
-    this->unk94 = NULL;
+    arg0->unk90 = NULL;
+    arg0->unk94 = NULL;
 }
 #endif
 
@@ -274,7 +274,7 @@ void TriggerProp::Message(MKMessage *arg0) {
         if (temp_r3_635 != NULL) {
             temp_r3_635->EnableTrigger(0U);
         }
-        RemoveFromActiveList(M2C_ERROR(/* Read from unset register $r4 */));
+        TriggerProp::RemoveFromActiveList(this);
         break;
     case 0xD:
         temp_r3_645 = this->unkA8;
@@ -411,7 +411,7 @@ void *TriggerProp::Update() {
                     OnEnter();
                 }
             } else if (temp_r3_879 & 4) {
-                RemoveFromActiveList((TriggerProp *) var_r4_838);
+                TriggerProp::RemoveFromActiveList(this);
                 if ((u8) this->unkC0 != 0) {
                     if (((s32) this->unkA8->unk54 == 0) && ((M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x4C)(M2C_FIELD(&gb, void ***, 0)) == 0) || (M2C_FIELD(*M2C_FIELD(&gb, void ***, 0), u8 (**)(void **), 0x54)(M2C_FIELD(&gb, void ***, 0)) != 0))) {
                         this->unk4C |= 2;
@@ -431,16 +431,15 @@ void *TriggerProp::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void TriggerProp::Reset() {
     TriggerObject *temp_r3_1072;
 
     MKProp::Reset();
     temp_r3_1072 = this->unkA8;
-    RemoveFromActiveList((TriggerProp *) (u32) temp_r3_1072->Reset());
+    temp_r3_1072->Reset();
+    TriggerProp::RemoveFromActiveList(this);
     this->unk4C = 0;
 }
-#endif
 
 s32 TriggerProp::LoadDone() {
     TriggerObject *temp_r3_1100;
@@ -528,7 +527,7 @@ void TriggerProp::Deinit() {
     }
     this->unk98 = NULL;
     this->unk9C = NULL;
-    RemoveFromActiveList(M2C_ERROR(/* Read from unset register $r4 */));
+    TriggerProp::RemoveFromActiveList(this);
     temp_r3_1366 = this->unkA8;
     temp_r3_1366->Deinit();
     MKProp::Deinit();

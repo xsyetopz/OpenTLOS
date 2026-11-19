@@ -35,9 +35,9 @@ public:
     void Update(float, const MKVector3 &, bool);
     void * FindActorPath(const char *);
     s32 GetMatchingNodeIndex(const char *);
-    void GetEnvelope(int);
-    void SetInput(KDInput *);
-    void SetEnvelopeList(KDSP_EnvelopeList *);
+    static void GetEnvelope(int);
+    static void SetInput(KDInput *);
+    static void SetEnvelopeList(KDSP_EnvelopeList *);
     MKModel * GetModel(void);
     void ParseAWFS(KDSynkerHeap *, MKIniLine *, int);
     void ResolveLookEyesBar(KDSynkerHeap *, KDSP_GenericBar *, int, int);

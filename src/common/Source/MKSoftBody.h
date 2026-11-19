@@ -36,11 +36,11 @@ public:
 
 class MKCloth {
 public:
-    void DisableClothCreate(bool);
+    static void DisableClothCreate(bool);
     void LightCloth(void);
     void SatisfyConstraints(void);
     void ApplyCollision(void);
-    void CollideHull(ClothNode *, int, ClothCollisionHull &, const Matrix *);
+    static void CollideHull(ClothNode *, int, ClothCollisionHull &, const Matrix *);
     void UpdatePosition(void);
     void IncludeCollision(void);
     void DrawConstraints(void);
@@ -48,15 +48,15 @@ public:
     ClothNode ** GetName(void);
     void SetIterations(int);
     void SetFriction(float);
-    void SetCollisionCapsule(int, const MKVector3 &, const MKVector3 &, float);
+    static void SetCollisionCapsule(int, const MKVector3 &, const MKVector3 &, float);
     static s32 AllocateCapsule(void);
-    void SetCollisionPlane(int, const MKVector3 &, const MKVector3 &, float);
+    static void SetCollisionPlane(int, const MKVector3 &, const MKVector3 &, float);
     static s32 AllocatePlane(void);
-    void SetCollisionSphere(int, const MKVector4 &);
+    static void SetCollisionSphere(int, const MKVector4 &);
     static s32 AllocateSphere(void);
-    void MoveCollisionSweepSphere(int, const MKVector3 &);
-    void ResetCollisionSweepSphere(int, MKVector4 *);
-    void ReleaseSweepSphere(int);
+    static void MoveCollisionSweepSphere(int, const MKVector3 &);
+    static void ResetCollisionSweepSphere(int, MKVector4 *);
+    static void ReleaseSweepSphere(int);
     static s32 AllocateSweepSphere(void);
     void SetInternalCollisionCapsule(int, const MKVector3 &, const MKVector3 &, float, float);
     void CreateInternalCollisionCapsules(int);

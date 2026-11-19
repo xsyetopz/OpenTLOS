@@ -18,9 +18,9 @@
 #include "common/Source/StdMath.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'areaList' redeclared was declared as: 'unsigned char[12]' now declared as: 'long'
 f64 acos(f32);                                      /* extern */
 f64 pow(s32, s32, f32, M2C_UNK *, s32, s32, s32, f32, f32, f64); /* extern */
+#if 0 // DRAFT: identifier 'areaList' redeclared was declared as: 'unsigned char[12]' now declared as: 'long'
 extern M2C_UNK areaList;
 #endif
 extern u8 bWaveDataChanged;

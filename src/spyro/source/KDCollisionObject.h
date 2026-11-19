@@ -35,11 +35,11 @@ public:
     class UpdateResult;
     void PushOutOfThings(MKVector3);
     u8 IsFloorCollision(MKCollisionResult *);
-    void CalculateNewVelocity(MKVector3 *, const MKVector3 *, float, KDContextInfo *, MKCollisionResult *, const MKVector3 &);
+    static void CalculateNewVelocity(MKVector3 *, const MKVector3 *, float, KDContextInfo *, MKCollisionResult *, const MKVector3 &);
     void ResolveCollisions(KDCollisionObject *, MKVector3 *, MKVector3 *, int, float, MKCollisionMode, int);
     void ResolveCollisions(MKVector3 *, MKVector3 *, int);
     MKVector3 * StoreResult(MKCollisionResult *, MKVector3 *);
-    void CalcPushOutPos(const MKVector3 &, MKVector3 *, KDColObjDescriptor *, float, KDCollisionObject::UpdateResult *);
+    static void CalcPushOutPos(const MKVector3 &, MKVector3 *, KDColObjDescriptor *, float, KDCollisionObject::UpdateResult *);
     s32 CalcPushOutPos(const MKVector3 &, MKVector3 *, int, float, MKCollisionMode, int, KDCollisionObject::UpdateResult *);
     s8 Teleport(const MKVector3 &, float, int, MKCollisionResult *);
     s32 Update(MKVector3 *, float);

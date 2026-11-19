@@ -32,10 +32,10 @@
 #include "spyro/source/TargetManager.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'long *'
 M2C_UNK free(MKHeap *);                             /* extern */
 MKHeap *malloc(s32);                                /* extern */
 
+#if 0 // DRAFT: illegal implicit conversion from 'MKHeap' to 'long *'
 s32 *KDMessageStorage::GetMessageAtIndex(int arg0) {
     return *(this->unk0 + (arg0 * 4));
 }

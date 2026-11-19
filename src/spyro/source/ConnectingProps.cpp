@@ -28,12 +28,12 @@ s32 Connector::UpdateState() {
     return ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->SetDesiredChunks(&this->unkA0, this->unkAC);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'Connector' to 'Level *'
+#if 0 // DRAFT: illegal implicit conversion from 'Connector' to 'signed char *'
 s32 Connector::LoadDone() {
-    Level *temp_r3_79;
     s32 temp_r29_78;
     s32 var_r28_74;
     s32 var_r31_76;
+    s8 *temp_r3_79;
 
     MKProp::LoadDone();
     var_r28_74 = 0;
@@ -42,8 +42,8 @@ s32 Connector::LoadDone() {
     do {
         temp_r29_78 = var_r31_76 + 0xA0;
         temp_r3_79 = *(this + temp_r29_78);
-        if ((temp_r3_79 != NULL) && ((s8) temp_r3_79->unk0 != 0)) {
-            *(this + temp_r29_78) = temp_r3_79->GetChunkByName(M2C_ERROR(/* Read from unset register $r4 */));
+        if ((temp_r3_79 != NULL) && ((s8) *temp_r3_79 != 0)) {
+            *(this + temp_r29_78) = (const char *) (Level::GetChunkByName(temp_r3_79));
             this->unkAC += 1;
         } else {
             *(this + temp_r29_78) = 0;

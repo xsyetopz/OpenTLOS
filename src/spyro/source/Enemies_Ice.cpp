@@ -92,8 +92,12 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit iceTier1BodyFXInit;      /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit iceTier2BodyFXInit;      /* unable to generate initializer: confusing struct layout */
+#endif
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 void IceTier3::Init() {
     EnemyGoal_Think *temp_r31_51;
 

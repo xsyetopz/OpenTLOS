@@ -92,6 +92,7 @@ extern M2C_UNK gb;
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit elecTier1BodyFXInit;     /* unable to generate initializer: confusing struct layout */
+#endif
 
 s32 ElecTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     if (Enemy::Spawn(arg0, arg1) != 0) {
@@ -100,7 +101,6 @@ s32 ElecTier3::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void ElecTier3::DrawScan() {

@@ -66,9 +66,9 @@ public:
     MKProp * CreateProp(const char *);
     MKPropCreationTable * CreateDescriptor(const char *, MKPropCreationTable **);
     void PropResolver_Deinit(void);
-    MKProp * PropResolver_Resolve(int);
-    void PropResolver_Remove(MKProp *);
-    void PropResolver_Add(MKProp *, const char *);
+    static MKProp * PropResolver_Resolve(int);
+    static void PropResolver_Remove(MKProp *);
+    static void PropResolver_Add(MKProp *, const char *);
     void PropResolver_Init(void);
     static u8 pPropMapping[0x4];
     static u8 nmbrOfMappings[0x4];

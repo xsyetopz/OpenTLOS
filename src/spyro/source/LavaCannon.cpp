@@ -469,7 +469,7 @@ void *LavaCannon::Update() {
                 if (temp_cr0_eq_969 == 0) {
                     M2C_FIELD(temp_r3_968, s32 *, 0x130) = 0;
                 }
-                this->unk240 = (void *) (((Projectile *)8)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
+                this->unk240 = (void *) (Projectile::CreateInstance((ProjectileType) 8));
                 temp_r3_978 = this->unk240;
                 if (temp_r3_978 != NULL) {
                     M2C_FIELD(M2C_FIELD(temp_r3_978, void **, 0x44), M2C_UNK (**)(MKVector3 *, MKVector3 *, LavaCannon *, M2C_UNK, M2C_UNK), 0x48)(&this->unk1F8, &this->unk218, this, 0, 0);

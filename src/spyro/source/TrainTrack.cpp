@@ -38,7 +38,7 @@ s32 stricmp(s8 *);                                  /* extern */
 extern s8 gAssertBool;
 extern void **gMK;
 
-#if 0 // DRAFT: illegal implicit conversion from 'TrainTrackDescriptor' to 'void *'
+#if 0 // DRAFT: ')' expected
 void TrainTrack::Build() {
     M2C_UNK spD0;
     MKVector3 spC0;
@@ -87,7 +87,6 @@ void TrainTrack::Build() {
     void *temp_r28_284;
     void *temp_r3_67;
     void *temp_r3_90;
-    void *temp_ret_85;
     void *temp_ret_90;
     void *var_r3_70;
 
@@ -104,8 +103,7 @@ void TrainTrack::Build() {
     this->unk88.unk8 = 0.0f;
     this->unk88.unk4 = 0;
 loop_6:
-    temp_ret_85 = checked_cast<TrainTrackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
-    if (var_r30_53 < (s32) M2C_FIELD(temp_ret_85, s32 *, 0x27C)) {
+    if (var_r30_53 < (s32) M2C_FIELD(checked_cast<TrainTrackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x27C)) {
         temp_r3_67 = *(checked_cast<TrainTrackDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r27_54 + 0x240));
         if (temp_r3_67 != NULL) {
             var_r3_70 = M2C_FIELD(temp_r3_67, void **, 0x28);
@@ -122,7 +120,7 @@ loop_4:
         var_r27_54 += 4;
         goto loop_6;
     }
-    temp_ret_90 = ((MKSceneManager *)0x31)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_85);
+    temp_ret_90 = MKSceneManager::PropResolver_Resolve(0x31);
     var_f1_90 = M2C_BITWISE(f32, temp_ret_90);
     temp_r3_90 = temp_ret_90;
     sp18 = -1;
@@ -152,7 +150,7 @@ loop_8:
         var_r27_175 = 0;
 loop_19:
         if (var_r25_174 < var_r29_52) {
-            temp_r24_178 = (void *) (*(&spD0 + var_r27_175));
+            temp_r24_178 = *(&spD0 + var_r27_175);
             gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r24_178, MKModel **, 4), "r_Spyro_L0", (int *) &sp14);
             sp70.GetMeasure(1.0f, (Matrix *) &this->unk4C);
             spB0 = M2C_BITWISE(f64, sp70);
@@ -192,7 +190,7 @@ loop_15:
         var_r27_281 = 0;
 loop_30:
         if (var_r25_280 < var_r29_52) {
-            temp_r28_284 = (void *) (*(&spD0 + var_r27_281));
+            temp_r28_284 = *(&spD0 + var_r27_281);
             gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), "r_Steam_L0", (int *) &spC);
             ((KDSpline *) &sp50)->GetMeasure(1.0f, (Matrix *) &this->unk74);
             sp90 = sp50;

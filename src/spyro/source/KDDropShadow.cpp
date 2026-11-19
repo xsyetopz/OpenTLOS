@@ -18,9 +18,9 @@
 #include "common/gc/MKPrimitive_GC.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: ')' expected
 MKHeap *malloc(s32);                                /* extern */
 
+#if 0 // DRAFT: ')' expected
 void KDDropShadow::Draw() {
     Matrix *var_r31_61;
     Matrix *var_r3_104;

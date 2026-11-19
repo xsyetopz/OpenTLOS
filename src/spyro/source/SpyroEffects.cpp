@@ -104,10 +104,10 @@ extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit spyroBodyFXData;         /* unable to generate initializer: confusing struct layout */
+#endif
 static M2C_UNK spyroGlowFXData;                     /* unable to generate initializer: unknown type */
 
 static s32 lit_1018 = 3;
-#endif
 
 static s32 lit_1024 = 3;
 

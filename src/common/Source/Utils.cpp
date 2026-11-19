@@ -2,7 +2,6 @@
 #include "common/Source/system_extras.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'strnicmp(signed char *, const char *)' does not match 'strnicmp(const char *, const char *, int)' 'strnicmp(signed char *, signed char *, long)'
 s32 strnicmp(s8 *, s8 *, s32);                      /* extern */
 
 s32 Util_WildcardPatternMatch(const char *arg0, const char *arg1) {
@@ -59,7 +58,7 @@ loop_11:
         var_r25_66 = 1;
         if (var_r5_27 != 0) {
             var_r26_69 = 0;
-            if (((s32) temp_r31_22 >= var_r5_27) && (strnicmp(var_r28_15, arg0) == 0)) {
+            if (((s32) temp_r31_22 >= var_r5_27) && (strnicmp((const char *) var_r28_15, arg0, var_r5_27) == 0)) {
                 var_r26_69 = 1;
             }
             if (var_r26_69 == 0) {
@@ -69,7 +68,7 @@ loop_11:
         var_r24_83 = 1;
         if (var_r29_26 != 0) {
             var_r26_86 = 0;
-            if (((s32) temp_r31_22 >= var_r29_26) && (strnicmp(var_r23_45, temp_r30_23 - var_r29_26, var_r29_26) == 0)) {
+            if (((s32) temp_r31_22 >= var_r29_26) && (strnicmp((const char *) var_r23_45, (const char *) (temp_r30_23 - var_r29_26), var_r29_26) == 0)) {
                 var_r26_86 = 1;
             }
             if (var_r26_86 == 0) {
@@ -90,7 +89,6 @@ loop_32:
 block_34:
     return 0;
 }
-#endif
 
 void *Util_BinarySearch(const void *arg0, void *arg1, int arg2, int arg3, int (*arg4)(const void *, const void *)) {
     s32 temp_r29_146;

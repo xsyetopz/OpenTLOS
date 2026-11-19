@@ -62,12 +62,12 @@ extern MKMaterial *pOverlay_536;
 extern s32 viewCounter_539;
 extern f32 weight128;
 extern f32 weight64;
-#if 0 // DRAFT: identifier 'MKMat_MK2_Standard_CaptureTextureData' redeclared was declared as: 'signed char' now declared as: 'long'
 static M2C_UNK filterTextureSizes;                  /* unable to generate initializer: unknown type */
 static M2C_UNK oldColor;                            /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: identifier 'MKMat_MK2_Standard_CaptureTextureData' redeclared was declared as: 'signed char' now declared as: 'long'
 static M2C_UNK MKMat_MK2_Standard_CaptureTextureData; /* unable to generate initializer: unknown type */
-static f32 omniFalloff = 17.0f;
 #endif
+static f32 omniFalloff = 17.0f;
 static u8 bGlowEnabled = 1;
 #if 0 // DRAFT: identifier 'MKMaterial_NumTexGens' redeclared was declared as: 'unsigned char[1]' now declared as: 'unsigned char'
 static u8 MKMaterial_NumTexGens = 1;
@@ -1401,9 +1401,7 @@ void SetLight(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, int arg3
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'oldColor'
 void MKMat_MK2_Standard_GC_cpp::__sinit() {
     M2C_FIELD(&oldColor, f64 *, 0) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 0);
     M2C_FIELD(&oldColor, f64 *, 8) = (f64) M2C_FIELD(&MKVector4::zero, f64 *, 8);
 }
-#endif

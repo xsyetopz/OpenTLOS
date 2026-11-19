@@ -108,10 +108,14 @@ extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit dojoTier1BodyFXInit;     /* unable to generate initializer: confusing struct layout */
-static CharacterBodyFxInit dojoTier2BodyFXInit;     /* unable to generate initializer: confusing struct layout */
-static M2C_UNK dojoMovementAnims;                   /* unable to generate initializer: unknown type */
-static u8 lit_884 = 1;
 #endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
+static CharacterBodyFxInit dojoTier2BodyFXInit;     /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: identifier 'dojoMovementAnims' redeclared was declared as: 'unsigned char[240]' now declared as: 'long'
+static M2C_UNK dojoMovementAnims;                   /* unable to generate initializer: unknown type */
+#endif
+static u8 lit_884 = 1;
 static u8 lit_1044 = 1;
 static u8 lit_1251 = 1;
 static u8 lit_1411 = 1;

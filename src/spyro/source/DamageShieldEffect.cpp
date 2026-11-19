@@ -27,9 +27,8 @@
 extern MKMaterial *gRenderState;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal explicit conversion from 'DamageShieldEffect' to 'unsigned char'
-static Texture lit_stringBase0;                        /* type too large by 0x87; unable to generate initializer: non-zero padding; const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'DamageShieldEffect' to 'unsigned char'
 void DamageShieldEffect::SpawnRipple(const MKVector3 &arg0, float arg1) {
     f32 temp_f30_76;
     f32 temp_f31_81;
@@ -437,17 +436,16 @@ void *DamageShieldEffect::Update() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void DamageShieldEffect::Init() {
     s32 var_ctr_725;
     s32 var_r4_720;
     void *temp_r3_727;
 
     KDProp::Init();
-    lit_stringBase0.CreateRenderTarget((s8 *)0x40, 0x40, 0, M2C_ERROR(/* Read from unset register $r7 */));
+    Texture::CreateRenderTarget("DamageShieldFXRT", 0x40, 0x40, 0);
     this->unk90 = M2C_ERROR(/* Read from unset register $r3 */);
     var_r4_720 = 0;
-    this->unk94 = MKMaterial_Create(&lit_stringBase0.unk0);
+    this->unk94 = (MKMaterial *) (MKMaterial_Create("DamageShieldFXRT"));
     var_ctr_725 = 0xA;
     do {
         temp_r3_727 = this + var_r4_720;
@@ -457,9 +455,8 @@ void DamageShieldEffect::Init() {
         M2C_FIELD(temp_r3_727, f32 *, 0xB4) = 0.0f;
         var_ctr_725 -= 1;
     } while (var_ctr_725 != 0);
-    this->unk98 = MKMaterial_Create(&lit_stringBase0.unk11);
+    this->unk98 = (MKMaterial *) (MKMaterial_Create("fx_ShieldRipple"));
     this->unk9C = 0.0f;
     this->unk280 = 3;
     this->unk284 = 0.0f;
 }
-#endif

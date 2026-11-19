@@ -85,9 +85,15 @@ extern M2C_UNK gb;
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit fireTier1BodyFXInit;     /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit fireTier2BodyFXInit;     /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit fireTier3BodyFXInit;     /* unable to generate initializer: confusing struct layout */
+#endif
 
+#if 0 // DRAFT: ')' expected
 void FireTier3::Message(MKMessage *arg0) {
     s32 temp_r31_50;
 

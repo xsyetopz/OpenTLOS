@@ -20,9 +20,9 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 f64 pow(f32, f32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 static M2C_UNK gDefaultEnvelope;                    /* unable to generate initializer: unknown type */
 
+#if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void KDEnvParticleSystem::KDEnvConfigureSystemData(KDParticleSystem *arg0, MKParticle *arg1) {
     void *temp_r3_21;
 
@@ -250,7 +250,6 @@ void KDEnvParticleSystemDescriptor::Deinit() {
     this->unkD8 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'gDefaultEnvelope'
 void KDEnvParticleSystemDescriptor::Init() {
     KDParticleSystemDescriptor::Init();
     this->unkD0 = 2;
@@ -258,7 +257,6 @@ void KDEnvParticleSystemDescriptor::Init() {
     this->unkD8 = 0;
     CalculateEnvelope();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'float' to 'MKProp *'
 void KDParticleSystem::KDConfigureSystemData(KDParticleSystem *arg0, MKParticle *arg1) {

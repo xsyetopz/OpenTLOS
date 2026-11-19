@@ -58,12 +58,12 @@ extern s32 gDisplay;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern s32 gpTranslation_StringArray;
-#if 0 // DRAFT: identifier 'buttonLabel' redeclared was declared as: 'unsigned char[28]' now declared as: 'long *[7]'
 u8 descriptor__10PromptText[0x14];                  /* unable to generate initializer: cannot parse "PromptText" as integer */
 u8 descriptor__11PromptGroup[0x14];                 /* unable to generate initializer: cannot parse .L_8035BE63 as integer */
 u8 descriptor__12OptionButton[0x14];                /* unable to generate initializer: cannot parse .L_8035BE88 as integer */
 u8 descriptor__17ScriptProgressBar[0x14];           /* unable to generate initializer: cannot parse .L_8035BEB4 as integer */
 u8 descriptor__6DSText[0x14];                       /* unable to generate initializer: cannot parse .L_8035BEC6 as integer */
+#if 0 // DRAFT: identifier 'buttonLabel' redeclared was declared as: 'unsigned char[28]' now declared as: 'long *[7]'
 static M2C_UNK *buttonLabel[7] = {
     &.L_8035BF86,
     &.L_8035BF8B,
@@ -91,19 +91,46 @@ static M2C_UNK RADIAL_V_DISABLED_COLOR;             /* unable to generate initia
 static s32 lit_1179 = 1;
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BF86;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BF8B;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BF93;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BF9D;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BFA4;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BFA9;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BFB0;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BFC0;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BFDE;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035BFFC;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035C01B;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035C03A;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035C059;                         /* unable to generate initializer: unknown type; const */
+#endif
+#if 0 // DRAFT: declaration syntax error
 static M2C_UNK .L_8035C077;                         /* unable to generate initializer: unknown type; const */
+#endif
 
 void HealthSafetyScreen::Update() {
     f64 sp28;
@@ -202,7 +229,6 @@ loop_25:
         break;
     }
 }
-#endif
 
 void HealthSafetyScreen::OnExit() {
     UIScreen::OnExit();

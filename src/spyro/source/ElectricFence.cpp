@@ -79,7 +79,7 @@ void ElectricFence::AllocBeams() {
 
     temp_r3_57 = this->unk110;
     if (temp_r3_57 != NULL) {
-        temp_r3_60 = temp_r3_57->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_60 = MKSceneManager::PropResolver_Resolve((s32) temp_r3_57);
         if (temp_r3_60 != NULL) {
             temp_r3_63 = M2C_FIELD(temp_r3_60, void **, 8);
             temp_f1_64 = M2C_FIELD(temp_r3_63, f64 *, 0x30);
@@ -315,7 +315,7 @@ void *ElectricFence::Update() {
     }
     temp_r3_445 = this->unk110;
     if (temp_r3_445 != NULL) {
-        temp_r3_448 = temp_r3_445->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        temp_r3_448 = MKSceneManager::PropResolver_Resolve((s32) temp_r3_445);
         if (temp_r3_448 != NULL) {
             temp_r3_451 = M2C_FIELD(temp_r3_448, void **, 8);
             temp_f1_452 = M2C_FIELD(temp_r3_451, f64 *, 0x30);

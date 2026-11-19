@@ -56,10 +56,10 @@ extern s8 *Tools_PropCreator_Name;
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
 extern s32 pauseSndCount;
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *, signed char *)'
 static M2C_UNK Tools_ClosestPropsPos;               /* unable to generate initializer: unknown type */
 static M2C_UNK lit_1474;                               /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *, signed char *)'
 MKMaterial *Tools_GetMatchingMaterial(MKModel *arg0, const char *arg1) {
     MKMaterial *temp_r3_56;
     s16 temp_r31_49;
@@ -90,7 +90,6 @@ Tools_Ortho::~Tools_Ortho() {
     MKMaterial_EnableFog(this->unk0);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_1474'
 Tools_Ortho::Tools_Ortho() {
     s32 sp14;
     f32 sp10;
@@ -123,7 +122,6 @@ Tools_Ortho::Tools_Ortho() {
     sp10 = var_f0_139;
     MKView_SetOrtho((MKRect *) &sp8);
 }
-#endif
 
 #if 0 // DRAFT: illegal function overloading
 void Tools_CalculateVelocity(const MKVector3 &arg1, const MKVector3 &arg2, float farg0, float farg1) {
@@ -1326,7 +1324,6 @@ void Tools_SetMatrixScale(Matrix *arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'float'
 s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     u8 sp60;
     s32 sp5C;
@@ -1347,11 +1344,12 @@ s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     f32 sp24;
     f32 sp20;
     f32 sp18;
-    MKVector3 sp8;
-    f32 temp_f0_2540;
+    f32 sp14;
+    f32 sp10;
+    f32 sp8;
 
-    sp8.unk8 = 0.0f;
-    sp8.unkC = 0.0f;
+    sp10 = 0.0f;
+    sp14 = 0.0f;
     sp18 = 0.0f;
     sp20 = 0.0f;
     sp24 = 0.0f;
@@ -1371,28 +1369,26 @@ s32 Tools_GetFloor(const MKVector3 &arg0, float arg1, float *arg2) {
     sp58 = 0;
     sp5C = -1;
     sp60 = 0;
-    if ((((KDWaterVolume *) &arg0)->GetWaterHeight(sp8, arg1, &sp8.unk8, (MKCollisionResult *)0x200, 0) != 0) && (sp60 != 0)) {
-        temp_f0_2540 = M2C_BITWISE(f32, sp8);
-        if (temp_f0_2540 > sp8.unkC) {
+    if ((KDWaterVolume::GetWaterHeight(arg0, arg1, &sp8, (MKCollisionResult *) &sp10, 0x200) != 0) && (sp60 != 0)) {
+        if (sp8 > sp14) {
             if (arg2 != NULL) {
-                *arg2 = temp_f0_2540;
+                *arg2 = sp8;
             }
             return 1;
         }
         if (arg2 != NULL) {
-            *arg2 = sp8.unkC;
+            *arg2 = sp14;
         }
         return 2;
     }
     if (sp60 != 0) {
         if (arg2 != NULL) {
-            *arg2 = sp8.unkC;
+            *arg2 = sp14;
         }
         return 2;
     }
     return 0;
 }
-#endif
 
 f32 Tools_CylinderTest(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, const MKVector3 &arg3) {
     f64 sp60;
@@ -1741,9 +1737,7 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'Tools_ClosestPropsPos'
 void Tools_cpp::__sinit() {
     M2C_FIELD(&Tools_ClosestPropsPos, f64 *, 0) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 0);
     M2C_FIELD(&Tools_ClosestPropsPos, f64 *, 8) = (f64) M2C_FIELD(&MKVector3::zero, f64 *, 8);
 }
-#endif

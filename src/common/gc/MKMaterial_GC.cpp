@@ -52,7 +52,11 @@ extern Matrix *pAnimMats;
 extern Texture *pOldRenderTarget_475;
 #if 0 // DRAFT: identifier 'MKMaterial_GeometryColor' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 static M2C_UNK MKMaterial_GeometryColor;            /* unable to generate initializer: unknown type */
+#endif
+#if 0 // DRAFT: identifier 'MKPrimitive_CurrentVertex' redeclared was declared as: 'unsigned char[24]' now declared as: 'long'
 static M2C_UNK MKPrimitive_CurrentVertex;           /* unable to generate initializer: unknown type */
+#endif
+#if 0 // DRAFT: identifier 'MKMaterial_fogColor' redeclared was declared as: 'unsigned char[4]' now declared as: 'long'
 static s32 MKMaterial_fogColor = 0xFFFFFFFF;
 #endif
 static u32 currentPrim = 4;

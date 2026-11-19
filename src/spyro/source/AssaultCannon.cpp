@@ -963,11 +963,9 @@ void AssaultCannon::StateFireUpdate() {
     s32 var_r0_2808;
     s32 var_r0_2944;
     u32 temp_r4_1251;
-    u32 temp_r4_1545;
     u32 temp_r4_1682;
     u32 temp_r4_2027;
     u32 temp_r4_2373;
-    u32 temp_r4_2847;
     u32 temp_r4_2862;
     void **temp_r3_1410;
     void **temp_r3_1888;
@@ -1293,7 +1291,7 @@ void AssaultCannon::StateFireUpdate() {
         sp518 = (f32) sp518 * var_f4_1449;
         sp3E0 = (f64) sp510;
         sp3E8 = (f64) sp518;
-        temp_r4_1545 = (u32) UpdateTurning((MKVector3) &sp3E0);
+        UpdateTurning((MKVector3) &sp3E0);
         if (this->unk2F4 <= 0.0f) {
             this->unk2F4 = 0.2f;
             this->unk2F8 += 1;
@@ -1302,7 +1300,7 @@ void AssaultCannon::StateFireUpdate() {
                 M2C_FIELD(temp_r3_1556, AssaultCannon **, 0x130) = NULL;
                 this->unk2E0 = NULL;
             }
-            this->unk2E0 = (void *) (((Projectile *)0xE)->CreateInstance((ProjectileType) temp_r4_1545));
+            this->unk2E0 = (void *) (Projectile::CreateInstance((ProjectileType) 0xE));
             temp_r3_1566 = this->unk2E0;
             if (temp_r3_1566 != NULL) {
                 M2C_FIELD(temp_r3_1566, AssaultCannon **, 0x130) = this;
@@ -1887,13 +1885,13 @@ void AssaultCannon::StateFireUpdate() {
         sp4C8 = (f32) sp4C8 * var_f4_2751;
         sp240 = (f64) sp4C0;
         sp248 = (f64) sp4C8;
-        temp_r4_2847 = (u32) UpdateTurning((MKVector3) &sp240);
+        UpdateTurning((MKVector3) &sp240);
         temp_r3_2848 = this->unk2E0;
         if (temp_r3_2848 != NULL) {
             M2C_FIELD(temp_r3_2848, AssaultCannon **, 0x130) = NULL;
             this->unk2E0 = NULL;
         }
-        this->unk2E0 = ((Projectile *)0x15)->CreateInstance((ProjectileType) temp_r4_2847);
+        this->unk2E0 = Projectile::CreateInstance((ProjectileType) 0x15);
         temp_r3_2858 = this->unk2E0;
         if (temp_r3_2858 != NULL) {
             M2C_FIELD(temp_r3_2858, AssaultCannon **, 0x130) = this;
@@ -2162,7 +2160,7 @@ void AssaultCannon::StateFireEnter() {
     case 0:                                         /* switch 1 */
         this->unk2E4 = 2.0f;
         this->unk2F0 = 1;
-        this->unk2E0 = (void *) (((Projectile *)5)->CreateInstance((ProjectileType) temp_r4_3081));
+        this->unk2E0 = (void *) (Projectile::CreateInstance((ProjectileType) 5));
         temp_r3_3110 = this->unk2E0;
         if (temp_r3_3110 != NULL) {
             M2C_FIELD(temp_r3_3110, AssaultCannon **, 0x130) = this;
@@ -2310,7 +2308,7 @@ void AssaultCannon::StateFireEnter() {
     case 2:                                         /* switch 1 */
         this->unk2E4 = 0.5f;
         this->unk2F0 = 1;
-        this->unk2E0 = (void *) (((Projectile *)0x11)->CreateInstance((ProjectileType) temp_r4_3081));
+        this->unk2E0 = (void *) (Projectile::CreateInstance((ProjectileType) 0x11));
         temp_r3_3414 = this->unk2E0;
         if (temp_r3_3414 != NULL) {
             M2C_FIELD(temp_r3_3414, AssaultCannon **, 0x130) = this;
@@ -2485,7 +2483,7 @@ void AssaultCannon::StateFireEnter() {
     case 3:                                         /* switch 1 */
         this->unk2E4 = 2.0f;
         this->unk2F0 = 1;
-        this->unk2E0 = (void *) (((Projectile *)0x12)->CreateInstance((ProjectileType) temp_r4_3081));
+        this->unk2E0 = (void *) (Projectile::CreateInstance((ProjectileType) 0x12));
         temp_r3_3767 = this->unk2E0;
         if (temp_r3_3767 != NULL) {
             M2C_FIELD(temp_r3_3767, AssaultCannon **, 0x130) = this;

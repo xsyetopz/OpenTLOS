@@ -60,23 +60,19 @@ loop_9:
 }
 #endif
 
-void WhirlWindFX::DrawWhirlWind(WhirlWindFX::WhirlWind *arg1) {
+void WhirlWindFX::DrawWhirlWind(WhirlWindFX::WhirlWind *arg0) {
 
 }
 
 void WhirlWindFX::Draw() {
-    MKHeap *temp_r4_120;
     MKHeap *var_r31_111;
 
     var_r31_111 = this->unk4C;
 loop_2:
-    if (var_r31_111 != NULL) {
-        temp_r4_120 = var_r31_111->unk0;
-        if (temp_r4_120 != NULL) {
-            DrawWhirlWind((WhirlWindFX::WhirlWind *) temp_r4_120);
-            var_r31_111 += 4;
-            goto loop_2;
-        }
+    if ((var_r31_111 != NULL) && ((MKHeap *) var_r31_111->unk0 != NULL)) {
+        WhirlWindFX::DrawWhirlWind((WhirlWindFX::WhirlWind *) this);
+        var_r31_111 += 4;
+        goto loop_2;
     }
 }
 

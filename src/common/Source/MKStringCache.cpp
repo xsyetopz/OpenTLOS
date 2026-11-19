@@ -12,12 +12,12 @@
 #include "spyro/source/Level.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 M2C_UNK free(MKStringCache *);                      /* extern */
 MKStringCache *malloc(MKStringCache *);             /* extern */
 void *realloc(MKStringCache *, void *);             /* extern */
 s32 strcmpi(s8 *, s8 *);                            /* extern */
 
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match 'strlen(const char *)'
 MKHeap *MKStringCache::GetUsedLength() {
     s8 *var_r31_16;
 
@@ -113,7 +113,6 @@ void MKStringCache::Init(int arg0) {
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'free'
 void MKStringCache::Destroy() {
     if (MKHeap::Current() != NULL) {
         ((MKHeap *) (MKHeap::Current()))->Free(this, NULL, 0);
@@ -121,9 +120,7 @@ void MKStringCache::Destroy() {
     }
     free(this);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'malloc'
 MKStringCache *MKStringCache::Create(int arg0) {
     MKStringCache *var_r31_257;
 
@@ -135,4 +132,3 @@ MKStringCache *MKStringCache::Create(int arg0) {
     var_r31_257->Init((s32) this);
     return var_r31_257;
 }
-#endif

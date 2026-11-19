@@ -106,7 +106,7 @@ void DartTrap::Shoot() {
     if (temp_r3_91 != NULL) {
         M2C_FIELD(temp_r3_91, s32 *, 0x130) = 0;
     }
-    this->unk90 = (void *) (((Projectile *)0xE)->CreateInstance((ProjectileType) M2C_ERROR(/* Read from unset register $r4 */)));
+    this->unk90 = (void *) (Projectile::CreateInstance((ProjectileType) 0xE));
     temp_r3_100 = this->unk90;
     if (temp_r3_100 != NULL) {
         M2C_FIELD(M2C_FIELD(temp_r3_100, void **, 0x44), M2C_UNK (**)(), 0x20)();

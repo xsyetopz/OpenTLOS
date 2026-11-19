@@ -22,9 +22,9 @@ extern s32 contextCount;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern void *gpTranslation_StringArray;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 static M2C_UNK buttonColorBright;                   /* unable to generate initializer: unknown type */
 static M2C_UNK buttonColorDull;                     /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 static u8 *pTags[3] = { NULL, lit_stringBase0, .L_8035CF68 };
 #endif
 static s8 themes[0x40];
@@ -32,8 +32,8 @@ static M2C_UNK contexts;
 #if 0 // DRAFT: identifier 'Dialog_bEnableDraw' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 static u8 Dialog_bEnableDraw = 1;
 #endif
-#if 0 // DRAFT: declaration syntax error
 static u8 lit_stringBase0[8] = { 0x3C, 0x2F, 0x66, 0x6F, 0x6E, 0x74, 0x3E, 0 }; /* const */
+#if 0 // DRAFT: declaration syntax error
 static u8 .L_8035CF68[0x62] = {
     0x3C,
     0x2F,
@@ -134,7 +134,9 @@ static u8 .L_8035CF68[0x62] = {
     0x3E,
     0,
 }; /* const */
+#endif
 
+#if 0 // DRAFT: undefined identifier 'DialogBox_DrawBackground'
 void DialogBox_Draw() {
     DialogBoxContext *temp_r27_35;
     s32 var_r28_31;
@@ -1296,7 +1298,6 @@ void DialogBox_DrawTile(float arg0, float arg1, float arg2, float arg3, const MK
     MKEndPrimitive();
 }
 
-#if 0 // DRAFT: undefined identifier 'buttonColorBright'
 void DialogBox_cpp::__sinit() {
     f32 sp24;
     f32 sp20;
@@ -1320,4 +1321,3 @@ void DialogBox_cpp::__sinit() {
     M2C_FIELD(&buttonColorBright, f64 *, 8) = (f64) sp20;
     M2C_FIELD(&buttonColorDull, f64 *, 8) = (f64) sp10;
 }
-#endif

@@ -66,18 +66,18 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameStateMachine gGMState;
 extern void **gMK;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal operand
 static BoundingVolume unitVolume;                   /* type too large by 0x10; unable to generate initializer: not enough data */
 
+#if 0 // DRAFT: illegal operand
 void CheckPoint::SetCurrentCheckPoint(CheckPoint *arg0) {
     ChunkInfo *temp_r4_63;
     u8 var_r3_64;
     void *temp_r5_65;
 
-    if ((CheckPoint *) *CheckPoint::pCurrentCheckPoint != this) {
-        *CheckPoint::pCurrentCheckPoint = (unsigned char) (this);
-        if (this != NULL) {
-            temp_r4_63 = this->unk1B8;
+    if ((CheckPoint *) *CheckPoint::pCurrentCheckPoint != arg0) {
+        *CheckPoint::pCurrentCheckPoint = (unsigned char) (arg0);
+        if (arg0 != NULL) {
+            temp_r4_63 = arg0->unk1B8;
             var_r3_64 = 0;
             temp_r5_65 = temp_r4_63->unk4;
             if ((temp_r5_65 != NULL) && ((u32) M2C_FIELD(temp_r5_65, u32 *, 0x118) == temp_r4_63)) {
@@ -122,7 +122,7 @@ void CheckPoint::Message(MKMessage *arg0) {
                         this->unk80->SetAnim(M2C_FIELD(checked_cast<CheckPointDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x74), 1.0f, 0.0f, 0, -1);
                     }
                 }
-                SetCurrentCheckPoint(M2C_ERROR(/* Read from unset register $r4 */));
+                CheckPoint::SetCurrentCheckPoint(this);
             }
         }
         break;
@@ -131,7 +131,7 @@ void CheckPoint::Message(MKMessage *arg0) {
             if ((MKAnimScript *) this->unk80 != NULL) {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<CheckPointDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0x70), 1.0f, 0.0f, 0, -1);
             }
-            NULL->SetCurrentCheckPoint(M2C_ERROR(/* Read from unset register $r4 */));
+            CheckPoint::SetCurrentCheckPoint(NULL);
         }
         break;
     }
@@ -207,7 +207,6 @@ s32 CheckPoint::LoadDone() {
     f64 temp_f0_413;
     f64 temp_f1_412;
     f64 temp_f1_439;
-    s32 *temp_ret_479;
     void *temp_r3_410;
     void *temp_r3_518;
     void *temp_r4_383;
@@ -262,8 +261,8 @@ s32 CheckPoint::LoadDone() {
         sp40 = (f64) sp10;
         this->unkF8 = (f64) sp10;
     }
-    if (((u8) this->unk1C0 != 0) && ((temp_ret_479 = gGMState.GetCurrState(), (((s32) *temp_ret_479 == 6) != 0)) || ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) != 0)) && ((u32) *CheckPoint::pCurrentCheckPoint == 0U)) {
-        SetCurrentCheckPoint((CheckPoint *) (u32) (u64) temp_ret_479);
+    if (((u8) this->unk1C0 != 0) && (((s32) *gGMState.GetCurrState() == 6) || ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) != 0)) && ((u32) *CheckPoint::pCurrentCheckPoint == 0U)) {
+        CheckPoint::SetCurrentCheckPoint(this);
         if ((u8) M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), u8 *, 8) != 0) {
             ((Spyro *) (*Spyro::pInstance))->Spawn();
         }
@@ -324,7 +323,7 @@ void CheckPoint::Deinit() {
         KDSound_Stop((int *) &this->unk1BC);
     }
     if ((u32) *CheckPoint::pCurrentCheckPoint == this) {
-        NULL->SetCurrentCheckPoint(M2C_ERROR(/* Read from unset register $r4 */));
+        CheckPoint::SetCurrentCheckPoint(NULL);
     }
     KDProp::Deinit();
 }
@@ -348,7 +347,6 @@ void CheckPoint::Init() {
     this->unk1C2 = 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'unitVolume'
 void CheckPointDescriptor::Init() {
     KDPropDescriptor::Init();
     this->unk1C = &unitVolume;
@@ -357,9 +355,7 @@ void CheckPointDescriptor::Init() {
     this->unk74 = 0;
     this->unk78 = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unitVolume'
 void checkpoint_cpp::__sinit() {
     f32 sp20;
     f32 sp1C;
@@ -397,4 +393,3 @@ void checkpoint_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_867 * -((2014000.0 * (temp_f4_867 * temp_f4_867)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = (f32) (380000.0 * (0.5 * temp_f1_868 * -((380000.0 * (temp_f1_868 * temp_f1_868)) - 3.0)));
 }
-#endif

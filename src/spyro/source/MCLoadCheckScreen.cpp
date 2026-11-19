@@ -17,7 +17,6 @@
 #include "spyro/source/UITools.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: pointer/array required
 void MCLoadCheckScreen::Update() {
     s32 sp44;
     s32 sp40;
@@ -36,16 +35,10 @@ void MCLoadCheckScreen::Update() {
     s32 spC;
     s32 sp8;
     KDMemoryCard *temp_r3_206;
-    KDMemoryCard *var_r29_101;
     s32 temp_r0_20;
     s32 temp_r30_136;
-    s32 temp_ret_137;
-    s32 temp_ret_17;
-    s32 temp_ret_82;
+    s32 var_r29_101;
     u32 var_r28_100;
-    u32 var_r4_104;
-    u32 var_r4_125;
-    u32 var_r4_17;
     void **temp_r3_163;
     void **temp_r3_170;
     void **temp_r3_176;
@@ -55,22 +48,13 @@ void MCLoadCheckScreen::Update() {
     void **temp_r3_50;
     void **temp_r3_60;
     void **temp_r3_70;
-    void *temp_r3_109;
-    void *temp_r3_130;
-    void *temp_ret_104;
-    void *temp_ret_109;
-    void *temp_ret_120;
-    void *temp_ret_125;
-    void *temp_ret_130;
 
     UIScreen::Update();
-    temp_ret_17 = KDMemoryCard::Update();
-    var_r4_17 = (u32) (u64) temp_ret_17;
-    if (temp_ret_17 == 0) {
+    if (KDMemoryCard::Update() == 0) {
         temp_r0_20 = this->unkD0;
         switch (temp_r0_20) {                       /* irregular */
         case 0:
-            ((KDMemoryCard *) (NULL->GetCard((s32) var_r4_17)))->SetState((KDMCState) 2);
+            ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
             this->unkD0 = 1;
             temp_r3_43 = this->unkD4;
             sp40 = 3;
@@ -90,9 +74,7 @@ void MCLoadCheckScreen::Update() {
             M2C_FIELD(*temp_r3_70, M2C_UNK (**)(void **, s32 *, M2C_UNK), 0x2C)(temp_r3_70, &sp28, 3);
             return;
         case 1:
-            temp_ret_82 = KDMemoryCard::GetNextCard();
-            var_r4_17 = (u32) (u64) temp_ret_82;
-            if (temp_ret_82 != 0U) {
+            if (KDMemoryCard::GetNextCard() != 0U) {
                 ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
                 return;
             }
@@ -103,40 +85,22 @@ void MCLoadCheckScreen::Update() {
             this->unkD0 = 2;
         case 2:
             var_r28_100 = 0U;
-            var_r29_101 = NULL;
+            var_r29_101 = 0;
 loop_16:
-            temp_ret_104 = var_r29_101->GetCard((s32) var_r4_17);
-            var_r4_104 = (u32) (u64) temp_ret_104;
-            if ((u8) M2C_FIELD(temp_ret_104, u8 *, 9) != 0) {
-                temp_ret_109 = var_r29_101->GetCard((s32) var_r4_104);
-                temp_r3_109 = temp_ret_109;
-                var_r4_104 = (u32) (u64) temp_ret_109;
-                if ((u8) M2C_FIELD(temp_r3_109, u8 *, 8) != 0) {
-                    ((KDMemoryCard *) (var_r29_101->GetCard((s32) var_r4_104)))->SetState((KDMCState) 3);
-                    return;
-                }
+            if (((u8) M2C_FIELD(KDMemoryCard::GetCard(var_r29_101), u8 *, 9) != 0) && ((u8) M2C_FIELD(KDMemoryCard::GetCard(var_r29_101), u8 *, 8) != 0)) {
+                ((KDMemoryCard *) (KDMemoryCard::GetCard(var_r29_101)))->SetState((KDMCState) 3);
+                return;
             }
-            temp_ret_120 = var_r29_101->GetCard((s32) var_r4_104);
-            var_r4_17 = (u32) (u64) temp_ret_120;
-            if ((u8) M2C_FIELD(temp_ret_120, u8 *, 9) != 0) {
-                temp_ret_125 = var_r29_101->GetCard((s32) var_r4_17);
-                var_r4_125 = (u32) (u64) temp_ret_125;
-                if ((s32) M2C_FIELD(temp_ret_125, s32 *, 0x1C) != 0) {
-                    temp_ret_130 = var_r29_101->GetCard((s32) var_r4_125);
-                    temp_r3_130 = temp_ret_130;
-                    var_r4_125 = (u32) (u64) temp_ret_130;
-                    if ((s32) M2C_FIELD(temp_r3_130, s32 *, 0x20) == 0) {
-                        temp_r30_136 = M2C_FIELD(var_r29_101->GetCard((s32) var_r4_125), s32 *, 0x18);
-                        temp_ret_137 = MemoryCard_GetSaveGameBlockSize();
-                        var_r4_17 = (u32) (u64) temp_ret_137;
-                        if (temp_r30_136 < temp_ret_137) {
-                            var_r28_100 += 1;
-                        }
-                        goto block_25;
+            if ((u8) M2C_FIELD(KDMemoryCard::GetCard(var_r29_101), u8 *, 9) != 0) {
+                if (((s32) M2C_FIELD(KDMemoryCard::GetCard(var_r29_101), s32 *, 0x1C) != 0) && ((s32) M2C_FIELD(KDMemoryCard::GetCard(var_r29_101), s32 *, 0x20) == 0)) {
+                    temp_r30_136 = M2C_FIELD(KDMemoryCard::GetCard(var_r29_101), s32 *, 0x18);
+                    if (temp_r30_136 < MemoryCard_GetSaveGameBlockSize()) {
+                        var_r28_100 += 1;
                     }
+                    goto block_25;
                 }
                 this->unkD0 = 4;
-                *MemoryCardScreen::selectedCard = (unsigned char) (var_r29_101->GetCard((s32) var_r4_125));
+                *MemoryCardScreen::selectedCard = (unsigned char) (KDMemoryCard::GetCard(var_r29_101));
                 return;
             }
 block_25:
@@ -187,7 +151,6 @@ block_25:
         }
     }
 }
-#endif
 
 void MCLoadCheckScreen::OnEnter() {
     s32 sp24;

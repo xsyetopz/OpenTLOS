@@ -309,43 +309,45 @@ void EnemyGeneratorDoor::GetDoorPos() {
     *(MKVector3 *) &this->unk0 = sp8;
 }
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGeneratorDoor::Close() {
     void **sp10;
     s32 spC;
     s32 sp8;
-    KDProperty *temp_r3_674;
-    u64 temp_ret_697;
+    MKProp *temp_r3_674;
+    u64 temp_r31_700;
     void **temp_r3_702;
 
     if ((void **) this->unk20 != NULL) {
-        temp_r3_674 = M2C_FIELD(this, KDProperty **, 8);
-        if ((temp_r3_674 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(M2C_FIELD(temp_r3_674, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), ((sp10 == NULL) != 0)) || (M2C_FIELD(*sp10, u8 (**)(), 0x20)() == 0))) {
-            temp_ret_697 = KDProperty::GetOwnerProp();
-            ((KDProperty *) (M2C_FIELD(this, KDProperty **, 8)))->SetOwnerProp((MKProp *) (u32) temp_ret_697);
+        temp_r3_674 = M2C_FIELD(this, MKProp **, 8);
+        if ((temp_r3_674 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(temp_r3_674->__vptr, M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), ((sp10 == NULL) != 0)) || (M2C_FIELD(*sp10, u8 (**)(), 0x20)() == 0))) {
+            temp_r31_700 = KDProperty::GetOwnerProp();
+            KDProperty::SetOwnerProp(M2C_FIELD(this, MKProp **, 8));
             temp_r3_702 = this->unk20;
-            temp_ret_697->SetOwnerProp((MKProp *) (u32) M2C_FIELD(*temp_r3_702, u64 (**)(void **, M2C_UNK), 0x48)(temp_r3_702, 1));
+            M2C_FIELD(*temp_r3_702, M2C_UNK (**)(void **, M2C_UNK), 0x48)(temp_r3_702, 1);
+            KDProperty::SetOwnerProp((MKProp *) temp_r31_700);
         }
     }
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
+#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGeneratorDoor::Open() {
     void **sp10;
     s32 spC;
     s32 sp8;
-    KDProperty *temp_r3_743;
-    u64 temp_ret_766;
+    MKProp *temp_r3_743;
+    u64 temp_r31_769;
     void **temp_r3_771;
 
     if ((void **) this->unk1C != NULL) {
-        temp_r3_743 = M2C_FIELD(this, KDProperty **, 8);
-        if ((temp_r3_743 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(M2C_FIELD(temp_r3_743, void **, 0x44), M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), ((sp10 == NULL) != 0)) || (M2C_FIELD(*sp10, u8 (**)(), 0x20)() == 0))) {
-            temp_ret_766 = KDProperty::GetOwnerProp();
-            ((KDProperty *) (M2C_FIELD(this, KDProperty **, 8)))->SetOwnerProp((MKProp *) (u32) temp_ret_766);
+        temp_r3_743 = M2C_FIELD(this, MKProp **, 8);
+        if ((temp_r3_743 != NULL) && ((spC = 0, sp10 = NULL, sp8 = 0x8E, M2C_FIELD(temp_r3_743->__vptr, M2C_UNK (**)(s32 *, M2C_UNK), 0x2C)(&sp8, 0), ((sp10 == NULL) != 0)) || (M2C_FIELD(*sp10, u8 (**)(), 0x20)() == 0))) {
+            temp_r31_769 = KDProperty::GetOwnerProp();
+            KDProperty::SetOwnerProp(M2C_FIELD(this, MKProp **, 8));
             temp_r3_771 = this->unk1C;
-            temp_ret_766->SetOwnerProp((MKProp *) (u32) M2C_FIELD(*temp_r3_771, u64 (**)(void **, M2C_UNK), 0x48)(temp_r3_771, 1));
+            M2C_FIELD(*temp_r3_771, M2C_UNK (**)(void **, M2C_UNK), 0x48)(temp_r3_771, 1);
+            KDProperty::SetOwnerProp((MKProp *) temp_r31_769);
         }
     }
 }
@@ -639,8 +641,6 @@ void EnemyGenerator::Resolve() {
     EnemyGeneratorDescriptor *temp_r3_1333;
     EnemyGeneratorDescriptor *temp_r5_1437;
     MKProp *var_r6_1459;
-    MKSceneManager *temp_r3_1323;
-    MKSceneManager *temp_r3_1345;
     SpawnPointObject *var_r7_1439;
     f32 temp_f6_1608;
     f32 temp_f7_1619;
@@ -665,6 +665,8 @@ void EnemyGenerator::Resolve() {
     s32 var_r30_1374;
     s32 var_r30_1431;
     s32 var_r8_1438;
+    u32 temp_r3_1323;
+    u32 temp_r3_1345;
     void *temp_r3_1379;
     void *temp_r3_1396;
     void *temp_r4_1612;
@@ -677,8 +679,8 @@ loop_4:
     temp_r3_1333 = this->unk50;
     if (var_r28_1318 < (s32) temp_r3_1333->unk4) {
         temp_r3_1323 = *(this->unk58 + var_r27_1319);
-        if (temp_r3_1323 != NULL) {
-            *(this->unk58 + var_r27_1319) = temp_r3_1323->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        if (temp_r3_1323 != 0U) {
+            *(this->unk58 + var_r27_1319) = MKSceneManager::PropResolver_Resolve((s32) temp_r3_1323);
         }
         var_r28_1318 += 1;
         var_r27_1319 += 4;
@@ -690,8 +692,8 @@ loop_4:
 loop_11:
         if (var_r28_1340 < (s32) this->unk50->unk0) {
             temp_r3_1345 = *(this->unk5C + var_r27_1341);
-            if (temp_r3_1345 != NULL) {
-                *(this->unk5C + var_r27_1341) = temp_r3_1345->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+            if (temp_r3_1345 != 0U) {
+                *(this->unk5C + var_r27_1341) = MKSceneManager::PropResolver_Resolve((s32) temp_r3_1345);
                 if ((u32) *(this->unk5C + var_r27_1341) != 0U) {
                     this->unk80 += 1;
                 }

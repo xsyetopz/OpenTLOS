@@ -3,7 +3,9 @@
 
 #if 0 // DRAFT: identifier '_sinTable' redeclared was declared as: 'unsigned char[4100]' now declared as: 'long'
 static M2C_UNK _sinTable;                           /* unable to generate initializer: unknown type */
+#endif
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKVector3'
 s32 MKLinesIntersect(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3) {
     f32 temp_f2_11;
     f32 temp_f3_15;

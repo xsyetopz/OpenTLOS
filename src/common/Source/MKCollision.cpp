@@ -19,9 +19,9 @@
 #include "common/Source/Str.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'defaultCollisionMax' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 M2C_UNK free(MKCollisionManager **);                /* extern */
 MKCollisionManager **malloc(M2C_UNK);               /* extern */
+#if 0 // DRAFT: identifier 'defaultCollisionMax' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
 extern M2C_UNK defaultCollisionMax;
 #endif
 #if 0 // DRAFT: identifier 'defaultCollisionMin' redeclared was declared as: 'unsigned char[16]' now declared as: 'long'
@@ -29,10 +29,10 @@ extern M2C_UNK defaultCollisionMin;
 #endif
 extern M2C_UNK gEmptyPtrList;
 extern MKCollisionManager **managers;
-#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 static M2C_UNK lit_834;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_840;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'signed char *' to 'float'
 void MKCollision_MangleName(const char *arg0, int arg1, bool arg2) {
     s8 sp8;
     M2C_UNK sp4;
@@ -816,7 +816,6 @@ void MKCollision_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'malloc'
 void MKCollision_Init() {
     MKCollisionManager **var_r3_1227;
     s32 var_ctr_1239;
@@ -837,7 +836,6 @@ void MKCollision_Init() {
     managers += 4;
     M2C_FIELD(managers, s32 *, 4) = 0;
 }
-#endif
 
 void MKCollision_DeinitModule() {
 

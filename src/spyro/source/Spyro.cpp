@@ -163,11 +163,11 @@
 #include "unplaced_inlines.h"
 #include <m2c_macros.h>
 
-#if 0 // DRAFT: identifier 'EventCamera_bRemainTargetable' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 M2C_UNK __destroy_arr(SpyroSoundPlayer *, SpyroSoundPlayer::SpyroLoopSounds *(*)(SpyroSoundPlayer::SpyroLoopSounds *, s16), M2C_UNK, M2C_UNK); /* extern */
 f64 atan2(f32, f32);                                /* extern */
 M2C_UNK free(MKProp **);                            /* extern */
 MKProp **malloc(M2C_UNK);                           /* extern */
+#if 0 // DRAFT: identifier 'EventCamera_bRemainTargetable' redeclared was declared as: 'signed char' now declared as: 'unsigned char'
 extern u8 EventCamera_bRemainTargetable;
 #endif
 extern s32 GS_PLACEHOLDER;
@@ -2871,7 +2871,6 @@ void Spyro::GetJoyDir() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'atan2'
 f32 Spyro::GetJoyYaw() {
     f32 temp_f30_5163;
     f32 temp_f31_5159;
@@ -2880,7 +2879,6 @@ f32 Spyro::GetJoyYaw() {
     temp_f30_5163 = ((InputModifier *) (GetInput()))->GetLeftY();
     return temp_f31_5159 + (f32) atan2(-((InputModifier *) (GetInput()))->GetLeftX(), temp_f30_5163);
 }
-#endif
 
 KDCamera *Spyro::GetCamera() {
     return this->unk224;
@@ -3380,7 +3378,7 @@ void Spyro::Teleport(const MKVector3 &arg0, float arg1, int arg2, bool arg3, boo
     sp34 = 100.0f;
     sp78 = (f64) sp28;
     sp80 = (f64) sp30;
-    this->unk280->ResetCollisionSweepSphere((s32) &sp78, M2C_ERROR(/* Read from unset register $r5 */));
+    MKCloth::ResetCollisionSweepSphere((s32) this->unk280, (MKVector4 *) &sp78);
     this->unk3A8.YawTowards(arg1, 900.0f);
     if (arg3 != 0) {
         UpdateAnimation();
@@ -4537,7 +4535,7 @@ void Spyro::CheckForKnockBack(ContextInfo &arg0, float arg1) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'const Matrix *' to 'Matrix *' Too many errors printed, aborting program
+#if 0 // DRAFT: illegal implicit conversion from 'InputModifier *' to 'KDInput *'
 void Spyro::UpdateBreathEffects(const Matrix *arg0, const MKVector3 &arg1) {
     s8 sp4F;
     s8 sp4D;
@@ -4553,7 +4551,7 @@ void Spyro::UpdateBreathEffects(const Matrix *arg0, const MKVector3 &arg1) {
     s32 temp_r5_8076;
 
     sp8 = 0;
-    sp30 = arg0;
+    sp30 = (Matrix *) (arg0);
     sp10 = M2C_FIELD(&arg1, f64 *, 0);
     sp18 = M2C_FIELD(&arg1, f64 *, 8);
     sp3C = this->unk78;
@@ -4574,7 +4572,7 @@ void Spyro::SetAutoHealthRegen(bool arg0) {
     this->unk3E4 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKProp *' to 'float'
+#if 0 // DRAFT: illegal explicit conversion from 'MKProp *' to 'float' Too many errors printed, aborting program
 void Spyro::SetForceLookAtTarget(MKProp *arg0) {
     if (arg0 != NULL) {
         this->unk1B4.unkC = M2C_BITWISE(f32, arg0);
@@ -8346,7 +8344,7 @@ void Spyro::UpdateMovement() {
     f64 sp90;
     f32 sp80;
     MKVector3 sp70;
-    M2C_UNK sp60;
+    MKVector3 sp60;
     f32 sp58;
     f64 sp50;
     f32 sp48;
@@ -8466,19 +8464,19 @@ void Spyro::UpdateMovement() {
             sp1C = 100.0f;
             sp100 = (f64) sp10;
             sp108 = (f64) sp18;
-            this->unk280->ResetCollisionSweepSphere((s32) &sp100, M2C_ERROR(/* Read from unset register $r5 */));
+            MKCloth::ResetCollisionSweepSphere((s32) this->unk280, (MKVector4 *) &sp100);
         }
     }
     temp_r4_14934 = this->unk27C;
     M2C_FIELD(M2C_FIELD(temp_r4_14934, void **, 0), M2C_UNK (**)(MKVector3 *, void *), 0x4C)(&sp70, temp_r4_14934);
     SetPos(sp70);
     temp_r4_14943 = this->unk27C;
-    M2C_FIELD(M2C_FIELD(temp_r4_14943, void **, 0), M2C_UNK (**)(M2C_UNK *, void *), 0x4C)(&sp60, temp_r4_14943);
-    this->unk280->MoveCollisionSweepSphere((s32) &sp60, *(M2C_ERROR(/* Read from unset register $r5 */)));
+    M2C_FIELD(M2C_FIELD(temp_r4_14943, void **, 0), M2C_UNK (**)(MKVector3 *, void *), 0x4C)(&sp60, temp_r4_14943);
+    MKCloth::MoveCollisionSweepSphere((s32) this->unk280, sp60);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk340'
+#if 0 // DRAFT: undefined identifier 'unk340' Too many errors printed, aborting program
 void *Spyro::Update() {
     s8 spE9;
     s8 spE8;
@@ -9193,7 +9191,7 @@ s32 Spyro::LoadDone() {
     sp2C = 100.0f;
     sp60 = (f64) sp20;
     sp68 = (f64) sp28;
-    this->unk280->ResetCollisionSweepSphere((s32) &sp60, M2C_ERROR(/* Read from unset register $r5 */));
+    MKCloth::ResetCollisionSweepSphere((s32) this->unk280, (MKVector4 *) &sp60);
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
     this->unk7C.Init((KDStateMachine<Spyro>::State *) (Spyro::pNodeNames + 0x494), NULL);
     this->unk7C.SetState(this, 0, 0U);
@@ -9365,7 +9363,7 @@ void Spyro::Deinit() {
     }
     this->unk6F0 = NULL;
     this->unkB90.Deinit();
-    this->unk280->ReleaseSweepSphere(M2C_ERROR(/* Read from unset register $r4 */));
+    MKCloth::ReleaseSweepSphere((s32) this->unk280);
     this->unk280 = (MKCloth *)-1;
     temp_r3_16685 = this->unk27C;
     M2C_FIELD(*temp_r3_16685, M2C_UNK (**)(void *), 0xC)(temp_r3_16685);
@@ -9462,7 +9460,7 @@ void Spyro::Init() {
     this->unk70 = M2C_FIELD(&MKVector3::one, f64 *, 8);
     ((MKSceneManager *) gMK)->CreatePropDeferred("Sparx", (MKProp **) &this->unkB70);
     if (MKHeap::Current() != NULL) {
-        var_r3_16886 = (MKProp **) (((MKHeap *) (MKHeap::Current()))->Alloc(0x44, NULL, 0));
+        var_r3_16886 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x44, NULL, 0);
     } else {
         var_r3_16886 = malloc(0x44);
     }
@@ -9482,7 +9480,7 @@ void Spyro::Init() {
     this->unk408 = this;
     M2C_FIELD(this, Spyro **, 0x418) = this;
     this->unkBB4 = 0;
-    *Spyro::pInstance = (unsigned char) (this);
+    *Spyro::pInstance = this;
 }
 #endif
 
@@ -9497,7 +9495,7 @@ void SpyroDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
     temp_r30_16934 = this->unkCC;
     if (temp_r30_16934 != NULL) {
-        this->unkD0 = (const char *) (((Animation *) (MKModel_GetAnimation(this->unk2C)))->GetNodeIndex(temp_r30_16934));
+        this->unkD0 = ((Animation *) (MKModel_GetAnimation(this->unk2C)))->GetNodeIndex(temp_r30_16934);
     }
     var_r28_16944 = 0;
     var_r31_16945 = 0;

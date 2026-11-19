@@ -255,7 +255,7 @@ void LitCloudPS::StateUpdate() {
         sp188 = (f64) sp88;
         sp150 = (f64) sp70;
         sp158 = (f64) sp78;
-        Emit(*((MKVector3 *) &sp180), *((MKVector4 *) &sp150), 100.0f * (1.2f + (*(f32 *) ((u8 *) &sp1C0 + 0x4))) * temp_f6_289, 1U);
+        LitCloudPS::Emit(*((MKVector3 *) this), *((MKVector4 *) &sp180), 100.0f * (1.2f + (*(f32 *) ((u8 *) &sp1C0 + 0x4))) * temp_f6_289, (u8) &sp150);
         sp68 = -1.0f;
         temp_f29_351 = this->unk4C;
         sp58 = 1.0f;
@@ -315,8 +315,8 @@ void LitCloudPS::SetLight(const MKVector3 &arg0, const MKVector4 &arg1, float ar
     this->unk70 = arg2;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKHeap' to 'unsigned char'
-void LitCloudPS::Emit(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, bool arg3) {
+#if 0 // DRAFT: pointer/array required
+void LitCloudPS::Emit(const MKVector3 &arg0, const MKVector4 &arg1, float farg0, bool arg2) {
     f64 sp60;
     f64 sp58;
     MKVector3 sp48;
@@ -325,49 +325,49 @@ void LitCloudPS::Emit(const MKVector3 &arg0, const MKVector4 &arg1, float arg2, 
     MKVector3 sp18;
     f32 sp10;
     f64 sp8;
-    MKHeap *temp_r3_500;
     f32 temp_f1_549;
     f32 temp_f31_558;
+    s32 temp_r3_500;
     s32 var_ctr_498;
     s32 var_r30_497;
     void *temp_r3_584;
     void *temp_r4_513;
     void *temp_r4_521;
 
-    if ((s32) this->unk74 < 0x63) {
+    if ((s32) M2C_FIELD(&arg0, s32 *, 0x74) < 0x63) {
         var_r30_497 = 0;
         var_ctr_498 = 0x64;
 loop_2:
-        temp_r3_500 = this->unk7C;
+        temp_r3_500 = M2C_FIELD(&arg0, s32 *, 0x7C);
         if ((u8) *(temp_r3_500 + (var_r30_497 + 0x50)) == 0) {
             M2C_FIELD((temp_r3_500 + var_r30_497), s8 *, 0x50) = 1;
-            temp_r4_513 = this->unk7C + var_r30_497;
-            M2C_FIELD(temp_r4_513, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
-            M2C_FIELD(temp_r4_513, f64 *, 8) = (f64) M2C_FIELD(&arg0, f64 *, 8);
-            temp_r4_521 = this->unk7C + (var_r30_497 + 0x10);
-            M2C_FIELD(temp_r4_521, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
-            M2C_FIELD(temp_r4_521, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x44) = arg2;
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x40) = 0.0f;
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x30) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x34) = (f32) (0.125f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
+            temp_r4_513 = (void *) (M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497);
+            M2C_FIELD(temp_r4_513, f64 *, 0) = (f64) M2C_FIELD(&arg1, f64 *, 0);
+            M2C_FIELD(temp_r4_513, f64 *, 8) = (f64) M2C_FIELD(&arg1, f64 *, 8);
+            temp_r4_521 = (void *) (M2C_FIELD(&arg0, s32 *, 0x7C) + (var_r30_497 + 0x10));
+            M2C_FIELD(temp_r4_521, f64 *, 0) = (f64) M2C_FIELD(arg2, f64 *, 0);
+            M2C_FIELD(temp_r4_521, f64 *, 8) = (f64) M2C_FIELD(arg2, f64 *, 8);
+            M2C_FIELD((M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497), f32 *, 0x44) = farg0;
+            M2C_FIELD((M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497), f32 *, 0x40) = 0.0f;
+            M2C_FIELD((M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497), f32 *, 0x30) = (f32) (2.0f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
+            M2C_FIELD((M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497), f32 *, 0x34) = (f32) (0.125f * MKRand_Float((int *) &gViewSeed, -3.1415927f, 3.1415927f));
             temp_f1_549 = MKRand_Float((int *) &gViewSeed, 2.0f, 3.0f);
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x4C) = temp_f1_549;
-            M2C_FIELD((this->unk7C + var_r30_497), f32 *, 0x48) = temp_f1_549;
-            temp_f31_558 = this->unk4C;
+            M2C_FIELD((M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497), f32 *, 0x4C) = temp_f1_549;
+            M2C_FIELD((M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497), f32 *, 0x48) = temp_f1_549;
+            temp_f31_558 = M2C_FIELD(&arg0, f32 *, 0x4C);
             sp18 = MKVector(1.0f, 1.0f, 1.0f);
             sp28 = MKVector(-1.0f, -1.0f, -1.0f);
             sp38 = KDRand_Vector(sp28, sp18);
             sp48.operator*(25.0f);
             sp8 = sp48 * (f64) temp_f31_558;
-            temp_r3_584 = this->unk7C + (var_r30_497 + 0x20);
+            temp_r3_584 = (void *) (M2C_FIELD(&arg0, s32 *, 0x7C) + (var_r30_497 + 0x20));
             M2C_FIELD(temp_r3_584, f64 *, 0) = sp8;
             sp10 = sp48.unk8 * temp_f31_558;
             sp58 = sp8;
             M2C_FIELD(temp_r3_584, f64 *, 8) = (f64) sp10;
             sp60 = (f64) sp10;
-            *(this->unk80 + (this->unk74 * 4)) = this->unk7C + var_r30_497;
-            this->unk74 += 1;
+            *(M2C_FIELD(&arg0, s32 *, 0x80) + (M2C_FIELD(&arg0, s32 *, 0x74) * 4)) = M2C_FIELD(&arg0, s32 *, 0x7C) + var_r30_497;
+            M2C_FIELD(&arg0, s32 *, 0x74) = (s32) (M2C_FIELD(&arg0, s32 *, 0x74) + 1);
             return;
         }
         var_r30_497 += 0x60;

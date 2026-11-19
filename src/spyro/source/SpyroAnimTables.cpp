@@ -35,8 +35,8 @@
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_idleAnimTable_0x18'
 static M2C_UNK animEnt;                             /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_idleAnimTable_0x18'
 static struct _struct_idleAnimTable_0x18 idleAnimTable[2];
 #endif
 static s32 lit_738 = 0;

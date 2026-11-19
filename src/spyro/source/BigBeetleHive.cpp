@@ -362,7 +362,6 @@ void *BigBeetleHive::Update() {
 f32 BigBeetleHive::Resolve() {
     s32 var_r28_585;
     s32 var_r31_587;
-    u16 temp_ret_599;
     void *temp_r29_589;
 
     Shatterable::Resolve();
@@ -370,10 +369,9 @@ f32 BigBeetleHive::Resolve() {
     var_r31_587 = 0;
     do {
         temp_r29_589 = this + var_r31_587;
-        if ((MKSceneManager *) M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0) != (MKSceneManager *)-1) {
-            temp_ret_599 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_attach%d", var_r28_585));
-            M2C_FIELD(temp_r29_589, s32 *, 0x1B4) = (s32) temp_ret_599;
-            M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = (long) (checked_cast<BeetleNestSmall *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_599)));
+        if ((s32) M2C_FIELD(temp_r29_589, s32 *, 0x1B0) != -1) {
+            M2C_FIELD(temp_r29_589, s32 *, 0x1B4) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_attach%d", var_r28_585));
+            M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = (long) (checked_cast<BeetleNestSmall *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r29_589, s32 *, 0x1B0))));
         }
         var_r28_585 += 1;
         var_r31_587 += 0xC;

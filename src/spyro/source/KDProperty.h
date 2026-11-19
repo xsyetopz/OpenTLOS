@@ -34,7 +34,7 @@ public:
     virtual void Update(void);
     virtual void Command(int);
     s32 IsOfType(KDPropertyClassInfo *) const;
-    void SetOwnerProp(MKProp *);
+    static void SetOwnerProp(MKProp *);
     static u64 GetOwnerProp(void);
     static u8 pInstanceMem[0x4];
     /* 0x004 */ s8* unk4;
@@ -179,7 +179,7 @@ inline void KDProperty::InitInstance() {
 }
 
 inline void KDProperty::SetOwnerProp(MKProp *arg0) {
-    *KDProperty::pInstanceMem = (unsigned char) (this);
+    *KDProperty::pInstanceMem = (unsigned char) (arg0);
 }
 
 inline u64 KDProperty::GetOwnerProp() {

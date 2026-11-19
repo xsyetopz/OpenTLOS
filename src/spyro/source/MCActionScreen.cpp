@@ -132,8 +132,6 @@ void MCActionScreen::Update() {
     s32 temp_r30_486;
     s32 temp_r30_520;
     s32 temp_r30_622;
-    s32 temp_ret_346;
-    s32 temp_ret_906;
     s32 var_r5_200;
     s8 *temp_r3_419;
     s8 *temp_r3_434;
@@ -248,11 +246,10 @@ block_18:
                 ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "MCSelectCard");
                 return;
             }
-            temp_ret_346 = KDMemoryCard::GetNextCard();
-            if (temp_ret_346 != 0U) {
+            if (KDMemoryCard::GetNextCard() != 0U) {
                 ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
             } else {
-                ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_346)))->SetState((KDMCState) 2);
+                ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
             }
             goto block_127;
         case 1:                                     /* switch 1 */
@@ -497,11 +494,10 @@ block_18:
             }
             break;
         case 4:                                     /* switch 1 */
-            temp_ret_906 = KDMemoryCard::GetNextCard();
-            if (temp_ret_906 != 0U) {
+            if (KDMemoryCard::GetNextCard() != 0U) {
                 ((KDMemoryCard *) (KDMemoryCard::GetNextCard()))->SetState((KDMCState) 2);
             } else {
-                ((KDMemoryCard *) (NULL->GetCard((s32) (u32) (u64) temp_ret_906)))->SetState((KDMCState) 2);
+                ((KDMemoryCard *) (KDMemoryCard::GetCard(0)))->SetState((KDMCState) 2);
             }
             goto block_127;
         case 5:                                     /* switch 1 */

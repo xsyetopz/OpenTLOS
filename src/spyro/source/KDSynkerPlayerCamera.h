@@ -25,7 +25,7 @@ public:
     void * FindCameraPath(const char *);
     void * FindCAD(const char *);
     void ParseMCDFile(const char *);
-    void ParseCAD(KDSynkerHeap *, const char *);
+    static void ParseCAD(KDSynkerHeap *, const char *);
     void HeapAddSizeCAD(KDSynkerHeap *, const char *);
     void Parse(KDSynkerHeap *, const char *, MKIni *, int &);
     void HeapAddSize(KDSynkerHeap *, const char *, MKIni *);

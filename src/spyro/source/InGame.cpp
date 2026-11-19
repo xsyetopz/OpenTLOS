@@ -118,8 +118,8 @@ extern f32 msgTime;
 extern f32 nextCheck;
 extern void *pCutsceneChunkInfo_950;
 extern s8 *pCutsceneInfo_953;
-extern Level *pInfo_944;
-extern Level *pLoadingInfo_947;
+extern ChunkInfo *pInfo_944;
+extern ChunkInfo *pLoadingInfo_947;
 extern s8 *pMessage;
 extern s32 ppChunk_959;
 static M2C_UNK listenerPos;                         /* unable to generate initializer: unknown type */
@@ -142,9 +142,9 @@ static Matrix sndCameraMat = {
     0.0f,
 };
 static ChunkInfo *pDesiredChunks_962[3];
-#if 0 // DRAFT: undefined identifier 'DojoDialogMsg'
 static M2C_UNK lit_903;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: undefined identifier 'DojoDialogMsg'
 void InGame_SystemMessage(MKMessage *arg0) {
     s32 spC;
     s32 sp8;
@@ -351,8 +351,8 @@ void UpdateListenerPos() {
 
 #if 0 // DRAFT: undefined identifier 'unk340'
 void InGame_UpdateAutoLevelSwitch() {
-    Level *temp_r29_807;
-    Level *temp_r3_811;
+    ChunkInfo *temp_r29_807;
+    ChunkInfo *temp_r3_811;
     f32 temp_f1_648;
     f32 temp_f1_799;
     s32 temp_r0_683;
@@ -388,7 +388,7 @@ void InGame_UpdateAutoLevelSwitch() {
             } else {
                 var_r3_547 = M2C_FIELD(gb.unk32C->unk24, void **, 4);
             }
-            pInfo_944 = M2C_FIELD(var_r3_547, Level **, 0x11C);
+            pInfo_944 = M2C_FIELD(var_r3_547, ChunkInfo **, 0x11C);
             init_945 = 1;
         }
         if ((s8) init_948 == 0) {
@@ -516,7 +516,7 @@ loop_37:
         case 7:
             temp_r29_807 = pInfo_944;
 loop_60:
-            temp_r3_811 = pInfo_944->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
+            temp_r3_811 = Level::GetNextChunk(pInfo_944);
             pInfo_944 = temp_r3_811;
             if (temp_r3_811 == NULL) {
                 autoSwitchState_939 = 0xA;
@@ -530,7 +530,7 @@ loop_60:
                 if ((void *) temp_r29_807->unk4 == (void *) temp_r3_811->unk4) {
                     temp_r8_842 = 1 - desiredChunkIndex_963;
                     desiredChunkIndex_963 = temp_r8_842;
-                    M2C_FIELD(&pDesiredChunks_962[temp_r8_842], Level **, 4) = temp_r3_811;
+                    M2C_FIELD(&pDesiredChunks_962[temp_r8_842], ChunkInfo **, 4) = temp_r3_811;
                     gb.unk32C->SetDesiredChunks(pDesiredChunks_962, 3);
                     autoSwitchState_939 = 8;
                     return;
@@ -542,7 +542,7 @@ loop_60:
                 gb.unk32C->SetEnvChunk(NULL);
                 M2C_FIELD(*gMK, M2C_UNK (**)(void **, M2C_UNK), 0x44)(gMK, 0);
                 M2C_FIELD(pDesiredChunks_962, ChunkInfo **, 0) = M2C_FIELD(pInfo_944->unk4, ChunkInfo **, 0x118);
-                pDesiredChunks_962[1] = (ChunkInfo *) pInfo_944;
+                pDesiredChunks_962[1] = pInfo_944;
                 gb.unk32C->SetDesiredChunks(pDesiredChunks_962, 2);
                 desiredChunkIndex_963 = 0;
                 autoSwitchState_939 = 8;
@@ -558,7 +558,7 @@ loop_60:
         case 9:
             inGameTime = 0.0f;
             M2C_FIELD(&gMKDefaults, s8 *, 0x1C) = 1;
-            gb.unk32C->EnableChunksForLevel((ChunkInfo *) pInfo_944);
+            gb.unk32C->EnableChunksForLevel(pInfo_944);
             autoSwitchState_939 = 1;
             return;
         case 10:
@@ -674,7 +674,7 @@ void InGame_DrawLevel() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_903'
+#if 0 // DRAFT: undefined identifier 'unk30C'
 void InGame_Draw() {
     s32 sp1C;
     s32 sp18;

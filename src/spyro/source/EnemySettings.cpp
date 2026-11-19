@@ -156,14 +156,14 @@ loop_5:
     goto loop_5;
 }
 
-#if 0 // DRAFT: type mismatch 'Level *' and 'long'
+#if 0 // DRAFT: illegal type
 void EnemySettings_ParseIniFile(const char *arg0) {
     MKIni sp8;
-    Level *var_r30_324;
     MKIniLine *temp_r3_317;
+    s32 var_r30_324;
     s32 var_r31_325;
 
-    if (((MKIni *) arg0)->Exists(M2C_ERROR(/* Read from unset register $r4 */)) != 0) {
+    if (MKIni::Exists(arg0) != 0) {
         MKHeap::ActivateTempMemOverride();
         sp8.Init(arg0, 0, NULL);
         MKHeap::DeactivateTempMemOverride();
@@ -171,11 +171,11 @@ void EnemySettings_ParseIniFile(const char *arg0) {
         EnemySettings_ParseEnemyDDALevel(temp_r3_317);
         EnemySettings_ParseBaselineSettings(temp_r3_317);
         EnemySettings_ParseDDASettings(temp_r3_317);
-        var_r30_324 = NULL;
+        var_r30_324 = 0;
         var_r31_325 = 0;
 loop_3:
         if (var_r30_324 < (s32) iLevels) {
-            EnemySettings_ParseLevelSettings(temp_r3_317, M2C_FIELD(var_r30_324->GetLevelInfo(M2C_ERROR(/* Read from unset register $r4 */)), s8 **, 4), pLevelSettings + var_r31_325);
+            EnemySettings_ParseLevelSettings(temp_r3_317, M2C_FIELD(Level::GetLevelInfo(var_r30_324), s8 **, 4), pLevelSettings + var_r31_325);
             var_r30_324 += 1;
             var_r31_325 += 0x24;
             goto loop_3;
@@ -210,7 +210,6 @@ void EnemySettings_InitModule() {
     s32 var_r29_472;
     s32 var_r31_459;
     s32 var_r31_474;
-    u32 temp_r4_428;
     void *temp_r4_405;
     void *var_r3_447;
 
@@ -220,9 +219,9 @@ void EnemySettings_InitModule() {
     iLevels = Level::GetLevelCount();
     pLevelSettings = NULL;
     memset(baselineSettings, 0, 0x24U);
-    temp_r4_428 = (u32) (u64) memset(ddaSettings, 0, 0xB4U);
+    memset(ddaSettings, 0, 0xB4U);
     if ((s32) iLevels != 0) {
-        if (((MKIni *) &sp8)->Exists((s8 *) temp_r4_428) == 0) {
+        if (MKIni::Exists(&sp8) == 0) {
             return;
         }
         temp_r30_439 = iLevels * 0x24;

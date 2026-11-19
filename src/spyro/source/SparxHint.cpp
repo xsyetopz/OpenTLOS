@@ -51,9 +51,9 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameGlobals gb;
-#if 0 // DRAFT: ')' expected
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
 
+#if 0 // DRAFT: ')' expected
 void SparxHint::Message(MKMessage *arg0) {
     SparxHint *sp64;
     s32 sp60;
@@ -312,14 +312,11 @@ void SparxHint::Init() {
     this->unkAC = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'volume'
 void SparxHintDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk1C = &volume;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'volume'
 void SparxHint_cpp::__sinit() {
     f32 sp20;
     f32 sp1C;
@@ -357,4 +354,3 @@ void SparxHint_cpp::__sinit() {
     SPYRO_BOUNCE_Y_SPEED = (f32) (2014000.0 * (0.5 * temp_f4_559 * -((2014000.0 * (temp_f4_559 * temp_f4_559)) - 3.0)));
     SPYRO_MIN_JUMP_Y_VELOCITY = (f32) (380000.0 * (0.5 * temp_f1_560 * -((380000.0 * (temp_f1_560 * temp_f1_560)) - 3.0)));
 }
-#endif

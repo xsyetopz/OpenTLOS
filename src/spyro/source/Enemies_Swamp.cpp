@@ -79,8 +79,13 @@ extern GameGlobals gb;
 extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit swampTier1BodyFXInit;    /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit swampTier2BodyFXInit;    /* unable to generate initializer: confusing struct layout */
+#endif
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CharacterBodyFxInit'
 static CharacterBodyFxInit swampTier3BodyFXInit;    /* unable to generate initializer: confusing struct layout */
+#endif
 
 s32 SwampTier3::CanMoveAwayFromHero() {
     s32 var_r31_47;
@@ -93,7 +98,6 @@ s32 SwampTier3::CanMoveAwayFromHero() {
     }
     return var_r31_47;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void SwampTier3::CheckAnimEvents() {

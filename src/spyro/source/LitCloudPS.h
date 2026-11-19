@@ -26,7 +26,7 @@ public:
     void Stop(void);
     void Trigger(const MKVector3 &);
     void SetLight(const MKVector3 &, const MKVector4 &, float);
-    void Emit(const MKVector3 &, const MKVector4 &, float, bool);
+    static void Emit(const MKVector3 &, const MKVector4 &, float, bool);
     void DrawCloudlet(LitCloudPS::LitParticle *, Matrix *);
     /* 0x04c */ f32 unk4C;
     /* 0x050 */ f64 unk50;

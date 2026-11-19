@@ -10,9 +10,9 @@
 
 M2C_UNK __copy(u8 *, M2C_UNK *, M2C_UNK, f64);      /* extern */
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 static M2C_UNK flareIndex;                          /* unable to generate initializer: unknown type */
 
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to 'signed char *'
 void LensFlare::DrawSun(MKVector3 arg0, float arg1) {
     f32 temp_f28_106;
     f32 temp_f28_42;

@@ -95,6 +95,7 @@ static DataMap dataMapRaces[7] = {
 #endif
 #if 0 // DRAFT: identifier 'emAnims' redeclared was declared as: 'unsigned char[280]' now declared as: 'long'
 static M2C_UNK emAnims;                             /* unable to generate initializer: unknown type */
+#endif
 
 void AnimSequence::Init(int arg0) {
     s32 var_ctr_20;
@@ -118,7 +119,6 @@ void AnimSequence::Init(int arg0) {
         var_ctr_20 -= 1;
     } while (var_ctr_20 != 0);
 }
-#endif
 
 #if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *, signed char *)' does not match 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel 
 void EnemyDescriptor::InitArmour() {
@@ -857,7 +857,8 @@ void EnemyDescriptor::LoadDescriptorData() {
     s32 var_r29_1897;
     void ***var_r3_1890;
 
-    if (((MKIni *) &sp8)->Exists((s8 *) (u32) (u64) strcpy(&sp8, Str_Printf("%s.add", this->unk278))) != 0) {
+    strcpy(&sp8, Str_Printf("%s.add", this->unk278));
+    if (MKIni::Exists(&sp8) != 0) {
         MKHeap::ActivateTempMemOverride();
         sp28.Init(&sp8, 0, NULL);
         MKHeap::DeactivateTempMemOverride();

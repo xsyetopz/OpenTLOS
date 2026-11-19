@@ -62,7 +62,7 @@ void DragonBustDoor::Message(MKMessage *arg0) {
         var_r28_67 = 0;
         do {
             temp_r30_69 = this + var_r31_64;
-            temp_r3_71 = ((MKSceneManager *) (M2C_FIELD(temp_r30_69, MKSceneManager **, 0xE8)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+            temp_r3_71 = MKSceneManager::PropResolver_Resolve(M2C_FIELD(temp_r30_69, s32 *, 0xE8));
             if (temp_r3_71 != NULL) {
                 sp10 = 0x4F;
                 sp18 = 0;

@@ -1072,7 +1072,7 @@ void DragonBust::IdleEnter() {
     void *temp_r3_1439;
 
     if ((void *) this->unk128 == NULL) {
-        this->unk128 = checked_cast<FloorSwitch *, MKProp>(this->unkE0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+        this->unk128 = checked_cast<FloorSwitch *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkE0));
         temp_r3_1407 = M2C_FIELD(this->unk128, void **, 8);
         temp_f1_1408 = M2C_FIELD(temp_r3_1407, f64 *, 0x30);
         temp_f0_1409 = M2C_FIELD(temp_r3_1407, f64 *, 0x38);

@@ -70,7 +70,7 @@ f32 Kane::Resolve() {
     u32 temp_r3_91;
 
     Enemy::Resolve();
-    temp_r3_91 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(((MKSceneManager *) this->unkB10)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+    temp_r3_91 = (unsigned long) (checked_cast<CharacterGraphNodeProp *, MKProp>(MKSceneManager::PropResolver_Resolve(this->unkB10)));
     if (temp_r3_91 != 0U) {
         this->unkA80 = temp_r3_91 + 0x50;
     }

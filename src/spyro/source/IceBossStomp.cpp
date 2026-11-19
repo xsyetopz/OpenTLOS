@@ -78,9 +78,9 @@ static s32 lit_642 = 0;
 static u8 lit_643 = 1;
 
 static u8 lit_845 = 1;
-#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 static M2C_UNK lit_715;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: type mismatch 'MKHeap *' and 'long *'
 void IceBossStomp::Deinit() {
     MKHeap *temp_r0_106;
     MKHeap *temp_r0_87;

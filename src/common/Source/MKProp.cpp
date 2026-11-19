@@ -87,10 +87,7 @@ loop_1:
 void MKPropDescriptor::LoadDone() {
     f32 sp8;
     BoundingVolume *temp_r3_358;
-    M2C_UNK *var_r4_110;
-    MKIni *temp_r3_136;
     MKIni *var_r3_103;
-    MKIniLine *temp_ret_114;
     MKMaterial *temp_r3_324;
     MKModel *temp_r3_194;
     f32 temp_f0_362;
@@ -110,15 +107,16 @@ void MKPropDescriptor::LoadDone() {
     s32 temp_ret_279;
     s32 var_r0_410;
     s32 var_r28_317;
+    s32 var_r31_117;
+    s8 *temp_r28_152;
     s8 *temp_r3_124;
+    s8 *temp_r3_136;
     s8 *temp_r3_212;
     s8 *temp_r3_264;
     s8 *temp_r3_301;
     s8 *temp_ret_129;
     s8 *temp_ret_136;
     s8 *temp_ret_142;
-    s8 *temp_ret_149;
-    s8 *var_r31_117;
     void *temp_r3_337;
 
     if ((void *) gMK != NULL) {
@@ -126,24 +124,23 @@ void MKPropDescriptor::LoadDone() {
     } else {
         var_r3_103 = NULL;
     }
-    var_r4_110 = (long *) ("alias");
-    if ((var_r3_103 != NULL) && (temp_ret_114 = var_r3_103->GotoLine(this->unk0, "cacheWorldspace"), var_r4_110 = (M2C_UNK *) (u32) (u64) temp_ret_114, ((temp_ret_114 == NULL) == 0))) {
-        var_r31_117 = (s8 *)1;
+    if ((var_r3_103 != NULL) && (var_r3_103->GotoLine(this->unk0, "cacheWorldspace") != NULL)) {
+        var_r31_117 = 1;
     } else {
-        var_r31_117 = NULL;
+        var_r31_117 = 0;
     }
-    ((MKCloth *)1)->DisableClothCreate((u8) var_r4_110);
+    MKCloth::DisableClothCreate(1U);
     temp_r3_124 = this->unk34;
     if (temp_r3_124 != NULL) {
         temp_ret_129 = Str_Printf(temp_r3_124, this->unk0);
         temp_ret_136 = Str_Printf("%s%s", temp_ret_129, ".bad", M2C_BITWISE(f32, temp_ret_129));
-        temp_r3_136 = (MKIni *) (temp_ret_136);
+        temp_r3_136 = temp_ret_136;
         temp_ret_142 = Str_Printf(this->unk34, this->unk0, M2C_BITWISE(f32, temp_ret_136));
-        temp_ret_149 = Str_Printf("%s%s", temp_ret_142, ".bbi", M2C_BITWISE(f32, temp_ret_142));
-        temp_ret_153 = (const char *) (temp_r3_136->Exists((s8 *) (u32) (u64) temp_ret_149));
+        temp_r28_152 = Str_Printf("%s%s", temp_ret_142, ".bbi", M2C_BITWISE(f32, temp_ret_142));
+        temp_ret_153 = (const char *) (MKIni::Exists(temp_r3_136));
         var_f1_153 = M2C_BITWISE(f32, temp_ret_153);
-        if ((temp_ret_153 != 0) || (temp_ret_158 = MKArchive_Exists(&temp_r3_136->unk0, NULL), var_f1_153 = M2C_BITWISE(f32, temp_ret_158), ((temp_ret_158 == 0) == 0)) || (temp_ret_163 = MKArchive_Exists(temp_ret_149, NULL), var_f1_153 = M2C_BITWISE(f32, temp_ret_163), ((temp_ret_163 == 0) == 0))) {
-            this->unk34 = ((MKAnimScript *) (Str_Printf(this->unk34, this->unk0, var_f1_153)))->Create(var_r31_117, M2C_ERROR(/* Read from unset register $r5 */));
+        if ((temp_ret_153 != 0) || (temp_ret_158 = MKArchive_Exists(temp_r3_136, NULL), var_f1_153 = M2C_BITWISE(f32, temp_ret_158), ((temp_ret_158 == 0) == 0)) || (temp_ret_163 = MKArchive_Exists(temp_r28_152, NULL), var_f1_153 = M2C_BITWISE(f32, temp_ret_163), ((temp_ret_163 == 0) == 0))) {
+            this->unk34 = MKAnimScript::Create(Str_Printf(this->unk34, this->unk0, var_f1_153), var_r31_117);
             this->unk2C = M2C_FIELD(this->unk34, MKModel **, 8);
             this->unk30 = (signed char *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8)));
             this->unk1C = (BoundingVolume *) (MKModel_GetBoundingVolume(this->unk2C, (SubObjectType) 0, -1));
@@ -183,7 +180,7 @@ void MKPropDescriptor::LoadDone() {
                 temp_ret_279 = MKArchive_Exists(Str_Printf("%s%s", M2C_ERROR(/* Read from unset register $r3 */), ".anm"), NULL);
                 if (temp_ret_279 != 0) {
                     RemStaticPrefix(Str_Printf(this->unk30, this->unk0, M2C_BITWISE(f32, temp_ret_279)));
-                    this->unk30 = (const char *) (((Animation *) (M2C_ERROR(/* Read from unset register $r3 */)))->Create(var_r31_117, M2C_ERROR(/* Read from unset register $r5 */)));
+                    this->unk30 = (const char *) (((Animation *) (M2C_ERROR(/* Read from unset register $r3 */)))->Create((s8 *) var_r31_117, M2C_ERROR(/* Read from unset register $r5 */)));
                 } else {
                     this->unk30 = NULL;
                     this->unk14 &= 0xFFFFFFFC;
@@ -197,7 +194,7 @@ void MKPropDescriptor::LoadDone() {
         RemStaticPrefix(Str_Printf(temp_r3_301, this->unk0));
         this->unk38 = (signed char *) (MKMaterial_Create(M2C_ERROR(/* Read from unset register $r3 */)));
     }
-    NULL->DisableClothCreate(M2C_ERROR(/* Read from unset register $r4 */));
+    MKCloth::DisableClothCreate(0U);
     if ((MKModel *) this->unk2C != NULL) {
         var_r28_317 = 0;
 loop_34:
@@ -473,7 +470,7 @@ void MKProp::Deinit() {
     MKModel *temp_r3_1248;
 
     if ((s32) this->unk14 > 0) {
-        ((MKSceneManager *) this)->PropResolver_Remove(M2C_ERROR(/* Read from unset register $r4 */));
+        MKSceneManager::PropResolver_Remove(this);
     }
     temp_r3_1248 = this->unk4;
     if (temp_r3_1248 != NULL) {
@@ -541,7 +538,7 @@ s32 MKProp::LoadLine(MKIniLine *arg0) {
             } else {
                 var_r4_1383 = *this->unk0;
             }
-            ((MKSceneManager *) this)->PropResolver_Add((MKProp *) var_r4_1383, M2C_ERROR(/* Read from unset register $r5 */));
+            MKSceneManager::PropResolver_Add(this, (s8 *) var_r4_1383);
         }
         return 1;
     }

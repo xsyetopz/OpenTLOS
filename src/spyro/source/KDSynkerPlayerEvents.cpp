@@ -59,11 +59,9 @@ loop_2:
 
 s32 KDSynkerPlayerEvent::LoadProp(const char *arg0, MKProp **arg1) {
     s32 sp8;
-    u8 temp_ret_68;
 
-    temp_ret_68 = LoadInt(arg0, (int *) &sp8);
-    if (temp_ret_68 != 0) {
-        *arg1 = ((MKSceneManager *) sp8)->PropResolver_Resolve((s32) (u32) (u64) temp_ret_68);
+    if (LoadInt(arg0, (int *) &sp8) != 0) {
+        *arg1 = MKSceneManager::PropResolver_Resolve(sp8);
         return 1;
     }
     return 0;

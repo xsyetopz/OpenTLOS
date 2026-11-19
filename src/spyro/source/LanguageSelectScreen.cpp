@@ -48,9 +48,9 @@ extern void *gpTranslation_StringArray;
 extern s32 numLanguages;
 extern void **pSystem;
 extern UIStringTable strings;
-#if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match 'ErrorMessage_Draw(const char *)'
 u8 descriptor__20LanguageSelectScreen[0x14];        /* unable to generate initializer: cannot parse "LanguageSelectScreen" as integer */
 
+#if 0 // DRAFT: function call 'ErrorMessage_Draw(signed char *)' does not match 'ErrorMessage_Draw(const char *)'
 void NoController_Draw() {
     Tools_Ortho sp8;
 

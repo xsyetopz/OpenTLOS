@@ -57,10 +57,10 @@ static f32 pulseRate = 4.0f;
 static f32 pulseMag = 0.025f;
 static s32 lit_629 = 2;
 static s32 lit_638 = 2;
-#if 0 // DRAFT: undefined identifier 'GetBreathAttackName'
 static s32 pointsPerUpgrade[4] = { 0, 0x43C80000, 0x44480000, 0x44C80000 }; /* const */
 static s32 attackMasks[2] = { 1, 2 };               /* const */
 
+#if 0 // DRAFT: undefined identifier 'GetBreathAttackName'
 void LevelUpScreen::SetBreathText() {
     DialogBoxContext *temp_r3_45;
     DialogBoxContext *temp_r3_85;
@@ -840,11 +840,9 @@ u32 GetBreathAttackName() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'attackMasks'
 u8 HasAttack(int arg0, int arg1) {
     return (attackMasks[arg1] & M2C_FIELD((GameData::gameData + (arg0 << 5)), s32 *, 0xD0)) != 0;
 }
-#endif
 
 void LevelUpScreen_cpp::__sinit() {
     f32 sp184;

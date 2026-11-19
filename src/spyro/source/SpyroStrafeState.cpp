@@ -57,10 +57,10 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal operand
 static M2C_UNK lit_728;                                /* unable to generate initializer: unknown type */
 SpyroStrafeState states__16SpyroStrafeState;        /* unable to generate initializer: confusing struct layout */
 
+#if 0 // DRAFT: illegal operand
 void SpyroStrafeState::InputOverride::Set(KDInput *arg1) {
     f32 var_f1_46;
     f32 var_f1_68;
@@ -1019,7 +1019,6 @@ void SpyroStrafeState::Init(Spyro *arg0) {
     this->unk3C = 0.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_728'
 void SpyroStrafeState_cpp::__sinit() {
     f64 temp_f0_2098;
     f64 temp_f1_2068;
@@ -1079,4 +1078,3 @@ void SpyroStrafeState_cpp::__sinit() {
     M2C_FIELD(temp_r3_2059, s32 *, 0x88) = (s32) M2C_FIELD(&lit_728, s32 *, 0x88);
     M2C_FIELD(temp_r3_2059, s32 *, 0x8C) = (s32) M2C_FIELD(&lit_728, s32 *, 0x8C);
 }
-#endif

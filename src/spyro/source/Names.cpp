@@ -20,9 +20,9 @@ M2C_UNK __construct_array(struct _struct_firstNames_0x8 *, Names *(*)(Names *), 
 M2C_UNK free(u8 *);                                 /* extern */
 extern u8 gNullStr;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_firstNames_0x8'
 static M2C_UNK pFirstNames;                         /* unable to generate initializer: unknown type */
 static M2C_UNK pLastNames;                          /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_firstNames_0x8'
 static struct _struct_firstNames_0x8 firstNames[6];
 #endif
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_lastNames_0x8'

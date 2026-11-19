@@ -279,7 +279,7 @@ void SteamTrainCaboose::GetVel() {
     void *temp_r4_348;
 
     temp_r31_341 = M2C_ERROR(/* Read from unset register $r4 */);
-    temp_r3_345 = checked_cast<SteamTrain *, MKProp>(((MKSceneManager *) (M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), MKSceneManager **, 0xD0)))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+    temp_r3_345 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve(M2C_FIELD(M2C_ERROR(/* Read from unset register $r4 */), s32 *, 0xD0)));
     if (temp_r3_345 != NULL) {
         temp_r4_348 = M2C_FIELD(temp_r31_341, void **, 8);
         temp_f3_349 = temp_r3_345->unk108;
@@ -402,7 +402,8 @@ block_34:
         } while (var_r28_532 < 5);
         spC = 0;
         sp8 = 7;
-        temp_r3_592 = (MKMessage *) (checked_cast<SteamTrain *, MKProp>(this->unkD0->PropResolver_Resolve((s32) (u32) Message(&sp8))));
+        Message(&sp8);
+        temp_r3_592 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0));
         if (temp_r3_592 != NULL) {
             temp_r4_597 = this->unk8;
             sp40 = 0.0f;
@@ -422,7 +423,7 @@ block_34:
         }
         goto block_34;
     case 0x7:
-        temp_r3_628 = checked_cast<SteamTrain *, MKProp>(this->unkD0->PropResolver_Resolve((s32) arg0));
+        temp_r3_628 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0));
         if (temp_r3_628 != NULL) {
             temp_r4_633 = this->unk8;
             sp20 = 0.0f;
@@ -616,9 +617,8 @@ void *SteamTrainCaboose::Update() {
     f64 temp_f0_969;
     f64 temp_f1_894;
     s32 temp_r0_824;
+    s32 temp_r3_816;
     s32 var_r28_1162;
-    u64 temp_r3_816;
-    u64 temp_ret_816;
     void *temp_r28_850;
     void *temp_r3_1100;
     void *temp_r3_1123;
@@ -631,9 +631,8 @@ void *SteamTrainCaboose::Update() {
     if ((s32) this->unkC8 != 0) {
         this->unk110.TrySpawnItems(0x10, 0U);
         if ((u8) this->unkD8 == 0) {
-            temp_ret_816 = (unsigned long long) (checked_cast<TrainTrack *, MKProp>(this->unkCC->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
-            temp_r3_816 = temp_ret_816;
-            if ((temp_r3_816 != 0) && (temp_r3_821 = checked_cast<SteamTrain *, MKProp>(this->unkD0->PropResolver_Resolve((s32) (u32) temp_ret_816)), ((temp_r3_821 == NULL) == 0))) {
+            temp_r3_816 = (long) (checked_cast<TrainTrack *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkCC)));
+            if ((temp_r3_816 != 0) && (temp_r3_821 = checked_cast<SteamTrain *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkD0)), ((temp_r3_821 == NULL) == 0))) {
                 temp_r0_824 = this->unkC8;
                 switch (temp_r0_824) {              /* irregular */
                 case 2:
@@ -643,17 +642,17 @@ void *SteamTrainCaboose::Update() {
                 default:
 block_20:
                     this->unkD4 = temp_r3_821->unk110 - 1200.0f;
-                    ((TrainTrack *) &sp1C0)->GetTrackZAxis((s32) temp_r3_816, this->unkD4);
+                    ((TrainTrack *) &sp1C0)->GetTrackZAxis(temp_r3_816, this->unkD4);
                     sp310 = sp1C0;
                     sp318 = sp1C8;
                     if ((((f32) sp318 * (f32) sp318) + (((f32) sp310 * (f32) sp310) + ((*(f32 *) ((u8 *) &sp310 + 0x4)) * (*(f32 *) ((u8 *) &sp310 + 0x4))))) > 0.0001f) {
                         M2C_STRUCT_COPY((s32) &unksp32C + 4, (s32) (&Matrix::identity - 4) + 4, 0x40);
-                        ((TrainTrack *) &sp1B0)->GetTrackPos((s32) temp_r3_816, this->unkD4, 1);
+                        ((TrainTrack *) &sp1B0)->GetTrackPos(temp_r3_816, this->unkD4, 1);
                         sp360 = sp1B0;
                         sp364 = sp1B4;
                         sp368 = sp1B8;
                         sp36C = 1.0f;
-                        ((TrainTrack *) &sp1A0)->GetTrackXAxis((s32) temp_r3_816, this->unkD4);
+                        ((TrainTrack *) &sp1A0)->GetTrackXAxis(temp_r3_816, this->unkD4);
                         sp330 = sp1A0;
                         sp48 = ((f32) sp310 * sp1A4) - ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A0);
                         sp40 = ((*(f32 *) ((u8 *) &sp310 + 0x4)) * sp1A8) - ((f32) sp318 * sp1A4);
@@ -843,7 +842,7 @@ void SteamTrainCaboose::Reset() {
     this->unkD4 = 0.0f;
     this->unkD8 = 0;
     SetState((SteamTrainCabooseState) 0);
-    if (this->unkCC->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)) == NULL) {
+    if (MKSceneManager::PropResolver_Resolve((s32) this->unkCC) == NULL) {
         Disable();
     }
     this->unk110.SetDefaults();

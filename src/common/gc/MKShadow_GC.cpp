@@ -31,9 +31,9 @@ extern MKMaterial *gpMKWhiteMaterial;
 extern Matrix *pShadowEdgeResultBuffer;
 extern void *pShadowVertexBuffer;
 extern s32 shadowsRendered;
-#if 0 // DRAFT: undefined identifier 'MKShadow_ApplyAlphaTint'
 static s32 lit_674 = 0x04040404;                       /* const */
 
+#if 0 // DRAFT: undefined identifier 'MKShadow_ApplyAlphaTint'
 void MKShadow_EndScene(bool arg0, bool arg1, MKVector4 *arg2) {
     GXTexObj sp20;
     GXRenderModeObj *temp_r3_214;

@@ -241,9 +241,9 @@ u8 states__8Catapult[0xB4] = {
 #if 0 // DRAFT: illegal use of incomplete struct/union/class '_struct_groups_0x18'
 static struct _struct_groups_0x18 groups[8];
 #endif
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Catapult::State'
 u8 pEvents__8Catapult[8];                           /* unable to generate initializer: cannot parse "fire" as integer */
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'Catapult::State'
 void Catapult::SetState(Catapult::State arg1) {
     this->unkF8.SetState(this, (s32) arg1, 0U);
 }

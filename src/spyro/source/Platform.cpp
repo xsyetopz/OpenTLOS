@@ -125,16 +125,14 @@ void PlatformRider::Attach(PlatformAttachment *arg0) {
     }
 }
 
-#if 0 // DRAFT: type mismatch 'MKSceneManager *' and 'int'
 void PlatformRider::Resolve() {
-    MKSceneManager *temp_r3_170;
+    s32 temp_r3_170;
 
-    temp_r3_170 = M2C_FIELD(this, MKSceneManager **, 4);
+    temp_r3_170 = M2C_FIELD(this, s32 *, 4);
     if (temp_r3_170 > 0) {
-        M2C_FIELD(this, void **, 0) = temp_r3_170->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        M2C_FIELD(this, void **, 0) = MKSceneManager::PropResolver_Resolve(temp_r3_170);
     }
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'PlatformRider *' to 'int *'
 void PlatformRider::LoadLine(MKIniLine *arg0) {

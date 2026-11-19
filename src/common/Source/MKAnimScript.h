@@ -81,7 +81,7 @@ public:
     void GetStartAndEnd(MKAnim *, short *, short *);
     void JumpToPos(float, int);
     void Destroy(void);
-    MKAnimScript * Create(const char *, int);
+    static MKAnimScript * Create(const char *, int);
     void Apply(Animation *, int);
     void Animate(Animation *, int, MKVector3 *);
     void Check(int, int, MKAnimScriptedEvent &);

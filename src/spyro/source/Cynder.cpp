@@ -148,10 +148,10 @@ extern void *gpTranslation_StringArray;
 static s32 lit_897 = 0;
 static u8 lit_898 = 0;
 
-#if 0 // DRAFT: pointer/array required
 static M2C_UNK lit_780;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_781;                                /* unable to generate initializer: unknown type; const */
 
+#if 0 // DRAFT: pointer/array required
 void Cynder::ResetFury() {
     Corona *temp_r4_161;
     SuckeyPS *temp_r3_179;
@@ -1523,7 +1523,7 @@ s32 Cynder::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     this->unkF7C = NULL;
     temp_r3_2602 = this->unkF78;
     if (temp_r3_2602 != NULL) {
-        temp_r3_2606 = (unsigned long) (checked_cast<KDSplinePathSegmentProp *, MKProp>(temp_r3_2602->PropResolver_Resolve((s32) arg0)));
+        temp_r3_2606 = (unsigned long) (checked_cast<KDSplinePathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_2602)));
         if (temp_r3_2606 != 0U) {
             this->unkF7C = (void *) (temp_r3_2606 + 0x4C);
         }
@@ -1556,7 +1556,7 @@ loop_6:
         M2C_FIELD(&gb, Cynder **, 0x360) = this;
         UpdateEnemyHud();
         if ((u8) this->unkD01 == 0) {
-            temp_r3_2672 = (long) (checked_cast<KDLocalPathSegmentProp *, MKProp>(this->unkDA0->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */))));
+            temp_r3_2672 = (long) (checked_cast<KDLocalPathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) this->unkDA0)));
             if (temp_r3_2672 != 0) {
                 this->unk838.SetupRegion(temp_r3_2672 + 0x4C);
             }
@@ -1564,7 +1564,7 @@ loop_6:
             var_r30_2680 = 0;
             var_r29_2681 = 0;
             do {
-                temp_r3_2686 = checked_cast<KDLocalPathSegmentProp *, MKProp>(((MKSceneManager *) (*(this + (var_r29_2681 + 0xDA4))))->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */)));
+                temp_r3_2686 = checked_cast<KDLocalPathSegmentProp *, MKProp>(MKSceneManager::PropResolver_Resolve(*(this + (var_r29_2681 + 0xDA4))));
                 if (temp_r3_2686 != 0) {
                     ((EnemyRegion *) (this + (var_r30_2680 + 0xDB8)))->SetupRegion(temp_r3_2686 + 0x4C);
                 }
@@ -3324,7 +3324,7 @@ void CynderDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_780'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
 s32 CynderDescriptor::LoadLine(MKIniLine *arg0) {
     s8 sp36;
     s8 sp2C;

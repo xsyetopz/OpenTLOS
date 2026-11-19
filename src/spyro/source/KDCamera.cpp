@@ -96,17 +96,17 @@ void KDCamera::UpdateCamera() {
 }
 #endif
 
-f32 KDCamera::GetSafePitch(float arg0, float arg1) {
+f32 KDCamera::GetSafePitch(float farg0, float farg1) {
     f32 temp_f0_78;
     f32 temp_f0_84;
     f32 var_f1_0;
 
-    var_f1_0 = arg0;
-    temp_f0_78 = -1.5707964f + arg1;
+    var_f1_0 = farg0;
+    temp_f0_78 = -1.5707964f + farg1;
     if (var_f1_0 < temp_f0_78) {
         var_f1_0 = temp_f0_78;
     }
-    temp_f0_84 = 1.5707964f - arg1;
+    temp_f0_84 = 1.5707964f - farg1;
     if (var_f1_0 > temp_f0_84) {
         return temp_f0_84;
     }
@@ -224,11 +224,9 @@ void KDCamera::GetIdealSource(const MKVector3 &arg0, const MKVector3 &arg1, MKVe
 }
 #endif
 
-#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to 'float'
 f32 KDCamera::GetUpdatedSourceY(const MKVector3 &arg0, const MKVector3 &arg1, int arg2) {
-    return M2C_BITWISE(f32, this->unk4);
+    return arg0.unk4;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void' to 'double'
 void KDCamera::GetUpdatedSource(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 *arg2, float arg3) {
@@ -306,7 +304,7 @@ void KDCamera::GetUpdatedSource(const MKVector3 &arg0, const MKVector3 &arg1, co
     spD0 = (f64) sp40;
     spC8 = (f64) sp38;
     ((KDCamera *) &sp48)->GetCollisionObjectPos();
-    (*(f32 *) ((u8 *) &spC8 + 0x4)) = ((KDCamera *) &spC8)->GetUpdatedSourceY(*((MKVector3 *) &sp48), *(M2C_FIELD(M2C_FIELD(arg0.unk0, void **, 0xA4), MKVector3 **, 0x18)), M2C_ERROR(/* Read from unset register $r6 */));
+    (*(f32 *) ((u8 *) &spC8 + 0x4)) = KDCamera::GetUpdatedSourceY(*((MKVector3 *) &spC8), *((MKVector3 *) &sp48), M2C_FIELD(M2C_FIELD(arg0.unk0, void **, 0xA4), s32 *, 0x18));
     M2C_FIELD(this, f64 *, 0) = spC8;
     M2C_FIELD(this, f64 *, 8) = spD0;
 }

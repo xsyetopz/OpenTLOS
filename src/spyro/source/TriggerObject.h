@@ -146,7 +146,7 @@ inline s32 TriggerBoxObject::CheckTarget() {
 
     temp_r3_439 = this->unk54;
     if (temp_r3_439 > 0) {
-        var_r3_442 = ((MKSceneManager *) temp_r3_439)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_442 = MKSceneManager::PropResolver_Resolve(temp_r3_439);
     } else {
         var_r3_442 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }
@@ -277,7 +277,7 @@ inline s32 TriggerSphereObject::CheckTarget() {
 
     temp_r3_1365 = this->unk54;
     if (temp_r3_1365 > 0) {
-        var_r3_1368 = ((MKSceneManager *) temp_r3_1365)->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r3_1368 = MKSceneManager::PropResolver_Resolve(temp_r3_1365);
     } else {
         var_r3_1368 = M2C_FIELD(*gb, void *(**)(void **), 0xC)(gb);
     }

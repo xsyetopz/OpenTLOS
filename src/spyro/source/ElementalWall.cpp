@@ -84,11 +84,11 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<ElementalWall>::State'
 static M2C_UNK lit_684;                                /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDStateMachine<ElementalWall>::State'
 static KDStateMachine<ElementalWall>::State ElementalWallStates; /* unable to generate initializer: confusing struct layout */
-static s32 lit_775 = 1;
 #endif
+static s32 lit_775 = 1;
 
 static s32 lit_879 = 1;
 
@@ -1595,7 +1595,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_775'
+#if 0 // DRAFT: undefined identifier 'sp368'
 void ElementalWall::DrawFireWall(float arg0, float arg1) {
     Matrix sp3E0;
     M2C_UNK sp3DC;
@@ -2416,7 +2416,6 @@ void ElementalWallDescriptor::LoadDone() {
     this->unk60 = (long) (checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves")));
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_684'
 void ElementalWall_cpp::__sinit() {
     s32 sp2C;
     s32 sp28;
@@ -2478,4 +2477,3 @@ void ElementalWall_cpp::__sinit() {
     M2C_FIELD(temp_r20_4983, s32 *, 0x8C) = (s32) M2C_FIELD(&lit_684, s32 *, 0x8C);
     sp28 = M2C_FIELD(&lit_684, s32 *, 0x8C);
 }
-#endif

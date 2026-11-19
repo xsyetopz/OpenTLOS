@@ -150,8 +150,8 @@ s32 *__construct_new_array();                       /* extern */
 s32 atoi(s8 *);                                     /* extern */
 M2C_UNK free(MKIni *);                              /* extern */
 MKIni *malloc(s32);                                 /* extern */
-s32 sscanf(s8 *, s8 *, f32 *, Level *);             /* extern */
-s32 stricmp(Level *, s8 *);                         /* extern */
+s32 sscanf(s8 *, s8 *, f32 *, s8 *);                /* extern */
+s32 stricmp(s8 *, s8 *);                            /* extern */
 extern s32 BONE_BLUR_FX_NODE_POOL_MAX_ALLOCS;
 extern s32 BONE_BLUR_FX_NODE_POOL_MAX_NODES;
 extern f32 SPYRO_BOUNCE_Y_SPEED;
@@ -177,26 +177,23 @@ extern ChunkInfo *pChunkChooser_TempChunkInfo;
 extern s32 *pChunkData;
 extern ChunkInfo *pLoadChunkInfo;
 extern s8 *platformCode;
-#if 0 // DRAFT: data type is incomplete
 static M2C_UNK pChunkPropQueue;                     /* unable to generate initializer: unknown type */
 static M2C_UNK defaultLights;                       /* unable to generate initializer: unknown type */
 static M2C_UNK defaultWind;                         /* unable to generate initializer: unknown type */
 static M2C_UNK pSpawnerNames;                       /* unable to generate initializer: unknown type */
+#if 0 // DRAFT: data type is incomplete
 static DataMap customMaterialUpdaterMap = { 0, "CameraRelativeScroll" };
 #endif
 #if 0 // DRAFT: identifier 'pGlobalLevelName' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static s8 *pGlobalLevelName = "levels.ini";
 #endif
-#if 0 // DRAFT: identifier 'pGlobalLV3Name' redeclared was declared as: 'unsigned char[4]' now declared as: 'Level *'
-static Level *pGlobalLV3Name = &.L_803582C9;
+#if 0 // DRAFT: identifier 'pGlobalLV3Name' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
+static s8 *pGlobalLV3Name = "world";
 #endif
 #if 0 // DRAFT: identifier 'pGlobalModelName' redeclared was declared as: 'unsigned char[4]' now declared as: 'signed char *'
 static s8 *pGlobalModelName = "global.model";
 #endif
-#if 0 // DRAFT: declaration syntax error
 static M2C_UNK defaultClip;                         /* unable to generate initializer: unknown type */
-
-static Level .L_803582C9;                           /* type too large by 0xEA; unable to generate initializer: non-zero padding; const */
 
 void ChunkProp::Message(MKMessage *arg0) {
     s32 temp_r0_77;
@@ -216,7 +213,6 @@ void ChunkProp::Message(MKMessage *arg0) {
     }
     MKProp::Message(arg0);
 }
-#endif
 
 s32 ChunkProp::LoadDone() {
     MKProp::LoadDone();
@@ -527,7 +523,7 @@ loop_4:
     if (var_r30_694 >= (s32) *Level::levelInfoCount) {
         return NULL;
     }
-    if (stricmp(this, *(*Level::pLevelInfo + (var_r31_695 + 4))) == 0) {
+    if (stricmp(arg0, *(*Level::pLevelInfo + (var_r31_695 + 4))) == 0) {
         return (void *) (*Level::pLevelInfo + var_r31_695);
     }
     var_r30_694 += 1;
@@ -776,22 +772,22 @@ loop_5:
 
 #if 0 // DRAFT: illegal operand
 Level *Level::GetNextChunk(ChunkInfo *arg0) {
-    Level *temp_r0_1123;
-    Level *var_r4_1117;
+    ChunkInfo *temp_r0_1123;
+    ChunkInfo *var_r4_1117;
     void *temp_r3_1129;
     void *temp_r3_1150;
     void *var_r0_1132;
     void *var_r3_1141;
 
     var_r4_1117 = NULL;
-    if (this == NULL) {
-        var_r4_1117 = (Level *) (*Level::pChunkInfo);
+    if (arg0 == NULL) {
+        var_r4_1117 = (ChunkInfo *) (*Level::pChunkInfo);
     } else {
-        temp_r0_1123 = M2C_FIELD(this, Level **, 8);
+        temp_r0_1123 = arg0->unk8;
         if (temp_r0_1123 != NULL) {
             var_r4_1117 = temp_r0_1123;
         } else {
-            temp_r3_1129 = this->unk4;
+            temp_r3_1129 = arg0->unk4;
             if (temp_r3_1129 != NULL) {
                 var_r0_1132 = M2C_FIELD(temp_r3_1129, void **, 0x124);
             } else {
@@ -803,17 +799,17 @@ Level *Level::GetNextChunk(ChunkInfo *arg0) {
                 } else {
                     var_r3_1141 = (void *) (*Level::pLevelInfo);
                 }
-                var_r4_1117 = M2C_FIELD(var_r3_1141, Level **, 0x11C);
+                var_r4_1117 = M2C_FIELD(var_r3_1141, ChunkInfo **, 0x11C);
             }
         }
     }
     if (var_r4_1117 != NULL) {
         temp_r3_1150 = var_r4_1117->unk4;
         if ((temp_r3_1150 != NULL) && (var_r4_1117 == (u32) M2C_FIELD(temp_r3_1150, u32 *, 0x118))) {
-            var_r4_1117 = var_r4_1117->GetNextChunk((ChunkInfo *) var_r4_1117);
+            var_r4_1117 = (ChunkInfo *) (Level::GetNextChunk(var_r4_1117));
         }
     }
-    return var_r4_1117;
+    return (Level *) var_r4_1117;
 }
 #endif
 
@@ -828,7 +824,7 @@ loop_5:
     if (var_r30_1175 >= (s32) *Level::chunkInfoCount) {
         return NULL;
     }
-    if (((u32) *(*Level::pChunkInfo + var_r31_1176) != 0U) && (stricmp(this) == 0)) {
+    if (((u32) *(*Level::pChunkInfo + var_r31_1176) != 0U) && (stricmp(arg0) == 0)) {
         return (void *) (*Level::pChunkInfo + var_r31_1176);
     }
     var_r30_1175 += 1;
@@ -861,7 +857,7 @@ void Level::ResolveGameSpecificProps() {
     M2C_FIELD(&gb, s32 *, 0x88) = (signed char *) (checked_cast<AshesPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
     M2C_FIELD(&gb, s32 *, 0x90) = (signed char *) (checked_cast<LavaBubbleFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
     M2C_FIELD(&gb, s32 *, 0x8C) = (signed char *) (checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
-    M2C_FIELD(&gb, s32 *, 0x94) = checked_cast<ZapArcFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x94) = (signed char *) (checked_cast<ZapArcFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb)));
     M2C_FIELD(&gb, s32 *, 0x98) = checked_cast<EnemyDeathFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
     M2C_FIELD(&gb, s32 *, 0x9C) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
     M2C_FIELD(&gb, s32 *, 0xA0) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
@@ -964,7 +960,7 @@ void Level::FinaliseResources() {
     var_r31_1760 = 0;
     var_r26_1763 = 0;
     do {
-        temp_r3_1768 = *(&pChunkPropQueue + var_r31_1760);
+        temp_r3_1768 = (void *) (*(&pChunkPropQueue + var_r31_1760));
         if (temp_r3_1768 != NULL) {
             spC = 0;
             sp8 = 0x2E;
@@ -977,7 +973,7 @@ void Level::FinaliseResources() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(unsigned char[4])' does not match 'stricmp(Level *, signed char *)'
+#if 0 // DRAFT: function call 'stricmp(unsigned char[4])' does not match 'stricmp(signed char *, signed char *)'
 void Level::ResolveGameProps(const char *arg0) {
     if (stricmp(pGlobalLV3Name) == 0) {
         ((Level *) (M2C_FIELD(&gb, Level **, 0x32C)))->ResolveGameSpecificProps();
@@ -1274,24 +1270,21 @@ loop_54:
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void *MKLevelChunk::Game_ChunkChooser(MKChunkRequest *arg0, char **arg1, int arg2, MKLevelChunk **arg3, int arg4) {
+    MKLevelChunk *temp_r5_2299;
     void *temp_r4_2303;
-    void *temp_r5_2299;
 
-    temp_r5_2299 = *(arg2 + (M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), s32 *, 0x20) * 4));
+    temp_r5_2299 = arg3[M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), s32 *, 0x20)];
     if (temp_r5_2299 != NULL) {
-        temp_r4_2303 = M2C_FIELD(M2C_FIELD(temp_r5_2299, void **, 0xC), void **, 4);
+        temp_r4_2303 = M2C_FIELD(temp_r5_2299->unkC, void **, 4);
         if (temp_r4_2303 != NULL) {
             M2C_FIELD(temp_r4_2303, s32 *, 0x24) = 0;
         }
-        pChunkChooser_TempChunkInfo = M2C_FIELD(this->unk10, ChunkInfo **, 4);
+        pChunkChooser_TempChunkInfo = M2C_FIELD(M2C_FIELD(arg0, void **, 0x10), ChunkInfo **, 4);
     }
     return temp_r5_2299;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
 s32 MKLevelChunk::Game_ChunkInitComplete(MKLevelChunk *arg0, bool arg1) {
     s32 sp14;
     s32 sp10;
@@ -1325,7 +1318,7 @@ loop_6:
                 var_ctr_2366 = 3;
 loop_10:
                 if ((u32) *(&pChunkPropQueue + var_r4_2365) == 0U) {
-                    *(&pChunkPropQueue + var_r4_2365) = temp_r3_2353;
+                    *(&pChunkPropQueue + var_r4_2365) = (long) (temp_r3_2353);
                 } else {
                     var_r4_2365 += 4;
                     var_ctr_2366 -= 1;
@@ -1352,7 +1345,6 @@ loop_10:
     }
     return 1;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 s32 MKLevelChunk::Game_UserInit(MKLevelChunk *arg0, bool arg1) {
@@ -1690,7 +1682,7 @@ block_6:
                 var_r30_3044 = 0;
                 var_r25_3047 = 0;
                 do {
-                    temp_r3_3052 = *(&pChunkPropQueue + var_r30_3044);
+                    temp_r3_3052 = (void *) (*(&pChunkPropQueue + var_r30_3044));
                     if (temp_r3_3052 != NULL) {
                         spC = 0;
                         sp8 = 0x2E;
@@ -1803,7 +1795,7 @@ void Level::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
+#if 0 // DRAFT: expression syntax error
 void Level::Deinit() {
     s32 spC;
     s32 sp8;
@@ -1961,18 +1953,17 @@ void Level::Init(ChunkInfo *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: pointer/array required
 void Level::DeinitModule() {
     Level *var_r31_3563;
     MKIni *temp_r31_3574;
     MKIni *temp_r31_3595;
     MKIni *temp_r31_3609;
 
-    var_r31_3563 = NULL->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
+    var_r31_3563 = Level::GetNextChunk(NULL);
 loop_2:
     if (var_r31_3563 != NULL) {
         ((ChunkInfo *) var_r31_3563)->Deinit();
-        var_r31_3563 = var_r31_3563->GetNextChunk(M2C_ERROR(/* Read from unset register $r4 */));
+        var_r31_3563 = Level::GetNextChunk((ChunkInfo *) var_r31_3563);
         goto loop_2;
     }
     temp_r31_3574 = (MKIni *) (*Level::pLevelInfo);
@@ -1998,7 +1989,6 @@ loop_2:
     }
     free(temp_r31_3609);
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Level::InitLevelInfo() {
@@ -2352,7 +2342,7 @@ void ChunkInfo::Queue() {
     this->unk60 += 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
+#if 0 // DRAFT: function call 'DataMap_LoadLine(MKIniLine *, const char[1], long *, unsigned int *)' does not match 'DataMap_LoadLine(MKIniLine *, const char *, const DataMap *
 s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_4427;
     MKIniLine *var_r31_4453;
@@ -2451,6 +2441,7 @@ void ChunkInfo::Init() {
     this->unk58 = -1.0f;
 }
 
+#if 0 // DRAFT: function call 'stricmp(const char *, signed char *)' does not match 'stricmp(signed char *, signed char *)'
 ChunkInfo *LevelInfo::GetChunkByName(const char *arg0) {
     ChunkInfo *var_r31_4657;
 
@@ -2459,12 +2450,13 @@ loop_4:
     if (var_r31_4657 == NULL) {
         return var_r31_4657;
     }
-    if (stricmp((Level *) arg0, var_r31_4657->unk0) == 0) {
+    if (stricmp(arg0, var_r31_4657->unk0) == 0) {
         return var_r31_4657;
     }
     var_r31_4657 = var_r31_4657->unk8;
     goto loop_4;
 }
+#endif
 
 void LevelInfo::AddChunkInfo(ChunkInfo *arg0) {
     ChunkInfo *temp_r0_4685;
@@ -2566,10 +2558,10 @@ loop_33:
     temp_ret_5043 = arg0->IsField("");
     var_f1_5043 = M2C_BITWISE(f32, temp_ret_5043);
     if (temp_ret_5043 != 0) {
-        temp_r3_5047 = (MKHeap *) (arg0->GetNmbrOfSubLines());
+        temp_r3_5047 = arg0->GetNmbrOfSubLines();
         this->unk100 = temp_r3_5047;
         if (MKHeap::Current() != NULL) {
-            var_r3_5057 = (MKIni *) (((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r3_5047 * 8, NULL, 0));
+            var_r3_5057 = ((MKHeap *) (MKHeap::Current()))->Alloc((s32) temp_r3_5047 * 8, NULL, 0);
         } else {
             var_r3_5057 = malloc((s32) temp_r3_5047 * 8);
         }
@@ -2591,7 +2583,7 @@ loop_41:
     var_r29_5099 = 0;
 loop_44:
     temp_r27_5105 = this + var_r29_5099;
-    temp_ret_5110 = (const char *) (arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), ((u8 *) temp_r27_5105) + 0x40, 0));
+    temp_ret_5110 = arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), ((u8 *) temp_r27_5105) + 0x40, 0);
     if ((temp_ret_5110 != 0) || (temp_ret_5121 = arg0->LoadVector3(Str_Printf("", var_r26_5097, M2C_BITWISE(f32, temp_ret_5110)), ((u8 *) temp_r27_5105) + 0x70, 0), var_f1_5043 = M2C_BITWISE(f32, temp_ret_5121), ((temp_ret_5121 == 0) == 0))) {
         return 1;
     }
@@ -2605,7 +2597,6 @@ block_48:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'defaultWind'
 void LevelInfo::Init() {
     f64 sp20;
     f64 sp18;
@@ -2641,7 +2632,6 @@ void LevelInfo::Init() {
     sp20 = (f64) sp10;
     this->unk110 = 1.0f;
 }
-#endif
 
 void WorldInfo::AddLevelInfo(LevelInfo *arg0) {
     LevelInfo *temp_r0_5215;
@@ -2686,22 +2676,22 @@ u8 WorldInfo::LoadSize(MKIniLine *arg0, const char *arg1, int *arg2, int *arg3, 
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(Level *, const char[14])' does not match 'stricmp(Level *, signed char *)'
+#if 0 // DRAFT: function call 'stricmp(const char[1], const char[14])' does not match 'stricmp(signed char *, signed char *)'
 s32 SizeToInt(const char *arg0, int arg1) {
-    M2C_UNK spC;
+    s8 spC;
     f32 sp8;
 
-    if (stricmp((Level *) "", "Level Options") == 0) {
+    if (stricmp("", "Level Options") == 0) {
         return arg1;
     }
-    if (sscanf(arg0, "", &sp8, (Level *) &spC) == 2) {
-        if (stricmp((Level *) &spC, "") == 0) {
+    if (sscanf(arg0, "", &sp8, &spC) == 2) {
+        if (stricmp(&spC, "") == 0) {
             return (s32) (1024.0f * (1024.0f * sp8));
         }
-        if (stricmp((Level *) &spC, "") == 0) {
+        if (stricmp(&spC, "") == 0) {
             return (s32) (1024.0f * sp8);
         }
-        if (stricmp((Level *) &spC, "") == 0) {
+        if (stricmp(&spC, "") == 0) {
             return (s32) sp8;
         }
         goto block_9;
@@ -2749,7 +2739,6 @@ block_37:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'defaultClip'
 void WorldInfo::Init() {
     this->unk0 = 200000.0f;
     this->unk4 = 0x578;
@@ -2767,12 +2756,10 @@ void WorldInfo::Init() {
     this->unkFC = 0x800;
     this->unk18 = ((Level *)0x1000)->AllocChunkInfo();
     this->unk18->Init();
-    this->unk18->unk0 = (s8 *) pGlobalLV3Name;
+    this->unk18->unk0 = (signed char *) (pGlobalLV3Name);
     this->unk18->unkC = 0;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'defaultLights'
 void Level_cpp::__sinit() {
     f32 sp84;
     f32 sp80;
@@ -2868,4 +2855,3 @@ void Level_cpp::__sinit() {
     M2C_FIELD(&defaultLights, f64 *, 0x68) = (f64) sp20;
     M2C_FIELD(&defaultWind, f64 *, 8) = (f64) sp10;
 }
-#endif
