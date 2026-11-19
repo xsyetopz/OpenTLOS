@@ -1,0 +1,143 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>OpenTLOS progress</title>
+<style>
+  body { margin: 0; background: #14161a; color: #e6e6e6; font: 13px Helvetica, Arial, sans-serif; display: flex; flex-direction: column; height: 100vh; }
+  header { padding: 8px 12px; display: flex; gap: 16px; align-items: baseline; }
+  h1 { font-size: 22px; margin: 0; }
+  .muted { color: #9aa0a6; }
+  #err { color: #ff7b72; }
+  main { flex: 1; display: flex; min-height: 0; }
+  #games { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .game { flex: 1; display: flex; flex-direction: column; min-height: 0; border-top: 1px solid #2c3037; }
+  .game h2 { font-size: 14px; margin: 4px 8px; font-weight: normal; }
+  .game h2 b { font-size: 15px; }
+  .game svg { flex: 1; min-height: 0; width: 100%; }
+  aside { width: 280px; overflow: auto; padding: 0 12px; border-left: 1px solid #2c3037; }
+  aside h2 { font-size: 13px; color: #9aa0a6; margin: 8px 0; }
+  li { list-style: none; padding: 2px 0; word-break: break-all; }
+  ul { margin: 0; padding: 0; }
+  .key span { display: inline-block; width: 10px; height: 10px; margin: 0 4px 0 10px; }
+  rect.s0 { fill: #4a4f57; } rect.s1 { fill: #d29922; } rect.s2 { fill: #3fb950; }
+  @keyframes flash { 0% { fill: #ffffff; } }
+  rect.flash { animation: flash 2.5s ease-out; }
+  text { pointer-events: none; font-size: 11px; fill: #fff; stroke: #000; stroke-width: 2.5px; paint-order: stroke; }
+  text.cat { font-size: 10px; fill: #9aa0a6; stroke: none; }
+</style>
+<header><h1>OpenTLOS</h1>
+  <span class="muted key"><span style="background:#3fb950"></span>matched / high-confidence name<span style="background:#d29922"></span>source differs / medium-low name<span style="background:#4a4f57"></span>asm / unnamed</span>
+  <span id="err"></span><span id="stale" class="muted"></span></header>
+<main><div id="games"></div><aside><h2>Recent changes</h2><ul id="recent"></ul></aside></main>
+<script>
+const NS = "http://www.w3.org/2000/svg";
+let doc = null, views = new Map();
+
+function squarify(items, x, y, w, h) {
+  items = items.filter(i => i.v > 0).sort((a, b) => b.v - a.v);
+  const out = [], total = items.reduce((s, i) => s + i.v, 0);
+  if (!items.length || w <= 0 || h <= 0) return out;
+  let rest = items.map(i => ({ k: i.k, a: i.v * w * h / total }));
+  const worst = (row, side) => { const s = row.reduce((t, r) => t + r.a, 0);
+    return Math.max(...row.map(r => Math.max(side * side * r.a / (s * s), s * s / (side * side * r.a)))); };
+  while (rest.length) {
+    const side = Math.min(w, h), row = [rest[0]]; let i = 1;
+    while (i < rest.length && worst([...row, rest[i]], side) <= worst(row, side)) row.push(rest[i++]);
+    rest = rest.slice(i);
+    const s = row.reduce((t, r) => t + r.a, 0);
+    if (w >= h) { const cw = s / h; let cy = y; for (const r of row) { out.push({ k: r.k, x, y: cy, w: cw, h: r.a / cw }); cy += r.a / cw; } x += cw; w -= cw; }
+    else { const rh = s / w; let cx = x; for (const r of row) { out.push({ k: r.k, x: cx, y, w: r.a / rh, h: rh }); cx += r.a / rh; } y += rh; h -= rh; }
+  }
+  return out;
+}
+const el = (svg, n, a) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); svg.appendChild(e); return e; };
+const tip = (e, s) => { e.appendChild(document.createElementNS(NS, "title")).textContent = s; };
+
+function view(game) {
+  if (views.has(game.id)) return views.get(game.id);
+  const box = document.createElement("div"); box.className = "game";
+  box.innerHTML = `<h2></h2>`;
+  const svg = document.createElementNS(NS, "svg"); box.appendChild(svg);
+  document.getElementById("games").appendChild(box);
+  const v = { box, svg, sig: "", cells: new Map() }; views.set(game.id, v); return v;
+}
+
+// Dense groups (cells under 2.5 px) draw one rect coloured by the majority state.
+function layout(game, v) {
+  const svg = v.svg, W = svg.clientWidth, H = svg.clientHeight;
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`); svg.replaceChildren(); v.cells = new Map();
+  const cats = {};
+  for (const g of game.groups) (cats[g.cat] ||= []).push(g);
+  for (const c of squarify(Object.entries(cats).map(([k, gs]) => ({ k, v: gs.reduce((s, g) => s + g.size, 0) })), 2, 2, W - 4, H - 4)) {
+    const gs = cats[c.k], head = c.h > 40 && c.w > 60 ? 13 : 0;
+    el(svg, "rect", { x: c.x, y: c.y, width: c.w, height: c.h, fill: "#0b0c0e", stroke: "#2c3037" });
+    const lab = el(svg, "text", { x: c.x + 4, y: c.y + 10, class: "cat" });
+    lab.dataset.cat = c.k; lab.dataset.head = head;
+    for (const r of squarify(gs.map(g => ({ k: g, v: g.size })), c.x + 1, c.y + head + 1, c.w - 2, c.h - head - 2)) {
+      const g = r.k, n = g.fns.length, inner = r.w > 8 && r.h > 8 ? 1 : 0;
+      const x = r.x + inner, y = r.y + inner, w = r.w - 2 * inner, h = r.h - 2 * inner;
+      const cols = Math.max(1, Math.min(n, Math.round(Math.sqrt(n * w / h)))), rows = Math.ceil(n / cols);
+      const cw = w / cols, ch = h / rows, gap = Math.min(cw, ch) >= 4 ? 1 : 0.5;
+      const dense = Math.min(cw, ch) < 2.5, arr = [];
+      if (dense) arr.push(el(svg, "rect", { x, y, width: w, height: h, class: "s0" }));
+      else g.fns.forEach((f, i) => { const e = el(svg, "rect", { x: x + (i % cols) * cw + gap / 2, y: y + Math.floor(i / cols) * ch + gap / 2, width: cw - gap, height: ch - gap, class: "s0" });
+        tip(e, `${f[0]} (${f[1]} bytes)`); arr.push(e); });
+      v.cells.set(g.name, { arr, dense });
+      tip(el(svg, "rect", { x: r.x, y: r.y, width: r.w, height: r.h, fill: "none", stroke: "#0b0c0e" }), g.name);
+      const label = g.name.split("/").pop();
+      if (r.w > 7 * label.length + 6 && r.h > 22) el(svg, "text", { x: r.x + 4, y: r.y + 12 }).textContent = label;
+    }
+  }
+}
+
+function paint(game, v, animate) {
+  for (const g of game.groups) {
+    const c = v.cells.get(g.name); if (!c) continue;
+    if (c.dense) {
+      const n = [0, 0, 0]; g.fns.forEach(f => n[f[2]]++);
+      c.arr[0].setAttribute("class", "s" + n.indexOf(Math.max(...n))); continue;
+    }
+    g.fns.forEach((f, i) => {
+      const e = c.arr[i], cls = "s" + f[2];
+      if (e.classList.contains(cls)) return;
+      e.setAttribute("class", cls);
+      if (animate) { void e.getBoundingClientRect(); e.classList.add("flash"); }
+    });
+  }
+  for (const t of v.svg.querySelectorAll("text.cat")) {
+    if (t.dataset.head === "0") continue;
+    const gs = game.groups.filter(g => g.cat === t.dataset.cat), fns = gs.flatMap(g => g.fns);
+    t.textContent = `${t.dataset.cat} (${fns.filter(f => f[2] === 2).length}/${fns.length})`;
+  }
+  const f = game.functions, b = game.bytes, l = game.libraries.functions;
+  v.box.querySelector("h2").innerHTML = `<b></b> <span class="muted"></span>`;
+  v.box.querySelector("h2 b").textContent = `${game.title} — game + Krome engine ${(100 * b.done / Math.max(b.total, 1)).toFixed(2)}%`;
+  v.box.querySelector("h2 span").textContent =
+    `of ${b.total} code bytes · ${f.done}/${f.total} functions done, ${f.partial} partial · source: ${game.source} · DOL ${game.build}` +
+    ` · not counted: linked libraries ${l.done}/${l.total}`;
+}
+
+function render(next) {
+  const animate = doc !== null; doc = next;
+  for (const game of doc.games) {
+    const v = view(game), s = game.groups.map(g => g.name + g.size + g.fns.length).join("|");
+    const rebuilt = s !== v.sig;
+    if (rebuilt) { v.sig = s; layout(game, v); }
+    paint(game, v, animate && !rebuilt);
+  }
+  document.getElementById("recent").replaceChildren(...doc.recent.map(r => { const li = document.createElement("li");
+    li.innerHTML = `<b></b> <span class="muted"></span>`; li.firstChild.textContent = r.fn;
+    li.lastChild.textContent = `${r.game} ${r.group} ${new Date(r.t * 1000).toLocaleTimeString()}`; return li; }));
+}
+
+async function poll() {
+  try {
+    const r = await fetch("progress.json", { cache: "no-cache" });
+    if (r.status === 200) render(await r.json());
+    const st = await (await fetch("status.json", { cache: "no-cache" })).json().catch(() => null);
+    document.getElementById("err").textContent = st && !st.ok ? "showing last good data; waiting for tree to settle: " + st.message : "";
+  } catch (e) { /* server restarting */ }
+  document.getElementById("stale").textContent = doc ? `updated ${new Date(doc.updated * 1000).toLocaleTimeString()}` : "waiting for progress.json";
+}
+window.addEventListener("resize", () => { if (doc) { for (const v of views.values()) v.sig = ""; render(doc); } });
+poll(); setInterval(poll, 3000);
+</script>
