@@ -71,7 +71,6 @@ extern M2C_UNK gb;
 static s32 lit_790 = 0;
 static u8 lit_791 = 1;
 
-#if 0 // DRAFT: illegal explicit conversion from 'void' to 'unsigned long'
 void FuryFXEarth2::ResetFury() {
     ManagedLight *temp_r4_73;
     u32 temp_r4_61;
@@ -81,22 +80,21 @@ void FuryFXEarth2::ResetFury() {
     SetDefaults();
     var_r5_55 = this->unkC0;
 loop_2:
-    if ((var_r5_55 != NULL) && ((u32) *var_r5_55 != 0U)) {
+    if ((var_r5_55 != NULL) && ((u32) *(u32 *) var_r5_55 != 0U)) {
         temp_r3_58 = this->unkC0;
         this->unkC0 = ((u8 *) temp_r3_58) + 4;
-        temp_r4_61 = *temp_r3_58;
-        *temp_r3_58 = (u32) *var_r5_55;
-        *var_r5_55 = temp_r4_61;
-        var_r5_55 += 4;
+        temp_r4_61 = *(u32 *) temp_r3_58;
+        *(u32 *) temp_r3_58 = *(u32 *) var_r5_55;
+        *(u32 *) var_r5_55 = temp_r4_61;
+        var_r5_55 = ((u8 *) var_r5_55) + 4;
         goto loop_2;
     }
-    temp_r4_73 = this->unkCC;
+    temp_r4_73 = (ManagedLight *) this->unkCC;
     if (temp_r4_73 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_73, 0U);
     }
     ExplodeVortex();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unksp3C'
 void FuryFXEarth2::CalcMatrixForVortexElement(FuryFXEarth2::VortexAttachmentPoint *arg1) {
@@ -720,13 +718,12 @@ void FuryFXEarth2::SetDefaults() {
     this->unkE0 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal type
 void FuryFXEarth2::Deinit() {
     ManagedLight *temp_r4_1261;
     u32 temp_r0_1229;
-    void *temp_r0_1224;
-    void *temp_r0_1243;
-    void *var_r31_1220;
+    u32 temp_r0_1224;
+    u32 temp_r0_1243;
+    u32 var_r31_1220;
     void *var_r3_1221;
     void *var_r4_1219;
 
@@ -735,32 +732,32 @@ void FuryFXEarth2::Deinit() {
     MKModel_Destroy(this->unkB8);
     MKModel_Destroy(this->unkBC);
     var_r4_1219 = this->unkC0;
-    var_r31_1220 = var_r4_1219;
+    var_r31_1220 = (u32) var_r4_1219;
     var_r3_1221 = var_r4_1219;
 loop_3:
-    temp_r0_1229 = M2C_FIELD(var_r3_1221, u32 *, -4);
-    var_r3_1221 -= 4;
+    temp_r0_1229 = *(u32 *) (((u8 *) var_r3_1221) - 4);
+    var_r3_1221 = ((u8 *) var_r3_1221) - 4;
     if (temp_r0_1229 != 0U) {
-        temp_r0_1224 = *var_r3_1221;
+        temp_r0_1224 = *(u32 *) var_r3_1221;
         if (temp_r0_1224 < var_r31_1220) {
             var_r31_1220 = temp_r0_1224;
         }
         goto loop_3;
     }
-    if (var_r3_1221 != &gEmptyPtrListDL) {
+    if (var_r3_1221 != (void *) &gEmptyPtrListDL) {
 loop_9:
-        temp_r0_1243 = *var_r4_1219;
-        if (temp_r0_1243 != NULL) {
+        temp_r0_1243 = *(u32 *) var_r4_1219;
+        if (temp_r0_1243 != 0U) {
             if (temp_r0_1243 < var_r31_1220) {
                 var_r31_1220 = temp_r0_1243;
             }
-            var_r4_1219 += 4;
+            var_r4_1219 = ((u8 *) var_r4_1219) + 4;
             goto loop_9;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_1220, NULL, 0);
+            ((MKHeap *) (MKHeap::Current()))->Free((void *) var_r31_1220, NULL, 0);
         } else {
-            free(var_r31_1220);
+            free((void *) var_r31_1220);
         }
     }
     this->unkC0 = NULL;
@@ -771,7 +768,6 @@ loop_9:
     }
     FuryFX::Deinit();
 }
-#endif
 
 void FuryFXEarth2::Draw() {
     if ((s32) this->unk94 != 0) {
@@ -1250,7 +1246,6 @@ f32 FuryFXEarth2::Resolve() {
     }
 }
 
-#if 0 // DRAFT: illegal type
 s32 FuryFXEarth2::LoadDone() {
     void **temp_r6_2089;
     void *temp_r31_2091;
@@ -1266,14 +1261,14 @@ loop_2:
     }
 loop_5:
     if ((u32) M2C_FIELD(this->unkC0, u32 *, 0) != 0U) {
-        this->unkC0 += 4;
+        this->unkC0 = ((u8 *) this->unkC0) + 4;
         goto loop_5;
     }
+    return (s32) this->unkC0;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'FallingLeaves *' to 'long' Too many errors printed, aborting program
 void FuryFXEarth2::Init() {
+    FallingLeaves *temp_leaves;
     s32 var_ctr_2185;
     void *temp_r3_2187;
     void *temp_r3_2193;
@@ -1281,7 +1276,8 @@ void FuryFXEarth2::Init() {
     void *var_r5_2181;
 
     FuryFX::Init();
-    this->unk90 = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    temp_leaves = checked_cast<FallingLeaves *, MKProp>(((MKSceneManager *) gMK)->CreateProp("FallingGlowLeaves"));
+    M2C_FIELD(this, FallingLeaves **, 0x90) = temp_leaves;
     SetDefaults();
     this->unkB0 = MKModel_Create("p9013_FireRockLavaLarge", NULL, 2, NULL);
     this->unkB4 = MKModel_Create("p9014_FireRockLavaMedium", NULL, 2, NULL);
@@ -1301,14 +1297,13 @@ void FuryFXEarth2::Init() {
         temp_r3_2187 = this->unkC0;
         this->unkC0 = ((u8 *) temp_r3_2187) + 4;
         M2C_FIELD(temp_r3_2187, void **, 4) = var_r5_2181;
-        var_r5_2181 += 0x50;
+        var_r5_2181 = ((u8 *) var_r5_2181) + 0x50;
         var_ctr_2185 -= 1;
     } while (var_ctr_2185 != 0);
     temp_r3_2193 = this->unkC0;
     this->unkC0 = ((u8 *) temp_r3_2193) + 4;
     M2C_FIELD(temp_r3_2193, void **, 4) = NULL;
 }
-#endif
 
 void FuryFXEarth2_cpp::__sinit() {
     f32 temp_f0_2240;
