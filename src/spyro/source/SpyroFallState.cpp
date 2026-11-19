@@ -212,29 +212,26 @@ u8 states__14SpyroFallState[0x90] = {
     0,
 };
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::SetStrafeJump(bool arg0) {
+    KDCamera *camera;
     s32 sp14;
     s32 sp10;
     s32 spC;
     s32 sp8;
-    KDCamera *temp_r3_38;
-    KDCamera *temp_r3_56;
 
     if ((arg0 != 0) && ((u8) this->unk38 == 0)) {
-        temp_r3_38 = this->unk10->GetCamera();
+        camera = this->unk10->GetCamera();
         sp14 = 0;
         sp10 = 0x43D;
-        M2C_FIELD(temp_r3_38->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp10);
+        camera->Message((MKMessage *) &sp10);
     } else if ((arg0 == 0) && ((u8) this->unk38 != 0)) {
-        temp_r3_56 = this->unk10->GetCamera();
+        camera = this->unk10->GetCamera();
         spC = 0;
         sp8 = 0x43F;
-        M2C_FIELD(temp_r3_56->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+        camera->Message((MKMessage *) &sp8);
     }
     this->unk38 = arg0;
 }
-#endif
 
 #if 0 // DRAFT: identifier 'SpyroFallState::GetFallVel()' redeclared was declared as: 'MKVector3 ()' now declared as: 'void ()'
 void SpyroFallState::GetFallVel() {
@@ -337,7 +334,6 @@ void SpyroFallState::Landed(bool arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unk0'
 u8 SpyroFallState::HoverTransition() {
     InputModifier *temp_r3_235;
     f32 var_f1_248;
@@ -354,24 +350,22 @@ u8 SpyroFallState::HoverTransition() {
     } else {
         var_f1_248 = MKInput_GetState(0xE, (MKInputDevices) temp_r3_235->unk0, NULL, NULL);
     }
-    if ((var_f1_248 == 0.0f) && ((s32) this->unk14.unk0 != 0)) {
+    if ((var_f1_248 == 0.0f) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 0)) {
         this->unk14.SetState(this, 0, 0U);
         var_r3_268 = 1;
     } else {
         var_r3_268 = 0;
     }
     if (var_r3_268 == 0) {
-        if (((u8) (((KDInput *) (this->unk10->GetInput()))->GetLeftMag() != 0.0f) != 0) && ((s32) this->unk14.unk0 != 2)) {
+        if (((u8) (((KDInput *) (this->unk10->GetInput()))->GetLeftMag() != 0.0f) != 0) && ((s32) M2C_FIELD(&this->unk14, s32 *, 0) != 2)) {
             this->unk14.SetState(this, 2, 0U);
             return 1U;
         }
         var_r3_268 = 0;
-        /* Duplicate return node #15. Try simplifying control flow for better match */
         return var_r3_268;
     }
     return var_r3_268;
 }
-#endif
 
 void SpyroFallState::HoverUpdate() {
     this->unk74.Update(this->unk10);
@@ -522,24 +516,19 @@ void SpyroFallState::GlideUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::GlideExit() {
+    KDCamera *camera;
     s32 spC;
     s32 sp8;
-    KDCamera *temp_r3_595;
-    Spyro *temp_r3_590;
 
     this->unk10->unk6F8.FadeOut(2);
-    temp_r3_590 = this->unk10;
-    temp_r3_590->unk428 &= 0xFFFF7FFF;
-    temp_r3_595 = this->unk10->GetCamera();
+    this->unk10->unk428 &= 0xFFFF7FFF;
+    camera = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x438;
-    M2C_FIELD(temp_r3_595->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    camera->Message((MKMessage *) &sp8);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::GlideEnter() {
     s32 spC;
     s32 sp8;
@@ -573,7 +562,7 @@ void SpyroFallState::GlideEnter() {
     temp_r3_651 = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x437;
-    M2C_FIELD(temp_r3_651->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    temp_r3_651->Message((MKMessage *) &sp8);
     this->unk10->unk6F8.FadeIn(2, -1);
     this->unk44 = 0x37;
     this->unk3C = 0x187;
@@ -583,7 +572,6 @@ void SpyroFallState::GlideEnter() {
     this->unk51 = 1;
     this->unk4C = 0.0f;
 }
-#endif
 
 s32 SpyroFallState::LongFallTransition() {
     return 0;
@@ -609,7 +597,6 @@ void SpyroFallState::LongFallExit() {
     temp_r3_730->unk428 = temp_r3_730->unk428 | 0x40000 | 1;
 }
 
-#if 0 // DRAFT: illegal explicit conversion from 'int' to 'Spyro::AnimScriptNode'
 void SpyroFallState::LongFallEnter() {
     Spyro *temp_r3_747;
     Spyro *temp_r7_775;
@@ -648,7 +635,6 @@ void SpyroFallState::LongFallEnter() {
     this->unk35 = 0;
     this->unk80.Reset();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk0'
 void SpyroFallState::FallTransition() {
@@ -1453,18 +1439,17 @@ void SpyroFallState::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::Exit() {
+    KDCamera *camera;
     s32 spC;
     s32 sp8;
-    KDCamera *temp_r3_2141;
     Spyro *temp_r5_2159;
 
     this->unk10->SetMeleeButtonStateTimeout(0U);
-    temp_r3_2141 = this->unk10->GetCamera();
+    camera = this->unk10->GetCamera();
     spC = 0;
     sp8 = 0x450;
-    M2C_FIELD(temp_r3_2141->__vptr, M2C_UNK (**)(s32 *), 0x2C)(&sp8);
+    camera->Message((MKMessage *) &sp8);
     this->unk14.Exit(this);
     this->unk10->unk388 = 0.0f;
     temp_r5_2159 = this->unk10;
@@ -1473,7 +1458,6 @@ void SpyroFallState::Exit() {
     ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), LineSegmentTrail **, 0xC8)))->EndTrail();
     ((LineSegmentTrail *) (M2C_FIELD(M2C_FIELD(this->unk10->unk260, void **, 4), LineSegmentTrail **, 0xCC)))->EndTrail();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroFallState::Enter(SpyroStateMessages &arg0) {
