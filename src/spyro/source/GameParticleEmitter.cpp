@@ -25,331 +25,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 static s32 lit_717 = 1;
 
-static s8 lit_stringBase0[0x142] = {
-    0x4D,
-    0x69,
-    0x6E,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x61,
-    0x6C,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x61,
-    0x6C,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0,
-    0x45,
-    0x6D,
-    0x69,
-    0x73,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6E,
-    0x65,
-    0,
-    0x45,
-    0x6D,
-    0x69,
-    0x73,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x50,
-    0x6F,
-    0x73,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x44,
-    0x69,
-    0x72,
-    0x65,
-    0x63,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x65,
-    0x61,
-    0x72,
-    0x44,
-    0x69,
-    0x72,
-    0x65,
-    0x63,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x44,
-    0x65,
-    0x73,
-    0x74,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x53,
-    0x6F,
-    0x75,
-    0x72,
-    0x63,
-    0x65,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x4D,
-    0x6F,
-    0x6C,
-    0x74,
-    0x65,
-    0x6E,
-    0x4D,
-    0x65,
-    0x74,
-    0x61,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-    0x46,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x72,
-    0x79,
-    0x47,
-    0x61,
-    0x73,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x66,
-    0x61,
-    0x6C,
-    0x6C,
-    0x4D,
-    0x69,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x52,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x50,
-    0x65,
-    0x72,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x45,
-    0x6E,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x65,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0,
-    0x55,
-    0x70,
-    0x64,
-    0x61,
-    0x74,
-    0x65,
-    0x44,
-    0x69,
-    0x73,
-    0x74,
-    0,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x65,
-    0x72,
-    0x74,
-    0x79,
-    0,
-    0x45,
-    0x6D,
-    0x69,
-    0x73,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-}; /* const */
-
 void PointDirEmitter::SetPosition(const MKVector3 &arg0) {
     this->unk28 = M2C_FIELD(&arg0, f64 *, 0);
     this->unk30 = M2C_FIELD(&arg0, f64 *, 8);
@@ -507,26 +182,24 @@ void PointDirEmitter::LoadDone() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[322]' to
 s32 PointDirEmitter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_364;
 
     var_r30_364 = arg0;
 loop_2:
     if (var_r30_364 != NULL) {
-        var_r30_364->LoadFloat(lit_stringBase0, &this->unk10, 0);
-        var_r30_364->LoadFloat(&lit_stringBase0[7], &this->unkC, 0);
-        var_r30_364->LoadFloat(&lit_stringBase0[0xE], &this->unk8, 0);
-        var_r30_364->LoadFloat(&lit_stringBase0[0x17], &this->unk4, 0);
-        var_r30_364->LoadFloat(&lit_stringBase0[0x20], &this->unk38, 0);
-        var_r30_364->LoadFloat(&lit_stringBase0[0x2E], &this->unk3C, 0);
-        var_r30_364->LoadFloat(&lit_stringBase0[0x3C], &this->unk40, 0);
+        var_r30_364->LoadFloat("MinVel", &this->unk10, 0);
+        var_r30_364->LoadFloat("MaxVel", &this->unkC, 0);
+        var_r30_364->LoadFloat("MinScale", &this->unk8, 0);
+        var_r30_364->LoadFloat("MaxScale", &this->unk4, 0);
+        var_r30_364->LoadFloat("MinRadialOffs", &this->unk38, 0);
+        var_r30_364->LoadFloat("MaxRadialOffs", &this->unk3C, 0);
+        var_r30_364->LoadFloat("EmissionCone", &this->unk40, 0);
         var_r30_364 = var_r30_364->unkC->GetNextLine(var_r30_364);
         goto loop_2;
     }
     return 0;
 }
-#endif
 
 void PointDirEmitter::Init() {
     this->unk38 = 0.0f;
@@ -745,24 +418,24 @@ void DirectedLineEmitter::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DirectedLineEmitter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r30_865;
 
     var_r30_865 = arg0;
 loop_2:
     if (var_r30_865 != NULL) {
-        var_r30_865->LoadInt(&lit_stringBase0[0x49], &this->unk9C, 0);
-        var_r30_865->LoadInt(&lit_stringBase0[0x59], &this->unkA0, 0);
-        var_r30_865->LoadInt(&lit_stringBase0[0x67], &this->unk9C, 0);
-        var_r30_865->LoadFloat(&lit_stringBase0[0x20], (f32 *) &this->unkA0, 0);
-        var_r30_865->LoadFloat(&lit_stringBase0[0x2E], (f32 *) &this->unkA4, 0);
-        var_r30_865->LoadFloat(&lit_stringBase0[0xE], &this->unk8, 0);
-        var_r30_865->LoadFloat(&lit_stringBase0[0x17], &this->unk4, 0);
-        var_r30_865->LoadFloat(lit_stringBase0, &this->unk10, 0);
-        var_r30_865->LoadFloat(&lit_stringBase0[7], &this->unkC, 0);
-        this->unk3C.unk2C.LoadWaypoints(var_r30_865, &lit_stringBase0[0x7B]);
-        this->unk3C.LoadWaypoints(var_r30_865, &lit_stringBase0[0x84]);
+        var_r30_865->LoadInt("EmissionPosType", &this->unk9C, 0);
+        var_r30_865->LoadInt("DirectionType", &this->unkA0, 0);
+        var_r30_865->LoadInt("LinearDirectionType", &this->unk9C, 0);
+        var_r30_865->LoadFloat("MinRadialOffs", (f32 *) &this->unkA0, 0);
+        var_r30_865->LoadFloat("MaxRadialOffs", (f32 *) &this->unkA4, 0);
+        var_r30_865->LoadFloat("MinScale", &this->unk8, 0);
+        var_r30_865->LoadFloat("MaxScale", &this->unk4, 0);
+        var_r30_865->LoadFloat("MinVel", &this->unk10, 0);
+        var_r30_865->LoadFloat("MaxVel", &this->unkC, 0);
+        this->unk3C.unk2C.LoadWaypoints(var_r30_865, "DestPath");
+        this->unk3C.LoadWaypoints(var_r30_865, "SourcePath");
         var_r30_865 = var_r30_865->unkC->GetNextLine(var_r30_865);
         goto loop_2;
     }
@@ -1246,25 +919,25 @@ void GameParticleEmitter::LoadDone() {
     temp_r0_1846 = this->unkCC;
     switch (temp_r0_1846) {
     case 1:
-        this->unkE8 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x8F]));
+        this->unkE8 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("MoltenMetalFX"));
         return;
     case 2:
-        this->unkEC = checked_cast<FoundryGas *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x9D]));
+        this->unkEC = checked_cast<FoundryGas *, MKProp>(gMK->CreateProp("FoundryGas"));
         return;
     case 3:
-        this->unkF0 = checked_cast<SparksPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xA8]));
+        this->unkF0 = checked_cast<SparksPS *, MKProp>(gMK->CreateProp("SparksPS"));
         return;
     case 4:
-        this->unkF4 = checked_cast<LavaSteamPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB1]));
+        this->unkF4 = checked_cast<LavaSteamPS *, MKProp>(gMK->CreateProp("LavaSteamPS"));
         return;
     case 5:
-        this->unkF8 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xBD]));
+        this->unkF8 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
         return;
     case 7:
-        this->unkFC = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xC8]));
+        this->unkFC = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("WaterFallPS"));
         return;
     case 8:
-        this->unk100 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xD4]));
+        this->unk100 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("WaterfallMistPS"));
         /* fallthrough */
     default:
         return;
@@ -1272,7 +945,7 @@ void GameParticleEmitter::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
     MKIniLine *var_r29_2006;
     s32 temp_r0_2019;
@@ -1281,14 +954,14 @@ s32 GameParticleEmitter::LoadLine(MKIniLine *arg0) {
     void **temp_r3_2069;
     void **temp_r3_2074;
 
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xE4], (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xF1], &this->unkD4, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xFA], &this->unkDC, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x105], &this->unkE0, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x112], &this->unkE1, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x11A], &this->unkE4, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("ParticleType", (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadFloat("EmitRate", &this->unkD4, 0) != 0) || (arg0->LoadInt("NumPerEmit", &this->unkDC, 0) != 0) || (arg0->LoadBool("StartEnabled", &this->unkE0, 0) != 0) || (arg0->LoadBool("OneShot", &this->unkE1, 0) != 0) || (arg0->LoadFloat("UpdateDist", &this->unkE4, 0) != 0)) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x125]) != 0) {
+    if (arg0->IsField("EmitterProperty") != 0) {
         var_r29_2006 = arg0->unkC->GetSubLine(arg0);
 loop_23:
         if (var_r29_2006 != NULL) {
-            if (var_r29_2006->IsField(&lit_stringBase0[0x135]) != 0) {
+            if (var_r29_2006->IsField("EmissionType") != 0) {
                 var_r29_2006->AsInt(0, &this->unkD0);
                 temp_r0_2019 = this->unkD0;
                 switch (temp_r0_2019) {             /* irregular */

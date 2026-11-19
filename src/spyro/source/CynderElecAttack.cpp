@@ -20,9 +20,8 @@ extern MKPropDescriptor *pCynderElecAttackDescriptor;
 
 static s32 lit_611 = 0;
 static u8 lit_612 = 1;
-#if 0 // DRAFT: ')' expected
-static s8 lit_stringBase0[0xB] = { 0x45, 0x6E, 0x65, 0x72, 0x67, 0x79, 0x42, 0x65, 0x61, 0x6D, 0 }; /* const */
 
+#if 0 // DRAFT: ')' expected
 void CynderElecAttack::Deinit() {
     ManagedLight *temp_r4_51;
 
@@ -57,7 +56,7 @@ void CynderElecAttack::FireBurstEnd() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: ')' expected
 void CynderElecAttack::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) {
     MKVector3 *temp_r4_149;
     ManagedLight *temp_r3_150;
@@ -67,7 +66,7 @@ void CynderElecAttack::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int
     this->unk158 = 1;
     this->unk150 = arg0;
     this->unk154 = arg1;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     temp_r4_141 = this->unk15C;
     if (temp_r4_141 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_141, 1U);
@@ -90,17 +89,13 @@ void CynderElecAttack::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderElecAttack::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderElecAttack::Collided(MKCollisionResult &arg0) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
 void CynderElecAttack::Draw() {
 
@@ -226,7 +221,7 @@ void *CynderElecAttack::CreateInstance() {
 void CynderElecAttackDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pCynderElecAttackDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unkF0 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
 }
 #endif
 

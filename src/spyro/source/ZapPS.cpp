@@ -74,12 +74,12 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void ZapPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, MKVector4 arg3) {
     void *temp_r30_185;
     void *temp_r3_182;
 
-    temp_r3_182 = M2C_FIELD(this->__vptr, void *(**)(), 0x3C)();
+    temp_r3_182 = CreateParticle();
     if (temp_r3_182 != NULL) {
         temp_r30_185 = M2C_FIELD(temp_r3_182, void **, 0x2C);
         M2C_FIELD(temp_r3_182, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);

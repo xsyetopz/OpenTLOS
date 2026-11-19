@@ -62,271 +62,8 @@ extern u8 l_prevAwfFrame_1399;
 static M2C_UNK lit_770;                                /* unable to generate initializer: unknown type */
 
 static s32 lit_1411 = 0x2D;
-#if 0 // DRAFT: illegal type
-static s8 lit_stringBase0[0x105] = {
-    0x42,
-    0x61,
-    0x72,
-    0x73,
-    0,
-    0x65,
-    0x6E,
-    0x76,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x6C,
-    0x65,
-    0x6E,
-    0x67,
-    0x74,
-    0x68,
-    0,
-    0x62,
-    0x72,
-    0x65,
-    0x61,
-    0x6B,
-    0x65,
-    0x72,
-    0,
-    0x68,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x6C,
-    0x5F,
-    0x65,
-    0x79,
-    0x65,
-    0,
-    0x65,
-    0x79,
-    0x65,
-    0x5F,
-    0x6C,
-    0,
-    0x72,
-    0x5F,
-    0x65,
-    0x79,
-    0x65,
-    0,
-    0x65,
-    0x79,
-    0x65,
-    0x5F,
-    0x72,
-    0,
-    0x68,
-    0x65,
-    0x61,
-    0x64,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x73,
-    0,
-    0x6C,
-    0x69,
-    0x70,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x73,
-    0,
-    0x72,
-    0x6F,
-    0x6F,
-    0x74,
-    0,
-    0x48,
-    0x69,
-    0x64,
-    0x64,
-    0x65,
-    0x6E,
-    0x53,
-    0x75,
-    0x62,
-    0x4F,
-    0x62,
-    0x6A,
-    0x73,
-    0,
-    0x5F,
-    0x42,
-    0x6F,
-    0x64,
-    0x79,
-    0,
-    0x5F,
-    0x4C,
-    0x69,
-    0x70,
-    0x73,
-    0,
-    0x5F,
-    0x48,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x2E,
-    0,
-    0x2E,
-    0x62,
-    0x61,
-    0x64,
-    0,
-    0x2E,
-    0x6D,
-    0x64,
-    0x6C,
-    0,
-    0x5F,
-    0x4C,
-    0x4F,
-    0x44,
-    0,
-    0x41,
-    0x57,
-    0x46,
-    0x53,
-    0,
-    0x5F,
-    0x50,
-    0x6F,
-    0x73,
-    0,
-    0x5F,
-    0x56,
-    0x6F,
-    0x69,
-    0x63,
-    0x65,
-    0,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x6B,
-    0x48,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x6B,
-    0x45,
-    0x79,
-    0x65,
-    0x73,
-    0,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x6B,
-    0,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0x73,
-    0,
-    0x70,
-    0x6F,
-    0x73,
-    0,
-    0x4C,
-    0x56,
-    0x45,
-    0,
-    0x41,
-    0x69,
-    0x6D,
-    0x41,
-    0x74,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x72,
-    0x6F,
-    0x74,
-    0,
-    0x42,
-    0x41,
-    0x44,
-    0x52,
-    0x65,
-    0x66,
-    0,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x49,
-    0x44,
-    0,
-    0x52,
-    0x65,
-    0x6D,
-    0x61,
-    0x69,
-    0x6E,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x44,
-    0x75,
-    0x6D,
-    0x6D,
-    0x79,
-    0,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0,
-    0x4C,
-    0x69,
-    0x74,
-    0x46,
-    0x72,
-    0x6F,
-    0x6D,
-    0x47,
-    0x72,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal type
 void KDSP_Actor::UpdateLookat() {
     MKVector3 sp130;
     f64 sp128;
@@ -2041,7 +1778,7 @@ void ProcessBars__10KDSP_ActorFP12KDSynkerHeapM10KDSP_ActorFPCvPvP12KDSynkerHeap
 
     var_r19_3294 = GetSubLine__5MKIniFP9MKIniLine(arg3->unkC, arg3);
 loop_2:
-    if ((var_r19_3294 != NULL) && (IsField__9MKIniLineFPCc(var_r19_3294, lit_stringBase0) == 0)) {
+    if ((var_r19_3294 != NULL) && (IsField__9MKIniLineFPCc(var_r19_3294, "Bars") == 0)) {
         var_r19_3294 = GetNextLine__5MKIniFP9MKIniLine(var_r19_3294->unkC, var_r19_3294);
         goto loop_2;
     }
@@ -2059,11 +1796,11 @@ loop_17:
 loop_13:
         if (var_r19_3342 != NULL) {
             var_r20_3348 = 0;
-            if ((LoadInt__9MKIniLineFPCcPii(var_r19_3342, &lit_stringBase0[5], &sp1C, 0) != 0) || (LoadInt__9MKIniLineFPCcPii(var_r19_3342, &lit_stringBase0[9], &sp14, 0) != 0) || (LoadInt__9MKIniLineFPCcPii(var_r19_3342, &lit_stringBase0[0xF], &sp18, 0) != 0)) {
+            if ((LoadInt__9MKIniLineFPCcPii(var_r19_3342, "env", &sp1C, 0) != 0) || (LoadInt__9MKIniLineFPCcPii(var_r19_3342, "start", &sp14, 0) != 0) || (LoadInt__9MKIniLineFPCcPii(var_r19_3342, "length", &sp18, 0) != 0)) {
                 var_r20_3348 = 1;
             }
             if (var_r20_3348 == 0) {
-                LoadBool__9MKIniLineFPCcPbi(var_r19_3342, &lit_stringBase0[0x16], &sp10, 0);
+                LoadBool__9MKIniLineFPCcPbi(var_r19_3342, "breaker", &sp10, 0);
             }
             var_r19_3342 = GetNextLine__5MKIniFP9MKIniLine(var_r19_3342->unkC, var_r19_3342);
             goto loop_13;
@@ -2172,7 +1909,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'FindNode'
 void KDSP_Actor::LoadActorSectionPostResolve(MKIniLine *arg0, bool arg1, int &arg2) {
     s32 sp28;
     s32 sp24;
@@ -2193,24 +1930,24 @@ void KDSP_Actor::LoadActorSectionPostResolve(MKIniLine *arg0, bool arg1, int &ar
     if (!(temp_r7_3621 & 4)) {
         temp_r3_3624 = this->unk38;
         if ((temp_r3_3624 != NULL) && !(temp_r7_3621 & 8)) {
-            this->unk84 = FindNode(MKModel_GetAnimation(temp_r3_3624->unk8), &lit_stringBase0[0x1E]);
-            this->unk88 = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x23]);
+            this->unk84 = FindNode(MKModel_GetAnimation(temp_r3_3624->unk8), "head");
+            this->unk88 = FindNode(MKModel_GetAnimation(this->unk38->unk8), "l_eye");
             if ((s32) this->unk88 == -1) {
-                this->unk88 = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x29]);
+                this->unk88 = FindNode(MKModel_GetAnimation(this->unk38->unk8), "eye_l");
             }
-            this->unk8C = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x2F]);
+            this->unk8C = FindNode(MKModel_GetAnimation(this->unk38->unk8), "r_eye");
             if ((s32) this->unk8C == -1) {
-                this->unk8C = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x35]);
+                this->unk8C = FindNode(MKModel_GetAnimation(this->unk38->unk8), "eye_r");
             }
-            this->unk7C = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x3B]);
-            this->unk80 = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x45]);
-            this->unk90 = FindNode(MKModel_GetAnimation(this->unk38->unk8), &lit_stringBase0[0x4E]);
+            this->unk7C = FindNode(MKModel_GetAnimation(this->unk38->unk8), "headAnims");
+            this->unk80 = FindNode(MKModel_GetAnimation(this->unk38->unk8), "lipAnims");
+            this->unk90 = FindNode(MKModel_GetAnimation(this->unk38->unk8), "root");
         }
         if (this->unk40 & 8) {
             var_r28_3708 = arg0->unkC->GetSubLine(arg0);
 loop_13:
             if (var_r28_3708 != NULL) {
-                if (var_r28_3708->IsField(&lit_stringBase0[0x53]) != 0) {
+                if (var_r28_3708->IsField("HiddenSubObjs") != 0) {
                     ModelSubObjectHide(var_r28_3708, this->unk3C);
                 }
                 var_r28_3708 = var_r28_3708->unkC->GetNextLine(var_r28_3708);
@@ -2222,13 +1959,13 @@ loop_13:
 loop_29:
         if (var_r29_3734 != NULL) {
             var_r29_3734->GetFieldName();
-            if (strstr(&lit_stringBase0[0x61]) != 0U) {
+            if (strstr("_Body") != 0U) {
                 sp20 = M2C_FIELD(&lit_770, s32 *, 0x60);
                 sp24 = M2C_FIELD(&lit_770, s32 *, 0x64);
                 sp28 = M2C_FIELD(&lit_770, s32 *, 0x68);
                 ProcessBars__10KDSP_ActorFP12KDSynkerHeapM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vP9MKIniLineRi(this, NULL, &sp20, var_r29_3734, &arg2, M2C_FIELD(&lit_770, s32 *, 0x64));
             } else if (arg1 == 0) {
-                if (var_r29_3734->IsField(&lit_stringBase0[0x53]) != 0) {
+                if (var_r29_3734->IsField("HiddenSubObjs") != 0) {
                     if ((MKAnimScript *) this->unk70 != NULL) {
                         this->unk78 = var_r29_3734;
                     }
@@ -2238,14 +1975,14 @@ loop_29:
                     }
                 } else {
                     var_r29_3734->GetFieldName();
-                    if (strstr(&lit_stringBase0[0x67]) != 0U) {
+                    if (strstr("_Lips") != 0U) {
                         sp14 = M2C_FIELD(&lit_770, s32 *, 0x6C);
                         sp18 = M2C_FIELD(&lit_770, s32 *, 0x70);
                         sp1C = M2C_FIELD(&lit_770, s32 *, 0x74);
                         ProcessBars__10KDSP_ActorFP12KDSynkerHeapM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vP9MKIniLineRi(this, NULL, &sp14, var_r29_3734, &arg2, M2C_FIELD(&lit_770, s32 *, 0x70));
                     } else {
                         var_r29_3734->GetFieldName();
-                        if (strstr(&lit_stringBase0[0x6D]) != 0U) {
+                        if (strstr("_Head") != 0U) {
                             sp8 = M2C_FIELD(&lit_770, s32 *, 0x78);
                             spC = M2C_FIELD(&lit_770, s32 *, 0x7C);
                             sp10 = M2C_FIELD(&lit_770, s32 *, 0x80);
@@ -2310,9 +2047,9 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
     temp_r4_3917 = this->unk60;
     if (((s8) (u8) *temp_r4_3917 != 0) && (arg2 == 0)) {
         strcpy(&sp8, temp_r4_3917);
-        strtok(&sp8, &lit_stringBase0[0x73]);
+        strtok(&sp8, ".");
         temp_r31_3934 = strrchr(this->unk60, 0x2E);
-        if (stricmp(&lit_stringBase0[0x75]) == 0) {
+        if (stricmp(".bad") == 0) {
             temp_r3_3940 = this->unk70;
             if ((temp_r3_3940 != NULL) && (temp_r3_3940->GetName(), ((stricmp(&sp8) == 0) != 0))) {
                 this->unk38 = this->unk70;
@@ -2324,7 +2061,7 @@ void KDSP_Actor::Resolve(bool arg0, void (*arg2)(const char *, MKModel **, MKAni
                 MKModel_EnableTrivialRejection(this->unk74->unk8, 1U);
                 UpdateCloth();
             }
-        } else if (((MKModel *) this->unk3C == NULL) && (stricmp(temp_r31_3934, &lit_stringBase0[0x7A]) == 0)) {
+        } else if (((MKModel *) this->unk3C == NULL) && (stricmp(temp_r31_3934, ".mdl") == 0)) {
             this->unk40 |= 0x48;
             this->unk3C = MKModel_Create(&sp8, NULL, 2, NULL);
             UpdateCloth();
@@ -2405,7 +2142,7 @@ void HideSpecialSubObjectsInternal(MKModel *arg0) {
         var_r28_4140 = 0;
 loop_5:
         if ((s32) var_r28_4140 < temp_r30_4138) {
-            if (strnicmp(MKModel_GetSubObjectName(arg0, (SubObjectType) 0, (s32) var_r28_4140) + 5, &lit_stringBase0[0x7F], 4) == 0) {
+            if (strnicmp(MKModel_GetSubObjectName(arg0, (SubObjectType) 0, (s32) var_r28_4140) + 5, "_LOD", 4) == 0) {
                 MKModel_EnableSubObject(arg0, (SubObjectType) 0, (s32) var_r28_4140, 0U, 1U);
             }
             var_r28_4140 += 1;
@@ -2480,13 +2217,12 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 KDSP_Actor::LoadAWFS(KDSynkerHeap *arg0, MKIniLine *arg1) {
     MKIniLine *var_r30_4313;
     s32 temp_r6_4319;
     s32 var_r31_4311;
 
-    if (arg1->IsField(&lit_stringBase0[0x84]) != 0) {
+    if (arg1->IsField("AWFS") != 0) {
         var_r31_4311 = 0;
         var_r30_4313 = arg1->unkC->GetSubLine(arg1);
 loop_4:
@@ -2503,7 +2239,6 @@ loop_4:
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'GetFieldName__9MKIniLineFv'
 u8 LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(KDSP_Actor *arg0, KDSynkerHeap *arg1, MKIniLine *arg2, s8 *arg3, s32 *arg4, s32 *arg5) {
@@ -2525,7 +2260,7 @@ u8 LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSy
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call
 void KDSP_Actor::LoadActorSection(KDSynkerHeap *arg0, MKIniLine *arg1, int &arg2) {
     s32 sp64;
     s32 sp60;
@@ -2573,11 +2308,11 @@ loop_25:
         sp60 = M2C_FIELD(&lit_770, s32 *, 4);
         var_r20_4419 = 1;
         sp64 = M2C_FIELD(&lit_770, s32 *, 8);
-        if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x89], &sp5C, &arg2) == 0) {
+        if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_Pos", &sp5C, &arg2) == 0) {
             sp50 = M2C_FIELD(&lit_770, s32 *, 0xC);
             sp54 = M2C_FIELD(&lit_770, s32 *, 0x10);
             sp58 = M2C_FIELD(&lit_770, s32 *, 0x14);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x61], &sp50, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_Body", &sp50, &arg2) == 0) {
                 var_r20_4419 = 0;
             }
         }
@@ -2585,7 +2320,7 @@ loop_25:
             sp44 = M2C_FIELD(&lit_770, s32 *, 0x18);
             sp48 = M2C_FIELD(&lit_770, s32 *, 0x1C);
             sp4C = M2C_FIELD(&lit_770, s32 *, 0x20);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x8E], &sp44, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_Voice", &sp44, &arg2) == 0) {
                 var_r21_4417 = 0;
             }
         }
@@ -2593,7 +2328,7 @@ loop_25:
             sp38 = M2C_FIELD(&lit_770, s32 *, 0x24);
             sp3C = M2C_FIELD(&lit_770, s32 *, 0x28);
             sp40 = M2C_FIELD(&lit_770, s32 *, 0x2C);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x67], &sp38, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_Lips", &sp38, &arg2) == 0) {
                 var_r22_4416 = 0;
             }
         }
@@ -2601,7 +2336,7 @@ loop_25:
             sp2C = M2C_FIELD(&lit_770, s32 *, 0x30);
             sp30 = M2C_FIELD(&lit_770, s32 *, 0x34);
             sp34 = M2C_FIELD(&lit_770, s32 *, 0x38);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x95], &sp2C, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_LookHead", &sp2C, &arg2) == 0) {
                 var_r23_4415 = 0;
             }
         }
@@ -2609,7 +2344,7 @@ loop_25:
             sp20 = M2C_FIELD(&lit_770, s32 *, 0x3C);
             sp24 = M2C_FIELD(&lit_770, s32 *, 0x40);
             sp28 = M2C_FIELD(&lit_770, s32 *, 0x44);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x9F], &sp20, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_LookEyes", &sp20, &arg2) == 0) {
                 var_r24_4413 = 0;
             }
         }
@@ -2617,7 +2352,7 @@ loop_25:
             sp14 = M2C_FIELD(&lit_770, s32 *, 0x48);
             sp18 = M2C_FIELD(&lit_770, s32 *, 0x4C);
             sp1C = M2C_FIELD(&lit_770, s32 *, 0x50);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0xA9], &sp14, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_Look", &sp14, &arg2) == 0) {
                 var_r25_4411 = 0;
             }
         }
@@ -2625,7 +2360,7 @@ loop_25:
             sp8 = M2C_FIELD(&lit_770, s32 *, 0x54);
             spC = M2C_FIELD(&lit_770, s32 *, 0x58);
             sp10 = M2C_FIELD(&lit_770, s32 *, 0x5C);
-            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, &lit_stringBase0[0x6D], &sp8, &arg2) == 0) {
+            if (LoadBar__10KDSP_ActorFP12KDSynkerHeapP9MKIniLinePCcM10KDSP_ActorFPCvPvP12KDSynkerHeapP15KDSP_GenericBarii_vRi(this, arg0, var_r19_4404, "_Head", &sp8, &arg2) == 0) {
                 var_r26_4409 = 0;
             }
         }
@@ -2638,7 +2373,7 @@ loop_25:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal type
 s32 KDSP_Actor::LoadADSPaths(KDSynkerHeap *arg0, MKIniLine *arg1) {
     MKIniLine sp18;
     MKIniLine sp8;
@@ -2656,7 +2391,7 @@ s32 KDSP_Actor::LoadADSPaths(KDSynkerHeap *arg0, MKIniLine *arg1) {
     void *temp_r5_4623;
     void *var_r29_4631;
 
-    if (arg1->IsField(&lit_stringBase0[0xAF]) != 0) {
+    if (arg1->IsField("Paths") != 0) {
         this->unk6C = NULL;
         this->unk68 = arg1->GetNmbrOfSubLines();
         temp_r0_4618 = this->unk68;
@@ -2674,7 +2409,7 @@ loop_22:
                 var_r26_4646 = var_r28_4635->unkC->GetSubLine(var_r28_4635);
 loop_7:
                 if (var_r26_4646 != NULL) {
-                    if (var_r26_4646->IsField(&lit_stringBase0[0xB5]) != 0) {
+                    if (var_r26_4646->IsField("pos") != 0) {
                         var_r27_4643 += 1;
                     }
                     var_r26_4646 = var_r26_4646->unkC->GetNextLine(var_r26_4646);
@@ -2694,14 +2429,14 @@ loop_7:
                 var_r26_4692 = var_r28_4635->unkC->GetSubLine(var_r28_4635);
 loop_20:
                 if (var_r26_4692 != NULL) {
-                    if (var_r26_4692->IsField(&lit_stringBase0[0xB9]) != 0) {
+                    if (var_r26_4692->IsField("LVE") != 0) {
                         M2C_FIELD(var_r29_4631, s8 *, 5) = var_r26_4692->GetBool(0);
-                    } else if (var_r26_4692->IsField(&lit_stringBase0[0xBD]) != 0) {
+                    } else if (var_r26_4692->IsField("AimAtPath") != 0) {
                         M2C_FIELD(var_r29_4631, s8 *, 4) = var_r26_4692->GetBool(0);
-                    } else if (var_r26_4692->IsField(&lit_stringBase0[0xB5]) != 0) {
+                    } else if (var_r26_4692->IsField("pos") != 0) {
                         sp18.GetVector3((s32) var_r26_4692);
                         ((KDUniformSpline *) (var_r29_4631 + 8))->AddNode(*((MKVector3 *) &sp18));
-                    } else if (var_r26_4692->IsField(&lit_stringBase0[0xC7]) != 0) {
+                    } else if (var_r26_4692->IsField("rot") != 0) {
                         sp8.GetVector3((s32) var_r26_4692);
                         ((KDUniformSpline *) (var_r29_4631 + 0x1C))->AddNode(*((MKVector3 *) &sp8));
                     }
@@ -2719,7 +2454,6 @@ loop_20:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void KDSP_Actor::HeapAddSize(KDSynkerHeap *arg0, MKIniLine *arg1) {
     MKIniLine *var_r24_4827;
     MKIniLine *var_r26_4819;
@@ -2734,7 +2468,7 @@ void KDSP_Actor::HeapAddSize(KDSynkerHeap *arg0, MKIniLine *arg1) {
     var_r27_4791 = arg1->unkC->GetSubLine(arg1);
 loop_25:
     if (var_r27_4791 != NULL) {
-        if (var_r27_4791->IsField(&lit_stringBase0[0xAF]) != 0) {
+        if (var_r27_4791->IsField("Paths") != 0) {
             this->unk68 = var_r27_4791->GetNmbrOfSubLines();
             temp_r0_4803 = this->unk68;
             if (temp_r0_4803 != 0) {
@@ -2748,7 +2482,7 @@ loop_13:
                 var_r24_4827 = var_r26_4819->unkC->GetSubLine(var_r26_4819);
 loop_9:
                 if (var_r24_4827 != NULL) {
-                    if (var_r24_4827->IsField(&lit_stringBase0[0xB5]) != 0) {
+                    if (var_r24_4827->IsField("pos") != 0) {
                         var_r25_4825 += 1;
                     }
                     var_r24_4827 = var_r24_4827->unkC->GetNextLine(var_r24_4827);
@@ -2764,23 +2498,21 @@ loop_9:
                 var_r26_4819 = var_r26_4819->unkC->GetNextLine(var_r26_4819);
                 goto loop_13;
             }
-        } else if ((HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x89], 0x10) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x61], 0x18) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x8E], 0x24) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x67], 0x18) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x95], 0x14) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x9F], 0x14) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0xA9], 0x14) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, &lit_stringBase0[0x6D], 0x18) == 0)) {
+        } else if ((HeapAddSizeBar(arg0, var_r27_4791, "_Pos", 0x10) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_Body", 0x18) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_Voice", 0x24) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_Lips", 0x18) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_LookHead", 0x14) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_LookEyes", 0x14) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_Look", 0x14) == 0) && (HeapAddSizeBar(arg0, var_r27_4791, "_Head", 0x18) == 0)) {
             HeapAddSizeAWFSBar(arg0, var_r27_4791);
         }
         var_r27_4791 = var_r27_4791->unkC->GetNextLine(var_r27_4791);
         goto loop_25;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 KDSP_Actor::HeapAddSizeAWFSBar(KDSynkerHeap *arg0, MKIniLine *arg1) {
     MKIniLine *var_r30_4989;
     MKIniLine *var_r3_4995;
     s32 temp_r3_5011;
     s32 var_r29_4994;
 
-    if (arg1->IsField(&lit_stringBase0[0x84]) != 0) {
+    if (arg1->IsField("AWFS") != 0) {
         var_r30_4989 = arg1->unkC->GetSubLine(arg1);
 loop_8:
         if (var_r30_4989 != NULL) {
@@ -2803,7 +2535,6 @@ loop_4:
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: function call 'strstr(const char *)' does not match
 u8 KDSP_Actor::HeapAddSizeBar(KDSynkerHeap *arg0, MKIniLine *arg1, const char *arg2, int arg3) {
@@ -2815,7 +2546,7 @@ u8 KDSP_Actor::HeapAddSizeBar(KDSynkerHeap *arg0, MKIniLine *arg1, const char *a
     if (strstr(arg2) != 0U) {
         var_r29_5057 = arg1->unkC->GetSubLine(arg1);
 loop_3:
-        if ((var_r29_5057 != NULL) && (var_r29_5057->IsField(lit_stringBase0) == 0)) {
+        if ((var_r29_5057 != NULL) && (var_r29_5057->IsField("Bars") == 0)) {
             var_r29_5057 = var_r29_5057->unkC->GetNextLine(var_r29_5057);
             goto loop_3;
         }
@@ -2842,18 +2573,16 @@ u8 KDSP_Actor::LoadADSFlag(MKIniLine *arg0, const char *arg1, int arg2) {
     return 0U;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 u8 KDSP_Actor::LoadADSBadRef(MKIniLine *arg0) {
-    return (u8) (arg0->IsField(&lit_stringBase0[0xCB]) != 0);
+    return (u8) (arg0->IsField("BADRef") != 0);
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 u8 KDSP_Actor::LoadADSPropID(MKIniLine *arg0) {
     MKSceneManager *temp_r3_5181;
     s32 temp_ret_5179;
 
-    if (arg0->IsField(&lit_stringBase0[0xD2]) != 0) {
+    if (arg0->IsField("PropID") != 0) {
         temp_ret_5179 = arg0->GetInt(0);
         this->unk64 = temp_ret_5179;
         temp_r3_5181 = this->unk64;
@@ -2877,7 +2606,7 @@ void KDSP_Actor::LoadActorDataSection(KDSynkerHeap *arg0, MKIniLine *arg1) {
 loop_11:
     if (var_r31_5220 != NULL) {
         var_r28_5225 = 0;
-        if ((LoadADSPropID(var_r31_5220) != 0) || (LoadADSBadRef(var_r31_5220) != 0) || (LoadADSFlag(var_r31_5220, &lit_stringBase0[0xD9], 0x10) != 0) || (LoadADSFlag(var_r31_5220, &lit_stringBase0[0xE6], 4) != 0) || (LoadADSFlag(var_r31_5220, &lit_stringBase0[0xEC], 2) != 0) || (LoadADSFlag(var_r31_5220, &lit_stringBase0[0xF7], 1) != 0)) {
+        if ((LoadADSPropID(var_r31_5220) != 0) || (LoadADSBadRef(var_r31_5220) != 0) || (LoadADSFlag(var_r31_5220, "RemainActive", 0x10) != 0) || (LoadADSFlag(var_r31_5220, "Dummy", 4) != 0) || (LoadADSFlag(var_r31_5220, "DropShadow", 2) != 0) || (LoadADSFlag(var_r31_5220, "LitFromGround", 1) != 0)) {
             var_r28_5225 = 1;
         }
         if (var_r28_5225 == 0) {

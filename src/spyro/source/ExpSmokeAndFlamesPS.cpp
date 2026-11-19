@@ -148,12 +148,12 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void ExpSmokeAndFlamesPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r3_363;
     void *temp_r4_366;
 
-    temp_r3_363 = M2C_FIELD(this->__vptr, void *(**)(), 0x3C)();
+    temp_r3_363 = CreateParticle();
     if (temp_r3_363 != NULL) {
         temp_r4_366 = M2C_FIELD(temp_r3_363, void **, 0x2C);
         M2C_FIELD(temp_r3_363, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);

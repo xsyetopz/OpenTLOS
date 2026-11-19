@@ -6,57 +6,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal implicit conversion from 'KDGraphNodeProp' to
-static s8 lit_stringBase0[0x30] = {
-    0x4C,
-    0x69,
-    0x6E,
-    0x6B,
-    0x49,
-    0x44,
-    0x31,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x6B,
-    0x49,
-    0x44,
-    0x32,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x6B,
-    0x49,
-    0x44,
-    0x33,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x6B,
-    0x49,
-    0x44,
-    0x34,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x6B,
-    0x49,
-    0x44,
-    0x35,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x6B,
-    0x49,
-    0x44,
-    0x36,
-    0,
-}; /* const */
-
 void KDGraphNodeProp::Resolve() {
     MKSceneManager *temp_r3_63;
     s32 temp_r3_67;
@@ -91,12 +40,12 @@ void KDGraphNodeProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[48]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDGraphNodeProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if ((arg0->LoadInt(lit_stringBase0, &this->unk90, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[8], &this->unk94, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x10], &this->unk98, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x18], &this->unk9C, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x20], &this->unkA0, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x28], &this->unkA4, 0) != 0)) {
+    if ((arg0->LoadInt("LinkID1", &this->unk90, 0) != 0) || (arg0->LoadInt("LinkID2", &this->unk94, 0) != 0) || (arg0->LoadInt("LinkID3", &this->unk98, 0) != 0) || (arg0->LoadInt("LinkID4", &this->unk9C, 0) != 0) || (arg0->LoadInt("LinkID5", &this->unkA0, 0) != 0) || (arg0->LoadInt("LinkID6", &this->unkA4, 0) != 0)) {
         this->unk8C += 1;
         return 1;
     }

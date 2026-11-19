@@ -28,163 +28,8 @@ extern s32 gViewSeed;
 static M2C_UNK modInfo;                             /* unable to generate initializer: unknown type */
 static u8 gUpdateCameraAlpha = 1;
 #endif
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
-static s8 lit_stringBase0[0x99] = {
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x30,
-    0x31,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x62,
-    0x44,
-    0x72,
-    0x61,
-    0x77,
-    0x41,
-    0x74,
-    0x46,
-    0x75,
-    0x6C,
-    0x6C,
-    0x41,
-    0x6C,
-    0x70,
-    0x68,
-    0x61,
-    0,
-    0x62,
-    0x55,
-    0x73,
-    0x65,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x63,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x6D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0x49,
-    0x44,
-    0,
-    0x62,
-    0x55,
-    0x73,
-    0x65,
-    0x47,
-    0x72,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x62,
-    0x49,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x62,
-    0x52,
-    0x61,
-    0x6E,
-    0x64,
-    0x6F,
-    0x6D,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x62,
-    0x55,
-    0x70,
-    0x64,
-    0x61,
-    0x74,
-    0x65,
-    0x43,
-    0x61,
-    0x6D,
-    0x65,
-    0x72,
-    0x61,
-    0x41,
-    0x6C,
-    0x70,
-    0x68,
-    0x61,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'stricmp(const char *)' does not match
 u8 KDProp_LoadMaterialID(MKIniLine *arg0, const char *arg1, int *arg2) {
     s32 temp_r3_25;
     s32 temp_r3_39;
@@ -513,16 +358,16 @@ void KDProp::LoadDone() {
         this->unk80 = var_r3_603->Create(var_r29_594, M2C_ERROR(/* Read from unset register $r5 */));
         this->unk4 = this->unk80->unk8;
         temp_r29_619 = this->unk80;
-        if (temp_r29_619->Exists(lit_stringBase0) != 0) {
-            var_r3_627 = temp_r29_619->GetAnim(lit_stringBase0);
+        if (temp_r29_619->Exists("idle01") != 0) {
+            var_r3_627 = temp_r29_619->GetAnim("idle01");
         } else {
             var_r3_627 = NULL;
         }
         var_r4_633 = var_r3_627;
         if (var_r3_627 == NULL) {
             temp_r29_635 = this->unk80;
-            if (temp_r29_635->Exists(&lit_stringBase0[7]) != 0) {
-                var_r3_647 = temp_r29_635->GetAnim(&lit_stringBase0[7]);
+            if (temp_r29_635->Exists("idle") != 0) {
+                var_r3_647 = temp_r29_635->GetAnim("idle");
             } else {
                 var_r3_647 = NULL;
             }
@@ -591,22 +436,22 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 KDProp::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0xC], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bDrawAtFullAlpha", &sp8, 0) != 0) {
         this->unk88 = (this->unk88 & ~0x80) | ((sp8 << 7) & 0x80);
         return 1;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x1D], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bUseCollisionColor", &sp8, 0) != 0) {
         this->unk88 = (this->unk88 & ~0x20) | ((sp8 << 5) & 0x20);
         return 1;
     }
-    return arg0->LoadVector4(&lit_stringBase0[0x30], (MKVector4 *) &this->unk60, 0);
+    return arg0->LoadVector4("collisionColor", (MKVector4 *) &this->unk60, 0);
 }
 #endif
 
@@ -636,10 +481,10 @@ void KDPropDescriptor::LoadDone() {
 u8 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3F], &this->unk68, 0) != 0) || (KDProp_LoadMaterialID(arg0, &lit_stringBase0[0x4C], &this->unk64) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("defaultScale", &this->unk68, 0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", &this->unk64) != 0)) {
         return 1U;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x57], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bUseGroundColor", &sp8, 0) != 0) {
         if (sp8 != 0) {
             this->unk60 |= 1;
         } else {
@@ -647,7 +492,7 @@ u8 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x67], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bInteractive", &sp8, 0) != 0) {
         if (sp8 != 0) {
             this->unk60 |= 4;
         } else {
@@ -655,7 +500,7 @@ u8 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x74], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bRandomAnimOffset", &sp8, 0) != 0) {
         if (sp8 != 0) {
             this->unk60 |= 8;
         } else {
@@ -663,7 +508,7 @@ u8 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    return (u8) (arg0->LoadBool(&lit_stringBase0[0x86], &this->unk6C, 0) != 0);
+    return (u8) (arg0->LoadBool("bUpdateCameraAlpha", &this->unk6C, 0) != 0);
 }
 #endif
 

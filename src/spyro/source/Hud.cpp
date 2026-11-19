@@ -20,64 +20,8 @@ extern MKMaterial *pMatPool;
 static M2C_UNK hudIconUVs;                          /* unable to generate initializer: unknown type */
 static u8 bFixed = 1;
 static s32 lit_679 = 1;
-#if 0 // DRAFT: undefined identifier 'arg_sp8'
-static s8 lit_stringBase0[0x36] = {
-    0x75,
-    0x69,
-    0x5F,
-    0x62,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x5F,
-    0x69,
-    0x63,
-    0x6F,
-    0x6E,
-    0x73,
-    0,
-    0x75,
-    0x69,
-    0x5F,
-    0x6C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x75,
-    0x70,
-    0x5F,
-    0x70,
-    0x6F,
-    0x6F,
-    0x6C,
-    0,
-    0x75,
-    0x69,
-    0x5F,
-    0x68,
-    0x75,
-    0x64,
-    0x5F,
-    0x62,
-    0x69,
-    0x74,
-    0x73,
-    0,
-    0x75,
-    0x69,
-    0x5F,
-    0x61,
-    0x65,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp8'
 void Hud_DrawArc(float arg0, float arg1, float arg2, float arg3, float arg4, float arg5, float arg6, float arg7, float arg8, float arg9, const MKVector4 *arg10, const MKVector4 *arg11, Matrix *arg12, MKMaterial *arg13, float arg14, float arg15, float arg16, float arg17) {
     f32 sp14;
     f32 sp10;
@@ -412,11 +356,11 @@ void Hud_DeinitModule() {
     pMatIcons = NULL;
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[54])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void Hud_InitModule() {
-    pMatIcons = MKMaterial_Create(lit_stringBase0);
-    pMatPool = MKMaterial_Create(&lit_stringBase0[0x10]);
-    pMatHudBits = MKMaterial_Create(&lit_stringBase0[0x20]);
-    pMatAether = MKMaterial_Create(&lit_stringBase0[0x2C]);
+    pMatIcons = MKMaterial_Create("ui_breath_icons");
+    pMatPool = MKMaterial_Create("ui_levelup_pool");
+    pMatHudBits = MKMaterial_Create("ui_hud_bits");
+    pMatAether = MKMaterial_Create("ui_aether");
 }
 #endif

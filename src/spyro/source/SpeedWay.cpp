@@ -6,28 +6,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier 'arg_sp160'
-static s8 lit_stringBase0[0x13] = {
-    0x70,
-    0x61,
-    0x74,
-    0x68,
-    0x4C,
-    0x65,
-    0x66,
-    0x74,
-    0,
-    0x70,
-    0x61,
-    0x74,
-    0x68,
-    0x52,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-}; /* const */
-
 void SpeedWay::GetPathMatrix(float arg0) {
     arg_sp160.GetPosition(arg0);
     arg_sp1A0 = arg_sp160;
@@ -120,12 +98,12 @@ void SpeedWay::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'LoadLine(SpeedWay *, MKIniLine *, const char[9])' does not
 s32 SpeedWay::LoadLine(MKIniLine *arg0) {
     s32 var_r31_317;
 
     var_r31_317 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0, lit_stringBase0) != 0) || (this->unk94.LoadLine(arg0, &lit_stringBase0[9]) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0, "pathLeft") != 0) || (this->unk94.LoadLine(arg0, "pathRight") != 0)) {
         var_r31_317 = 1;
     }
     return var_r31_317;

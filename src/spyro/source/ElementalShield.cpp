@@ -21,31 +21,11 @@ extern MKMaterial *gRenderState;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[17])' does not match
-static s8 lit_stringBase0[0x11] = {
-    0x46,
-    0x58,
-    0x5F,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x53,
-    0x68,
-    0x69,
-    0x65,
-    0x6C,
-    0x64,
-    0x49,
-    0x63,
-    0x65,
-    0,
-}; /* const */
-
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ElementalShield::SetElement(int arg0) {
     this->unkA4 = arg0;
     if ((s32) this->unkA4 == 2) {
-        this->unkB0 = MKMaterial_Create(lit_stringBase0);
+        this->unkB0 = MKMaterial_Create("FX_BossShieldIce");
         this->unkB4 = GS_IceBossForceFieldStart;
         this->unkB8 = GS_IceBossForceFieldStop;
         this->unkBC = GS_IceBossForceFieldLP;

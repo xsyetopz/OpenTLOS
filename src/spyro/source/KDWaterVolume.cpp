@@ -10,7 +10,6 @@
 #include <m2c_macros.h>
 
 s32 stricmp(s32, s32, u32);                         /* extern */
-static s8 lit_stringBase0[0xB] = { 0x76, 0x6F, 0x6C, 0x75, 0x6D, 0x65, 0x54, 0x79, 0x70, 0x65, 0 }; /* const */
 
 s32 KDWaterVolume::IsEnabled() {
     return 1;
@@ -191,7 +190,7 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[11]' to
+#if 0 // DRAFT: pointer/array required
 s32 KDWaterVolumeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r28_324;
     s32 var_r29_327;
@@ -200,7 +199,7 @@ s32 KDWaterVolumeDescriptor::LoadLine(MKIniLine *arg0) {
     if (MKPropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (((u32) this->unk64 != 0) && (arg0->IsField(lit_stringBase0) != 0)) {
+    if (((u32) this->unk64 != 0) && (arg0->IsField("volumeType") != 0)) {
         var_r28_324 = 0;
 loop_11:
         if (var_r28_324 < (s16) arg0->unk0) {

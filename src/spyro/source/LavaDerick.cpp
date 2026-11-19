@@ -11,9 +11,8 @@
 
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
-#if 0 // DRAFT: ')' expected
-static s8 lit_stringBase0[0xC] = { 0x68, 0x75, 0x72, 0x74, 0x73, 0x70, 0x68, 0x65, 0x72, 0x65, 0x31, 0 }; /* const */
 
+#if 0 // DRAFT: ')' expected
 void LavaDerick::Message(MKMessage *arg0) {
     LavaDerick *spC;
     s32 sp8;
@@ -36,7 +35,7 @@ void LavaDerick::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char[12])'
+#if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
 void *LavaDerickDescriptor::CalcBounds() {
     MKVector3 sp8;
     BoundingVolume *temp_r3_105;
@@ -59,7 +58,7 @@ void *LavaDerickDescriptor::CalcBounds() {
     f32 var_f0_151;
     f32 var_f0_163;
 
-    MKModel_CalculateRefPointWorldPosition(this->unk2C, (s32) Tools_GetMatchingRefPointIndex(this->unk2C, lit_stringBase0), &sp8);
+    MKModel_CalculateRefPointWorldPosition(this->unk2C, (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "hurtsphere1"), &sp8);
     temp_r3_105 = this->unk1C;
     var_f0_106 = M2C_BITWISE(f32, sp8);
     temp_f1_107 = temp_r3_105->unk0;

@@ -819,7 +819,7 @@ void FallingLeaves::Emit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2, const int &arg3, bool arg4) {
     s8 sp128;
     s32 sp124;
@@ -870,7 +870,7 @@ void FallingLeaves::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const flo
     void *temp_r30_1788;
     void *temp_r3_1785;
 
-    temp_r3_1785 = M2C_FIELD(this->__vptr, void *(**)(), 0x3C)();
+    temp_r3_1785 = CreateParticle();
     if (temp_r3_1785 != NULL) {
         temp_r30_1788 = M2C_FIELD(temp_r3_1785, void **, 0x2C);
         M2C_FIELD(temp_r3_1785, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);

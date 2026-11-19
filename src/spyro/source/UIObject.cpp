@@ -65,12 +65,11 @@ void UIObject::Resolve() {
 
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 UIContainer *UIObject::GetRoot() const {
     UIContainer *temp_r0_156;
     UIContainer *var_r3_151;
 
-    if (((UIContainer *) this->unkC == NULL) && (M2C_FIELD(this->__vptr, u8 (**)(), 0x34)() != 0)) {
+    if (((UIContainer *) this->unkC == NULL) && (IsContainer() != 0)) {
         return (UIContainer *) this;
     }
     var_r3_151 = this->unkC;
@@ -82,7 +81,6 @@ loop_5:
     }
     return var_r3_151;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'LoadString'
 s32 UIObject::LoadLine(UIDataLine *arg0) {
@@ -137,11 +135,11 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'UIStringTable_Remove(signed char *)' does not match
 void UIObject::Deinit() {
     u32 temp_r3_308;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x24)();
+    FreeResources();
     temp_r3_308 = this->unk4;
     if (temp_r3_308 != 0) {
         UIStringTable_Remove((s8 *) temp_r3_308);

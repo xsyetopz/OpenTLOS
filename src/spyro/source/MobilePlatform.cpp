@@ -30,177 +30,6 @@ extern void **gb;
 #if 0 // DRAFT: ')' expected
 static MobilePlatform mpfLoadInfo__14MobilePlatform; /* type too large by 0x258 */
 
-static s8 lit_stringBase0[0xA8] = {
-    0x74,
-    0x75,
-    0x72,
-    0x6E,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x73,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x70,
-    0x65,
-    0x72,
-    0x69,
-    0x6F,
-    0x64,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x62,
-    0x4D,
-    0x6F,
-    0x76,
-    0x65,
-    0x4F,
-    0x6E,
-    0x65,
-    0,
-    0x62,
-    0x4E,
-    0x6F,
-    0x6E,
-    0x43,
-    0x69,
-    0x72,
-    0x63,
-    0x75,
-    0x6C,
-    0x61,
-    0x72,
-    0,
-    0x62,
-    0x53,
-    0x69,
-    0x6E,
-    0x67,
-    0x6C,
-    0x65,
-    0x4D,
-    0x6F,
-    0x76,
-    0x65,
-    0,
-    0x66,
-    0x46,
-    0x6C,
-    0x69,
-    0x70,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x4F,
-    0x6E,
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x68,
-    0,
-    0x4F,
-    0x6E,
-    0x44,
-    0x65,
-    0x74,
-    0x61,
-    0x63,
-    0x68,
-    0,
-    0x42,
-    0x6F,
-    0x62,
-    0x46,
-    0x72,
-    0x65,
-    0x71,
-    0,
-    0x42,
-    0x6F,
-    0x62,
-    0x4D,
-    0x61,
-    0x67,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x61,
-    0x67,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x4D,
-    0x6F,
-    0x76,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x53,
-    0x74,
-    0x6F,
-    0x70,
-    0,
-}; /* const */
-
 void MobilePlatform::UpdateSag() {
     f32 temp_f1_111;
     f32 temp_f1_114;
@@ -521,7 +350,7 @@ block_73:
         Platform::Message(arg0);
         return;
     case 0xD5:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+        Reset();
         M2C_FIELD(this, s8 *, 0x218) = 0;
         var_f1_820 = M2C_BITWISE(f32, mpfLoadInfo.unk8);
         if (var_f1_820 < 1.0f) {
@@ -764,12 +593,12 @@ void MobilePlatform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'mpfLoadInfo'
 s32 MobilePlatform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1449;
 
     var_r31_1449 = 0;
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, &this->unk180, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xA], (f32 *) &mpfLoadInfo, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x10], (f32 *) &mpfLoadInfo.unk4, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x17], (f32 *) &mpfLoadInfo.unk8, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x21], &this->unk1E4, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x2A], (u8 *) &mpfLoadInfo.unkC, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x37], (u8 *) &this->unk1E8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x43], &this->unk1F8, 0) != 0) || (this->unk1FC.LoadLine(arg0, &lit_stringBase0[0x4E]) != 0) || (this->unk200.LoadLine(arg0, &lit_stringBase0[0x57]) != 0) || (this->unk19C.LoadLine(arg0) != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("turnSpeed", &this->unk180, 0) != 0) || (arg0->LoadFloat("speed", (f32 *) &mpfLoadInfo, 0) != 0) || (arg0->LoadFloat("period", (f32 *) &mpfLoadInfo.unk4, 0) != 0) || (arg0->LoadFloat("startTime", (f32 *) &mpfLoadInfo.unk8, 0) != 0) || (arg0->LoadBool("bMoveOne", &this->unk1E4, 0) != 0) || (arg0->LoadBool("bNonCircular", (u8 *) &mpfLoadInfo.unkC, 0) != 0) || (arg0->LoadBool("bSingleMove", (u8 *) &this->unk1E8, 0) != 0) || (arg0->LoadFloat("fFlipDelay", &this->unk1F8, 0) != 0) || (this->unk1FC.LoadLine(arg0, "OnAttach") != 0) || (this->unk200.LoadLine(arg0, "OnDetach") != 0) || (this->unk19C.LoadLine(arg0) != 0)) {
         var_r31_1449 = 1;
     }
     return var_r31_1449;
@@ -851,12 +680,12 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 MobilePlatformDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1719;
 
     var_r31_1719 = 0;
-    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x60], &this->unk124, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x68], &this->unk128, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x6F], &this->unk140, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x76], &this->unk130) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x82], &this->unk12C) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x8D], &this->unk134) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x97], &this->unk13C) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xA0], &this->unk138) != 0)) {
+    if ((PlatformDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("BobFreq", &this->unk124, 0) != 0) || (arg0->LoadFloat("BobMag", &this->unk128, 0) != 0) || (arg0->LoadFloat("MaxSag", &this->unk140, 0) != 0) || (KDSound_LoadLine(arg0, "sndScaleOut", &this->unk130) != 0) || (KDSound_LoadLine(arg0, "sndScaleIn", &this->unk12C) != 0) || (KDSound_LoadLine(arg0, "sndMoving", &this->unk134) != 0) || (KDSound_LoadLine(arg0, "sndStart", &this->unk13C) != 0) || (KDSound_LoadLine(arg0, "sndStop", &this->unk138) != 0)) {
         var_r31_1719 = 1;
     }
     return var_r31_1719;

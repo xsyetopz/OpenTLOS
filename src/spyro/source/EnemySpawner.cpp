@@ -19,128 +19,8 @@
 
 extern DataMap enemyTypeDataMap;
 extern void **gb;
-#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
-static s8 lit_stringBase0[0x76] = {
-    0x69,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x77,
-    0x61,
-    0x6C,
-    0x6C,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x46,
-    0x6C,
-    0x61,
-    0x67,
-    0x73,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x47,
-    0x72,
-    0x61,
-    0x70,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x4F,
-    0x6E,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0,
-    0x4F,
-    0x6E,
-    0x44,
-    0x65,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0,
-    0x4F,
-    0x6E,
-    0x44,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x4F,
-    0x6E,
-    0x53,
-    0x75,
-    0x6D,
-    0x6D,
-    0x6F,
-    0x6E,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 void EnemySpawner::Message(MKMessage *arg0) {
     s32 temp_r0_62;
 
@@ -235,7 +115,7 @@ void EnemySpawner::LoadDone() {
 
 #if 0 // DRAFT: function call 'PropFlagsLoadLine(unsigned long *, MKIniLine *)' does not
 s32 EnemySpawner::LoadLine(MKIniLine *arg0) {
-    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, &lit_stringBase0[0x10], &enemyTypeDataMap, &this->unkE4) != 0) || (M2C_FIELD(this->unk50.unk40, u8 (**)(f32 *, MKIniLine *), 8)(&this->unk50.unk40, arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("iMaxSpawnPoints", &this->unkE0, 0) != 0) || (DataMap_LoadLine(arg0, "EnemyType", &enemyTypeDataMap, &this->unkE4) != 0) || (M2C_FIELD(this->unk50.unk40, u8 (**)(f32 *, MKIniLine *), 8)(&this->unk50.unk40, arg0) != 0)) {
         return 1;
     }
     return 0;
@@ -425,18 +305,18 @@ void EnemySpawnPointData::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 EnemySpawnPointData::LoadLine(MKIniLine *arg0) {
     s32 var_r31_822;
 
-    if (((KDPathSegment *) this->unk1C == NULL) && (arg0->IsField(&lit_stringBase0[0x1A]) != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
+    if (((KDPathSegment *) this->unk1C == NULL) && (arg0->IsField("wallpoints") != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
         operator new(0x30U, NULL, 0);
         this->unk1C = M2C_ERROR(/* Read from unset register $r3 */);
         this->unk1C->Init();
-        this->unk1C->LoadWaypoints(arg0, &lit_stringBase0[0x1A]);
+        this->unk1C->LoadWaypoints(arg0, "wallpoints");
         return 1;
     }
-    if (((KDSplinePathSegment *) this->unk18 == NULL) && (arg0->IsField(&lit_stringBase0[0x25]) != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
+    if (((KDSplinePathSegment *) this->unk18 == NULL) && (arg0->IsField("waypoints") != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
         operator new(0x48U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x30) = 0;
@@ -451,7 +331,7 @@ s32 EnemySpawnPointData::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     var_r31_822 = 0;
-    if ((arg0->LoadInt(&lit_stringBase0[0x2F], &this->unk4, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x3A], (s32 *) &this->unk20, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x46], (s32 *) &this->unk24, 0) != 0) || (this->unkC.LoadLine(arg0, &lit_stringBase0[0x53]) != 0) || (this->unk10.LoadLine(arg0, &lit_stringBase0[0x5B]) != 0) || (this->unk8.LoadLine(arg0, &lit_stringBase0[0x65]) != 0) || (this->unk14.LoadLine(arg0, &lit_stringBase0[0x6D]) != 0)) {
+    if ((arg0->LoadInt("SpawnFlags", &this->unk4, 0) != 0) || (arg0->LoadInt("SpawnPathID", (s32 *) &this->unk20, 0) != 0) || (arg0->LoadInt("SpawnGraphID", (s32 *) &this->unk24, 0) != 0) || (this->unkC.LoadLine(arg0, "OnSpawn") != 0) || (this->unk10.LoadLine(arg0, "OnDespawn") != 0) || (this->unk8.LoadLine(arg0, "OnDeath") != 0) || (this->unk14.LoadLine(arg0, "OnSummon") != 0)) {
         var_r31_822 = 1;
     }
     return var_r31_822;

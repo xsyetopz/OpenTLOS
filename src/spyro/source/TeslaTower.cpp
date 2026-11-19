@@ -34,70 +34,8 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'arg_spA8'
-static s8 lit_stringBase0[0x3C] = {
-    0x7A,
-    0x61,
-    0x70,
-    0,
-    0x6F,
-    0x72,
-    0x62,
-    0x69,
-    0x74,
-    0,
-    0x57,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x70,
-    0x61,
-    0x74,
-    0x72,
-    0x6F,
-    0x6C,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x72,
-    0x67,
-    0x79,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-    0x74,
-    0x65,
-    0x73,
-    0x6C,
-    0x61,
-    0x4C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_spA8'
 void TeslaTower::UpdateTurretTurning() {
     Animation *temp_r3_103;
     f32 temp_f10_218;
@@ -708,7 +646,7 @@ void TeslaTower::UpdateTurretBone(MKDynamicBone *arg0, void *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'arg_sp90'
 void TeslaTower::LoadDone() {
     f32 temp_f3_1598;
     f32 temp_f3_1635;
@@ -722,7 +660,7 @@ void TeslaTower::LoadDone() {
     void *temp_r3_1429;
     void *temp_r5_1435;
     KDProp::LoadDone();
-    this->unk90.unk20 = M2C_BITWISE(f32, Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0));
+    this->unk90.unk20 = M2C_BITWISE(f32, Tools_GetMatchingRefPointIndex(this->unk4, "zap"));
     temp_r3_1429 = M2C_FIELD(this->unk0, void **, 0x1C);
     M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(temp_r3_1429, f64 *, 0);
     M2C_FIELD(this, f64 *, 0xD8) = (f64) M2C_FIELD(temp_r3_1429, f64 *, 8);
@@ -831,7 +769,7 @@ loop_2:
     arg_sp38 = (f32) arg_sp18 - (f32) arg_sp28;
     M2C_FIELD(this, f64 *, 0xE8) = (f64) arg_sp38;
     arg_spB8 = (f64) arg_sp38;
-    this->unk90.unk1C = M2C_BITWISE(f32, Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[4]));
+    this->unk90.unk1C = M2C_BITWISE(f32, Tools_GetMatchingNodeIndex(this->unk4, "orbit"));
     arg_spA0.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     this->unk1B8 = arg_spA0;
     this->unk1C0 = arg_spA8;
@@ -840,7 +778,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'Init'
 s32 TeslaTower::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r31_1786;
@@ -848,7 +786,7 @@ s32 TeslaTower::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0xA]) != 0) {
+    if (arg0->IsField("Waypoints") != 0) {
         this->unk90.Init(arg0->GetNmbrOfSubLines(), 0U);
         var_r31_1786 = arg0->unkC->GetSubLine(arg0);
 loop_5:
@@ -859,7 +797,7 @@ loop_5:
             goto loop_5;
         }
     }
-    return arg0->LoadFloat(&lit_stringBase0[0x14], &this->unk90.unk18, 0);
+    return arg0->LoadFloat("patrolSpeed", &this->unk90.unk18, 0);
 }
 #endif
 
@@ -891,24 +829,24 @@ void TeslaTowerDescriptor::Deinit() {
     KDPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void TeslaTowerDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unk78 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x20]));
+    this->unk78 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void TeslaTowerDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
-    this->unk70 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x26]));
+    this->unk70 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void TeslaTowerDescriptor::Init() {
     KDPropDescriptor::Init();
-    this->unk74 = MKMaterial_Create(&lit_stringBase0[0x31]);
+    this->unk74 = MKMaterial_Create("teslaLight");
 }
 #endif
 

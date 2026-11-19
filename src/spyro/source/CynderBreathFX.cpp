@@ -21,105 +21,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPtrList<MKProp> *pHitList;
 static BreathHitMessage streamHitMsg;
-static s8 lit_stringBase0[0x61] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x37,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x42,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x31,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x42,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x32,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x42,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x32,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x53,
-    0x75,
-    0x62,
-    0x50,
-    0x53,
-    0,
-}; /* const */
 
 void CynderBreathFX::SetHitList(MKPtrList<MKProp> *arg0) {
     pHitList = arg0;
@@ -480,21 +381,19 @@ void CynderBreathFX::Deinit() {
     BaseBreathFX::Deinit();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[97]' to
 void CynderBreathFX::Init() {
     BaseBreathFX::Init();
-    this->unkB0.Init(lit_stringBase0, &lit_stringBase0[7], &lit_stringBase0[0x1C], &lit_stringBase0[0x2D]);
+    this->unkB0.Init("fx_357", "fx_CynderBreath1Glow", "fx_CynderBreath2", "fx_CynderBreath2Glow");
     this->unk1C8 = 100.0f;
     this->unkAC = 0xFFFF;
     pHitList = NULL;
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void CynderBreathFXDescriptor::Init() {
     KDPropDescriptor::Init();
-    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x42]));
-    this->unk74 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x50]));
+    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlamePS"));
+    this->unk74 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("CynderFlameSubPS"));
 }
 #endif
 

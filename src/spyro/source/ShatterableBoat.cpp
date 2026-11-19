@@ -30,211 +30,16 @@ extern f32 *KDSpline_VelocityMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pLeftOarAnimEvents = lit_stringBase0;
+#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to
+static s8 *pLeftOarAnimEvents = "EnterWater";
 #endif
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pRightOarAnimEvents = lit_stringBase0;
+#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to
+static s8 *pRightOarAnimEvents = "EnterWater";
 #endif
 
 static s32 lit_853 = 0;
-#if 0 // DRAFT: undefined identifier 'unk234'
-static s8 lit_stringBase0[0xC1] = {
-    0x45,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x73,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x77,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x68,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x70,
-    0x37,
-    0x30,
-    0x30,
-    0x37,
-    0x5F,
-    0x73,
-    0x68,
-    0x69,
-    0x70,
-    0x5F,
-    0x6F,
-    0x61,
-    0x72,
-    0x5F,
-    0x6C,
-    0x65,
-    0x66,
-    0x74,
-    0,
-    0x72,
-    0x6F,
-    0x77,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x70,
-    0x37,
-    0x30,
-    0x30,
-    0x38,
-    0x5F,
-    0x73,
-    0x68,
-    0x69,
-    0x70,
-    0x5F,
-    0x6F,
-    0x61,
-    0x72,
-    0x5F,
-    0x72,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x72,
-    0x5F,
-    0x70,
-    0x6F,
-    0x73,
-    0x69,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x6F,
-    0x61,
-    0x72,
-    0x25,
-    0x64,
-    0,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x4C,
-    0x30,
-    0,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x52,
-    0x30,
-    0,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x53,
-    0x75,
-    0x72,
-    0x66,
-    0x61,
-    0x63,
-    0x65,
-    0x46,
-    0x58,
-    0,
-    0x70,
-    0x37,
-    0x30,
-    0x30,
-    0x39,
-    0x5F,
-    0x57,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x57,
-    0x61,
-    0x6B,
-    0x65,
-    0,
-    0x41,
-    0x6D,
-    0x62,
-    0x69,
-    0x65,
-    0x6E,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x53,
-    0x69,
-    0x6E,
-    0x6B,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk234'
 void ShatterableBoat::SetDefaults() {
     Shatterable::Reset();
     this->unk234 = 1;
@@ -1246,17 +1051,17 @@ void ShatterableBoat::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk218'
 s32 ShatterableBoat::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_2160;
     s32 temp_r3_2147;
 
-    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0xB, (f32 *) &this->unk218, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x11, &this->unk314, 0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat("speed", (f32 *) &this->unk218, 0) != 0) || (arg0->LoadFloat("waterheight", &this->unk314, 0) != 0)) {
         return 1;
     }
     arg0->GetFieldName();
-    if (stricmp(lit_stringBase0 + 0x1D) == 0) {
+    if (stricmp"waypoints" == 0) {
         if ((u32) M2C_FIELD(this, u32 *, 0x224) != 0U) {
             return 0;
         }
@@ -1300,34 +1105,34 @@ void ShatterableBoat::InitOars() {
     void *var_r3_2236;
     void *var_r3_2281;
 
-    this->unk234 = ((MKAnimScript *) ((MKAnimScript *) (lit_stringBase0 + 0x27)))->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */));
+    this->unk234 = ((MKAnimScript *) ((MKAnimScript *) "p7007_ship_oar_left"))->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */));
     this->unk234->InitEvents(&pLeftOarAnimEvents);
     temp_r29_2206 = this->unk234;
-    if (temp_r29_2206->Exists(lit_stringBase0 + 0x3B) != 0) {
-        var_r3_2218 = temp_r29_2206->GetAnim(lit_stringBase0 + 0x3B);
+    if (temp_r29_2206->Exists("row") != 0) {
+        var_r3_2218 = temp_r29_2206->GetAnim("row");
     } else {
         var_r3_2218 = NULL;
     }
     this->unk238 = (s32) var_r3_2218;
     temp_r29_2226 = this->unk234;
-    if (temp_r29_2226->Exists(lit_stringBase0 + 0x3F) != 0) {
-        var_r3_2236 = temp_r29_2226->GetAnim(lit_stringBase0 + 0x3F);
+    if (temp_r29_2226->Exists("idle") != 0) {
+        var_r3_2236 = temp_r29_2226->GetAnim("idle");
     } else {
         var_r3_2236 = NULL;
     }
     this->unk23C = M2C_BITWISE(f32, var_r3_2236);
-    this->unk240 = ((MKAnimScript *) ((MKAnimScript *) (lit_stringBase0 + 0x44)))->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */));
+    this->unk240 = ((MKAnimScript *) ((MKAnimScript *) "p7008_ship_oar_right"))->Create((s8 *)1, M2C_ERROR(/* Read from unset register $r5 */));
     this->unk240->InitEvents(&pRightOarAnimEvents);
     temp_r29_2251 = this->unk240;
-    if (temp_r29_2251->Exists(lit_stringBase0 + 0x3B) != 0) {
-        var_r3_2263 = temp_r29_2251->GetAnim(lit_stringBase0 + 0x3B);
+    if (temp_r29_2251->Exists("row") != 0) {
+        var_r3_2263 = temp_r29_2251->GetAnim("row");
     } else {
         var_r3_2263 = NULL;
     }
     this->unk244 = var_r3_2263;
     temp_r29_2271 = this->unk240;
-    if (temp_r29_2271->Exists(lit_stringBase0 + 0x3F) != 0) {
-        var_r3_2281 = temp_r29_2271->GetAnim(lit_stringBase0 + 0x3F);
+    if (temp_r29_2271->Exists("idle") != 0) {
+        var_r3_2281 = temp_r29_2271->GetAnim("idle");
     } else {
         var_r3_2281 = NULL;
     }
@@ -1353,14 +1158,14 @@ void ShatterableBoat::InitOars() {
     var_r28_2322 = 0;
     var_r30_2324 = 0;
     do {
-        temp_r3_2332 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf(lit_stringBase0 + 0x59, var_r28_2322 + 1));
+        temp_r3_2332 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_position_oar%d", var_r28_2322 + 1));
         var_r28_2322 += 1;
         temp_r0_2334 = var_r30_2324 + 0x274;
         var_r30_2324 += 0x10;
         *(this + temp_r0_2334) = (s32) temp_r3_2332;
     } while (var_r28_2322 < 0xA);
-    this->unk360 = (s32) Tools_GetMatchingRefPointIndex(M2C_FIELD(this->unk234, MKModel **, 8), lit_stringBase0 + 0x6A);
-    this->unk364 = (s32) Tools_GetMatchingRefPointIndex((MKModel *) this->unk240->unk8, lit_stringBase0 + 0x73);
+    this->unk360 = (s32) Tools_GetMatchingRefPointIndex(M2C_FIELD(this->unk234, MKModel **, 8), "fxemitL0");
+    this->unk364 = (s32) Tools_GetMatchingRefPointIndex((MKModel *) this->unk240->unk8, "fxemitR0");
 }
 #endif
 
@@ -1372,21 +1177,21 @@ void ShatterableBoat::Init() {
     this->unk218 = 100.0f;
     this->unk220 = 0.0f;
     this->unk224 = 0.0f;
-    gMK->CreatePropDeferred(lit_stringBase0 + 0x7C, &this->unk240);
-    this->unk22C = M2C_BITWISE(f32, checked_cast<WaterSurfaceFX *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0x89)));
+    gMK->CreatePropDeferred("WaterDropsPS", &this->unk240);
+    this->unk22C = M2C_BITWISE(f32, checked_cast<WaterSurfaceFX *, MKProp>(gMK->CreateProp("WaterSurfaceFX")));
     M2C_FIELD(this->unk22C, f32 *, 0x58) = 2.0f;
     this->unk230 = 0.0f;
-    this->unk310 = MKModel_Create(lit_stringBase0 + 0x98, NULL, 2, NULL);
+    this->unk310 = MKModel_Create("p7009_WaterWake", NULL, 2, NULL);
     this->unk314 = 0.0f;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[17], long *)' does
 s32 ShatterableBoatDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2425;
 
     var_r31_2425 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0xA8, &this->unk16C) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0xB9, &this->unk170) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "AmbientSoundLoop", &this->unk16C) != 0) || (KDSound_LoadLine(arg0, "sndSink", &this->unk170) != 0)) {
         var_r31_2425 = 1;
     }
     return var_r31_2425;

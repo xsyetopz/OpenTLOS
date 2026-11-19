@@ -30,57 +30,6 @@ extern GameGlobals gb;
 static s32 lit_537 = 0;
 static u8 lit_538 = 0;
 
-static s8 lit_stringBase0[0x30] = {
-    0x41,
-    0x30,
-    0x30,
-    0x32,
-    0x5F,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x78,
-    0x5F,
-    0x42,
-    0x69,
-    0x6C,
-    0x6C,
-    0x62,
-    0x6F,
-    0x61,
-    0x72,
-    0x64,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x31,
-    0x37,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x38,
-    0x36,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x78,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x50,
-    0x53,
-    0,
-}; /* const */
-
 void SparxFX::SetColor(const MKVector4 &arg0) {
     this->unkD8 = M2C_FIELD(&arg0, f64 *, 0);
     this->unkE0 = M2C_FIELD(&arg0, f64 *, 8);
@@ -689,14 +638,14 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_Create(signed char[48], MKHeap *, int, int)' does
+#if 0 // DRAFT: function call 'MKModel_Create(const char[21], MKHeap *, int, int)' does
 void SparxFX::LoadDone() {
     MKAnimScript *var_r3_1491;
     MKHeap *temp_r3_1484;
     MKModel *temp_r3_1482;
 
     MKProp::LoadDone();
-    temp_r3_1482 = MKModel_Create(lit_stringBase0, ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
+    temp_r3_1482 = MKModel_Create("A002_sparx_Billboard", ((Animation *) (M2C_FIELD(this->unk0, Animation **, 0x30)))->GetName(), 2, NULL);
     this->unk4 = temp_r3_1482;
     temp_r3_1484 = temp_r3_1482->Current();
     if (temp_r3_1484 != NULL) {
@@ -744,7 +693,7 @@ void SparxFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void SparxFX::Init() {
     f64 sp40;
     f64 sp38;
@@ -765,8 +714,8 @@ void SparxFX::Init() {
     this->unk58 = 0.0f;
     this->unk88 = 0.0f;
     this->unk8C |= 0x80;
-    this->unk90 = MKMaterial_Create(&lit_stringBase0[0x15]);
-    this->unk94 = MKMaterial_Create(&lit_stringBase0[0x1C]);
+    this->unk90 = MKMaterial_Create("fx_317");
+    this->unk94 = MKMaterial_Create("fx_386");
     this->unkA8 = 0.0f;
     this->unkAC = 0.0f;
     this->unkB0 = 0.7853982f;
@@ -794,7 +743,7 @@ void SparxFX::Init() {
     sp40 = (f64) sp20;
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
-    this->unkD4 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x23]));
+    this->unkD4 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SparxTrailPS"));
     this->unkC8 = 1.0f;
     this->unkCC = 1.0f;
 }

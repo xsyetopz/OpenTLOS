@@ -20,107 +20,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: illegal explicit conversion from 'void *' to
-static s8 lit_stringBase0[0x62] = {
-    0x62,
-    0x75,
-    0x72,
-    0x6E,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0,
-    0x6C,
-    0x61,
-    0x76,
-    0x61,
-    0x42,
-    0x75,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x59,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x73,
-    0x69,
-    0x6E,
-    0x6B,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x73,
-    0x69,
-    0x6E,
-    0x6B,
-    0x44,
-    0x65,
-    0x70,
-    0x74,
-    0x68,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x42,
-    0x75,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
-
 void LavaSmashProp::PostShatter() {
     s8 sp288;
     f64 sp280;
@@ -527,12 +426,12 @@ void LavaSmashPropDescriptor::LoadDone() {
     this->unk178 *= 100.0f;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
 s32 LavaSmashPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_796;
 
     var_r31_796 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, &this->unk16C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xB], &this->unk170, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1D], &this->unk178, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x27], &this->unk174, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x31], &this->unk180, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x41], &this->unk184, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x52], &this->unk17C) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("burnRadius", &this->unk16C, 0) != 0) || (arg0->LoadFloat("lavaBubbleYOffset", &this->unk170, 0) != 0) || (arg0->LoadFloat("sinkSpeed", &this->unk178, 0) != 0) || (arg0->LoadFloat("sinkDepth", &this->unk174, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeIn", &this->unk180, 0) != 0) || (arg0->LoadFloat("LavaSoundFadeOut", &this->unk184, 0) != 0) || (KDSound_LoadLine(arg0, "LavaBubbleSound", &this->unk17C) != 0)) {
         var_r31_796 = 1;
     }
     return var_r31_796;

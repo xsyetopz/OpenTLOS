@@ -23,7 +23,6 @@ static u8 lit_535 = 0;
 
 static s32 lit_537 = 0;
 static u8 lit_538 = 1;
-static s8 lit_stringBase0[0xA] = { 0x72, 0x5F, 0x66, 0x78, 0x65, 0x6D, 0x69, 0x74, 0x30, 0 }; /* const */
 
 void Torch::Deinit() {
     Corona *temp_r4_44;
@@ -214,7 +213,7 @@ void Torch::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_GetRefPointIndex(MKModel *, signed char[10])' does
+#if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void Torch::LoadDone() {
     f64 spA0;
     f64 sp98;
@@ -246,7 +245,7 @@ void Torch::LoadDone() {
     MKHeap **temp_r3_412;
 
     GameProp::LoadDone();
-    this->unkF0 = MKModel_GetRefPointIndex(this->unk4, lit_stringBase0);
+    this->unkF0 = MKModel_GetRefPointIndex(this->unk4, "r_fxemit0");
     MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkF0, &this->unkF8);
     sp48 = 1.0f;
     sp4C = 0.75f;

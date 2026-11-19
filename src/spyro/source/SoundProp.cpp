@@ -8,9 +8,8 @@
 #include <m2c_macros.h>
 
 extern void **gMK;
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
-static s8 lit_stringBase0[0xB] = { 0x73, 0x65, 0x61, 0x72, 0x63, 0x68, 0x4D, 0x61, 0x73, 0x6B, 0 }; /* const */
 
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void SoundProp::Disable() {
     if ((s32) this->unk4C != 0) {
         KDSound_Stop((s32 *) &this->unk60.unk40);
@@ -50,12 +49,12 @@ void SoundProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, signed char[11], long *)'
+#if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, const char[11], long *)'
 s32 SoundPropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_171;
 
     var_r31_171 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, lit_stringBase0, &this->unkC) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "searchMask", &this->unkC) != 0)) {
         var_r31_171 = 1;
     }
     return var_r31_171;

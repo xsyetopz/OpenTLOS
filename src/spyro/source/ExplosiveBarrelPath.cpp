@@ -27,274 +27,8 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: ')' expected
-static s8 lit_stringBase0[0x108] = {
-    0x50,
-    0x35,
-    0x30,
-    0x32,
-    0x33,
-    0x5F,
-    0x42,
-    0x6F,
-    0x6F,
-    0x6D,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0,
-    0x50,
-    0x33,
-    0x30,
-    0x34,
-    0x30,
-    0x5F,
-    0x42,
-    0x6F,
-    0x6F,
-    0x6D,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0,
-    0x50,
-    0x34,
-    0x30,
-    0x33,
-    0x36,
-    0x5F,
-    0x42,
-    0x6F,
-    0x6F,
-    0x6D,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0,
-    0x50,
-    0x31,
-    0x30,
-    0x34,
-    0x30,
-    0x5F,
-    0x42,
-    0x6F,
-    0x6F,
-    0x6D,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0,
-    0x50,
-    0x30,
-    0x30,
-    0x39,
-    0x31,
-    0x5F,
-    0x42,
-    0x6F,
-    0x6F,
-    0x6D,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0,
-    0x4C,
-    0x65,
-    0x66,
-    0x74,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x52,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x41,
-    0x63,
-    0x63,
-    0x65,
-    0x6C,
-    0x65,
-    0x72,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x42,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x43,
-    0x68,
-    0x61,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-    0x42,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x62,
-    0x41,
-    0x75,
-    0x74,
-    0x6F,
-    0x53,
-    0x68,
-    0x6F,
-    0x6F,
-    0x74,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0x73,
-    0,
-    0x62,
-    0x4F,
-    0x6E,
-    0x65,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0,
-    0x66,
-    0x41,
-    0x75,
-    0x74,
-    0x6F,
-    0x53,
-    0x68,
-    0x6F,
-    0x6F,
-    0x74,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x66,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x44,
-    0x69,
-    0x72,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x49,
-    0x63,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x62,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0x52,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: ')' expected
 void ExplosiveBarrelPath::EmitDust(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f32 var_f0_107;
     void *temp_r31_83;
@@ -1177,7 +911,7 @@ void ExplosiveBarrelPath::LoadDone() {
     var_r27_1807 = 0;
     M2C_FIELD(this, f64 *, 0x208) = (f32) ((f32) M2C_FIELD(this, f64 *, 0x208) - (f32) sp20);
     do {
-        var_r4_1814 = lit_stringBase0;
+        var_r4_1814 = "P5023_BoomBarrel";
         temp_r3_1815 = M2C_FIELD(M2C_FIELD(&gb, void **, 0x32C), void **, 0x18);
         if (temp_r3_1815 != NULL) {
             var_r3_1818 = M2C_FIELD(temp_r3_1815, void **, 4);
@@ -1195,17 +929,17 @@ void ExplosiveBarrelPath::LoadDone() {
             switch ((s8) temp_r0_1837) {            /* irregular */
             case 0x61:
                 this->unk232 = 1;
-                var_r4_1814 = &lit_stringBase0[0x11];
+                var_r4_1814 = "P3040_BoomBarrel";
                 break;
             case 0x62:
-                var_r4_1814 = &lit_stringBase0[0x22];
+                var_r4_1814 = "P4036_BoomBarrel";
                 break;
             case 0x64:
             case 0x7A:
-                var_r4_1814 = &lit_stringBase0[0x33];
+                var_r4_1814 = "P1040_BoomBarrel";
                 break;
             case 0x63:
-                var_r4_1814 = &lit_stringBase0[0x44];
+                var_r4_1814 = "P0091_BoomBarrel";
                 break;
             }
         }
@@ -1224,7 +958,7 @@ void ExplosiveBarrelPath::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'Init'
 s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -1249,7 +983,7 @@ s32 ExplosiveBarrelPath::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x55]) != 0) {
+    if (arg0->IsField("LeftTrack") != 0) {
         var_r30_1936 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1937 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1937 != 0) {
@@ -1282,7 +1016,7 @@ loop_9:
         }
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x5F]) != 0) {
+    if (arg0->IsField("RightTrack") != 0) {
         var_r30_2010 = arg0->unkC->GetSubLine(arg0);
         temp_r3_2011 = arg0->GetNmbrOfSubLines();
         if (temp_r3_2011 != 0) {
@@ -1316,7 +1050,7 @@ loop_18:
         return 1;
     }
     var_r31_2077 = 0;
-    if ((arg0->LoadFloat(&lit_stringBase0[0x6A], &this->unk220, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x70], &this->unk224, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x7D], &this->unk228, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x8A], &this->unk22C, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x96], &this->unk231, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0xA8], &this->unk230, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xB1], &this->unk234, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC1], &this->unk23C, 0) != 0)) {
+    if ((arg0->LoadFloat("Speed", &this->unk220, 0) != 0) || (arg0->LoadFloat("Acceleration", &this->unk224, 0) != 0) || (arg0->LoadInt("BounceChance", &this->unk228, 0) != 0) || (arg0->LoadFloat("BounceSpeed", &this->unk22C, 0) != 0) || (arg0->LoadBool("bAutoShootBarrels", &this->unk231, 0) != 0) || (arg0->LoadBool("bOneShot", &this->unk230, 0) != 0) || (arg0->LoadFloat("fAutoShootDelay", &this->unk234, 0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", &this->unk23C, 0) != 0)) {
         var_r31_2077 = 1;
     }
     return var_r31_2077;
@@ -1393,20 +1127,20 @@ void ExplosiveBarrelPath::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void ExplosiveBarrelPathDescriptor::LoadDone() {
-    this->unk90 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xD7]));
-    this->unk94 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xE8]));
+    this->unk90 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustDirtPS"));
+    this->unk94 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("BarrelDustIcePS"));
     MKPropDescriptor::LoadDone();
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
 s32 ExplosiveBarrelPathDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2324;
 
     var_r31_2324 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xF8], &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "barrelRollSound", &this->unk60) != 0)) {
         var_r31_2324 = 1;
     }
     return var_r31_2324;

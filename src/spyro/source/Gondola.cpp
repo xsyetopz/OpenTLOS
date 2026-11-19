@@ -6,7 +6,6 @@
 #include "common/Source/MKProp.h"
 #include "common/Source/MKVector3.h"
 #include "common/Source/Matrix.h"
-#include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "spyro/source/Platform.h"
@@ -29,121 +28,6 @@ extern s32 gViewSeed;
 extern void **gb;
 
 #if 0 // DRAFT: illegal operand
-static s8 lit_stringBase0[0x70] = {
-    0x54,
-    0x50,
-    0x47,
-    0x6F,
-    0x6E,
-    0x64,
-    0x6F,
-    0x6C,
-    0x61,
-    0x53,
-    0x6F,
-    0x6C,
-    0x64,
-    0x69,
-    0x65,
-    0x72,
-    0x73,
-    0x43,
-    0x6C,
-    0x65,
-    0x61,
-    0x72,
-    0x65,
-    0x64,
-    0,
-    0x54,
-    0x50,
-    0x47,
-    0x6F,
-    0x6E,
-    0x64,
-    0x6F,
-    0x6C,
-    0x61,
-    0x4C,
-    0x65,
-    0x61,
-    0x64,
-    0x65,
-    0x72,
-    0x73,
-    0x43,
-    0x6C,
-    0x65,
-    0x61,
-    0x72,
-    0x65,
-    0x64,
-    0,
-    0x54,
-    0x50,
-    0x47,
-    0x6F,
-    0x6E,
-    0x64,
-    0x6F,
-    0x6C,
-    0x61,
-    0x43,
-    0x6F,
-    0x6D,
-    0x6D,
-    0x61,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x73,
-    0x43,
-    0x6C,
-    0x65,
-    0x61,
-    0x72,
-    0x65,
-    0x64,
-    0,
-    0x53,
-    0x6B,
-    0x79,
-    0x43,
-    0x6C,
-    0x6F,
-    0x75,
-    0x64,
-    0x73,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x72,
-    0x65,
-    0x74,
-    0x75,
-    0x72,
-    0x6E,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-}; /* const */
-
 void Gondola::WaveMotion::Update() {
     *this = (f32) (*this + gUpdateTimeDelta);
 }
@@ -226,7 +110,6 @@ block_18:
     }
 }
 
-#if 0 // DRAFT: function call 'PhrasePlayer_PlayEvent(signed char[112])' does not match
 void Gondola::Update() {
     s32 temp_r0_245;
 
@@ -238,13 +121,13 @@ void Gondola::Update() {
         temp_r0_245 = this->unk1B0.unk7C;
         switch (temp_r0_245) {                      /* irregular */
         case 0:
-            this->unk244 = PhrasePlayer_PlayEvent(lit_stringBase0);
+            this->unk244 = PhrasePlayer_PlayEvent("TPGondolaSoldiersCleared");
             break;
         case 1:
-            this->unk244 = PhrasePlayer_PlayEvent(&lit_stringBase0[0x19]);
+            this->unk244 = PhrasePlayer_PlayEvent("TPGondolaLeadersCleared");
             break;
         case 2:
-            this->unk244 = PhrasePlayer_PlayEvent(&lit_stringBase0[0x31]);
+            this->unk244 = PhrasePlayer_PlayEvent("TPGondolaCommandersCleared");
             break;
         }
     }
@@ -258,7 +141,6 @@ void Gondola::Update() {
         this->unk1B0.FunctionOff();
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'arg_sp34'
 void Gondola::UpdateMove() {
@@ -849,15 +731,15 @@ void Gondola::Resolve() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(&gb, void **, 0x3B8), void **, 0x44), M2C_UNK (**)(void *, s32 *, MKCollisionInfo *, M2C_UNK), 0x2C)(M2C_FIELD(&gb, void **, 0x3B8), &sp8, temp_r5_1440, 0x40F);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void Gondola::LoadDone() {
     Platform::LoadDone();
     this->unk1B0.LoadDone();
-    this->unk238 = checked_cast<SkyClouds *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x4C]));
+    this->unk238 = checked_cast<SkyClouds *, MKProp>(gMK->CreateProp("SkyClouds"));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
 s32 Gondola::LoadLine(MKIniLine *arg0) {
     MKVector3 sp18;
     MKVector3 sp8;
@@ -866,11 +748,11 @@ s32 Gondola::LoadLine(MKIniLine *arg0) {
     s32 temp_r3_1526;
     s32 temp_r3_1574;
 
-    if ((Platform::LoadLine(arg0) != 0) || (M2C_FIELD(this->unk1B0.__vptr, u8 (**)(EnemyGenerator *, MKIniLine *), 8)(&this->unk1B0, arg0) != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (this->unk1B0.LoadLine(arg0) != 0)) {
         return 1;
     }
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[0x56]) == 0) {
+    if (stricmp("waypoints") == 0) {
         if ((u32) this->unk18C != 0U) {
             return 0;
         }
@@ -890,7 +772,7 @@ loop_10:
         return 1;
     }
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[0x60]) == 0) {
+    if (stricmp("returnwaypoints") == 0) {
         if ((u32) this->unk1A0 != 0U) {
             return 0;
         }

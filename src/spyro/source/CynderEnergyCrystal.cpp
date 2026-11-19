@@ -26,25 +26,6 @@ static s32 lit_598 = 0;
 static u8 lit_599 = 0;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp1C'
-static s8 lit_stringBase0[0x10] = {
-    0x68,
-    0x61,
-    0x6E,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x64,
-    0x5F,
-    0x77,
-    0x6F,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0,
-}; /* const */
-
 void CynderEnergyCrystal::UpdateModel() {
     ManagedLight *temp_r3_78;
     Matrix *temp_r5_57;
@@ -143,8 +124,8 @@ void CynderEnergyCrystal::LoadDone() {
     s32 temp_r3_256;
 
     GameProp::LoadDone();
-    this->unkD0.unk80 = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0);
-    this->unk5E0 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(&lit_stringBase0[7]));
+    this->unkD0.unk80 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "handle");
+    this->unk5E0 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobble"));
     temp_r3_256 = checked_cast<CynderEnergyCrystalDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;

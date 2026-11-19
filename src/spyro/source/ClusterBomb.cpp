@@ -24,41 +24,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: undefined identifier 'arg_spC'
-static s8 lit_stringBase0[0x20] = {
-    0x50,
-    0x30,
-    0x30,
-    0x30,
-    0x32,
-    0x5F,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x43,
-    0x61,
-    0x6E,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x42,
-    0x61,
-    0x6C,
-    0x6C,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x33,
-    0,
-}; /* const */
-
 void ClusterBomb::DrawClusterBombs() {
     MKVector3 **var_r31_49;
     MKVector3 *temp_r6_86;
@@ -518,14 +483,14 @@ void ClusterBomb::Init() {
     temp_r4_779 = this->unk4C;
     this->unk4C = temp_r4_779 + 4;
     M2C_FIELD(temp_r4_779, MKVector3 ***, 4) = NULL;
-    this->unk50 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+    this->unk50 = MKModel_Create("P0002_LavaCannonBall", NULL, 2, NULL);
 }
 #endif
 
 #if 0 // DRAFT: expression syntax error
 void ClusterBombDescriptor::Init() {
     MKPropDescriptor::Init();
-    gMK->CreatePropDeferred(&lit_stringBase0[0x15], &this->unk60);
+    gMK->CreatePropDeferred("Explosion3", &this->unk60);
 }
 #endif
 

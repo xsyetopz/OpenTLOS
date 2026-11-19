@@ -20,31 +20,6 @@ extern M2C_UNK iMeleeAttackTypeMap;
 static M2C_UNK lit_762;                                /* unable to generate initializer: unknown type */
 static SpyroTailStrikeState states__20SpyroTailStrikeState; /* extra bytes: 5; unable to generate initializer: confusing struct layout */
 
-static s8 lit_stringBase0[0x16] = {
-    0x49,
-    0x6E,
-    0x20,
-    0x44,
-    0x65,
-    0x62,
-    0x75,
-    0x67,
-    0x20,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0,
-    0x4E,
-    0x6F,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-}; /* const */
-
 void SpyroTailStrikeState::HitProp(MKProp *arg0, MKCollisionInfo *arg1) {
     u8 sp56;
     s8 sp55;

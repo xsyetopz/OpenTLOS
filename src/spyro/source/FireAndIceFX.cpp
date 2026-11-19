@@ -14,29 +14,6 @@ extern s32 gViewSeed;
 
 static s32 lit_539 = 0;
 static s32 lit_543 = 0;
-static s8 lit_stringBase0[0x15] = {
-    0x46,
-    0x58,
-    0x5F,
-    0x49,
-    0x63,
-    0x65,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x33,
-    0x33,
-    0x37,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x45,
-    0x6E,
-    0x76,
-    0,
-}; /* const */
 
 void FireAndIceFX::SetCrumble(const bool &arg0) {
     if (((u8) &arg0 != 0) && ((u8) this->unkA4 == 0)) {
@@ -428,15 +405,15 @@ block_27:
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[21])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FireAndIceFX::Init(MKModel *arg0, const float &arg1, const float &arg2) {
     f32 temp_f1_919;
     this->unk60 = NULL;
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
+    this->unk60 = MKMaterial_Create("FX_Ice");
     this->unk6C = NULL;
-    this->unk6C = MKMaterial_Create(&lit_stringBase0[7]);
+    this->unk6C = MKMaterial_Create("FX_337");
     this->unk70 = NULL;
-    this->unk70 = MKMaterial_Create(&lit_stringBase0[0xE]);
+    this->unk70 = MKMaterial_Create("ZapEnv");
     M2C_STRUCT_COPY((s32) &arg_spC + 4, (s32) (&identity - 4) + 4, 0x40);
     arg_sp10.Scale3x3((Matrix *) &arg_sp10, 2.0f);
     MKMaterial_SetTextureMatrix(this->unk60, (Matrix *) &arg_sp10);

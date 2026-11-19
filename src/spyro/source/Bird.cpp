@@ -26,96 +26,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 #if 0 // DRAFT: undefined identifier 'unk174'
-static s8 lit_stringBase0[0x57] = {
-    0x57,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x73,
-    0x6F,
-    0x6E,
-    0x67,
-    0,
-    0x77,
-    0x61,
-    0x74,
-    0x63,
-    0x68,
-    0,
-    0x6A,
-    0x75,
-    0x6D,
-    0x70,
-    0,
-    0x64,
-    0x65,
-    0x70,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x66,
-    0x6C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x61,
-    0x72,
-    0x72,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x72,
-    0x61,
-    0x6E,
-    0x64,
-    0x6F,
-    0x6D,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-}; /* const */
-
 void BirdCritter::Deinit() {
     MKHeap *temp_r3_55;
     MKHeap *temp_r3_85;
@@ -920,7 +830,7 @@ void BirdCritter::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk178'
 s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1671;
     MKIniLine *var_r30_1689;
@@ -932,7 +842,7 @@ s32 BirdCritter::LoadLine(MKIniLine *arg0) {
     if (Critters::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("Waypoints") != 0) {
         temp_r3_1667 = arg0->GetNmbrOfSubLines();
         this->unk178 = temp_r3_1667;
         temp_r31_1670 = this->unk178 * 0x10;
@@ -987,43 +897,43 @@ void BirdCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1758 = this->unk34;
-    if (temp_r30_1758->Exists(&lit_stringBase0[0xA]) != 0) {
-        var_r3_1770 = temp_r30_1758->GetAnim(&lit_stringBase0[0xA]);
+    if (temp_r30_1758->Exists("song") != 0) {
+        var_r3_1770 = temp_r30_1758->GetAnim("song");
     } else {
         var_r3_1770 = NULL;
     }
     this->unk70 = (s32) var_r3_1770;
     temp_r30_1778 = this->unk34;
-    if (temp_r30_1778->Exists(&lit_stringBase0[0xF]) != 0) {
-        var_r3_1788 = temp_r30_1778->GetAnim(&lit_stringBase0[0xF]);
+    if (temp_r30_1778->Exists("watch") != 0) {
+        var_r3_1788 = temp_r30_1778->GetAnim("watch");
     } else {
         var_r3_1788 = NULL;
     }
     this->unk74 = (s32) var_r3_1788;
     temp_r30_1796 = this->unk34;
-    if (temp_r30_1796->Exists(&lit_stringBase0[0x15]) != 0) {
-        var_r3_1806 = temp_r30_1796->GetAnim(&lit_stringBase0[0x15]);
+    if (temp_r30_1796->Exists("jump") != 0) {
+        var_r3_1806 = temp_r30_1796->GetAnim("jump");
     } else {
         var_r3_1806 = NULL;
     }
     this->unk78 = (s32) var_r3_1806;
     temp_r30_1814 = this->unk34;
-    if (temp_r30_1814->Exists(&lit_stringBase0[0x1A]) != 0) {
-        var_r3_1824 = temp_r30_1814->GetAnim(&lit_stringBase0[0x1A]);
+    if (temp_r30_1814->Exists("depart") != 0) {
+        var_r3_1824 = temp_r30_1814->GetAnim("depart");
     } else {
         var_r3_1824 = NULL;
     }
     this->unk7C = (s32) var_r3_1824;
     temp_r30_1832 = this->unk34;
-    if (temp_r30_1832->Exists(&lit_stringBase0[0x21]) != 0) {
-        var_r3_1842 = temp_r30_1832->GetAnim(&lit_stringBase0[0x21]);
+    if (temp_r30_1832->Exists("flight") != 0) {
+        var_r3_1842 = temp_r30_1832->GetAnim("flight");
     } else {
         var_r3_1842 = NULL;
     }
     this->unk80 = (s32) var_r3_1842;
     temp_r30_1850 = this->unk34;
-    if (temp_r30_1850->Exists(&lit_stringBase0[0x28]) != 0) {
-        var_r3_1860 = temp_r30_1850->GetAnim(&lit_stringBase0[0x28]);
+    if (temp_r30_1850->Exists("arrive") != 0) {
+        var_r3_1860 = temp_r30_1850->GetAnim("arrive");
     } else {
         var_r3_1860 = NULL;
     }
@@ -1031,12 +941,12 @@ void BirdCritterDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 BirdCritterDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1882;
 
     var_r31_1882 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x2F], &this->unk90) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3B], &this->unk88, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x49], &this->unk8C, 0) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "randomSound", &this->unk90) != 0) || (arg0->LoadFloat("minSoundDelay", &this->unk88, 0) != 0) || (arg0->LoadFloat("maxSoundDelay", &this->unk8C, 0) != 0)) {
         var_r31_1882 = 1;
     }
     return var_r31_1882;

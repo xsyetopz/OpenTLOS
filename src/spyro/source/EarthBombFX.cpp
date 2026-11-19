@@ -42,57 +42,6 @@ static s32 lit_728 = 0;
 static u8 lit_729 = 1;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp1C'
-static s8 lit_stringBase0[0x30] = {
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0x4C,
-    0x65,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0x42,
-    0x6C,
-    0x61,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x42,
-    0x6F,
-    0x6D,
-    0x62,
-    0,
-}; /* const */
-
 void EarthBombFX::Fire(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, const MKVector3 &arg4) {
     ManagedLight *temp_r4_97;
     f32 temp_f31_159;
@@ -1040,8 +989,8 @@ void EarthBombFXDescriptor::Deinit() {
 #if 0 // DRAFT: undefined identifier 'unkE4'
 void EarthBombFXDescriptor::Init() {
     GamePropDescriptor::Init();
-    this->unkE4 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp(lit_stringBase0));
-    this->unkE8 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x12]));
-    this->unkEC = MKMaterial_Create(&lit_stringBase0[0x23]);
+    this->unkE4 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
+    this->unkE8 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("EarthBeamBlastPS"));
+    this->unkEC = MKMaterial_Create("fx_EarthBomb");
 }
 #endif

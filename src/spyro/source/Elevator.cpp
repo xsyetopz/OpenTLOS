@@ -12,94 +12,8 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
-#if 0 // DRAFT: undefined identifier 'unk5C'
-static s8 lit_stringBase0[0x54] = {
-    0x6D,
-    0x5F,
-    0x50,
-    0x6F,
-    0x73,
-    0x74,
-    0,
-    0x63,
-    0x5F,
-    0x63,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0x30,
-    0x31,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x59,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x79,
-    0x41,
-    0x63,
-    0x63,
-    0x65,
-    0x6C,
-    0x65,
-    0x72,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x77,
-    0x61,
-    0x69,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk5C'
 void Elevator::Move(float arg0) {
     s8 sp80;
     s32 sp7C;
@@ -406,12 +320,12 @@ void Elevator::LoadDone() {
     void *temp_r3_608;
 
     GameProp::LoadDone();
-    temp_r3_597 = MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, lit_stringBase0);
+    temp_r3_597 = MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "m_Post");
     MKModel_SetSubObjectLocalMatrix(this->unk4, (SubObjectType) 0, temp_r3_597, &this->unkE0);
     temp_r3_608 = MKModel_GetSubObjectOrigin(this->unk4, (SubObjectType) 0, temp_r3_597);
     this->unkC8 = M2C_FIELD(temp_r3_608, f64 *, 0);
     this->unkD0 = M2C_FIELD(temp_r3_608, f64 *, 8);
-    MKModel_SetSubObjectLocalMatrix(this->unk4, (SubObjectType) 0, MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, &lit_stringBase0[7]), &this->unkE0);
+    MKModel_SetSubObjectLocalMatrix(this->unk4, (SubObjectType) 0, MKModel_GetSubObjectIndex(this->unk4, (SubObjectType) 0, "c_collide01"), &this->unkE0);
     if (this->unkE0.unk48 > 600.0f) {
         this->unkE0.unk48 = 600.0f;
     }
@@ -442,17 +356,15 @@ void Elevator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 Elevator::LoadLine(MKIniLine *arg0) {
     s32 var_r31_684;
 
     var_r31_684 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x13], &this->unkE0.unk48, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1D], &this->unkE0.unk4C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x27], (f32 *) &this->unkE0.unk60, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x33], &this->unkE0.unk54, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3D], &this->unkE0.unk58, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x4B], &this->unkE0.unk64, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("maxHeight", &this->unkE0.unk48, 0) != 0) || (arg0->LoadFloat("minHeight", &this->unkE0.unk4C, 0) != 0) || (arg0->LoadFloat("startHeight", (f32 *) &this->unkE0.unk60, 0) != 0) || (arg0->LoadFloat("maxYSpeed", &this->unkE0.unk54, 0) != 0) || (arg0->LoadFloat("yAcceleration", &this->unkE0.unk58, 0) != 0) || (arg0->LoadFloat("waitTime", &this->unkE0.unk64, 0) != 0)) {
         var_r31_684 = 1;
     }
     return var_r31_684;
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void Elevator::Deinit() {

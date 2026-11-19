@@ -13,82 +13,8 @@ extern M2C_UNK gb;
 extern s32 zoneDisableMask;
 static PropGroupVolume overlay__15PropGroupVolume[7]; /* extra bytes: 0xB1 */
 static s32 zoneEnableMask = 1;
-#if 0 // DRAFT: function call 'strnicmp(signed char *, signed char[72], int)' does not
-static s8 lit_stringBase0[0x48] = {
-    0x6F,
-    0x76,
-    0x65,
-    0x72,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x65,
-    0,
-    0x65,
-    0x6E,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x5A,
-    0x6F,
-    0x6E,
-    0x65,
-    0,
-    0x72,
-    0x65,
-    0x67,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x64,
-    0x69,
-    0x73,
-    0x74,
-    0x61,
-    0x6E,
-    0x63,
-    0x65,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x62,
-    0x53,
-    0x68,
-    0x6F,
-    0x77,
-    0x45,
-    0x6E,
-    0x76,
-    0x44,
-    0x6F,
-    0x6D,
-    0x65,
-    0,
-    0x62,
-    0x45,
-    0x6E,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'strnicmp(signed char *, const char[8], int)' does not match
 u8 PropGroupVolume::LoadOverlayName(MKIniLine *arg0) {
     s8 *sp8;
     s32 temp_r28_128;
@@ -99,9 +25,9 @@ u8 PropGroupVolume::LoadOverlayName(MKIniLine *arg0) {
     s32 var_r3_117;
     void *temp_r4_93;
 
-    if (strnicmp(arg0->GetFieldName(), lit_stringBase0, 7) == 0) {
+    if (strnicmp(arg0->GetFieldName(), "overlay", 7) == 0) {
         arg0->AsString(0, &sp8);
-        if (stricmp(sp8, &lit_stringBase0[8]) == 0) {
+        if (stricmp(sp8, "none") == 0) {
             return 1U;
         }
         var_r31_72 = 0;
@@ -282,12 +208,12 @@ void PropGroupVolume::LoadDone() {
     Disable();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 PropGroupVolume::LoadLine(MKIniLine *arg0) {
     s32 var_r31_445;
 
     var_r31_445 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xD], (s32 *) &this->unk50.unk48, 0) != 0) || (this->unk50.LoadLine(&lit_stringBase0[0x18], arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1F], &this->unk2A8, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x32], &this->unk2AC, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x3F], &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("enableZone", (s32 *) &this->unk50.unk48, 0) != 0) || (this->unk50.LoadLine("region", arg0) != 0) || (arg0->LoadFloat("distanceMultiplier", &this->unk2A8, 0) != 0) || (arg0->LoadBool("bShowEnvDome", &this->unk2AC, 0) != 0) || (arg0->LoadBool("bEnabled", &this->unk2AD, 0) != 0) || (LoadOverlayName(arg0) != 0)) {
         var_r31_445 = 1;
     }
     return var_r31_445;

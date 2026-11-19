@@ -85,12 +85,12 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void ExpShock::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r3_206;
     void *temp_r4_209;
 
-    temp_r3_206 = M2C_FIELD(this->__vptr, void *(**)(), 0x3C)();
+    temp_r3_206 = CreateParticle();
     if (temp_r3_206 != NULL) {
         temp_r4_209 = M2C_FIELD(temp_r3_206, void **, 0x2C);
         M2C_FIELD(temp_r3_206, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);

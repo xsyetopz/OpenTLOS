@@ -16,139 +16,8 @@ M2C_UNK free(f32);                                  /* extern */
 void *malloc(s32);                                  /* extern */
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
-#if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x81] = {
-    0x6E,
-    0x75,
-    0x6D,
-    0x62,
-    0x65,
-    0x72,
-    0x49,
-    0x6E,
-    0x50,
-    0x6F,
-    0x6F,
-    0x6C,
-    0,
-    0x74,
-    0x69,
-    0x6D,
-    0x65,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x62,
-    0x6F,
-    0x6C,
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x4C,
-    0x65,
-    0x6E,
-    0x67,
-    0x74,
-    0x68,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x4F,
-    0x66,
-    0x66,
-    0,
-    0x73,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x64,
-    0x72,
-    0x6F,
-    0x70,
-    0x50,
-    0x6F,
-    0x73,
-    0,
-    0x62,
-    0x52,
-    0x6F,
-    0x6C,
-    0x6C,
-    0,
-    0x70,
-    0x72,
-    0x6F,
-    0x70,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: pointer/array required
 void TrapSpawnPool::Update() {
     u8 sp1C;
     s32 sp18;
@@ -369,12 +238,12 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[129]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TrapSpawnPool::LoadLine(MKIniLine *arg0) {
     s32 var_r31_462;
 
     var_r31_462 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, (s32 *) &this->unk50.unk40, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xD], &this->unk114, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1A], &this->unk50.unk48, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x24], &this->unk118, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x31], &this->unkFC, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3E], &this->unk100, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x4B], &this->unkF8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x56], &this->unk11C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x64], &this->unk104, 0) != 0) || (arg0->LoadVector3(&lit_stringBase0[0x6A], (MKVector3 *) &this->unkE8, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unk50.unk64.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("numberInPool", (s32 *) &this->unk50.unk40, 0) != 0) || (arg0->LoadInt("timeComplete", &this->unk114, 0) != 0) || (arg0->LoadFloat("spawnTime", &this->unk50.unk48, 0) != 0) || (arg0->LoadFloat("bolFallSpeed", &this->unk118, 0) != 0) || (arg0->LoadFloat("bounceHeight", &this->unkFC, 0) != 0) || (arg0->LoadFloat("bounceLength", &this->unk100, 0) != 0) || (arg0->LoadFloat("bounceTime", &this->unkF8, 0) != 0) || (arg0->LoadFloat("bounceDropOff", &this->unk11C, 0) != 0) || (arg0->LoadFloat("scale", &this->unk104, 0) != 0) || (arg0->LoadVector3("dropPos", (MKVector3 *) &this->unkE8, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unk50.unk64.LoadLine(arg0) != 0)) {
         var_r31_462 = 1;
     }
     return var_r31_462;
@@ -425,12 +294,12 @@ void TrapSpawnPool::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 TrapSpawnPoolDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_669;
 
     var_r31_669 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x72], (u8 *) &this->unk64, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x78], &this->unk60, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool("bRoll", (u8 *) &this->unk64, 0) != 0) || (arg0->LoadString("propName", &this->unk60, 0) != 0)) {
         var_r31_669 = 1;
     }
     return var_r31_669;

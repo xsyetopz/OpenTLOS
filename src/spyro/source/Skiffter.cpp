@@ -19,64 +19,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x36] = {
-    0x57,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x43,
-    0x6C,
-    0x69,
-    0x6D,
-    0x62,
-    0,
-    0x43,
-    0x6C,
-    0x69,
-    0x6D,
-    0x62,
-    0x5F,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x54,
-    0x61,
-    0x6B,
-    0x65,
-    0x5F,
-    0x4F,
-    0x66,
-    0x66,
-    0,
-    0x46,
-    0x6C,
-    0x79,
-    0,
-    0x4C,
-    0x61,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void SkiffterCritter::Deinit() {
     MKHeap *temp_r3_57;
     MKHeap *temp_r3_76;
@@ -1216,7 +1160,7 @@ void SkiffterCritter::LoadDone() {
     Critters::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk178'
 s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_1864;
     MKIniLine *var_r28_1883;
@@ -1228,7 +1172,7 @@ s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
     if (Critters::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("Waypoints") != 0) {
         temp_r3_1860 = arg0->GetNmbrOfSubLines();
         this->unk178 = temp_r3_1860;
         temp_r29_1863 = this->unk178 * 0x10;
@@ -1243,7 +1187,7 @@ s32 SkiffterCritter::LoadLine(MKIniLine *arg0) {
         var_r28_1883 = arg0->unkC->GetSubLine(arg0);
 loop_8:
         if (var_r28_1883 != NULL) {
-            var_r28_1883->LoadVector3(&lit_stringBase0[0xA], this->unk174 + var_r30_1879, 0);
+            var_r28_1883->LoadVector3("waypoint", this->unk174 + var_r30_1879, 0);
             var_r30_1879 += 0x10;
             var_r28_1883 = var_r28_1883->unkC->GetNextLine(var_r28_1883);
             goto loop_8;
@@ -1281,36 +1225,36 @@ void SkiffterCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1954 = this->unk34;
-    if (temp_r30_1954->Exists(&lit_stringBase0[0x13]) != 0) {
-        var_r3_1966 = temp_r30_1954->GetAnim(&lit_stringBase0[0x13]);
+    if (temp_r30_1954->Exists("Climb") != 0) {
+        var_r3_1966 = temp_r30_1954->GetAnim("Climb");
     } else {
         var_r3_1966 = NULL;
     }
     this->unk74 = (s32) var_r3_1966;
     temp_r30_1974 = this->unk34;
-    if (temp_r30_1974->Exists(&lit_stringBase0[0x19]) != 0) {
-        var_r3_1984 = temp_r30_1974->GetAnim(&lit_stringBase0[0x19]);
+    if (temp_r30_1974->Exists("Climb_Idle") != 0) {
+        var_r3_1984 = temp_r30_1974->GetAnim("Climb_Idle");
     } else {
         var_r3_1984 = NULL;
     }
     this->unk78 = (s32) var_r3_1984;
     temp_r30_1992 = this->unk34;
-    if (temp_r30_1992->Exists(&lit_stringBase0[0x24]) != 0) {
-        var_r3_2002 = temp_r30_1992->GetAnim(&lit_stringBase0[0x24]);
+    if (temp_r30_1992->Exists("Take_Off") != 0) {
+        var_r3_2002 = temp_r30_1992->GetAnim("Take_Off");
     } else {
         var_r3_2002 = NULL;
     }
     this->unk7C = (s32) var_r3_2002;
     temp_r30_2010 = this->unk34;
-    if (temp_r30_2010->Exists(&lit_stringBase0[0x2D]) != 0) {
-        var_r3_2020 = temp_r30_2010->GetAnim(&lit_stringBase0[0x2D]);
+    if (temp_r30_2010->Exists("Fly") != 0) {
+        var_r3_2020 = temp_r30_2010->GetAnim("Fly");
     } else {
         var_r3_2020 = NULL;
     }
     this->unk80 = (s32) var_r3_2020;
     temp_r30_2028 = this->unk34;
-    if (temp_r30_2028->Exists(&lit_stringBase0[0x31]) != 0) {
-        var_r3_2038 = temp_r30_2028->GetAnim(&lit_stringBase0[0x31]);
+    if (temp_r30_2028->Exists("Land") != 0) {
+        var_r3_2038 = temp_r30_2028->GetAnim("Land");
     } else {
         var_r3_2038 = NULL;
     }

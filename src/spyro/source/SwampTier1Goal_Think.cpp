@@ -590,12 +590,10 @@ void SwampTier1Goal_Think::Reset() {
     this->unk3C = 0;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SwampTier1Goal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 void SwampTier1Goal_Think::Deinit() {
     Goal<SwampTier1> *temp_r3_1213;

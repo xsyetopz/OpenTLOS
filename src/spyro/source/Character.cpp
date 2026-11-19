@@ -38,66 +38,6 @@ extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: undefined identifier 'unk58C'
-static s8 lit_stringBase0[0x39] = {
-    0x62,
-    0x53,
-    0x79,
-    0x6E,
-    0x6B,
-    0x65,
-    0x72,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x6B,
-    0x41,
-    0x74,
-    0,
-    0x62,
-    0x53,
-    0x79,
-    0x6E,
-    0x6B,
-    0x65,
-    0x72,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x49,
-    0x44,
-    0,
-    0x62,
-    0x44,
-    0x72,
-    0x61,
-    0x77,
-    0x49,
-    0x6E,
-    0x43,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0x73,
-    0,
-}; /* const */
-
 void Character::UpdateSpeed() {
     f32 temp_f1_29;
     f32 temp_f1_32;
@@ -315,7 +255,7 @@ void Character::SetMovementType(CharacterMoveType arg0) {
 
     temp_r0_378 = this->unk110.unk578;
     if ((temp_r0_378 != (s32) arg0) && (temp_r0_378 == 1)) {
-        M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(CollisionObject *, f64 *, M2C_UNK, f32), 0x14)(&this->unk110, &this->unk110.unk478, 0xA, 1.0f);
+        this->unk110.Teleport(this->unk110.unk478, 0xA, 1.0f);
     }
     this->unk110.unk578 = (s32) arg0;
 }
@@ -1742,7 +1682,7 @@ void Character::FindAnyCollisionPosY(const MKVector3 &arg0, float arg1, MKCollis
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'const float' to
 s32 Character::Teleport(const Matrix *arg0) {
     f64 sp10;
     u8 spC;
@@ -1758,7 +1698,7 @@ s32 Character::Teleport(const Matrix *arg0) {
         spC = temp_r4_3027->unk4;
         temp_r4_3027->unk4 = 0;
     }
-    if (M2C_FIELD(this->unk110.__vptr, u8 (**)(CollisionObject *, f32 *, M2C_UNK, f32), 0x14)(&this->unk110, &arg0->unk30, 0xA, 5.0f) != 0) {
+    if (this->unk110.Teleport(arg0->unk30, 0xA, 5.0f) != 0) {
         M2C_FIELD(this, f64 *, 0xE0) = (f64) M2C_FIELD(arg0, f64 *, 0x20);
         M2C_FIELD(this, f64 *, 0xE8) = (f64) M2C_FIELD(arg0, f64 *, 0x28);
         temp_f3_3055 = M2C_FIELD(this, f64 *, 0xE0);
@@ -1881,7 +1821,7 @@ void Character::Despawn(bool arg0) {
     Disable();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 s32 Character::Spawn(SpawnPointRef *arg0) {
     f64 sp40;
     f64 sp38;
@@ -1896,7 +1836,7 @@ s32 Character::Spawn(SpawnPointRef *arg0) {
     f64 temp_f1_3376;
     void *temp_r31_3395;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     Activate();
     SetMovementType((CharacterMoveType) 2);
     this->unk110.unk4A8 = 0.0f;
@@ -1940,7 +1880,7 @@ s32 Character::Spawn(SpawnPointRef *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk52C'
 s32 Character::Spawn(const Matrix *arg0) {
     MKCollisionResult sp10;
     s32 spC;
@@ -1956,7 +1896,7 @@ s32 Character::Spawn(const Matrix *arg0) {
     void *temp_r28_3513;
     void *temp_r29_3491;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     Deactivate();
     var_r28_3438 = NULL;
     M2C_FIELD(this, f64 *, 0x5B8) = (f64) M2C_FIELD(arg0, f64 *, 0x30);
@@ -2082,16 +2022,16 @@ void Character::Message(MKMessage *arg0) {
     if (temp_r0_3681 != 0x9C) {
         switch (temp_r0_3681) {                     /* irregular */
         case 190:
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x54)();
+            Activate();
             goto block_88;
         case 191:
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x58)();
+            Deactivate();
             goto block_88;
         default:
             M2C_FIELD(this->__vptr, s8 (**)(s32), 0x3C)(((u32) this->unk10 >> 0x14U) & 1);
             goto block_88;
         case 213:
-            M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+            Reset();
             goto block_88;
         case 82:
             temp_r28_3797 = M2C_FIELD(this->__vptr, s8 (**)(s32), 0x3C)(0);
@@ -2504,7 +2444,7 @@ void Character::LoadDone() {
     temp_r3_4560 = checked_cast<CharacterDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = this;
     spC = 0;
-    M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(CollisionObject *, void *, f32 *, u8, MKCollisionInfo *, M2C_UNK, M2C_UNK, M2C_UNK), 8)(&this->unk110, temp_r3_4560 + 0x7C, &this->unk110.unk4A8, M2C_FIELD(temp_r30_4558, u8 *, 0x76), this->unk110.unk524, 0, 1, 0);
+    this->unk110.Init(temp_r3_4560 + 0x7C, this->unk110.unk4A8, M2C_FIELD(temp_r30_4558, u8 *, 0x76), this->unk110.unk524, 0, 1, 0);
     this->unk110.unk478.Init(checked_cast<P19CharacterDescriptor, 16MKPropDescriptor>__FP16MKPropDescriptor((MKPropDescriptor *) this->unk0) + 0xC8, &this->unk110);
     M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(f64 *, CollisionObject *), 0x4C)(&sp20, &this->unk110);
     M2C_FIELD(this, f64 *, 0x5B8) = sp20;
@@ -2536,21 +2476,21 @@ void Character::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'PropFlagsSet(unsigned long *, unsigned int)' does not match
 s32 Character::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
     sp8 = 0;
-    if ((arg0->IsField(lit_stringBase0) != 0) && (arg0->GetBool(0) != 0)) {
+    if ((arg0->IsField("bSynkerLookAt") != 0) && (arg0->GetBool(0) != 0)) {
         PropFlagsSet((u32 *) &this->unk10, 0x800000U);
     }
-    if ((arg0->IsField(&lit_stringBase0[0xE]) != 0) && (arg0->GetBool(0) != 0)) {
+    if ((arg0->IsField("bSynkerAnimate") != 0) && (arg0->GetBool(0) != 0)) {
         PropFlagsSet((u32 *) &this->unk10, 0x01000000U);
     }
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk110.unk478.LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk110.unk570, arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x1D], (s32 *) &this->unk110.unk52C, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (this->unk110.unk478.LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk110.unk570, arg0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk110.unk52C, 0) != 0)) {
         return 1;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x28], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bDrawInCutscenes", &sp8, 0) != 0) {
         this->unk110.unk5A5 = (this->unk110.unk5A5 & ~0x80) | ((sp8 << 7) & 0x80);
         return 1;
     }
@@ -2579,7 +2519,7 @@ void Character::Deinit() {
     }
     this->unk110.unk520 = NULL;
     this->unk4 = NULL;
-    M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(CollisionObject *), 0xC)(&this->unk110);
+    this->unk110.Deinit();
     temp_r3_4790 = this->unk110.unk534;
     if (temp_r3_4790 != NULL) {
         MKMaterial_Destroy((MKMaterial *) temp_r3_4790);

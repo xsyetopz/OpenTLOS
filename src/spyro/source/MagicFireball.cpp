@@ -30,7 +30,6 @@ extern MKPropDescriptor *pMagicFireballDescriptor;
 
 static s32 lit_555 = 0;
 static u8 lit_556 = 1;
-static s8 lit_stringBase0[0xD] = { 0x4D, 0x61, 0x67, 0x69, 0x63, 0x46, 0x6C, 0x61, 0x6D, 0x65, 0x50, 0x53, 0 }; /* const */
 
 void MagicFireball::Activate() {
     ManagedLight *temp_r4_53;
@@ -574,7 +573,7 @@ void MagicFireball::Init() {
 void MagicFireballDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pMagicFireballDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unkF0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("MagicFlamePS"));
 }
 #endif
 

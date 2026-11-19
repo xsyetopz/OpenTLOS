@@ -15,145 +15,6 @@ extern M2C_UNK gEmptyPtrList;
 extern M2C_UNK gEmptyPtrListDL;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-static s8 lit_stringBase0[0x89] = {
-    0x66,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x66,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0x42,
-    0x65,
-    0x74,
-    0x77,
-    0x65,
-    0x65,
-    0x6E,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x73,
-    0,
-    0x69,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x49,
-    0x74,
-    0x65,
-    0x6D,
-    0x73,
-    0,
-    0x69,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x41,
-    0x6D,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0,
-    0x4F,
-    0x6E,
-    0x41,
-    0x6C,
-    0x6C,
-    0x44,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x43,
-    0x68,
-    0x69,
-    0x6C,
-    0x64,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x65,
-    0x72,
-    0x41,
-    0x6C,
-    0x6C,
-    0x44,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x62,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x63,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0,
-    0x62,
-    0x4C,
-    0x6F,
-    0x63,
-    0x6B,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x7A,
-    0x6F,
-    0x6E,
-    0x65,
-    0,
-}; /* const */
 
 void SpawnerObject::AllDied() {
     this->unk4C |= 8;
@@ -1182,25 +1043,25 @@ void SpawnerObject::LoadDone(int arg0, int arg1, bool arg2, unsigned int arg3) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[137]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SpawnerObject::LoadLine(MKIniLine *arg0) {
     s32 spC;
     u8 sp8;
 
     sp8 = 0;
     spC = 0;
-    if ((arg0->LoadFloat(lit_stringBase0, &this->unk30, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], &this->unk34, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x20], &this->unk28, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x2F], &this->unk24, 0) != 0) || (this->unk3C.LoadLine(arg0, &lit_stringBase0[0x3F]) != 0) || (this->unk40.LoadLine(arg0, &lit_stringBase0[0x49]) != 0)) {
+    if ((arg0->LoadFloat("fSpawnDelay", &this->unk30, 0) != 0) || (arg0->LoadFloat("fDelayBetweenSpawns", &this->unk34, 0) != 0) || (arg0->LoadInt("iMaxSpawnItems", &this->unk28, 0) != 0) || (arg0->LoadInt("iMaxSpawnAmount", &this->unk24, 0) != 0) || (this->unk3C.LoadLine(arg0, "OnAllDead") != 0) || (this->unk40.LoadLine(arg0, "OnChildSpawnerAllDead") != 0)) {
         return 1;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x5F], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bOnlySpawnOffscreen", &sp8, 0) != 0) {
         this->unk4C = (this->unk4C & ~0x20) | ((sp8 << 5) & 0x20);
         goto block_14;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x73], &sp8, 0) != 0) {
+    if (arg0->LoadBool("bLockSpawnPoints", &sp8, 0) != 0) {
         this->unk4C = (this->unk4C & ~0x10) | ((sp8 << 4) & 0x10);
         goto block_14;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x84], &spC, 0) != 0) {
+    if (arg0->LoadInt("zone", &spC, 0) != 0) {
         this->unk18 = spC;
 block_14:
         return 1;

@@ -7,34 +7,8 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier 'unkA04'
-static s8 lit_stringBase0[0x17] = {
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x45,
-    0x6E,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x64,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x4E,
-    0x6F,
-    0x64,
-    0x65,
-    0,
-}; /* const */
-
 s32 Kane::LoadLine(MKIniLine *arg0) {
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool(lit_stringBase0, &this->unk110.unkA04, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xD], &this->unk110.unkA00, 0) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("StartEnabled", &this->unk110.unkA04, 0) != 0) || (arg0->LoadInt("StartNode", &this->unk110.unkA00, 0) != 0)) {
         return 1;
     }
     return 0;

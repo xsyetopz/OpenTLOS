@@ -35,29 +35,6 @@ static s32 lit_549 = 0;
 static u8 lit_550 = 1;
 
 #if 0 // DRAFT: illegal explicit conversion from 'MKVector3' to
-static s8 lit_stringBase0[0x14] = {
-    0x53,
-    0x74,
-    0x72,
-    0x69,
-    0x6B,
-    0x65,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x31,
-    0,
-}; /* const */
-
 void LightningStrikeFX::Strike() {
     f64 sp190;
     f64 sp188;
@@ -444,7 +421,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: pointer/array required
 s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_791;
     MKIniLine *var_r30_809;
@@ -457,7 +434,7 @@ s32 LightningStrikeFX::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("StrikePoints") != 0) {
         temp_r3_787 = arg0->GetNmbrOfSubLines();
         this->unk50 = temp_r3_787;
         temp_r31_790 = this->unk50 * 0x10;
@@ -1299,7 +1276,7 @@ void LightningStrikeFXDescriptor::Init() {
     this->unk1C = (BoundingVolume *) &this->unk70;
     this->unk90 = 0.0f;
     this->unkA4 = 0;
-    temp_r3_2359 = MKMaterial_Create(&lit_stringBase0[0xD]);
+    temp_r3_2359 = MKMaterial_Create("fx_351");
     this->unk94 = temp_r3_2359;
     temp_r3_2361 = temp_r3_2359->Current();
     if (temp_r3_2361 != NULL) {

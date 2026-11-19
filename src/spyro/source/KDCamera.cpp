@@ -1217,13 +1217,13 @@ void KDCamera::PreStateEnter() {
     this->unk158 = M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0xC);
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'KDMessageStorage'
 void KDCamera::PostCameraUpdate() {
     s32 spC;
     s32 sp8;
     void *temp_r3_2410;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x9C)();
+    CameraEffectsUpdate();
     HeroMoveYawUpdate();
     this->unk58->unk4 = -1;
     this->unk124 = 0.0f;
@@ -2026,7 +2026,7 @@ void KDCamera::VisibleTargetDisable() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'long' to
 void KDCamera::VisibleTargetUpdate() {
     u8 sp138;
     s32 sp134;
@@ -2092,7 +2092,7 @@ void KDCamera::VisibleTargetUpdate() {
     void *temp_r8_3913;
 
     var_r28_3868 = 0;
-    if ((M2C_FIELD(this->__vptr, u8 (**)(), 0x5C)() != 0) && (this->unk50->IsMoving() == 0)) {
+    if ((PlayerRotatedCamera() != 0) && (this->unk50->IsMoving() == 0)) {
         var_r28_3868 = 1;
     }
     if ((TestUserStateFlag(0x20U) == 0) || (var_r28_3868 != 0)) {

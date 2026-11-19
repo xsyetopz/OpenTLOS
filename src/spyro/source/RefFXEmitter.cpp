@@ -16,25 +16,6 @@
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-static s8 lit_stringBase0[0x11] = {
-    0x72,
-    0x5F,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x25,
-    0x64,
-    0,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-}; /* const */
 
 void RefFXEmitter::Message(MKMessage *arg0) {
     KDProp::Message(arg0);
@@ -105,7 +86,7 @@ void RefFXEmitter::Init() {
     this->unk94 = 0;
 }
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char[17], long)' does not match
+#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, signed char *, long *)'
 void RefFXEmitterDescriptor::Resolve() {
     s32 sp8;
     s32 temp_r3_257;
@@ -114,13 +95,13 @@ void RefFXEmitterDescriptor::Resolve() {
     sp8 = -1;
     this->unk98 = 0;
 loop_2:
-    if (MKModel_RefPointExists(this->unk2C, Str_Printf(lit_stringBase0, this->unk98), &sp8) != 0) {
+    if (MKModel_RefPointExists(this->unk2C, Str_Printf("r_fxemit%d", this->unk98), &sp8) != 0) {
         temp_r3_257 = this->unk98;
         this->unk98 = temp_r3_257 + 1;
         *(this + ((temp_r3_257 * 4) + 0x70)) = sp8;
         goto loop_2;
     }
-    this->unk9C = checked_cast<Steam *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB]));
+    this->unk9C = checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam"));
 }
 #endif
 

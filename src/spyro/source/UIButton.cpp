@@ -187,34 +187,30 @@ void UIButton::OnActivate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void UIButton::Update() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x44)();
+    SetColor();
     UIContainer::Update();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void UIButton::Message(UIMessage *arg0) {
     s32 temp_r0_407;
 
     temp_r0_407 = arg0->unk0;
     switch (temp_r0_407) {                          /* irregular */
     case 6:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x38)();
+        OnActivate();
         break;
     case 8:
         this->unk16 = 1;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x3C)();
+        OnSelection();
         break;
     case 9:
         this->unk16 = 0;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x40)();
+        OnDeselection();
         break;
     }
     UIContainer::Message(arg0);
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void UIButton::Resolve() {

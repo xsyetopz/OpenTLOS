@@ -19,42 +19,8 @@ static s32 lit_508 = 5;
 static u8 lit_514 = 1;
 static u8 lit_518 = 1;
 static u8 lit_522 = 0;
-#if 0 // DRAFT: function call 'Disable(Projectile *, unsigned char, ShapedTrailFX *)' does
-static s8 lit_stringBase0[0x20] = {
-    0x53,
-    0x68,
-    0x61,
-    0x70,
-    0x65,
-    0x64,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x33,
-    0x32,
-    0x33,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'Disable(Projectile *, unsigned char, ShapedTrailFX *)' does
 void LavaBall::Collided(MKCollisionResult &arg0) {
     s32 sp8;
     ShapedTrailFX *temp_r5_118;
@@ -98,7 +64,7 @@ void LavaBall::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, 
     temp_r3_186->unkA0 |= 0x40;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[32]' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void LavaBall::LoadDone() {
     f64 sp20;
     f64 sp18;
@@ -109,7 +75,7 @@ void LavaBall::LoadDone() {
     ShapedTrailFX *temp_r3_210;
 
     Projectile::LoadDone();
-    temp_r3_210 = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    temp_r3_210 = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp("ShapedTrailFX"));
     sp8 = 1.0f;
     spC = 0.5f;
     sp10 = 0.0f;
@@ -117,7 +83,7 @@ void LavaBall::LoadDone() {
     this->unk150 = temp_r3_210;
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
-    this->unk150->InitData(this->unk4, lit_507, &lit_stringBase0[0xE], lit_508, *((MKVector4 *) &sp18), 2.0f, 1U, 0.2f);
+    this->unk150->InitData(this->unk4, lit_507, "FX_323", lit_508, *((MKVector4 *) &sp18), 2.0f, 1U, 0.2f);
 }
 #endif
 
@@ -137,7 +103,7 @@ void *LavaBall::CreateInstance() {
 #if 0 // DRAFT: illegal use of non-static member
 void LavaBallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x15]));
+    this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
     pLavaBallDescriptor = (MKPropDescriptor *) this;
 }
 #endif

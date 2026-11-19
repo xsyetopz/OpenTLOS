@@ -960,12 +960,10 @@ u8 ElecTier2Goal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void ElecTier2Goal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 void ElecTier2Goal_Think::Deinit() {
     Goal<Enemy> *temp_r3_1918;

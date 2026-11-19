@@ -30,61 +30,8 @@ extern s32 GS_OBBigHiveSmash2;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'unk1E8'
-static s8 lit_stringBase0[0x33] = {
-    0x72,
-    0x5F,
-    0x61,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x68,
-    0x25,
-    0x64,
-    0,
-    0x64,
-    0x5F,
-    0x73,
-    0x70,
-    0x69,
-    0x6E,
-    0x65,
-    0x31,
-    0,
-    0x4E,
-    0x65,
-    0x73,
-    0x74,
-    0x49,
-    0x44,
-    0x25,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x25,
-    0x64,
-    0,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x47,
-    0x6F,
-    0x6F,
-    0x70,
-    0x50,
-    0x53,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk1E8'
 void BigBeetleHive::EmitGoopDrips() {
     MKVector3 sp28;
     f64 sp20;
@@ -370,7 +317,7 @@ void BigBeetleHive::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char[51], long)' does not match
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
 void BigBeetleHive::Resolve() {
     s32 var_r28_585;
     s32 var_r31_587;
@@ -383,7 +330,7 @@ void BigBeetleHive::Resolve() {
     do {
         temp_r29_589 = this + var_r31_587;
         if ((MKSceneManager *) M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0) != (MKSceneManager *)-1) {
-            temp_ret_599 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf(lit_stringBase0, var_r28_585));
+            temp_ret_599 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_attach%d", var_r28_585));
             M2C_FIELD(temp_r29_589, s32 *, 0x1B4) = (s32) temp_ret_599;
             M2C_FIELD(temp_r29_589, s32 *, 0x1AC) = checked_cast<BeetleNestSmall *, MKProp>(((MKSceneManager *) (M2C_FIELD(temp_r29_589, MKSceneManager **, 0x1B0)))->PropResolver_Resolve((s32) (u32) (u64) temp_ret_599));
         }
@@ -393,14 +340,14 @@ void BigBeetleHive::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'void *' to
 void BigBeetleHive::LoadDone() {
     Shatterable::LoadDone();
-    this->unk198 = M2C_BITWISE(f32, MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(&lit_stringBase0[0xB])));
+    this->unk198 = M2C_BITWISE(f32, MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_spine1")));
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, long, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 BigBeetleHive::LoadLine(MKIniLine *arg0) {
     f32 var_f1_654;
     s32 temp_ret_654;
@@ -416,7 +363,7 @@ s32 BigBeetleHive::LoadLine(MKIniLine *arg0) {
     var_r29_661 = 0;
     var_r31_663 = 0;
 loop_3:
-    temp_ret_674 = arg0->LoadInt(Str_Printf(&lit_stringBase0[0x14], var_r29_661, var_f1_654), this + (var_r31_663 + 0x1B0), 0);
+    temp_ret_674 = arg0->LoadInt(Str_Printf("NestID%d", var_r29_661, var_f1_654), this + (var_r31_663 + 0x1B0), 0);
     var_f1_654 = M2C_BITWISE(f32, temp_ret_674);
     if (temp_ret_674 != 0) {
         return 1;
@@ -452,7 +399,7 @@ void BigBeetleHive::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, long)' does not match
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
 void BigBeetleHiveDescriptor::LoadDone() {
     s32 temp_r0_746;
     s32 var_r29_734;
@@ -463,7 +410,7 @@ void BigBeetleHiveDescriptor::LoadDone() {
     var_r29_734 = 0;
     var_r31_736 = 0;
     do {
-        temp_r3_744 = Tools_GetMatchingRefPointIndex(this->unk2C, Str_Printf(&lit_stringBase0[0x1D], var_r29_734));
+        temp_r3_744 = Tools_GetMatchingRefPointIndex(this->unk2C, Str_Printf("r_fxemit%d", var_r29_734));
         var_r29_734 += 1;
         temp_r0_746 = var_r31_736 + 0x170;
         var_r31_736 += 4;
@@ -472,10 +419,10 @@ void BigBeetleHiveDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void BigBeetleHiveDescriptor::Init() {
     ShatterableDescriptor::Init();
-    this->unk16C = checked_cast<StickyPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x28]));
+    this->unk16C = checked_cast<StickyPS *, MKProp>(gMK->CreateProp("FireGoopPS"));
 }
 #endif
 

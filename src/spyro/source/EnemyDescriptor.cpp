@@ -171,7 +171,7 @@ loop_27:
                     }
                     var_r26_179 += 1;
                 } while (var_r26_179 < 5);
-                temp_ret_202 = M2C_FIELD(gMK->__vptr, f32 (**)(MKSceneManager *, s32), 0x5C)(gMK, *(this->unk23C + var_r28_143));
+                temp_ret_202 = gMK->FindDescriptor(*(this->unk23C + var_r28_143));
                 var_f1_132 = temp_ret_202;
                 var_r30_141 += 1;
                 *(this->unk240 + var_r28_143) = M2C_BITWISE(s32, temp_ret_202);
@@ -935,12 +935,10 @@ loop_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unk254 = M2C_FIELD(gMK->__vptr, s32 (**)(MKSceneManager *, void *), 0x5C)(gMK, "EnemyStonedShatter");
+    this->unk254 = gMK->FindDescriptor("EnemyStonedShatter");
 }
-#endif
 
 #if 0 // DRAFT: function call 'DataMap_GetValue(DataMap *, signed char *)' does not match
 void EnemyDescriptor::LoadDone() {

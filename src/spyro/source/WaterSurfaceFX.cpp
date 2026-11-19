@@ -15,57 +15,6 @@ WaterSurfaceFX::Wake **malloc(M2C_UNK);             /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
-static s8 lit_stringBase0[0x30] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x77,
-    0x61,
-    0x6B,
-    0x65,
-    0x41,
-    0x64,
-    0x64,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x77,
-    0x61,
-    0x6B,
-    0x65,
-    0x53,
-    0x75,
-    0x62,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x52,
-    0x69,
-    0x70,
-    0x70,
-    0x6C,
-    0x65,
-    0x41,
-    0x64,
-    0x64,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x52,
-    0x69,
-    0x70,
-    0x70,
-    0x6C,
-    0x65,
-    0x53,
-    0x75,
-    0x62,
-    0,
-}; /* const */
-
 void WaterSurfaceFX::UpdateRipples() {
     WaterSurfaceFX::Wake **temp_r4_53;
     WaterSurfaceFX::Wake **var_r6_41;
@@ -938,13 +887,13 @@ void WaterSurfaceFXDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[48])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void WaterSurfaceFXDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
-    this->unk64 = MKMaterial_Create(&lit_stringBase0[0xB]);
-    this->unk68 = MKMaterial_Create(&lit_stringBase0[0x16]);
-    this->unk6C = MKMaterial_Create(&lit_stringBase0[0x23]);
+    this->unk60 = MKMaterial_Create("fx_wakeAdd");
+    this->unk64 = MKMaterial_Create("fx_wakeSub");
+    this->unk68 = MKMaterial_Create("fx_RippleAdd");
+    this->unk6C = MKMaterial_Create("fx_RippleSub");
 }
 #endif
 

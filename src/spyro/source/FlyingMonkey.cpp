@@ -21,93 +21,8 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 extern MKPropDescriptor *pFlyingMonkeyDescriptor;
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
-static s8 lit_stringBase0[0x53] = {
-    0x48,
-    0x69,
-    0x74,
-    0x5F,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x30,
-    0x31,
-    0,
-    0x48,
-    0x69,
-    0x74,
-    0x5F,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x30,
-    0x32,
-    0,
-    0x48,
-    0x69,
-    0x74,
-    0x5F,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x30,
-    0x33,
-    0,
-    0x4C,
-    0x65,
-    0x61,
-    0x70,
-    0x5F,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x46,
-    0x6C,
-    0x65,
-    0x65,
-    0,
-    0x4A,
-    0x75,
-    0x6D,
-    0x70,
-    0x5F,
-    0x75,
-    0x70,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x41,
-    0x30,
-    0x33,
-    0x35,
-    0x5F,
-    0x77,
-    0x65,
-    0x61,
-    0x70,
-    0x6F,
-    0x6E,
-    0x30,
-    0x33,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void FlyingMonkey::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     s32 temp_r31_49;
 
@@ -439,48 +354,48 @@ void FlyingMonkeyDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pFlyingMonkeyDescriptor = (MKPropDescriptor *) this;
     temp_r30_679 = this->unk34;
-    if (temp_r30_679->Exists(lit_stringBase0) != 0) {
-        var_r3_687 = temp_r30_679->GetAnim(lit_stringBase0);
+    if (temp_r30_679->Exists("Hit_Shock01") != 0) {
+        var_r3_687 = temp_r30_679->GetAnim("Hit_Shock01");
     } else {
         var_r3_687 = NULL;
     }
     this->unkF0 = (s32) var_r3_687;
     temp_r30_695 = this->unk34;
-    if (temp_r30_695->Exists(&lit_stringBase0[0xC]) != 0) {
-        var_r3_705 = temp_r30_695->GetAnim(&lit_stringBase0[0xC]);
+    if (temp_r30_695->Exists("Hit_Shock02") != 0) {
+        var_r3_705 = temp_r30_695->GetAnim("Hit_Shock02");
     } else {
         var_r3_705 = NULL;
     }
     this->unkF4 = (s32) var_r3_705;
     temp_r30_713 = this->unk34;
-    if (temp_r30_713->Exists(&lit_stringBase0[0x18]) != 0) {
-        var_r3_723 = temp_r30_713->GetAnim(&lit_stringBase0[0x18]);
+    if (temp_r30_713->Exists("Hit_Shock03") != 0) {
+        var_r3_723 = temp_r30_713->GetAnim("Hit_Shock03");
     } else {
         var_r3_723 = NULL;
     }
     this->unkF8 = (s32) var_r3_723;
     temp_r30_731 = this->unk34;
-    if (temp_r30_731->Exists(&lit_stringBase0[0x24]) != 0) {
-        var_r3_741 = temp_r30_731->GetAnim(&lit_stringBase0[0x24]);
+    if (temp_r30_731->Exists("Leap_Miss_Loop") != 0) {
+        var_r3_741 = temp_r30_731->GetAnim("Leap_Miss_Loop");
     } else {
         var_r3_741 = NULL;
     }
     this->unkFC = (s32) var_r3_741;
     temp_r30_749 = this->unk34;
-    if (temp_r30_749->Exists(&lit_stringBase0[0x33]) != 0) {
-        var_r3_759 = temp_r30_749->GetAnim(&lit_stringBase0[0x33]);
+    if (temp_r30_749->Exists("Flee") != 0) {
+        var_r3_759 = temp_r30_749->GetAnim("Flee");
     } else {
         var_r3_759 = NULL;
     }
     this->unk100 = (s32) var_r3_759;
     temp_r30_767 = this->unk34;
-    if (temp_r30_767->Exists(&lit_stringBase0[0x38]) != 0) {
-        var_r3_777 = temp_r30_767->GetAnim(&lit_stringBase0[0x38]);
+    if (temp_r30_767->Exists("Jump_up_Loop") != 0) {
+        var_r3_777 = temp_r30_767->GetAnim("Jump_up_Loop");
     } else {
         var_r3_777 = NULL;
     }
     this->unk104 = (s32) var_r3_777;
-    this->unk108 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x45]);
+    this->unk108 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "A035_weapon03");
 }
 #endif
 

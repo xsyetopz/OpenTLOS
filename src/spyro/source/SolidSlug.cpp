@@ -14,36 +14,8 @@
 
 extern s32 GS_PLACEHOLDER;
 extern MKPropDescriptor *pSolidSlugDescriptor;
-#if 0 // DRAFT: undefined identifier 'arg_sp90'
-static s8 lit_stringBase0[0x1A] = {
-    0x50,
-    0x6C,
-    0x61,
-    0x79,
-    0x48,
-    0x69,
-    0x74,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x73,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp90'
 void SolidSlug::Update() {
     f32 var_f4_70;
     f32 var_f5_91;
@@ -277,12 +249,12 @@ void SolidSlugDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SolidSlugDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_461;
 
     var_r31_461 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool(lit_stringBase0, (u8 *) &this->unkF0, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x12], &this->unkF4) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadBool("PlayHitMissSounds", (u8 *) &this->unkF0, 0) != 0) || (KDSound_LoadLine(arg0, "sndMiss", &this->unkF4) != 0)) {
         var_r31_461 = 1;
     }
     return var_r31_461;

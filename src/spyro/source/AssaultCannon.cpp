@@ -44,255 +44,10 @@ extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of abstract class ('Shatterable::pure_slot16()')
 static M2C_UNK lit_723;                                /* unable to generate initializer: unknown type */
 static AssaultCannon states__13AssaultCannon;       /* type too large by 0xAAC; unable to generate initializer: confusing struct layout */
-static s8 *pTurretAnimEvents = lit_stringBase0;
+static s8 *pTurretAnimEvents = "Fire";
 #endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'AssaultCannonDescriptor *' to
-static s8 lit_stringBase0[0xF2] = {
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0x30,
-    0x31,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0x30,
-    0x32,
-    0,
-    0x54,
-    0x75,
-    0x72,
-    0x6E,
-    0x4C,
-    0x65,
-    0x66,
-    0x74,
-    0,
-    0x54,
-    0x75,
-    0x72,
-    0x6E,
-    0x52,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x44,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x72,
-    0x5F,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0,
-    0x74,
-    0x75,
-    0x72,
-    0x72,
-    0x65,
-    0x74,
-    0,
-    0x52,
-    0x69,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x72,
-    0x67,
-    0x79,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-    0x65,
-    0x6C,
-    0x65,
-    0x63,
-    0x25,
-    0x64,
-    0,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0x31,
-    0,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0x33,
-    0,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0x32,
-    0,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0x34,
-    0,
-    0x74,
-    0x75,
-    0x72,
-    0x72,
-    0x65,
-    0x74,
-    0x53,
-    0x75,
-    0x62,
-    0x4F,
-    0x62,
-    0x6A,
-    0x65,
-    0x63,
-    0x74,
-    0,
-    0x47,
-    0x65,
-    0x6D,
-    0x73,
-    0x4F,
-    0x6E,
-    0x44,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x73,
-    0x70,
-    0x69,
-    0x74,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x73,
-    0x70,
-    0x69,
-    0x74,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x73,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x73,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x73,
-    0x70,
-    0x69,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x73,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x54,
-    0x75,
-    0x72,
-    0x72,
-    0x65,
-    0x74,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0,
-    0x53,
-    0x57,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x53,
-    0x57,
-    0x49,
-    0x63,
-    0x65,
-    0,
-}; /* const */
-
 void AssaultCannon::CalcSpikeBeamPositions() {
     ShatterableDescriptor *temp_r3_153;
 
@@ -3518,7 +3273,7 @@ void AssaultCannon::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk2BC'
 void AssaultCannon::LoadDone() {
     f64 sp18;
     f64 sp10;
@@ -3543,43 +3298,43 @@ void AssaultCannon::LoadDone() {
 
     ShatterablePlatform::LoadDone();
     temp_r30_5806 = this->unk80;
-    if (temp_r30_5806->Exists(&lit_stringBase0[5]) != 0) {
-        var_r3_5818 = temp_r30_5806->GetAnim(&lit_stringBase0[5]);
+    if (temp_r30_5806->Exists("Idle01") != 0) {
+        var_r3_5818 = temp_r30_5806->GetAnim("Idle01");
     } else {
         var_r3_5818 = NULL;
     }
     this->unk2BC = var_r3_5818;
     temp_r30_5826 = this->unk80;
-    if (temp_r30_5826->Exists(&lit_stringBase0[0xC]) != 0) {
-        var_r3_5836 = temp_r30_5826->GetAnim(&lit_stringBase0[0xC]);
+    if (temp_r30_5826->Exists("Idle02") != 0) {
+        var_r3_5836 = temp_r30_5826->GetAnim("Idle02");
     } else {
         var_r3_5836 = NULL;
     }
     this->unk2C0 = var_r3_5836;
     temp_r30_5844 = this->unk80;
-    if (temp_r30_5844->Exists(&lit_stringBase0[0x13]) != 0) {
-        var_r3_5854 = temp_r30_5844->GetAnim(&lit_stringBase0[0x13]);
+    if (temp_r30_5844->Exists("TurnLeft") != 0) {
+        var_r3_5854 = temp_r30_5844->GetAnim("TurnLeft");
     } else {
         var_r3_5854 = NULL;
     }
     this->unk2C4 = var_r3_5854;
     temp_r30_5862 = this->unk80;
-    if (temp_r30_5862->Exists(&lit_stringBase0[0x1C]) != 0) {
-        var_r3_5872 = temp_r30_5862->GetAnim(&lit_stringBase0[0x1C]);
+    if (temp_r30_5862->Exists("TurnRight") != 0) {
+        var_r3_5872 = temp_r30_5862->GetAnim("TurnRight");
     } else {
         var_r3_5872 = NULL;
     }
     this->unk2C8 = var_r3_5872;
     temp_r30_5880 = this->unk80;
-    if (temp_r30_5880->Exists(lit_stringBase0) != 0) {
-        var_r3_5888 = temp_r30_5880->GetAnim(lit_stringBase0);
+    if (temp_r30_5880->Exists("Fire") != 0) {
+        var_r3_5888 = temp_r30_5880->GetAnim("Fire");
     } else {
         var_r3_5888 = NULL;
     }
     this->unk2CC = var_r3_5888;
     temp_r30_5896 = this->unk80;
-    if (temp_r30_5896->Exists(&lit_stringBase0[0x26]) != 0) {
-        var_r3_5906 = temp_r30_5896->GetAnim(&lit_stringBase0[0x26]);
+    if (temp_r30_5896->Exists("Death") != 0) {
+        var_r3_5906 = temp_r30_5896->GetAnim("Death");
     } else {
         var_r3_5906 = NULL;
     }
@@ -3587,12 +3342,12 @@ void AssaultCannon::LoadDone() {
     this->unk80->InitEvents(&pTurretAnimEvents);
     Init__31KDStateMachine<13AssaultCannon>FPQ231KDStateMachine<13AssaultCannon>5StateP31KDStateMachine<13AssaultCannon>(&this->unk218, (KDStateMachine<AssaultCannon>::State *) &states, NULL);
     this->unk218.SetState(this, 1, 0U);
-    this->unk2BC = (u32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x2C]);
+    this->unk2BC = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ammo");
     temp_r4_5934 = M2C_FIELD(checked_cast<AssaultCannonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0x16C);
     if (temp_r4_5934 != NULL) {
         var_r30_5939 = Tools_GetMatchingNodeIndex(this->unk4, temp_r4_5934);
     } else {
-        var_r30_5939 = Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x33]);
+        var_r30_5939 = Tools_GetMatchingNodeIndex(this->unk4, "turret");
     }
     sp18.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     M2C_FIELD(this, f64 *, 0x250) = sp18;
@@ -3600,7 +3355,7 @@ void AssaultCannon::LoadDone() {
     MKDynamicBone_SetUpdater(MKDynamicBone_AddDynamicBone(this->unk4, (s32) var_r30_5939), (void (*)(MKDynamicBone *, void *)) &AssaultCannon::UpdateTurretBone, &this->unk230.unk8);
     M2C_FIELD(this, f32 *, 0x260) = 0.0f;
     SetAnim(0, 0, 1.0f);
-    this->unk2D0 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, &lit_stringBase0[0x3A]);
+    this->unk2D0 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "Rider");
     CalcBarrelBeamPositions();
     CalcSpikeBeamPositions();
     AllocElecBeams();
@@ -3681,7 +3436,7 @@ void AssaultCannonDescriptor::LoadDone() {
 
     ShatterableDescriptor::LoadDone();
     if ((s32) this->unk174 == 2) {
-        this->unk178 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x40]));
+        this->unk178 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
     }
     temp_r3_6118 = ((MKHeap *) (M2C_ERROR(/* Read from unset register $r3 */)))->Current();
     if (temp_r3_6118 != NULL) {
@@ -3697,16 +3452,16 @@ void AssaultCannonDescriptor::LoadDone() {
     var_r28_6134 = 0;
     var_r30_6135 = 0;
     do {
-        temp_ret_6143 = Tools_GetMatchingRefPointIndex(this->unk2C, Str_Printf(&lit_stringBase0[0x4B], var_r28_6134 + 1, var_f1_6125));
+        temp_ret_6143 = Tools_GetMatchingRefPointIndex(this->unk2C, Str_Printf("elec%d", var_r28_6134 + 1, var_f1_6125));
         var_f1_6125 = M2C_BITWISE(f32, temp_ret_6143);
         var_r28_6134 += 1;
         *(this->unk17C + var_r30_6135) = (s32) temp_ret_6143;
         var_r30_6135 += 4;
     } while (var_r28_6134 < 5);
-    this->unk180 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x52]);
-    this->unk184 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x58]);
-    this->unk188 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x5E]);
-    this->unk18C = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x64]);
+    this->unk180 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ammo1");
+    this->unk184 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ammo3");
+    this->unk188 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ammo2");
+    this->unk18C = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ammo4");
 }
 #endif
 
@@ -3714,22 +3469,22 @@ void AssaultCannonDescriptor::LoadDone() {
 s32 AssaultCannonDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString(&lit_stringBase0[0x6A], &this->unk16C, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x7A], &this->unk1A8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x86], &this->unk198, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x91], &this->unk19C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x9D], &this->unk1A0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xA9], &this->unk1A4, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xB6], &this->unk190) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xC0], &this->unk194) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("turretSubObject", &this->unk16C, 0) != 0) || (arg0->LoadInt("GemsOnDeath", &this->unk1A8, 0) != 0) || (arg0->LoadFloat("spitFadeIn", &this->unk198, 0) != 0) || (arg0->LoadFloat("spitFadeOut", &this->unk19C, 0) != 0) || (arg0->LoadFloat("splatFadeIn", &this->unk1A0, 0) != 0) || (arg0->LoadFloat("splatFadeOut", &this->unk1A4, 0) != 0) || (KDSound_LoadLine(arg0, "spitSound", &this->unk190) != 0) || (KDSound_LoadLine(arg0, "splatSound", &this->unk194) != 0)) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0xCB]) != 0) {
+    if (arg0->IsField("TurretType") != 0) {
         arg0->AsString(0, &sp8);
-        if (stricmp(sp8, lit_stringBase0) == 0) {
+        if (stricmp(sp8, "Fire") == 0) {
             this->unk174 = 0;
-        } else if (stricmp(sp8, &lit_stringBase0[0xD6]) == 0) {
+        } else if (stricmp(sp8, "Earth") == 0) {
             this->unk174 = 1;
-        } else if (stricmp(sp8, &lit_stringBase0[0xDC]) == 0) {
+        } else if (stricmp(sp8, "Elec") == 0) {
             this->unk174 = 2;
-        } else if (stricmp(sp8, &lit_stringBase0[0xE1]) == 0) {
+        } else if (stricmp(sp8, "Ice") == 0) {
             this->unk174 = 3;
-        } else if (stricmp(sp8, &lit_stringBase0[0xE5]) == 0) {
+        } else if (stricmp(sp8, "SWFire") == 0) {
             this->unk174 = 4;
-        } else if (stricmp(sp8, &lit_stringBase0[0xEC]) == 0) {
+        } else if (stricmp(sp8, "SWIce") == 0) {
             this->unk174 = 5;
         }
         return 1;

@@ -40,26 +40,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-static s8 lit_stringBase0[0x11] = {
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x78,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-}; /* const */
-
 u8 CynderBossGoal_Death::Update() {
     MKProp *temp_r4_17;
 
@@ -6956,7 +6936,7 @@ u8 CynderBossGoal_Think::Update() {
         break;
     case 2:
         if ((KDSound_SoundDucking_GetState() == 2) && (PhrasePlayer_IsAnyEventPlaying() == 0)) {
-            PhrasePlayer_PlayEvent(lit_stringBase0);
+            PhrasePlayer_PlayEvent("ConvexFuryPhrase");
             this->unk24 = 3;
         }
         break;
@@ -7096,12 +7076,10 @@ block_19:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderBossGoal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkF14'
 void CynderBossGoal_Think::Reset() {

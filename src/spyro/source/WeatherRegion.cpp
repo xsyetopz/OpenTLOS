@@ -21,161 +21,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: illegal type
-static s8 lit_stringBase0[0x98] = {
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x52,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x52,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x50,
-    0x65,
-    0x72,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0x41,
-    0x73,
-    0x68,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0x45,
-    0x6D,
-    0x62,
-    0x65,
-    0x72,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0x53,
-    0x70,
-    0x6F,
-    0x72,
-    0x65,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x78,
-    0x69,
-    0x74,
-    0x79,
-    0x50,
-    0x53,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0x52,
-    0x61,
-    0x69,
-    0x6E,
-    0x50,
-    0x53,
-    0,
-}; /* const */
-
 u8 WeatherRegion::CalculateEmissionPointRain(MKVector3 &arg0) {
     f64 sp108;
     f64 sp100;
@@ -1079,12 +924,12 @@ void WeatherRegion::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 WeatherRegion::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1659;
 
     var_r31_1659 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unk60, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[5], &this->unk64, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xE], &this->unk68, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x17], &this->unk6C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1F], &this->unk70, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x27], &this->unk74, 0) != 0) || (this->unk80.LoadLine(&lit_stringBase0[0x32], arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Type", &this->unk60, 0) != 0) || (arg0->LoadFloat("MinScale", &this->unk64, 0) != 0) || (arg0->LoadFloat("MaxScale", &this->unk68, 0) != 0) || (arg0->LoadFloat("MinRate", &this->unk6C, 0) != 0) || (arg0->LoadFloat("MaxRate", &this->unk70, 0) != 0) || (arg0->LoadInt("NumPerEmit", &this->unk74, 0) != 0) || (this->unk80.LoadLine("waypoints", arg0) != 0)) {
         var_r31_1659 = 1;
     }
     return var_r31_1659;
@@ -1111,15 +956,15 @@ void WeatherRegionDescriptor::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void WeatherRegionDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE0 = checked_cast<WeatherSnowPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x3C]));
-    this->unkE4 = checked_cast<WeatherAshPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x4A]));
-    this->unkE8 = checked_cast<WeatherEmbersPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x57]));
-    this->unkEC = checked_cast<WeatherSporesPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x67]));
-    this->unkF0 = checked_cast<WeatherConvexityPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x77]));
-    this->unkF4 = checked_cast<WeatherRainPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x8A]));
+    this->unkE0 = checked_cast<WeatherSnowPS *, MKProp>(gMK->CreateProp("WeatherSnowPS"));
+    this->unkE4 = checked_cast<WeatherAshPS *, MKProp>(gMK->CreateProp("WeatherAshPS"));
+    this->unkE8 = checked_cast<WeatherEmbersPS *, MKProp>(gMK->CreateProp("WeatherEmbersPS"));
+    this->unkEC = checked_cast<WeatherSporesPS *, MKProp>(gMK->CreateProp("WeatherSporesPS"));
+    this->unkF0 = checked_cast<WeatherConvexityPS *, MKProp>(gMK->CreateProp("WeatherConvexityPS"));
+    this->unkF4 = checked_cast<WeatherRainPS *, MKProp>(gMK->CreateProp("WeatherRainPS"));
 }
 #endif
 

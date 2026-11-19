@@ -16,8 +16,6 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp6C'
-static s8 lit_stringBase0[0xD] = { 0x66, 0x78, 0x5F, 0x77, 0x6F, 0x62, 0x62, 0x6C, 0x65, 0x6D, 0x61, 0x74, 0 }; /* const */
-
 void ExplosionWarpFX::UpdateWarp() {
     f32 temp_f0_197;
     f32 temp_f13_91;
@@ -514,7 +512,7 @@ void ExplosionWarpFX::Init() {
         var_r3_901 = malloc(temp_r30_893);
     }
     this->unk8 = var_r3_901;
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
+    this->unk60 = MKMaterial_Create("fx_wobblemat");
     BuildLocalVertexList();
     this->unk64 = 0.0f;
     this->unk68 = 0;

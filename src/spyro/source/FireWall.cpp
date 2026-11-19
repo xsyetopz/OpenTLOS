@@ -25,42 +25,6 @@ static s32 lit_548 = 0;
 static u8 lit_549 = 0;
 
 #if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x21] = {
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x30,
-    0x34,
-    0,
-}; /* const */
-
 void FireWall::Deinit() {
     MKHeap *temp_r29_68;
     MKHeap *temp_r3_71;
@@ -552,7 +516,7 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[33]' to
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
 s32 FireWall::LoadLine(MKIniLine *arg0) {
     s32 sp1CC;
     f32 sp1C8;
@@ -682,20 +646,20 @@ s32 FireWall::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    arg0->LoadFloat(lit_stringBase0, &this->unk68, 0);
+    arg0->LoadFloat("Height", &this->unk68, 0);
     sp1C0 = 0;
     sp1C4 = 0;
     sp1C8 = 0.0f;
     sp1CC = 0;
     if (arg0->GetFieldName() != NULL) {
         arg0->GetFieldName();
-        if (stricmp(&lit_stringBase0[7]) == 0) {
+        if (stricmp("FlamePath") == 0) {
             var_r30_983 = arg0->unkC->GetSubLine(arg0);
             temp_r3_984 = arg0->GetNmbrOfSubLines();
             sp1C0.Init(temp_r3_984, 0U);
 loop_6:
             if (var_r30_983 != NULL) {
-                var_r30_983->LoadVector3(&lit_stringBase0[0x11], &sp1B0, 0);
+                var_r30_983->LoadVector3("waypoint", &sp1B0, 0);
                 sp1C0.AddNode(sp1B0);
                 var_r30_983 = var_r30_983->unkC->GetNextLine(var_r30_983);
                 goto loop_6;
@@ -1085,10 +1049,10 @@ void FireWallDescriptor::Deinit() {
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FireWallDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create(&lit_stringBase0[0x1A]);
+    this->unk60 = MKMaterial_Create("fx_004");
 }
 #endif
 

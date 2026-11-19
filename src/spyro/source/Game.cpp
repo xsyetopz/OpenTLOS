@@ -173,9 +173,9 @@ static M2C_UNK cutsceneSys;
 #if 0 // DRAFT: identifier 'homeDir' redeclared
 static s8 homeDir[0x20];
 #endif
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[11]' to
 static GameStateMachine gGMState;                   /* extra bytes: 0x11 */
-static s8 *buildNumber = lit_stringBase0;
+static s8 *buildNumber = "053b3(ret)";
 #endif
 #if 0 // DRAFT: identifier 'platformCode' redeclared
 static M2C_UNK *platformCode = &.L_803580AB;
@@ -184,7 +184,7 @@ static M2C_UNK *platformCode = &.L_803580AB;
 #if 0 // DRAFT: declaration syntax error
 static Level lit_877;                                  /* type too large by 0xD8; unable to generate initializer: non-zero padding; const */
 static M2C_UNK lit_934;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0xB] = { 0x30, 0x35, 0x33, 0x62, 0x33, 0x28, 0x72, 0x65, 0x74, 0x29, 0 }; /* const */
+
 static M2C_UNK .L_803580AB;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_803580AE;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_803580C2;                         /* unable to generate initializer: unknown type; const */
@@ -367,7 +367,7 @@ void GameGlobals::Fade::Draw() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'PhrasePlayer_PlayEvent(signed char *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long (const char *)' to
 void GameGlobals::Fade::Update() {
     s32 temp_r0_338;
 
@@ -381,7 +381,7 @@ void GameGlobals::Fade::Update() {
             M2C_FIELD(this, s32 *, 0x20) = 0;
             if (((u8) M2C_FIELD(this, u8 *, 0x28) != 0) && ((u8) M2C_FIELD(this, u8 *, 0x29) == 0)) {
                 M2C_FIELD(this, u8 *, 0x28) = 0U;
-                M2C_FIELD(this, s32 *, 0x24) = PhrasePlayer_PlayEvent(lit_stringBase0 + 0x6E);
+                M2C_FIELD(this, s32 *, 0x24) = PhrasePlayer_PlayEvent"";
                 return;
             }
         }
@@ -810,9 +810,9 @@ void GameGlobals::Init() {
     this->unk396 = 0;
     this->unk35C = 0;
     this->unk35E = 1;
-    this->unk318 = ((MKFont *) ((MKFont *) (lit_stringBase0 + 0x80)))->Create(NULL);
-    this->unk31C = ((MKFont *) ((MKFont *) (lit_stringBase0 + 0x8A)))->Create(lit_stringBase0);
-    temp_r3_1216 = DialogBox_LoadTheme(NULL, lit_stringBase0 + 0x80, 4.0f, 0.0f);
+    this->unk318 = ((MKFont *) ((MKFont *) ""))->Create(NULL);
+    this->unk31C = ((MKFont *) ((MKFont *) ""))->Create("053b3(ret)");
+    temp_r3_1216 = DialogBox_LoadTheme(NULL, "", 4.0f, 0.0f);
     this->unk324 = temp_r3_1216;
     this->unk398 = 0;
     this->unk39C = 0;
@@ -829,12 +829,12 @@ void GameGlobals::Init() {
     }
     this->unk20 = var_r3_1233;
     this->unk20->Init();
-    gb[0xCA] = MKMaterial_Create(lit_stringBase0 + 0x97);
+    gb[0xCA] = MKMaterial_Create"";
     this->unk354 = &input;
     M2C_FIELD(&input, s32 *, 0) = 0;
     M2C_FIELD(&input, s8 *, 4) = 0;
     M2C_FIELD(&input, s8 *, 5) = 0;
-    this->unk24.Init(lit_stringBase0 + 0xA0, 0x100);
+    this->unk24.Init("", 0x100);
     ((ScreenWobbleFX *) ((ScreenWobbleFX *) &gb[0x2E]))->Init();
     gb[0x32] = 0.9f;
     gb[0x33] = NULL;
@@ -878,52 +878,52 @@ void LoadGlobalResources_Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: pointer/array required
 void Game_CheckCommandLineParameters() {
     M2C_UNK *var_r0_1418;
 
-    System_GetCommandLineParameter(lit_stringBase0 + 0xA8, 0U);
+    System_GetCommandLineParameter("", 0U);
     pStartLevelName = M2C_ERROR(/* Read from unset register $r3 */);
-    System_GetCommandLineParameter(lit_stringBase0 + 0xAE, 0U);
+    System_GetCommandLineParameter("", 0U);
     pStartChunkName = M2C_ERROR(/* Read from unset register $r3 */);
-    System_GetCommandLineParameter(lit_stringBase0 + 0xB4, 0U);
+    System_GetCommandLineParameter("", 0U);
     gb[0xCE] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
-    System_GetCommandLineParameter(lit_stringBase0 + 0xBD, 1U);
+    System_GetCommandLineParameter("", 1U);
     gb[0xCF] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) == 0);
-    System_GetCommandLineParameter(lit_stringBase0 + 0xC6, 0U);
+    System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        System_GetCommandLineParameter(lit_stringBase0 + 0xD6, 0U);
+        System_GetCommandLineParameter("", 0U);
         var_r0_1418 = (M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1;
     } else {
         var_r0_1418 = NULL;
     }
     gb[0xD0] = var_r0_1418;
-    System_GetCommandLineParameter(lit_stringBase0 + 0xDF, 0U);
+    System_GetCommandLineParameter("", 0U);
     gb[0xD1] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
-    System_GetCommandLineParameter(lit_stringBase0 + 0xED, 1U);
+    System_GetCommandLineParameter("", 1U);
     gb[0xD2] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
-    System_GetCommandLineParameter(lit_stringBase0 + 0xF7, 1U);
+    System_GetCommandLineParameter("", 1U);
     gb[0xD3] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
-    System_GetCommandLineParameter(lit_stringBase0 + 0x104, 1U);
+    System_GetCommandLineParameter("", 1U);
     Hud_bDisableDraw = (M2C_ERROR(/* Read from unset register $r3 */) == 0) != 0;
-    System_GetCommandLineParameter(lit_stringBase0 + 0x108, 1U);
+    System_GetCommandLineParameter("", 1U);
     Dialog_bEnableDraw = (M2C_ERROR(/* Read from unset register $r3 */) != 0) != 0;
-    System_GetCommandLineParameter(lit_stringBase0 + 0x10F, 0U);
+    System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
-        System_GetCommandLineParameter(lit_stringBase0 + 0xD6, 0U);
+        System_GetCommandLineParameter("", 0U);
         gb[0xD1] = (M2C_UNK *)1;
         gb[0xD0] = (M2C_ERROR(/* Read from unset register $r3 */) != 0) + 1;
     }
-    System_GetCommandLineParameter(lit_stringBase0 + 0x117, 1U);
+    System_GetCommandLineParameter("", 1U);
     gb[0xD4] = (M2C_UNK *) (M2C_ERROR(/* Read from unset register $r3 */) != 0);
     if ((M2C_UNK *) gb[0xD0] != NULL) {
         gb[0xD4] = NULL;
     }
-    System_GetCommandLineParameter(lit_stringBase0 + 0x11E, 0U);
+    System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         MKGrass_Enable(0U);
     }
-    System_GetCommandLineParameter(lit_stringBase0 + 0x124, 0U);
+    System_GetCommandLineParameter("", 0U);
     if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
         M2C_FIELD(&gMKDefaults, s8 *, 0x10) = 0;
     }
@@ -931,7 +931,7 @@ void Game_CheckCommandLineParameters() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'strcpy(signed char, signed char *)' does not match
 void Game_InitSystem() {
     M2C_FIELD(&gMKDefaults, s32 *, 8) = 0x100000;
     M2C_FIELD(&gMKDefaults, s32 *, 0x48) = 0x10000;
@@ -949,8 +949,8 @@ void Game_InitSystem() {
     M2C_FIELD(&gMKDefaults, s32 *, 0xAC) = 0x23A;
     M2C_FIELD(&gMKDefaults, s32 *, 0xDC) = 0x200;
     M2C_FIELD(&gMKDefaults, f32 *, 0x14) = 0.01f;
-    M2C_FIELD(&gMKDefaults, s8 **, 0x28) = (s8 *) (lit_stringBase0 + 0x12D);
-    strcpy(homeDir, Str_Printf(lit_stringBase0 + 0x132, platformCode, 0x23A, 0x50, 0x12C, 4, 0x30, 1));
+    M2C_FIELD(&gMKDefaults, s8 **, 0x28) = (s8 *) "";
+    strcpy(homeDir, Str_Printf("", platformCode, 0x23A, 0x50, 0x12C, 4, 0x30, 1));
     M2C_FIELD(&gMKDefaults, s8 **, 0x2C) = homeDir;
     M2C_FIELD(&gMKDefaults, s32 *, 0x64) = 0x300;
     M2C_FIELD(&gMKDefaults, s32 *, 0x84) = 0x400;

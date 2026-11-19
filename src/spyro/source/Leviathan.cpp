@@ -28,27 +28,11 @@ extern f32 *KDSpline_VelocityMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pLeviathanAnimEvents[3] = { lit_stringBase0, .L_80364D2E, NULL };
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+static s8 *pLeviathanAnimEvents[3] = { "SmallSplashes", .L_80364D2E, NULL };
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-static s8 lit_stringBase0[0xE] = {
-    0x53,
-    0x6D,
-    0x61,
-    0x6C,
-    0x6C,
-    0x53,
-    0x70,
-    0x6C,
-    0x61,
-    0x73,
-    0x68,
-    0x65,
-    0x73,
-    0,
-}; /* const */
 static s8 .L_80364D2E[0x73] = {
     0x48,
     0x75,
@@ -1054,7 +1038,6 @@ void Leviathan::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void Leviathan::Resolve() {
     MKAnimScript *temp_r30_1588;
     MKAnimScript *temp_r30_1608;
@@ -1067,36 +1050,35 @@ void Leviathan::Resolve() {
 
     Platform::Resolve();
     temp_r30_1588 = this->unk80;
-    if (temp_r30_1588->Exists(lit_stringBase0 + 0x1B) != 0) {
-        var_r3_1600 = temp_r30_1588->GetAnim(lit_stringBase0 + 0x1B);
+    if (temp_r30_1588->Exists("") != 0) {
+        var_r3_1600 = temp_r30_1588->GetAnim("");
     } else {
         var_r3_1600 = NULL;
     }
     this->unk1A8 = (s32) var_r3_1600;
     temp_r30_1608 = this->unk80;
-    if (temp_r30_1608->Exists(lit_stringBase0 + 0x24) != 0) {
-        var_r3_1618 = temp_r30_1608->GetAnim(lit_stringBase0 + 0x24);
+    if (temp_r30_1608->Exists("") != 0) {
+        var_r3_1618 = temp_r30_1608->GetAnim("");
     } else {
         var_r3_1618 = NULL;
     }
     this->unk1AC = (s32) var_r3_1618;
     temp_r30_1626 = this->unk80;
-    if (temp_r30_1626->Exists(lit_stringBase0 + 0x29) != 0) {
-        var_r3_1636 = temp_r30_1626->GetAnim(lit_stringBase0 + 0x29);
+    if (temp_r30_1626->Exists("") != 0) {
+        var_r3_1636 = temp_r30_1626->GetAnim("");
     } else {
         var_r3_1636 = NULL;
     }
     this->unk1B0 = (s32) var_r3_1636;
     temp_r30_1644 = this->unk80;
-    if (temp_r30_1644->Exists(lit_stringBase0 + 0x30) != 0) {
-        var_r3_1654 = temp_r30_1644->GetAnim(lit_stringBase0 + 0x30);
+    if (temp_r30_1644->Exists("") != 0) {
+        var_r3_1654 = temp_r30_1644->GetAnim("");
     } else {
         var_r3_1654 = NULL;
     }
     this->unk1B4 = (s32) var_r3_1654;
     SetAnim(0);
 }
-#endif
 
 void Leviathan::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1A8), 1.0f, 0.5f, 0, -1);
@@ -1114,17 +1096,17 @@ void Leviathan::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: ')' expected
 s32 Leviathan::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_1785;
     s32 temp_r3_1772;
 
-    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x39, &this->unk198, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x3F, &this->unk1BC, 0) != 0)) {
+    if ((Platform::LoadLine(arg0) != 0) || (arg0->LoadFloat("", &this->unk198, 0) != 0) || (arg0->LoadFloat("", &this->unk1BC, 0) != 0)) {
         return 1;
     }
     arg0->GetFieldName();
-    if (stricmp(lit_stringBase0 + 0x4B) == 0) {
+    if (stricmp"" == 0) {
         if ((u32) this->unk18C != 0U) {
             return 0;
         }
@@ -1147,16 +1129,16 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void Leviathan::Init() {
     Platform::Init();
     this->unk19C = 2;
     this->unk194 = 0.0f;
     this->unk198 = 100.0f;
-    gMK->CreatePropDeferred(lit_stringBase0 + 0x55, &this->unk1A0);
-    this->unk1A4 = checked_cast<WaterSurfaceFX *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0x62));
+    gMK->CreatePropDeferred("", &this->unk1A0);
+    this->unk1A4 = checked_cast<WaterSurfaceFX *, MKProp>(gMK->CreateProp(""));
     this->unk1A4->unk58 = 2.0f;
-    this->unk1B8 = MKModel_Create(lit_stringBase0 + 0x71, NULL, 2, NULL);
+    this->unk1B8 = MKModel_Create("", NULL, 2, NULL);
     this->unk1BC = 0.0f;
     this->unk1C0.Init(0.25f, 0.25f);
 }

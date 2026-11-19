@@ -10,43 +10,6 @@ extern f32 gUpdateTimeDelta;
 extern u8 init_515;
 extern KDCameraDeltaStages *pCurrentLoadingStage_514;
 
-static s8 lit_stringBase0[0x22] = {
-    0x70,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0,
-    0x64,
-    0x65,
-    0x6C,
-    0x74,
-    0x61,
-    0,
-    0x6F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x64,
-    0x65,
-    0x6C,
-    0x74,
-    0x61,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-}; /* const */
-
 void KDCameraSimpleDelta::Override::DisableSmoothDelta() {
     M2C_FIELD(this, s32 *, 0x10) = (s32) (M2C_FIELD(this, s32 *, 0x10) & 0xFFFFFFFD);
     M2C_FIELD(this, f32 *, 0xC) = 0.0f;
@@ -673,7 +636,7 @@ void KDCameraDeltaStagesEx::Init(float *arg0, float *arg1) {
     this->unk0 = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[34]' to
+#if 0 // DRAFT: function call 'stricmp(const char[15])' does not match
 s32 KDCameraDeltaStages::LoadLine(MKIniLine *arg0, char *arg1) {
     s8 *sp8;
 
@@ -682,7 +645,7 @@ s32 KDCameraDeltaStages::LoadLine(MKIniLine *arg0, char *arg1) {
         init_515 = 1;
     }
     if ((KDCameraDeltaStages *) pCurrentLoadingStage_514 == this) {
-        if ((arg0->LoadFloat(lit_stringBase0, &this->unk0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[6], &this->unk4, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], &this->unk8, 0) != 0)) {
+        if ((arg0->LoadFloat("pitch", &this->unk0, 0) != 0) || (arg0->LoadFloat("delta", &this->unk4, 0) != 0) || (arg0->LoadFloat("offset", &this->unk8, 0) != 0)) {
             return 1;
         }
         pCurrentLoadingStage_514 = NULL;
@@ -690,7 +653,7 @@ s32 KDCameraDeltaStages::LoadLine(MKIniLine *arg0, char *arg1) {
     }
 block_8:
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[0x13]) == 0) {
+    if (stricmp("deltaStageType") == 0) {
         sp8 = NULL;
         if ((arg0->AsString(0, &sp8) != 0) && (stricmp(sp8, arg1) == 0)) {
             pCurrentLoadingStage_514 = this;

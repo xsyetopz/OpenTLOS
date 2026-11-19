@@ -18,82 +18,6 @@ extern s32 gDisplay;
 extern M2C_UNK gb;
 #if 0 // DRAFT: undefined identifier 'one'
 static MKHeap sub;                                  /* type too large by 0x98 */
-static s8 lit_stringBase0[0x4A] = {
-    0x73,
-    0x75,
-    0x62,
-    0x74,
-    0x69,
-    0x74,
-    0x6C,
-    0x65,
-    0,
-    0x63,
-    0x72,
-    0x65,
-    0x64,
-    0x69,
-    0x74,
-    0,
-    0x6C,
-    0x6F,
-    0x67,
-    0x6F,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x69,
-    0x6E,
-    0x69,
-    0x2E,
-    0x62,
-    0x6E,
-    0x69,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x69,
-    0x6E,
-    0x69,
-    0,
-    0x70,
-    0x72,
-    0x65,
-    0x6C,
-    0x6F,
-    0x61,
-    0x64,
-    0,
-    0x75,
-    0x69,
-    0x5F,
-    0x6C,
-    0x6F,
-    0x67,
-    0x6F,
-    0x31,
-    0,
-    0x75,
-    0x69,
-    0x5F,
-    0x6C,
-    0x6F,
-    0x67,
-    0x6F,
-    0x32,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0x2E,
-    0x73,
-    0x75,
-    0x62,
-    0,
-}; /* const */
 
 void Subtitles_Draw() {
     f64 sp20;
@@ -229,19 +153,19 @@ loop_38:
         if ((u32) sub.unk64 != 0) {
             M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
             if (sub.unk64->GetFloat(0) == M2C_BITWISE(f32, sub.unk70)) {
-                if (sub.unk64->IsField(lit_stringBase0) != 0) {
+                if (sub.unk64->IsField("subtitle") != 0) {
                     sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
                     temp_f1_292 = sub.unk64->GetFloat(1);
                     sub.unk8 = 0;
                     sub.unk0 = temp_f1_292;
                     ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 9, 0U);
-                } else if (sub.unk64->IsField(&lit_stringBase0[9]) != 0) {
+                } else if (sub.unk64->IsField("credit") != 0) {
                     sub.unk4 = Subtitles_GetText(sub.unk64->GetString(2), (s32 *) &sub.unk80);
                     temp_f1_320 = sub.unk64->GetFloat(1);
                     sub.unk8 = 1;
                     sub.unk0 = temp_f1_320;
                     ((CutsceneSystem *) (M2C_FIELD(&gb, CutsceneSystem **, 0xC)))->SetCustomSubtitle((s8 *) sub.unk4, 5, 1U);
-                } else if (sub.unk64->IsField(&lit_stringBase0[0x10]) != 0) {
+                } else if (sub.unk64->IsField("logo") != 0) {
                     sub.unk4 = 0;
                     sub.unk0 = sub.unk64->GetFloat(1);
                     sub.unk8 = 2;
@@ -339,7 +263,7 @@ void Subtitles_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, const char *)' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
 void Subtitles_Init(const char *arg0) {
     s32 sp8;
     MKHeap *temp_r3_647;
@@ -367,10 +291,10 @@ void Subtitles_Init(const char *arg0) {
     void *var_r5_655;
 
     Subtitles_Deinit();
-    temp_r3_548 = MKArchive_Exists(Str_Printf(&lit_stringBase0[0x15], arg0), NULL);
+    temp_r3_548 = MKArchive_Exists(Str_Printf("%s.ini.bni", arg0), NULL);
     if (temp_r3_548 != 0) {
         temp_r3_548->ActivateTempMemOverride();
-        sub.unk14.Init(Str_Printf(&lit_stringBase0[0x20], arg0), 0, NULL);
+        sub.unk14.Init(Str_Printf("%s.ini", arg0), 0, NULL);
         temp_r3_567 = sub.unk14.GetFirstLine();
         sub.unk64 = temp_r3_567;
         var_r4_581 = 0;
@@ -391,15 +315,15 @@ void Subtitles_Init(const char *arg0) {
             var_ctr_591 -= 1;
         } while (var_ctr_591 != 0);
         sub.unk7C = 0.0f;
-        if (sub.unk64->IsField(&lit_stringBase0[0x27]) != 0) {
-            sub.unk68 = MKMaterial_Create(&lit_stringBase0[0x2F]);
-            sub.unk6C = M2C_BITWISE(f32, MKMaterial_Create(&lit_stringBase0[0x38]));
+        if (sub.unk64->IsField("preload") != 0) {
+            sub.unk68 = MKMaterial_Create("ui_logo1");
+            sub.unk6C = M2C_BITWISE(f32, MKMaterial_Create("ui_logo2"));
             sub.unk7C = 3e-45f;
             sub.unk64 = ((MKIni *) (M2C_FIELD(sub.unk64, MKIni **, 0xC)))->GetNextLine((MKIniLine *) sub.unk64);
         }
         sp8 = 0;
         GameLanguage_GetCode(-1);
-        temp_r3_639 = Str_Printf(&lit_stringBase0[0x41], arg0, M2C_ERROR(/* Read from unset register $r3 */), lit_stringBase0);
+        temp_r3_639 = Str_Printf("%s%s.sub", arg0, M2C_ERROR(/* Read from unset register $r3 */), "subtitle");
         var_r3_642 = MKArchive_Exists(temp_r3_639, &sp8);
         if ((u8) var_r3_642 != 0) {
             temp_r28_646 = sp8 + 1;

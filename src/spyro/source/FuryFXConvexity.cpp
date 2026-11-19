@@ -47,51 +47,6 @@ static s32 lit_780 = 0;
 static u8 lit_781 = 1;
 
 #if 0 // DRAFT: undefined identifier 'arg_spCC'
-static s8 lit_stringBase0[0x2A] = {
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x78,
-    0x69,
-    0x74,
-    0x79,
-    0x50,
-    0x53,
-    0x41,
-    0x64,
-    0x64,
-    0,
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x78,
-    0x69,
-    0x74,
-    0x79,
-    0x50,
-    0x53,
-    0x53,
-    0x75,
-    0x62,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x33,
-    0x35,
-    0x5F,
-    0x48,
-    0x65,
-    0x61,
-    0x64,
-    0,
-}; /* const */
-
 void FuryFXConvexity::EmitVortexParticles() {
     MKHeap *temp_r3_125;
     MKHeap *temp_r3_171;
@@ -1117,7 +1072,7 @@ void FuryFXConvexity::ResetFury() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk2CC'
 s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     f64 sp128;
     f64 sp120;
@@ -1157,7 +1112,7 @@ s32 FuryFXConvexity::Trigger(const MKVector3 &arg0) {
     s32 var_r28_2138;
     void *temp_r3_2272;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     this->unk90.unk30 = arg0.unk0;
     this->unk90.unk34 = arg0.unk4;
     this->unk90.unk38 = arg0.unk8;
@@ -2118,7 +2073,7 @@ void FuryFXConvexity::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void FuryFXConvexity::Init() {
     f64 sp40;
     f64 sp38;
@@ -2144,8 +2099,8 @@ void FuryFXConvexity::Init() {
     this->unk90.unk40 = 0.0f;
     this->unk90.unk44 = 0.0f;
     this->unk90.unk48 = 0.0f;
-    this->unk15C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0));
-    temp_r3_4315 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xF]));
+    this->unk15C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSAdd"));
+    temp_r3_4315 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("ConvexityPSSub"));
     this->unk160 = temp_r3_4315;
     temp_r3_4317 = temp_r3_4315->Current();
     if (temp_r3_4317 != NULL) {
@@ -2191,7 +2146,7 @@ void FuryFXConvexity::Init() {
     temp_r3_4401 = &this->unk1A0;
     temp_r3_4401->RotateYaw(temp_r3_4401, 0.3926991f);
     this->unk170.unk10 = 450.0f;
-    this->unk1A0.unk40 = M2C_BITWISE(f32, MKModel_Create(&lit_stringBase0[0x1E], NULL, 2, NULL));
+    this->unk1A0.unk40 = M2C_BITWISE(f32, MKModel_Create("FX0035_Head", NULL, 2, NULL));
     this->unk150 = -1.0f;
 }
 #endif

@@ -20,9 +20,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0xA] = { 0x69, 0x64, 0x6C, 0x65, 0, 0x77, 0x61, 0x6C, 0x6B, 0 }; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void SwampSlinky::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -491,15 +490,15 @@ void SwampSlinkyDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r31_829 = this->unk34;
-    if (temp_r31_829->Exists(lit_stringBase0) != 0) {
-        var_r3_839 = temp_r31_829->GetAnim(lit_stringBase0);
+    if (temp_r31_829->Exists("idle") != 0) {
+        var_r3_839 = temp_r31_829->GetAnim("idle");
     } else {
         var_r3_839 = NULL;
     }
     this->unk70 = (s32) var_r3_839;
     temp_r31_847 = this->unk34;
-    if (temp_r31_847->Exists(&lit_stringBase0[5]) != 0) {
-        var_r3_857 = temp_r31_847->GetAnim(&lit_stringBase0[5]);
+    if (temp_r31_847->Exists("walk") != 0) {
+        var_r3_857 = temp_r31_847->GetAnim("walk");
     } else {
         var_r3_857 = NULL;
     }

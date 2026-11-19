@@ -25,23 +25,6 @@ static s32 lit_650 = 0;
 static u8 lit_651 = 1;
 static s32 lit_664 = 1;
 
-static s8 lit_stringBase0[0xE] = {
-    0x4D,
-    0x6F,
-    0x6C,
-    0x74,
-    0x65,
-    0x6E,
-    0x4D,
-    0x65,
-    0x74,
-    0x61,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-}; /* const */
-
 void MagmaSquirt::Deinit() {
     ManagedLight *temp_r4_51;
 
@@ -65,7 +48,6 @@ void MagmaSquirt::FireBurstEnd() {
     Disable();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MagmaSquirt::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) {
     s32 sp8;
     MKVector3 *temp_r4_127;
@@ -78,7 +60,7 @@ void MagmaSquirt::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3
     this->unk158 = arg1;
     this->unk164 = arg2;
     this->unk168 = arg3;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     temp_r4_119 = this->unk160;
     if (temp_r4_119 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_119, 1U);
@@ -95,19 +77,14 @@ void MagmaSquirt::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3
     sp8 = -1;
     this->unk170.Init((MKProp *) this, 1, 0, 0, 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MagmaSquirt::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MagmaSquirt::Collided(MKCollisionResult &arg0) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
 void MagmaSquirt::Draw() {
 
@@ -329,10 +306,10 @@ void MagmaSquirt::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[14]' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void MagmaSquirt::LoadDone() {
     Projectile::LoadDone();
-    this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("MoltenMetalFX"));
 }
 #endif
 

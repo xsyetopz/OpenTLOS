@@ -19,12 +19,11 @@
 extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pLoopingSoundEvents[4] = { lit_stringBase0, .L_80359B4C, .L_80359B58, NULL };
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+static s8 *pLoopingSoundEvents[4] = { "soundLoop01", .L_80359B4C, .L_80359B58, NULL };
 #endif
 
 #if 0 // DRAFT: declaration syntax error
-static s8 lit_stringBase0[0xC] = { 0x73, 0x6F, 0x75, 0x6E, 0x64, 0x4C, 0x6F, 0x6F, 0x70, 0x30, 0x31, 0 }; /* const */
 static s8 .L_80359B4C[0xC] = { 0x73, 0x6F, 0x75, 0x6E, 0x64, 0x4C, 0x6F, 0x6F, 0x70, 0x30, 0x32, 0 }; /* const */
 static s8 .L_80359B58[0x69] = {
     0x73,
@@ -164,7 +163,7 @@ void GameProp::Message(MKMessage *arg0) {
             if ((u32) M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u32 *, 0xC8) != 0U) {
                 this->unk80->SetAnim(M2C_FIELD(checked_cast<GamePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), MKAnim **, 0xC8), 1.0f, 0.0f, 0, -1);
             } else {
-                temp_r3_124 = this->unk80->GetAnim(lit_stringBase0 + 0x24);
+                temp_r3_124 = this->unk80->GetAnim("");
                 if (temp_r3_124 != NULL) {
                     this->unk80->SetAnim(temp_r3_124, 1.0f, 0.0f, 0, -1);
                 }
@@ -472,12 +471,12 @@ void GamePropDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'PropTypes_LoadLine(MKIniLine *, const char[1], long *)'
 s32 GamePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_794;
 
     var_r31_794 = 0;
-    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, lit_stringBase0 + 0x29, &this->unkC) != 0) || (arg0->LoadString(lit_stringBase0 + 0x34, &this->unkC0, 0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0x3C, &this->unkDC) != 0) || (arg0->LoadString(lit_stringBase0 + 0x47, &this->unkC4, 0) != 0) || (arg0->LoadString(lit_stringBase0 + 0x52, &this->unkC8, 0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0, &this->unkD0.unk0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0xC, &this->unkD4) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0x18, &this->unkD8) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x5E, this + 0xE1, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x68, (u8 *) &this->unkE0, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x70, (f32 *) &this->unkCC, 0) != 0)) {
+    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (PropTypes_LoadLine(arg0, "", &this->unkC) != 0) || (arg0->LoadString("", &this->unkC0, 0) != 0) || (KDSound_LoadLine(arg0, "", &this->unkDC) != 0) || (arg0->LoadString("", &this->unkC4, 0) != 0) || (arg0->LoadString("", &this->unkC8, 0) != 0) || (KDSound_LoadLine(arg0, "soundLoop01", &this->unkD0.unk0) != 0) || (KDSound_LoadLine(arg0, "", &this->unkD4) != 0) || (KDSound_LoadLine(arg0, "", &this->unkD8) != 0) || (arg0->LoadBool("", this + 0xE1, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkE0, 0) != 0) || (arg0->LoadFloat("", (f32 *) &this->unkCC, 0) != 0)) {
         var_r31_794 = 1;
     }
     return var_r31_794;

@@ -14,128 +14,8 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKSceneManager'
-static s8 lit_stringBase0[0x76] = {
-    0x74,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0x49,
-    0x44,
-    0,
-    0x74,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x49,
-    0x44,
-    0,
-    0x63,
-    0x61,
-    0x62,
-    0x6F,
-    0x6F,
-    0x73,
-    0x65,
-    0x49,
-    0x44,
-    0,
-    0x73,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x49,
-    0x44,
-    0,
-    0x4F,
-    0x6E,
-    0x46,
-    0x69,
-    0x6E,
-    0x69,
-    0x73,
-    0x68,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x44,
-    0x65,
-    0x73,
-    0x74,
-    0x72,
-    0x6F,
-    0x79,
-    0x43,
-    0x61,
-    0x62,
-    0x6F,
-    0x6F,
-    0x73,
-    0x65,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x5F,
-    0x25,
-    0x30,
-    0x32,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'MKSceneManager'
 void TrainController::SetStage(int arg0) {
     SteamTrain *temp_r3_74;
     u32 var_r4_61;
@@ -446,12 +326,12 @@ void TrainController::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[118]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TrainController::LoadLine(MKIniLine *arg0) {
     s32 var_r31_602;
 
     var_r31_602 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, (s32 *) &this->unk4C, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[8], (s32 *) &this->unk50, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x10], (s32 *) &this->unk54, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x1A], (s32 *) &this->unk58, 0) != 0) || (this->unk64.LoadLine(arg0, &lit_stringBase0[0x26]) != 0) || (this->unk68.LoadLine(arg0, &lit_stringBase0[0x2F]) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unk4C, 0) != 0) || (arg0->LoadInt("trainID", (s32 *) &this->unk50, 0) != 0) || (arg0->LoadInt("cabooseID", (s32 *) &this->unk54, 0) != 0) || (arg0->LoadInt("spyroCartID", (s32 *) &this->unk58, 0) != 0) || (this->unk64.LoadLine(arg0, "OnFinish") != 0) || (this->unk68.LoadLine(arg0, "OnReset") != 0)) {
         var_r31_602 = 1;
     }
     return var_r31_602;
@@ -469,7 +349,7 @@ void TrainController::Init() {
     this->unk6C = 0;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'stricmp(const char[14])' does not match
 s32 TrainControllerDescriptor::LoadLine(MKIniLine *arg0) {
     MKIniLine *temp_ret_789;
     MKIniLine *var_r22_726;
@@ -485,7 +365,7 @@ s32 TrainControllerDescriptor::LoadLine(MKIniLine *arg0) {
     if (MKPropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (var_r28_701->IsField(&lit_stringBase0[0x37]) != 0) {
+    if (var_r28_701->IsField("Stage_01") != 0) {
         var_r30_716 = 0;
         var_r26_718 = 0;
         var_r29_719 = 0;
@@ -496,13 +376,13 @@ loop_15:
 loop_12:
             if (var_r22_726 != NULL) {
                 temp_r21_735 = var_r22_726->GetFieldName();
-                if (stricmp(&lit_stringBase0[0x40]) == 0) {
+                if (stricmp("SpyroMaxSpeed") == 0) {
                     var_r22_726->AsFloat(0, temp_r4_725 + 0x60);
                     M2C_FIELD(temp_r4_725, f32 *, 0x60) = (f32) (M2C_FIELD(temp_r4_725, f32 *, 0x60) * 100.0f);
-                } else if (stricmp(temp_r21_735, &lit_stringBase0[0x4E]) == 0) {
+                } else if (stricmp(temp_r21_735, "TrainMaxSpeed") == 0) {
                     var_r22_726->AsFloat(0, temp_r4_725 + 0x64);
                     M2C_FIELD(temp_r4_725, f32 *, 0x64) = (f32) (M2C_FIELD(temp_r4_725, f32 *, 0x64) * 100.0f);
-                } else if (stricmp(temp_r21_735, &lit_stringBase0[0x5C]) == 0) {
+                } else if (stricmp(temp_r21_735, "DestroyCaboose") == 0) {
                     var_r22_726->AsFloat(0, temp_r4_725 + 0x68);
                 }
                 var_r22_726 = var_r22_726->unkC->GetNextLine(var_r22_726);
@@ -513,7 +393,7 @@ loop_12:
             temp_ret_789 = var_r28_701->unkC->GetNextLine(var_r28_701);
             temp_f1_789 = M2C_BITWISE(f32, temp_ret_789);
             var_r28_701 = temp_ret_789;
-            if (var_r28_701->IsField(Str_Printf(&lit_stringBase0[0x6B], var_r30_716 + 1, temp_f1_789)) == 0) {
+            if (var_r28_701->IsField(Str_Printf("Stage_%02d", var_r30_716 + 1, temp_f1_789)) == 0) {
                 var_r29_719 = 1;
             }
             goto loop_15;

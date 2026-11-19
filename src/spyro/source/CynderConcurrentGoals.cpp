@@ -137,12 +137,10 @@ block_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderConcurrentGoal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 void CynderConcurrentGoal_Think::Reset() {
     this->unk8 = 1;

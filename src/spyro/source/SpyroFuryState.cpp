@@ -10,30 +10,6 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK gb;
 static SpyroFuryState states__14SpyroFuryState;     /* type too large by 0x1C; unable to generate initializer: confusing struct layout */
-static s8 lit_stringBase0[0x16] = {
-    0x49,
-    0x6E,
-    0x20,
-    0x44,
-    0x65,
-    0x62,
-    0x75,
-    0x67,
-    0x20,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0,
-    0x4E,
-    0x6F,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
 void SpyroFuryState::ProcessAnimEvent(unsigned int arg0) {
 

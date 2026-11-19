@@ -15,85 +15,6 @@ extern s8 gAssertBool;
 extern void **gMK;
 
 #if 0 // DRAFT: illegal implicit conversion from 'TrainTrackDescriptor' to
-static s8 lit_stringBase0[0x4C] = {
-    0x72,
-    0x5F,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x5F,
-    0x4C,
-    0x25,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x5F,
-    0x52,
-    0x25,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x5F,
-    0x4C,
-    0x25,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x5F,
-    0x52,
-    0x25,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x5F,
-    0x4C,
-    0x30,
-    0,
-    0x72,
-    0x5F,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x5F,
-    0x4C,
-    0x30,
-    0,
-    0x70,
-    0x69,
-    0x65,
-    0x63,
-    0x65,
-    0,
-}; /* const */
-
 void TrainTrack::Build() {
     M2C_UNK spD0;
     MKVector3 spC0;
@@ -179,14 +100,14 @@ loop_4:
     sp18 = -1;
     var_r28_96 = 0;
 loop_8:
-    if (MKModel_RefPointExists(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf(lit_stringBase0, var_r28_96, var_f1_90), &sp18) != 0) {
+    if (MKModel_RefPointExists(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf("r_Spyro_L%d", var_r28_96, var_f1_90), &sp18) != 0) {
         MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r3_90, MKModel **, 4), sp18, &spC0);
-        temp_r3_121 = MKModel_GetRefPointIndex(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf(&lit_stringBase0[0xC], var_r28_96, M2C_BITWISE(f32, this->unk4C.AddNode(spC0))));
+        temp_r3_121 = MKModel_GetRefPointIndex(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf("r_Spyro_R%d", var_r28_96, M2C_BITWISE(f32, this->unk4C.AddNode(spC0))));
         sp18 = temp_r3_121;
         MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r3_90, MKModel **, 4), temp_r3_121, &spC0);
-        if (MKModel_RefPointExists(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf(&lit_stringBase0[0x18], var_r28_96, M2C_BITWISE(f32, this->unk60.AddNode(spC0))), &sp18) != 0) {
+        if (MKModel_RefPointExists(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf("r_Steam_L%d", var_r28_96, M2C_BITWISE(f32, this->unk60.AddNode(spC0))), &sp18) != 0) {
             MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r3_90, MKModel **, 4), sp18, &spC0);
-            temp_r3_153 = MKModel_GetRefPointIndex(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf(&lit_stringBase0[0x24], var_r28_96, M2C_BITWISE(f32, this->unk74.AddNode(spC0))));
+            temp_r3_153 = MKModel_GetRefPointIndex(M2C_FIELD(temp_r3_90, MKModel **, 4), Str_Printf("r_Steam_R%d", var_r28_96, M2C_BITWISE(f32, this->unk74.AddNode(spC0))));
             sp18 = temp_r3_153;
             MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r3_90, MKModel **, 4), temp_r3_153, &spC0);
             var_f1_90 = M2C_BITWISE(f32, this->unk88.AddNode(spC0));
@@ -204,7 +125,7 @@ loop_8:
 loop_19:
         if (var_r25_174 < var_r29_52) {
             temp_r24_178 = *(&spD0 + var_r27_175);
-            gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r24_178, MKModel **, 4), &lit_stringBase0[0x30], &sp14);
+            gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r24_178, MKModel **, 4), "r_Spyro_L0", &sp14);
             sp70.GetMeasure(1.0f, (Matrix *) &this->unk4C);
             spB0 = M2C_BITWISE(f64, sp70);
             spB8 = (f64) sp70.unk8;
@@ -218,9 +139,9 @@ loop_19:
                 sp10 = -1;
                 var_r25_223 = 1;
 loop_15:
-                if (MKModel_RefPointExists(M2C_FIELD(temp_r24_178, MKModel **, 4), Str_Printf(lit_stringBase0, var_r25_223, var_f1_210), &sp10) != 0) {
+                if (MKModel_RefPointExists(M2C_FIELD(temp_r24_178, MKModel **, 4), Str_Printf("r_Spyro_L%d", var_r25_223, var_f1_210), &sp10) != 0) {
                     MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r24_178, MKModel **, 4), sp10, &spA0);
-                    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r24_178, MKModel **, 4), MKModel_GetRefPointIndex(M2C_FIELD(temp_r24_178, MKModel **, 4), Str_Printf(&lit_stringBase0[0xC], var_r25_223, M2C_BITWISE(f32, this->unk4C.AddNode(spA0)))), &spA0);
+                    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r24_178, MKModel **, 4), MKModel_GetRefPointIndex(M2C_FIELD(temp_r24_178, MKModel **, 4), Str_Printf("r_Spyro_R%d", var_r25_223, M2C_BITWISE(f32, this->unk4C.AddNode(spA0)))), &spA0);
                     var_f1_210 = M2C_BITWISE(f32, this->unk60.AddNode(spA0));
                     var_r25_223 += 1;
                     if (var_r25_223 < 0xA) {
@@ -243,7 +164,7 @@ loop_15:
 loop_30:
         if (var_r25_280 < var_r29_52) {
             temp_r28_284 = *(&spD0 + var_r27_281);
-            gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), &lit_stringBase0[0x3B], &spC);
+            gAssertBool = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), "r_Steam_L0", &spC);
             sp50.GetMeasure(1.0f, (Matrix *) &this->unk74);
             sp90 = sp50;
             sp98 = sp58;
@@ -257,10 +178,10 @@ loop_30:
                 sp8 = -1;
                 var_r24_329 = 1;
 loop_25:
-                temp_ret_338 = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), Str_Printf(lit_stringBase0, var_r24_329, var_f1_316), &sp8);
-                if ((temp_ret_338 != 0) && (MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), Str_Printf(&lit_stringBase0[0x18], var_r24_329, M2C_BITWISE(f32, temp_ret_338)), &sp8) != 0)) {
+                temp_ret_338 = MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), Str_Printf("r_Spyro_L%d", var_r24_329, var_f1_316), &sp8);
+                if ((temp_ret_338 != 0) && (MKModel_RefPointExists(M2C_FIELD(temp_r28_284, MKModel **, 4), Str_Printf("r_Steam_L%d", var_r24_329, M2C_BITWISE(f32, temp_ret_338)), &sp8) != 0)) {
                     MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r28_284, MKModel **, 4), sp8, (MKVector3 *) &sp70.unk10);
-                    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r28_284, MKModel **, 4), MKModel_GetRefPointIndex(M2C_FIELD(temp_r28_284, MKModel **, 4), Str_Printf(&lit_stringBase0[0x24], var_r24_329, M2C_BITWISE(f32, this->unk74.AddNode(*((MKVector3 *) &sp70.unk10))))), (MKVector3 *) &sp70.unk10);
+                    MKModel_CalculateRefPointWorldPosition(M2C_FIELD(temp_r28_284, MKModel **, 4), MKModel_GetRefPointIndex(M2C_FIELD(temp_r28_284, MKModel **, 4), Str_Printf("r_Steam_R%d", var_r24_329, M2C_BITWISE(f32, this->unk74.AddNode(*((MKVector3 *) &sp70.unk10))))), (MKVector3 *) &sp70.unk10);
                     var_f1_316 = M2C_BITWISE(f32, this->unk88.AddNode(*((MKVector3 *) &sp70.unk10)));
                     var_r24_329 += 1;
                     if (var_r24_329 < 0xA) {
@@ -681,7 +602,7 @@ void TrainTrackDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(const char[6])' does not match
 s32 TrainTrackDescriptor::LoadLine(MKIniLine *arg0) {
     s32 temp_r4_1209;
     s32 temp_r5_1208;
@@ -690,7 +611,7 @@ s32 TrainTrackDescriptor::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[0x46]) == 0) {
+    if (stricmp("piece") == 0) {
         temp_r5_1208 = this->unk27C;
         temp_r4_1209 = arg0->GetString(0);
         this->unk27C = temp_r5_1208 + 1;

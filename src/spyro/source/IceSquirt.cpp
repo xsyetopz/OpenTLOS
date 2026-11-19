@@ -24,8 +24,6 @@ static s32 lit_650 = 0;
 static u8 lit_651 = 1;
 static s32 lit_666 = 3;
 
-static s8 lit_stringBase0[0xC] = { 0x4C, 0x69, 0x71, 0x75, 0x69, 0x64, 0x49, 0x63, 0x65, 0x46, 0x58, 0 }; /* const */
-
 void IceSquirt::Deinit() {
     ManagedLight *temp_r4_51;
 
@@ -49,7 +47,6 @@ void IceSquirt::FireBurstEnd() {
     Disable();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void IceSquirt::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) {
     s32 sp8;
     MKVector3 *temp_r4_125;
@@ -60,7 +57,7 @@ void IceSquirt::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) 
     this->unk15C = 1;
     this->unk154 = arg0;
     this->unk158 = arg1;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     temp_r4_117 = this->unk160;
     if (temp_r4_117 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_117, 1U);
@@ -78,19 +75,14 @@ void IceSquirt::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) 
     this->unk168.Init((MKProp *) this, 1, 0, 0, 2, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
     this->unk168.unk4C = GS_SpyroIceBurn;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void IceSquirt::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void IceSquirt::Collided(MKCollisionResult &arg0) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
 void IceSquirt::Draw() {
 
@@ -209,10 +201,10 @@ void IceSquirt::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[12]' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void IceSquirt::LoadDone() {
     Projectile::LoadDone();
-    this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unk150 = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("LiquidIceFX"));
 }
 #endif
 

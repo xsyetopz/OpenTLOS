@@ -14,59 +14,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern void **gb;
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
 static TriggerBoxObject tempBoxRot__16TriggerBoxObject; /* type too large by 0xAC; unable to generate initializer: confusing struct layout */
-static s8 lit_stringBase0[0x33] = {
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x70,
-    0x6F,
-    0x73,
-    0,
-    0x72,
-    0x6F,
-    0x74,
-    0,
-    0x73,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x62,
-    0x55,
-    0x73,
-    0x65,
-    0x54,
-    0x72,
-    0x69,
-    0x67,
-    0x67,
-    0x65,
-    0x72,
-    0,
-    0x72,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0,
-    0x74,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0x49,
-    0x44,
-    0,
-}; /* const */
 
 s32 TriggerPolyObject::CheckTarget() {
     f64 sp10;
@@ -167,7 +114,7 @@ s32 TriggerPolyObject::LoadLine(char *arg0, MKIniLine *arg1) {
         var_r30_194 = 0;
 loop_8:
         if (var_r28_192 != NULL) {
-            if (var_r28_192->LoadVector3(lit_stringBase0, M2C_BITWISE(s32, this->unk10.unk74) + var_r30_194, 0) != 0) {
+            if (var_r28_192->LoadVector3("waypoint", M2C_BITWISE(s32, this->unk10.unk74) + var_r30_194, 0) != 0) {
                 var_r30_194 += 0x10;
             }
             var_r28_192 = var_r28_192->unkC->GetNextLine(var_r28_192);
@@ -413,7 +360,7 @@ void TriggerBoxObject::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'unksp14'
+#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match
 s32 TriggerBoxObject::LoadLine(char *arg0, MKIniLine *arg1) {
     f64 sp18;
     f64 sp10;
@@ -425,7 +372,7 @@ s32 TriggerBoxObject::LoadLine(char *arg0, MKIniLine *arg1) {
 loop_10:
         if (var_r30_786 != NULL) {
             var_r30_786->GetFieldName();
-            if (stricmp(&lit_stringBase0[9]) == 0) {
+            if (stricmp("pos") == 0) {
                 sp10 = M2C_FIELD(this, f64 *, 0x40);
                 sp18 = M2C_FIELD(this, f64 *, 0x48);
                 var_r30_786->AsVector3(0, (MKVector3 *) &sp10);
@@ -433,7 +380,7 @@ loop_10:
                 this->unk10.unk34 = unksp14;
                 this->unk10.unk38 = (f32) sp18;
                 this->unk10.unk3C = 1.0f;
-            } else if ((var_r30_786->LoadVector3(&lit_stringBase0[0xD], (MKVector3 *) &tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3(&lit_stringBase0[0x11], (MKVector3 *) &this->unk10.unk60, 0) == 0) && (var_r30_786->LoadBool(&lit_stringBase0[0x17], &sp8, 0) != 0) && (sp8 == 0)) {
+            } else if ((var_r30_786->LoadVector3("rot", (MKVector3 *) &tempBoxRot, 0) == 0) && (var_r30_786->LoadVector3("scale", (MKVector3 *) &this->unk10.unk60, 0) == 0) && (var_r30_786->LoadBool("bUseTrigger", &sp8, 0) != 0) && (sp8 == 0)) {
                 this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk10.unk40) & 0xFFFFFFFE));
             }
             var_r30_786 = var_r30_786->unkC->GetNextLine(var_r30_786);
@@ -469,7 +416,7 @@ void TriggerSphereObject::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 TriggerSphereObject::LoadLine(char *arg0, MKIniLine *arg1) {
     f64 sp18;
     f64 sp10;
@@ -485,17 +432,17 @@ loop_11:
         if (var_r29_918 != NULL) {
             spC = 0.0f;
             sp9 = 1;
-            if (var_r29_918->LoadFloat(&lit_stringBase0[0x23], &spC, 0) != 0) {
+            if (var_r29_918->LoadFloat("radius", &spC, 0) != 0) {
                 if (spC > 0.0f) {
                     this->unk10.unk70 = spC;
                 }
-            } else if (var_r29_918->LoadBool(&lit_stringBase0[0x17], &sp9, 0) != 0) {
+            } else if (var_r29_918->LoadBool("bUseTrigger", &sp9, 0) != 0) {
                 if (sp9 == 0) {
                     this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk10.unk40) & 0xFFFFFFFE));
                 }
             } else {
                 var_r29_918->GetFieldName();
-                if (stricmp(&lit_stringBase0[9]) == 0) {
+                if (stricmp("pos") == 0) {
                     sp10 = M2C_FIELD(this, f64 *, 0x40);
                     sp18 = M2C_FIELD(this, f64 *, 0x48);
                     var_r29_918->AsVector3(0, (MKVector3 *) &sp10);
@@ -512,7 +459,7 @@ loop_11:
     }
     var_r30_991 = 0;
     sp8 = 0;
-    if ((TriggerObject::LoadLine(arg1) != 0) || (arg1->LoadFloat(&lit_stringBase0[0x23], &this->unk10.unk70, 0) != 0) || (arg1->LoadBool(&lit_stringBase0[0x17], &sp8, 0) != 0)) {
+    if ((TriggerObject::LoadLine(arg1) != 0) || (arg1->LoadFloat("radius", &this->unk10.unk70, 0) != 0) || (arg1->LoadBool("bUseTrigger", &sp8, 0) != 0)) {
         var_r30_991 = 1;
     }
     if (var_r30_991 != 0) {
@@ -531,7 +478,6 @@ void TriggerSphereObject::Init(float arg0) {
     this->unk10.unk70 = arg0;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 u16 TriggerObject::Update() {
     f32 temp_r3_1086;
     f32 temp_r3_1097;
@@ -542,7 +488,7 @@ u16 TriggerObject::Update() {
         return 0U;
     }
     this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r4_1072) & 0xFFFFFFF9));
-    if (M2C_FIELD(this->__vptr, u8 (**)(), 0x34)() != 0) {
+    if (CheckTarget() != 0) {
         temp_r3_1086 = this->unk10.unk40;
         if (!(M2C_BITWISE(s32, temp_r3_1086) & 8)) {
             this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, temp_r3_1086) | 2));
@@ -558,7 +504,6 @@ u16 TriggerObject::Update() {
     }
     return M2C_BITWISE(u16, this->unk10.unk40);
 }
-#endif
 
 void TriggerObject::EnableTrigger(bool arg0) {
     if (arg0 != 0) {
@@ -593,13 +538,13 @@ void TriggerObject::Reset() {
     this->unk10.unk40 = M2C_BITWISE(f32, (M2C_BITWISE(s32, this->unk10.unk40) & 0xFFFFFFF1));
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(const char[4])' does not match
 u8 TriggerObject::LoadLine(MKIniLine *arg0) {
     f64 sp10;
     f64 sp8;
 
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[9]) == 0) {
+    if (stricmp("pos") == 0) {
         sp8 = M2C_FIELD(this, f64 *, 0x40);
         sp10 = M2C_FIELD(this, f64 *, 0x48);
         arg0->AsVector3(0, (MKVector3 *) &sp8);
@@ -609,7 +554,7 @@ u8 TriggerObject::LoadLine(MKIniLine *arg0) {
         this->unk10.unk3C = 1.0f;
         return 1U;
     }
-    return arg0->LoadInt(&lit_stringBase0[0x2A], (s32 *) &this->unk10.unk44, 0);
+    return arg0->LoadInt("targetID", (s32 *) &this->unk10.unk44, 0);
 }
 #endif
 

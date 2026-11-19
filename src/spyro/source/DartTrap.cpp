@@ -17,84 +17,9 @@
 extern s32 GS_DartTrapFire;
 extern f32 gUpdateTimeDelta;
 extern GameGlobals gb;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pDartTrapAnimEvents = lit_stringBase0;
+#if 0 // DRAFT: illegal implicit conversion from 'const char[5]' to
+static s8 *pDartTrapAnimEvents = "Fire";
 #endif
-
-static s8 lit_stringBase0[0x48] = {
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x72,
-    0x5F,
-    0x72,
-    0x65,
-    0x66,
-    0,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x4F,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x4F,
-    0x66,
-    0x66,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x65,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0,
-    0x53,
-    0x68,
-    0x6F,
-    0x6F,
-    0x74,
-    0,
-    0x43,
-    0x6C,
-    0x6F,
-    0x73,
-    0x65,
-    0,
-}; /* const */
 
 void DartTrap::SetState(int arg0) {
     if ((s32) this->unk94 != arg0) {
@@ -318,20 +243,20 @@ void DartTrap::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 void DartTrap::LoadDone() {
     KDProp::LoadDone();
-    this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 5);
+    this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ref");
     this->unk80->InitEvents(&pDartTrapAnimEvents);
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 DartTrap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_552;
 
     var_r31_552 = 0;
-    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0xB, &this->unkA0, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x1B, &this->unkA4, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x22, &this->unkA8, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x2A, &this->unkB0, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("SpeedMultiplier", &this->unkA0, 0) != 0) || (arg0->LoadFloat("OnTime", &this->unkA4, 0) != 0) || (arg0->LoadFloat("OffTime", &this->unkA8, 0) != 0) || (arg0->LoadBool("OneShot", &this->unkB0, 0) != 0)) {
         var_r31_552 = 1;
     }
     return var_r31_552;
@@ -362,29 +287,29 @@ void DartTrapDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_638 = this->unk34;
-    if (temp_r30_638->Exists(lit_stringBase0 + 0x32) != 0) {
-        var_r3_650 = temp_r30_638->GetAnim(lit_stringBase0 + 0x32);
+    if (temp_r30_638->Exists("Idle") != 0) {
+        var_r3_650 = temp_r30_638->GetAnim("Idle");
     } else {
         var_r3_650 = NULL;
     }
     this->unk70 = (s32) var_r3_650;
     temp_r30_658 = this->unk34;
-    if (temp_r30_658->Exists(lit_stringBase0 + 0x37) != 0) {
-        var_r3_668 = temp_r30_658->GetAnim(lit_stringBase0 + 0x37);
+    if (temp_r30_658->Exists("Open") != 0) {
+        var_r3_668 = temp_r30_658->GetAnim("Open");
     } else {
         var_r3_668 = NULL;
     }
     this->unk74 = (s32) var_r3_668;
     temp_r30_676 = this->unk34;
-    if (temp_r30_676->Exists(lit_stringBase0 + 0x3C) != 0) {
-        var_r3_686 = temp_r30_676->GetAnim(lit_stringBase0 + 0x3C);
+    if (temp_r30_676->Exists("Shoot") != 0) {
+        var_r3_686 = temp_r30_676->GetAnim("Shoot");
     } else {
         var_r3_686 = NULL;
     }
     this->unk78 = (s32) var_r3_686;
     temp_r30_694 = this->unk34;
-    if (temp_r30_694->Exists(lit_stringBase0 + 0x42) != 0) {
-        var_r3_704 = temp_r30_694->GetAnim(lit_stringBase0 + 0x42);
+    if (temp_r30_694->Exists("Close") != 0) {
+        var_r3_704 = temp_r30_694->GetAnim("Close");
     } else {
         var_r3_704 = NULL;
     }

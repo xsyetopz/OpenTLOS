@@ -25,54 +25,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 
-static s8 lit_stringBase0[0x2D] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x33,
-    0x34,
-    0x30,
-    0,
-    0x54,
-    0x6F,
-    0x70,
-    0x31,
-    0,
-    0x54,
-    0x6F,
-    0x70,
-    0x32,
-    0,
-    0x42,
-    0x6F,
-    0x74,
-    0x74,
-    0x6F,
-    0x6D,
-    0x31,
-    0,
-    0x42,
-    0x6F,
-    0x74,
-    0x74,
-    0x6F,
-    0x6D,
-    0x32,
-    0,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x50,
-    0x75,
-    0x66,
-    0x66,
-    0x50,
-    0x53,
-    0,
-}; /* const */
-
 void FallingDustProp::Trigger() {
     this->unkA4 = 1;
     this->unkA0 = 0.0f;
@@ -422,16 +374,14 @@ void FallingDustProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingMaterial(MKModel *, signed char[45])' does
 void FallingDustProp::LoadDone() {
     KDProp::LoadDone();
-    this->unkA8 = Tools_GetMatchingMaterial(this->unk4, lit_stringBase0);
-    this->unk90 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[8]);
-    this->unk94 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0xD]);
-    this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x12]);
-    this->unk9C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x1A]);
+    this->unkA8 = Tools_GetMatchingMaterial(this->unk4, "fx_0340");
+    this->unk90 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Top1");
+    this->unk94 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Top2");
+    this->unk98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Bottom1");
+    this->unk9C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Bottom2");
 }
-#endif
 
 void FallingDustProp::Init() {
     KDProp::Init();
@@ -444,10 +394,10 @@ void FallingDustProp::Init() {
     this->unkB0.unkC = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void FallingDustPropDescriptor::Init() {
     KDPropDescriptor::Init();
-    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x22]));
+    this->unk70 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("DustPuffPS"));
 }
 #endif
 

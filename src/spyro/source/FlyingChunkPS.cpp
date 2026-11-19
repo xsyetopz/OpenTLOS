@@ -25,43 +25,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 
 #if 0 // DRAFT: illegal implicit conversion from 'FlyingChunkPSDescriptor *' to
-static s8 lit_stringBase0[0x22] = {
-    0x4D,
-    0x61,
-    0x78,
-    0x4E,
-    0x75,
-    0x6D,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x41,
-    0x67,
-    0x65,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0,
-    0x41,
-    0x63,
-    0x63,
-    0x65,
-    0x6C,
-    0,
-}; /* const */
-
 void FlyingChunkPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, const MKVector3 &arg3, float arg4, const MKVector4 &arg5, int arg6, MKProp *arg7) {
     MKHeap **temp_r3_94;
     MKHeap *temp_r5_67;
@@ -1148,12 +1111,12 @@ void FlyingChunkPSDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FlyingChunkPSDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2136;
 
     var_r31_2136 = 0;
-    if ((GamePropColoredDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unkE8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xD], &this->unkF0, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x14], (u8 *) &this->unkF4, 0) != 0) || (arg0->LoadVector3(&lit_stringBase0[0x1C], &this->unkF8, 0) != 0)) {
+    if ((GamePropColoredDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("MaxNumChunks", &this->unkE8, 0) != 0) || (arg0->LoadFloat("MaxAge", &this->unkF0, 0) != 0) || (arg0->LoadBool("Collide", (u8 *) &this->unkF4, 0) != 0) || (arg0->LoadVector3("Accel", &this->unkF8, 0) != 0)) {
         var_r31_2136 = 1;
     }
     return var_r31_2136;

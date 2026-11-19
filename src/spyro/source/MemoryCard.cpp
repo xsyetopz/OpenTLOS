@@ -26,29 +26,12 @@ static MCSaveScreen descriptor__12MCSaveScreen;     /* type too large by 0xC4; u
 static MCText descriptor__6MCText;                  /* type too large by 0x6C; unable to generate initializer: not enough data */
 static s32 memCardSlotSizes;
 static s8 gameNameBuffer[0x20];
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pDirectoryName = lit_stringBase0;
+#if 0 // DRAFT: illegal implicit conversion from 'const char[16]' to
+static s8 *pDirectoryName = "BASLUS-21372s06";
 #endif
 #if 0 // DRAFT: declaration syntax error
 static MemoryCardScreen operation__16MemoryCardScreen; /* type too large by 0xD4; unable to generate initializer: not enough data */
-static s8 lit_stringBase0[0x10] = {
-    0x42,
-    0x41,
-    0x53,
-    0x4C,
-    0x55,
-    0x53,
-    0x2D,
-    0x32,
-    0x31,
-    0x33,
-    0x37,
-    0x32,
-    0x73,
-    0x30,
-    0x36,
-    0,
-}; /* const */
+
 static M2C_UNK .L_8035CDF0;                         /* unable to generate initializer: unknown type; const */
 static M2C_UNK .L_8035CDFD;                         /* unable to generate initializer: unknown type; const */
 
@@ -125,37 +108,37 @@ void MemoryCardScreen::ExamineCard() {
 
     if ((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 0xC) != 0) {
         query.__vptr = (void *)5;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     if ((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 0xD) != 0) {
         query.__vptr = (void *)1;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     if ((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 0xA) != 0) {
         query.__vptr = (void *)2;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     if ((u8) M2C_FIELD(selectedCard.__vptr, u8 *, 0xB) != 0) {
         query.__vptr = (void *)9;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     if ((s32) M2C_FIELD(selectedCard.__vptr, s32 *, 0x1C) == 0) {
         query.__vptr = (void *)8;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     if ((s32) M2C_FIELD(selectedCard.__vptr, s32 *, 0x20) == 0) {
         if ((void *) operation.__vptr == NULL) {
             query.__vptr = (void *)7;
-            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
             return;
         }
         action.__vptr = (void *)2;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x2C);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     var_r3_318 = 0;
@@ -163,7 +146,7 @@ void MemoryCardScreen::ExamineCard() {
 loop_15:
     if ((s8) *(selectedCard.__vptr + (var_r3_318 + 0xE5)) != 0) {
         action.__vptr = (void *)5;
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x2C);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     var_r3_318 += 0xC0;
@@ -171,10 +154,10 @@ loop_15:
     if (var_ctr_319 == 0) {
         if (((void *) operation.__vptr == (void *)1) && ((s32) M2C_FIELD(selectedCard.__vptr, s32 *, 0x24) == 0) && ((temp_r30_344 = M2C_FIELD(selectedCard.__vptr, s32 *, 0x18), ((temp_r30_344 < MemoryCard_GetSaveGameBlockSize()) != 0)) || ((s32) M2C_FIELD(selectedCard.__vptr, s32 *, 0x14) < 1))) {
             query.__vptr = (void *)6;
-            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x24);
+            ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
             return;
         }
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x35);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
         return;
     }
     goto loop_15;
@@ -239,10 +222,10 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'UIContainer *' to
 void MemoryCardScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkBC.unk4 = ui_cast<UIContainer *, UIObject *>(FindChild(lit_stringBase0 + 0x42));
+    this->unkBC.unk4 = ui_cast<UIContainer *, UIObject *>(FindChild(""));
 }
 #endif
 
@@ -262,13 +245,13 @@ void MCSaveScreen::Update() {
     UIScreen::Update();
     if (((KDMemoryCard *) (M2C_ERROR(/* Read from unset register $r3 */)))->Update() == 0) {
         var_r31_527 = NULL;
-        temp_r3_534 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) (ui_cast<P8UISystem))->FindChild(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x4D));
+        temp_r3_534 = ui_cast<UIContainer *, UIObject *>(((UIContainer *) (ui_cast<P8UISystem))->FindChild(P11UIContainer>__FP11UIContainer(GetRoot()), ""));
         if (temp_r3_534 != NULL) {
-            var_r31_527 = ui_cast<UIText *, UIObject *>(temp_r3_534->FindChild(lit_stringBase0 + 0x58));
+            var_r31_527 = ui_cast<UIText *, UIObject *>(temp_r3_534->FindChild(""));
         }
         operation.__vptr = (void *)-1;
         bNewGame = 0;
-        if (strnicmp((s8 *) this->unk4, lit_stringBase0 + 0x60, 4) == 0) {
+        if (strnicmp((s8 *) this->unk4, "", 4) == 0) {
             operation.__vptr = (void *)1;
             if (var_r31_527 != NULL) {
                 temp_r3_560 = M2C_FIELD(var_r31_527, s8 **, 0x68);
@@ -278,7 +261,7 @@ void MCSaveScreen::Update() {
                 M2C_FIELD(var_r31_527, s8 **, 0x68) = NULL;
                 M2C_FIELD(var_r31_527, s32 *, 0x6C) = 0x83;
             }
-        } else if (strnicmp((s8 *) this->unk4, lit_stringBase0 + 0x65, 3) == 0) {
+        } else if (strnicmp((s8 *) this->unk4, "", 3) == 0) {
             operation.__vptr = (void *)1;
             bNewGame = 1;
             if (var_r31_527 != NULL) {
@@ -289,7 +272,7 @@ void MCSaveScreen::Update() {
                 M2C_FIELD(var_r31_527, s8 **, 0x68) = NULL;
                 M2C_FIELD(var_r31_527, s32 *, 0x6C) = 0x82;
             }
-        } else if (strnicmp((s8 *) this->unk4, lit_stringBase0 + 0x69, 4) == 0) {
+        } else if (strnicmp((s8 *) this->unk4, "", 4) == 0) {
             operation.__vptr = NULL;
             if (var_r31_527 != NULL) {
                 temp_r3_607 = M2C_FIELD(var_r31_527, s8 **, 0x68);
@@ -300,7 +283,7 @@ void MCSaveScreen::Update() {
                 M2C_FIELD(var_r31_527, s32 *, 0x6C) = 0x81;
             }
         }
-        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x6E);
+        ((UISystem *) (ui_cast<P8UISystem))->ChangeScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
     }
 }
 #endif
@@ -501,7 +484,7 @@ loop_25:
                         goto loop_25;
                     }
                 } else {
-                    var_r30_876 = &var_r30_876[sprintf(var_r30_876, lit_stringBase0 + 0x7B, M2C_FIELD(gpTranslation_StringArray, s32 *, 0), lit_stringBase0)];
+                    var_r30_876 = &var_r30_876[sprintf(var_r30_876, "", M2C_FIELD(gpTranslation_StringArray, s32 *, 0), "BASLUS-21372s06")];
                     var_r31_878 += 1;
                 }
                 break;
@@ -522,10 +505,10 @@ loop_25:
                 break;
             case 0x78:                              /* switch 2 */
                 temp_ret_1001 = MemoryCard_GetSaveGameBlockSize();
-                var_r30_876 = &var_r30_876[sprintf(var_r30_876, lit_stringBase0 + 0x7E, temp_ret_1001, M2C_BITWISE(f32, temp_ret_1001))];
+                var_r30_876 = &var_r30_876[sprintf(var_r30_876, "", temp_ret_1001, M2C_BITWISE(f32, temp_ret_1001))];
                 break;
             case 0x79:                              /* switch 2 */
-                var_r30_876 = &var_r30_876[sprintf(var_r30_876, lit_stringBase0 + 0x7E, 1)];
+                var_r30_876 = &var_r30_876[sprintf(var_r30_876, "", 1)];
                 break;
             case 0x25:                              /* switch 2 */
                 *var_r30_876 = 0x25;

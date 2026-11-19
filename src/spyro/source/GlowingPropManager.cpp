@@ -11,8 +11,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern GlowingPropManager gGlowingPropManager;
 extern MKMaterial *gRenderState;
 
-static s8 lit_stringBase0[0xC] = { 0x66, 0x78, 0x5F, 0x50, 0x72, 0x6F, 0x70, 0x47, 0x6C, 0x6F, 0x77, 0 }; /* const */
-
 u8 GlowingPropManager::AddProp(MKProp *arg0) {
     MKProp ***temp_r5_11;
     MKProp ***temp_r5_18;
@@ -234,9 +232,9 @@ void GlowingProp::Deinit() {
     MKMaterial_Destroy(this->unk10);
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[12])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void GlowingProp::Init() {
     this->unk14 = 1;
-    this->unk10 = MKMaterial_Create(lit_stringBase0);
+    this->unk10 = MKMaterial_Create("fx_PropGlow");
 }
 #endif

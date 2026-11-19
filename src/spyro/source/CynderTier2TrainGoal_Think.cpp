@@ -159,12 +159,10 @@ u8 CynderTier2TrainGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void CynderTier2TrainGoal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 void CynderTier2TrainGoal_Think::Deinit() {
     Goal<Enemy> *temp_r3_389;

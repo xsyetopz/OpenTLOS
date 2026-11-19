@@ -10,54 +10,8 @@
 M2C_UNK free(KDPathManager *);                      /* extern */
 KDPathManager *malloc(s32);                         /* extern */
 static MKVector3 waypointLoadInfo[0x40];
-#if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x2C] = {
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x74,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x62,
-    0x46,
-    0x6F,
-    0x72,
-    0x63,
-    0x65,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x70,
-    0x61,
-    0x72,
-    0x65,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: pointer/array required
 void KDPathManager::NearestPointLocalSegment(int arg0, const MKVector3 &arg1) {
     KDPathIterator sp48;
     f64 sp40;
@@ -566,7 +520,6 @@ loop_35:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 u8 KDSplinePathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
     MKVector3 sp8;
     MKIniLine *var_r29_1039;
@@ -586,7 +539,7 @@ u8 KDSplinePathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
         var_r29_1039 = arg0->unkC->GetSubLine(arg0);
 loop_11:
         if (var_r29_1039 != NULL) {
-            if (var_r29_1039->LoadVector3(lit_stringBase0, &sp8, 0) != 0) {
+            if (var_r29_1039->LoadVector3("waypoint", &sp8, 0) != 0) {
                 this->unk30.AddNode(sp8);
             }
             var_r29_1039 = var_r29_1039->unkC->GetNextLine(var_r29_1039);
@@ -599,20 +552,19 @@ loop_11:
         this->unk24 = (MKVector3 *) this->unk30.unkC;
         return 1U;
     }
-    if (arg0->LoadVector3(lit_stringBase0, &waypointLoadInfo[this->unk20], 0) != 0) {
+    if (arg0->LoadVector3("waypoint", &waypointLoadInfo[this->unk20], 0) != 0) {
         this->unk20 += 1;
         return 1U;
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0, const char *arg1) {
     s32 sp8;
 
     sp8 = 0;
-    if (arg0->LoadInt(&lit_stringBase0[9], &sp8, 0) != 0) {
+    if (arg0->LoadInt("type", &sp8, 0) != 0) {
         this->unk18 = (s16) sp8;
         return 1U;
     }
@@ -620,12 +572,12 @@ u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0, const char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 u8 KDSplinePathSegment::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1156;
 
     var_r31_1156 = 0;
-    if ((LoadLine(arg0, &lit_stringBase0[0xE]) != 0) || (arg0->LoadBool(&lit_stringBase0[0x18], (u8 *) &this->unk44, 0) != 0)) {
+    if ((LoadLine(arg0, "waypoints") != 0) || (arg0->LoadBool("bForceLoop", (u8 *) &this->unk44, 0) != 0)) {
         var_r31_1156 = 1;
     }
     return var_r31_1156;
@@ -707,12 +659,12 @@ void KDLocalPathSegmentProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk34'
 s32 KDLocalPathSegmentProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1356;
 
     var_r31_1356 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x23], (s32 *) &this->unk4C.unk34, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0) != 0) || (arg0->LoadInt("parentID", (s32 *) &this->unk4C.unk34, 0) != 0)) {
         var_r31_1356 = 1;
     }
     return var_r31_1356;
@@ -971,7 +923,7 @@ u8 KDPathSegment::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
         var_r29_1815 = arg0->unkC->GetSubLine(arg0);
 loop_10:
         if (var_r29_1815 != NULL) {
-            if (var_r29_1815->LoadVector3(lit_stringBase0, this->unk24 + (var_r28_1814 * this->unk1C), 0) != 0) {
+            if (var_r29_1815->LoadVector3("waypoint", this->unk24 + (var_r28_1814 * this->unk1C), 0) != 0) {
                 var_r28_1814 += 1;
             }
             var_r29_1815 = var_r29_1815->unkC->GetNextLine(var_r29_1815);
@@ -979,7 +931,7 @@ loop_10:
         }
         return 1U;
     }
-    if (arg0->LoadVector3(lit_stringBase0, &waypointLoadInfo[this->unk20], 0) != 0) {
+    if (arg0->LoadVector3("waypoint", &waypointLoadInfo[this->unk20], 0) != 0) {
         this->unk20 += 1;
         return 1U;
     }
@@ -987,16 +939,16 @@ loop_10:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 KDPathSegment::LoadLine(MKIniLine *arg0) {
     s32 sp8;
 
     sp8 = 0;
-    if (arg0->LoadInt(&lit_stringBase0[9], &sp8, 0) != 0) {
+    if (arg0->LoadInt("type", &sp8, 0) != 0) {
         this->unk18 = (s16) sp8;
         return 1U;
     }
-    return LoadWaypoints(arg0, &lit_stringBase0[0xE]);
+    return LoadWaypoints(arg0, "waypoints");
 }
 #endif
 

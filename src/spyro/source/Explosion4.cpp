@@ -37,82 +37,6 @@ static s32 lit_762 = 0;
 static u8 lit_763 = 1;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp10'
-static s8 lit_stringBase0[0x49] = {
-    0x73,
-    0x6E,
-    0x64,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x64,
-    0x65,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x64,
-    0x65,
-    0x52,
-    0x75,
-    0x6D,
-    0x62,
-    0x6C,
-    0x65,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x34,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x34,
-    0x53,
-    0x6D,
-    0x6F,
-    0x6B,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x30,
-    0x31,
-    0x5F,
-    0x45,
-    0x78,
-    0x70,
-    0x32,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x77,
-    0x61,
-    0x76,
-    0x65,
-    0,
-}; /* const */
-
 void Explosion4::Trigger(const MKVector3 &arg0, float arg1, bool arg2, MKProp *arg3, int arg4, bool arg5, bool arg6, bool arg7, bool arg8) {
     ManagedLight *temp_r3_158;
     ManagedLight *temp_r3_208;
@@ -1622,12 +1546,12 @@ void Explosion4Descriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[11], long *)' does
 s32 Explosion4Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3307;
 
     var_r31_3307 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0, &this->unk6C) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xB], &this->unk70) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndExplode", &this->unk6C) != 0) || (KDSound_LoadLine(arg0, "sndExplodeRumble", &this->unk70) != 0)) {
         var_r31_3307 = 1;
     }
     return var_r31_3307;
@@ -1639,9 +1563,9 @@ void Explosion4Descriptor::Init() {
     MKPropDescriptor::Init();
     this->unk6C = GS_Explosion2;
     this->unk70 = GS_Rumble1Soft;
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x1C]));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x28]));
-    this->unk68 = MKModel_Create(&lit_stringBase0[0x34], NULL, 2, NULL);
+    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("Exp4FlamePS"));
+    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("Exp4SmokePS"));
+    this->unk68 = MKModel_Create("FX0001_Exp2Shockwave", NULL, 2, NULL);
 }
 #endif
 

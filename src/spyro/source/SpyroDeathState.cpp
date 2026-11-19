@@ -23,30 +23,6 @@ extern M2C_UNK gb;
 #if 0 // DRAFT: undefined identifier 'pCurrentCheckPoint'
 static M2C_UNK lit_779;                                /* unable to generate initializer: unknown type */
 static SpyroDeathState states__15SpyroDeathState[4]; /* unable to generate initializer: confusing struct layout */
-static s8 lit_stringBase0[0x16] = {
-    0x49,
-    0x6E,
-    0x20,
-    0x44,
-    0x65,
-    0x62,
-    0x75,
-    0x67,
-    0x20,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0,
-    0x4E,
-    0x6F,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
 s32 SpyroDeathState::SpawnTransition() {
     if (((void *) pCurrentCheckPoint.unk0 != NULL) && ((s32) this->unk14.unk0 != 3)) {

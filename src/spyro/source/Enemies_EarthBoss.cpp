@@ -53,296 +53,6 @@ static s32 lit_1334 = 1;
 #if 0 // DRAFT: identifier 'EarthBoss::GetCharacterName()' redeclared
 static M2C_UNK lit_1039;                               /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_1040;                               /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x120] = {
-    0x46,
-    0x69,
-    0x73,
-    0x74,
-    0,
-    0x72,
-    0x75,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x25,
-    0x30,
-    0x2E,
-    0x32,
-    0x64,
-    0,
-    0x4C,
-    0x5F,
-    0x46,
-    0x6F,
-    0x6F,
-    0x74,
-    0,
-    0x4C,
-    0x5F,
-    0x43,
-    0x61,
-    0x6C,
-    0x66,
-    0,
-    0x52,
-    0x5F,
-    0x46,
-    0x6F,
-    0x6F,
-    0x74,
-    0,
-    0x52,
-    0x5F,
-    0x43,
-    0x61,
-    0x6C,
-    0x66,
-    0,
-    0x4C,
-    0x5F,
-    0x48,
-    0x61,
-    0x6E,
-    0x64,
-    0,
-    0x4C,
-    0x5F,
-    0x46,
-    0x6F,
-    0x72,
-    0x65,
-    0x61,
-    0x72,
-    0x6D,
-    0,
-    0x52,
-    0x5F,
-    0x48,
-    0x61,
-    0x6E,
-    0x64,
-    0,
-    0x52,
-    0x5F,
-    0x46,
-    0x6F,
-    0x72,
-    0x65,
-    0x61,
-    0x72,
-    0x6D,
-    0,
-    0x50,
-    0x65,
-    0x6C,
-    0x76,
-    0x69,
-    0x73,
-    0,
-    0x53,
-    0x70,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x33,
-    0,
-    0x53,
-    0x70,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x32,
-    0,
-    0x4C,
-    0x5F,
-    0x42,
-    0x69,
-    0x63,
-    0x65,
-    0x70,
-    0,
-    0x72,
-    0x75,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x30,
-    0x35,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x41,
-    0x72,
-    0x6D,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x77,
-    0x61,
-    0x76,
-    0x65,
-    0,
-    0x48,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x50,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x70,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0,
-    0x56,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x36,
-    0,
-    0x56,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x35,
-    0,
-    0x56,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x34,
-    0,
-    0x56,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x33,
-    0,
-    0x56,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x32,
-    0,
-    0x56,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x31,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x48,
-    0x44,
-    0x52,
-    0x47,
-    0x4C,
-    0x6F,
-    0x77,
-    0x4F,
-    0x76,
-    0x65,
-    0x72,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-}; /* const */
 
 s32 EarthBoss::GetCharacterName() {
     return M2C_FIELD(gpTranslation_StringArray, s32 *, 0x32C);
@@ -814,7 +524,7 @@ void EarthBoss::ShowFist(bool arg0) {
 
     temp_r4_700 = this->unk4;
     if (temp_r4_700 != NULL) {
-        temp_r3_706 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, temp_r4_700, lit_stringBase0);
+        temp_r3_706 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, temp_r4_700, "Fist");
         if (temp_r3_706 != -1U) {
             MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, (s32) temp_r3_706, arg0, 1U);
         }
@@ -1030,7 +740,7 @@ s32 EarthBoss::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: ')' expected
 void EarthBoss::Message(MKMessage *arg0) {
     EarthBossArm *temp_r3_1324;
     f32 temp_f1_1355;
@@ -1041,7 +751,7 @@ void EarthBoss::Message(MKMessage *arg0) {
     temp_r0_1232 = arg0->unk0;
     switch (temp_r0_1232) {                         /* irregular */
     case 181:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+        Enable();
     default:
 block_28:
         Enemy::Message(arg0);
@@ -1264,7 +974,6 @@ void EarthBoss::SetupCollisionSphere(int arg0, const char *arg1, const char *arg
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void EarthBoss::SetupCollision() {
     f64 spC0;
     f64 spB8;
@@ -1302,50 +1011,49 @@ void EarthBoss::SetupCollision() {
     sp5C = 200.0f;
     spC0 = (f64) sp60;
     spB8 = (f64) sp58;
-    SetupCollisionSphere(0, &lit_stringBase0[0x11], &lit_stringBase0[0x18], 200.0f, *((MKVector3 *) &spB8));
+    SetupCollisionSphere(0, "L_Foot", "L_Calf", 200.0f, *((MKVector3 *) &spB8));
     sp50 = 0.0f;
     sp48 = 0.0f;
     sp4C = 200.0f;
     spB0 = (f64) sp50;
     spA8 = (f64) sp48;
-    SetupCollisionSphere(1, &lit_stringBase0[0x1F], &lit_stringBase0[0x26], 200.0f, *((MKVector3 *) &spA8));
+    SetupCollisionSphere(1, "R_Foot", "R_Calf", 200.0f, *((MKVector3 *) &spA8));
     sp40 = 0.0f;
     sp38 = 0.0f;
     sp3C = 0.0f;
     spA0 = (f64) sp40;
     sp98 = (f64) sp38;
-    SetupCollisionSphere(2, &lit_stringBase0[0x2D], &lit_stringBase0[0x34], 200.0f, *((MKVector3 *) &sp98));
+    SetupCollisionSphere(2, "L_Hand", "L_Forearm", 200.0f, *((MKVector3 *) &sp98));
     sp30 = 0.0f;
     sp28 = 0.0f;
     sp2C = 0.0f;
     sp90 = (f64) sp30;
     sp88 = (f64) sp28;
-    SetupCollisionSphere(3, &lit_stringBase0[0x3E], &lit_stringBase0[0x45], 200.0f, *((MKVector3 *) &sp88));
+    SetupCollisionSphere(3, "R_Hand", "R_Forearm", 200.0f, *((MKVector3 *) &sp88));
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = 130.0f;
     sp80 = (f64) sp20;
     sp78 = (f64) sp18;
-    SetupCollisionSphere(4, &lit_stringBase0[0x4F], &lit_stringBase0[0x4F], 200.0f, *((MKVector3 *) &sp78));
+    SetupCollisionSphere(4, "Pelvis", "Pelvis", 200.0f, *((MKVector3 *) &sp78));
     sp8 = 300.0f;
     spC = 250.0f;
     sp10 = 0.0f;
     sp68 = (f64) sp8;
     sp70 = (f64) sp10;
-    SetupCollisionSphere(5, &lit_stringBase0[0x56], &lit_stringBase0[0x5E], 350.0f, *((MKVector3 *) &sp68));
+    SetupCollisionSphere(5, "Spine03", "Spine02", 350.0f, *((MKVector3 *) &sp68));
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk930'
 void EarthBoss::LoadDone() {
     Enemy::LoadDone();
     this->unk110.unk930 = this->unk110.unk92C;
-    this->unkCCC = (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x66]);
-    this->unkCD0 = (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x34]);
-    this->unkCD4 = (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x2D]);
-    this->unkCD8 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, &lit_stringBase0[0x6E]);
+    this->unkCCC = (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Bicep");
+    this->unkCD0 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Forearm");
+    this->unkCD4 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "L_Hand");
+    this->unkCD8 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "rubble05");
     ShowFist(1U);
-    this->unkCC0 = checked_cast<EarthBossArm *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x77]));
+    this->unkCC0 = checked_cast<EarthBossArm *, MKProp>(gMK->CreateProp("EarthBossArm"));
     this->unkCC0->Init2(this);
     if (!(this->unk110.unk570 & 0x160000)) {
         Disable();
@@ -1358,7 +1066,7 @@ s32 EarthBoss::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1913;
 
     var_r31_1913 = 0;
-    if ((Enemy::LoadLine(arg0) != 0) || (this->unkCF4.LoadLine(arg0, &lit_stringBase0[0x84]) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (this->unkCF4.LoadLine(arg0, "OnReset") != 0)) {
         var_r31_1913 = 1;
     }
     return var_r31_1913;
@@ -1419,7 +1127,7 @@ void EarthBoss::Init() {
     this->unkCE8 = NULL;
     this->unkCEC = 0.0f;
     this->unkCF0 = 0.0f;
-    this->unkCC4 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x8C]));
+    this->unkCC4 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
     this->unkCF4.Init();
 }
 #endif
@@ -1491,24 +1199,24 @@ s32 EarthBossDescriptor::LoadLine(MKIniLine *arg0) {
     if (EnemyDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x9B]) != 0) {
+    if (arg0->IsField("HurtPhrases") != 0) {
         var_r29_2156 = arg0->unkC->GetSubLine(arg0);
 loop_11:
         if (var_r29_2156 != NULL) {
             strcpy(&sp2C, var_r29_2156->GetFieldName());
-            if (strnicmp(&lit_stringBase0[0xA7], &sp2C, 0xA) == 0) {
+            if (strnicmp("hurtPhrase", &sp2C, 0xA) == 0) {
                 strcpy(&spC, &sp36);
                 temp_ret_2176 = atoi(&spC);
                 if (temp_ret_2176 <= 2) {
-                    var_r29_2156->LoadString(Str_Printf(&lit_stringBase0[0xB2], &spC, M2C_BITWISE(f32, temp_ret_2176)), &sp8, 0);
+                    var_r29_2156->LoadString(Str_Printf("hurtPhrase%s", &spC, M2C_BITWISE(f32, temp_ret_2176)), &sp8, 0);
                     strcpy(this + (((atoi(&spC) - 1) * 0x24) + 0x2B4), sp8);
                 }
-            } else if (strnicmp(&lit_stringBase0[0xBF], &sp2C, 0xA) == 0) {
+            } else if (strnicmp("Percentage", &sp2C, 0xA) == 0) {
                 strcpy(&spC, &sp36);
                 if (atoi(&spC) <= 2) {
                     temp_ret_2216 = atoi(&spC);
                     temp_r5_2219 = (temp_ret_2216 - 1) * 0x24;
-                    var_r29_2156->LoadFloat(Str_Printf(&lit_stringBase0[0xCA], &spC, temp_r5_2219, M2C_BITWISE(f32, temp_ret_2216)), this + (temp_r5_2219 + 0x2D4), 0);
+                    var_r29_2156->LoadFloat(Str_Printf("percentage%s", &spC, temp_r5_2219, M2C_BITWISE(f32, temp_ret_2216)), this + (temp_r5_2219 + 0x2D4), 0);
                 }
             }
             var_r29_2156 = var_r29_2156->unkC->GetNextLine(var_r29_2156);
@@ -1516,7 +1224,7 @@ loop_11:
         }
         return 1;
     }
-    return arg0->LoadFloat(&lit_stringBase0[0xD7], &this->unk2FC, 0);
+    return arg0->LoadFloat("phraseDelay", &this->unk2FC, 0);
 }
 #endif
 
@@ -1535,7 +1243,7 @@ void EarthBossDescriptor::Init() {
     this->unk2FC = 1.0f;
     do {
         temp_r29_2281 = this + var_r30_2270;
-        strcpy(temp_r29_2281 + 0x2B4, &lit_stringBase0[0xE3]);
+        strcpy(temp_r29_2281 + 0x2B4, "");
         var_r28_2276 += 1;
         M2C_FIELD(temp_r29_2281, f32 *, 0x2D4) = 0.0f;
         var_r30_2270 += 0x24;
@@ -3029,18 +2737,16 @@ void EarthBossArm::InitBoneData(int arg0, const char *arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void EarthBossArm::Init2(EarthBoss *arg0) {
     this->unk370 = (Enemy *) arg0;
-    InitBoneData(5, &lit_stringBase0[0xE4]);
-    InitBoneData(4, &lit_stringBase0[0xEB]);
-    InitBoneData(3, &lit_stringBase0[0xF2]);
-    InitBoneData(2, &lit_stringBase0[0xF9]);
-    InitBoneData(1, &lit_stringBase0[0x100]);
-    InitBoneData(0, &lit_stringBase0[0x107]);
+    InitBoneData(5, "Vine06");
+    InitBoneData(4, "Vine05");
+    InitBoneData(3, "Vine04");
+    InitBoneData(2, "Vine03");
+    InitBoneData(1, "Vine02");
+    InitBoneData(0, "Vine01");
     SetRetracted();
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKModel_Create(MKHeap *, signed char *, int, int)' does not
 void EarthBossArm::LoadDone() {
@@ -3088,7 +2794,7 @@ void EarthBossArm::Init() {
     }
     this->unk36C = (MKAnimScript *) var_r3_5620;
     this->unk360 = 0x14;
-    this->unk468 = MKMaterial_Create(&lit_stringBase0[0x10E]);
+    this->unk468 = MKMaterial_Create("fx_HDRGLowOverlay");
     this->unk450 = 0.0f;
 }
 #endif

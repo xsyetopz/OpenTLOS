@@ -11,27 +11,8 @@
 #include <m2c_macros.h>
 
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: undefined identifier 'arg_sp50'
-static s8 lit_stringBase0[0x11] = {
-    0x63,
-    0x72,
-    0x6F,
-    0x73,
-    0x73,
-    0x68,
-    0x61,
-    0x69,
-    0x72,
-    0,
-    0x46,
-    0x78,
-    0x5F,
-    0x31,
-    0x35,
-    0x39,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp50'
 void LockOnTarget::Draw() {
     f32 temp_f0_241;
     f32 temp_f11_264;
@@ -239,11 +220,11 @@ void LockOnTargetDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LockOnTargetDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
-    this->unk64 = MKMaterial_Create(&lit_stringBase0[0xA]);
+    this->unk60 = MKMaterial_Create("crosshair");
+    this->unk64 = MKMaterial_Create("Fx_159");
 }
 #endif
 

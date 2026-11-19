@@ -23,135 +23,6 @@ s32 stricmp(s32, s8 *);                             /* extern */
 extern f32 *KDSpline_PositionMixer;
 
 #if 0 // DRAFT: function call 'stricmp(long, const char *)' does not match
-static s8 lit_stringBase0[0x7E] = {
-    0x43,
-    0x61,
-    0x6D,
-    0x65,
-    0x72,
-    0x61,
-    0,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x2E,
-    0x63,
-    0x61,
-    0x64,
-    0,
-    0x2E,
-    0x62,
-    0x6E,
-    0x69,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x6D,
-    0x63,
-    0x64,
-    0,
-    0x43,
-    0x41,
-    0x4D,
-    0x45,
-    0x52,
-    0x41,
-    0x5F,
-    0x4E,
-    0x4F,
-    0x44,
-    0x45,
-    0x53,
-    0,
-    0x65,
-    0x79,
-    0x65,
-    0,
-    0x64,
-    0x73,
-    0x74,
-    0,
-    0x46,
-    0x72,
-    0x6F,
-    0x6D,
-    0x46,
-    0x4F,
-    0x56,
-    0,
-    0x54,
-    0x6F,
-    0x46,
-    0x4F,
-    0x56,
-    0,
-    0x4E,
-    0x65,
-    0x61,
-    0x72,
-    0x50,
-    0x6C,
-    0x61,
-    0x6E,
-    0x65,
-    0,
-    0x46,
-    0x61,
-    0x72,
-    0x50,
-    0x6C,
-    0x61,
-    0x6E,
-    0x65,
-    0,
-    0x43,
-    0x41,
-    0x4D,
-    0x45,
-    0x52,
-    0x41,
-    0,
-    0x42,
-    0x61,
-    0x72,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x4D,
-    0x41,
-    0x58,
-    0x3A,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x6C,
-    0x65,
-    0x6E,
-    0x67,
-    0x74,
-    0x68,
-    0,
-    0x65,
-    0x6E,
-    0x76,
-    0,
-    0x66,
-    0x72,
-    0x65,
-    0x71,
-    0,
-}; /* const */
-
 void *KDSP_Camera::FindCameraPath(const char *arg0) {
     s32 var_r30_17;
     s32 var_r31_18;
@@ -226,7 +97,7 @@ void KDSP_Camera::ParseCAD(KDSynkerHeap *arg0, const char *arg1) {
         arg0->unk18 = temp_r8_148 + (((this->unk7C * 0xC) + temp_r7_149) & ~temp_r7_149);
         this->unk84 = (s32 *) temp_r8_148;
         var_r29_157 = this->unk84;
-        temp_r3_159 = this->unk80->GotoLine(lit_stringBase0, NULL);
+        temp_r3_159 = this->unk80->GotoLine("Camera", NULL);
         if (temp_r3_159 != NULL) {
             var_r30_165 = temp_r3_159->unkC->GetSubLine(temp_r3_159);
 loop_9:
@@ -236,7 +107,7 @@ loop_9:
 loop_7:
                 if (var_r28_175 != NULL) {
                     var_r28_175->GetFieldName();
-                    if (strcmpi(&lit_stringBase0[7]) == 0) {
+                    if (strcmpi("Range") == 0) {
                         M2C_FIELD(var_r29_157, s32 *, 0) = var_r28_175->GetInt(0);
                         M2C_FIELD(var_r29_157, s32 *, 4) = (s32) (var_r28_175->GetInt(1) - M2C_FIELD(var_r29_157, s32 *, 0));
                     }
@@ -260,26 +131,26 @@ void KDSP_Camera::HeapAddSizeCAD(KDSynkerHeap *arg0, const char *arg1) {
 
     this->unk80 = NULL;
     strcpy(&sp8, arg1);
-    strcat(&sp8, &lit_stringBase0[0xD]);
+    strcat(&sp8, ".cad");
     var_r3_240 = MKArchive_Exists(&sp8, NULL);
     if ((u8) var_r3_240 == 0) {
-        strcat(&sp8, &lit_stringBase0[0x12]);
+        strcat(&sp8, ".bni");
         var_r3_240 = MKArchive_Exists(&sp8, NULL);
     }
     if ((u8) var_r3_240 != 0) {
         strcpy(&sp8, arg1);
-        ParseMCDFile(Str_Printf(&lit_stringBase0[0x17], arg1, strcat(&sp8, &lit_stringBase0[0xD])));
+        ParseMCDFile(Str_Printf("%s.mcd", arg1, strcat(&sp8, ".cad")));
         operator new(0x50U, NULL, 0);
         this->unk80 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unk80->Init(&sp8, 1, NULL);
-        this->unk7C = ((MKIniLine *) (this->unk80->GotoLine(lit_stringBase0, NULL)))->GetNmbrOfSubLines();
+        this->unk7C = ((MKIniLine *) (this->unk80->GotoLine("Camera", NULL)))->GetNmbrOfSubLines();
         temp_r3_292 = arg0->unk20 - 1;
         arg0->unk1C += ((this->unk7C * 0xC) + temp_r3_292) & ~temp_r3_292;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal type
 void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &arg3) {
     MKIniLine sp18;
     MKIniLine sp8;
@@ -312,7 +183,7 @@ void KDSP_Camera::Parse(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2, int &
 
     ParseCAD(arg0, arg1);
     if ((s32) this->unk74 > 0) {
-        temp_r3_331 = arg2->GotoLine(&lit_stringBase0[0x1E], NULL);
+        temp_r3_331 = arg2->GotoLine("CAMERA_NODES", NULL);
         if (temp_r3_331 != NULL) {
             temp_r5_337 = arg0->unk20 - 1;
             temp_r6_338 = arg0->unk18;
@@ -328,9 +199,9 @@ loop_33:
                 var_r21_362 = var_r25_351->unkC->GetSubLine(var_r25_351);
 loop_9:
                 if (var_r21_362 != NULL) {
-                    if (var_r21_362->IsField(&lit_stringBase0[0x2B]) != 0) {
+                    if (var_r21_362->IsField("eye") != 0) {
                         var_r23_358 += 1;
-                    } else if (var_r21_362->IsField(&lit_stringBase0[0x2F]) != 0) {
+                    } else if (var_r21_362->IsField("dst") != 0) {
                         var_r22_359 += 1;
                     }
                     var_r21_362 = var_r21_362->unkC->GetNextLine(var_r21_362);
@@ -364,20 +235,20 @@ loop_9:
                 var_r23_443 = var_r25_351->unkC->GetSubLine(var_r25_351);
 loop_31:
                 if (var_r23_443 != NULL) {
-                    if (var_r23_443->IsField(&lit_stringBase0[0x33]) != 0) {
+                    if (var_r23_443->IsField("FromFOV") != 0) {
                         M2C_FIELD(var_r30_345, f32 *, 4) = (f32) (0.017453292f * var_r23_443->GetFloat(0));
-                    } else if (var_r23_443->IsField(&lit_stringBase0[0x3B]) != 0) {
+                    } else if (var_r23_443->IsField("ToFOV") != 0) {
                         M2C_FIELD(var_r30_345, f32 *, 8) = (f32) (0.017453292f * var_r23_443->GetFloat(0));
-                    } else if (var_r23_443->IsField(&lit_stringBase0[0x41]) != 0) {
+                    } else if (var_r23_443->IsField("NearPlane") != 0) {
                         M2C_FIELD(var_r30_345, f32 *, 0xC) = var_r23_443->GetFloat(0);
-                    } else if (var_r23_443->IsField(&lit_stringBase0[0x4B]) != 0) {
+                    } else if (var_r23_443->IsField("FarPlane") != 0) {
                         M2C_FIELD(var_r30_345, f32 *, 0x10) = var_r23_443->GetFloat(0);
-                    } else if (var_r23_443->IsField(&lit_stringBase0[0x2B]) != 0) {
+                    } else if (var_r23_443->IsField("eye") != 0) {
                         sp18.GetVector3((s32) var_r23_443);
                         ((KDUniformSpline *) ((KDUniformSpline *) (var_r30_345 + 0x18)))->AddNode(*((MKVector3 *) &sp18));
                         *(M2C_FIELD(var_r30_345, void **, 0x14) + var_r26_360) = var_r23_443->GetFloat(3);
                         var_r26_360 += 4;
-                    } else if (var_r23_443->IsField(&lit_stringBase0[0x2F]) != 0) {
+                    } else if (var_r23_443->IsField("dst") != 0) {
                         sp8.GetVector3((s32) var_r23_443);
                         ((KDUniformSpline *) ((KDUniformSpline *) (var_r30_345 + 0x2C)))->AddNode(*((MKVector3 *) &sp8));
                     }
@@ -391,7 +262,7 @@ loop_31:
         }
     }
     if ((s32) this->unk88 > 0) {
-        temp_r3_561 = arg2->GotoLine(&lit_stringBase0[0x54], NULL);
+        temp_r3_561 = arg2->GotoLine("CAMERA", NULL);
         if (temp_r3_561 != NULL) {
             temp_r5_568 = arg0->unk18;
             temp_r3_569 = arg0->unk20 - 1;
@@ -407,20 +278,20 @@ loop_53:
                 var_r26_594 = var_r23_584->unkC->GetSubLine(var_r23_584);
 loop_49:
                 if (var_r26_594 != NULL) {
-                    if (var_r26_594->IsField(&lit_stringBase0[0x5B]) != 0) {
+                    if (var_r26_594->IsField("BarName") != 0) {
                         temp_r3_604 = var_r26_594->GetString(0);
-                        if (strnicmp(temp_r3_604, &lit_stringBase0[0x63], 4) == 0) {
+                        if (strnicmp(temp_r3_604, "MAX:", 4) == 0) {
                             M2C_FIELD(var_r22_579, void **, 0xC) = FindCAD(temp_r3_604 + 4);
                         } else {
                             M2C_FIELD(var_r22_579, void **, 8) = FindCameraPath(temp_r3_604);
                         }
                     } else {
                         var_r27_630 = 0;
-                        if ((var_r26_594->LoadInt(&lit_stringBase0[0x68], var_r22_579, 0) != 0) || (var_r26_594->LoadInt(&lit_stringBase0[0x6E], var_r22_579 + 4, 0) != 0) || (var_r26_594->LoadInt(&lit_stringBase0[0x75], var_r22_579 + 0x10, 0) != 0)) {
+                        if ((var_r26_594->LoadInt("start", var_r22_579, 0) != 0) || (var_r26_594->LoadInt("length", var_r22_579 + 4, 0) != 0) || (var_r26_594->LoadInt("env", var_r22_579 + 0x10, 0) != 0)) {
                             var_r27_630 = 1;
                         }
                         if (var_r27_630 == 0) {
-                            var_r26_594->LoadInt(&lit_stringBase0[0x79], var_r22_579 + 0x14, 0);
+                            var_r26_594->LoadInt("freq", var_r22_579 + 0x14, 0);
                         }
                     }
                     var_r26_594 = var_r26_594->unkC->GetNextLine(var_r26_594);
@@ -441,7 +312,6 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSP_Camera::HeapAddSize(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2) {
     MKIniLine *temp_r3_723;
     MKIniLine *temp_r3_813;
@@ -459,7 +329,7 @@ void KDSP_Camera::HeapAddSize(KDSynkerHeap *arg0, const char *arg1, MKIni *arg2)
 
     this->unk74 = 0;
     this->unk88 = 0;
-    temp_r3_723 = arg2->GotoLine(&lit_stringBase0[0x1E], NULL);
+    temp_r3_723 = arg2->GotoLine("CAMERA_NODES", NULL);
     if (temp_r3_723 != NULL) {
         this->unk74 = temp_r3_723->GetNmbrOfSubLines();
     }
@@ -472,9 +342,9 @@ loop_16:
             var_r23_745 = var_r30_736->unkC->GetSubLine(var_r30_736);
 loop_10:
             if (var_r23_745 != NULL) {
-                if (var_r23_745->IsField(&lit_stringBase0[0x2B]) != 0) {
+                if (var_r23_745->IsField("eye") != 0) {
                     var_r24_742 += 1;
-                } else if (var_r23_745->IsField(&lit_stringBase0[0x2F]) != 0) {
+                } else if (var_r23_745->IsField("dst") != 0) {
                     var_r29_743 += 1;
                 }
                 var_r23_745 = var_r23_745->unkC->GetNextLine(var_r23_745);
@@ -494,7 +364,7 @@ loop_10:
             goto loop_16;
         }
     }
-    temp_r3_813 = arg2->GotoLine(&lit_stringBase0[0x54], NULL);
+    temp_r3_813 = arg2->GotoLine("CAMERA", NULL);
     if (temp_r3_813 != NULL) {
         this->unk88 = temp_r3_813->GetNmbrOfSubLines();
     }
@@ -510,7 +380,6 @@ loop_10:
     }
     HeapAddSizeCAD(arg0, arg1);
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void KDSP_Camera::Update(const char *arg0, float arg1, KDSP_EnvelopeList *arg2) {

@@ -11,94 +11,8 @@
 f64 acos();                                         /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier '__vptr'
-static s8 lit_stringBase0[0x54] = {
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x72,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x61,
-    0x6E,
-    0x67,
-    0x6C,
-    0x65,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x52,
-    0x6F,
-    0x74,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x52,
-    0x6F,
-    0x74,
-    0,
-    0x6D,
-    0x69,
-    0x6E,
-    0x52,
-    0x6F,
-    0x74,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x52,
-    0x6F,
-    0x74,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 void KDParticleBoxEmitter::InitBoxParticlePostion(KDParticleEmitter *arg0, MKParticle *arg1) {
     void *temp_r3_40;
 
@@ -399,12 +313,12 @@ void KDParticleEmitter::LoadDone() {
     this->unk3C = _table_sinf(1.5707964f + this->unk38);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[84]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 KDParticleEmitter::LoadLine(MKIniLine *arg0) {
     s32 var_r31_615;
 
     var_r31_615 = 0;
-    if ((arg0->LoadBool(lit_stringBase0, &this->unk40, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[7], (f32 *) &this->unk2C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], &this->unk38, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x12], &this->unk68, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1B], &this->unk64, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x24], &this->unk50, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x2B], &this->unk4C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x32], &this->unk58, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x39], &this->unk54, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x40], &this->unk60, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x4A], &this->unk5C, 0) != 0)) {
+    if ((arg0->LoadBool("active", &this->unk40, 0) != 0) || (arg0->LoadFloat("rate", (f32 *) &this->unk2C, 0) != 0) || (arg0->LoadFloat("angle", &this->unk38, 0) != 0) || (arg0->LoadFloat("minScale", &this->unk68, 0) != 0) || (arg0->LoadFloat("maxScale", &this->unk64, 0) != 0) || (arg0->LoadFloat("minVel", &this->unk50, 0) != 0) || (arg0->LoadFloat("maxVel", &this->unk4C, 0) != 0) || (arg0->LoadFloat("minRot", &this->unk58, 0) != 0) || (arg0->LoadFloat("maxRot", &this->unk54, 0) != 0) || (arg0->LoadFloat("minRotVel", &this->unk60, 0) != 0) || (arg0->LoadFloat("maxRotVel", &this->unk5C, 0) != 0)) {
         var_r31_615 = 1;
     }
     return var_r31_615;

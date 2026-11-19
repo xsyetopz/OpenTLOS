@@ -8,77 +8,6 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-static s8 lit_stringBase0[0x44] = {
-    0x43,
-    0x68,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x50,
-    0x72,
-    0x65,
-    0x73,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x6C,
-    0x65,
-    0x61,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x69,
-    0x6E,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x64,
-    0x65,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-}; /* const */
-
 void Button::SetState(int arg0) {
     this->unkE0 = arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<ButtonDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkE0 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
@@ -141,16 +70,16 @@ void Button::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[68]' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Button::LoadLine(MKIniLine *arg0) {
     u8 sp8;
     s32 var_r31_261;
 
-    if (arg0->LoadBool(lit_stringBase0, &sp8, 0) != 0) {
+    if (arg0->LoadBool("Charge", &sp8, 0) != 0) {
         M2C_FIELD(this, u8 *, 0xEC) = (u8) ((M2C_FIELD(this, u8 *, 0xEC) & ~0x40) | ((sp8 << 6) & 0x40));
     }
     var_r31_261 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkE0.LoadLine(arg0, &lit_stringBase0[7]) != 0) || (this->unkE4.LoadLine(arg0, &lit_stringBase0[0x11]) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkE0.LoadLine(arg0, "OnPressed") != 0) || (this->unkE4.LoadLine(arg0, "OnReleased") != 0)) {
         var_r31_261 = 1;
     }
     return var_r31_261;
@@ -165,10 +94,10 @@ void Button::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void ButtonDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim(&lit_stringBase0[0x1C]);
-    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[0x25]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0x30]);
-    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x37]);
+    this->unkE4 = this->unk34->GetAnim("inactive");
+    this->unkE8 = this->unk34->GetAnim("activating");
+    this->unkEC = this->unk34->GetAnim("active");
+    this->unkF0 = this->unk34->GetAnim("deactivating");
 }
 #endif
 

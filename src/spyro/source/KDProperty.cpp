@@ -7,33 +7,6 @@ M2C_UNK free(KDPropertyCommand *);                  /* extern */
 KDPropertyCommand *malloc(s32);                     /* extern */
 s32 stricmp(s8 *, s8 *, s8 *);                      /* extern */
 static KDScriptProperty classInfo__16KDScriptProperty; /* type too large by 0x14 */
-static s8 lit_stringBase0[0x19] = {
-    0x73,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x54,
-    0x72,
-    0x69,
-    0x67,
-    0x67,
-    0x65,
-    0x72,
-    0,
-    0,
-    0x4B,
-    0x44,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-}; /* const */
 
 void KDScriptProperty::Command(int arg0) {
     KDPropertyCommand **var_r31_100;
@@ -67,9 +40,9 @@ loop_11:
     }
 }
 
-#if 0 // DRAFT: function call 'stricmp(const char *, signed char *, signed char[25])' does
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[8], const char[7])' does
 s32 KDScriptProperty::ResolveCommand(const char *arg0) const {
-    return stricmp(arg0, &lit_stringBase0[7], lit_stringBase0) == 0;
+    return stricmp(arg0, "Trigger", "script") == 0;
 }
 #endif
 
@@ -249,7 +222,7 @@ loop_15:
         if ((u32) var_r3_486 != 0U) {
 
         } else {
-            var_r3_486 = (s32) &lit_stringBase0[0xF];
+            var_r3_486 = (s32) "";
         }
         if (stricmp((s8 *) var_r3_486, arg0) == 0) {
             return var_r30_482;
@@ -261,7 +234,7 @@ loop_15:
     if (var_r3_463 != NULL) {
 
     } else {
-        var_r3_463 = &lit_stringBase0[0xF];
+        var_r3_463 = "";
     }
     if (stricmp(var_r3_463, arg0) == 0) {
         return (KDPropertyCommand *) var_r30_460;
@@ -402,11 +375,10 @@ loop_2:
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 s32 KDProperty::IsOfType(KDPropertyClassInfo *arg0) const {
     void *var_r3_780;
 
-    var_r3_780 = M2C_FIELD(this->__vptr, void *(**)(), 0x1C)();
+    var_r3_780 = GetClassInfo();
 loop_4:
     if (var_r3_780 == NULL) {
         return 0;
@@ -417,11 +389,10 @@ loop_4:
     var_r3_780 = M2C_FIELD(var_r3_780, void **, 8);
     goto loop_4;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'classInfo'
 void KDProperty_cpp::__sinit() {
-    classInfo.__vptr = &lit_stringBase0[0x10];
+    classInfo.__vptr = "KDScript";
     classInfo.unk8 = 0;
     classInfo.unk4 = &KDPropertyConstructor<KDScriptProperty>::Construct;
 }

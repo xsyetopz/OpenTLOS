@@ -114,12 +114,10 @@ u8 NPCGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void NPCGoal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 void NPCGoal_Think::Reset() {
     this->unk8 = 1;

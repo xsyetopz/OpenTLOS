@@ -51,93 +51,6 @@ static s32 lit_777 = 0;
 static u8 lit_778 = 1;
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-static s8 lit_stringBase0[0x54] = {
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x42,
-    0x6F,
-    0x6D,
-    0x62,
-    0x46,
-    0x58,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x34,
-    0x38,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x31,
-    0x38,
-    0x5F,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x32,
-    0,
-    0x46,
-    0x78,
-    0x30,
-    0x30,
-    0x32,
-    0x32,
-    0x5F,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0x5F,
-    0x46,
-    0x6C,
-    0x61,
-    0x73,
-    0x68,
-    0,
-}; /* const */
-
 u8 EarthBreathFX::ShootEarthBomb(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, bool arg3) {
     s8 sp220;
     s32 sp21C;
@@ -1477,11 +1390,11 @@ void EarthBreathFX::Resolve() {
     if (temp_r4_2583 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_2583, 0U);
     }
-    this->unk150.unk38 = M2C_BITWISE(f32, checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, lit_stringBase0)));
+    this->unk150.unk38 = M2C_BITWISE(f32, checked_cast<EarthBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "EarthBombFX")));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void EarthBreathFX::Init() {
     EarthBombFX *temp_r3_2717;
     MKHeap *temp_r3_2627;
@@ -1495,7 +1408,7 @@ void EarthBreathFX::Init() {
 
     BaseBreathFX::Init();
     this->unkB0 = 0;
-    temp_r3_2620 = MKMaterial_Create(&lit_stringBase0[0xC]);
+    temp_r3_2620 = MKMaterial_Create("fx_348");
     this->unkB4 = temp_r3_2620;
     this->unkB8 = NULL;
     this->unkA8 = 0.0f;
@@ -1522,17 +1435,17 @@ void EarthBreathFX::Init() {
     this->unkC8 = temp_r4_2655 + 4;
     M2C_FIELD(temp_r4_2655, MKVector3 ***, 4) = NULL;
     this->unkBC = 0.0f;
-    this->unk128 = MKModel_Create(&lit_stringBase0[0x13], NULL, 2, NULL);
-    this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x24]));
-    this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x30]));
+    this->unk128 = MKModel_Create("FX0018_EarthShot", NULL, 2, NULL);
+    this->unkC0 = checked_cast<FuryFXEarth *, MKProp>(gMK->CreateProp("FuryFXEarth"));
+    this->unkC4 = checked_cast<FuryFXEarth2 *, MKProp>(gMK->CreateProp("FuryFXEarth2"));
     this->unk128 = 0.0f;
     M2C_STRUCT_COPY((s32) &this->unk14C + 4, (s32) (&identity - 4) + 4, 0x40);
-    M2C_FIELD(this, MKModel **, 0x140) = MKModel_Create(&lit_stringBase0[0x3D], NULL, 2, NULL);
+    M2C_FIELD(this, MKModel **, 0x140) = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
     var_r29_2710 = 0;
     this->unk150.unk3C = 0.0f;
     this->unk150.unk38 = 0.0f;
     do {
-        temp_r3_2717 = checked_cast<EarthBombFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+        temp_r3_2717 = checked_cast<EarthBombFX *, MKProp>(gMK->CreateProp("EarthBombFX"));
         if (temp_r3_2717 != NULL) {
             M2C_FIELD(temp_r3_2717->__vptr, M2C_UNK (**)(), 0x34)();
         }

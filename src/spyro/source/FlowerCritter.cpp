@@ -24,54 +24,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 #if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x2D] = {
-    0x43,
-    0x61,
-    0x6E,
-    0x4C,
-    0x61,
-    0x6E,
-    0x64,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x66,
-    0x6C,
-    0x79,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x66,
-    0x6C,
-    0x79,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x66,
-    0x6C,
-    0x79,
-    0x5F,
-    0x30,
-    0x33,
-    0,
-}; /* const */
-
 void FlowerCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -568,12 +520,12 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk174'
 s32 FlowerCritter::LoadLine(MKIniLine *arg0) {
     s32 var_r31_895;
 
     var_r31_895 = 0;
-    if ((Critters::LoadLine(arg0) != 0) || (arg0->LoadBool(lit_stringBase0, &this->unk174, 0) != 0)) {
+    if ((Critters::LoadLine(arg0) != 0) || (arg0->LoadBool("CanLand", &this->unk174, 0) != 0)) {
         var_r31_895 = 1;
     }
     return var_r31_895;
@@ -608,43 +560,43 @@ void FlowerCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_958 = this->unk34;
-    if (temp_r30_958->Exists(&lit_stringBase0[8]) != 0) {
-        var_r3_970 = temp_r30_958->GetAnim(&lit_stringBase0[8]);
+    if (temp_r30_958->Exists("idle_01") != 0) {
+        var_r3_970 = temp_r30_958->GetAnim("idle_01");
     } else {
         var_r3_970 = NULL;
     }
     this->unk70 = (s32) var_r3_970;
     temp_r30_978 = this->unk34;
-    if (temp_r30_978->Exists(&lit_stringBase0[0x10]) != 0) {
-        var_r3_988 = temp_r30_978->GetAnim(&lit_stringBase0[0x10]);
+    if (temp_r30_978->Exists("idle_02") != 0) {
+        var_r3_988 = temp_r30_978->GetAnim("idle_02");
     } else {
         var_r3_988 = NULL;
     }
     this->unk74 = (s32) var_r3_988;
     temp_r30_996 = this->unk34;
-    if (temp_r30_996->Exists(&lit_stringBase0[0x10]) != 0) {
-        var_r3_1006 = temp_r30_996->GetAnim(&lit_stringBase0[0x10]);
+    if (temp_r30_996->Exists("idle_02") != 0) {
+        var_r3_1006 = temp_r30_996->GetAnim("idle_02");
     } else {
         var_r3_1006 = NULL;
     }
     this->unk78 = (s32) var_r3_1006;
     temp_r30_1014 = this->unk34;
-    if (temp_r30_1014->Exists(&lit_stringBase0[0x18]) != 0) {
-        var_r3_1024 = temp_r30_1014->GetAnim(&lit_stringBase0[0x18]);
+    if (temp_r30_1014->Exists("fly_01") != 0) {
+        var_r3_1024 = temp_r30_1014->GetAnim("fly_01");
     } else {
         var_r3_1024 = NULL;
     }
     this->unk7C = (s32) var_r3_1024;
     temp_r30_1032 = this->unk34;
-    if (temp_r30_1032->Exists(&lit_stringBase0[0x1F]) != 0) {
-        var_r3_1042 = temp_r30_1032->GetAnim(&lit_stringBase0[0x1F]);
+    if (temp_r30_1032->Exists("fly_02") != 0) {
+        var_r3_1042 = temp_r30_1032->GetAnim("fly_02");
     } else {
         var_r3_1042 = NULL;
     }
     this->unk80 = (s32) var_r3_1042;
     temp_r30_1050 = this->unk34;
-    if (temp_r30_1050->Exists(&lit_stringBase0[0x26]) != 0) {
-        var_r3_1060 = temp_r30_1050->GetAnim(&lit_stringBase0[0x26]);
+    if (temp_r30_1050->Exists("fly_03") != 0) {
+        var_r3_1060 = temp_r30_1050->GetAnim("fly_03");
     } else {
         var_r3_1060 = NULL;
     }

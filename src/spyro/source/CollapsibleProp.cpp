@@ -14,37 +14,8 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CollapsibleProp::State'
-static s8 lit_stringBase0[0x1B] = {
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x61,
-    0x70,
-    0x73,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x52,
-    0x65,
-    0x62,
-    0x75,
-    0x69,
-    0x6C,
-    0x64,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal use of incomplete struct/union/class 'CollapsibleProp::State'
 void CollapsibleProp::SetState(CollapsibleProp::State arg1) {
     switch ((s32) arg1) {                           /* irregular */
     case 0:
@@ -215,22 +186,22 @@ void CollapsiblePropDescriptor::LoadDone() {
     this->unkC |= 0x80000;
     temp_r30_406 = this->unk34;
     if (temp_r30_406 != NULL) {
-        if (temp_r30_406->Exists(lit_stringBase0) != 0) {
-            var_r3_418 = temp_r30_406->GetAnim(lit_stringBase0);
+        if (temp_r30_406->Exists("Idle") != 0) {
+            var_r3_418 = temp_r30_406->GetAnim("Idle");
         } else {
             var_r3_418 = NULL;
         }
         this->unk70 = (s32) var_r3_418;
         temp_r30_426 = this->unk34;
-        if (temp_r30_426->Exists(&lit_stringBase0[5]) != 0) {
-            var_r3_436 = temp_r30_426->GetAnim(&lit_stringBase0[5]);
+        if (temp_r30_426->Exists("Collapsing") != 0) {
+            var_r3_436 = temp_r30_426->GetAnim("Collapsing");
         } else {
             var_r3_436 = NULL;
         }
         this->unk74 = (s32) var_r3_436;
         temp_r30_444 = this->unk34;
-        if (temp_r30_444->Exists(&lit_stringBase0[0x10]) != 0) {
-            var_r3_454 = temp_r30_444->GetAnim(&lit_stringBase0[0x10]);
+        if (temp_r30_444->Exists("Rebuilding") != 0) {
+            var_r3_454 = temp_r30_444->GetAnim("Rebuilding");
         } else {
             var_r3_454 = NULL;
         }

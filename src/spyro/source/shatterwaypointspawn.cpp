@@ -13,33 +13,6 @@
 #if 0 // DRAFT: expression syntax error
 M2C_UNK free(s32);                                  /* extern */
 s32 malloc(s32);                                    /* extern */
-static s8 lit_stringBase0[0x19] = {
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-}; /* const */
 
 void ShatterWaypointSpawn::SetSpawnPos(int arg0, const MKVector3 &arg1) {
     SpawnPointObject *temp_r3_17;
@@ -54,7 +27,7 @@ void ShatterWaypointSpawn::SetSpawnPos(int arg0, const MKVector3 &arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char[25])'
+#if 0 // DRAFT: undefined identifier 'unk1A8'
 void ShatterWaypointSpawn::Resolve() {
     f64 sp10;
     f64 sp8;
@@ -65,7 +38,7 @@ void ShatterWaypointSpawn::Resolve() {
     temp_r5_46 = this->unk8;
     sp8 = M2C_FIELD(temp_r5_46, f64 *, 0x30);
     sp10 = M2C_FIELD(temp_r5_46, f64 *, 0x38);
-    temp_r3_52 = Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    temp_r3_52 = Tools_GetMatchingRefPointIndex(this->unk4, "spawn");
     if (temp_r3_52 != -1U) {
         MKModel_CalculateRefPointWorldPosition(this->unk4, (s32) temp_r3_52, (MKVector3 *) &sp8);
     }
@@ -163,7 +136,7 @@ s32 ShatterWaypointSpawn::LoadWaypoints(MKIniLine *arg0, const char *arg1) {
         var_r30_231 = 0;
 loop_8:
         if (var_r28_229 != NULL) {
-            var_r28_229->LoadVector3(&lit_stringBase0[6], this->unk1A8.unk40.unk0 + var_r30_231, 0);
+            var_r28_229->LoadVector3("waypoint", this->unk1A8.unk40.unk0 + var_r30_231, 0);
             var_r28_229 = var_r28_229->unkC->GetNextLine(var_r28_229);
             var_r30_231 += 0x10;
             goto loop_8;
@@ -174,17 +147,15 @@ loop_8:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ShatterWaypointSpawn::LoadLine(MKIniLine *arg0) {
     s32 var_r31_269;
 
     var_r31_269 = 0;
-    if ((Shatterable::LoadLine(arg0) != 0) || (LoadWaypoints(arg0, &lit_stringBase0[0xF]) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (LoadWaypoints(arg0, "waypoints") != 0)) {
         var_r31_269 = 1;
     }
     return var_r31_269;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void ShatterWaypointSpawn::Deinit() {
@@ -219,10 +190,10 @@ void ShatterWaypointSpawn::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk64'
 void ShatterWaypointSpawnDescriptor::Init() {
     ShatterableDescriptor::Init();
-    this->unk16C = M2C_FIELD(this->__vptr, s32 (**)(ShatterWaypointSpawnDescriptor *), 0x24)(this);
+    this->unk16C = GetSpawnEnemyType();
     this->unk64 |= 0x2000;
 }
 #endif

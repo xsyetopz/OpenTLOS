@@ -29,44 +29,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp2E0'
-static s8 lit_stringBase0[0x23] = {
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0x42,
-    0x6C,
-    0x61,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0x4C,
-    0x65,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0,
-}; /* const */
-
 void SquishBoulder::EmitLandingEffects() {
     f32 temp_f1_121;
     f32 temp_f1_257;
@@ -450,14 +412,14 @@ void SquishBoulder::Init() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void SquishBoulderDescriptor::Init() {
     void *temp_r3_1000;
     void *temp_r3_995;
 
     ShatterableDescriptor::Init();
-    this->unk16C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0));
-    this->unk170 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x11]));
+    this->unk16C = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("EarthBeamBlastPS"));
+    this->unk170 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
     temp_r3_995 = this->unk170;
     M2C_FIELD(M2C_FIELD(temp_r3_995, void **, 0x44), M2C_UNK (**)(void *), 0x20)(temp_r3_995);
     temp_r3_1000 = this->unk170;

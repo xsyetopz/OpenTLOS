@@ -22,51 +22,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
-static s8 lit_stringBase0[0x2A] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x37,
-    0x39,
-    0,
-    0x70,
-    0x30,
-    0x30,
-    0x30,
-    0x32,
-    0x5F,
-    0x6C,
-    0x61,
-    0x76,
-    0x61,
-    0x63,
-    0x61,
-    0x6E,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x45,
-    0x6E,
-    0x76,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x33,
-    0x33,
-    0,
-}; /* const */
-
 void ScorchTrail::SpawnScorchMark(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     void **temp_r6_45;
     void **temp_r6_49;
@@ -972,13 +927,13 @@ void ScorchTrailDescriptor::Deinit() {
     MKPropDescriptor::Deinit();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ScorchTrailDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
-    this->unk64 = MKModel_Create(&lit_stringBase0[7], NULL, 2, NULL);
-    this->unk68 = MKMaterial_Create(&lit_stringBase0[0x1C]);
-    this->unk6C = MKMaterial_Create(&lit_stringBase0[0x23]);
+    this->unk60 = MKMaterial_Create("fx_379");
+    this->unk64 = MKModel_Create("p0002_lavacannonball", NULL, 2, NULL);
+    this->unk68 = MKMaterial_Create("ZapEnv");
+    this->unk6C = MKMaterial_Create("fx_333");
 }
 #endif
 

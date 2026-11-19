@@ -9,50 +9,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'TrainGateState'
-static s8 lit_stringBase0[0x29] = {
-    0x6F,
-    0x6E,
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0x65,
-    0x64,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x53,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x65,
-    0x73,
-    0,
-    0x63,
-    0x6C,
-    0x6F,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x6F,
-    0x70,
-    0x65,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x6F,
-    0x70,
-    0x65,
-    0x6E,
-    0,
-}; /* const */
-
 void TrainGate::SetState(TrainGateState arg0) {
     this->unkCC = (s32) arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<TrainGateDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkCC * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
@@ -73,7 +29,7 @@ void TrainGate::Message(MKMessage *arg0) {
         }
         break;
     case 0xB4:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+        Reset();
         break;
     }
     GameProp::Message(arg0);
@@ -108,12 +64,12 @@ void TrainGate::LoadDone() {
     GameProp::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[41]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 TrainGate::LoadLine(MKIniLine *arg0) {
     s32 var_r31_203;
 
     var_r31_203 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unkC8.LoadLine(arg0, lit_stringBase0) != 0) || (arg0->LoadInt(&lit_stringBase0[9], &this->unkD0, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unkC8.LoadLine(arg0, "onOpened") != 0) || (arg0->LoadInt("NumSwitches", &this->unkD0, 0) != 0)) {
         var_r31_203 = 1;
     }
     return var_r31_203;
@@ -133,9 +89,9 @@ void TrainGate::Init() {
 #if 0 // DRAFT: expression syntax error
 void TrainGateDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = this->unk34->GetAnim(&lit_stringBase0[0x15]);
-    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[0x1C]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0x24]);
+    this->unkE4 = this->unk34->GetAnim("closed");
+    this->unkE8 = this->unk34->GetAnim("opening");
+    this->unkEC = this->unk34->GetAnim("open");
 }
 #endif
 

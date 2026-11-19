@@ -17,117 +17,6 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern void **gMK;
 extern f32 gUpdateTimeDelta;
-static s8 lit_stringBase0[0x6D] = {
-    0x66,
-    0x52,
-    0x6F,
-    0x74,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x66,
-    0x4D,
-    0x61,
-    0x78,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0,
-    0x73,
-    0x70,
-    0x69,
-    0x6E,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x74,
-    0x69,
-    0x6C,
-    0x74,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x74,
-    0x69,
-    0x6C,
-    0x74,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x74,
-    0x69,
-    0x6C,
-    0x74,
-    0x42,
-    0x61,
-    0x73,
-    0x65,
-    0x50,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0,
-    0x74,
-    0x69,
-    0x6C,
-    0x74,
-    0x50,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0,
-    0x74,
-    0x69,
-    0x6C,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x54,
-    0x68,
-    0x72,
-    0x65,
-    0x73,
-    0x68,
-    0x6F,
-    0x6C,
-    0x64,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0x4C,
-    0x50,
-    0,
-}; /* const */
 
 void SeeSaw::Detach(PlatformAttachment *arg0) {
     this->unk13C -= 1;
@@ -432,17 +321,15 @@ void SeeSaw::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[109]' to
 s32 SeeSaw::LoadLine(MKIniLine *arg0) {
     s32 var_r31_699;
 
     var_r31_699 = 0;
-    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, &this->unk134, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xA], &this->unk130, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x13], &this->unk138, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("fRotSpeed", &this->unk134, 0) != 0) || (arg0->LoadFloat("fMaxTilt", &this->unk130, 0) != 0) || (arg0->LoadFloat("spinSpeed", &this->unk138, 0) != 0)) {
         var_r31_699 = 1;
     }
     return var_r31_699;
 }
-#endif
 
 #if 0 // DRAFT: expression syntax error
 void SeeSaw::Resolve() {
@@ -488,12 +375,12 @@ void SeeSaw::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[10], long *)' does
 s32 SeeSawDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_840;
 
     var_r31_840 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1D], &this->unk74, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x28], &this->unk78, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x34], &this->unk7C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x42], &this->unk80, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x50], &this->unk84, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x63], &this->unk70) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("tiltFadeIn", &this->unk74, 0) != 0) || (arg0->LoadFloat("tiltFadeOut", &this->unk78, 0) != 0) || (arg0->LoadFloat("tiltBasePitch", &this->unk7C, 0) != 0) || (arg0->LoadFloat("tiltPitchMult", &this->unk80, 0) != 0) || (arg0->LoadFloat("tiltSoundThreshold", &this->unk84, 0) != 0) || (KDSound_LoadLine(arg0, "sndTiltLP", &this->unk70) != 0)) {
         var_r31_840 = 1;
     }
     return var_r31_840;

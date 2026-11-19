@@ -17,29 +17,6 @@ extern f32 gUpdateTimeDelta;
 static s32 lit_555 = 0;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp6C'
-static s8 lit_stringBase0[0x14] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x77,
-    0x6F,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x39,
-    0,
-}; /* const */
-
 void ShotgunWarpFX::UpdateWarp() {
     f32 temp_f0_215;
     f32 temp_f13_109;
@@ -697,7 +674,7 @@ void ShotgunWarpFX::Init() {
         var_r3_1204 = malloc(temp_r30_1196);
     }
     this->unk8 = var_r3_1204;
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
+    this->unk60 = MKMaterial_Create("fx_wobblemat");
     BuildLocalVertexList();
     this->unk68 = 0.0f;
     this->unk6C = 0.0f;
@@ -711,6 +688,6 @@ void ShotgunWarpFX::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk70 = 0;
-    this->unk64 = MKMaterial_Create(&lit_stringBase0[0xD]);
+    this->unk64 = MKMaterial_Create("fx_359");
 }
 #endif

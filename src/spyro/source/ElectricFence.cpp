@@ -24,178 +24,8 @@ void *malloc(s32);                                  /* extern */
 extern s32 GS_SpyroZapBurn;
 extern void **gMK;
 extern s32 gViewSeed;
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
-static s8 lit_stringBase0[0xA8] = {
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x33,
-    0x34,
-    0x5F,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0x72,
-    0x69,
-    0x63,
-    0x46,
-    0x65,
-    0x6E,
-    0x63,
-    0x65,
-    0x50,
-    0x6F,
-    0x73,
-    0x74,
-    0,
-    0x63,
-    0x5F,
-    0x63,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x33,
-    0x33,
-    0x5F,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0x42,
-    0x6F,
-    0x78,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x4F,
-    0x6E,
-    0,
-    0x4A,
-    0x65,
-    0x6C,
-    0x6C,
-    0x79,
-    0x46,
-    0x69,
-    0x73,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x72,
-    0x67,
-    0x79,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-    0x66,
-    0x65,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x66,
-    0x65,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-    0x66,
-    0x65,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x68,
-    0x75,
-    0x74,
-    0x44,
-    0x6F,
-    0x77,
-    0x6E,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x66,
-    0x65,
-    0x6E,
-    0x63,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, long)' does not match
 void ElectricFence::AllocBeams() {
     f64 sp10;
     f64 sp8;
@@ -630,13 +460,13 @@ loop_22:
 loop_27:
     if (var_r30_730 < (s32) this->unk50) {
         temp_r7_746 = var_r27_732 + 0x40;
-        *(this->unk4C + temp_r7_746) = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+        *(this->unk4C + temp_r7_746) = MKModel_Create("FX0034_ElectricFencePost", NULL, 2, NULL);
         temp_r8_754 = this->unk4C + (var_r27_732 + 0x44);
         M2C_FIELD(temp_r8_754, s32 *, 0) = 0;
         M2C_FIELD(temp_r8_754, s8 *, 4) = 1;
         M2C_FIELD(temp_r8_754, ElectricFence **, 8) = this;
         M2C_FIELD(temp_r8_754, s32 *, 0xC) = 0;
-        temp_r26_763 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r7_746), &lit_stringBase0[0x19]);
+        temp_r26_763 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r7_746), "c_collide");
         temp_r4_764 = this->unk4C + var_r27_732;
         MKModel_SetWorldMatrix(temp_r4_764->unk40, *temp_r4_764);
         temp_r29_770 = this->unk4C + var_r27_732;
@@ -644,8 +474,8 @@ loop_27:
         *(this->unk4C + (var_r27_732 + 0x48)) = 1;
         if (var_r30_730 < (s32) (this->unk50 - 1)) {
             temp_r0_796 = var_r27_732 + 0x54;
-            *(this->unk4C + temp_r0_796) = MKModel_Create(&lit_stringBase0[0x23], NULL, 2, NULL);
-            temp_r3_804 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r0_796), &lit_stringBase0[0x19]);
+            *(this->unk4C + temp_r0_796) = MKModel_Create("FX0033_CollideBox", NULL, 2, NULL);
+            temp_r3_804 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, *(this->unk4C + temp_r0_796), "c_collide");
             temp_r7_809 = this->unk4C + (var_r27_732 + 0x58);
             M2C_FIELD(temp_r7_809, s32 *, 0) = 0;
             M2C_FIELD(temp_r7_809, s8 *, 4) = 1;
@@ -788,7 +618,7 @@ loop_30:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: pointer/array required
 s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKHeap *temp_r3_1215;
@@ -805,7 +635,7 @@ s32 ElectricFence::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x35]) != 0) {
+    if (arg0->IsField("waypoints") != 0) {
         temp_r3_1211 = arg0->GetNmbrOfSubLines();
         this->unk50 = temp_r3_1211;
         temp_r28_1214 = this->unk50 * 0x70;
@@ -820,7 +650,7 @@ s32 ElectricFence::LoadLine(MKIniLine *arg0) {
         var_r29_1235 = 0;
 loop_8:
         if (var_r27_1234 != NULL) {
-            var_r27_1234->LoadVector3(&lit_stringBase0[0x3F], &sp8, 0);
+            var_r27_1234->LoadVector3("waypoint", &sp8, 0);
             temp_r3_1245 = var_r29_1235 + 0x40;
             temp_r5_1248 = this->unk4C + var_r29_1235;
             temp_r0_1249 = var_r29_1235 + 0x54;
@@ -836,7 +666,7 @@ loop_8:
         }
     }
     var_r29_1274 = 0;
-    if ((arg0->LoadBool(&lit_stringBase0[0x48], &this->unk54, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x50], (s32 *) &this->unk110, 0) != 0)) {
+    if ((arg0->LoadBool("StartOn", &this->unk54, 0) != 0) || (arg0->LoadInt("JellyFishID", (s32 *) &this->unk110, 0) != 0)) {
         var_r29_1274 = 1;
     }
     return var_r29_1274;
@@ -870,16 +700,16 @@ void ElectricFence::Init() {
 #if 0 // DRAFT: expression syntax error
 void ElectricFenceDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk80 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x5C]));
+    this->unk80 = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[19], long *)' does
 s32 ElectricFenceDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1373;
 
     var_r31_1373 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x67], &this->unk8C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x78], &this->unk90, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x8A], &this->unk88) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x9D], &this->unk84) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("fenceSoundFadeIn", &this->unk8C, 0) != 0) || (arg0->LoadFloat("fenceSoundFadeOut", &this->unk90, 0) != 0) || (KDSound_LoadLine(arg0, "fenceShutDownSound", &this->unk88) != 0) || (KDSound_LoadLine(arg0, "fenceSound", &this->unk84) != 0)) {
         var_r31_1373 = 1;
     }
     return var_r31_1373;

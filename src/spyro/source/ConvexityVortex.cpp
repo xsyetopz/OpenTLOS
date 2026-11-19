@@ -19,52 +19,8 @@ extern s32 GS_ConvexFlyingPlatformStop;
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
-static s8 lit_stringBase0[0x2A] = {
-    0x50,
-    0x36,
-    0x30,
-    0x30,
-    0x31,
-    0x5F,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0x50,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x5F,
-    0x41,
-    0,
-    0x50,
-    0x36,
-    0x30,
-    0x30,
-    0x31,
-    0x5F,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0x50,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x5F,
-    0x43,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void ConvexityVortex::SpawnElement(const MKVector3 &arg0) {
     f64 spA0;
     f64 sp98;
@@ -453,8 +409,8 @@ void ConvexityVortex::Init() {
 
     MKProp::Init();
     this->unk8 = &this->unk60;
-    this->unk4C = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
-    temp_r3_776 = MKModel_Create(&lit_stringBase0[0x15], NULL, 2, NULL);
+    this->unk4C = MKModel_Create("P6001_TiltPlatform_A", NULL, 2, NULL);
+    temp_r3_776 = MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL);
     this->unk50 = temp_r3_776;
     temp_r3_778 = temp_r3_776->Current();
     if (temp_r3_778 != NULL) {

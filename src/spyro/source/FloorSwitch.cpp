@@ -23,214 +23,6 @@ extern f32 THRESHOLD_DIST;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 
-static s8 lit_stringBase0[0xCD] = {
-    0x70,
-    0x5F,
-    0x77,
-    0x68,
-    0x69,
-    0x74,
-    0x65,
-    0x5F,
-    0x70,
-    0x61,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x50,
-    0x72,
-    0x65,
-    0x73,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x6C,
-    0x65,
-    0x61,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x6F,
-    0x72,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x49,
-    0x44,
-    0,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x53,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0x64,
-    0,
-    0x64,
-    0x65,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x62,
-    0x65,
-    0x63,
-    0x6B,
-    0x6F,
-    0x6E,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x64,
-    0x72,
-    0x6F,
-    0x70,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x65,
-    0x67,
-    0x69,
-    0x6E,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-}; /* const */
-
 void FloorSwitch::SetState(int arg0) {
     void *temp_r31_63;
 
@@ -591,7 +383,7 @@ void FloorSwitch::LoadDone() {
         this->unk114 = M2C_ERROR(/* Read from unset register $r3 */);
         this->unk114->Init(0.25f, 0.25f);
     }
-    this->unk120.unk0 = MKMaterial_Create(lit_stringBase0);
+    this->unk120.unk0 = MKMaterial_Create("p_white_pad");
 }
 #endif
 
@@ -600,7 +392,7 @@ s32 FloorSwitch::LoadLine(MKIniLine *arg0) {
     s32 var_r31_786;
 
     var_r31_786 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unk118.LoadLine(arg0, &lit_stringBase0[0xC]) != 0) || (this->unk11C.LoadLine(arg0, &lit_stringBase0[0x16]) != 0) || (arg0->LoadInt(&lit_stringBase0[0x21], &this->unkE0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x31], (f32 *) &this->unkE4, 0) != 0) || (arg0->LoadVector4(&lit_stringBase0[0x41], (MKVector4 *) &this->unkEC, 0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unk118.LoadLine(arg0, "OnPressed") != 0) || (this->unk11C.LoadLine(arg0, "OnReleased") != 0) || (arg0->LoadInt("ActivatorPropID", &this->unkE0, 0) != 0) || (arg0->LoadFloat("ActivationRange", (f32 *) &this->unkE4, 0) != 0) || (arg0->LoadVector4("SwitchColor", (MKVector4 *) &this->unkEC, 0) != 0)) {
         var_r31_786 = 1;
     }
     return var_r31_786;
@@ -717,10 +509,10 @@ void FloorSwitchDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     temp_r3_989 = this->unk34;
     if (temp_r3_989 != NULL) {
-        this->unkF8 = temp_r3_989->GetAnim(&lit_stringBase0[0x4D]);
-        this->unkFC = this->unk34->GetAnim(&lit_stringBase0[0x52]);
-        this->unk100 = this->unk34->GetAnim(&lit_stringBase0[0x5B]);
-        this->unk104 = this->unk34->GetAnim(&lit_stringBase0[0x65]);
+        this->unkF8 = temp_r3_989->GetAnim("idle");
+        this->unkFC = this->unk34->GetAnim("activate");
+        this->unk100 = this->unk34->GetAnim("activated");
+        this->unk104 = this->unk34->GetAnim("deactivate");
     }
 }
 #endif
@@ -730,7 +522,7 @@ s32 FloorSwitchDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1032;
 
     var_r31_1032 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x70], &this->unkEC) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x80], &this->unkF0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x90], &this->unkF4) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x9E], &this->unkE8) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xAE], &this->unkE4) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC3], &this->unk108, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "beckonSoundLoop", &this->unkEC) != 0) || (KDSound_LoadLine(arg0, "activeSoundLoop", &this->unkF0) != 0) || (KDSound_LoadLine(arg0, "dropSoundLoop", &this->unkF4) != 0) || (KDSound_LoadLine(arg0, "activationSound", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "beginActivationSound", &this->unkE4) != 0) || (arg0->LoadFloat("AnimSpeed", &this->unk108, 0) != 0)) {
         var_r31_1032 = 1;
     }
     return var_r31_1032;

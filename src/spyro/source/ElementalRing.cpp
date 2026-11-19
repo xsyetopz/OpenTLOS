@@ -36,106 +36,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern void **gb;
 
-static s8 lit_stringBase0[0x61] = {
-    0x46,
-    0x58,
-    0x5F,
-    0x52,
-    0x69,
-    0x6E,
-    0x67,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x52,
-    0x69,
-    0x6E,
-    0x67,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x52,
-    0x69,
-    0x6E,
-    0x67,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0x49,
-    0x63,
-    0x65,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x52,
-    0x69,
-    0x6E,
-    0x67,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x52,
-    0x69,
-    0x6E,
-    0x67,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x78,
-    0,
-}; /* const */
-
 void ElementalRing::Trigger(const MKVector3 &arg0, const MKVector3 &arg1, int arg2, bool arg3, MKProp *arg4, float arg5, float arg6, float arg7, float arg8) {
     KDSoundFlangedFader **temp_r6_48;
     KDSoundFlangedFader **temp_r6_52;
@@ -731,14 +631,14 @@ void ElementalRingDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[97])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void ElementalRingDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
-    this->unk64 = MKMaterial_Create(&lit_stringBase0[0x13]);
-    this->unk68 = MKMaterial_Create(&lit_stringBase0[0x26]);
-    this->unk6C = MKMaterial_Create(&lit_stringBase0[0x38]);
-    this->unk70 = MKMaterial_Create(&lit_stringBase0[0x4C]);
+    this->unk60 = MKMaterial_Create("FX_RingElementFire");
+    this->unk64 = MKMaterial_Create("FX_RingElementElec");
+    this->unk68 = MKMaterial_Create("FX_RingElementIce");
+    this->unk6C = MKMaterial_Create("FX_RingElementEarth");
+    this->unk70 = MKMaterial_Create("FX_RingElementConvex");
 }
 #endif
 

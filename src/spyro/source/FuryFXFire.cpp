@@ -53,93 +53,8 @@ static u8 lit_845 = 1;
 static u8 lit_910 = 0;
 
 static u8 lit_1163 = 0;
-#if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x53] = {
-    0x46,
-    0x58,
-    0x5F,
-    0x33,
-    0x36,
-    0x37,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x57,
-    0x61,
-    0x6C,
-    0x6C,
-    0,
-    0x46,
-    0x78,
-    0x30,
-    0x30,
-    0x31,
-    0x39,
-    0x5F,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x42,
-    0x6C,
-    0x61,
-    0x73,
-    0x74,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x53,
-    0x68,
-    0x61,
-    0x72,
-    0x64,
-    0,
-    0x53,
-    0x68,
-    0x61,
-    0x70,
-    0x65,
-    0x64,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x63,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: pointer/array required
 void FuryFXFire::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -1472,7 +1387,7 @@ void FuryFXFire::Resolve() {
         sp14 = 1.0f;
         sp68 = (f64) sp8;
         sp70 = (f64) sp10;
-        ((ShapedTrailFX *) (M2C_FIELD(temp_r29_3025, ShapedTrailFX **, 0x130)))->InitData(this->unk90.unk5C, lit_774, lit_stringBase0, lit_775, *((MKVector4 *) &sp68), 2.5f, 0U, 1.0f);
+        ((ShapedTrailFX *) (M2C_FIELD(temp_r29_3025, ShapedTrailFX **, 0x130)))->InitData(this->unk90.unk5C, lit_774, "FX_367", lit_775, *((MKVector4 *) &sp68), 2.5f, 0U, 1.0f);
         ((KDSoundFader *) (temp_r29_3025 + 0x134))->Init(0.25f, 0.25f);
         ((KDSoundFader *) (temp_r29_3025 + 0x15C))->Init(0.25f, 0.25f);
         M2C_FIELD(temp_r29_3025, f32 *, 0x110) = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
@@ -1492,21 +1407,21 @@ void FuryFXFire::Init() {
 
     FuryFX::Init();
     SetDefaults();
-    this->unk90.unk50 = M2C_BITWISE(f32, MKMaterial_Create(&lit_stringBase0[7]));
+    this->unk90.unk50 = M2C_BITWISE(f32, MKMaterial_Create("FX_FlameWall"));
     this->unk90.unk58 = 0.0f;
-    this->unk90.unk60 = MKModel_Create(&lit_stringBase0[0x14], NULL, 2, NULL);
+    this->unk90.unk60 = MKModel_Create("Fx0019_FireFuryBlast", NULL, 2, NULL);
     this->unk90.unk68 = -1.0f;
     this->unk90.unk6C = 0.0f;
-    this->unk90.unk5C = MKModel_Create(&lit_stringBase0[0x29], NULL, 2, NULL);
+    this->unk90.unk5C = MKModel_Create("IceShard", NULL, 2, NULL);
     var_r29_3123 = 0;
     var_r31_3124 = 0;
     do {
-        gMK->CreatePropDeferred(&lit_stringBase0[0x32], this + (var_r31_3124 + 0x130));
+        gMK->CreatePropDeferred("ShapedTrailFX", this + (var_r31_3124 + 0x130));
         var_r29_3123 += 1;
         var_r31_3124 += 0x80;
     } while (var_r29_3123 < 3);
     this->unk2E8 = -1;
-    this->unk90.unk54 = M2C_BITWISE(f32, MKMaterial_Create(&lit_stringBase0[0x40]));
+    this->unk90.unk54 = M2C_BITWISE(f32, MKMaterial_Create("fx_cynderFuryFlame"));
 }
 #endif
 

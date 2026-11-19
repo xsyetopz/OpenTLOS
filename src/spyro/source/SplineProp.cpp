@@ -8,7 +8,6 @@
 extern f32 *KDSpline_PositionMixer;
 #if 0 // DRAFT: undefined identifier 'sp48'
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
-static s8 lit_stringBase0[0xA] = { 0x77, 0x61, 0x79, 0x70, 0x6F, 0x69, 0x6E, 0x74, 0x73, 0 }; /* const */
 
 void SplineProp::CalcBounds() {
     f64 spB0;
@@ -180,12 +179,12 @@ void SplineProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[10]' to
+#if 0 // DRAFT: pointer/array required
 s32 SplineProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if ((arg0->IsField(lit_stringBase0) != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
+    if ((arg0->IsField("waypoints") != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
         operator new(0x48U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x30) = 0;

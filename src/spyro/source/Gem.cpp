@@ -21,65 +21,8 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern M2C_UNK fingerprintData;
 extern s32 gViewSeed;
 extern void **gb;
-#if 0 // DRAFT: undefined identifier '__vptr'
-static s8 lit_stringBase0[0x37] = {
-    0x70,
-    0x5F,
-    0x67,
-    0x65,
-    0x6D,
-    0x5F,
-    0x77,
-    0x68,
-    0x69,
-    0x74,
-    0x65,
-    0,
-    0x67,
-    0x65,
-    0x6D,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x48,
-    0x65,
-    0x61,
-    0x6C,
-    0x74,
-    0x68,
-    0,
-    0x53,
-    0x70,
-    0x69,
-    0x72,
-    0x69,
-    0x74,
-    0,
-    0x4D,
-    0x61,
-    0x67,
-    0x69,
-    0x63,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x74,
-    0x56,
-    0x61,
-    0x6C,
-    0x75,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal implicit conversion from 'void' to
 void Gem::Draw() {
     f64 sp10;
     f64 sp8;
@@ -87,7 +30,7 @@ void Gem::Draw() {
     f64 *temp_r3_105;
     void *temp_r3_100;
 
-    temp_r3_100 = M2C_FIELD(this->__vptr, void *(**)(), 0x38)();
+    temp_r3_100 = GetDescriptor();
     temp_r3_102 = M2C_FIELD(temp_r3_100, MKMaterial **, 0xD4);
     if (temp_r3_102 != NULL) {
         temp_r3_105 = MKMaterial_GetColor(temp_r3_102);
@@ -456,7 +399,7 @@ void GemDescriptor::LoadDone() {
 
     CollectableDescriptor::LoadDone();
     this->unkCC = MKModel_GetNmbrOfSubObjects(this->unk2C, (SubObjectType) 0);
-    this->unkD4 = MKMaterial_Create(lit_stringBase0);
+    this->unkD4 = MKMaterial_Create("p_gem_white");
     var_r5_737 = 0U;
     this->unk66 = 0;
     var_r6_740 = 0;
@@ -480,19 +423,19 @@ s32 GemDescriptor::LoadLine(MKIniLine *arg0) {
     if (CollectableDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->LoadString(&lit_stringBase0[0xC], &sp8, 0) != 0) {
-        if (stricmp(sp8, &lit_stringBase0[0x14]) == 0) {
+    if (arg0->LoadString("gemType", &sp8, 0) != 0) {
+        if (stricmp(sp8, "Health") == 0) {
             this->unkC8 = 0;
-        } else if (stricmp(sp8, &lit_stringBase0[0x1B]) == 0) {
+        } else if (stricmp(sp8, "Spirit") == 0) {
             this->unkC8 = 1;
-        } else if (stricmp(sp8, &lit_stringBase0[0x22]) == 0) {
+        } else if (stricmp(sp8, "Magic") == 0) {
             this->unkC8 = 2;
-        } else if (stricmp(sp8, &lit_stringBase0[0x28]) == 0) {
+        } else if (stricmp(sp8, "Fury") == 0) {
             this->unkC8 = 3;
         }
         return 1;
     }
-    return arg0->LoadFloat(&lit_stringBase0[0x2D], &this->unkD0, 0);
+    return arg0->LoadFloat("statValue", &this->unkD0, 0);
 }
 #endif
 

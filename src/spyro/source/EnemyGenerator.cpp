@@ -26,387 +26,12 @@ void *malloc(s32);                                  /* extern */
 extern DataMap enemyTypeDataMap;
 extern void **gMK;
 extern M2C_UNK gb;
-static s8 lit_stringBase0[0x175] = {
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x47,
-    0x65,
-    0x6E,
-    0x65,
-    0x72,
-    0x61,
-    0x74,
-    0x6F,
-    0x72,
-    0,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x73,
-    0,
-    0x64,
-    0x6F,
-    0x6F,
-    0x72,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x73,
-    0,
-    0x62,
-    0x4C,
-    0x6F,
-    0x63,
-    0x6B,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x62,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x46,
-    0x72,
-    0x6F,
-    0x6D,
-    0x56,
-    0x69,
-    0x73,
-    0x69,
-    0x62,
-    0x6C,
-    0x65,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x73,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0,
-    0x64,
-    0x6F,
-    0x6F,
-    0x72,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0,
-    0x64,
-    0x6F,
-    0x6F,
-    0x72,
-    0x52,
-    0x65,
-    0x66,
-    0x50,
-    0x74,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x52,
-    0x65,
-    0x66,
-    0x50,
-    0x74,
-    0,
-    0x6F,
-    0x70,
-    0x65,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x63,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6E,
-    0x67,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x6F,
-    0x70,
-    0x65,
-    0x6E,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x63,
-    0x6C,
-    0x6F,
-    0x73,
-    0x65,
-    0x64,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x62,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x69,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x41,
-    0x6D,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0,
-    0x69,
-    0x4D,
-    0x61,
-    0x78,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x66,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x66,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0x42,
-    0x65,
-    0x74,
-    0x77,
-    0x65,
-    0x65,
-    0x6E,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x73,
-    0,
-    0x69,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x64,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x25,
-    0x64,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x25,
-    0x64,
-    0,
-    0x69,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x69,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x41,
-    0x6C,
-    0x6C,
-    0x45,
-    0x6E,
-    0x65,
-    0x6D,
-    0x79,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
 void EnemyGeneratorDescriptor::LoadDone() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[373]' to
+#if 0 // DRAFT: undefined identifier 'Current'
 s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
     MKHeap *temp_r3_68;
@@ -425,7 +50,7 @@ s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
     void *var_r3_100;
     void *var_r3_75;
 
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("EnemyGenerator") != 0) {
         var_r29_29 = 0;
         sp8 = NULL;
         var_r28_32 = 0;
@@ -435,10 +60,10 @@ s32 EnemyGeneratorDescriptor::LoadLine(MKIniLine *arg0) {
         var_r24_38 = var_r3_36;
 loop_7:
         if (var_r24_38 != NULL) {
-            if (var_r24_38->IsField(&lit_stringBase0[0xF]) != 0) {
+            if (var_r24_38->IsField("Door") != 0) {
                 var_r28_32 += 1;
             }
-            if (var_r24_38->IsField(&lit_stringBase0[0x14]) != 0) {
+            if (var_r24_38->IsField("Wave") != 0) {
                 var_r26_33 += 1;
             }
             var_r3_36 = var_r24_38->unkC->GetNextLine(var_r24_38);
@@ -472,23 +97,23 @@ loop_7:
         var_r26_117 = arg0->unkC->GetSubLine(arg0);
 loop_49:
         if (var_r26_117 != NULL) {
-            if ((var_r26_117->LoadInt(&lit_stringBase0[0x19], &this->unk0, 0) == 0) && (var_r26_117->LoadInt(&lit_stringBase0[0x29], &this->unk4, 0) == 0) && (var_r26_117->LoadBool(&lit_stringBase0[0x33], &this->unk18, 0) == 0) && (var_r26_117->LoadBool(&lit_stringBase0[0x44], &this->unk19, 0) == 0)) {
-                if (var_r26_117->IsField(&lit_stringBase0[0xF]) != 0) {
+            if ((var_r26_117->LoadInt("spawnPointProps", &this->unk0, 0) == 0) && (var_r26_117->LoadInt("doorProps", &this->unk4, 0) == 0) && (var_r26_117->LoadBool("bLockSpawnPoints", &this->unk18, 0) == 0) && (var_r26_117->LoadBool("bSpawnFromVisibleDoors", &this->unk19, 0) == 0)) {
+                if (var_r26_117->IsField("Door") != 0) {
                     var_r25_166 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_35:
                     if (var_r25_166 != NULL) {
-                        if ((var_r25_166->LoadInt(&lit_stringBase0[0x5B], this->unk10 + var_r30_34, 0) == 0) && (var_r25_166->LoadInt(&lit_stringBase0[0x6A], this->unk10 + (var_r30_34 + 4), 0) == 0) && (var_r25_166->LoadString(&lit_stringBase0[0x73], this->unk10 + (var_r30_34 + 8), 0) == 0) && (var_r25_166->LoadString(&lit_stringBase0[0x7D], this->unk10 + (var_r30_34 + 0xC), 0) == 0) && (var_r25_166->LoadString(&lit_stringBase0[0x88], this->unk10 + (var_r30_34 + 0x10), 0) == 0) && (var_r25_166->LoadString(&lit_stringBase0[0x96], this->unk10 + (var_r30_34 + 0x14), 0) == 0) && (var_r25_166->LoadString(&lit_stringBase0[0xA4], this->unk10 + (var_r30_34 + 0x18), 0) == 0) && (var_r25_166->LoadString(&lit_stringBase0[0xAF], this->unk10 + (var_r30_34 + 0x1C), 0) == 0)) {
-                            var_r25_166->LoadBool(&lit_stringBase0[0xBC], this->unk10 + (var_r30_34 + 0x20), 0);
+                        if ((var_r25_166->LoadInt("spawnPointProp", this->unk10 + var_r30_34, 0) == 0) && (var_r25_166->LoadInt("doorProp", this->unk10 + (var_r30_34 + 4), 0) == 0) && (var_r25_166->LoadString("doorRefPt", this->unk10 + (var_r30_34 + 8), 0) == 0) && (var_r25_166->LoadString("spawnRefPt", this->unk10 + (var_r30_34 + 0xC), 0) == 0) && (var_r25_166->LoadString("openingScript", this->unk10 + (var_r30_34 + 0x10), 0) == 0) && (var_r25_166->LoadString("closingScript", this->unk10 + (var_r30_34 + 0x14), 0) == 0) && (var_r25_166->LoadString("openScript", this->unk10 + (var_r30_34 + 0x18), 0) == 0) && (var_r25_166->LoadString("closedScript", this->unk10 + (var_r30_34 + 0x1C), 0) == 0)) {
+                            var_r25_166->LoadBool("bAnimate", this->unk10 + (var_r30_34 + 0x20), 0);
                         }
                         var_r25_166 = var_r25_166->unkC->GetNextLine(var_r25_166);
                         goto loop_35;
                     }
                     var_r30_34 += 0x24;
-                } else if (var_r26_117->IsField(&lit_stringBase0[0x14]) != 0) {
+                } else if (var_r26_117->IsField("Wave") != 0) {
                     var_r25_286 = var_r26_117->unkC->GetSubLine(var_r26_117);
 loop_46:
                     if (var_r25_286 != NULL) {
-                        if ((var_r25_286->LoadInt(&lit_stringBase0[0xC5], this->unk14 + var_r29_29, 0) == 0) && (var_r25_286->LoadInt(&lit_stringBase0[0xD5], this->unk14 + (var_r29_29 + 4), 0) == 0) && (var_r25_286->LoadFloat(&lit_stringBase0[0xE0], this->unk14 + (var_r29_29 + 0xC), 0) == 0) && (var_r25_286->LoadFloat(&lit_stringBase0[0xEC], this->unk14 + (var_r29_29 + 0x10), 0) == 0) && (var_r25_286->LoadString(&lit_stringBase0[0x100], &sp8, 0) != 0)) {
+                        if ((var_r25_286->LoadInt("iMaxSpawnAmount", this->unk14 + var_r29_29, 0) == 0) && (var_r25_286->LoadInt("iMaxActive", this->unk14 + (var_r29_29 + 4), 0) == 0) && (var_r25_286->LoadFloat("fSpawnDelay", this->unk14 + (var_r29_29 + 0xC), 0) == 0) && (var_r25_286->LoadFloat("fDelayBetweenSpawns", this->unk14 + (var_r29_29 + 0x10), 0) == 0) && (var_r25_286->LoadString("iEnemyType", &sp8, 0) != 0)) {
                             *(var_r29_29 + (this->unk14 + 8)) = DataMap_GetValue(&enemyTypeDataMap, sp8);
                         }
                         var_r25_286 = var_r25_286->unkC->GetNextLine(var_r25_286);
@@ -747,7 +372,7 @@ void EnemyGeneratorDoor::Init(EnemyGenerator *arg0, EnemyGeneratorDoorData *arg1
         }
         operator new(0x60U, NULL, 0);
         this->unk18 = M2C_ERROR(/* Read from unset register $r3 */);
-        M2C_FIELD(temp_r30_861->__vptr, M2C_UNK (**)(SpawnPointData *), 0xC)(temp_r30_861);
+        temp_r30_861->Init();
         this->unk18->Init(temp_r30_861);
         this->unk18->LoadDone();
         temp_r30_861->unk4 |= 0x4220;
@@ -1203,7 +828,7 @@ void EnemyGenerator::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 EnemyGenerator::LoadLine(MKIniLine *arg0) {
     s32 var_r27_1724;
     s32 var_r27_1752;
@@ -1220,19 +845,19 @@ loop_4:
 loop_9:
         if (var_r27_1752 >= (s32) this->unk50->unk0) {
             var_r31_1781 = 0;
-            if ((SpawnerObject::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x123], &this->unk74, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x133], &this->unk78, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x141], &this->unk84, 0) != 0) || (this->unk68.LoadLine(arg0, &lit_stringBase0[0x149]) != 0) || (this->unk6C.LoadLine(arg0, &lit_stringBase0[0x15D]) != 0)) {
+            if ((SpawnerObject::LoadLine(arg0) != 0) || (arg0->LoadInt("iEnemyWaveStart", &this->unk74, 0) != 0) || (arg0->LoadInt("iEnemyWaveEnd", &this->unk78, 0) != 0) || (arg0->LoadBool("bActive", &this->unk84, 0) != 0) || (this->unk68.LoadLine(arg0, "OnEnemyWaveComplete") != 0) || (this->unk6C.LoadLine(arg0, "OnAllEnemyWavesComplete") != 0)) {
                 var_r31_1781 = 1;
             }
             return var_r31_1781;
         }
-        if (arg0->LoadInt(Str_Printf(&lit_stringBase0[0x114], var_r27_1752 + 1), this->unk5C + var_r31_1754, 0) != 0) {
+        if (arg0->LoadInt(Str_Printf("spawnPointID%d", var_r27_1752 + 1), this->unk5C + var_r31_1754, 0) != 0) {
             return 1;
         }
         var_r27_1752 += 1;
         var_r31_1754 += 4;
         goto loop_9;
     }
-    if (arg0->LoadInt(Str_Printf(&lit_stringBase0[0x10B], var_r27_1724 + 1), this->unk58 + var_r31_1726, 0) != 0) {
+    if (arg0->LoadInt(Str_Printf("doorID%d", var_r27_1724 + 1), this->unk58 + var_r31_1726, 0) != 0) {
         return 1;
     }
     var_r27_1724 += 1;

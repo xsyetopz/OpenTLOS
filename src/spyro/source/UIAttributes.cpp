@@ -7,155 +7,63 @@
 
 #if 0 // DRAFT: undefined identifier 'LoadVector4'
 s32 stricmp(s8 *, s8 *);                            /* extern */
-static s8 lit_stringBase0[0x5A] = {
-    0x63,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x75,
-    0x72,
-    0,
-    0x70,
-    0x6F,
-    0x73,
-    0x69,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x72,
-    0x6F,
-    0x74,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x73,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x77,
-    0x69,
-    0x64,
-    0x74,
-    0x68,
-    0,
-    0x68,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x61,
-    0x6C,
-    0x69,
-    0x67,
-    0x6E,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x74,
-    0x6F,
-    0x70,
-    0,
-    0x6D,
-    0x69,
-    0x64,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x62,
-    0x6F,
-    0x74,
-    0x74,
-    0x6F,
-    0x6D,
-    0,
-    0x6C,
-    0x65,
-    0x66,
-    0x74,
-    0,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x72,
-    0x65,
-    0,
-    0x72,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-}; /* const */
 
 s32 Attributes::LoadLine(UIDataLine *arg0) {
     s8 *sp8;
     s32 var_r30_116;
 
-    if (arg0->LoadVector4(lit_stringBase0, (MKVector4 *) this, 0) != 0) {
+    if (arg0->LoadVector4("colour", (MKVector4 *) this, 0) != 0) {
         this->unk40 |= 1;
         return 1;
     }
-    if (arg0->LoadVector3(&lit_stringBase0[7], &this->unk10, 0) != 0) {
+    if (arg0->LoadVector3("position", &this->unk10, 0) != 0) {
         this->unk40 |= 2;
         return 1;
     }
-    if (arg0->LoadVector3(&lit_stringBase0[0x10], &this->unk20, 0) != 0) {
+    if (arg0->LoadVector3("rotation", &this->unk20, 0) != 0) {
         this->unk40 |= 4;
         return 1;
     }
-    if (arg0->LoadFloat(&lit_stringBase0[0x19], &this->unk30, 0) != 0) {
+    if (arg0->LoadFloat("scale", &this->unk30, 0) != 0) {
         this->unk40 |= 8;
         return 1;
     }
-    if (arg0->LoadFloat(&lit_stringBase0[0x1F], &this->unk34, 0) != 0) {
+    if (arg0->LoadFloat("width", &this->unk34, 0) != 0) {
         this->unk40 |= 0x10;
         return 1;
     }
-    if (arg0->LoadFloat(&lit_stringBase0[0x25], &this->unk38, 0) != 0) {
+    if (arg0->LoadFloat("height", &this->unk38, 0) != 0) {
         this->unk40 |= 0x10;
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x2C]) != 0) {
+    if (arg0->IsField("alignment") != 0) {
         var_r30_116 = 0;
         this->unk40 |= 0x20;
         sp8 = NULL;
 loop_14:
         arg0->AsString(var_r30_116, &sp8);
         if (sp8 != NULL) {
-            if (stricmp(&lit_stringBase0[0x36]) == 0) {
+            if (stricmp("top") == 0) {
                 this->unk3C &= 3;
                 goto block_29;
             }
-            if (stricmp(&lit_stringBase0[0x3A], sp8) == 0) {
+            if (stricmp("middle", sp8) == 0) {
                 this->unk3C = (this->unk3C & 3) | 4;
                 goto block_29;
             }
-            if (stricmp(&lit_stringBase0[0x41], sp8) == 0) {
+            if (stricmp("bottom", sp8) == 0) {
                 this->unk3C = (this->unk3C & 3) | 8;
                 goto block_29;
             }
-            if (stricmp(&lit_stringBase0[0x48], sp8) == 0) {
+            if (stricmp("left", sp8) == 0) {
                 this->unk3C &= 0xC;
                 goto block_29;
             }
-            if (stricmp(&lit_stringBase0[0x4D], sp8) == 0) {
+            if (stricmp("centre", sp8) == 0) {
                 this->unk3C = (this->unk3C & 0xC) | 1;
                 goto block_29;
             }
-            if (stricmp(&lit_stringBase0[0x54], sp8) == 0) {
+            if (stricmp("right", sp8) == 0) {
                 this->unk3C = (this->unk3C & 0xC) | 2;
                 goto block_29;
             }

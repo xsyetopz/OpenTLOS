@@ -18,77 +18,6 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 
 #if 0 // DRAFT: illegal use of non-static member
-static s8 lit_stringBase0[0x44] = {
-    0x50,
-    0x69,
-    0x65,
-    0x63,
-    0x65,
-    0x73,
-    0,
-    0x49,
-    0x6E,
-    0x69,
-    0x74,
-    0x69,
-    0x61,
-    0x6C,
-    0x50,
-    0x69,
-    0x65,
-    0x63,
-    0x65,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0x73,
-    0,
-    0x44,
-    0x65,
-    0x73,
-    0x69,
-    0x72,
-    0x65,
-    0x64,
-    0x50,
-    0x69,
-    0x65,
-    0x63,
-    0x65,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0x73,
-    0,
-    0x50,
-    0x69,
-    0x65,
-    0x63,
-    0x65,
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x4F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-}; /* const */
-
 void TotemPolePuzzle::Deinit() {
     MKHeap *temp_r3_51;
     void *temp_r31_50;
@@ -189,7 +118,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[68]' to
+#if 0 // DRAFT: undefined identifier 'loadInfo'
 s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
     s8 *sp10;
     s32 spC;
@@ -213,7 +142,7 @@ s32 TotemPolePuzzle::LoadLine(MKIniLine *arg0) {
     if (GameProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("Pieces") != 0) {
         this->unkE0 = M2C_FIELD(&loadInfo, f64 *, 0x40);
         this->unkE8 = M2C_FIELD(&loadInfo, f64 *, 0x48);
         this->unkDC = M2C_FIELD(&loadInfo, f32 *, 0x54);
@@ -242,7 +171,7 @@ loop_8:
         }
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[7]) != 0) {
+    if (arg0->IsField("InitialPieceStates") != 0) {
         var_r29_286 = 0;
         var_r30_287 = 0;
         var_r28_288 = arg0->unkC->GetSubLine(arg0);
@@ -259,7 +188,7 @@ loop_13:
         }
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x1A]) != 0) {
+    if (arg0->IsField("DesiredPieceStates") != 0) {
         var_r29_324 = 0;
         var_r30_325 = 0;
         var_r28_326 = arg0->unkC->GetSubLine(arg0);
@@ -275,7 +204,7 @@ loop_18:
         return 1;
     }
     var_r29_355 = 0;
-    if ((arg0->LoadFloat(&lit_stringBase0[0x2D], &this->unkD0, 0) != 0) || (this->unkD4.LoadLine(arg0, &lit_stringBase0[0x39]) != 0)) {
+    if ((arg0->LoadFloat("PieceHeight", &this->unkD0, 0) != 0) || (this->unkD4.LoadLine(arg0, "OnComplete") != 0)) {
         var_r29_355 = 1;
     }
     return var_r29_355;

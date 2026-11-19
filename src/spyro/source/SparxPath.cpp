@@ -10,27 +10,8 @@
 extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameGlobals gb;
-#if 0 // DRAFT: illegal operand
-static s8 lit_stringBase0[0x11] = {
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal operand
 void SparxPath::Message(MKMessage *arg0) {
     Sparx *temp_r3_77;
     s32 temp_r0_58;
@@ -58,12 +39,12 @@ void SparxPath::Resolve() {
     this->unk50.unk70 *= 100.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[17]' to
+#if 0 // DRAFT: expression syntax error
 s32 SparxPath::LoadLine(MKIniLine *arg0) {
     s32 var_r31_123;
 
     var_r31_123 = 0;
-    if ((SplineProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, &this->unk50.unk70, 0) != 0) || (this->unk50.unk74.LoadLine(arg0, &lit_stringBase0[6]) != 0)) {
+    if ((SplineProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("Speed", &this->unk50.unk70, 0) != 0) || (this->unk50.unk74.LoadLine(arg0, "OnComplete") != 0)) {
         var_r31_123 = 1;
     }
     return var_r31_123;

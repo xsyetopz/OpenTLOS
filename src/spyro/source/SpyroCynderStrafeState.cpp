@@ -19,30 +19,6 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 static M2C_UNK lit_733;                                /* unable to generate initializer: unknown type */
 static SpyroCynderStrafeState states__22SpyroCynderStrafeState; /* type too large by 0x18; unable to generate initializer: confusing struct layout */
 static SpyroCynderStrafeState jumpStates__22SpyroCynderStrafeState; /* type too large by 0x3C; unable to generate initializer: confusing struct layout */
-static s8 lit_stringBase0[0x16] = {
-    0x49,
-    0x6E,
-    0x20,
-    0x44,
-    0x65,
-    0x62,
-    0x75,
-    0x67,
-    0x20,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0,
-    0x4E,
-    0x6F,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
 void SpyroCynderStrafeState::Landed(bool arg0) {
     s8 sp32;

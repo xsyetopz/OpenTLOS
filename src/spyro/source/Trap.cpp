@@ -10,41 +10,6 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-static s8 lit_stringBase0[0x20] = {
-    0x73,
-    0x79,
-    0x73,
-    0x74,
-    0x65,
-    0x6D,
-    0,
-    0x43,
-    0x61,
-    0x6E,
-    0x42,
-    0x65,
-    0x44,
-    0x69,
-    0x73,
-    0x61,
-    0x72,
-    0x6D,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x44,
-    0x69,
-    0x73,
-    0x61,
-    0x72,
-    0x6D,
-    0x65,
-    0x64,
-    0,
-}; /* const */
-
 f32 Trap::GetCollisionHeight() {
     return 0.0f;
 }
@@ -223,12 +188,12 @@ void Trap::LoadDone() {
     }
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[32]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 Trap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_345;
 
     var_r31_345 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, (s32 *) &this->unkD4, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[7], &this->unkD9, 0) != 0) || (this->unkD9.LoadLine(arg0, &lit_stringBase0[0x15]) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("system", (s32 *) &this->unkD4, 0) != 0) || (arg0->LoadBool("CanBeDisarmed", &this->unkD9, 0) != 0) || (this->unkD9.LoadLine(arg0, "OnDisarmed") != 0)) {
         var_r31_345 = 1;
     }
     return var_r31_345;

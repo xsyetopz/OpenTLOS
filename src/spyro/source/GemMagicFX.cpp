@@ -32,38 +32,8 @@ static s32 lit_698 = 3;
 static u8 lit_729 = 0;
 
 static u8 lit_833 = 1;
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
-static s8 lit_stringBase0[0x1C] = {
-    0x53,
-    0x68,
-    0x61,
-    0x70,
-    0x65,
-    0x64,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x36,
-    0x32,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x30,
-    0x32,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void GemMagicFX::DrawGlow(GemMagicFX::Magic *arg1, Matrix *arg2, MKVector3 *arg3) {
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (arg2 - 4) + 4, 0x40);
     arg_sp60 = M2C_FIELD(arg1, f32 *, 0);
@@ -702,7 +672,7 @@ void GemMagicFX::Init() {
     var_r28_1081 = 0;
     var_r30_1082 = 0;
     do {
-        temp_r3_1087 = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+        temp_r3_1087 = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp("ShapedTrailFX"));
         sp8 = 1.0f;
         spC = 1.0f;
         sp10 = 1.0f;
@@ -710,12 +680,12 @@ void GemMagicFX::Init() {
         *(this->unk50 + var_r30_1082) = temp_r3_1087;
         sp18 = (f64) sp8;
         sp20 = (f64) sp10;
-        ((ShapedTrailFX *) (*(this->unk50 + var_r30_1082)))->InitData(NULL, lit_697, &lit_stringBase0[0xE], lit_698, *((MKVector4 *) &sp18), 0.7f, 1U, 0.3f);
+        ((ShapedTrailFX *) (*(this->unk50 + var_r30_1082)))->InitData(NULL, lit_697, "fx_362", lit_698, *((MKVector4 *) &sp18), 0.7f, 1U, 0.3f);
         var_r28_1081 += 1;
         *(this->unk50 + (var_r30_1082 + 4)) = 0;
         var_r30_1082 += 8;
     } while (var_r28_1081 < 0xA);
-    this->unk54 = MKMaterial_Create(&lit_stringBase0[0x15]);
+    this->unk54 = MKMaterial_Create("fx_002");
 }
 #endif
 

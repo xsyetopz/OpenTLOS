@@ -34,111 +34,6 @@ static struct _struct_groups_0x18 groups[8];
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'Catapult::State'
 static Catapult pEvents__8Catapult;                 /* type too large by 0x150; unable to generate initializer: confusing struct layout */
 
-static s8 lit_stringBase0[0x66] = {
-    0x66,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x46,
-    0x69,
-    0x72,
-    0x73,
-    0x74,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x46,
-    0x69,
-    0x72,
-    0x73,
-    0x74,
-    0x4C,
-    0x6F,
-    0x61,
-    0x64,
-    0,
-    0x66,
-    0x50,
-    0x6F,
-    0x77,
-    0x65,
-    0x72,
-    0x4D,
-    0x75,
-    0x6C,
-    0,
-    0x67,
-    0x72,
-    0x6F,
-    0x75,
-    0x70,
-    0,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x75,
-    0x70,
-    0,
-    0x6C,
-    0x6F,
-    0x61,
-    0x64,
-    0x65,
-    0x64,
-    0,
-    0x72,
-    0x5F,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x43,
-    0x6C,
-    0x69,
-    0x63,
-    0x6B,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x57,
-    0x69,
-    0x6E,
-    0x64,
-    0x55,
-    0x70,
-    0x4C,
-    0x50,
-    0,
-}; /* const */
-
 void Catapult::SetState(Catapult::State arg1) {
     this->unkF8.SetState(this, (s32) arg1, 0U);
 }
@@ -570,18 +465,16 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 Catapult::LoadLine(MKIniLine *arg0) {
-    if ((KDProp::LoadLine(arg0) != 0) || (this->unk10C.LoadLine(arg0, &lit_stringBase0[5]) != 0) || (this->unk10C.LoadLine(arg0, &lit_stringBase0[0xC]) != 0) || (this->unk110.LoadLine(arg0, &lit_stringBase0[0x18]) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x24], &this->unk13C, 0) != 0)) {
+    if ((KDProp::LoadLine(arg0) != 0) || (this->unk10C.LoadLine(arg0, "OnFire") != 0) || (this->unk10C.LoadLine(arg0, "OnFirstFire") != 0) || (this->unk110.LoadLine(arg0, "OnFirstLoad") != 0) || (arg0->LoadFloat("fPowerMul", &this->unk13C, 0) != 0)) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x2E]) != 0) {
+    if (arg0->IsField("group") != 0) {
         M2C_FIELD(this, s8 *, 0x14D) = arg0->GetInt(0);
         return 1;
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'groups'
 void Catapult::Deinit() {
@@ -628,19 +521,19 @@ void Catapult::Init() {
 #if 0 // DRAFT: expression syntax error
 void CatapultDescriptor::LoadDone() {
     KDPropDescriptor::LoadDone();
-    this->unk7C = this->unk34->GetAnim(lit_stringBase0);
-    this->unk74 = this->unk34->GetAnim(&lit_stringBase0[0x34]);
-    this->unk78 = this->unk34->GetAnim(&lit_stringBase0[0x3B]);
-    this->unk70 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x42]);
+    this->unk7C = this->unk34->GetAnim("fire");
+    this->unk74 = this->unk34->GetAnim("windup");
+    this->unk78 = this->unk34->GetAnim("loaded");
+    this->unk70 = MKModel_GetRefPointIndex(this->unk2C, "r_ammo");
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[8], long *)' does
 s32 CatapultDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1266;
 
     var_r31_1266 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x49], &this->unk80) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x51], &this->unk88) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x5A], &this->unk84) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndFire", &this->unk80) != 0) || (KDSound_LoadLine(arg0, "sndClick", &this->unk88) != 0) || (KDSound_LoadLine(arg0, "sndWindUpLP", &this->unk84) != 0)) {
         var_r31_1266 = 1;
     }
     return var_r31_1266;

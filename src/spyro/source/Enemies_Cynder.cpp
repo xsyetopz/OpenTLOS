@@ -12,7 +12,6 @@
 #include "common/Source/Matrix.h"
 #include "spyro/source/Ball.h"
 #include "spyro/source/BoneBlurFX.h"
-#include "spyro/source/CollisionObject.h"
 #include "spyro/source/CynderTier2TrainGoal_Think.h"
 #include "spyro/source/Enemy.h"
 #include "spyro/source/EnemyDescriptor.h"
@@ -1005,14 +1004,14 @@ void CynderTier1::DefrostBall() {
         spA0 = 0;
         sp8C = 1.0f;
         sp60 = temp_f2_1920;
-        M2C_FIELD(gMK->__vptr, M2C_UNK (**)(MKSceneManager *, s32 *, M2C_UNK, M2C_UNK, void *, M2C_UNK, M2C_UNK, M2C_UNK, f32, f64, f64), 0x94)(gMK, &sp68, 0, 0, temp_r5_1914 + 0x30, 1, 0x4000, 1, 400.0f, temp_f2_1920, temp_f3_1918);
+        gMK->SendMessage(&sp68, 0, 0, temp_r5_1914 + 0x30, 1, 0x4000, 1, 400.0f, temp_f2_1920, temp_f3_1918);
         ((Ball *) (M2C_BITWISE(Ball *, this->unk110.unkA08.unk4)))->Smash();
         temp_r3_1947 = this->unk110.unkA08.unk4;
         M2C_FIELD(M2C_FIELD(temp_r3_1947, void **, 0x44), M2C_UNK (**)(f32), 0x34)(temp_r3_1947);
         M2C_FIELD(this->unk110.unkA08.unk4, s32 *, 0x230) = 0;
         ((Ball *) (M2C_BITWISE(Ball *, this->unk110.unkA08.unk4)))->SetGroup(0xFF);
         this->unk110.unkA08.unk4 = 0.0f;
-        M2C_FIELD(this->unk110.__vptr, M2C_UNK (**)(CollisionObject *, f64 *, M2C_UNK, f32), 0x14)(&this->unk110, &this->unk110.unk478, 0xA, 5.0f);
+        this->unk110.Teleport(this->unk110.unk478, 0xA, 5.0f);
         M2C_FIELD(GetCollisionInfo(), s8 *, 4) = 1;
         SetMovementType((CharacterMoveType) 0);
         SetInvulnerableToMeleeAttacks(0U, 1U);
@@ -1392,7 +1391,7 @@ loop_50:
                         }
                         var_r23_2557 += 1;
                     } while (var_r23_2557 < 5);
-                    temp_r22_2655 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(gMK->__vptr, MKPropDescriptor *(**)(MKSceneManager *, void *), 0x5C)(gMK, "IceCube"));
+                    temp_r22_2655 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("IceCube"));
                     var_r21_2656 = 0;
                     var_r25_2657 = 0;
                     do {
@@ -1633,7 +1632,7 @@ void CynderTier1::Update() {
 #if 0 // DRAFT: undefined identifier 'unkA08'
 void CynderTier1::Resolve() {
     Enemy::Resolve();
-    this->unk110.unkA08.unk0 = M2C_BITWISE(f32, checked_cast<BallDescriptor *, MKPropDescriptor>(M2C_FIELD(gMK->__vptr, MKPropDescriptor *(**)(MKSceneManager *, void *), 0x5C)(gMK, "CynderTier1Ball")));
+    this->unk110.unkA08.unk0 = M2C_BITWISE(f32, checked_cast<BallDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("CynderTier1Ball")));
 }
 #endif
 

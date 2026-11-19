@@ -20,13 +20,13 @@ static KDSynkerPlayerEvent loadInfo__19KDSynkerPlayerEvent[0xB];
 static KDSynkerPlayerEvent updateData__19KDSynkerPlayerEvent;
 
 #if 0 // DRAFT: identifier 'PLAYSOUND3D_STRING' redeclared
-static s8 *PLAYSOUND3D_STRING = lit_stringBase0;
+static s8 *PLAYSOUND3D_STRING = "PlaySound3D";
 #endif
 #if 0 // DRAFT: identifier 'HEADTWEEN_STRING' redeclared
 static s8 *HEADTWEEN_STRING = .L_8035FFF4;
 #endif
+
 #if 0 // DRAFT: declaration syntax error
-static s8 lit_stringBase0[0xC] = { 0x50, 0x6C, 0x61, 0x79, 0x53, 0x6F, 0x75, 0x6E, 0x64, 0x33, 0x44, 0 }; /* const */
 static s8 .L_8035FFF4[0x5D] = {
     0x48,
     0x65,
@@ -442,7 +442,7 @@ loop_7:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'strnicmp(long, unsigned char[4], int)' does not match
 u8 KDSP_Events::IsTweenAnimEvent(const char *arg0) {
     MKIniLine *temp_r3_703;
     MKIniLine *temp_r4_701;
@@ -454,14 +454,14 @@ u8 KDSP_Events::IsTweenAnimEvent(const char *arg0) {
     }
     temp_r4_701 = M2C_FIELD(temp_r3_695, MKIniLine **, 4);
     temp_r3_703 = temp_r4_701->unkC->GetSubLine(temp_r4_701);
-    if ((temp_r3_703 != NULL) && (temp_r3_703->IsField(lit_stringBase0 + 0x16) != 0)) {
+    if ((temp_r3_703 != NULL) && (temp_r3_703->IsField("") != 0)) {
         return strnicmp(temp_r3_703->GetString(0), HEADTWEEN_STRING, 9) == 0;
     }
     return 0U;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'strnicmp(unsigned char[4], long, int)' does not match
 u8 KDSP_Events::IsSoundEvent(const char *arg0) {
     MKIniLine *temp_r3_746;
     MKIniLine *temp_r4_744;
@@ -473,7 +473,7 @@ u8 KDSP_Events::IsSoundEvent(const char *arg0) {
     }
     temp_r4_744 = M2C_FIELD(temp_r3_738, MKIniLine **, 4);
     temp_r3_746 = temp_r4_744->unkC->GetSubLine(temp_r4_744);
-    if ((temp_r3_746 != NULL) && (temp_r3_746->IsField(lit_stringBase0 + 0x16) != 0)) {
+    if ((temp_r3_746 != NULL) && (temp_r3_746->IsField("") != 0)) {
         return strnicmp(PLAYSOUND3D_STRING, temp_r3_746->GetString(0), 9) == 0;
     }
     return 0U;
@@ -779,7 +779,7 @@ loop_4:
         var_r26_1288 = 0;
         sp18 = 0;
         do {
-            temp_r3_1298 = arg3->GotoLine(Str_Printf(lit_stringBase0 + 0x1B, var_r26_1288), NULL);
+            temp_r3_1298 = arg3->GotoLine(Str_Printf("", var_r26_1288), NULL);
             if (temp_r3_1298 != NULL) {
                 var_r28_1304 = temp_r3_1298->unkC->GetSubLine(temp_r3_1298);
 loop_58:
@@ -792,11 +792,11 @@ loop_58:
 loop_27:
                     if (var_r23_1317 != NULL) {
                         var_r19_1323 = 0;
-                        if ((var_r23_1317->LoadInt(lit_stringBase0 + 0x24, &sp18, 0) != 0) || (var_r23_1317->LoadString(lit_stringBase0 + 0x28, &sp14, 0) != 0) || (var_r23_1317->LoadInt(lit_stringBase0 + 0x30, &sp10, 0) != 0) || (var_r23_1317->LoadInt(lit_stringBase0 + 0x36, &spC, 0) != 0)) {
+                        if ((var_r23_1317->LoadInt("", &sp18, 0) != 0) || (var_r23_1317->LoadString("", &sp14, 0) != 0) || (var_r23_1317->LoadInt("", &sp10, 0) != 0) || (var_r23_1317->LoadInt("", &spC, 0) != 0)) {
                             var_r19_1323 = 1;
                         }
                         if (var_r19_1323 == 0) {
-                            var_r23_1317->LoadBool(lit_stringBase0 + 0x3D, &sp8, 0);
+                            var_r23_1317->LoadBool("", &sp8, 0);
                         }
                         var_r23_1317 = var_r23_1317->unkC->GetNextLine(var_r23_1317);
                         goto loop_27;
@@ -815,7 +815,7 @@ loop_27:
                             var_r23_1405 = temp_r3_1400->unkC->GetNextLine(temp_r3_1400);
 loop_34:
                             if (var_r23_1405 != NULL) {
-                                if (var_r23_1405->IsField(lit_stringBase0 + 0x45) != 0) {
+                                if (var_r23_1405->IsField("") != 0) {
                                     M2C_FIELD(var_r29_1286, KDSP_Actor **, 8) = (KDSP_Actor *) (arg5->unk4 + (arg5->GetActorId(var_r23_1405->GetString(0)) * 0x138));
                                 }
                                 var_r23_1405 = var_r23_1405->unkC->GetNextLine(var_r23_1405);
@@ -836,13 +836,13 @@ loop_34:
                                 var_r18_1467 = temp_r3_1462->unkC->GetNextLine(temp_r3_1462);
 loop_46:
                                 if (var_r18_1467 != NULL) {
-                                    if (var_r18_1467->IsField(lit_stringBase0 + 0x4A) != 0) {
+                                    if (var_r18_1467->IsField("") != 0) {
                                         M2C_FIELD(var_r31_1284, s32 *, 8) = var_r18_1467->GetString(0);
                                     }
-                                    if (var_r18_1467->IsField(lit_stringBase0 + 0x50) != 0) {
+                                    if (var_r18_1467->IsField("") != 0) {
                                         M2C_FIELD(var_r31_1284, s32 *, 0x18) = arg5->GetActorId(var_r18_1467->GetString(0));
                                     }
-                                    if (NodeLoadLine2(arg5, var_r18_1467, lit_stringBase0 + 0x59, var_r31_1284 + 0x18, var_r31_1284 + 0x1C) != 0) {
+                                    if (NodeLoadLine2(arg5, var_r18_1467, "", var_r31_1284 + 0x18, var_r31_1284 + 0x1C) != 0) {
                                         M2C_FIELD(var_r31_1284, s32 *, 0x14) = (s32) (M2C_FIELD(var_r31_1284, s32 *, 0x14) | 8);
                                     }
                                     var_r18_1467 = var_r18_1467->unkC->GetNextLine(var_r18_1467);
@@ -900,7 +900,7 @@ loop_67:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal explicit conversion from 'MKIniLine *' to
 void KDSP_Events::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1, bool arg2) {
     s8 *sp8;
     MKIniLine *temp_r3_1644;
@@ -923,7 +923,7 @@ void KDSP_Events::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1, bool arg2) {
     s32 temp_ret_1649;
     s32 var_r31_1664;
 
-    temp_ret_1644 = arg1->GotoLine(lit_stringBase0 + 0x5E, NULL);
+    temp_ret_1644 = arg1->GotoLine("", NULL);
     var_f1_1644 = M2C_BITWISE(f32, temp_ret_1644);
     temp_r3_1644 = temp_ret_1644;
     this->unk0 = temp_r3_1644;
@@ -939,7 +939,7 @@ void KDSP_Events::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1, bool arg2) {
     }
     var_r31_1664 = 0;
     do {
-        temp_ret_1674 = arg1->GotoLine(Str_Printf(lit_stringBase0 + 0x1B, var_r31_1664, var_f1_1644), NULL);
+        temp_ret_1674 = arg1->GotoLine(Str_Printf("", var_r31_1664, var_f1_1644), NULL);
         var_f1_1644 = M2C_BITWISE(f32, temp_ret_1674);
         temp_r3_1674 = temp_ret_1674;
         if (temp_r3_1674 != NULL) {
@@ -951,7 +951,7 @@ loop_10:
                 temp_r3_1684 = var_r25_1679->unkC->GetSubLine(var_r25_1679);
                 if (temp_r3_1684 != NULL) {
                     sp8 = NULL;
-                    if (temp_r3_1684->LoadString(lit_stringBase0 + 0x28, &sp8, 0) != 0) {
+                    if (temp_r3_1684->LoadString("", &sp8, 0) != 0) {
                         AddEventType(sp8);
                     }
                 }

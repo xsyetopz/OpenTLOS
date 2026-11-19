@@ -28,119 +28,6 @@ static struct _struct_siegeTowerGroups_0x18 siegeTowerGroups[8];
 #endif
 
 #if 0 // DRAFT: undefined identifier 'unk1C0'
-static s8 lit_stringBase0[0x6E] = {
-    0x72,
-    0x5F,
-    0x61,
-    0x6D,
-    0x6D,
-    0x6F,
-    0,
-    0x6D,
-    0x5F,
-    0x70,
-    0x33,
-    0x30,
-    0x32,
-    0x38,
-    0x5F,
-    0x64,
-    0x69,
-    0x73,
-    0x63,
-    0,
-    0x66,
-    0x54,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x67,
-    0x72,
-    0x6F,
-    0x75,
-    0x70,
-    0,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x30,
-    0,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x31,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0x32,
-    0,
-    0x54,
-    0x75,
-    0x72,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x72,
-    0x67,
-    0x79,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-}; /* const */
-
 void SiegeTower::ZapBall(Ball *arg0) {
     f64 sp10;
     f64 sp8;
@@ -234,7 +121,7 @@ void SiegeTower::Shoot(Targetable *arg0) {
             temp_f1_202 = M2C_FIELD(temp_r6_198, f64 *, 0x30);
             sp38 = temp_f1_202;
             sp40 = M2C_FIELD(temp_r6_198, f64 *, 0x38);
-            M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, f32 *, void *, f64), 0x2C)(arg0, &sp38, &this->unk260.unkC, temp_r6_198, temp_f1_202);
+            arg0->GetOwner(&sp38, &this->unk260.unkC, temp_r6_198, temp_f1_202);
             temp_r3_210 = this->unk1C0.unk78;
             M2C_FIELD(M2C_FIELD(temp_r3_210, void **, 0x44), M2C_UNK (**)(s32, f32 *, f32 *, M2C_UNK, M2C_UNK), 0x50)(temp_r3_210, &this->unk250.unkC, &this->unk260.unkC, 0, 0);
             sp10 = 0.0f;
@@ -267,8 +154,8 @@ void SiegeTower::Shoot(Targetable *arg0) {
                 sp80 = 0.0f;
             }
             sp99 = 1;
-            M2C_FIELD(M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), void **, 0x44), M2C_UNK (**)(MKProp **), 0x2C)(&sp48);
-            KDSound_Play3d(GS_SiegeTowerExtra2, M2C_FIELD(M2C_FIELD(arg0->__vptr, void *(**)(Targetable *), 8)(arg0), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
+            M2C_FIELD(M2C_FIELD(arg0->Init(), void **, 0x44), M2C_UNK (**)(MKProp **), 0x2C)(&sp48);
+            KDSound_Play3d(GS_SiegeTowerExtra2, M2C_FIELD(arg0->Init(), s32 *, 8) + 0x30, 0U, -1, 0.0f, 0U);
         }
     }
 }
@@ -324,7 +211,7 @@ void SiegeTower::UpdateShooting(Targetable *arg0) {
                 temp_f1_359 = M2C_FIELD(temp_r6_355, f64 *, 0x30);
                 sp48 = temp_f1_359;
                 sp50 = M2C_FIELD(temp_r6_355, f64 *, 0x38);
-                M2C_FIELD(arg0->__vptr, M2C_UNK (**)(Targetable *, f64 *, M2C_UNK *, void *, f64), 0x2C)(arg0, &sp48, &sp58, temp_r6_355, temp_f1_359);
+                arg0->GetOwner(&sp48, &sp58, temp_r6_355, temp_f1_359);
                 MKVector(0.0f, 100.0f, 0.0f);
                 M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
                 M2C_FIELD(this, f64 *, 0x280) = sp8;
@@ -711,18 +598,18 @@ void SiegeTower::Update() {
         if (M2C_BITWISE(u32, this->unk280.unk4) == 0U) {
             var_r31_1066 = ((TargetContext *) (M2C_FIELD(&gb, s32 *, 0x20) + 8))->Get();
         }
-        if ((var_r31_1066 != NULL) && (M2C_FIELD(var_r31_1066->__vptr, u8 (**)(Targetable *), 0x20)(var_r31_1066) != 0)) {
+        if ((var_r31_1066 != NULL) && (var_r31_1066->HasHitRoof() != 0)) {
             var_r31_1066 = NULL;
         }
         if (var_r31_1066 != NULL) {
-            temp_r6_1094 = M2C_FIELD(M2C_FIELD(var_r31_1066->__vptr, void *(**)(Targetable *), 8)(var_r31_1066), void **, 8);
+            temp_r6_1094 = M2C_FIELD(var_r31_1066->Init(), void **, 8);
             sp68 = M2C_FIELD(temp_r6_1094, f64 *, 0x30);
             sp70 = M2C_FIELD(temp_r6_1094, f64 *, 0x38);
             temp_r6_1102 = this->unk8;
             temp_f1_1103 = M2C_FIELD(temp_r6_1102, f64 *, 0x30);
             sp48 = temp_f1_1103;
             sp50 = M2C_FIELD(temp_r6_1102, f64 *, 0x38);
-            M2C_FIELD(var_r31_1066->__vptr, M2C_UNK (**)(Targetable *, f64 *, f64 *, void *, f64), 0x2C)(var_r31_1066, &sp48, &sp68, temp_r6_1102, temp_f1_1103);
+            var_r31_1066->GetOwner(&sp48, &sp68, temp_r6_1102, temp_f1_1103);
             temp_r3_1111 = this->unk8;
             sp38 = M2C_FIELD(temp_r3_1111, f64 *, 0x30);
             sp40 = M2C_FIELD(temp_r3_1111, f64 *, 0x38);
@@ -856,8 +743,8 @@ void SiegeTower::LoadDone() {
 
     Shatterable::LoadDone();
     this->unk1B0.LoadDone();
-    this->unk324 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
-    temp_r30_1398 = Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[7]);
+    this->unk324 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "r_ammo");
+    temp_r30_1398 = Tools_GetMatchingNodeIndex(this->unk4, "m_p3028_disc");
     sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
     M2C_FIELD(this, f64 *, 0x1A8) = sp8;
     M2C_FIELD(this, f64 *, 0x1B0) = sp10;
@@ -888,10 +775,10 @@ loop_2:
 
 #if 0 // DRAFT: undefined identifier 'unk1B0'
 s32 SiegeTower::LoadLine(MKIniLine *arg0) {
-    if ((Shatterable::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x1C0), u8 (**)(f64 *, MKIniLine *), 8)(&this->unk1B0, arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x14], &this->unk280.unk0, 0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (M2C_FIELD(M2C_FIELD(this, void **, 0x1C0), u8 (**)(f64 *, MKIniLine *), 8)(&this->unk1B0, arg0) != 0) || (arg0->LoadFloat("fTargetRange", &this->unk280.unk0, 0) != 0)) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x21]) != 0) {
+    if (arg0->IsField("group") != 0) {
         this->unk280.unk8 = M2C_BITWISE(f32, arg0->GetInt(0));
         return 1;
     }
@@ -961,8 +848,8 @@ void SiegeTower::Init() {
 void SiegeTowerDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
     this->unk184.LoadDone();
-    this->unk170 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x27]);
-    this->unk174 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x2F]);
+    this->unk170 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "fxemit0");
+    this->unk174 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "fxemit1");
 }
 #endif
 
@@ -971,7 +858,7 @@ s32 SiegeTowerDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1674;
 
     var_r31_1674 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x37], &this->unk178) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x44], &this->unk17C) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x52], &this->unk180) != 0) || (this->unk184.LoadLine(arg0) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ZapSoundLoop", &this->unk178) != 0) || (KDSound_LoadLine(arg0, "ZapSoundLoop2", &this->unk17C) != 0) || (KDSound_LoadLine(arg0, "TurningSoundLoop", &this->unk180) != 0) || (this->unk184.LoadLine(arg0) != 0)) {
         var_r31_1674 = 1;
     }
     return var_r31_1674;
@@ -992,7 +879,7 @@ void SiegeTowerDescriptor::Init() {
     this->unk178 = 0;
     this->unk17C = 0;
     this->unk180 = 0;
-    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x63]));
+    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
     this->unk184.Init();
 }
 #endif

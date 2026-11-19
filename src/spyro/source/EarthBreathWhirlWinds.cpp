@@ -30,60 +30,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'Upgrade'
-static s8 lit_stringBase0[0x33] = {
-    0x57,
-    0x68,
-    0x69,
-    0x72,
-    0x6C,
-    0x57,
-    0x69,
-    0x6E,
-    0x64,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x34,
-    0x33,
-    0x5F,
-    0x57,
-    0x68,
-    0x69,
-    0x72,
-    0x6C,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0,
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0x4C,
-    0x65,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0,
-}; /* const */
-
 void EarthBreathWhirlWinds::SpawnWhirlWind(const MKVector3 &arg0, const MKVector3 &arg1, Upgrade arg2, bool arg3, float arg4) {
     f64 sp98;
     f64 sp90;
@@ -787,8 +733,8 @@ void EarthBreathWhirlWinds::Init() {
     temp_r5_1139 = this->unk4C;
     this->unk4C = (MKHeap *) &temp_r5_1139->unk4;
     temp_r5_1139->unk4 = 0;
-    gMK->CreatePropDeferred(lit_stringBase0, &this->unk54);
-    this->unk50 = MKModel_Create(&lit_stringBase0[0x10], NULL, 2, NULL);
+    gMK->CreatePropDeferred("WhirlWindDustPS", &this->unk54);
+    this->unk50 = MKModel_Create("FX0043_Whirlwind", NULL, 2, NULL);
 loop_8:
     if ((u32) M2C_FIELD(this->unk4C, u32 *, -4) != 0U) {
         temp_r3_1160 = this->unk4C - 4;
@@ -824,10 +770,10 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void EarthBreathWhirlWindsDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x21]));
+    this->unk60 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
 }
 #endif
 

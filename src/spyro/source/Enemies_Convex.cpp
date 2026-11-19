@@ -20,11 +20,9 @@ void ConvexTier3::Message(MKMessage *arg0) {
     Enemy::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void ConvexTier3::UpdateMovementCustom() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x68)();
+    UpdateModel();
 }
-#endif
 
 void ConvexTier3::Update() {
     Enemy::Update();
@@ -212,7 +210,7 @@ void ConvexTier2::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double, double, double)' does
 void ConvexTier2::SetupCollision() {
     f64 sp40;
     f64 sp38;
@@ -229,7 +227,7 @@ void ConvexTier2::SetupCollision() {
     f32 temp_f31_480;
     void *temp_r31_457;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x80)();
+    UpdateCollisionItems();
     temp_r31_457 = checked_cast<ConvexTier2Descriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = 1.0f;
     spC = 1.0f;

@@ -56,33 +56,29 @@ void UIContainer::Add(UIObject *arg0) {
     this->unk64 += 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void UIContainer::FreeResources() {
     UIObject *var_r31_75;
 
     var_r31_75 = this->unk60;
 loop_2:
     if (var_r31_75 != NULL) {
-        M2C_FIELD(var_r31_75->__vptr, M2C_UNK (**)(UIObject *), 0x24)(var_r31_75);
+        var_r31_75->FreeResources();
         var_r31_75 = var_r31_75->unk10;
         goto loop_2;
     }
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void UIContainer::LoadResources() {
     UIObject *var_r31_101;
 
     var_r31_101 = this->unk60;
 loop_2:
     if (var_r31_101 != NULL) {
-        M2C_FIELD(var_r31_101->__vptr, M2C_UNK (**)(UIObject *), 0x20)(var_r31_101);
+        var_r31_101->LoadResources();
         var_r31_101 = var_r31_101->unk10;
         goto loop_2;
     }
 }
-#endif
 
 void UIContainer::Message(UIMessage *arg0) {
     UIObject *var_r31_134;
@@ -109,7 +105,7 @@ void UIContainer::Draw(const RenderContext &arg0) {
 loop_4:
     if (var_r31_172 != NULL) {
         if ((u8) var_r31_172->unk14 != 0) {
-            M2C_FIELD(var_r31_172->__vptr, M2C_UNK (**)(UIObject *, M2C_UNK *), 0x1C)(var_r31_172, &arg_sp10);
+            var_r31_172->Draw(arg_sp10);
         }
         var_r31_172 = var_r31_172->unk10;
         goto loop_4;

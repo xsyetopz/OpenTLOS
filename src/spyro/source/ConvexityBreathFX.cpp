@@ -34,68 +34,6 @@ extern s32 gViewSeed;
 extern void **gb;
 
 #if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x3B] = {
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x31,
-    0x35,
-    0x5F,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x65,
-    0x74,
-    0,
-    0x66,
-    0x78,
-    0x30,
-    0x30,
-    0x33,
-    0x31,
-    0x5F,
-    0x73,
-    0x6F,
-    0x6E,
-    0x69,
-    0x63,
-    0x72,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x46,
-    0x78,
-    0x30,
-    0x30,
-    0x32,
-    0x32,
-    0x5F,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0x5F,
-    0x46,
-    0x6C,
-    0x61,
-    0x73,
-    0x68,
-    0,
-}; /* const */
-
 void ConvexityBreathFX::DrawRings() {
     f64 sp20;
     f64 sp18;
@@ -816,7 +754,7 @@ block_33:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal explicit conversion from 'MKModel *' to
 void ConvexityBreathFX::Init() {
     MKHeap *temp_r3_1473;
     MKModel *temp_r3_1523;
@@ -826,11 +764,11 @@ void ConvexityBreathFX::Init() {
     s32 var_ctr_1493;
     void *var_r3_1480;
     BaseBreathFX::Init();
-    this->unkA8 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+    this->unkA8 = MKModel_Create("FX0015_EarthRocket", NULL, 2, NULL);
     this->unkAC = 0;
     this->unkB0 = 0.0f;
-    this->unkD0.unk40 = M2C_BITWISE(f32, MKModel_Create(&lit_stringBase0[0x13], NULL, 2, NULL));
-    this->unkD0.unk44 = M2C_BITWISE(f32, Tools_GetMatchingMaterial(M2C_BITWISE(MKModel *, this->unkD0.unk40), &lit_stringBase0[0x13]));
+    this->unkD0.unk40 = M2C_BITWISE(f32, MKModel_Create("fx0031_sonicring", NULL, 2, NULL));
+    this->unkD0.unk44 = M2C_BITWISE(f32, Tools_GetMatchingMaterial(M2C_BITWISE(MKModel *, this->unkD0.unk40), "fx0031_sonicring"));
     M2C_STRUCT_COPY((s32) &arg_sp4C + 4, (s32) (&identity - 4) + 4, 0x40);
     arg_sp10 = 0.01f;
     arg_sp14 = -0.01f;
@@ -869,7 +807,7 @@ void ConvexityBreathFX::Init() {
     M2C_FIELD(this, f32 *, 0x150) = 0.0f;
     M2C_FIELD(this, f32 *, 0x154) = 0.0f;
     this->unkD0.unk88 = 0.0f;
-    temp_r3_1523 = MKModel_Create(&lit_stringBase0[0x24], NULL, 2, NULL);
+    temp_r3_1523 = MKModel_Create("Fx0022_EarthShot_Flash", NULL, 2, NULL);
     arg_sp20 = 1.0f;
     arg_sp24 = 0.0f;
     arg_sp28 = 0.2f;

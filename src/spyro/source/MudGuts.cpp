@@ -17,9 +17,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0xA] = { 0x53, 0x77, 0x69, 0x6D, 0, 0x4A, 0x75, 0x6D, 0x70, 0 }; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void MudGutsCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -292,15 +291,15 @@ void MudGutsCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r31_577 = this->unk34;
-    if (temp_r31_577->Exists(lit_stringBase0) != 0) {
-        var_r3_587 = temp_r31_577->GetAnim(lit_stringBase0);
+    if (temp_r31_577->Exists("Swim") != 0) {
+        var_r3_587 = temp_r31_577->GetAnim("Swim");
     } else {
         var_r3_587 = NULL;
     }
     this->unk70 = (s32) var_r3_587;
     temp_r31_595 = this->unk34;
-    if (temp_r31_595->Exists(&lit_stringBase0[5]) != 0) {
-        var_r3_605 = temp_r31_595->GetAnim(&lit_stringBase0[5]);
+    if (temp_r31_595->Exists("Jump") != 0) {
+        var_r3_605 = temp_r31_595->GetAnim("Jump");
     } else {
         var_r3_605 = NULL;
     }

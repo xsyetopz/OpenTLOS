@@ -90,39 +90,6 @@ static s32 lit_2451 = 0;
 
 static s32 lit_2488 = 1;
 
-static s8 lit_stringBase0[0x1E] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x48,
-    0x44,
-    0x52,
-    0x47,
-    0x4C,
-    0x6F,
-    0x77,
-    0x4F,
-    0x76,
-    0x65,
-    0x72,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x52,
-    0x65,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-}; /* const */
-
 void Enemy::TestForTraps() {
     s32 spC;
     s32 sp8;
@@ -571,7 +538,7 @@ void Enemy::ThawIfFrozen() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'sp8'
 s32 Enemy::SpawnGems(int arg0, int arg1, bool arg2) {
     f64 sp40;
     f64 sp38;
@@ -586,7 +553,7 @@ s32 Enemy::SpawnGems(int arg0, int arg1, bool arg2) {
     s32 var_r28_1005;
 
     var_r28_1005 = 0;
-    temp_f1_1013 = 0.5f * M2C_FIELD(this->__vptr, f32 (**)(), 0x104)();
+    temp_f1_1013 = 0.5f * GetCollisionHeight();
     sp20 = 0.0f;
     sp18 = 0.0f;
     sp1C = temp_f1_1013;
@@ -1825,7 +1792,7 @@ void Enemy::CheckForHazards() {
     void **temp_r3_3652;
     void *temp_r3_3568;
 
-    if (((u8) this->unk110.unk928->unk120 == 0) && (M2C_FIELD(this->__vptr, u8 (**)(), 0xE8)() == 0) && (this->unk110.unk9B8 > 0.0f)) {
+    if (((u8) this->unk110.unk928->unk120 == 0) && (IsDead() == 0) && (this->unk110.unk9B8 > 0.0f)) {
         sp8 = 0;
         if (((u8) this->unk110.unk928->unk121 != 0) && (InWaterVolume(*((MKVector3 *) &this->unk110.unk478), &sp8) != 0)) {
             M2C_ERROR(/* unknown instruction: psq_lx $f0, $r30, $r0, 0x0, qr0 */);
@@ -2041,7 +2008,7 @@ void Enemy::TakeDamage(EnemyDamageFeedback *arg0, bool arg1) {
     temp_f30_4016 = this->unk110.unk9BC;
     M2C_ERROR(/* unknown instruction: cror eq, lt, eq */);
     temp_r31_4021 = ((u32) M2C_ERROR(/* unknown instruction: mfcr $r0 */) >> 0x1DU) & 1;
-    if (M2C_FIELD(this->__vptr, u8 (**)(), 0xE8)() == 0) {
+    if (IsDead() == 0) {
         this->unk110.unk838.Init();
         ProcessDamageQueue((EnemyDamageFeedback *) &this->unk110.unk838, arg1);
         if (arg1 == 0) {
@@ -2754,7 +2721,7 @@ s32 Enemy::Spawn(SpawnPointObject *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
 s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     CharacterBreathFX *temp_r4_5929;
     EAPManager *temp_r3_5843;
@@ -2778,7 +2745,7 @@ s32 Enemy::Spawn(const Matrix *arg0, SpawnPointRef *arg1) {
     void *temp_r3_5729;
     void *temp_r3_5900;
     void *temp_r4_5644;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x38)();
+    SetDefaults();
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (arg0 - 4) + 4, 0x40);
     this->unk110.unk930 = this->unk110.unk92C;
     this->unk110.unk9E8 = -1;
@@ -4320,7 +4287,7 @@ s32 Enemy::CanMoveAwayLeft() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'sp50'
 u8 Enemy::CanMoveAwayForward() {
     f64 spD8;
     f64 spD0;
@@ -4353,7 +4320,7 @@ u8 Enemy::CanMoveAwayForward() {
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r28, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
     temp_f3_8592 = this->unkC8;
-    temp_f1_8594 = temp_f3_8592 * M2C_FIELD(this->__vptr, f32 (**)(), 0x100)();
+    temp_f1_8594 = temp_f3_8592 * GetCollisionRadius();
     sp90 = sp50;
     sp58 = temp_f1_8594;
     sp98 = (f64) sp58;
@@ -4409,7 +4376,7 @@ u8 Enemy::CanMoveAwayForward() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'sp50'
 u8 Enemy::CanMoveAwayBack() {
     f64 spE8;
     f64 spE0;
@@ -4446,7 +4413,7 @@ u8 Enemy::CanMoveAwayBack() {
     M2C_ERROR(/* unknown instruction: psq_lx $f0, $r31, $r3, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_muls0 $f0, $f0, $f30 */);
     temp_f3_8755 = this->unkC8;
-    temp_f1_8757 = temp_f3_8755 * M2C_FIELD(this->__vptr, f32 (**)(), 0x100)();
+    temp_f1_8757 = temp_f3_8755 * GetCollisionRadius();
     spA0 = sp50;
     sp58 = temp_f1_8757;
     spA8 = (f64) sp58;
@@ -4539,7 +4506,7 @@ u8 Enemy::CanMoveAwayFromHero() {
         temp_f1_8948 = this->unk110.unk490;
         if (((temp_f0_8947 * temp_f0_8947) + (temp_f1_8948 * temp_f1_8948)) < 10.0f) {
             this->unk110.unk95C = gb.unk30C + 0.5f;
-            if (M2C_FIELD(this->__vptr, u8 (**)(), 0x134)() == 0) {
+            if (IsAttacking() == 0) {
                 IsFlinching();
                 if (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) && (IsBlocking() == 0) && (IsDying() == 0)) {
                     temp_r4_8976 = this->unk110.unk524;
@@ -5885,7 +5852,7 @@ void Enemy::SetAnim(MKAnim *arg0, float arg1, float arg2, float arg3, unsigned i
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'MKVector'
 s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     f64 sp40;
     f64 sp38;
@@ -5893,7 +5860,7 @@ s32 Enemy::GetAimPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     M2C_UNK sp18;
     f32 sp10;
 
-    MKVector(0.0f, 0.5f * M2C_FIELD(this->__vptr, f32 (**)(), 0x104)(), 0.0f);
+    MKVector(0.0f, 0.5f * GetCollisionHeight(), 0.0f);
     sp28.GetPos();
     M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
     M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -5919,7 +5886,7 @@ s32 Enemy::GetLookToPoint(const MKVector3 &arg0, MKVector3 *arg1) {
     if (temp_r4_12034 != -1U) {
         MKModel_CalculateNodeWorldPosition(this->unk4, (s32) temp_r4_12034, arg1);
     } else {
-        MKVector(0.0f, 0.75f * M2C_FIELD(this->__vptr, f32 (**)(), 0x104)(), 0.0f);
+        MKVector(0.0f, 0.75f * GetCollisionHeight(), 0.0f);
         sp28.GetPos();
         M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
         M2C_ERROR(/* unknown instruction: ps_add $f0, $f1, $f0 */);
@@ -6205,7 +6172,7 @@ void Enemy::LoadDone() {
         this->unk110.unk8FC = (CharacterBreathFX *) var_r3_12656;
         this->unk110.unk8FC->Init(this->unk110.unk928->unk258, this->unk4);
     }
-    this->unk110.unk908 = MKMaterial_Create(lit_stringBase0);
+    this->unk110.unk908 = MKMaterial_Create("fx_HDRGLowOverlay");
 }
 #endif
 
@@ -6235,7 +6202,7 @@ s32 Enemy::LoadLine(MKIniLine *arg0) {
         temp_r3_12726 = this->unk110.unk934;
         M2C_FIELD(*temp_r3_12726, M2C_UNK (**)(void *), 0xC)(temp_r3_12726);
     }
-    if ((Character::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x12], &this->unk110.unk9A4, 0) != 0) || (temp_r3_12746 = this->unk110.unk934, ((M2C_FIELD(*temp_r3_12746, u8 (**)(void *, MKIniLine *), 0x14)(temp_r3_12746, arg0) == 0) == 0))) {
+    if ((Character::LoadLine(arg0) != 0) || (arg0->LoadFloat("RespawnTime", &this->unk110.unk9A4, 0) != 0) || (temp_r3_12746 = this->unk110.unk934, ((M2C_FIELD(*temp_r3_12746, u8 (**)(void *, MKIniLine *), 0x14)(temp_r3_12746, arg0) == 0) == 0))) {
         return 1;
     }
     return 0;

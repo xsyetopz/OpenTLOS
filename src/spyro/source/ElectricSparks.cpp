@@ -15,49 +15,6 @@ extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 
 #if 0 // DRAFT: undefined identifier 'unk4C'
-static s8 lit_stringBase0[0x28] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x36,
-    0x33,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x31,
-    0x37,
-    0x5F,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x34,
-    0x31,
-    0x5F,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x50,
-    0x75,
-    0x72,
-    0x70,
-    0x6C,
-    0x65,
-    0,
-}; /* const */
-
 void ElectricSparks::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, bool arg3) {
     M2C_UNK *temp_r3_47;
     M2C_UNK *temp_r7_41;
@@ -335,8 +292,8 @@ void ElectricSparks::Init() {
     temp_r4_484 = this->unk4C;
     this->unk4C = temp_r4_484 + 4;
     M2C_FIELD(temp_r4_484, M2C_UNK **, 4) = NULL;
-    this->unk50 = MKMaterial_Create(lit_stringBase0);
-    this->unk54 = MKModel_Create(&lit_stringBase0[7], NULL, 2, NULL);
-    this->unk58 = MKModel_Create(&lit_stringBase0[0x14], NULL, 2, NULL);
+    this->unk50 = MKMaterial_Create("fx_363");
+    this->unk54 = MKModel_Create("FX0017_Spark", NULL, 2, NULL);
+    this->unk58 = MKModel_Create("FX0041_SparksPurple", NULL, 2, NULL);
 }
 #endif

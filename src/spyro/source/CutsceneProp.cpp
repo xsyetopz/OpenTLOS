@@ -10,37 +10,8 @@
 extern s8 bShowLoading;
 extern GameStateMachine gGMState;
 extern M2C_UNK gb;
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
-static s8 lit_stringBase0[0x1B] = {
-    0x62,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x49,
-    0x6E,
-    0x74,
-    0x72,
-    0x6F,
-    0,
-    0x4D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x44,
-    0x75,
-    0x63,
-    0x6B,
-    0x56,
-    0x61,
-    0x6C,
-    0x75,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void CutsceneProp::Disable() {
     this->unk18 = this->unk18 | 0x80000000;
     PropFlagsClear((u32 *) &this->unk10, 0x20000U);
@@ -88,7 +59,7 @@ block_26:
         PropFlagsSet((u32 *) &this->unk10, 0x160000U);
         goto block_26;
     case 0x2A:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+        Disable();
         goto block_26;
     case 0x21:
         this->unk50.unk58 = 0;
@@ -129,7 +100,7 @@ s32 CutsceneProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_300;
 
     var_r31_300 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadBool(lit_stringBase0, &this->unk50.unk6C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], &this->unk50.unk68, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unk50.LoadLine(arg0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadBool("bLevelIntro", &this->unk50.unk6C, 0) != 0) || (arg0->LoadFloat("MusicDuckValue", &this->unk50.unk68, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (this->unk50.LoadLine(arg0) != 0)) {
         var_r31_300 = 1;
     }
     return var_r31_300;

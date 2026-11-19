@@ -15,51 +15,6 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 
-static s8 lit_stringBase0[0x2A] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x77,
-    0x6F,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-    0x6D,
-    0x6F,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x62,
-    0x6C,
-    0x75,
-    0x72,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-    0x53,
-    0x63,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0x46,
-    0x6C,
-    0x61,
-    0x73,
-    0x68,
-    0x4D,
-    0x61,
-    0x74,
-    0,
-}; /* const */
-
 void ScreenWobbleFX::SetMotionBlurCapEnable(bool arg0) {
     if (arg0 != 0) {
         this->unk64 += 1;
@@ -704,8 +659,8 @@ void ScreenWobbleFX::Init() {
     }
     this->unk0 = var_r3_1057;
     InitWobbleNodes();
-    this->unkC = MKMaterial_Create(lit_stringBase0);
-    this->unk1C = MKMaterial_Create(&lit_stringBase0[0xD]);
+    this->unkC = MKMaterial_Create("fx_wobblemat");
+    this->unk1C = MKMaterial_Create("motionblurmat");
     this->unk4 = 1.0f;
     this->unk10 = 1.0f;
     sp8 = 1.0f;
@@ -718,7 +673,7 @@ void ScreenWobbleFX::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk58 = 0;
-    this->unk5C = MKMaterial_Create(&lit_stringBase0[0x1B]);
+    this->unk5C = MKMaterial_Create("ScreenFlashMat");
     this->unk20 = 0;
     this->unk24 = 0.0f;
     this->unk38 = 1;

@@ -18,30 +18,6 @@ extern f32 gUpdateTimeDelta;
 #if 0 // DRAFT: illegal explicit conversion from 'long' to
 static M2C_UNK lit_764;                                /* unable to generate initializer: unknown type */
 static SpyroChargeState states__16SpyroChargeState[2]; /* unable to generate initializer: confusing struct layout */
-static s8 lit_stringBase0[0x16] = {
-    0x49,
-    0x6E,
-    0x20,
-    0x44,
-    0x65,
-    0x62,
-    0x75,
-    0x67,
-    0x20,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0,
-    0x4E,
-    0x6F,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
 void SpyroChargeState::ChargeTransition() {
     InputModifier *temp_r3_32;

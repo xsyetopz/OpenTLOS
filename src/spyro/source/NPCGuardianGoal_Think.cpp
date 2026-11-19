@@ -113,12 +113,10 @@ u8 NPCGuardianGoal_Think::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void NPCGuardianGoal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk28'
 void NPCGuardianGoal_Think::Deinit() {

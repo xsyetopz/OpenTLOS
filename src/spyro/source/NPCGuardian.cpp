@@ -9,40 +9,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: undefined identifier 'unkA00'
-static s8 lit_stringBase0[0x1F] = {
-    0x46,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x77,
-    0x47,
-    0x72,
-    0x61,
-    0x70,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x42,
-    0x65,
-    0x68,
-    0x61,
-    0x76,
-    0x69,
-    0x6F,
-    0x75,
-    0x72,
-    0,
-    0x4F,
-    0x6E,
-    0x4C,
-    0x6F,
-    0x61,
-    0x64,
-    0,
-}; /* const */
-
 void NPCGuardian::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0xB5) {
 
@@ -86,13 +52,13 @@ u8 NPCGuardian::LoadLine(MKIniLine *arg0) {
     if (Enemy::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(lit_stringBase0, (s32 *) &this->unk110.unkA08, 0) != 0) {
+    if (arg0->LoadInt("FollowGraphID", (s32 *) &this->unk110.unkA08, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xE], &this->unk110.unkA0C, 0) != 0) {
+    if (arg0->LoadInt("Behaviour", &this->unk110.unkA0C, 0) != 0) {
         return 1U;
     }
-    return (u8) (this->unk110.unkA04.LoadLine(arg0, &lit_stringBase0[0x18]) != 0);
+    return (u8) (this->unk110.unkA04.LoadLine(arg0, "OnLoad") != 0);
 }
 #endif
 

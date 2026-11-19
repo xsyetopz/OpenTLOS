@@ -26,121 +26,13 @@ extern void **gMK;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 
-static s8 lit_stringBase0[0x69] = {
-    0x4F,
-    0x6E,
-    0x41,
-    0x6C,
-    0x6C,
-    0x43,
-    0x68,
-    0x69,
-    0x6C,
-    0x64,
-    0x72,
-    0x65,
-    0x6E,
-    0x44,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x62,
-    0x65,
-    0x72,
-    0x54,
-    0x6F,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x54,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x50,
-    0x39,
-    0x30,
-    0x32,
-    0x32,
-    0x5F,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x42,
-    0x6F,
-    0x78,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0,
-    0x72,
-    0x5F,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x25,
-    0x64,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0,
-}; /* const */
-
 void DropBox::SetAnim(int arg0) {
     this->unk80->SetAnim(M2C_FIELD((this + (arg0 * 4)), MKAnim **, 0x1D0), 1.0f, 0.0f, 0, -1);
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk1B8'
 void DropBox::SetDefaults() {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     Activate();
     this->unk1B8 = 0.0f;
     M2C_FIELD(this, s8 *, 0x1C0) = 0;
@@ -332,13 +224,13 @@ u8 DropBox::LoadLine(MKIniLine *arg0) {
     if (Shatterable::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if ((this->unk1C8.LoadLine(arg0, lit_stringBase0) != 0) && ((u32) this->unk1C8 != 0U)) {
+    if ((this->unk1C8.LoadLine(arg0, "OnAllChildrenDead") != 0) && ((u32) this->unk1C8 != 0U)) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x12], (s32 *) &this->unk200, 0) != 0) {
+    if (arg0->LoadInt("NumberToSpawn", (s32 *) &this->unk200, 0) != 0) {
         return 1U;
     }
-    return (u8) (arg0->LoadInt(&lit_stringBase0[0x20], (s32 *) &this->unk200.unk4, 0) != 0);
+    return (u8) (arg0->LoadInt("SpawnTier", (s32 *) &this->unk200.unk4, 0) != 0);
 }
 #endif
 
@@ -763,7 +655,7 @@ void DropBox::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: undefined identifier 'unk1C4'
 void DropBox::Resolve() {
     f64 sp10;
     f64 sp8;
@@ -775,8 +667,8 @@ void DropBox::Resolve() {
 
     Shatterable::Resolve();
     temp_r31_1439 = this->unk80;
-    if (temp_r31_1439->Exists(&lit_stringBase0[0x2A]) != 0) {
-        var_r3_1451 = temp_r31_1439->GetAnim(&lit_stringBase0[0x2A]);
+    if (temp_r31_1439->Exists("Idle") != 0) {
+        var_r3_1451 = temp_r31_1439->GetAnim("Idle");
     } else {
         var_r3_1451 = NULL;
     }
@@ -798,7 +690,7 @@ void DropBox::Resolve() {
 #if 0 // DRAFT: undefined identifier 'unk1C4'
 void DropBox::LoadDone() {
     Shatterable::LoadDone();
-    this->unk1C4 = MKModel_Create(&lit_stringBase0[0x2F], NULL, 2, NULL);
+    this->unk1C4 = MKModel_Create("P9022_DropBoxShadow", NULL, 2, NULL);
 }
 #endif
 
@@ -841,7 +733,7 @@ void DropBox::InitSpawnerObject() {
     var_r30_1583 = 0;
     do {
         temp_r27_1593 = this + var_r30_1583;
-        M2C_FIELD(temp_r27_1593, s32 *, 0x1E0) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf(&lit_stringBase0[0x43], var_r26_1581));
+        M2C_FIELD(temp_r27_1593, s32 *, 0x1E0) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_fxemit%d", var_r26_1581));
         operator new(0x60U, NULL, 0);
         M2C_FIELD(temp_r27_1593, SpawnPointObject **, 0x1DC) = (SpawnPointObject *) M2C_ERROR(/* Read from unset register $r3 */);
         operator new(0x28U, NULL, 0);
@@ -870,17 +762,17 @@ void DropBox::InitSpawnerObject() {
 
 #if 0 // DRAFT: expression syntax error
 void DropBoxDescriptor::LoadDone() {
-    this->unk16C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x4E]));
+    this->unk16C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
     ShatterableDescriptor::LoadDone();
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DropBoxDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1683;
 
     var_r31_1683 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x59], &this->unk170, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x61], &this->unk174) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("Element", &this->unk170, 0) != 0) || (KDSound_LoadLine(arg0, "sndDrop", &this->unk174) != 0)) {
         var_r31_1683 = 1;
     }
     return var_r31_1683;

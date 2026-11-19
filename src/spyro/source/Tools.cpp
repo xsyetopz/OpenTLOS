@@ -779,7 +779,7 @@ loop_7:
     }
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 void Tools_SendMessageHelper::StoreClosestProps(const MKVector3 &arg0, float arg1, int arg2) {
     M2C_UNK sp18;
     f64 sp10;
@@ -795,12 +795,12 @@ void Tools_SendMessageHelper::StoreClosestProps(const MKVector3 &arg0, float arg
 
     ClearData();
     var_r26_1575 = 0;
-    temp_r31_1576 = M2C_FIELD(gMK->__vptr, s32 (**)(MKSceneManager *, M2C_UNK *, M2C_UNK, MKVector3 *, s32, M2C_UNK, f32), 0x98)(gMK, &sp18, 0xFF, &arg0, arg2, 0, arg1);
+    temp_r31_1576 = gMK->GetPropsInRange(&sp18, 0xFF, arg0, arg2, 0, arg1);
     this->unk7F8 = 0;
     var_r29_1579 = 0;
 loop_4:
     if (var_r29_1579 < temp_r31_1576) {
-        if (M2C_FIELD(gMK->__vptr, u8 (**)(MKSceneManager *, s32, s32), 0x9C)(gMK, *(&sp18 + var_r26_1575), sWorkingChunkID.unk0) != 0) {
+        if (gMK->IsEnabled(*(&sp18 + var_r26_1575), sWorkingChunkID.unk0) != 0) {
             *(this + (this->unk7F8 * 8)) = *(&sp18 + var_r26_1575);
             temp_r4_1599 = this->unk7F8 * 8;
             temp_r3_1602 = M2C_FIELD(*(this + temp_r4_1599), void **, 8);

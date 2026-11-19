@@ -390,7 +390,7 @@ loop_4:
         GetNewTargetID();
         arg0->unk4 = M2C_ERROR(/* Read from unset register $r3 */);
     }
-    if (M2C_FIELD(arg0->__vptr, u8 (**)(Targetable *), 0x10)(arg0) != 0) {
+    if (arg0->Update() != 0) {
         if (((void **(*)(TargetManager **, f64, f32)) arg0->unk4) == (void **(*)(TargetManager **, f64, f32))-1) {
             GetNewTargetID();
             arg0->unk4 = M2C_ERROR(/* Read from unset register $r3 */);

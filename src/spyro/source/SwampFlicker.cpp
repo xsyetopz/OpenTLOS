@@ -20,33 +20,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x17] = {
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void SwampFlicker::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -523,22 +498,22 @@ void SwampFlickerDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_843 = this->unk34;
-    if (temp_r30_843->Exists(lit_stringBase0) != 0) {
-        var_r3_853 = temp_r30_843->GetAnim(lit_stringBase0);
+    if (temp_r30_843->Exists("idle_01") != 0) {
+        var_r3_853 = temp_r30_843->GetAnim("idle_01");
     } else {
         var_r3_853 = NULL;
     }
     this->unk70 = (s32) var_r3_853;
     temp_r30_861 = this->unk34;
-    if (temp_r30_861->Exists(&lit_stringBase0[8]) != 0) {
-        var_r3_871 = temp_r30_861->GetAnim(&lit_stringBase0[8]);
+    if (temp_r30_861->Exists("idle_02") != 0) {
+        var_r3_871 = temp_r30_861->GetAnim("idle_02");
     } else {
         var_r3_871 = NULL;
     }
     this->unk74 = (s32) var_r3_871;
     temp_r30_879 = this->unk34;
-    if (temp_r30_879->Exists(&lit_stringBase0[0x10]) != 0) {
-        var_r3_889 = temp_r30_879->GetAnim(&lit_stringBase0[0x10]);
+    if (temp_r30_879->Exists("bounce") != 0) {
+        var_r3_889 = temp_r30_879->GetAnim("bounce");
     } else {
         var_r3_889 = NULL;
     }

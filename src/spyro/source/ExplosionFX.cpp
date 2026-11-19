@@ -17,24 +17,8 @@ Matrix **malloc(M2C_UNK);                           /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'identity'
-static s8 lit_stringBase0[0xE] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x33,
-    0x38,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x30,
-    0x30,
-    0x37,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'identity'
 void ExplosionFX::CreateShockwave(const MKVector3 &arg0, const MKVector3 &arg1, float arg2) {
     f64 sp20;
     f64 sp18;
@@ -569,7 +553,7 @@ void ExplosionFX::Init() {
     temp_r4_946 = this->unk50;
     this->unk50 = temp_r4_946 + 4;
     M2C_FIELD(temp_r4_946, Matrix ***, 4) = NULL;
-    temp_r3_953 = MKMaterial_Create(lit_stringBase0);
+    temp_r3_953 = MKMaterial_Create("fx_338");
     this->unk4C = temp_r3_953;
     temp_r3_955 = temp_r3_953->Current();
     if (temp_r3_955 != NULL) {
@@ -592,6 +576,6 @@ void ExplosionFX::Init() {
     temp_r4_983 = this->unk58;
     this->unk58 = temp_r4_983 + 4;
     M2C_FIELD(temp_r4_983, Matrix ***, 4) = NULL;
-    this->unk54 = MKMaterial_Create(&lit_stringBase0[7]);
+    this->unk54 = MKMaterial_Create("FX_007");
 }
 #endif

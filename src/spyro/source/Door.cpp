@@ -10,58 +10,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'DoorStates'
-static s8 lit_stringBase0[0x31] = {
-    0x43,
-    0x6C,
-    0x6F,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0,
-    0x43,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x64,
-    0x69,
-    0x73,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0x4F,
-    0x6E,
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0,
-}; /* const */
-
 void Door::SetState(DoorStates arg0) {
     this->unkE0 = (s32) arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<DoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkE0 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
@@ -157,10 +105,10 @@ void Door::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void DoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim(lit_stringBase0);
-    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[7]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0xF]);
-    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x14]);
+    this->unkE4 = this->unk34->GetAnim("Closed");
+    this->unkE8 = this->unk34->GetAnim("Opening");
+    this->unkEC = this->unk34->GetAnim("Open");
+    this->unkF0 = this->unk34->GetAnim("Closing");
 }
 #endif
 
@@ -171,7 +119,7 @@ s32 DoorDescriptor::LoadLine(MKIniLine *arg0) {
     if (GamePropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->LoadBool(&lit_stringBase0[0x1C], &sp8, 0) != 0) {
+    if (arg0->LoadBool("disableCollideOnOpen", &sp8, 0) != 0) {
         this->unkF4 = sp8;
         return 1;
     }

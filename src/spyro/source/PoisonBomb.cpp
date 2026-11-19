@@ -34,56 +34,6 @@ extern MKPropDescriptor *pPoisonBombDescriptor;
 static f32 fTexScale = 0.95f;
 static f32 fScaleMul = 0.5f;
 
-static s8 lit_stringBase0[0x2F] = {
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x34,
-    0x32,
-    0x5F,
-    0x47,
-    0x61,
-    0x73,
-    0x42,
-    0x6C,
-    0x75,
-    0x72,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x67,
-    0x61,
-    0x73,
-    0x62,
-    0x6C,
-    0x75,
-    0x72,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x33,
-    0,
-    0x72,
-    0x5F,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x30,
-    0,
-}; /* const */
-
 void PoisonBomb::EmitPoison() {
 
 }
@@ -792,18 +742,18 @@ void PoisonBomb::Init() {
     this->unk18C = 0.0f;
     this->unk1B8 = 0;
     this->unk190.Init(0.25f, 0.25f);
-    this->unk1C4 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+    this->unk1C4 = MKModel_Create("FX0042_GasBlur", NULL, 2, NULL);
     this->unk1C8 = 0.0f;
-    this->unk1CC = Tools_GetMatchingMaterial(this->unk1C4, &lit_stringBase0[0xF]);
+    this->unk1CC = Tools_GetMatchingMaterial(this->unk1C4, "fx_gasblur");
 }
 #endif
 
 #if 0 // DRAFT: illegal use of non-static member
 void PoisonBombDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkF0 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x1A]));
+    this->unkF0 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
     pPoisonBombDescriptor = (MKPropDescriptor *) this;
-    this->unkF4 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x25]);
+    this->unkF4 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
 #endif
 

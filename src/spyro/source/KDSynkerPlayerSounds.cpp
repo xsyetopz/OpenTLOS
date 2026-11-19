@@ -16,58 +16,17 @@
 #if 0 // DRAFT: illegal type
 M2C_UNK free(SoundBankHeader *);                    /* extern */
 s32 stricmp(s32, s32);                              /* extern */
-static s8 lit_stringBase0[0x27] = {
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0,
-    0x44,
-    0x59,
-    0x4E,
-    0x41,
-    0x4D,
-    0x49,
-    0x43,
-    0x5F,
-    0x53,
-    0x46,
-    0x58,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
 void KDSP_Sounds::GetDynamicSoundName(int arg0) {
     GameLanguage_GetAudioCode(-1);
-    Str_Printf(lit_stringBase0, M2C_FIELD((this->unkC + (arg0 * 0x18)), s32 *, 8), M2C_ERROR(/* Read from unset register $r3 */), lit_stringBase0);
+    Str_Printf("%s%s", M2C_FIELD((this->unkC + (arg0 * 0x18)), s32 *, 8), M2C_ERROR(/* Read from unset register $r3 */), "%s%s");
 }
 #endif
 
 #if 0 // DRAFT: illegal type
 void KDSP_Sounds::GetDynamicBankName(int arg0) {
     GameLanguage_GetAudioCode(-1);
-    Str_Printf(&lit_stringBase0[5], M2C_FIELD((this->unkC + (arg0 * 0x18)), s32 *, 8), M2C_ERROR(/* Read from unset register $r3 */), lit_stringBase0);
+    Str_Printf("%s%s.gsb", M2C_FIELD((this->unkC + (arg0 * 0x18)), s32 *, 8), M2C_ERROR(/* Read from unset register $r3 */), "%s%s");
 }
 #endif
 
@@ -151,13 +110,12 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSP_Sounds::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
     MKIniLine *temp_r3_204;
     s32 temp_r3_207;
     s32 temp_r3_215;
 
-    this->unk4 = arg1->GotoLine(&lit_stringBase0[0xE], NULL);
+    this->unk4 = arg1->GotoLine("DYNAMIC_SFX", NULL);
     temp_r3_204 = this->unk4;
     if (temp_r3_204 != NULL) {
         temp_r3_207 = temp_r3_204->GetNmbrOfSubLines();
@@ -168,7 +126,6 @@ void KDSP_Sounds::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
         }
     }
 }
-#endif
 
 void KDSP_Sounds::Deinit() {
     s32 temp_r3_239;
@@ -363,14 +320,14 @@ s32 KDSP_Sounds::LoadDynamicSoundBank(int *arg0, bool arg1) {
     return 0;
 }
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, signed char[39])' does not match
+#if 0 // DRAFT: function call 'MKArchive_Exists(signed char *, int)' does not match
 void KDSP_Sounds::LoadStaticSoundBank(const char *arg0, bool arg1) {
     MKHeap *temp_r3_624;
     SoundBankHeader *temp_r3_618;
     s32 temp_r3_622;
     s8 *temp_r3_608;
 
-    temp_r3_608 = Str_Printf(&lit_stringBase0[0x1A], lit_stringBase0);
+    temp_r3_608 = Str_Printf("%s.gsb", "%s%s");
     if (MKArchive_Exists(temp_r3_608, NULL) != 0) {
         temp_r3_618 = MKArchive_Load(temp_r3_608, NULL, NULL, -1);
         temp_r3_622 = Sound_LoadBankFromMemory(temp_r3_618, 0U, -1);
@@ -385,7 +342,6 @@ void KDSP_Sounds::LoadStaticSoundBank(const char *arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'System_GetCommandLineParameter(signed char *, unsigned
 void KDSP_Sounds::Init() {
     this->unk10 = 0;
     this->unk8 = 0;
@@ -396,9 +352,8 @@ void KDSP_Sounds::Init() {
     this->unk1C = -1;
     this->unk20 = -1;
     this->unk24 = -1;
-    System_GetCommandLineParameter(&lit_stringBase0[0x21], 1U);
+    System_GetCommandLineParameter("sound", 1U);
     this->unk0 = M2C_ERROR(/* Read from unset register $r3 */) != 0;
     this->unk1 = 1;
     this->unk2 = 0;
 }
-#endif

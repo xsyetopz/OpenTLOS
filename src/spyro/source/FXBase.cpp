@@ -10,121 +10,8 @@
 #include <m2c_macros.h>
 
 extern s32 gViewSeed;
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
-static s8 lit_stringBase0[0x6F] = {
-    0x69,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x43,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x43,
-    0x6F,
-    0x6E,
-    0x65,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x4D,
-    0x69,
-    0x6E,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x4D,
-    0x61,
-    0x78,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x4D,
-    0x69,
-    0x6E,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x4D,
-    0x61,
-    0x78,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x4D,
-    0x69,
-    0x6E,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x66,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void FXBase::Burst(const MKVector3 &arg0) {
     f32 temp_f1_93;
     f32 temp_f26_89;
@@ -196,12 +83,12 @@ void FXBase::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, cons
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[111]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FXBaseDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_232;
 
     var_r31_232 = 0;
-    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unkC0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], &this->unkC4, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x17], &this->unkC8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x24], &this->unkCC, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x31], &this->unkD0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x41], &this->unkD4, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x51], &this->unkD8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x60], &this->unkDC, 0) != 0)) {
+    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("iBurstCount", &this->unkC0, 0) != 0) || (arg0->LoadFloat("fBurstCone", &this->unkC4, 0) != 0) || (arg0->LoadFloat("fBurstMinVel", &this->unkC8, 0) != 0) || (arg0->LoadFloat("fBurstMaxVel", &this->unkCC, 0) != 0) || (arg0->LoadFloat("fBurstMinRadius", &this->unkD0, 0) != 0) || (arg0->LoadFloat("fBurstMaxRadius", &this->unkD4, 0) != 0) || (arg0->LoadFloat("fBurstMinScale", &this->unkD8, 0) != 0) || (arg0->LoadFloat("fBurstMaxScale", &this->unkDC, 0) != 0)) {
         var_r31_232 = 1;
     }
     return var_r31_232;

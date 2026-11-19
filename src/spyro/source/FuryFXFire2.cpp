@@ -29,53 +29,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 
 #if 0 // DRAFT: illegal type
-static s8 lit_stringBase0[0x2C] = {
-    0x50,
-    0x30,
-    0x30,
-    0x30,
-    0x32,
-    0x5F,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x43,
-    0x61,
-    0x6E,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x42,
-    0x61,
-    0x6C,
-    0x6C,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x43,
-    0x6C,
-    0x75,
-    0x73,
-    0x74,
-    0x65,
-    0x72,
-    0x42,
-    0x6F,
-    0x6D,
-    0x62,
-    0,
-}; /* const */
-
 void FuryFXFire2::ResetFury() {
     f64 sp18;
     f64 sp10;
@@ -847,9 +800,9 @@ void FuryFXFire2::Init() {
     temp_r4_1681 = this->unk150;
     this->unk150 = temp_r4_1681 + 4;
     M2C_FIELD(temp_r4_1681, FuryFXFire2::Meteor ***, 4) = NULL;
-    this->unk148 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x15], (MKProp **) &this->unk154);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x20], (MKProp **) &this->unk160);
+    this->unk148 = MKModel_Create("P0002_LavaCannonBall", NULL, 2, NULL);
+    gMK->CreatePropDeferred("Explosion4", (MKProp **) &this->unk154);
+    gMK->CreatePropDeferred("ClusterBomb", (MKProp **) &this->unk160);
     this->unk164.Init(0xA);
     this->unk158 = -1;
 }

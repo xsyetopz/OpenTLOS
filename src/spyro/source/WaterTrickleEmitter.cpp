@@ -14,81 +14,6 @@ s32 stricmp(s8 *);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-static s8 lit_stringBase0[0x49] = {
-    0x4D,
-    0x69,
-    0x6E,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x52,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x52,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x50,
-    0x65,
-    0x72,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x41,
-    0x6E,
-    0x67,
-    0x6C,
-    0x65,
-    0,
-    0x57,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-}; /* const */
 
 void WaterTrickleEmitter::Deinit() {
     MKProp::Deinit();
@@ -199,14 +124,14 @@ void WaterTrickleEmitter::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[73]' to
+#if 0 // DRAFT: undefined identifier 'unk34'
 s32 WaterTrickleEmitter::LoadLine(MKIniLine *arg0) {
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x18], (s32 *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x23], (f32 *) &this->unk84, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x2E], &this->unk88, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x39], &this->unkA0.unk38, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinEmitRate", (f32 *) &this->unk4C.unk2C, 0) != 0) || (arg0->LoadFloat("MaxEmitRate", (f32 *) &this->unk4C.unk30, 0) != 0) || (arg0->LoadInt("NumPerEmit", (s32 *) &this->unk4C.unk34, 0) != 0) || (arg0->LoadFloat("MinEmitVel", (f32 *) &this->unk84, 0) != 0) || (arg0->LoadFloat("MaxEmitVel", &this->unk88, 0) != 0) || (arg0->LoadFloat("Angle", &this->unkA0.unk38, 0) != 0)) {
         return 1;
     }
     if (arg0->GetFieldName() != NULL) {
         arg0->GetFieldName();
-        if (stricmp(&lit_stringBase0[0x3F]) == 0) {
+        if (stricmp("Waypoints") == 0) {
             if (arg0->GetNmbrOfSubLines() == 0) {
                 M2C_FIELD(this, s8 *, 0x94) = 0;
             } else {

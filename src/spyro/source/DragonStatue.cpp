@@ -21,131 +21,8 @@ extern s32 GS_DragonStatueStart;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
-#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
-static s8 lit_stringBase0[0x79] = {
-    0x4F,
-    0x6E,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x44,
-    0x6F,
-    0x77,
-    0x6E,
-    0,
-    0x4F,
-    0x6E,
-    0x44,
-    0x6F,
-    0x77,
-    0x6E,
-    0,
-    0x4F,
-    0x6E,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x55,
-    0x70,
-    0,
-    0x4F,
-    0x6E,
-    0x55,
-    0x70,
-    0,
-    0x4D,
-    0x6F,
-    0x76,
-    0x65,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x4D,
-    0x6F,
-    0x76,
-    0x65,
-    0x41,
-    0x63,
-    0x63,
-    0x65,
-    0x6C,
-    0x6C,
-    0x65,
-    0x72,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x41,
-    0x6D,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0x4F,
-    0x66,
-    0x43,
-    0x72,
-    0x75,
-    0x64,
-    0,
-    0x41,
-    0x6D,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0x4F,
-    0x66,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0,
-    0x41,
-    0x6E,
-    0x67,
-    0x75,
-    0x6C,
-    0x61,
-    0x72,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x41,
-    0x6E,
-    0x67,
-    0x75,
-    0x6C,
-    0x61,
-    0x72,
-    0x41,
-    0x63,
-    0x63,
-    0x65,
-    0x6C,
-    0x65,
-    0x72,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 void DragonStatue::EmitDust() {
     f64 sp68;                                       /* compiler-managed */
     f64 sp60;
@@ -1196,34 +1073,34 @@ u8 DragonStatue::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (this->unk90.LoadLine(arg0, lit_stringBase0) != 0) {
+    if (this->unk90.LoadLine(arg0, "OnStartDown") != 0) {
         return 1U;
     }
-    if (this->unk94.LoadLine(arg0, &lit_stringBase0[0xC]) != 0) {
+    if (this->unk94.LoadLine(arg0, "OnDown") != 0) {
         return 1U;
     }
-    if (this->unk98.LoadLine(arg0, &lit_stringBase0[0x13]) != 0) {
+    if (this->unk98.LoadLine(arg0, "OnStartUp") != 0) {
         return 1U;
     }
-    if (this->unk9C.LoadLine(arg0, &lit_stringBase0[0x1D]) != 0) {
+    if (this->unk9C.LoadLine(arg0, "OnUp") != 0) {
         return 1U;
     }
-    if (arg0->LoadVector3(&lit_stringBase0[0x22], (MKVector3 *) &this->unkB8, 0) != 0) {
+    if (arg0->LoadVector3("MoveSpeed", (MKVector3 *) &this->unkB8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadVector3(&lit_stringBase0[0x2C], (MKVector3 *) &this->unkC8, 0) != 0) {
+    if (arg0->LoadVector3("MoveAccelleration", (MKVector3 *) &this->unkC8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x3E], &this->unkF8, 0) != 0) {
+    if (arg0->LoadInt("AmountOfCrud", &this->unkF8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x4B], &this->unkFC, 0) != 0) {
+    if (arg0->LoadInt("AmountOfDust", &this->unkFC, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat(&lit_stringBase0[0x58], &this->unkE8, 0) != 0) {
+    if (arg0->LoadFloat("AngularSpeed", &this->unkE8, 0) != 0) {
         return 1U;
     }
-    return (u8) (arg0->LoadFloat(&lit_stringBase0[0x65], &this->unkF0, 0) != 0);
+    return (u8) (arg0->LoadFloat("AngularAcceleration", &this->unkF0, 0) != 0);
 }
 #endif
 

@@ -246,12 +246,10 @@ block_24:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void EnemyGoal_GraphBarricade::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 #if 0 // DRAFT: pointer/array required
 void EnemyGoal_GraphBarricade::Deinit() {
@@ -1163,7 +1161,7 @@ void EnemyGoal_FollowGraph::AddGoal_Cower() {
         M2C_FIELD(temp_r4_2383, s32 *, 0x1C) = 0;
         M2C_FIELD(temp_r4_2383, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_2383, u8 *, 0x20) & ~0x40);
         temp_r3_2393 = this->unk44;
-        M2C_FIELD(temp_r3_2393->__vptr, M2C_UNK (**)(Goal<Enemy> *, Goal<Enemy> *), 0x14)(temp_r3_2393, temp_r4_2383);
+        temp_r3_2393->Activate(temp_r4_2383);
         this->unkC->unk110.unk97C = 0;
     }
 }
@@ -1227,7 +1225,7 @@ void EnemyGoal_FollowGraph::AddGoal_Taunt(bool arg0) {
             M2C_FIELD(temp_r4_2506, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_2506, u8 *, 0x20) & ~0x40);
         }
         temp_r3_2517 = this->unk44;
-        M2C_FIELD(temp_r3_2517->__vptr, M2C_UNK (**)(Goal<Enemy> *), 0x14)(temp_r3_2517);
+        temp_r3_2517->Activate();
         this->unkC->unk110.unk97C = 0;
     }
 }
@@ -1266,7 +1264,7 @@ void EnemyGoal_FollowGraph::AddGoal_Alert() {
     M2C_FIELD(temp_r5_2580, s32 *, 0x14) = 0;
     M2C_FIELD(temp_r5_2580, f32 *, 0x18) = (f32) temp_r4_2581->unk160;
     temp_r3_2587 = this->unk50;
-    M2C_FIELD(temp_r3_2587->__vptr, M2C_UNK (**)(Goal<Enemy> *, EnemyDescriptor *, Goal<Enemy> *), 0x14)(temp_r3_2587, temp_r4_2581, temp_r5_2580);
+    temp_r3_2587->Activate(temp_r4_2581, temp_r5_2580);
     this->unkC->unk110.unk97C = 0;
 }
 #endif
@@ -1307,7 +1305,7 @@ void EnemyGoal_FollowGraph::AddGoal_Sleep() {
         M2C_FIELD(temp_r4_2681, s32 *, 0x1C) = 0;
         M2C_FIELD(temp_r4_2681, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_2681, u8 *, 0x20) & ~0x40);
         temp_r3_2691 = this->unk44;
-        M2C_FIELD(temp_r3_2691->__vptr, M2C_UNK (**)(Goal<Enemy> *, Goal<Enemy> *), 0x14)(temp_r3_2691, temp_r4_2681);
+        temp_r3_2691->Activate(temp_r4_2681);
         this->unkC->unk110.unk97C = 0;
     }
 }
@@ -1361,7 +1359,7 @@ void EnemyGoal_FollowGraph::AddGoal_Cheer() {
         M2C_FIELD(temp_r4_2787, s32 *, 0x1C) = 0;
         M2C_FIELD(temp_r4_2787, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r4_2787, u8 *, 0x20) & ~0x40);
         temp_r3_2797 = this->unk44;
-        M2C_FIELD(temp_r3_2797->__vptr, M2C_UNK (**)(Goal<Enemy> *, Goal<Enemy> *), 0x14)(temp_r3_2797, temp_r4_2787);
+        temp_r3_2797->Activate(temp_r4_2787);
         this->unkC->unk110.unk97C = 0;
     }
 }
@@ -1553,7 +1551,7 @@ void EnemyGoal_FollowGraph::AddGoal_IdleUntilTrigger(int arg0) {
             M2C_FIELD(temp_r3_3187, u8 *, 0x20) = (u8) (M2C_FIELD(temp_r3_3187, u8 *, 0x20) & ~0x40);
         }
         temp_r3_3196 = this->unk44;
-        M2C_FIELD(temp_r3_3196->__vptr, M2C_UNK (**)(Goal<Enemy> *), 0x14)(temp_r3_3196);
+        temp_r3_3196->Activate();
         this->unkC->unk110.unk97C = 0;
     }
 }
@@ -1721,7 +1719,7 @@ void EnemyGoal_FollowGraph::AddGoal_Idle() {
         this->unk95 &= ~0x20;
         this->unk95 &= ~0x10;
         temp_r3_3532 = this->unk44;
-        M2C_FIELD(temp_r3_3532->__vptr, M2C_UNK (**)(Goal<Enemy> *, f64), 0x14)(temp_r3_3532, var_f1_3427);
+        temp_r3_3532->Activate(var_f1_3427);
         this->unkC->unk110.unk97C = 0;
     }
 }
@@ -1976,7 +1974,7 @@ void EnemyGoal_FollowGraph::AddGoal_Flee() {
         return;
     }
     temp_r3_4022 = this->unk24;
-    M2C_FIELD(temp_r3_4022->__vptr, M2C_UNK (**)(Goal<Enemy> *), 0x14)(temp_r3_4022);
+    temp_r3_4022->Activate();
 }
 #endif
 
@@ -2005,7 +2003,7 @@ void EnemyGoal_FollowGraph::AddGoal_Run() {
         return;
     }
     temp_r3_4082 = this->unk24;
-    M2C_FIELD(temp_r3_4082->__vptr, M2C_UNK (**)(Goal<Enemy> *), 0x14)(temp_r3_4082);
+    temp_r3_4082->Activate();
 }
 #endif
 
@@ -2030,7 +2028,7 @@ void EnemyGoal_FollowGraph::AddGoal_Walk() {
         return;
     }
     temp_r3_4138 = this->unk28;
-    M2C_FIELD(temp_r3_4138->__vptr, M2C_UNK (**)(Goal<Enemy> *), 0x14)(temp_r3_4138);
+    temp_r3_4138->Activate();
 }
 #endif
 
@@ -2673,7 +2671,7 @@ void EnemyGoal_FollowGraph::Activate() {
     if ((temp_r4_5609 != NULL) && (M2C_FIELD(temp_r4_5609, s32 *, 4) & 0x10000)) {
         this->unk95 &= ~1;
     }
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
 #endif
 

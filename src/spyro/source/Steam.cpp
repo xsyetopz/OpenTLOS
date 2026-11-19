@@ -112,12 +112,12 @@ loop_12:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal explicit conversion from 'const float *' to
 void Steam::Emit(const MKVector3 &arg0, const MKVector3 &arg1, const float &arg2) {
     void *temp_r30_253;
     void *temp_r3_250;
 
-    temp_r3_250 = M2C_FIELD(this->__vptr, void *(**)(), 0x3C)();
+    temp_r3_250 = CreateParticle();
     if (temp_r3_250 != NULL) {
         temp_r30_253 = M2C_FIELD(temp_r3_250, void **, 0x2C);
         M2C_FIELD(temp_r3_250, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);

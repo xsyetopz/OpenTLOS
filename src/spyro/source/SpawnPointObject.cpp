@@ -7,53 +7,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x2C] = {
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x5F,
-    0x30,
-    0x30,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x65,
-    0x72,
-    0x49,
-    0x44,
-    0,
-    0x61,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x68,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x49,
-    0x44,
-    0,
-    0x61,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x68,
-    0x49,
-    0x6E,
-    0x64,
-    0x65,
-    0x78,
-    0,
-}; /* const */
-
 void SpawnPointObject::Resolve() {
     SpawnerObject *sp10;
     s32 spC;
@@ -68,7 +21,7 @@ void SpawnPointObject::Resolve() {
         temp_r3_23 = this->unk10->PropResolver_Resolve(M2C_ERROR(/* Read from unset register $r4 */));
         if (temp_r3_23 != NULL) {
             this->unk10 = M2C_FIELD(temp_r3_23, s32 *, 4);
-            this->unk14 = (s32) Tools_GetMatchingRefPointIndex((MKModel *) this->unk10, lit_stringBase0);
+            this->unk14 = (s32) Tools_GetMatchingRefPointIndex((MKModel *) this->unk10, "Spawn_00");
         }
     }
     if ((u8) this->unk52 == 0) {
@@ -110,15 +63,15 @@ s32 SpawnPointObject::LoadLine(MKIniLine *arg0) {
     void *temp_r3_108;
 
     temp_r3_108 = this->unk4;
-    if (((temp_r3_108 != NULL) && (M2C_FIELD(*temp_r3_108, u8 (**)(), 0x14)() != 0)) || (arg0->LoadInt(&lit_stringBase0[9], (s32 *) this, 0) != 0)) {
+    if (((temp_r3_108 != NULL) && (M2C_FIELD(*temp_r3_108, u8 (**)(), 0x14)() != 0)) || (arg0->LoadInt("spawnerID", (s32 *) this, 0) != 0)) {
         return 1;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x13], &this->unk10, 0) != 0) {
+    if (arg0->LoadInt("attachPropID", &this->unk10, 0) != 0) {
         this->unk50 = 1;
         return 1;
     }
     sp8 = 0;
-    if (arg0->LoadInt(&lit_stringBase0[0x20], &sp8, 0) != 0) {
+    if (arg0->LoadInt("attachIndex", &sp8, 0) != 0) {
         this->unk14 = 0xFFFF;
         this->unk18 = sp8;
         return 1;

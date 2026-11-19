@@ -125,22 +125,7 @@ static s8 *pGlobalModelName = .L_803582CF;
 #endif
 #if 0 // DRAFT: declaration syntax error
 static M2C_UNK defaultClip;                         /* unable to generate initializer: unknown type */
-static s8 lit_stringBase0[0xE] = {
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x20,
-    0x4F,
-    0x70,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0,
-}; /* const */
+
 static s8 .L_803582BE[0xB] = { 0x6C, 0x65, 0x76, 0x65, 0x6C, 0x73, 0x2E, 0x69, 0x6E, 0x69, 0 }; /* const */
 static Level .L_803582C9;                           /* type too large by 0xEA; unable to generate initializer: confusing struct layout; const */
 static s8 .L_803582CF[0xD] = { 0x67, 0x6C, 0x6F, 0x62, 0x61, 0x6C, 0x2E, 0x6D, 0x6F, 0x64, 0x65, 0x6C, 0 }; /* const */
@@ -170,17 +155,15 @@ void ChunkProp::LoadDone() {
     Disable();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ChunkProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_144;
 
     var_r31_144 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0, lit_stringBase0 + 0x21C) != 0) || (this->unk50.LoadLine(arg0, lit_stringBase0 + 0x223) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (this->unk4C.LoadLine(arg0, "") != 0) || (this->unk50.LoadLine(arg0, "") != 0)) {
         var_r31_144 = 1;
     }
     return var_r31_144;
 }
-#endif
 
 #if 0 // DRAFT: illegal operand
 void ChunkProp::Deinit() {
@@ -210,7 +193,7 @@ void ChunkProp::Init() {
     M2C_FIELD(M2C_FIELD(M2C_FIELD(M2C_FIELD(*gMK, void *(**)(void **), 0x7C)(gMK), void **, 0xC), void **, 4), ChunkProp **, 0x1C) = this;
 }
 
-#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, signed char *, long *)'
+#if 0 // DRAFT: function call 'MKModel_RefPointExists(MKModel *, const char[1], long *)'
 void Level::EnvDomeChanged() {
     s32 sp8;
     MKModel *temp_r30_253;
@@ -225,7 +208,7 @@ void Level::EnvDomeChanged() {
     temp_cr0_eq_253 = temp_r30_253 == NULL;
     sp8 = -1;
     var_r31_255 = 0;
-    if ((temp_cr0_eq_253 == 0) && (MKModel_RefPointExists(temp_r3_251, lit_stringBase0 + 0x22C, &sp8) != 0)) {
+    if ((temp_cr0_eq_253 == 0) && (MKModel_RefPointExists(temp_r3_251, "", &sp8) != 0)) {
         var_r31_255 = 1;
     }
     temp_r31_268 = var_r31_255 != 0;
@@ -794,50 +777,50 @@ loop_5:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'const char[1]' to
 void Level::ResolveGameSpecificProps() {
     s32 var_r28_1225;
     s32 var_r31_1228;
 
     var_r28_1225 = 0;
-    M2C_FIELD(&gb, s32 *, 0x60) = checked_cast<FootStepFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, lit_stringBase0 + 0x232));
+    M2C_FIELD(&gb, s32 *, 0x60) = checked_cast<FootStepFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, ""));
     var_r31_1228 = 0;
     do {
         var_r28_1225 += 1;
         M2C_FIELD((&gb + var_r31_1228), s32 *, 0x10) = checked_cast<CollectableSpawner *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s32), 0x60)(gMK, *(&pSpawnerNames + var_r31_1228)));
         var_r31_1228 += 4;
     } while (var_r28_1225 < 4);
-    M2C_FIELD(&gb, s32 *, 0x64) = checked_cast<Coronas *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, lit_stringBase0 + 0x23D));
-    M2C_FIELD(&gb, s32 *, 0x80) = checked_cast<LightManager *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x245, &gb));
-    M2C_FIELD(&gb, s32 *, 0x68) = checked_cast<CrashFirePS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x252, &gb));
-    M2C_FIELD(&gb, s32 *, 0x6C) = checked_cast<WaterDripPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x25E, &gb));
-    M2C_FIELD(&gb, s32 *, 0x74) = checked_cast<EmbersPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x26A, &gb));
-    M2C_FIELD(&gb, s32 *, 0x78) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x273, &gb));
-    M2C_FIELD(&gb, s32 *, 0x7C) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x27F, &gb));
-    M2C_FIELD(&gb, s32 *, 0x84) = checked_cast<SparksPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x28B, &gb));
-    M2C_FIELD(&gb, s32 *, 0x88) = checked_cast<AshesPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x294, &gb));
-    M2C_FIELD(&gb, s32 *, 0x90) = checked_cast<LavaBubbleFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x29C, &gb));
-    M2C_FIELD(&gb, s32 *, 0x8C) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2A9, &gb));
-    M2C_FIELD(&gb, s32 *, 0x94) = checked_cast<ZapArcFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2B8, &gb));
-    M2C_FIELD(&gb, s32 *, 0x98) = checked_cast<EnemyDeathFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2C1, &gb));
-    M2C_FIELD(&gb, s32 *, 0x9C) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2CE, &gb));
-    M2C_FIELD(&gb, s32 *, 0xA0) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2DA, &gb));
-    M2C_FIELD(&gb, s32 *, 0xA4) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2E5, &gb));
-    M2C_FIELD(&gb, s32 *, 0xA8) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2F2, &gb));
-    M2C_FIELD(&gb, s32 *, 0xAC) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x2FF, &gb));
-    M2C_FIELD(&gb, s32 *, 0xB0) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x311, &gb));
-    M2C_FIELD(&gb, s32 *, 0xB4) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x31E, &gb));
-    M2C_FIELD(&gb, s32 *, 0x230) = checked_cast<ElectricSparks *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x32E, &gb));
-    M2C_FIELD(&gb, s32 *, 0x234) = checked_cast<FallingLeaves *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x33D, &gb));
-    M2C_FIELD(&gb, s32 *, 0x238) = checked_cast<GemMagicFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x34B, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2A0) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x356, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2B4) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x361, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2A4) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x36E, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2F4) = checked_cast<DynamiteExplosion *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x37B, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2C0) = checked_cast<Explosion4 *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x38D, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2C8) = checked_cast<EarthBreathWhirlWinds *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x398, &gb));
-    M2C_FIELD(&gb, s32 *, 0x2AC) = checked_cast<BoneBlurFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *, void ***), 0x5C)(gMK, lit_stringBase0 + 0x3AE, &gb));
-    M2C_FIELD(&gb, s32 *, 0x70) = checked_cast<PuddleSplash *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, lit_stringBase0 + 0x3B9, &gb));
+    M2C_FIELD(&gb, s32 *, 0x64) = checked_cast<Coronas *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *), 0x60)(gMK, ""));
+    M2C_FIELD(&gb, s32 *, 0x80) = checked_cast<LightManager *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x68) = checked_cast<CrashFirePS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x6C) = checked_cast<WaterDripPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x74) = checked_cast<EmbersPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x78) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x7C) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x84) = checked_cast<SparksPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x88) = checked_cast<AshesPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x90) = checked_cast<LavaBubbleFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x8C) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x94) = checked_cast<ZapArcFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x98) = checked_cast<EnemyDeathFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x9C) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0xA0) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0xA4) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0xA8) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0xAC) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0xB0) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0xB4) = checked_cast<FlyingChunkPS *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x230) = checked_cast<ElectricSparks *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x234) = checked_cast<FallingLeaves *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x238) = checked_cast<GemMagicFX *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2A0) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2B4) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2A4) = checked_cast<KDEnvParticleSystem *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2F4) = checked_cast<DynamiteExplosion *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2C0) = checked_cast<Explosion4 *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2C8) = checked_cast<EarthBreathWhirlWinds *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x2AC) = checked_cast<BoneBlurFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *, void ***), 0x5C)(gMK, "", &gb));
+    M2C_FIELD(&gb, s32 *, 0x70) = checked_cast<PuddleSplash *, MKProp>(M2C_FIELD(*gMK, MKProp *(**)(void **, s8 *, void ***), 0x60)(gMK, "", &gb));
 }
 #endif
 
@@ -1990,19 +1973,19 @@ void Level::InitLevelInfo() {
     var_r29_3649 = pGlobalLevelIni->GetFirstLine();
 loop_15:
     if (var_r29_3649 != NULL) {
-        if (var_r29_3649->IsField(lit_stringBase0 + 0x3C6) != 0) {
+        if (var_r29_3649->IsField("") != 0) {
             levelInfoCount = (s32) (levelInfoCount + 1);
             var_r28_3665 = var_r29_3649->unkC->GetSubLine(var_r29_3649);
 loop_13:
             if (var_r28_3665 != NULL) {
-                if (var_r28_3665->IsField(lit_stringBase0 + 0x3CC) != 0) {
+                if (var_r28_3665->IsField("") != 0) {
                     chunkInfoCount = (s32) (chunkInfoCount + 1);
                     var_r26_3681 = var_r28_3665->unkC->GetSubLine(var_r28_3665);
 loop_11:
                     if (var_r26_3681 != NULL) {
-                        if ((var_r26_3681->IsField(lit_stringBase0 + 0x3D2) != 0) && (var_r26_3681->GetNmbrOfSubLines() != 0)) {
+                        if ((var_r26_3681->IsField("") != 0) && (var_r26_3681->GetNmbrOfSubLines() != 0)) {
                             terrainInfoCount = (s32) (terrainInfoCount + 1);
-                        } else if (var_r26_3681->IsField(lit_stringBase0 + 0x3DA) != 0) {
+                        } else if (var_r26_3681->IsField("") != 0) {
                             materialInfoCount = (s32) (materialInfoCount + var_r26_3681->GetNmbrOfSubLines());
                         }
                         var_r26_3681 = var_r26_3681->unkC->GetNextLine(var_r26_3681);
@@ -2039,7 +2022,7 @@ loop_11:
     var_r27_3775 = pGlobalLevelIni->GetFirstLine();
 loop_31:
     if (var_r27_3775 != NULL) {
-        if (var_r27_3775->IsField(lit_stringBase0 + 0x3E4) != 0) {
+        if (var_r27_3775->IsField("") != 0) {
             pWorldInfo->Init();
             var_r26_3789 = var_r27_3775->unkC->GetSubLine(var_r27_3775);
 loop_23:
@@ -2050,7 +2033,7 @@ loop_23:
             }
             pWorldInfo->LoadDone();
         } else {
-            temp_r3_3810 = var_r27_3775->IsField(lit_stringBase0 + 0x3C6);
+            temp_r3_3810 = var_r27_3775->IsField("");
             if (temp_r3_3810 != 0) {
                 temp_r3_3813 = temp_r3_3810->AllocLevelInfo();
                 pWorldInfo->AddLevelInfo(temp_r3_3813);
@@ -2158,9 +2141,9 @@ void MaterialInfo::Init() {
     this->unk8 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 void TerrainInfo::LoadLine(MKIniLine *arg0) {
-    arg0->LoadBool(lit_stringBase0 + 0x3EB, (u8 *) &this->unk8, 0);
+    arg0->LoadBool("", (u8 *) &this->unk8, 0);
 }
 #endif
 
@@ -2223,8 +2206,8 @@ void ChunkInfo::InitEnv() {
         this->unk40 = MKModel_Create(temp_r3_4144, NULL, 2, NULL);
         MKModel_EnableScissoring(this->unk40, 1U);
     }
-    FogPoints_Init(Str_Printf(lit_stringBase0 + 0x3F0, M2C_FIELD(this->unk4, s32 *, 4), lit_stringBase0));
-    WindPoints_Init(Str_Printf(lit_stringBase0 + 0x3FB, M2C_FIELD(this->unk4, s32 *, 4), lit_stringBase0));
+    FogPoints_Init(Str_Printf("", M2C_FIELD(this->unk4, s32 *, 4), "Level Options"));
+    WindPoints_Init(Str_Printf("", M2C_FIELD(this->unk4, s32 *, 4), "Level Options"));
     var_r31_4172 = this->unk18;
 loop_6:
     if (var_r31_4172 != NULL) {
@@ -2327,7 +2310,7 @@ void ChunkInfo::Queue() {
     this->unk5C += 1;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'pChunkPropQueue'
 s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
     MKIniLine *temp_r3_4412;
     MKIniLine *var_r29_4427;
@@ -2338,16 +2321,16 @@ s32 ChunkInfo::LoadLine(MKIniLine *arg0) {
     f32 var_f1_4388;
     s32 var_r31_4478;
 
-    if (arg0->IsField(lit_stringBase0 + 0x407) != 0) {
+    if (arg0->IsField("") != 0) {
         if ((s16) arg0->unk0 > 1) {
             var_f1_4388 = arg0->GetFloat(1);
         } else {
             var_f1_4388 = 1.0f;
         }
         this->unk48 = var_f1_4388;
-        return DataMap_LoadLine(arg0, lit_stringBase0 + 0x407, &pChunkPropQueue + 0x98, (u32 *) &this->unk44);
+        return DataMap_LoadLine(arg0, "", &pChunkPropQueue + 0x98, (u32 *) &this->unk44);
     }
-    if (arg0->IsField(lit_stringBase0 + 0x3D2) != 0) {
+    if (arg0->IsField("") != 0) {
         temp_r3_4412 = arg0->unkC->GetSubLine(arg0);
         if (temp_r3_4412 != NULL) {
             temp_r30_4416 = temp_r3_4412->AllocTerrainInfo();
@@ -2364,7 +2347,7 @@ loop_9:
             return 1;
         }
     }
-    if (arg0->IsField(lit_stringBase0 + 0x3DA) != 0) {
+    if (arg0->IsField("") != 0) {
         var_r3_4452 = arg0->unkC->GetSubLine(arg0);
         var_r31_4453 = var_r3_4452;
 loop_14:
@@ -2380,7 +2363,7 @@ loop_14:
         }
     }
     var_r31_4478 = 0;
-    if ((arg0->LoadString(lit_stringBase0 + 0x40F, (s8 **) &this->unk36, 0) != 0) || (arg0->LoadString(lit_stringBase0 + 0x417, &this->unk3C, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x424, &this->unk36, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x430, &this->unk20, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x439, &this->unk4C, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x44A, &this->unk50, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x45A, &this->unk54, 0) != 0) || (DataMap_LoadLineBitfield(arg0, lit_stringBase0 + 0x465, &pChunkPropQueue + 0xD0, &this->unk28) != 0) || (DataMap_LoadLineBitfield(arg0, lit_stringBase0 + 0x474, &pChunkPropQueue + 0x108, &this->unk2C) != 0) || (DataMap_LoadLineBitfield(arg0, lit_stringBase0 + 0x480, &pChunkPropQueue + 0x130, &this->unk30) != 0)) {
+    if ((arg0->LoadString("", (s8 **) &this->unk36, 0) != 0) || (arg0->LoadString("", &this->unk3C, 0) != 0) || (arg0->LoadBool("", &this->unk36, 0) != 0) || (arg0->LoadInt("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk4C, 0) != 0) || (arg0->LoadFloat("", &this->unk50, 0) != 0) || (arg0->LoadFloat("", &this->unk54, 0) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0xD0, &this->unk28) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x108, &this->unk2C) != 0) || (DataMap_LoadLineBitfield(arg0, "", &pChunkPropQueue + 0x130, &this->unk30) != 0)) {
         var_r31_4478 = 1;
     }
     return var_r31_4478;
@@ -2494,7 +2477,7 @@ void LevelInfo::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 LevelInfo::LoadLine(MKIniLine *arg0) {
     ChunkInfo *temp_r3_5010;
     MKHeap *temp_r3_5047;
@@ -2513,27 +2496,27 @@ s32 LevelInfo::LoadLine(MKIniLine *arg0) {
     u8 temp_r3_5007;
     void *temp_r27_5105;
 
-    if ((arg0->LoadString(lit_stringBase0 + 0x48F, &this->unkC, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x494, &this->unk10, 0) != 0) || (arg0->LoadString(lit_stringBase0 + 0x49C, &this->unk8, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x4A4, (u8 *) &this->unk18, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x4B5, this + 0x19, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x4C1, this + 0x1A, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x4CC, this + 0x1B, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x4E2, (u8 *) &this->unk1C, 0) != 0) || (arg0->LoadString(lit_stringBase0 + 0x4F2, &this->unk14, 0) != 0) || (arg0->LoadVector4(lit_stringBase0 + 0x4FB, &this->unkC0, 0) != 0) || (arg0->LoadVector3(lit_stringBase0 + 0x502, &this->unkD0, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x50A, &this->unkE0, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x514, &this->unk24, 0) != 0) || (arg0->LoadVector4(lit_stringBase0 + 0x523, &this->unk30, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x52E, &this->unk28, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x53C, &this->unk108, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x54A, &this->unk10C, 0) != 0)) {
+    if ((arg0->LoadString("", &this->unkC, 0) != 0) || (arg0->LoadInt("", &this->unk10, 0) != 0) || (arg0->LoadString("", &this->unk8, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk18, 0) != 0) || (arg0->LoadBool("", this + 0x19, 0) != 0) || (arg0->LoadBool("", this + 0x1A, 0) != 0) || (arg0->LoadBool("", this + 0x1B, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unk1C, 0) != 0) || (arg0->LoadString("", &this->unk14, 0) != 0) || (arg0->LoadVector4("", &this->unkC0, 0) != 0) || (arg0->LoadVector3("", &this->unkD0, 0) != 0) || (arg0->LoadFloat("", &this->unkE0, 0) != 0) || (arg0->LoadFloat("", &this->unk24, 0) != 0) || (arg0->LoadVector4("", &this->unk30, 0) != 0) || (arg0->LoadInt("", &this->unk28, 0) != 0) || (arg0->LoadFloat("", &this->unk108, 0) != 0) || (arg0->LoadFloat("", &this->unk10C, 0) != 0)) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0 + 0x559) != 0) {
+    if (arg0->IsField("") != 0) {
         arg0->AsFloat(0, &this->unk110);
         return 1;
     }
-    if ((arg0->LoadVector4(lit_stringBase0 + 0x56E, &this->unkA0, 0) != 0) || (arg0->LoadString(lit_stringBase0 + 0x57D, &this->unk114, 0) != 0) || (arg0->LoadString(lit_stringBase0 + 0x588, &this->unk118, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x591, &this->unkF8, 0) != 0) || (arg0->LoadVector3(lit_stringBase0 + 0x502, &this->unkE8, 0) != 0)) {
+    if ((arg0->LoadVector4("", &this->unkA0, 0) != 0) || (arg0->LoadString("", &this->unk114, 0) != 0) || (arg0->LoadString("", &this->unk118, 0) != 0) || (arg0->LoadFloat("", &this->unkF8, 0) != 0) || (arg0->LoadVector3("", &this->unkE8, 0) != 0)) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0 + 0x59E) != 0) {
+    if (arg0->IsField("") != 0) {
         arg0->AsFloat(0, &this->unkB0);
         arg0->AsFloat(1, &this->unkB4);
         goto block_48;
     }
-    if (arg0->IsField(lit_stringBase0 + 0x5A9) != 0) {
+    if (arg0->IsField("") != 0) {
         arg0->AsFloat(0, &this->unkB8);
         arg0->AsFloat(1, &this->unkBC);
         goto block_48;
     }
-    temp_r3_5007 = arg0->IsField(lit_stringBase0 + 0x3CC);
+    temp_r3_5007 = arg0->IsField("");
     if (temp_r3_5007 != 0) {
         temp_r3_5010 = temp_r3_5007->AllocChunkInfo();
         temp_r3_5010->Init();
@@ -2548,7 +2531,7 @@ loop_33:
         }
         return 1;
     }
-    temp_ret_5043 = arg0->IsField(lit_stringBase0 + 0x5B3);
+    temp_ret_5043 = arg0->IsField("");
     var_f1_5043 = M2C_BITWISE(f32, temp_ret_5043);
     if (temp_ret_5043 != 0) {
         temp_r3_5047 = arg0->GetNmbrOfSubLines();
@@ -2577,8 +2560,8 @@ loop_41:
     var_r29_5099 = 0;
 loop_44:
     temp_r27_5105 = this + var_r29_5099;
-    temp_ret_5110 = arg0->LoadVector4(Str_Printf(lit_stringBase0 + 0x5C2, var_r26_5097, var_f1_5043), temp_r27_5105 + 0x40, 0);
-    if ((temp_ret_5110 != 0) || (temp_ret_5121 = arg0->LoadVector3(Str_Printf(lit_stringBase0 + 0x5CF, var_r26_5097, M2C_BITWISE(f32, temp_ret_5110)), temp_r27_5105 + 0x70, 0), var_f1_5043 = M2C_BITWISE(f32, temp_ret_5121), ((temp_ret_5121 == 0) == 0))) {
+    temp_ret_5110 = arg0->LoadVector4(Str_Printf("", var_r26_5097, var_f1_5043), temp_r27_5105 + 0x40, 0);
+    if ((temp_ret_5110 != 0) || (temp_ret_5121 = arg0->LoadVector3(Str_Printf("", var_r26_5097, M2C_BITWISE(f32, temp_ret_5110)), temp_r27_5105 + 0x70, 0), var_f1_5043 = M2C_BITWISE(f32, temp_ret_5121), ((temp_ret_5121 == 0) == 0))) {
         return 1;
     }
     var_r26_5097 += 1;
@@ -2672,22 +2655,22 @@ u8 WorldInfo::LoadSize(MKIniLine *arg0, const char *arg1, int *arg2, int *arg3, 
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(Level *, const char[14])' does not match
 s32 SizeToInt(const char *arg0, int arg1) {
     M2C_UNK spC;
     f32 sp8;
 
-    if (stricmp((Level *) (lit_stringBase0 + 0x5DC), lit_stringBase0) == 0) {
+    if (stricmp((Level *) "", "Level Options") == 0) {
         return arg1;
     }
-    if (sscanf(arg0, lit_stringBase0 + 0x5E4, &sp8, (Level *) &spC) == 2) {
-        if (stricmp((Level *) &spC, lit_stringBase0 + 0x5E9) == 0) {
+    if (sscanf(arg0, "", &sp8, (Level *) &spC) == 2) {
+        if (stricmp((Level *) &spC, "") == 0) {
             return (s32) (1024.0f * (1024.0f * sp8));
         }
-        if (stricmp((Level *) &spC, lit_stringBase0 + 0x5EC) == 0) {
+        if (stricmp((Level *) &spC, "") == 0) {
             return (s32) (1024.0f * sp8);
         }
-        if (stricmp((Level *) &spC, lit_stringBase0 + 0x5EF) == 0) {
+        if (stricmp((Level *) &spC, "") == 0) {
             return (s32) sp8;
         }
         goto block_9;
@@ -2697,7 +2680,7 @@ block_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     f32 var_f1_5673;
     s32 temp_ret_5673;
@@ -2707,10 +2690,10 @@ s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     s32 var_r29_5689;
     void *temp_r27_5695;
 
-    if ((arg0->LoadFloat(lit_stringBase0 + 0x5F5, &this->unk0, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x604, &this->unk4, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x611, &this->unk8, 0) != 0) || (arg0->LoadBool(lit_stringBase0 + 0x624, (u8 *) &this->unkC, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x633, &this->unk1C, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x646, &this->unk10, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x64E, &this->unk4C, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x662, &this->unk50, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x67B, &this->unk54, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x691, &this->unk58, NULL, M2C_FIELD(&gMKDefaults, s32 *, 0xD8)) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x6A3, &this->unk5C, NULL, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x6B6, &this->unk60, NULL, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x6CE, &this->unk64, NULL, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x6E3, &this->unk68, NULL, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x6FB, &this->unk6C, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x714, &this->unk78, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x736, &this->unk70, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x751, &this->unk2C, &this->unk3C, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x764, &this->unk30, &this->unk40, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x77C, &this->unk34, &this->unk44, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x791, &this->unk38, &this->unk48, 0) != 0) || (arg0->LoadVector4(lit_stringBase0 + 0x56E, &this->unkE0, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x53C, &this->unk20, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x54A, &this->unk24, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x7A3, &this->unkF8, NULL, 0) != 0) || (LoadSize(arg0, lit_stringBase0 + 0x7C0, &this->unkFC, NULL, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x7D7, (f32 *) (&gb + 0x384), 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x7E5, (f32 *) (&gb + 0x388), 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x7FE, (f32 *) (&gb + 0x38C), 0) != 0)) {
+    if ((arg0->LoadFloat("", &this->unk0, 0) != 0) || (arg0->LoadInt("", &this->unk4, 0) != 0) || (arg0->LoadFloat("", &this->unk8, 0) != 0) || (arg0->LoadBool("", (u8 *) &this->unkC, 0) != 0) || (arg0->LoadFloat("", &this->unk1C, 0) != 0) || (arg0->LoadFloat("", &this->unk10, 0) != 0) || (arg0->LoadInt("", &this->unk4C, 0) != 0) || (arg0->LoadInt("", &this->unk50, 0) != 0) || (arg0->LoadInt("", &this->unk54, 0) != 0) || (LoadSize(arg0, "", &this->unk58, NULL, M2C_FIELD(&gMKDefaults, s32 *, 0xD8)) != 0) || (LoadSize(arg0, "", &this->unk5C, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unk60, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unk64, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unk68, NULL, 0) != 0) || (arg0->LoadFloat("", &this->unk6C, 0) != 0) || (arg0->LoadFloat("", &this->unk78, 0) != 0) || (arg0->LoadFloat("", &this->unk70, 0) != 0) || (LoadSize(arg0, "", &this->unk2C, &this->unk3C, 0) != 0) || (LoadSize(arg0, "", &this->unk30, &this->unk40, 0) != 0) || (LoadSize(arg0, "", &this->unk34, &this->unk44, 0) != 0) || (LoadSize(arg0, "", &this->unk38, &this->unk48, 0) != 0) || (arg0->LoadVector4("", &this->unkE0, 0) != 0) || (arg0->LoadFloat("", &this->unk20, 0) != 0) || (arg0->LoadFloat("", &this->unk24, 0) != 0) || (LoadSize(arg0, "", &this->unkF8, NULL, 0) != 0) || (LoadSize(arg0, "", &this->unkFC, NULL, 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x384), 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x388), 0) != 0) || (arg0->LoadFloat("", (f32 *) (&gb + 0x38C), 0) != 0)) {
         return 1;
     }
-    temp_ret_5673 = arg0->IsField(lit_stringBase0 + 0x59E);
+    temp_ret_5673 = arg0->IsField("");
     var_f1_5673 = M2C_BITWISE(f32, temp_ret_5673);
     if (temp_ret_5673 != 0) {
         arg0->AsFloat(0, &this->unkF0);
@@ -2721,8 +2704,8 @@ s32 WorldInfo::LoadLine(MKIniLine *arg0) {
     var_r29_5689 = 0;
 loop_33:
     temp_r27_5695 = this + var_r29_5689;
-    temp_ret_5700 = arg0->LoadVector4(Str_Printf(lit_stringBase0 + 0x5C2, var_r26_5687, var_f1_5673), temp_r27_5695 + 0x80, 0);
-    if ((temp_ret_5700 != 0) || (temp_ret_5711 = arg0->LoadVector3(Str_Printf(lit_stringBase0 + 0x5CF, var_r26_5687, M2C_BITWISE(f32, temp_ret_5700)), temp_r27_5695 + 0xB0, 0), var_f1_5673 = M2C_BITWISE(f32, temp_ret_5711), ((temp_ret_5711 == 0) == 0))) {
+    temp_ret_5700 = arg0->LoadVector4(Str_Printf("", var_r26_5687, var_f1_5673), temp_r27_5695 + 0x80, 0);
+    if ((temp_ret_5700 != 0) || (temp_ret_5711 = arg0->LoadVector3(Str_Printf("", var_r26_5687, M2C_BITWISE(f32, temp_ret_5700)), temp_r27_5695 + 0xB0, 0), var_f1_5673 = M2C_BITWISE(f32, temp_ret_5711), ((temp_ret_5711 == 0) == 0))) {
         return 1;
     }
     var_r26_5687 += 1;

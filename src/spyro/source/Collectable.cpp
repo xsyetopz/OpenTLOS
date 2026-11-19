@@ -37,186 +37,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
 
-static s8 lit_stringBase0[0xB1] = {
-    0x70,
-    0x72,
-    0x6F,
-    0x70,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x4F,
-    0x70,
-    0x61,
-    0x6C,
-    0,
-    0x74,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x49,
-    0x44,
-    0,
-    0x72,
-    0x65,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x62,
-    0x43,
-    0x68,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0x4D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x62,
-    0x4D,
-    0x61,
-    0x67,
-    0x6E,
-    0x65,
-    0x74,
-    0x69,
-    0x63,
-    0,
-    0x62,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0,
-    0x74,
-    0x69,
-    0x6D,
-    0x65,
-    0x6F,
-    0x75,
-    0x74,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x6D,
-    0x61,
-    0x67,
-    0x52,
-    0x61,
-    0x6E,
-    0x67,
-    0x65,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x42,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0x56,
-    0x6F,
-    0x6C,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x4F,
-    0x66,
-    0x66,
-    0,
-    0x63,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x42,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0,
-}; /* const */
-
 void Collectable::CollectEffects() {
 
 }
@@ -552,22 +372,24 @@ void CollectableSpawner::Init() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[177]' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 CollectableSpawnerDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_706;
 
     var_r31_706 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString(lit_stringBase0, &this->unk60, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("propName", &this->unk60, 0) != 0)) {
         var_r31_706 = 1;
     }
     return var_r31_706;
 }
 #endif
 
+#if 0 // DRAFT: illegal implicit conversion from 'const char[5]' to
 void CollectableSpawnerDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = &lit_stringBase0[9];
+    this->unk60 = "Opal";
 }
+#endif
 
 #if 0 // DRAFT: undefined identifier 'unkB0'
 void Collectable::PlatformDetach() {
@@ -800,7 +622,7 @@ void Collectable::CollectingStateInit() {
         M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
         if (M2C_FIELD(&gb, f32 *, 0x30C) == temp_r5_1292->unkA0) {
             temp_r5_1292->unkA0 = M2C_FIELD(&gb, f32 *, 0x30C) + 0.05f;
-            temp_r3_1309 = M2C_FIELD(this->__vptr, s32 (**)(), 0x98)();
+            temp_r3_1309 = PlayCollectSound();
             if (((s32) this->unk124->unk9C & 0x80) && (temp_r3_1309 > 0)) {
                 Sound_MusicDuckVolume(0U, temp_r3_1309, 0xF);
             }
@@ -2450,7 +2272,7 @@ s32 Collectable::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4614;
 
     var_r31_4614 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xE], &this->unkD0, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x13], (s32 *) &this->unk104, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0) || (arg0->LoadInt("type", &this->unkD0, 0) != 0) || (arg0->LoadInt("platformID", (s32 *) &this->unk104, 0) != 0)) {
         var_r31_4614 = 1;
     }
     return var_r31_4614;
@@ -2566,12 +2388,12 @@ void CollectableDescriptor::LoadDone() {
     MKModel_SetColor(this->unk2C, *((MKVector4 *) &sp18));
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 CollectableDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4856;
 
     var_r31_4856 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1E], &this->unk78, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x2A], &this->unk66, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x3C], (u8 *) &this->unk66, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x46], &this->unk67, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x4E], &this->unk7C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x56], &this->unk80, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x6B], &this->unkA0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x74], (f32 *) &this->unkC0, 0) != 0) || (arg0->LoadVector4(&lit_stringBase0[0x88], (MKVector4 *) &this->unkA4, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x8E], (s32 *) &this->unkB8) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x99], &this->unkBC) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("respawnTime", &this->unk78, 0) != 0) || (arg0->LoadBool("bChangeModelColor", &this->unk66, 0) != 0) || (arg0->LoadBool("bMagnetic", (u8 *) &this->unk66, 0) != 0) || (arg0->LoadBool("bShadow", &this->unk67, 0) != 0) || (arg0->LoadFloat("timeout", &this->unk7C, 0) != 0) || (arg0->LoadFloat("spawnSpeedMultiplier", &this->unk80, 0) != 0) || (arg0->LoadFloat("magRange", &this->unkA0, 0) != 0) || (arg0->LoadFloat("sndBounceVolDropOff", (f32 *) &this->unkC0, 0) != 0) || (arg0->LoadVector4("color", (MKVector4 *) &this->unkA4, 0) != 0) || (KDSound_LoadLine(arg0, "sndCollect", (s32 *) &this->unkB8) != 0) || (KDSound_LoadLine(arg0, "sndBounce", &this->unkBC) != 0)) {
         var_r31_4856 = 1;
     }
     return var_r31_4856;
@@ -2619,7 +2441,7 @@ void CollectableDescriptor::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     M2C_FIELD(this, f64 *, 0xB0) = (f64) sp10;
-    this->unkB8 = MKMaterial_Create(&lit_stringBase0[0xA3]);
+    this->unkB8 = MKMaterial_Create("FX_DropShadow");
 }
 #endif
 

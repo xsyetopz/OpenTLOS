@@ -16,31 +16,8 @@
 M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern M2C_UNK gb;
-#if 0 // DRAFT: illegal type
-static s8 lit_stringBase0[0x15] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x30,
-    0x32,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x31,
-    0x37,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x31,
-    0x37,
-    0x34,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal type
 void Coronas::Free(Corona *arg0) {
     MKZRequest *temp_r3_54;
     s32 temp_r3_64;
@@ -519,12 +496,12 @@ void CoronasDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void CoronasDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
-    this->unk64 = MKMaterial_Create(&lit_stringBase0[7]);
-    this->unk68 = MKMaterial_Create(&lit_stringBase0[0xE]);
+    this->unk60 = MKMaterial_Create("fx_002");
+    this->unk64 = MKMaterial_Create("fx_317");
+    this->unk68 = MKMaterial_Create("fx_174");
 }
 #endif
 

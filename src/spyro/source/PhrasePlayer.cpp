@@ -27,133 +27,14 @@ extern UIStringTable levelstringTable;
 static s8 phraseData[0x50];
 #endif
 static s32 lit_771 = 0;
-#if 0 // DRAFT: function call 'strcmp(signed char, signed char[117])' does not match
+#if 0 // DRAFT: function call 'strcmp(signed char, const char[1])' does not match
 static M2C_UNK lit_740;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x75] = {
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x73,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x4C,
-    0x69,
-    0x6E,
-    0x65,
-    0x61,
-    0x72,
-    0,
-    0x52,
-    0x61,
-    0x6E,
-    0x64,
-    0x6F,
-    0x6D,
-    0,
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x72,
-    0x73,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x50,
-    0x72,
-    0x69,
-    0x6F,
-    0x72,
-    0x69,
-    0x74,
-    0x79,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x73,
-    0x2E,
-    0x69,
-    0x6E,
-    0x69,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0x2E,
-    0x73,
-    0x75,
-    0x62,
-    0,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0x25,
-    0x73,
-    0,
-    0x2E,
-    0x67,
-    0x73,
-    0x62,
-    0,
-    0xA,
-    0,
-    0x2E,
-    0x70,
-    0x6B,
-    0x67,
-    0,
-}; /* const */
 
 s8 *PhrasePlayer_GetCurrentActor() {
     s32 temp_r0_29;
     s32 var_r4_28;
 
-    if (strcmp(phraseData, lit_stringBase0) == 0) {
+    if (strcmp(phraseData, "") == 0) {
         return phraseData;
     }
     var_r4_28 = lit_771;
@@ -267,7 +148,7 @@ loop_14:
 #if 0 // DRAFT: undefined identifier 'Phrase_Unload'
 void PhrasePlayer_StopAnyEvent() {
     Phrase_Unload();
-    strcpy(phraseData, lit_stringBase0);
+    strcpy(phraseData, "");
     M2C_FIELD(phraseData, s32 *, 0x44) = 0;
     M2C_FIELD(phraseData, f32 *, 0x34) = 0.0f;
 }
@@ -430,7 +311,7 @@ void PhrasePlayer_Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'strlen(signed char *)' does not match
 void PhrasePlayer_LoadIni(const char *arg0, PhraseEvent **arg1, int *arg2, UIStringTable *arg3) {
     MKIni sp20;
     s8 sp1C;
@@ -459,14 +340,14 @@ void PhrasePlayer_LoadIni(const char *arg0, PhraseEvent **arg1, int *arg2, UIStr
     var_r27_619 = sp20.GetFirstLine();
 loop_9:
     if (var_r27_619 != NULL) {
-        if (var_r27_619->IsField(&lit_stringBase0[1]) == 0) {
+        if (var_r27_619->IsField("defaults") == 0) {
             *arg2 += 1;
         }
         var_r28_616 = strlen(var_r27_619->GetFieldName()) + var_r28_616 + 1;
         var_r29_640 = var_r27_619->unkC->GetSubLine(var_r27_619);
 loop_7:
         if (var_r29_640 != NULL) {
-            if (var_r29_640->IsField(&lit_stringBase0[0xA]) != 0) {
+            if (var_r29_640->IsField("phrase") != 0) {
                 var_r28_616 = strlen(var_r29_640->GetString(0)) + var_r28_616 + 1;
             }
             var_r29_640 = var_r29_640->unkC->GetNextLine(var_r29_640);
@@ -493,7 +374,7 @@ loop_7:
     var_r28_704 = sp20.GetFirstLine();
 loop_42:
     if (var_r28_704 != NULL) {
-        if (var_r28_704->IsField(&lit_stringBase0[1]) != 0) {
+        if (var_r28_704->IsField("defaults") != 0) {
             sp10 = -1;
             var_r27_716 = &sp8;
             sp14 = 0;
@@ -508,7 +389,7 @@ loop_42:
         var_r26_739 = var_r28_704->unkC->GetSubLine(var_r28_704);
 loop_38:
         if (var_r26_739 != NULL) {
-            if ((var_r26_739->IsField(&lit_stringBase0[0x11]) != 0) && (var_r28_704->IsField(&lit_stringBase0[1]) == 0)) {
+            if ((var_r26_739->IsField("Phrase") != 0) && (var_r28_704->IsField("defaults") == 0)) {
                 M2C_FIELD(var_r27_716, s32 *, 4) = arg3->Add(var_r26_739->GetString(0));
                 temp_r3_762 = strlen((s8 *) M2C_FIELD(var_r27_716, s32 *, 4));
                 if (temp_r3_762 != 0) {
@@ -525,29 +406,29 @@ loop_38:
                         } while (var_ctr_767 != 0);
                     }
                 }
-            } else if (var_r26_739->IsField(&lit_stringBase0[0x18]) != 0) {
+            } else if (var_r26_739->IsField("Type") != 0) {
                 var_r26_739->GetString(0);
-                if (stricmp(&lit_stringBase0[0x1D]) == 0) {
+                if (stricmp("Linear") == 0) {
                     M2C_FIELD(var_r27_716, s32 *, 0x10) = 0;
                 } else {
                     var_r26_739->GetString(0);
-                    if (stricmp(&lit_stringBase0[0x24]) == 0) {
+                    if (stricmp("Random") == 0) {
                         M2C_FIELD(var_r27_716, s32 *, 0x10) = 1;
                     } else {
                         var_r26_739->GetString(0);
-                        if (stricmp(&lit_stringBase0[0x2B]) == 0) {
+                        if (stricmp("Conversation") == 0) {
                             M2C_FIELD(var_r27_716, s32 *, 0x10) = 2;
                         }
                     }
                 }
             } else {
-                var_r26_739->LoadBool(&lit_stringBase0[0x38], (u8 *) (var_r27_716 + 0x14), 0);
+                var_r26_739->LoadBool("Priority", (u8 *) (var_r27_716 + 0x14), 0);
             }
             var_r26_739 = var_r26_739->unkC->GetNextLine(var_r26_739);
             goto loop_38;
         }
         if ((s32) M2C_FIELD(var_r27_716, s32 *, 0xC) == 0) {
-            var_r28_704->IsField(&lit_stringBase0[1]);
+            var_r28_704->IsField("defaults");
         }
         var_r28_704 = var_r28_704->unkC->GetNextLine(var_r28_704);
         goto loop_42;
@@ -561,7 +442,7 @@ void PhrasePlayer_Init() {
     memset(phraseData, 0, 0x50U);
     M2C_FIELD(phraseData, s32 *, 0x28) = -1;
     M2C_FIELD(phraseData, s32 *, 0x2C) = -1;
-    PhrasePlayer_LoadIni(&lit_stringBase0[0x41], (PhraseEvent **) &phraseData[0x3C], (s32 *) &phraseData[0x48], &globalstringTable);
+    PhrasePlayer_LoadIni("phrases.ini", (PhraseEvent **) &phraseData[0x3C], (s32 *) &phraseData[0x48], &globalstringTable);
 }
 #endif
 
@@ -599,13 +480,13 @@ loop_3:
         Sound_UnloadBank(M2C_FIELD(phraseData, s32 *, 0x2C));
         M2C_FIELD(phraseData, s32 *, 0x2C) = -1;
     }
-    strcpy(phraseData, lit_stringBase0);
+    strcpy(phraseData, "");
     M2C_FIELD(phraseData, s32 *, 0x30) = 0;
     M2C_FIELD(phraseData, s32 *, 0x24) = 0;
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, signed char, long)' does not
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void Phrase_LoadSound() {
     s32 sp8;
     M2C_UNK temp_r30_1006;
@@ -625,9 +506,9 @@ void Phrase_LoadSound() {
 
     GameLanguage_GetAudioCode(-1);
     temp_r30_1006 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_1012 = Str_Printf(&lit_stringBase0[0x4D], phraseData, temp_r30_1006);
+    temp_r3_1012 = Str_Printf("%s%s", phraseData, temp_r30_1006);
     temp_r3_1012->ActivateTempMemOverride();
-    temp_r3_1024 = MKArchive_Load(Str_Printf(&lit_stringBase0[0x52], temp_r3_1012), NULL, NULL, -1);
+    temp_r3_1024 = MKArchive_Load(Str_Printf("%s.gsb", temp_r3_1012), NULL, NULL, -1);
     temp_r3_1024->DeactivateTempMemOverride();
     temp_r3_1030 = Sound_LoadBankFromMemory((SoundBankHeader *) temp_r3_1024, 0U, -1);
     M2C_FIELD(phraseData, s32 *, 0x2C) = temp_r3_1030;
@@ -637,7 +518,7 @@ void Phrase_LoadSound() {
     } else {
         free((PhraseEvent *) temp_r3_1024);
     }
-    temp_r3_1054 = Str_Printf(&lit_stringBase0[0x59], phraseData, temp_r30_1006, lit_stringBase0);
+    temp_r3_1054 = Str_Printf("%s%s.sub", phraseData, temp_r30_1006, "");
     temp_r29_1056 = temp_r3_1054;
     sp8 = 0;
     temp_r3_1059 = MKArchive_Exists(temp_r3_1054, &sp8);
@@ -674,7 +555,7 @@ loop_9:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match
 void Phrase_LoadPackage() {
     s8 sp8;
     M2C_UNK temp_r31_1144;
@@ -684,14 +565,14 @@ void Phrase_LoadPackage() {
 
     GameLanguage_GetAudioCode(-1);
     temp_r31_1144 = M2C_ERROR(/* Read from unset register $r3 */);
-    temp_r3_1163 = Str_Printf(&lit_stringBase0[0x59], phraseData, temp_r31_1144, lit_stringBase0, M2C_BITWISE(f32, strcpy(&sp8, Str_Printf(&lit_stringBase0[0x62], phraseData, temp_r31_1144, &lit_stringBase0[0x69]))));
+    temp_r3_1163 = Str_Printf("%s%s.sub", phraseData, temp_r31_1144, "", M2C_BITWISE(f32, strcpy(&sp8, Str_Printf("%s%s%s", phraseData, temp_r31_1144, ".gsb"))));
     var_r3_1166 = MKArchive_Exists(temp_r3_1163, NULL);
     if ((u8) var_r3_1166 != 0) {
-        strcat(&sp8, &lit_stringBase0[0x6E]);
+        strcat(&sp8, "\n");
         var_r3_1166 = strcat(&sp8, temp_r3_1163);
     }
     var_r3_1166->ActivateTempMemOverride();
-    temp_r3_1191 = MKPackage_QLoadDynamic(&sp8, 0, Str_Printf(&lit_stringBase0[0x62], phraseData, temp_r31_1144, &lit_stringBase0[0x70]));
+    temp_r3_1191 = MKPackage_QLoadDynamic(&sp8, 0, Str_Printf("%s%s%s", phraseData, temp_r31_1144, ".pkg"));
     M2C_FIELD(phraseData, s32 *, 0x28) = temp_r3_1191;
     temp_r3_1191->DeactivateTempMemOverride();
     M2C_FIELD(phraseData, s32 *, 0x24) = 2;

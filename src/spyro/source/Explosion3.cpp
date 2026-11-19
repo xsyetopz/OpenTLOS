@@ -24,79 +24,8 @@ extern M2C_UNK gb;
 
 static s32 lit_556 = 0;
 static u8 lit_557 = 1;
-#if 0 // DRAFT: illegal operand
-static s8 lit_stringBase0[0x45] = {
-    0x45,
-    0x78,
-    0x70,
-    0x53,
-    0x6D,
-    0x6F,
-    0x6B,
-    0x65,
-    0x41,
-    0x6E,
-    0x64,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x46,
-    0x58,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x64,
-    0x65,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x64,
-    0x65,
-    0x52,
-    0x75,
-    0x6D,
-    0x62,
-    0x6C,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal operand
 void Explosion3::Trigger(const MKVector3 &arg0, const float &arg1, bool arg2, bool arg3, const MKVector3 &arg4, MKProp *arg5) {
     s32 sp170;
     f32 sp16C;
@@ -431,21 +360,21 @@ void Explosion3::Resolve() {
 #if 0 // DRAFT: expression syntax error
 void Explosion3::Init() {
     MKProp::Init();
-    this->unk4C = checked_cast<ExpSmokeAndFlamesPS *, MKProp>(gMK->CreateProp(lit_stringBase0));
-    this->unk50 = checked_cast<ExpShock *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x14]));
-    this->unk54 = checked_cast<ExplosionFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x1D]));
+    this->unk4C = checked_cast<ExpSmokeAndFlamesPS *, MKProp>(gMK->CreateProp("ExpSmokeAndFlamesPS"));
+    this->unk50 = checked_cast<ExpShock *, MKProp>(gMK->CreateProp("ExpShock"));
+    this->unk54 = checked_cast<ExplosionFX *, MKProp>(gMK->CreateProp("ExplosionFX"));
     this->unk68 = 0;
     this->unk6C = 0;
     this->unk70 = 1;
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, signed char *, long *)' does
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[11], long *)' does
 s32 Explosion3Descriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_633;
 
     var_r31_633 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x29], &this->unk60) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x34], &this->unk64) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndExplode", &this->unk60) != 0) || (KDSound_LoadLine(arg0, "sndExplodeRumble", &this->unk64) != 0)) {
         var_r31_633 = 1;
     }
     return var_r31_633;

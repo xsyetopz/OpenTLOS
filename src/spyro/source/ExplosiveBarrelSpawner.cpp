@@ -8,24 +8,6 @@
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
-static s8 lit_stringBase0[0x10] = {
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x76,
-    0x65,
-    0x42,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0,
-}; /* const */
 
 void ExplosiveBarrelSpawner::Update() {
     void *temp_r3_44;
@@ -50,7 +32,7 @@ void ExplosiveBarrelSpawner::LoadDone() {
     var_r30_81 = 0;
 loop_2:
     if (var_r30_81 < (s32) M2C_FIELD(checked_cast<ExplosiveBarrelSpawnerDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0xE4)) {
-        temp_r3_87 = gMK->CreateProp(lit_stringBase0);
+        temp_r3_87 = gMK->CreateProp("ExplosiveBarrel");
         this->unkC8 = checked_cast<ExplosiveBarrel *, MKProp>(temp_r3_87);
         temp_r3_87->Enable();
         var_r30_81 += 1;

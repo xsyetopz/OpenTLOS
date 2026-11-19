@@ -21,40 +21,6 @@ extern GameGlobals gb;
 extern MKPropDescriptor *pSteamFireBallDescriptor;
 
 #if 0 // DRAFT: undefined identifier 'sp8'
-static s8 lit_stringBase0[0x1F] = {
-    0x50,
-    0x39,
-    0x30,
-    0x32,
-    0x32,
-    0x5F,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x42,
-    0x6F,
-    0x78,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-}; /* const */
-
 void SteamFireBall::FireAtTarget(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, MKProp *arg3, int arg4, int arg5) {
     s8 sp98;
     s32 sp94;
@@ -288,12 +254,10 @@ void SteamFireBall::Resolve() {
     this->unk150.Show(0U);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 void SteamFireBall::LoadDone() {
     Projectile::LoadDone();
-    this->unk180 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+    this->unk180 = MKModel_Create("P9022_DropBoxShadow", NULL, 2, NULL);
 }
-#endif
 
 void SteamFireBall::Deinit() {
     MKModel_Destroy(this->unk180);
@@ -325,7 +289,7 @@ void *SteamFireBall::CreateInstance() {
 #if 0 // DRAFT: illegal use of non-static member
 void SteamFireBallDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x14]));
+    this->unkF0 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
     pSteamFireBallDescriptor = (MKPropDescriptor *) this;
 }
 #endif

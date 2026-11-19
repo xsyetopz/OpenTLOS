@@ -21,130 +21,8 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal explicit conversion from 'SnowballTree' to
-static s8 lit_stringBase0[0x78] = {
-    0x42,
-    0x61,
-    0x6C,
-    0x6C,
-    0x54,
-    0x65,
-    0x73,
-    0x74,
-    0,
-    0x67,
-    0x72,
-    0x6F,
-    0x75,
-    0x70,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x42,
-    0x61,
-    0x6C,
-    0x6C,
-    0x44,
-    0x69,
-    0x73,
-    0x74,
-    0x61,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x30,
-    0x31,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x30,
-    0x32,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x30,
-    0x33,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x68,
-    0x69,
-    0x74,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x4D,
-    0x61,
-    0x78,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x4F,
-    0x63,
-    0x63,
-    0x61,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x61,
-    0x6C,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'SnowballTree' to
 void SnowballTree::DropABall() {
     s32 var_ctr_50;
     s32 var_r4_47;
@@ -236,7 +114,7 @@ void SnowballTree::LoadDone() {
     M2C_FIELD(this, f64 *, 0xA8) = (f64) sp10;
     do {
         temp_r29_251 = var_r31_234 + 0x90;
-        *(this + temp_r29_251) = checked_cast<Ball *, MKProp>(gMK->CreateProp(lit_stringBase0));
+        *(this + temp_r29_251) = checked_cast<Ball *, MKProp>(gMK->CreateProp("BallTest"));
         MKModel_CalculateRefPointWorldPosition(this->unk4, *(checked_cast<SnowballTreeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (var_r31_234 + 0x70)), &sp48);
         ((Ball *) (*(this + temp_r29_251)))->SetParentTree(this, (s32) this->unkB0, sp48, this->unkC0);
         temp_r3_267 = *(this + temp_r29_251);
@@ -254,11 +132,11 @@ u8 SnowballTree::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->IsField(&lit_stringBase0[9]) != 0) {
+    if (arg0->IsField("group") != 0) {
         this->unkB0 = arg0->GetInt(0);
         return 1U;
     }
-    return (u8) (arg0->LoadFloat(&lit_stringBase0[0xF], &this->unkC0, 0) != 0);
+    return (u8) (arg0->LoadFloat("MaxBallDistance", &this->unkC0, 0) != 0);
 }
 #endif
 
@@ -280,7 +158,7 @@ void SnowballTree::Init() {
     this->unkC0 = 200.0f;
 }
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
+#if 0 // DRAFT: expression syntax error
 void SnowballTreeDescriptor::LoadDone() {
     s8 *temp_r30_426;
     s8 *temp_r30_443;
@@ -288,19 +166,19 @@ void SnowballTreeDescriptor::LoadDone() {
     void *var_r3_453;
 
     KDPropDescriptor::LoadDone();
-    this->unk70 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x1F]);
-    this->unk74 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x2B]);
-    this->unk78 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, &lit_stringBase0[0x37]);
+    this->unk70 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ballspawn01");
+    this->unk74 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ballspawn02");
+    this->unk78 = (s32) Tools_GetMatchingRefPointIndex(this->unk2C, "ballspawn03");
     temp_r30_426 = this->unk34;
-    if (temp_r30_426->Exists(&lit_stringBase0[0x43]) != 0) {
-        var_r3_435 = temp_r30_426->GetAnim(&lit_stringBase0[0x43]);
+    if (temp_r30_426->Exists("idle") != 0) {
+        var_r3_435 = temp_r30_426->GetAnim("idle");
     } else {
         var_r3_435 = NULL;
     }
     this->unk88 = (s32) var_r3_435;
     temp_r30_443 = this->unk34;
-    if (temp_r30_443->Exists(&lit_stringBase0[0x48]) != 0) {
-        var_r3_453 = temp_r30_443->GetAnim(&lit_stringBase0[0x48]);
+    if (temp_r30_443->Exists("hit") != 0) {
+        var_r3_453 = temp_r30_443->GetAnim("hit");
     } else {
         var_r3_453 = NULL;
     }
@@ -308,12 +186,12 @@ void SnowballTreeDescriptor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[16], long *)' does
 s32 SnowballTreeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_475;
 
     var_r31_475 = 0;
-    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x4C], &this->unk80, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x5A], &this->unk84, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x68], &this->unk7C) != 0)) {
+    if ((KDPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("MinSoundDelay", &this->unk80, 0) != 0) || (arg0->LoadFloat("MaxSoundDelay", &this->unk84, 0) != 0) || (KDSound_LoadLine(arg0, "OccasionalSound", &this->unk7C) != 0)) {
         var_r31_475 = 1;
     }
     return var_r31_475;

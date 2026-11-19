@@ -18,612 +18,6 @@ extern f32 SPYRO_BOUNCE_Y_SPEED;
 extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern f32 gUpdateTimeDelta;
 extern s32 gb;
-static s8 lit_stringBase0[0x25C] = {
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x50,
-    0x6C,
-    0x61,
-    0x79,
-    0x65,
-    0x72,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x32,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x33,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x34,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x35,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x36,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x37,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x38,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x39,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x30,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x31,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x32,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x33,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x34,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x35,
-    0,
-    0x53,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x49,
-    0x44,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x36,
-    0,
-    0x4F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x32,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x33,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x34,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x35,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x36,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x37,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x38,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x39,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x30,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x31,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x32,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x33,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x34,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x35,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-    0x4F,
-    0x6E,
-    0x57,
-    0x61,
-    0x76,
-    0x65,
-    0x31,
-    0x36,
-    0x43,
-    0x6F,
-    0x6D,
-    0x70,
-    0x6C,
-    0x65,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
 void ElementalCombatController::AttemptSpawn() {
     s32 temp_r3_84;
@@ -845,112 +239,112 @@ u8 ElementalCombatController::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(lit_stringBase0, &this->unk3DC.unk0, 0) != 0) {
+    if (arg0->LoadInt("Element", &this->unk3DC.unk0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat(&lit_stringBase0[8], (f32 *) &this->unk3E8, 0) != 0) {
+    if (arg0->LoadFloat("WaveSpawnDelay", (f32 *) &this->unk3E8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadVector3(&lit_stringBase0[0x17], (MKVector3 *) &this->unkB8, 0) != 0) {
+    if (arg0->LoadVector3("PlayerStart", (MKVector3 *) &this->unkB8, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x23], &this->unk360, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave1", &this->unk360, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x35], &this->unk360, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave2", &this->unk360, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x47], &this->unk364, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave3", &this->unk364, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x59], &this->unk368, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave4", &this->unk368, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x6B], &this->unk36C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave5", &this->unk36C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x7D], &this->unk370, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave6", &this->unk370, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x8F], &this->unk374, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave7", &this->unk374, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xA1], &this->unk378, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave8", &this->unk378, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xB3], &this->unk37C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave9", &this->unk37C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xC5], &this->unk380, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave10", &this->unk380, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xD8], &this->unk384, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave11", &this->unk384, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xEB], &this->unk388, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave12", &this->unk388, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0xFE], &this->unk38C, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave13", &this->unk38C, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x111], &this->unk390, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave14", &this->unk390, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x124], &this->unk394, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave15", &this->unk394, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[0x137], &this->unk398, 0) != 0) {
+    if (arg0->LoadInt("SpawnPointIDWave16", &this->unk398, 0) != 0) {
         return 1U;
     }
-    if (this->unkB0.LoadLine(arg0, &lit_stringBase0[0x14A]) != 0) {
+    if (this->unkB0.LoadLine(arg0, "OnComplete") != 0) {
         return 1U;
     }
-    if (this->unk39C.LoadLine(arg0, &lit_stringBase0[0x155]) != 0) {
+    if (this->unk39C.LoadLine(arg0, "OnWave1Complete") != 0) {
         return 1U;
     }
-    if (this->unk3A0.LoadLine(arg0, &lit_stringBase0[0x165]) != 0) {
+    if (this->unk3A0.LoadLine(arg0, "OnWave2Complete") != 0) {
         return 1U;
     }
-    if (this->unk3A4.LoadLine(arg0, &lit_stringBase0[0x175]) != 0) {
+    if (this->unk3A4.LoadLine(arg0, "OnWave3Complete") != 0) {
         return 1U;
     }
-    if (this->unk3A8.LoadLine(arg0, &lit_stringBase0[0x185]) != 0) {
+    if (this->unk3A8.LoadLine(arg0, "OnWave4Complete") != 0) {
         return 1U;
     }
-    if (this->unk3AC.LoadLine(arg0, &lit_stringBase0[0x195]) != 0) {
+    if (this->unk3AC.LoadLine(arg0, "OnWave5Complete") != 0) {
         return 1U;
     }
-    if (this->unk3B0.LoadLine(arg0, &lit_stringBase0[0x1A5]) != 0) {
+    if (this->unk3B0.LoadLine(arg0, "OnWave6Complete") != 0) {
         return 1U;
     }
-    if (this->unk3B4.LoadLine(arg0, &lit_stringBase0[0x1B5]) != 0) {
+    if (this->unk3B4.LoadLine(arg0, "OnWave7Complete") != 0) {
         return 1U;
     }
-    if (this->unk3B8.LoadLine(arg0, &lit_stringBase0[0x1C5]) != 0) {
+    if (this->unk3B8.LoadLine(arg0, "OnWave8Complete") != 0) {
         return 1U;
     }
-    if (this->unk3BC.LoadLine(arg0, &lit_stringBase0[0x1D5]) != 0) {
+    if (this->unk3BC.LoadLine(arg0, "OnWave9Complete") != 0) {
         return 1U;
     }
-    if (this->unk3C0.LoadLine(arg0, &lit_stringBase0[0x1E5]) != 0) {
+    if (this->unk3C0.LoadLine(arg0, "OnWave10Complete") != 0) {
         return 1U;
     }
-    if (this->unk3C4.LoadLine(arg0, &lit_stringBase0[0x1F6]) != 0) {
+    if (this->unk3C4.LoadLine(arg0, "OnWave11Complete") != 0) {
         return 1U;
     }
-    if (this->unk3C8.LoadLine(arg0, &lit_stringBase0[0x207]) != 0) {
+    if (this->unk3C8.LoadLine(arg0, "OnWave12Complete") != 0) {
         return 1U;
     }
-    if (this->unk3CC.LoadLine(arg0, &lit_stringBase0[0x218]) != 0) {
+    if (this->unk3CC.LoadLine(arg0, "OnWave13Complete") != 0) {
         return 1U;
     }
-    if (this->unk3D0.LoadLine(arg0, &lit_stringBase0[0x229]) != 0) {
+    if (this->unk3D0.LoadLine(arg0, "OnWave14Complete") != 0) {
         return 1U;
     }
-    if (this->unk3D4.LoadLine(arg0, &lit_stringBase0[0x23A]) != 0) {
+    if (this->unk3D4.LoadLine(arg0, "OnWave15Complete") != 0) {
         return 1U;
     }
-    return (u8) (this->unk3D8.LoadLine(arg0, &lit_stringBase0[0x24B]) != 0);
+    return (u8) (this->unk3D8.LoadLine(arg0, "OnWave16Complete") != 0);
 }
 #endif
 

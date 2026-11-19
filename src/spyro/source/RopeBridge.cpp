@@ -33,83 +33,6 @@ extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 static M2C_UNK boundingVolume;                      /* unable to generate initializer: unknown type */
 
-static s8 lit_stringBase0[0x4A] = {
-    0x43,
-    0x5F,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x6E,
-    0x6B,
-    0x4D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x6E,
-    0x6B,
-    0x53,
-    0x70,
-    0x61,
-    0x63,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x73,
-    0x61,
-    0x67,
-    0x41,
-    0x6D,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0,
-    0x6D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0x49,
-    0x44,
-    0,
-}; /* const */
-
 void RopeBridge::Reset() {
     this->unk1A4 = -1;
     this->unk1A8 = 0;
@@ -2055,7 +1978,7 @@ loop_22:
         temp_r0_3458 = var_r29_3449 + 0x48;
         *(this->unk184 + temp_r0_3458) = MKModel_Create(this->unk198, NULL, 2, NULL);
         temp_r6_3469 = this->unk184 + (var_r29_3449 + 0x10);
-        temp_r25_3470 = MKModel_GetSubObjectIndex(*(this->unk184 + temp_r0_3458), (SubObjectType) 0, lit_stringBase0);
+        temp_r25_3470 = MKModel_GetSubObjectIndex(*(this->unk184 + temp_r0_3458), (SubObjectType) 0, "C_Collide");
         M2C_FIELD(temp_r6_3469, s32 *, 0) = 0;
         M2C_FIELD(temp_r6_3469, s8 *, 4) = 1;
         M2C_FIELD(temp_r6_3469, RopeBridge **, 8) = this;
@@ -2106,33 +2029,35 @@ loop_25:
 }
 #endif
 
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
 u8 RopeBridge::LoadStartAndEnd(MKIniLine *arg0) {
     MKIniLine *temp_r3_3651;
     MKIniLine *temp_r3_3667;
 
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[0xA]) == 0) {
+    if (stricmp("waypoints") == 0) {
         temp_r3_3651 = arg0->unkC->GetSubLine(arg0);
         temp_r3_3651->GetFieldName();
-        if (stricmp(&lit_stringBase0[0x14]) == 0) {
+        if (stricmp("waypoint") == 0) {
             temp_r3_3651->AsVector3(0, (MKVector3 *) &this->unk150);
         }
         temp_r3_3667 = temp_r3_3651->unkC->GetNextLine(temp_r3_3651);
         temp_r3_3667->GetFieldName();
-        if (stricmp(&lit_stringBase0[0x14]) == 0) {
+        if (stricmp("waypoint") == 0) {
             temp_r3_3667->AsVector3(0, (MKVector3 *) &this->unk160);
         }
         return 1U;
     }
     return 0U;
 }
+#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 RopeBridge::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3702;
 
     var_r31_3702 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (LoadStartAndEnd(arg0) != 0) || (arg0->LoadString(&lit_stringBase0[0x1D], &this->unk198, 1) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x28], &this->unk18C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x35], &this->unk194, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (LoadStartAndEnd(arg0) != 0) || (arg0->LoadString("plankModel", &this->unk198, 1) != 0) || (arg0->LoadFloat("plankSpacing", &this->unk18C, 0) != 0) || (arg0->LoadFloat("sagAmount", &this->unk194, 0) != 0)) {
         var_r31_3702 = 1;
     }
     return var_r31_3702;
@@ -2213,12 +2138,12 @@ void RopeBridge::Init() {
     this->unk1AC = 0.0f;
 }
 
-#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, signed char *, long *)'
+#if 0 // DRAFT: function call 'KDProp_LoadMaterialID(MKIniLine *, const char[11], long *)'
 s32 RopeBridgeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_3874;
 
     var_r31_3874 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDProp_LoadMaterialID(arg0, &lit_stringBase0[0x3F], &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", &this->unk60) != 0)) {
         var_r31_3874 = 1;
     }
     return var_r31_3874;

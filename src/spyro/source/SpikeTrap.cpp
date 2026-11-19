@@ -9,73 +9,6 @@
 #include "spyro/source/PropFlags.h"
 #include <m2c_macros.h>
 
-static s8 lit_stringBase0[0x40] = {
-    0x4F,
-    0x6E,
-    0x50,
-    0x72,
-    0x65,
-    0x73,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x6C,
-    0x65,
-    0x61,
-    0x73,
-    0x65,
-    0x64,
-    0,
-    0x69,
-    0x6E,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x65,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0x64,
-    0,
-    0x64,
-    0x65,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-}; /* const */
-
 void SpikeTrap::SetState(int arg0) {
     this->unkE0 = arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<SpikeTrapDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkE0 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
@@ -142,7 +75,7 @@ s32 SpikeTrap::LoadLine(MKIniLine *arg0) {
     s32 var_r31_216;
 
     var_r31_216 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkE4.LoadLine(arg0, lit_stringBase0) != 0) || (this->unkE8.LoadLine(arg0, &lit_stringBase0[0xA]) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkE4.LoadLine(arg0, "OnPressed") != 0) || (this->unkE8.LoadLine(arg0, "OnReleased") != 0)) {
         var_r31_216 = 1;
     }
     return var_r31_216;
@@ -163,10 +96,10 @@ void SpikeTrap::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void SpikeTrapDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim(&lit_stringBase0[0x15]);
-    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[0x1E]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0x29]);
-    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x33]);
+    this->unkE4 = this->unk34->GetAnim("inactive");
+    this->unkE8 = this->unk34->GetAnim("activating");
+    this->unkEC = this->unk34->GetAnim("activated");
+    this->unkF0 = this->unk34->GetAnim("deactivating");
 }
 #endif
 

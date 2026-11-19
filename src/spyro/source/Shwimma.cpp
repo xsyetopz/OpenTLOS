@@ -19,92 +19,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x52] = {
-    0x57,
-    0x61,
-    0x6C,
-    0x6B,
-    0,
-    0x52,
-    0x75,
-    0x6E,
-    0,
-    0x47,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0x5F,
-    0x45,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x47,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0x5F,
-    0x43,
-    0x79,
-    0x63,
-    0x6C,
-    0x65,
-    0,
-    0x47,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0x5F,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0,
-    0x41,
-    0x6C,
-    0x65,
-    0x72,
-    0x74,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x33,
-    0,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0x5F,
-    0x30,
-    0x34,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void ShwimmaCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -767,71 +683,71 @@ void ShwimmaCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1205 = this->unk34;
-    if (temp_r30_1205->Exists(lit_stringBase0) != 0) {
-        var_r3_1215 = temp_r30_1205->GetAnim(lit_stringBase0);
+    if (temp_r30_1205->Exists("Walk") != 0) {
+        var_r3_1215 = temp_r30_1205->GetAnim("Walk");
     } else {
         var_r3_1215 = NULL;
     }
     this->unk74 = (s32) var_r3_1215;
     temp_r30_1223 = this->unk34;
-    if (temp_r30_1223->Exists(&lit_stringBase0[5]) != 0) {
-        var_r3_1233 = temp_r30_1223->GetAnim(&lit_stringBase0[5]);
+    if (temp_r30_1223->Exists("Run") != 0) {
+        var_r3_1233 = temp_r30_1223->GetAnim("Run");
     } else {
         var_r3_1233 = NULL;
     }
     this->unk78 = (s32) var_r3_1233;
     temp_r30_1241 = this->unk34;
-    if (temp_r30_1241->Exists(&lit_stringBase0[9]) != 0) {
-        var_r3_1251 = temp_r30_1241->GetAnim(&lit_stringBase0[9]);
+    if (temp_r30_1241->Exists("Glide_Enter") != 0) {
+        var_r3_1251 = temp_r30_1241->GetAnim("Glide_Enter");
     } else {
         var_r3_1251 = NULL;
     }
     this->unk7C = (s32) var_r3_1251;
     temp_r30_1259 = this->unk34;
-    if (temp_r30_1259->Exists(&lit_stringBase0[0x15]) != 0) {
-        var_r3_1269 = temp_r30_1259->GetAnim(&lit_stringBase0[0x15]);
+    if (temp_r30_1259->Exists("Glide_Cycle") != 0) {
+        var_r3_1269 = temp_r30_1259->GetAnim("Glide_Cycle");
     } else {
         var_r3_1269 = NULL;
     }
     this->unk80 = (s32) var_r3_1269;
     temp_r30_1277 = this->unk34;
-    if (temp_r30_1277->Exists(&lit_stringBase0[0x21]) != 0) {
-        var_r3_1287 = temp_r30_1277->GetAnim(&lit_stringBase0[0x21]);
+    if (temp_r30_1277->Exists("Glide_Exit") != 0) {
+        var_r3_1287 = temp_r30_1277->GetAnim("Glide_Exit");
     } else {
         var_r3_1287 = NULL;
     }
     this->unk84 = (s32) var_r3_1287;
     temp_r30_1295 = this->unk34;
-    if (temp_r30_1295->Exists(&lit_stringBase0[0x2C]) != 0) {
-        var_r3_1305 = temp_r30_1295->GetAnim(&lit_stringBase0[0x2C]);
+    if (temp_r30_1295->Exists("Alert") != 0) {
+        var_r3_1305 = temp_r30_1295->GetAnim("Alert");
     } else {
         var_r3_1305 = NULL;
     }
     this->unk88 = (s32) var_r3_1305;
     temp_r30_1313 = this->unk34;
-    if (temp_r30_1313->Exists(&lit_stringBase0[0x32]) != 0) {
-        var_r3_1323 = temp_r30_1313->GetAnim(&lit_stringBase0[0x32]);
+    if (temp_r30_1313->Exists("Idle_01") != 0) {
+        var_r3_1323 = temp_r30_1313->GetAnim("Idle_01");
     } else {
         var_r3_1323 = NULL;
     }
     this->unk8C = (s32) var_r3_1323;
     temp_r30_1331 = this->unk34;
-    if (temp_r30_1331->Exists(&lit_stringBase0[0x3A]) != 0) {
-        var_r3_1341 = temp_r30_1331->GetAnim(&lit_stringBase0[0x3A]);
+    if (temp_r30_1331->Exists("Idle_02") != 0) {
+        var_r3_1341 = temp_r30_1331->GetAnim("Idle_02");
     } else {
         var_r3_1341 = NULL;
     }
     this->unk90 = (s32) var_r3_1341;
     temp_r30_1349 = this->unk34;
-    if (temp_r30_1349->Exists(&lit_stringBase0[0x42]) != 0) {
-        var_r3_1359 = temp_r30_1349->GetAnim(&lit_stringBase0[0x42]);
+    if (temp_r30_1349->Exists("Idle_03") != 0) {
+        var_r3_1359 = temp_r30_1349->GetAnim("Idle_03");
     } else {
         var_r3_1359 = NULL;
     }
     this->unk94 = (s32) var_r3_1359;
     temp_r30_1367 = this->unk34;
-    if (temp_r30_1367->Exists(&lit_stringBase0[0x4A]) != 0) {
-        var_r3_1377 = temp_r30_1367->GetAnim(&lit_stringBase0[0x4A]);
+    if (temp_r30_1367->Exists("Idle_04") != 0) {
+        var_r3_1377 = temp_r30_1367->GetAnim("Idle_04");
     } else {
         var_r3_1377 = NULL;
     }

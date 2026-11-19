@@ -100,7 +100,7 @@ void CharacterGraphNodeProp::LoadDone() {
     MKProp::LoadDone();
     sp8 = M2C_FIELD(&loadInfo, f64 *, 0x40);
     sp10 = M2C_FIELD(&loadInfo, f64 *, 0x48);
-    M2C_FIELD(this->unk50.__vptr, M2C_UNK (**)(CharacterGraphNode *, f64 *, MKProp *, f64), 0x2C)(&this->unk50, &sp8, &loadInfo, M2C_FIELD(&loadInfo, f64 *, 0x40));
+    this->unk50.SetPos(&sp8, &loadInfo, M2C_FIELD(&loadInfo, f64 *, 0x40));
 }
 #endif
 
@@ -184,14 +184,14 @@ s32 CharacterGraphNodeProp::LoadLine(MKIniLine *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk88'
 void CharacterGraphNodeProp::Init() {
     s32 var_ctr_569;
     s32 var_r3_567;
     void *temp_r5_571;
 
     MKProp::Init();
-    M2C_FIELD(this->unk50.__vptr, M2C_UNK (**)(CharacterGraphNode *), 8)(&this->unk50);
+    this->unk50.Init();
     var_r3_567 = 0;
     this->unk50.unk88 = 0;
     var_ctr_569 = 6;
@@ -251,11 +251,10 @@ loop_1:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 CharacterGraphNode *CharacterGraphNode::GetNextNode() {
     s32 var_r31_657;
 
-    if (M2C_FIELD(this->__vptr, s32 (**)(), 0x18)() == 1) {
+    if (GetNumLinks() == 1) {
         var_r31_657 = 0;
 loop_2:
         if (GetLink(var_r31_657) != NULL) {
@@ -270,7 +269,6 @@ loop_2:
 block_5:
     return NULL;
 }
-#endif
 
 #if 0 // DRAFT: function call 'MKRand_Int(long *, int, int)' does not match
 CharacterGraphNode *CharacterGraphNode::GetRandomLink(int arg0) {

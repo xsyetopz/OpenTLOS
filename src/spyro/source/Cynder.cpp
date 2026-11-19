@@ -71,503 +71,6 @@ static u8 lit_898 = 0;
 #if 0 // DRAFT: undefined identifier 'unkD94'
 static M2C_UNK lit_780;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_781;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x1EF] = {
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x42,
-    0x6F,
-    0x6D,
-    0x62,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x77,
-    0x61,
-    0x76,
-    0x65,
-    0,
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x42,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x46,
-    0x58,
-    0,
-    0x48,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x4E,
-    0x65,
-    0x63,
-    0x6B,
-    0x30,
-    0x31,
-    0,
-    0x4E,
-    0x65,
-    0x63,
-    0x6B,
-    0x30,
-    0x32,
-    0,
-    0x4E,
-    0x65,
-    0x63,
-    0x6B,
-    0x30,
-    0x33,
-    0,
-    0x4E,
-    0x65,
-    0x63,
-    0x6B,
-    0x30,
-    0x34,
-    0,
-    0x4E,
-    0x65,
-    0x63,
-    0x6B,
-    0x30,
-    0x35,
-    0,
-    0x57,
-    0x65,
-    0x61,
-    0x70,
-    0x6F,
-    0x6E,
-    0x30,
-    0x36,
-    0,
-    0x53,
-    0x70,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x33,
-    0,
-    0x63,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x50,
-    0x6F,
-    0x77,
-    0x65,
-    0x72,
-    0x75,
-    0x70,
-    0x50,
-    0x53,
-    0,
-    0x62,
-    0x43,
-    0x6F,
-    0x6E,
-    0x63,
-    0x75,
-    0x72,
-    0x72,
-    0x65,
-    0x6E,
-    0x74,
-    0x53,
-    0x6B,
-    0x69,
-    0x65,
-    0x73,
-    0,
-    0x69,
-    0x4E,
-    0x61,
-    0x76,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x76,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x33,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x50,
-    0x6F,
-    0x73,
-    0,
-    0x76,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x33,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x52,
-    0x6F,
-    0x74,
-    0,
-    0x4F,
-    0x6E,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x31,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x32,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x53,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x33,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x43,
-    0x6F,
-    0x6E,
-    0x63,
-    0x75,
-    0x72,
-    0x72,
-    0x65,
-    0x6E,
-    0x74,
-    0x53,
-    0x6B,
-    0x69,
-    0x65,
-    0x73,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x61,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x62,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x63,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x64,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x65,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x32,
-    0x61,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x32,
-    0x62,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x32,
-    0x63,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x32,
-    0x64,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x32,
-    0x65,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x61,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x62,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x63,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x64,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x31,
-    0x65,
-    0,
-    0x69,
-    0x52,
-    0x65,
-    0x67,
-    0x69,
-    0x6F,
-    0x6E,
-    0x49,
-    0x44,
-    0x5F,
-    0x30,
-    0x25,
-    0x64,
-    0,
-    0x62,
-    0x6F,
-    0x64,
-    0x79,
-    0,
-    0x73,
-    0x70,
-    0x69,
-    0x6E,
-    0x65,
-    0x30,
-    0x33,
-    0,
-    0x48,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x50,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x70,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x46,
-    0x6C,
-    0x69,
-    0x6E,
-    0x63,
-    0x68,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0,
-}; /* const */
 
 void Cynder::ResetFury() {
     Corona *temp_r4_161;
@@ -2931,7 +2434,7 @@ void Cynder::UpdateCollisionItems() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: function call 'GetCollisionRadius(Enemy *, double, double, double)' does
 void Cynder::SetupCollision() {
     f64 sp40;
     f64 sp38;
@@ -2948,7 +2451,7 @@ void Cynder::SetupCollision() {
     f32 temp_f31_5281;
     void *temp_r31_5258;
 
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x80)();
+    UpdateCollisionItems();
     temp_r31_5258 = checked_cast<CynderDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
     sp8 = 1.0f;
     spC = 1.0f;
@@ -3003,13 +2506,13 @@ void Cynder::Resolve() {
     }
     var_r30_5350 = 0;
     do {
-        temp_r3_5356 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+        temp_r3_5356 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp("CynderFireBomb"));
         if (temp_r3_5356 != NULL) {
             M2C_FIELD(temp_r3_5356->__vptr, M2C_UNK (**)(), 0x34)();
         }
         var_r30_5350 += 1;
     } while (var_r30_5350 < 8);
-    this->unkCF0 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, lit_stringBase0));
+    this->unkCF0 = checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "CynderFireBomb"));
 }
 #endif
 
@@ -3078,15 +2581,15 @@ void Cynder::LoadDone() {
     if (!(this->unk110.unk570 & 0x160000)) {
         Disable();
     }
-    this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xF]));
-    this->unkCEC = checked_cast<CynderBreathFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x1E]));
+    this->unkCE8 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
+    this->unkCEC = checked_cast<CynderBreathFX *, MKProp>(gMK->CreateProp("CynderBreathFX"));
     SetHitList__14CynderBreathFXFP18MKPtrList<6MKProp>(this->unkCEC, &this->unk110.unk90C);
-    this->unkCF8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x2D]);
-    this->unk110.unkA00.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x32]));
-    this->unk110.unkA48.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x39]));
-    this->unkBA0.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x40]));
-    this->unkBE8.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x47]));
-    this->unkC30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x4E]));
+    this->unkCF8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Head");
+    this->unk110.unkA00.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck01"));
+    this->unk110.unkA48.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck02"));
+    this->unkBA0.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck03"));
+    this->unkBE8.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck04"));
+    this->unkC30.Init(this->unk4, (s32) Tools_GetMatchingNodeIndex(this->unk4, "Neck05"));
     this->unkC78.Init(this->unk4, this->unkCF8);
     var_r7_5546 = 1;
     var_r3_5547 = 0x48;
@@ -3128,8 +2631,8 @@ void Cynder::LoadDone() {
     } while (var_ctr_5599 != 0);
     this->unkC84 = 0.5235987f;
     this->unkC88 = 2.8274333f;
-    this->unkD98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x55]);
-    this->unkD9C = (s32) Tools_GetMatchingNodeIndex(this->unk4, &lit_stringBase0[0x5E]);
+    this->unkD98 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "Weapon06");
+    this->unkD9C = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Spine03");
     KDMath_GetDirection(this->unkEAC);
     M2C_FIELD(this, f64 *, 0xEA8) = sp8;
     M2C_FIELD(this, f64 *, 0xEB0) = sp10;
@@ -3138,12 +2641,12 @@ void Cynder::LoadDone() {
         this->unkEB8 = M2C_FIELD(temp_r3_5635, f64 *, 8);
         M2C_FIELD(this, f64 *, 0xEC0) = (f64) M2C_FIELD(temp_r3_5635, f64 *, 0x10);
     }
-    this->unkF28 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x66]));
+    this->unkF28 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp("cynderFuryPowerupPS"));
     this->unkF28->unk140 = (s32) &this->unkF30;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unkD01'
 s32 Cynder::LoadLine(MKIniLine *arg0) {
     f32 var_f1_5865;
     s32 temp_ret_5865;
@@ -3151,13 +2654,13 @@ s32 Cynder::LoadLine(MKIniLine *arg0) {
     s32 var_r27_5873;
     s32 var_r29_5875;
 
-    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x7A], &this->unkD01, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x8B], (s32 *) &this->unkF78, 0) != 0) || (arg0->LoadVector3(&lit_stringBase0[0x96], &this->unkE98, 0) != 0) || (arg0->LoadVector3(&lit_stringBase0[0xA6], (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, &lit_stringBase0[0xB6]) != 0) || (this->unkED0.LoadLine(arg0, &lit_stringBase0[0xC2]) != 0) || (this->unkED4.LoadLine(arg0, &lit_stringBase0[0xCE]) != 0) || (this->unk1000.LoadLine(arg0, &lit_stringBase0[0xDA]) != 0) || (this->unkEC8.LoadLine(arg0, &lit_stringBase0[0xEF]) != 0) || (this->unkED8.LoadLine(arg0, &lit_stringBase0[0xF7]) != 0) || (this->unkEDC.LoadLine(arg0, &lit_stringBase0[0xFE]) != 0) || (this->unkEE0.LoadLine(arg0, &lit_stringBase0[0x105]) != 0) || (this->unkEE4.LoadLine(arg0, &lit_stringBase0[0x10C]) != 0) || (this->unkEE8.LoadLine(arg0, &lit_stringBase0[0x113]) != 0) || (this->unkEEC.LoadLine(arg0, &lit_stringBase0[0x11A]) != 0) || (this->unkEF0.LoadLine(arg0, &lit_stringBase0[0x121]) != 0) || (this->unkEF4.LoadLine(arg0, &lit_stringBase0[0x128]) != 0) || (this->unkEF8.LoadLine(arg0, &lit_stringBase0[0x12F]) != 0) || (this->unkEFC.LoadLine(arg0, &lit_stringBase0[0x136]) != 0) || (this->unkF00.LoadLine(arg0, &lit_stringBase0[0x13D]) != 0) || (this->unkF04.LoadLine(arg0, &lit_stringBase0[0x149]) != 0) || (this->unkF08.LoadLine(arg0, &lit_stringBase0[0x155]) != 0) || (this->unkF0C.LoadLine(arg0, &lit_stringBase0[0x161]) != 0) || (temp_ret_5865 = this->unkF10.LoadLine(arg0, &lit_stringBase0[0x16D]), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
+    if ((Enemy::LoadLine(arg0) != 0) || (arg0->LoadBool("bConcurrentSkies", &this->unkD01, 0) != 0) || (arg0->LoadInt("iNavPathID", (s32 *) &this->unkF78, 0) != 0) || (arg0->LoadVector3("vStage3StartPos", &this->unkE98, 0) != 0) || (arg0->LoadVector3("vStage3StartRot", (MKVector3 *) &this->unkEA8, 0) != 0) || (this->unkECC.LoadLine(arg0, "OnStage1End") != 0) || (this->unkED0.LoadLine(arg0, "OnStage2End") != 0) || (this->unkED4.LoadLine(arg0, "OnStage3End") != 0) || (this->unk1000.LoadLine(arg0, "OnConcurrentSkiesEnd") != 0) || (this->unkEC8.LoadLine(arg0, "OnReset") != 0) || (this->unkED8.LoadLine(arg0, "Fury1a") != 0) || (this->unkEDC.LoadLine(arg0, "Fury1b") != 0) || (this->unkEE0.LoadLine(arg0, "Fury1c") != 0) || (this->unkEE4.LoadLine(arg0, "Fury1d") != 0) || (this->unkEE8.LoadLine(arg0, "Fury1e") != 0) || (this->unkEEC.LoadLine(arg0, "Fury2a") != 0) || (this->unkEF0.LoadLine(arg0, "Fury2b") != 0) || (this->unkEF4.LoadLine(arg0, "Fury2c") != 0) || (this->unkEF8.LoadLine(arg0, "Fury2d") != 0) || (this->unkEFC.LoadLine(arg0, "Fury2e") != 0) || (this->unkF00.LoadLine(arg0, "SpyroFury1a") != 0) || (this->unkF04.LoadLine(arg0, "SpyroFury1b") != 0) || (this->unkF08.LoadLine(arg0, "SpyroFury1c") != 0) || (this->unkF0C.LoadLine(arg0, "SpyroFury1d") != 0) || (temp_ret_5865 = this->unkF10.LoadLine(arg0, "SpyroFury1e"), var_f1_5865 = M2C_BITWISE(f32, temp_ret_5865), ((temp_ret_5865 == 0) == 0))) {
         return 1;
     }
     var_r27_5873 = 0;
     var_r29_5875 = 0;
 loop_27:
-    temp_ret_5886 = arg0->LoadInt(Str_Printf(&lit_stringBase0[0x179], var_r27_5873 + 1, var_f1_5865), this + (var_r29_5875 + 0xDA4), 0);
+    temp_ret_5886 = arg0->LoadInt(Str_Printf("iRegionID_0%d", var_r27_5873 + 1, var_f1_5865), this + (var_r29_5875 + 0xDA4), 0);
     var_f1_5865 = M2C_BITWISE(f32, temp_ret_5886);
     if (temp_ret_5886 != 0) {
         return 1;
@@ -3323,10 +2826,10 @@ void CynderDescriptor::LoadDone() {
     }
     this->unk28C = var_r3_6185;
     M2C_FIELD(this->unk28C, u16 *, 0) = 1;
-    M2C_FIELD(this->unk28C, u16 *, 2) = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, &lit_stringBase0[0x187]);
+    M2C_FIELD(this->unk28C, u16 *, 2) = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "body");
     M2C_FIELD(this->unk28C, s16 *, 4) = 0xFF;
     this->unk128 = 0.0f;
-    this->unk3B8 = (s32) Tools_GetMatchingNodeIndex(this->unk2C, &lit_stringBase0[0x18C]);
+    this->unk3B8 = (s32) Tools_GetMatchingNodeIndex(this->unk2C, "spine03");
 }
 #endif
 
@@ -3348,24 +2851,24 @@ s32 CynderDescriptor::LoadLine(MKIniLine *arg0) {
     if (EnemyDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x194]) != 0) {
+    if (arg0->IsField("HurtPhrases") != 0) {
         var_r29_6274 = arg0->unkC->GetSubLine(arg0);
 loop_11:
         if (var_r29_6274 != NULL) {
             strcpy(&sp2C, var_r29_6274->GetFieldName());
-            if (strnicmp(&lit_stringBase0[0x1A0], &sp2C, 0xA) == 0) {
+            if (strnicmp("hurtPhrase", &sp2C, 0xA) == 0) {
                 strcpy(&spC, &sp36);
                 temp_ret_6294 = atoi(&spC);
                 if (temp_ret_6294 <= 7) {
-                    var_r29_6274->LoadString(Str_Printf(&lit_stringBase0[0x1AB], &spC, M2C_BITWISE(f32, temp_ret_6294)), &sp8, 0);
+                    var_r29_6274->LoadString(Str_Printf("hurtPhrase%s", &spC, M2C_BITWISE(f32, temp_ret_6294)), &sp8, 0);
                     strcpy(this + (((atoi(&spC) - 1) * 0x24) + 0x2B4), sp8);
                 }
-            } else if (strnicmp(&lit_stringBase0[0x1B8], &sp2C, 0xA) == 0) {
+            } else if (strnicmp("Percentage", &sp2C, 0xA) == 0) {
                 strcpy(&spC, &sp36);
                 if (atoi(&spC) <= 7) {
                     temp_ret_6334 = atoi(&spC);
                     temp_r5_6337 = (temp_ret_6334 - 1) * 0x24;
-                    var_r29_6274->LoadFloat(Str_Printf(&lit_stringBase0[0x1C3], &spC, temp_r5_6337, M2C_BITWISE(f32, temp_ret_6334)), this + (temp_r5_6337 + 0x2D4), 0);
+                    var_r29_6274->LoadFloat(Str_Printf("percentage%s", &spC, temp_r5_6337, M2C_BITWISE(f32, temp_ret_6334)), this + (temp_r5_6337 + 0x2D4), 0);
                 }
             }
             var_r29_6274 = var_r29_6274->unkC->GetNextLine(var_r29_6274);
@@ -3374,7 +2877,7 @@ loop_11:
         return 1;
     }
     var_r30_6365 = 0;
-    if ((arg0->LoadFloat(&lit_stringBase0[0x1D0], &this->unk3B4, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x1DC], &this->unk3B0) != 0)) {
+    if ((arg0->LoadFloat("phraseDelay", &this->unk3B4, 0) != 0) || (KDSound_LoadLine(arg0, "phraseFlinchSound", &this->unk3B0) != 0)) {
         var_r30_6365 = 1;
     }
     return var_r30_6365;
@@ -3397,7 +2900,7 @@ void CynderDescriptor::Init() {
     this->unk3B0 = GS_CynderFlinch1;
     do {
         temp_r29_6416 = this + var_r30_6403;
-        strcpy(temp_r29_6416 + 0x2B4, &lit_stringBase0[0x1EE]);
+        strcpy(temp_r29_6416 + 0x2B4, "");
         var_r28_6409 += 1;
         M2C_FIELD(temp_r29_6416, f32 *, 0x2D4) = 0.0f;
         var_r30_6403 += 0x24;

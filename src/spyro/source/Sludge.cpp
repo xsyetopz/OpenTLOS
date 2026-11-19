@@ -25,25 +25,8 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pSludgeDescriptor;
-#if 0 // DRAFT: undefined identifier 'arg_sp1B0'
-static s8 lit_stringBase0[0xF] = {
-    0x53,
-    0x6C,
-    0x75,
-    0x64,
-    0x67,
-    0x65,
-    0x53,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp1B0'
 void Sludge::Update() {
     f32 temp_f1_228;
     f32 temp_f1_238;
@@ -450,7 +433,7 @@ void *Sludge::CreateInstance() {
 void SludgeDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pSludgeDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unkF0 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("SludgeSplatter"));
 }
 #endif
 

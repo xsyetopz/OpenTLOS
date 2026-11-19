@@ -50,65 +50,8 @@ static s32 lit_541 = 6;
 
 static u8 lit_687 = 0;
 static u8 lit_762 = 1;
-#if 0 // DRAFT: illegal use of non-static member
-static s8 lit_stringBase0[0x37] = {
-    0x66,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-    0x74,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-    0x53,
-    0x68,
-    0x61,
-    0x70,
-    0x65,
-    0x64,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x43,
-    0x6C,
-    0x75,
-    0x73,
-    0x74,
-    0x65,
-    0x72,
-    0x42,
-    0x6F,
-    0x6D,
-    0x62,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal use of non-static member
 void FireBombFXDescriptor::Deinit() {
     MKMaterial_Destroy(this->unkEC);
     KDPropExDescriptor::Deinit();
@@ -127,7 +70,7 @@ s32 FireBombFXDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_55;
 
     var_r31_55 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString(lit_stringBase0, &this->unkE8, 0) != 0) || (arg0->LoadString(&lit_stringBase0[9], &this->unkE4, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("flamemat", &this->unkE8, 0) != 0) || (arg0->LoadString("trailmat", &this->unkE4, 0) != 0)) {
         var_r31_55 = 1;
     }
     return var_r31_55;
@@ -1295,8 +1238,8 @@ void FireBombFX::Resolve() {
 #if 0 // DRAFT: expression syntax error
 void FireBombFX::Init() {
     GameProp::Init();
-    this->unkCC = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x12]));
-    this->unkF8 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x20]));
+    this->unkCC = checked_cast<ShapedTrailFX *, MKProp>(gMK->CreateProp("ShapedTrailFX"));
+    this->unkF8 = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
     this->unkE0 = 0;
     this->unkFC = 0.0f;
     this->unk100 = 0.0f;
@@ -1310,7 +1253,7 @@ void FireBombFX::Init() {
     this->unk120 = NULL;
     this->unk124 = 1000.0f;
     this->unk188.Init(0.25f, 0.25f);
-    M2C_FIELD(this, s32 *, 0x1B4) = checked_cast<ClusterBomb *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x2B]));
+    M2C_FIELD(this, s32 *, 0x1B4) = checked_cast<ClusterBomb *, MKProp>(gMK->CreateProp("ClusterBomb"));
     M2C_FIELD(this, s8 *, 0x1B8) = 0;
     this->unk1BC.Init(3, 0U);
 }

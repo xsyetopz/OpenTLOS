@@ -10,26 +10,6 @@
 
 #if 0 // DRAFT: undefined identifier 'P22KDDropShadowDescriptor'
 MKHeap *malloc(s32);                                /* extern */
-static s8 lit_stringBase0[0x12] = {
-    0x6C,
-    0x69,
-    0x73,
-    0x74,
-    0x53,
-    0x69,
-    0x7A,
-    0x65,
-    0,
-    0x75,
-    0x6E,
-    0x69,
-    0x74,
-    0x53,
-    0x69,
-    0x7A,
-    0x65,
-    0,
-}; /* const */
 
 void KDDropShadow::Draw() {
     Matrix *var_r31_61;
@@ -116,12 +96,12 @@ void KDDropShadow::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[18]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 KDDropShadowDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_213;
 
     var_r31_213 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unk60, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[9], &this->unk64, 0) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadInt("listSize", &this->unk60, 0) != 0) || (arg0->LoadFloat("unitSize", &this->unk64, 0) != 0)) {
         var_r31_213 = 1;
     }
     return var_r31_213;

@@ -21,107 +21,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 #if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
-static s8 lit_stringBase0[0x62] = {
-    0x66,
-    0x4D,
-    0x6F,
-    0x76,
-    0x65,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x66,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0,
-    0x66,
-    0x44,
-    0x65,
-    0x62,
-    0x72,
-    0x69,
-    0x73,
-    0x53,
-    0x70,
-    0x72,
-    0x65,
-    0x61,
-    0x64,
-    0,
-    0x66,
-    0x44,
-    0x65,
-    0x62,
-    0x72,
-    0x69,
-    0x73,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x57,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x50,
-    0x36,
-    0x30,
-    0x30,
-    0x31,
-    0x5F,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0x50,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x5F,
-    0x41,
-    0,
-    0x50,
-    0x36,
-    0x30,
-    0x30,
-    0x31,
-    0x5F,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0x50,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x5F,
-    0x43,
-    0,
-}; /* const */
-
 void ConvexityDebris::Deinit() {
     MKHeap *temp_r0_63;
     MKHeap *temp_r0_82;
@@ -427,15 +326,14 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[98]' to
 s32 ConvexityDebris::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r31_672;
 
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(lit_stringBase0, &this->unk6C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xB], &this->unk70, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x13], &this->unk74, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x21], &this->unk78, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("fMoveSpeed", &this->unk6C, 0) != 0) || (arg0->LoadFloat("fRadius", &this->unk70, 0) != 0) || (arg0->LoadFloat("fDebrisSpread", &this->unk74, 0) != 0) || (arg0->LoadFloat("fDebrisScale", &this->unk78, 0) != 0)) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x2E]) != 0) {
+    if (arg0->IsField("Waypoints") != 0) {
         this->unk50.Init(arg0->GetNmbrOfSubLines(), 0U);
         var_r31_672 = arg0->unkC->GetSubLine(arg0);
 loop_9:
@@ -448,7 +346,6 @@ loop_9:
     }
     return 0;
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'void *' to
 void ConvexityDebris::Init() {
@@ -506,11 +403,11 @@ void ConvexityDebrisDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_Create(signed char *, int, int, int)' does not
+#if 0 // DRAFT: illegal implicit conversion from 'MKModel *' to
 void ConvexityDebrisDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKModel_Create(&lit_stringBase0[0x38], NULL, 2, NULL);
-    this->unk64 = MKModel_Create(&lit_stringBase0[0x4D], NULL, 2, NULL);
+    this->unk60 = MKModel_Create("P6001_TiltPlatform_A", NULL, 2, NULL);
+    this->unk64 = MKModel_Create("P6001_TiltPlatform_C", NULL, 2, NULL);
 }
 #endif
 

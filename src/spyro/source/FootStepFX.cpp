@@ -22,96 +22,8 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 static s32 lit_522 = 0;
 static s32 lit_523 = 0xF;
-#if 0 // DRAFT: undefined identifier 'MKVector'
-static s8 lit_stringBase0[0x56] = {
-    0x73,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x5F,
-    0x66,
-    0x6F,
-    0x6F,
-    0x74,
-    0x70,
-    0x72,
-    0x69,
-    0x6E,
-    0x74,
-    0x41,
-    0x64,
-    0x64,
-    0,
-    0x73,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x5F,
-    0x66,
-    0x6F,
-    0x6F,
-    0x74,
-    0x70,
-    0x72,
-    0x69,
-    0x6E,
-    0x74,
-    0x53,
-    0x75,
-    0x62,
-    0,
-    0x46,
-    0x6F,
-    0x6F,
-    0x74,
-    0x53,
-    0x74,
-    0x65,
-    0x70,
-    0x57,
-    0x6F,
-    0x6F,
-    0x64,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x46,
-    0x6F,
-    0x6F,
-    0x74,
-    0x53,
-    0x74,
-    0x65,
-    0x70,
-    0x4D,
-    0x75,
-    0x64,
-    0x50,
-    0x53,
-    0,
-    0x46,
-    0x6F,
-    0x6F,
-    0x74,
-    0x53,
-    0x74,
-    0x65,
-    0x70,
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x50,
-    0x53,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'MKVector'
 void FootStepFX::EmitFootFX(const MKVector3 &arg0, const MKVector3 &arg1, const MKVector3 &arg2, MKVector4 arg3, float arg4, float arg5, int arg6) {
     f64 sp388;
     f64 sp380;
@@ -892,7 +804,7 @@ void FootStepFX::Update() {
 
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FootStepFX::Init() {
     MKHeap *temp_r3_1288;
     void *var_r3_1295;
@@ -907,18 +819,18 @@ void FootStepFX::Init() {
     this->unk4C = var_r3_1295;
     this->unk50 = 0;
     this->unk54 = 0;
-    this->unk58 = MKMaterial_Create(lit_stringBase0);
-    this->unk5C = MKMaterial_Create(&lit_stringBase0[0x13]);
+    this->unk58 = MKMaterial_Create("spyro_footprintAdd");
+    this->unk5C = MKMaterial_Create("spyro_footprintSub");
     this->unk60 = 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void FootStepFXDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
-    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x26]));
-    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x39]));
-    this->unk68 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x47]));
+    this->unk60 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepWoodDustPS"));
+    this->unk64 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepMudPS"));
+    this->unk68 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("FootStepSnowPS"));
 }
 #endif
 

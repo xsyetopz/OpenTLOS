@@ -38,50 +38,6 @@ static s32 lit_783 = 0;
 static u8 lit_784 = 1;
 
 #if 0 // DRAFT: undefined identifier 'unk0'
-static s8 lit_stringBase0[0x29] = {
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0x4C,
-    0x65,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0,
-    0x53,
-    0x75,
-    0x63,
-    0x6B,
-    0x65,
-    0x79,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x71,
-    0x75,
-    0x69,
-    0x73,
-    0x68,
-    0x42,
-    0x6F,
-    0x75,
-    0x6C,
-    0x64,
-    0x65,
-    0x72,
-    0,
-}; /* const */
-
 void FuryFXEarth::TriggerBoulders() {
     f64 sp138;
     f64 sp130;                                      /* compiler-managed */
@@ -1019,18 +975,18 @@ void FuryFXEarth::Init() {
     M2C_STRUCT_COPY((s32) (this + 0xBC) + 4, (s32) (&identity - 4) + 4, 0x40);
     temp_r3_1716 = &this->unkC0;
     temp_r3_1716->RotateYaw(temp_r3_1716, 0.3926991f);
-    this->unkC0.unk40 = M2C_BITWISE(f32, checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp(lit_stringBase0)));
+    this->unkC0.unk40 = M2C_BITWISE(f32, checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves")));
     SetDefaults();
     this->unkC0.unk4C = 0.0f;
-    this->unk160 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x12]));
+    this->unk160 = checked_cast<SuckeyPS *, MKProp>(gMK->CreateProp("SuckeyPS"));
     var_r29_1742 = 0;
     this->unk160->unk140 = (s32) &this->unkC0.unk60;
     this->unk164 = NULL;
     do {
-        M2C_FIELD(M2C_FIELD(gMK->CreateProp(&lit_stringBase0[0x1B]), void **, 0x44), M2C_UNK (**)(), 0x34)();
+        M2C_FIELD(M2C_FIELD(gMK->CreateProp("SquishBoulder"), void **, 0x44), M2C_UNK (**)(), 0x34)();
         var_r29_1742 += 1;
     } while (var_r29_1742 < 0xF);
-    this->unk1C0 = checked_cast<SquishBoulderDescriptor *, MKPropDescriptor>(M2C_FIELD(gMK->__vptr, MKPropDescriptor *(**)(MKSceneManager *, s8 *), 0x5C)(gMK, &lit_stringBase0[0x1B]));
+    this->unk1C0 = checked_cast<SquishBoulderDescriptor *, MKPropDescriptor>(gMK->FindDescriptor("SquishBoulder"));
     this->unk1C0 = (MKPropDescriptor *)-1;
     M2C_FIELD(this, s8 *, 0x1C8) = 0;
     M2C_FIELD(this, s32 *, 0x1CC) = 0;

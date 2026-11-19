@@ -22,69 +22,8 @@ f64 pow(f64, f32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'arg_sp2C'
-static s8 lit_stringBase0[0x3B] = {
-    0x64,
-    0x5F,
-    0x6D,
-    0x69,
-    0x6E,
-    0x65,
-    0x63,
-    0x61,
-    0x72,
-    0x74,
-    0x5F,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x5F,
-    0x25,
-    0x2E,
-    0x32,
-    0x64,
-    0,
-    0x74,
-    0x72,
-    0x61,
-    0x76,
-    0x65,
-    0x6C,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x66,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x66,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void MineCart::UpdateWheelBone(MKDynamicBone *arg0, void *arg1) {
     s16 temp_r31_95;
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
@@ -488,7 +427,7 @@ void MineCart::Update() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void MineCart::Resolve() {
     Animation sp8;
     s32 var_r27_776;
@@ -502,7 +441,7 @@ void MineCart::Resolve() {
         var_r27_776 = 0;
         var_r31_778 = 0;
         do {
-            temp_r29_784 = Str_Printf(lit_stringBase0, var_r27_776 + 1);
+            temp_r29_784 = Str_Printf("d_minecart_wheel_%.2d", var_r27_776 + 1);
             temp_r26_791 = ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(temp_r29_784);
             sp8.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
             temp_r29_798 = this + var_r31_778;
@@ -575,7 +514,7 @@ s32 MineCartDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_934;
 
     var_r31_934 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x16], &this->unkE4) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x22], &this->unkE8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x2E], &this->unkEC, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "travelSound", &this->unkE4) != 0) || (arg0->LoadFloat("soundfadeIn", &this->unkE8, 0) != 0) || (arg0->LoadFloat("soundfadeOut", &this->unkEC, 0) != 0)) {
         var_r31_934 = 1;
     }
     return var_r31_934;

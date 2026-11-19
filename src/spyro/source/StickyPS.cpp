@@ -7,12 +7,11 @@
 
 extern f32 gUpdateTimeDelta;
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void StickyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, float arg3) {
     void *temp_r3_55;
     void *temp_r4_58;
 
-    temp_r3_55 = M2C_FIELD(this->__vptr, void *(**)(), 0x3C)();
+    temp_r3_55 = CreateParticle();
     if (temp_r3_55 != NULL) {
         temp_r4_58 = M2C_FIELD(temp_r3_55, void **, 0x2C);
         M2C_FIELD(temp_r3_55, f64 *, 0) = (f64) M2C_FIELD(&arg0, f64 *, 0);
@@ -27,7 +26,6 @@ void StickyPS::Emit(const MKVector3 &arg0, const MKVector3 &arg1, float arg2, fl
         M2C_FIELD(temp_r4_58, s8 *, 0x1C) = 0;
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'sp30'
 void StickyPS::UpdateParticles() {

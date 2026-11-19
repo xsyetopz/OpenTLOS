@@ -20,60 +20,8 @@ extern s32 GS_Steam1;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: ')' expected
-static s8 lit_stringBase0[0x32] = {
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-    0x4F,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x4F,
-    0x66,
-    0x66,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x4F,
-    0x6E,
-    0,
-    0x72,
-    0x5F,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x30,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: ')' expected
 void SteamValve::Message(MKMessage *arg0) {
     s32 temp_r0_46;
 
@@ -350,22 +298,22 @@ void SteamValve::Update() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[50]' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void SteamValve::LoadDone() {
     GameProp::LoadDone();
-    this->unkC8 = checked_cast<Steam *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unkC8 = checked_cast<Steam *, MKProp>(gMK->CreateProp("Steam"));
     if ((u8) this->unkDC == 0) {
         this->unkDD = 0;
     }
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 SteamValve::LoadLine(MKIniLine *arg0) {
     s32 var_r31_500;
 
     var_r31_500 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[6], &this->unkD0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xD], &this->unkD4, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x15], &this->unkD8, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x20], &this->unkDC, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadFloat("OnTime", &this->unkD0, 0) != 0) || (arg0->LoadFloat("OffTime", &this->unkD4, 0) != 0) || (arg0->LoadFloat("StartDelay", &this->unkD8, 0) != 0) || (arg0->LoadBool("StartOn", &this->unkDC, 0) != 0)) {
         var_r31_500 = 1;
     }
     return var_r31_500;
@@ -386,12 +334,10 @@ void SteamValve::Init() {
     this->unkDD = 1;
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetRefPointIndex(MKModel *, signed char *)' does
 void SteamValveDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x28]);
+    this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
-#endif
 
 #if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
 void checked_cast<Steam *, MKProp>(MKProp *arg0) {

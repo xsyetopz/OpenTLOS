@@ -15,241 +15,8 @@ f64 fmod(f32, f64);                                 /* extern */
 extern f32 *KDSpline_PositionMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: illegal implicit conversion from 'MineCartTrack' to
-static s8 lit_stringBase0[0xE7] = {
-    0x4D,
-    0x69,
-    0x6E,
-    0x65,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x53,
-    0x50,
-    0,
-    0x4D,
-    0x69,
-    0x6E,
-    0x65,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x4C,
-    0x65,
-    0x66,
-    0x74,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x52,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x45,
-    0x6E,
-    0x74,
-    0x72,
-    0x79,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x31,
-    0,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x31,
-    0,
-    0x45,
-    0x6E,
-    0x74,
-    0x72,
-    0x79,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x32,
-    0,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x32,
-    0,
-    0x45,
-    0x6E,
-    0x74,
-    0x72,
-    0x79,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x33,
-    0,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x33,
-    0,
-    0x45,
-    0x6E,
-    0x74,
-    0x72,
-    0x79,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x34,
-    0,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0x44,
-    0x6F,
-    0x6F,
-    0x72,
-    0x49,
-    0x44,
-    0x5F,
-    0x34,
-    0,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0x77,
-    0x61,
-    0x79,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0x5F,
-    0x31,
-    0,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0x5F,
-    0x32,
-    0,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0x5F,
-    0x33,
-    0,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0x4F,
-    0x66,
-    0x66,
-    0x73,
-    0x65,
-    0x74,
-    0x5F,
-    0x34,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal implicit conversion from 'MineCartTrack' to
 void MineCartTrack::Message(MKMessage *arg0) {
     s32 temp_r0_54;
     s32 var_r29_52;
@@ -682,7 +449,7 @@ void MineCartTrack::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void MineCartTrack::LoadDone() {
     s32 var_r29_936;
     s32 var_r31_937;
@@ -696,9 +463,9 @@ void MineCartTrack::LoadDone() {
         temp_r30_939 = this + var_r31_937;
         if (M2C_FIELD(temp_r30_939, f32 *, 0x8C) != -1.0f) {
             if ((u8) this->unk4C != 0) {
-                M2C_FIELD(temp_r30_939, void **, 0x78) = checked_cast<MineCart *, MKProp>(gMK->CreateProp(lit_stringBase0));
+                M2C_FIELD(temp_r30_939, void **, 0x78) = checked_cast<MineCart *, MKProp>(gMK->CreateProp("MineCartSP"));
             } else {
-                M2C_FIELD(temp_r30_939, void **, 0x78) = checked_cast<MineCart *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB]));
+                M2C_FIELD(temp_r30_939, void **, 0x78) = checked_cast<MineCart *, MKProp>(gMK->CreateProp("MineCart"));
             }
             temp_r3_962 = M2C_FIELD(temp_r30_939, void **, 0x78);
             if (temp_r3_962 != NULL) {
@@ -713,7 +480,7 @@ void MineCartTrack::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'Init'
 s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -738,7 +505,7 @@ s32 MineCartTrack::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x14]) != 0) {
+    if (arg0->IsField("LeftTrack") != 0) {
         var_r30_1015 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1016 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1016 != 0) {
@@ -771,7 +538,7 @@ loop_9:
         }
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x1E]) != 0) {
+    if (arg0->IsField("RightTrack") != 0) {
         var_r30_1089 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1090 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1090 != 0) {
@@ -805,7 +572,7 @@ loop_18:
         return 1;
     }
     var_r31_1156 = 0;
-    if ((arg0->LoadInt(&lit_stringBase0[0x29], &this->unk104, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x37], &this->unk108, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x44], &this->unk10C, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x52], &this->unk110, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x5F], &this->unk114, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x6D], &this->unk118, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x7A], &this->unk11C, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x88], &this->unk120, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x95], &this->unk4C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xA3], &this->unk50.unk3C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xB4], &this->unk50.unk40, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC5], &this->unk50.unk44, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xD6], &this->unk50.unk48, 0) != 0)) {
+    if ((arg0->LoadInt("EntryDoorID_1", &this->unk104, 0) != 0) || (arg0->LoadInt("ExitDoorID_1", &this->unk108, 0) != 0) || (arg0->LoadInt("EntryDoorID_2", &this->unk10C, 0) != 0) || (arg0->LoadInt("ExitDoorID_2", &this->unk110, 0) != 0) || (arg0->LoadInt("EntryDoorID_3", &this->unk114, 0) != 0) || (arg0->LoadInt("ExitDoorID_3", &this->unk118, 0) != 0) || (arg0->LoadInt("EntryDoorID_4", &this->unk11C, 0) != 0) || (arg0->LoadInt("ExitDoorID_4", &this->unk120, 0) != 0) || (arg0->LoadBool("SpeedwayTrack", &this->unk4C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_1", &this->unk50.unk3C, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_2", &this->unk50.unk40, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_3", &this->unk50.unk44, 0) != 0) || (arg0->LoadFloat("CartTimeOffset_4", &this->unk50.unk48, 0) != 0)) {
         var_r31_1156 = 1;
     }
     return var_r31_1156;

@@ -56,133 +56,6 @@ extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: undefined identifier 'MKVector'
 static M2C_UNK lit_750;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_751;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x7D] = {
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x44,
-    0x72,
-    0x69,
-    0x76,
-    0x65,
-    0x72,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x48,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x50,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x70,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x44,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0x73,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x73,
-    0x75,
-    0x62,
-    0x4F,
-    0x62,
-    0x6A,
-    0x65,
-    0x63,
-    0x74,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0,
-}; /* const */
 
 void FireBoss::TriggerExplosion() {
     f64 sp58;
@@ -2435,7 +2308,7 @@ void FireBoss::LoadDone() {
     temp_r31_4496 = this->unk4;
     this->unkF70.Init(MKModel_GetName(temp_r31_4496), temp_r31_4496);
     this->unkFC8 = 0;
-    this->unkF64 = checked_cast<FireBossDriver *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unkF64 = checked_cast<FireBossDriver *, MKProp>(gMK->CreateProp("FireBossDriver"));
     temp_r3_4511 = this->unkF64;
     temp_r3_4511->Disable();
     Disable();
@@ -2448,7 +2321,7 @@ s32 FireBoss::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4546;
 
     var_r31_4546 = 0;
-    if ((Enemy::LoadLine(arg0) != 0) || (this->unk1084.LoadLine(arg0, &lit_stringBase0[0xF]) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (this->unk1084.LoadLine(arg0, "OnReset") != 0)) {
         var_r31_4546 = 1;
     }
     return var_r31_4546;
@@ -2721,24 +2594,24 @@ s32 FireBossDescriptor::LoadLine(MKIniLine *arg0) {
     if (EnemyDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x17]) != 0) {
+    if (arg0->IsField("HurtPhrases") != 0) {
         var_r28_4986 = arg0->unkC->GetSubLine(arg0);
 loop_11:
         if (var_r28_4986 != NULL) {
             strcpy(&sp30, var_r28_4986->GetFieldName());
-            if (strnicmp(&lit_stringBase0[0x23], &sp30, 0xA) == 0) {
+            if (strnicmp("hurtPhrase", &sp30, 0xA) == 0) {
                 strcpy(&sp10, &sp3A);
                 temp_ret_5006 = atoi(&sp10);
                 if (temp_ret_5006 <= 8) {
-                    var_r28_4986->LoadString(Str_Printf(&lit_stringBase0[0x2E], &sp10, M2C_BITWISE(f32, temp_ret_5006)), &spC, 0);
+                    var_r28_4986->LoadString(Str_Printf("hurtPhrase%s", &sp10, M2C_BITWISE(f32, temp_ret_5006)), &spC, 0);
                     strcpy(this + (((atoi(&sp10) - 1) * 0x24) + 0x2B4), spC);
                 }
-            } else if (strnicmp(&lit_stringBase0[0x3B], &sp30, 0xA) == 0) {
+            } else if (strnicmp("Percentage", &sp30, 0xA) == 0) {
                 strcpy(&sp10, &sp3A);
                 if (atoi(&sp10) <= 8) {
                     temp_ret_5046 = atoi(&sp10);
                     temp_r5_5049 = (temp_ret_5046 - 1) * 0x24;
-                    var_r28_4986->LoadFloat(Str_Printf(&lit_stringBase0[0x46], &sp10, temp_r5_5049, M2C_BITWISE(f32, temp_ret_5046)), this + (temp_r5_5049 + 0x2D4), 0);
+                    var_r28_4986->LoadFloat(Str_Printf("percentage%s", &sp10, temp_r5_5049, M2C_BITWISE(f32, temp_ret_5046)), this + (temp_r5_5049 + 0x2D4), 0);
                 }
             }
             var_r28_4986 = var_r28_4986->unkC->GetNextLine(var_r28_4986);
@@ -2746,7 +2619,7 @@ loop_11:
         }
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x53]) != 0) {
+    if (arg0->IsField("DamageStates") != 0) {
         temp_r3_5080 = arg0->GetNmbrOfSubLines();
         this->unk3D8 = temp_r3_5080;
         temp_r25_5083 = this->unk3D8 * 0xC;
@@ -2761,7 +2634,7 @@ loop_11:
         var_r27_5104 = 0;
 loop_31:
         if (var_r28_5102 != NULL) {
-            if (var_r28_5102->IsField(&lit_stringBase0[0x60]) != 0) {
+            if (var_r28_5102->IsField("state") != 0) {
                 *(this->unk3DC + var_r27_5104) = var_r28_5102->GetNmbrOfSubLines();
                 temp_r3_5116 = this->unk3DC;
                 temp_r25_5118 = *(temp_r3_5116 + var_r27_5104) * 4;
@@ -2785,7 +2658,7 @@ loop_31:
                 var_r26_5160 = 0;
 loop_29:
                 if (var_r24_5158 != NULL) {
-                    if (var_r24_5158->LoadString(&lit_stringBase0[0x66], &sp8, 0) != 0) {
+                    if (var_r24_5158->LoadString("subObject", &sp8, 0) != 0) {
                         *(*(var_r27_5104 + &this->unk3DC->unk8) + var_r26_5160) = sp8;
                         var_r26_5160 += 4;
                     }
@@ -2798,7 +2671,7 @@ loop_29:
             goto loop_31;
         }
     }
-    return arg0->LoadFloat(&lit_stringBase0[0x70], &this->unk3D4, 0);
+    return arg0->LoadFloat("phraseDelay", &this->unk3D4, 0);
 }
 #endif
 
@@ -2815,7 +2688,7 @@ void FireBossDescriptor::Init() {
     this->unk3D4 = 1.0f;
     do {
         temp_r29_5228 = this + var_r30_5219;
-        strcpy(temp_r29_5228 + 0x2B4, &lit_stringBase0[0x7C]);
+        strcpy(temp_r29_5228 + 0x2B4, "");
         var_r28_5224 += 1;
         M2C_FIELD(temp_r29_5228, f32 *, 0x2D4) = 0.0f;
         var_r30_5219 += 0x24;

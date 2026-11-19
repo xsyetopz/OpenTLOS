@@ -20,208 +20,6 @@ static KDParticleSystemProperty classInfo__24KDParticleSystemProperty; /* type t
 static KDParticleEmitterProperty classInfo__25KDParticleEmitterProperty; /* type too large by 0x14 */
 static KDParticleLineEmitterProperty classInfo__29KDParticleLineEmitterProperty; /* type too large by 0x1C */
 static KDParticleBoxEmitterProperty classInfo__28KDParticleBoxEmitterProperty; /* type too large by 0x38 */
-static s8 lit_stringBase0[0xC8] = {
-    0x62,
-    0x6F,
-    0x78,
-    0x76,
-    0x31,
-    0,
-    0x62,
-    0x6F,
-    0x78,
-    0x76,
-    0x32,
-    0,
-    0x6C,
-    0x69,
-    0x6E,
-    0x65,
-    0,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x44,
-    0x65,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x42,
-    0x75,
-    0x72,
-    0x73,
-    0x74,
-    0,
-    0x44,
-    0x65,
-    0x73,
-    0x74,
-    0x72,
-    0x6F,
-    0x79,
-    0x41,
-    0x6C,
-    0x6C,
-    0,
-    0x70,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x6F,
-    0x72,
-    0x69,
-    0x67,
-    0x69,
-    0x6E,
-    0,
-    0x6C,
-    0x6F,
-    0x63,
-    0x61,
-    0x6C,
-    0x54,
-    0x6F,
-    0x57,
-    0x6F,
-    0x72,
-    0x6C,
-    0x64,
-    0,
-    0,
-    0x6D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x6C,
-    0x6F,
-    0x63,
-    0x61,
-    0x6C,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x73,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x4D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x53,
-    0x79,
-    0x73,
-    0x74,
-    0x65,
-    0x6D,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x4C,
-    0x69,
-    0x6E,
-    0x65,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x61,
-    0x72,
-    0x74,
-    0x69,
-    0x63,
-    0x6C,
-    0x65,
-    0x42,
-    0x6F,
-    0x78,
-    0x45,
-    0x6D,
-    0x69,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0,
-}; /* const */
 
 void KDParticleBoxEmitterProperty::Command(int arg0) {
     void **temp_r3_127;
@@ -300,17 +98,15 @@ void KDParticleBoxEmitterProperty::Resolve(KDPropertySet *arg0) {
     KDParticleEmitterProperty::Resolve(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[200]' to
 s32 KDParticleBoxEmitterProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_307;
 
     var_r31_307 = 0;
-    if ((arg0->LoadVector3(lit_stringBase0, (MKVector3 *) &this->unk28, 0) != 0) || (arg0->LoadVector3(&lit_stringBase0[6], (MKVector3 *) &this->unk38, 0) != 0) || (KDParticleEmitterProperty::LoadLine(arg0) != 0)) {
+    if ((arg0->LoadVector3("boxv1", (MKVector3 *) &this->unk28, 0) != 0) || (arg0->LoadVector3("boxv2", (MKVector3 *) &this->unk38, 0) != 0) || (KDParticleEmitterProperty::LoadLine(arg0) != 0)) {
         var_r31_307 = 1;
     }
     return var_r31_307;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'pInstanceMem'
 void KDParticleLineEmitterProperty::Command(int arg0) {
@@ -399,12 +195,12 @@ void KDParticleLineEmitterProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDParticleLineEmitterProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_539;
 
     var_r31_539 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0xC], &this->unk24, 0) != 0) || (KDParticleEmitterProperty::LoadLine(arg0) != 0)) {
+    if ((arg0->LoadString("line", &this->unk24, 0) != 0) || (KDParticleEmitterProperty::LoadLine(arg0) != 0)) {
         var_r31_539 = 1;
     }
     return var_r31_539;
@@ -444,20 +240,20 @@ void KDParticleEmitterProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[9])' does not match
 s32 KDParticleEmitterProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_684;
 
-    if (stricmp(arg0, &lit_stringBase0[0x11]) == 0) {
+    if (stricmp(arg0, "Activate") == 0) {
         return 1;
     }
-    if (stricmp(arg0, &lit_stringBase0[0x1A]) == 0) {
+    if (stricmp(arg0, "Deactivate") == 0) {
         return 2;
     }
-    if (stricmp(arg0, &lit_stringBase0[0x25]) == 0) {
+    if (stricmp(arg0, "Burst") == 0) {
         return 3;
     }
-    temp_r3_684 = stricmp(arg0, &lit_stringBase0[0x2B]) - 1;
+    temp_r3_684 = stricmp(arg0, "DestroyAll") - 1;
     return 4 & ((temp_r3_684 - temp_r3_684) - !M2C_CARRY);
 }
 #endif
@@ -537,7 +333,7 @@ u8 KDParticleEmitterProperty::LoadLine(MKIniLine *arg0) {
         this->unk10 = arg0;
     }
     var_r31_858 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0x36], &this->unk14, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x43], &this->unk1C, 0) != 0)) {
+    if ((arg0->LoadString("particleType", &this->unk14, 0) != 0) || (arg0->LoadString("origin", &this->unk1C, 0) != 0)) {
         var_r31_858 = 1;
     }
     return var_r31_858;
@@ -552,7 +348,7 @@ KDParticleEmitterProperty::KDParticleEmitterProperty() {
     this->unk10 = NULL;
     this->unk14 = NULL;
     this->unk18 = NULL;
-    this->unk1C = &lit_stringBase0[0x4A];
+    this->unk1C = "localToWorld";
     this->unk20 = NULL;
     return this;
 }
@@ -567,9 +363,9 @@ void KDParticleSystemProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[11], const char[6])' does
 s32 KDParticleSystemProperty::ResolveCommand(const char *arg0) const {
-    return stricmp(arg0, &lit_stringBase0[0x2B], lit_stringBase0) == 0;
+    return stricmp(arg0, "DestroyAll", "boxv1") == 0;
 }
 #endif
 
@@ -642,7 +438,7 @@ void KDParticleSystemProperty::InitInstance() {
     if (var_r4_1060 != NULL) {
 
     } else {
-        var_r4_1060 = &lit_stringBase0[0x57];
+        var_r4_1060 = "";
     }
     *(temp_r30_1061 + temp_r31_1063) = gMK->CreateProp(var_r4_1060);
 }
@@ -669,7 +465,7 @@ u8 KDParticleSystemProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_1125;
 
     var_r31_1125 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0x58], &this->unk10, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x43], (s8 **) &this->unk14, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x5E], &this->unk18, 0) != 0)) {
+    if ((arg0->LoadString("model", &this->unk10, 0) != 0) || (arg0->LoadString("origin", (s8 **) &this->unk14, 0) != 0) || (arg0->LoadBool("localParticles", &this->unk18, 0) != 0)) {
         var_r31_1125 = 1;
     }
     return var_r31_1125;
@@ -711,23 +507,23 @@ void checked_cast<KDParticleSystemProperty *, KDProperty>(KDProperty *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'classInfo'
 void KDParticleEffects_cpp::__sinit() {
     void *temp_r4_1456;
     void *temp_r7_1454;
 
     temp_r7_1454 = &classInfo + 0x20;
     temp_r4_1456 = &classInfo + 0x30;
-    classInfo.__vptr = &lit_stringBase0[0x7A];
+    classInfo.__vptr = "KDParticleSystem";
     classInfo.unk8 = 0;
     classInfo.unk4 = (s8 *) &KDPropertyConstructor<KDParticleSystemProperty>::Construct;
-    classInfo.unk10 = &lit_stringBase0[0x8B];
+    classInfo.unk10 = "KDParticleEmitter";
     M2C_FIELD(&classInfo, s32 *, 0x18) = 0;
     classInfo.unk14 = (void **) &KDPropertyConstructor<KDParticleEmitterProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x20) = &lit_stringBase0[0x9D];
+    M2C_FIELD(&classInfo, s8 **, 0x20) = "KDParticleLineEmitter";
     M2C_FIELD(temp_r7_1454, s8 ***, 8) = &classInfo.unk10;
     M2C_FIELD(temp_r7_1454, void *(**)(KDPropertyConstructor<KDParticleLineEmitterProperty> *), 4) = &KDPropertyConstructor<KDParticleLineEmitterProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x30) = &lit_stringBase0[0xB3];
+    M2C_FIELD(&classInfo, s8 **, 0x30) = "KDParticleBoxEmitter";
     M2C_FIELD(temp_r4_1456, s8 ***, 8) = &classInfo.unk10;
     M2C_FIELD(temp_r4_1456, struct __vt **(**)(KDPropertyConstructor<KDParticleBoxEmitterProperty> *), 4) = &KDPropertyConstructor<KDParticleBoxEmitterProperty>::Construct;
 }

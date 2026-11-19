@@ -33,27 +33,6 @@ extern MKPropDescriptor *pElecDynamiteDescriptor;
 extern MKPropDescriptor *pFireDynamiteDescriptor;
 extern MKPropDescriptor *pIceDynamiteDescriptor;
 
-static s8 lit_stringBase0[0x12] = {
-    0x72,
-    0x5F,
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x30,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-}; /* const */
-
 void Dynamite::Disable() {
     PlatformDetach();
     this->unk188.unk4 = 0;
@@ -854,7 +833,7 @@ void DynamiteDescriptor::LoadDone() {
         pEarthDynamiteDescriptor = (MKPropDescriptor *) this;
         break;
     }
-    this->unkF0 = MKModel_GetRefPointIndex(this->unk2C, lit_stringBase0);
+    this->unkF0 = MKModel_GetRefPointIndex(this->unk2C, "r_fxemit0");
 }
 #endif
 
@@ -863,7 +842,7 @@ s32 DynamiteDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1656;
 
     var_r31_1656 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (DataMap_LoadLine(arg0, &lit_stringBase0[0xA], &ElementTypeDataMap, (u32 *) &this->unkF4) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (u32 *) &this->unkF4) != 0)) {
         var_r31_1656 = 1;
     }
     return var_r31_1656;

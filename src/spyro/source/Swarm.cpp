@@ -25,27 +25,6 @@ extern s32 gViewSeed;
 
 #if 0 // DRAFT: undefined identifier 'unk70'
 static M2C_UNK lit_620;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x13] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x31,
-    0x33,
-    0,
-    0x45,
-    0x6E,
-    0x74,
-    0x69,
-    0x74,
-    0x79,
-    0x43,
-    0x6F,
-    0x75,
-    0x6E,
-    0x74,
-    0,
-}; /* const */
 
 void SwarmPropDescriptor::Init() {
     f64 sp40;
@@ -75,7 +54,7 @@ void SwarmPropDescriptor::Init() {
     sp28 = (f64) sp8;
     sp30 = (f64) sp10;
     this->unk1C = (BoundingVolume *) &this->unk70;
-    this->unk90 = MKMaterial_Create(lit_stringBase0);
+    this->unk90 = MKMaterial_Create("fx_013");
 }
 #endif
 
@@ -558,12 +537,12 @@ loop_16:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SwarmProp::LoadLine(MKIniLine *arg0) {
     if (KDProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    return arg0->LoadInt(&lit_stringBase0[7], &this->unk90.unk60, 0);
+    return arg0->LoadInt("EntityCount", &this->unk90.unk60, 0);
 }
 #endif
 

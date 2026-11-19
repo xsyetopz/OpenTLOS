@@ -59,71 +59,6 @@ static s32 lit_887 = 3;
 static s32 lit_889 = 3;
 
 #if 0 // DRAFT: undefined identifier 'ResetFury'
-static s8 lit_stringBase0[0x3E] = {
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x49,
-    0x63,
-    0x65,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x49,
-    0x63,
-    0x65,
-    0x32,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x32,
-    0x37,
-    0x5F,
-    0x49,
-    0x63,
-    0x65,
-    0x53,
-    0x70,
-    0x65,
-    0x61,
-    0x72,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x4C,
-    0x69,
-    0x71,
-    0x75,
-    0x69,
-    0x64,
-    0x49,
-    0x63,
-    0x65,
-    0x46,
-    0x58,
-    0,
-}; /* const */
-
 void IceBreathFX::ResetFury() {
     this->unk168->ResetFury();
     ((FuryFXIce2 *) (M2C_BITWISE(FuryFXIce2 *, this->unk16C)))->ResetFury();
@@ -2579,7 +2514,7 @@ void IceBreathFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void IceBreathFX::Init() {
     FuryFXIce *temp_r3_4974;
     FuryFXIce2 *temp_r3_5003;
@@ -2598,8 +2533,8 @@ void IceBreathFX::Init() {
     s32 var_r4_4958;
 
     BaseBreathFX::Init();
-    this->unk168 = checked_cast<FuryFXIce *, MKProp>(gMK->CreateProp(lit_stringBase0));
-    temp_r3_4935 = checked_cast<FuryFXIce2 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xA]));
+    this->unk168 = checked_cast<FuryFXIce *, MKProp>(gMK->CreateProp("FuryFXIce"));
+    temp_r3_4935 = checked_cast<FuryFXIce2 *, MKProp>(gMK->CreateProp("FuryFXIce2"));
     this->unk16C = M2C_BITWISE(f32, temp_r3_4935);
     temp_r3_4937 = temp_r3_4935->Current();
     if (temp_r3_4937 != NULL) {
@@ -2609,7 +2544,7 @@ void IceBreathFX::Init() {
     }
     this->unkA8 = var_r3_4944;
     var_r4_4958 = 0;
-    this->unkB4 = MKModel_Create(&lit_stringBase0[0x15], NULL, 2, NULL);
+    this->unkB4 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
     var_ctr_4962 = 0x19;
     do {
         temp_r0_4965 = var_r4_4958 + 0x20;
@@ -2617,7 +2552,7 @@ void IceBreathFX::Init() {
         *(this->unkA8 + temp_r0_4965) = 0;
         var_ctr_4962 -= 1;
     } while (var_ctr_4962 != 0);
-    temp_r3_4974 = checked_cast<IceExplosion *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x25]));
+    temp_r3_4974 = checked_cast<IceExplosion *, MKProp>(gMK->CreateProp("IceExplosion"));
     this->unk170 = temp_r3_4974;
     this->unkAC = 0.0f;
     this->unk168 = NULL;
@@ -2647,7 +2582,7 @@ void IceBreathFX::Init() {
     temp_r4_5009->unk4 = NULL;
     do {
         var_r28_5011 += 1;
-        *(this + (var_r30_5012 + 0x180)) = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x32]));
+        *(this + (var_r30_5012 + 0x180)) = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp("LiquidIceFX"));
         var_r30_5012 += 4;
     } while (var_r28_5011 < 3);
     this->unk184 = 0.0f;

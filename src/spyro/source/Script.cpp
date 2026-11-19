@@ -9,44 +9,8 @@
 
 M2C_UNK __destroy_arr(ScriptProp *, EventMessage *(*)(EventMessage *, s16), M2C_UNK, M2C_UNK); /* extern */
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
-static s8 lit_stringBase0[0x22] = {
-    0x4D,
-    0x65,
-    0x73,
-    0x73,
-    0x61,
-    0x67,
-    0x65,
-    0x25,
-    0x64,
-    0,
-    0x64,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x62,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0x45,
-    0x61,
-    0x63,
-    0x68,
-    0x4D,
-    0x65,
-    0x73,
-    0x73,
-    0x61,
-    0x67,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'PropFlagsClear(unsigned long *, unsigned int)' does not
 void ScriptProp::Execute() {
     u8 temp_r3_66;
 
@@ -146,7 +110,7 @@ void ScriptProp::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char[34], long, float)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 s32 ScriptProp::LoadLine(MKIniLine *arg0) {
     f32 var_f1_280;
     s32 temp_ret_280;
@@ -163,7 +127,7 @@ s32 ScriptProp::LoadLine(MKIniLine *arg0) {
     var_r29_287 = 0;
     var_r31_289 = 0;
 loop_3:
-    temp_ret_299 = ((EventMessage *) (this + (var_r31_289 + 0x58)))->LoadLine(arg0, Str_Printf(lit_stringBase0, var_r29_287, var_f1_280));
+    temp_ret_299 = ((EventMessage *) (this + (var_r31_289 + 0x58)))->LoadLine(arg0, Str_Printf("Message%d", var_r29_287, var_f1_280));
     var_f1_280 = M2C_BITWISE(f32, temp_ret_299);
     if (temp_ret_299 != 0) {
         return 1;
@@ -172,7 +136,7 @@ loop_3:
     var_r31_289 += 4;
     if (var_r29_287 >= 0xA) {
         var_r31_314 = 0;
-        if ((arg0->LoadFloat(&lit_stringBase0[0xA], &this->unk4C, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x10], &this->unk54, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0)) {
+        if ((arg0->LoadFloat("delay", &this->unk4C, 0) != 0) || (arg0->LoadBool("bDelayEachMessage", &this->unk54, 0) != 0) || (PropFlagsLoadLine((u32 *) &this->unk10, arg0) != 0)) {
             var_r31_314 = 1;
         }
         return var_r31_314;

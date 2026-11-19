@@ -21,8 +21,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 #if 0 // DRAFT: undefined identifier 'arg_sp23C'
-static s8 lit_stringBase0[0xD] = { 0x66, 0x78, 0x5F, 0x77, 0x6F, 0x62, 0x62, 0x6C, 0x65, 0x6D, 0x61, 0x74, 0 }; /* const */
-
 void HeatDistortPS::DrawParticle(HeatDistortPS::DistortParticle *arg1, Matrix *arg2) {
     f32 temp_f26_71;
     f32 temp_f27_73;
@@ -419,7 +417,7 @@ loop_11:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unksp1AC'
 void HeatDistortPS::Init() {
     f64 sp1C0;
     f64 sp1B8;
@@ -480,7 +478,7 @@ void HeatDistortPS::Init() {
     s32 var_ctr_1042;
     s32 var_r3_1040;
 
-    temp_r3_844 = MKMaterial_Create(lit_stringBase0);
+    temp_r3_844 = MKMaterial_Create("fx_wobblemat");
     sp90 = 0.0f;
     this->unk0 = (MKMaterial *) temp_r3_844;
     sp88 = 1.0f;

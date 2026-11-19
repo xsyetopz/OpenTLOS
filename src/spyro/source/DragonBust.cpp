@@ -36,70 +36,6 @@ static s32 lit_709 = 0;
 static u8 lit_710 = 1;
 
 #if 0 // DRAFT: expression syntax error
-static s8 lit_stringBase0[0x3D] = {
-    0x70,
-    0x5F,
-    0x53,
-    0x6B,
-    0x75,
-    0x6C,
-    0x6C,
-    0x57,
-    0x68,
-    0x69,
-    0x74,
-    0x65,
-    0,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x6F,
-    0x72,
-    0x50,
-    0x72,
-    0x6F,
-    0x70,
-    0x49,
-    0x44,
-    0,
-    0x46,
-    0x78,
-    0x30,
-    0x30,
-    0x32,
-    0x30,
-    0x5F,
-    0x65,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x73,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0,
-    0x46,
-    0x58,
-    0x5F,
-    0x49,
-    0x63,
-    0x65,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x4D,
-    0x61,
-    0x74,
-    0,
-}; /* const */
-
 void DragonBust::Deinit() {
     ManagedLight *temp_r4_58;
 
@@ -903,7 +839,7 @@ void DragonBust::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void DragonBust::LoadDone() {
     f64 sp60;
     f64 sp58;
@@ -924,7 +860,7 @@ void DragonBust::LoadDone() {
     ManagedLight *temp_r4_1604;
 
     GameProp::LoadDone();
-    this->unk124 = MKMaterial_Create(lit_stringBase0);
+    this->unk124 = MKMaterial_Create("p_SkullWhite");
     sp20 = 0.0f;
     M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
     M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
@@ -951,12 +887,12 @@ void DragonBust::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DragonBust::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1627;
 
     var_r31_1627 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0xD], (s32 *) &this->unkE0, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("ActivatorPropID", (s32 *) &this->unkE0, 0) != 0)) {
         var_r31_1627 = 1;
     }
     return var_r31_1627;
@@ -976,8 +912,8 @@ void DragonBust::Init() {
     M2C_FIELD(this, f64 *, 0x108) = (f64) M2C_FIELD(&zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x110) = (f64) M2C_FIELD(&zero, f64 *, 8);
     this->unk118 = NULL;
-    this->unk11C = MKModel_Create(&lit_stringBase0[0x1D], NULL, 2, NULL);
-    this->unk120 = MKMaterial_Create(&lit_stringBase0[0x2F]);
+    this->unk11C = MKModel_Create("Fx0020_earthshock", NULL, 2, NULL);
+    this->unk120 = MKMaterial_Create("FX_IceFuryMat");
     this->unk124 = NULL;
     this->unk128 = NULL;
     this->unk12C = 0;

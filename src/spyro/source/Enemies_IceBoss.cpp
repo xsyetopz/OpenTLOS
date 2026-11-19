@@ -96,731 +96,7 @@ static u8 lit_1266 = 1;
 #if 0 // DRAFT: identifier 'IceBoss::GetCharacterName()' redeclared
 static M2C_UNK lit_752;                                /* unable to generate initializer: unknown type; const */
 static M2C_UNK lit_753;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x2D3] = {
-    0x73,
-    0x68,
-    0x69,
-    0x65,
-    0x6C,
-    0x64,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x41,
-    0x72,
-    0x6D,
-    0x6F,
-    0x75,
-    0x72,
-    0x5F,
-    0x53,
-    0x68,
-    0x69,
-    0x65,
-    0x6C,
-    0x64,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x4B,
-    0x69,
-    0x6E,
-    0x67,
-    0x41,
-    0x72,
-    0x6D,
-    0x6F,
-    0x75,
-    0x72,
-    0x5F,
-    0x53,
-    0x68,
-    0x69,
-    0x65,
-    0x6C,
-    0x64,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x4B,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x25,
-    0x73,
-    0x41,
-    0x72,
-    0x6D,
-    0x6F,
-    0x75,
-    0x72,
-    0x5F,
-    0x25,
-    0x73,
-    0,
-    0x62,
-    0x6F,
-    0x64,
-    0x79,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x41,
-    0x72,
-    0x6D,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x41,
-    0x72,
-    0x6D,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x47,
-    0x6C,
-    0x6F,
-    0x76,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x47,
-    0x6C,
-    0x6F,
-    0x76,
-    0x65,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x46,
-    0x61,
-    0x63,
-    0x65,
-    0x50,
-    0x6C,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x43,
-    0x61,
-    0x70,
-    0x65,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x41,
-    0x72,
-    0x6D,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x41,
-    0x72,
-    0x6D,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x47,
-    0x6C,
-    0x6F,
-    0x76,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x47,
-    0x6C,
-    0x6F,
-    0x76,
-    0x65,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x54,
-    0x6F,
-    0x72,
-    0x73,
-    0x6F,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x54,
-    0x6F,
-    0x72,
-    0x73,
-    0x6F,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x53,
-    0x68,
-    0x6F,
-    0x75,
-    0x6C,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x4C,
-    0x65,
-    0x67,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x4C,
-    0x65,
-    0x67,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x53,
-    0x6B,
-    0x69,
-    0x72,
-    0x74,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x4C,
-    0x65,
-    0x67,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x4C,
-    0x65,
-    0x67,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x48,
-    0x6F,
-    0x72,
-    0x6E,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x52,
-    0x5F,
-    0x48,
-    0x6F,
-    0x72,
-    0x6E,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x48,
-    0x6F,
-    0x72,
-    0x6E,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4C,
-    0x5F,
-    0x48,
-    0x6F,
-    0x72,
-    0x6E,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x4D,
-    0x61,
-    0x69,
-    0x6E,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x45,
-    0x6E,
-    0x65,
-    0x72,
-    0x67,
-    0x79,
-    0,
-    0x42,
-    0x4F,
-    0x44,
-    0x59,
-    0x5F,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x53,
-    0x77,
-    0x6F,
-    0x72,
-    0x64,
-    0,
-    0x41,
-    0x78,
-    0x65,
-    0,
-    0x62,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x53,
-    0x77,
-    0x6F,
-    0x72,
-    0x64,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x4B,
-    0x69,
-    0x6E,
-    0x67,
-    0x53,
-    0x77,
-    0x6F,
-    0x72,
-    0x64,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x53,
-    0x74,
-    0x6F,
-    0x6D,
-    0x70,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x53,
-    0x74,
-    0x6F,
-    0x6D,
-    0x70,
-    0,
-    0x4F,
-    0x6E,
-    0x50,
-    0x68,
-    0x61,
-    0x73,
-    0x65,
-    0x31,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x50,
-    0x68,
-    0x61,
-    0x73,
-    0x65,
-    0x32,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4F,
-    0x6E,
-    0x50,
-    0x68,
-    0x61,
-    0x73,
-    0x65,
-    0x33,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x50,
-    0x68,
-    0x61,
-    0x73,
-    0x65,
-    0x43,
-    0x61,
-    0x6D,
-    0x65,
-    0x72,
-    0x61,
-    0x49,
-    0x44,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0x31,
-    0x49,
-    0x44,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0x32,
-    0x49,
-    0x44,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0x33,
-    0x49,
-    0x44,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0x34,
-    0x49,
-    0x44,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x69,
-    0x74,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x45,
-    0x61,
-    0x72,
-    0x74,
-    0x68,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x77,
-    0x61,
-    0x76,
-    0x65,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x6C,
-    0x53,
-    0x68,
-    0x69,
-    0x65,
-    0x6C,
-    0x64,
-    0,
-    0x48,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x68,
-    0x75,
-    0x72,
-    0x74,
-    0x50,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x50,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x70,
-    0x65,
-    0x72,
-    0x63,
-    0x65,
-    0x6E,
-    0x74,
-    0x61,
-    0x67,
-    0x65,
-    0x25,
-    0x73,
-    0,
-    0x70,
-    0x68,
-    0x72,
-    0x61,
-    0x73,
-    0x65,
-    0x44,
-    0x65,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0,
-}; /* const */
+
 static s32 lit_959 = 0x10000;                          /* const */
 
 s32 IceBoss::GetCharacterName() {
@@ -2326,15 +1602,15 @@ void IceBoss::ResetWeapons() {
 void IceBoss::InitShield() {
     s8 *var_r4_3636;
 
-    this->unkEBC = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, lit_stringBase0);
-    this->unkEC0 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 1, this->unk4, lit_stringBase0);
+    this->unkEBC = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "shield");
+    this->unkEC0 = (u32) Tools_GetMatchingSubObjectIndex((SubObjectType) 1, this->unk4, "shield");
     this->unkEC4 = 5;
     this->unkEC8 = 0;
     this->unkEC9 = 0;
     this->unkECC = 0.0f;
-    var_r4_3636 = &lit_stringBase0[0x1C];
+    var_r4_3636 = "ElecKingArmour_Shield";
     if (IsIceKing() != 0) {
-        var_r4_3636 = &lit_stringBase0[7];
+        var_r4_3636 = "IceBossArmour_Shield";
     }
     this->unkED0 = checked_cast<Shatterable *, MKProp>(gMK->CreateProp(var_r4_3636));
 }
@@ -2366,11 +1642,11 @@ void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
     M2C_FIELD(temp_r31_3675, f32 *, 0xE64) = 120.00001f;
     M2C_FIELD(temp_r31_3675, f32 *, 0xE68) = 180.0f;
     temp_ret_3691 = IsIceKing();
-    var_r4_3695 = &lit_stringBase0[0x3A];
+    var_r4_3695 = "ElecKing";
     if (temp_ret_3691 != 0) {
-        var_r4_3695 = &lit_stringBase0[0x32];
+        var_r4_3695 = "IceBoss";
     }
-    temp_r3_3704 = Str_Printf(&lit_stringBase0[0x43], var_r4_3695, arg1, M2C_BITWISE(f32, temp_ret_3691));
+    temp_r3_3704 = Str_Printf("%sArmour_%s", var_r4_3695, arg1, M2C_BITWISE(f32, temp_ret_3691));
     temp_r3_3706 = strlen(temp_r3_3704);
     temp_r30_3707 = temp_r3_3706 + 1;
     temp_r3_3708 = temp_r3_3706->Current();
@@ -2388,7 +1664,7 @@ void IceBoss::InitWeapon(int arg0, const char *arg1, int arg2, int arg3) {
 #if 0 // DRAFT: illegal use of incomplete struct/union/class 'SubObjectType'
 void IceBoss::InitBodyPart(IceBossBodyPart *arg0, int arg1, const char *arg2, int arg3, int arg4, SubObjectType arg5, bool arg6) {
     arg0->unk0 = (s32) Tools_GetMatchingSubObjectIndex(arg5, this->unk4, arg2);
-    arg0->unk4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 1, this->unk4, &lit_stringBase0[0x4F]);
+    arg0->unk4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 1, this->unk4, "body");
     arg0->unk8 = arg3;
     arg0->unkC = arg4;
     arg0->unk10 = (s32) arg5;
@@ -2421,12 +1697,12 @@ void IceBoss::InitBodyPart(int arg0, const char *arg1, int arg2, int arg3, SubOb
     M2C_FIELD(temp_r31_3803, Shatterable **, 0xB60) = NULL;
     M2C_FIELD(temp_r31_3803, s8 **, 0xB5C) = NULL;
     temp_ret_3813 = IsIceKing();
-    var_r4_3817 = &lit_stringBase0[0x3A];
+    var_r4_3817 = "ElecKing";
     if (temp_ret_3813 != 0) {
-        var_r4_3817 = &lit_stringBase0[0x32];
+        var_r4_3817 = "IceBoss";
     }
     if ((arg2 == 0) && (arg5 != 0)) {
-        temp_r3_3830 = Str_Printf(&lit_stringBase0[0x43], var_r4_3817, arg1, M2C_BITWISE(f32, temp_ret_3813));
+        temp_r3_3830 = Str_Printf("%sArmour_%s", var_r4_3817, arg1, M2C_BITWISE(f32, temp_ret_3813));
         temp_r3_3832 = strlen(temp_r3_3830);
         temp_r30_3833 = temp_r3_3832 + 1;
         temp_r3_3834 = temp_r3_3832->Current();
@@ -2508,40 +1784,40 @@ void IceBoss::LoadDone() {
 
     Enemy::LoadDone();
     this->unk110.unk930 = this->unk110.unk92C;
-    InitBodyPart(0xE, &lit_stringBase0[0x59], 0, 1, (SubObjectType) 0, 1U);
-    InitBodyPart(0xF, &lit_stringBase0[0x67], 1, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(0x10, &lit_stringBase0[0x75], 0, 2, (SubObjectType) 0, 1U);
-    InitBodyPart(0x11, &lit_stringBase0[0x85], 2, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(1, &lit_stringBase0[0x95], 0, 4, (SubObjectType) 0, 1U);
-    InitBodyPart(0, &lit_stringBase0[0xA4], 0, 5, (SubObjectType) 2, 0U);
-    InitBodyPart(5, &lit_stringBase0[0xAE], 0, 6, (SubObjectType) 0, 1U);
-    InitBodyPart(6, &lit_stringBase0[0xBC], 6, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(7, &lit_stringBase0[0xCA], 0, 7, (SubObjectType) 0, 1U);
-    InitBodyPart(8, &lit_stringBase0[0xDA], 7, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(3, &lit_stringBase0[0xEA], 0, 8, (SubObjectType) 0, 1U);
-    InitBodyPart(4, &lit_stringBase0[0xF8], 8, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(0xD, &lit_stringBase0[0x106], 0, 9, (SubObjectType) 0, 1U);
-    InitBodyPart(0xB, &lit_stringBase0[0x116], 0, 0xA, (SubObjectType) 0, 1U);
-    InitBodyPart(0xC, &lit_stringBase0[0x124], 0xA, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(2, &lit_stringBase0[0x132], 0, 0xB, (SubObjectType) 0, 1U);
-    InitBodyPart(0x14, &lit_stringBase0[0x13D], 0, 0xC, (SubObjectType) 0, 1U);
-    InitBodyPart(0x15, &lit_stringBase0[0x14B], 0xC, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(0x12, &lit_stringBase0[0x159], 0, 0xD, (SubObjectType) 0, 1U);
-    InitBodyPart(0x13, &lit_stringBase0[0x168], 0xD, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(9, &lit_stringBase0[0x177], 0, 0xE, (SubObjectType) 0, 1U);
-    InitBodyPart(0xA, &lit_stringBase0[0x186], 0xE, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart((IceBossBodyPart *) &this->unk110.unkA14, 0, &lit_stringBase0[0x195], 0, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(0x16, &lit_stringBase0[0x19F], 0, 0xF, (SubObjectType) 0, 0U);
-    InitBodyPart(0x17, &lit_stringBase0[0x1AB], 0, 0xF, (SubObjectType) 0, 0U);
-    InitWeapon(0, &lit_stringBase0[0x1B0], 0, 5);
-    InitWeapon(1, &lit_stringBase0[0x1B6], 5, 0xB);
-    InitWeapon(2, &lit_stringBase0[0x1B0], 0xB, 0xF);
+    InitBodyPart(0xE, "R_Arm_01", 0, 1, (SubObjectType) 0, 1U);
+    InitBodyPart(0xF, "R_Arm_02", 1, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(0x10, "R_Glove_01", 0, 2, (SubObjectType) 0, 1U);
+    InitBodyPart(0x11, "R_Glove_02", 2, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(1, "FacePlate", 0, 4, (SubObjectType) 0, 1U);
+    InitBodyPart(0, "Cape", 0, 5, (SubObjectType) 2, 0U);
+    InitBodyPart(5, "L_Arm_01", 0, 6, (SubObjectType) 0, 1U);
+    InitBodyPart(6, "L_Arm_02", 6, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(7, "L_Glove_01", 0, 7, (SubObjectType) 0, 1U);
+    InitBodyPart(8, "L_Glove_02", 7, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(3, "Torso_01", 0, 8, (SubObjectType) 0, 1U);
+    InitBodyPart(4, "Torso_02", 8, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(0xD, "L_Shoulder", 0, 9, (SubObjectType) 0, 1U);
+    InitBodyPart(0xB, "L_Leg_01", 0, 0xA, (SubObjectType) 0, 1U);
+    InitBodyPart(0xC, "L_Leg_02", 0xA, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(2, "Skirt", 0, 0xB, (SubObjectType) 0, 1U);
+    InitBodyPart(0x14, "R_Leg_01", 0, 0xC, (SubObjectType) 0, 1U);
+    InitBodyPart(0x15, "R_Leg_02", 0xC, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(0x12, "R_Horn_01", 0, 0xD, (SubObjectType) 0, 1U);
+    InitBodyPart(0x13, "R_Horn_02", 0xD, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(9, "L_Horn_01", 0, 0xE, (SubObjectType) 0, 1U);
+    InitBodyPart(0xA, "L_Horn_02", 0xE, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart((IceBossBodyPart *) &this->unk110.unkA14, 0, "Main", 0, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(0x16, "Energy", 0, 0xF, (SubObjectType) 0, 0U);
+    InitBodyPart(0x17, "Glow", 0, 0xF, (SubObjectType) 0, 0U);
+    InitWeapon(0, "Sword", 0, 5);
+    InitWeapon(1, "Axe", 5, 0xB);
+    InitWeapon(2, "Sword", 0xB, 0xF);
     InitShield();
     SetAnim((AnimSequenceType) 1, 0, 0, 0.15f, 0U, 0U);
-    this->unk110.unkA0C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x1BA]);
-    var_r4_4237 = &lit_stringBase0[0x1CE];
+    this->unk110.unkA0C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "breath");
+    var_r4_4237 = "ElecKingSword";
     if (IsIceKing() != 0) {
-        var_r4_4237 = &lit_stringBase0[0x1C1];
+        var_r4_4237 = "IceBossSword";
     }
     this->unkF94 = gMK->CreateProp(var_r4_4237);
     temp_r3_4244 = this->unkF94;
@@ -2573,14 +1849,14 @@ void IceBoss::LoadDone() {
     sp30 = (f64) sp10;
     sp38 = (f64) sp18;
     sp40 = (f64) sp20;
-    ((MKCollisionManager *) (M2C_FIELD(gMK->__vptr, MKCollisionManager *(**)(MKSceneManager *, f64, f64, f64, f32), 0x84)(gMK, (f64) sp18, (f64) sp10, (f64) sp8, 1.0f)))->AddCapsule((MKVector3 *) &this->unkEE0.unk80, (MKVector3 *) &this->unkF70, 80.0f, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, this->unkF90, M2C_FIELD(temp_r30_4277, u32 *, 0x70));
+    ((MKCollisionManager *) (gMK->GetCollisionManager((f64) sp18, (f64) sp10, (f64) sp8, 1.0f)))->AddCapsule((MKVector3 *) &this->unkEE0.unk80, (MKVector3 *) &this->unkF70, 80.0f, *((MKVector4 *) &sp38), *((MKVector4 *) &sp28), (MKCollisionMode) 2, this->unkF90, M2C_FIELD(temp_r30_4277, u32 *, 0x70));
     temp_r0_4312 = this->unk110.unk928->unk1D0;
     switch (temp_r0_4312) {                         /* irregular */
     case 2:
-        this->unkFDC = gMK->CreateProp(&lit_stringBase0[0x1DC]);
+        this->unkFDC = gMK->CreateProp("IceBossStomp");
         break;
     case 1:
-        this->unkFDC = gMK->CreateProp(&lit_stringBase0[0x1E9]);
+        this->unkFDC = gMK->CreateProp("ElecBossStomp");
         break;
     }
     temp_r3_4335 = this->unkFDC;
@@ -2601,7 +1877,7 @@ s32 IceBoss::LoadLine(MKIniLine *arg0) {
     s32 var_r31_4375;
 
     var_r31_4375 = 0;
-    if ((Enemy::LoadLine(arg0) != 0) || (this->unkFE4.LoadLine(arg0, &lit_stringBase0[0x1F7]) != 0) || (this->unkFE8.LoadLine(arg0, &lit_stringBase0[0x203]) != 0) || (this->unkFEC.LoadLine(arg0, &lit_stringBase0[0x20F]) != 0) || (arg0->LoadInt(&lit_stringBase0[0x21B], (s32 *) &this->unk110.unkA00, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x229], (s32 *) &this->unkF98, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x237], (s32 *) &this->unkF9C, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x245], (s32 *) &this->unkFA0, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x253], (s32 *) &this->unkFA4, 0) != 0)) {
+    if ((Enemy::LoadLine(arg0) != 0) || (this->unkFE4.LoadLine(arg0, "OnPhase1End") != 0) || (this->unkFE8.LoadLine(arg0, "OnPhase2End") != 0) || (this->unkFEC.LoadLine(arg0, "OnPhase3End") != 0) || (arg0->LoadInt("PhaseCameraID", (s32 *) &this->unk110.unkA00, 0) != 0) || (arg0->LoadInt("Stalactite1ID", (s32 *) &this->unkF98, 0) != 0) || (arg0->LoadInt("Stalactite2ID", (s32 *) &this->unkF9C, 0) != 0) || (arg0->LoadInt("Stalactite3ID", (s32 *) &this->unkFA0, 0) != 0) || (arg0->LoadInt("Stalactite4ID", (s32 *) &this->unkFA4, 0) != 0)) {
         var_r31_4375 = 1;
     }
     return var_r31_4375;
@@ -2732,15 +2008,15 @@ void IceBoss::Init() {
     this->unk100C = 0.0f;
     this->unk1014.Init(0.75f, 0.75f);
     this->unk103C.Init(0.75f, 0.75f);
-    this->unk1068 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x261]));
+    this->unk1068 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
     this->unkFE4.Init();
     this->unkFE8.Init();
     this->unkFEC.Init();
     this->unk110.unkA00 = NULL;
     this->unkFBD = 0;
     this->unk1064 = 0;
-    this->unkFF4 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x26B]));
-    this->unkFF8 = checked_cast<ElementalShield *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x27A]));
+    this->unkFF4 = checked_cast<EarthShockwave *, MKProp>(gMK->CreateProp("EarthShockwave"));
+    this->unkFF8 = checked_cast<ElementalShield *, MKProp>(gMK->CreateProp("ElementalShield"));
     M2C_FIELD(this, f32 *, 0xF80) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF84) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF88) = 0.0f;
@@ -2785,24 +2061,24 @@ s32 IceBossDescriptor::LoadLine(MKIniLine *arg0) {
     if (EnemyDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0x28A]) != 0) {
+    if (arg0->IsField("HurtPhrases") != 0) {
         var_r29_4790 = arg0->unkC->GetSubLine(arg0);
 loop_11:
         if (var_r29_4790 != NULL) {
             strcpy(&sp2C, var_r29_4790->GetFieldName());
-            if (strnicmp(&lit_stringBase0[0x296], &sp2C, 0xA) == 0) {
+            if (strnicmp("hurtPhrase", &sp2C, 0xA) == 0) {
                 strcpy(&spC, &sp36);
                 temp_ret_4810 = atoi(&spC);
                 if (temp_ret_4810 <= 3) {
-                    var_r29_4790->LoadString(Str_Printf(&lit_stringBase0[0x2A1], &spC, M2C_BITWISE(f32, temp_ret_4810)), &sp8, 0);
+                    var_r29_4790->LoadString(Str_Printf("hurtPhrase%s", &spC, M2C_BITWISE(f32, temp_ret_4810)), &sp8, 0);
                     strcpy(this + (((atoi(&spC) - 1) * 0x24) + 0x2E0), sp8);
                 }
-            } else if (strnicmp(&lit_stringBase0[0x2AE], &sp2C, 0xA) == 0) {
+            } else if (strnicmp("Percentage", &sp2C, 0xA) == 0) {
                 strcpy(&spC, &sp36);
                 if (atoi(&spC) <= 3) {
                     temp_ret_4850 = atoi(&spC);
                     temp_r5_4853 = (temp_ret_4850 - 1) * 0x24;
-                    var_r29_4790->LoadFloat(Str_Printf(&lit_stringBase0[0x2B9], &spC, temp_r5_4853, M2C_BITWISE(f32, temp_ret_4850)), this + (temp_r5_4853 + 0x300), 0);
+                    var_r29_4790->LoadFloat(Str_Printf("percentage%s", &spC, temp_r5_4853, M2C_BITWISE(f32, temp_ret_4850)), this + (temp_r5_4853 + 0x300), 0);
                 }
             }
             var_r29_4790 = var_r29_4790->unkC->GetNextLine(var_r29_4790);
@@ -2810,7 +2086,7 @@ loop_11:
         }
         return 1;
     }
-    return arg0->LoadFloat(&lit_stringBase0[0x2C6], &this->unk34C, 0);
+    return arg0->LoadFloat("phraseDelay", &this->unk34C, 0);
 }
 #endif
 
@@ -2835,7 +2111,7 @@ void IceBossDescriptor::Init() {
     var_r31_4930 = 0;
     do {
         temp_r29_4932 = this + var_r31_4930;
-        strcpy(temp_r29_4932 + 0x2E0, &lit_stringBase0[0x2D2]);
+        strcpy(temp_r29_4932 + 0x2E0, "");
         var_r28_4929 += 1;
         M2C_FIELD(temp_r29_4932, f32 *, 0x300) = 0.0f;
         var_r31_4930 += 0x24;

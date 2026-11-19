@@ -37,65 +37,6 @@ static s32 lit_688 = 0;
 static u8 lit_689 = 1;
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
-static s8 lit_stringBase0[0x39] = {
-    0x70,
-    0x5F,
-    0x64,
-    0x65,
-    0x62,
-    0x72,
-    0x69,
-    0x73,
-    0x5F,
-    0x6C,
-    0x61,
-    0x76,
-    0x61,
-    0,
-    0x6C,
-    0x69,
-    0x71,
-    0x75,
-    0x69,
-    0x64,
-    0x69,
-    0x63,
-    0x65,
-    0,
-    0x6C,
-    0x69,
-    0x71,
-    0x75,
-    0x69,
-    0x64,
-    0x69,
-    0x63,
-    0x65,
-    0x62,
-    0x6C,
-    0x6F,
-    0x62,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x38,
-    0x30,
-    0,
-    0x43,
-    0x72,
-    0x61,
-    0x73,
-    0x68,
-    0x4D,
-    0x69,
-    0x73,
-    0x74,
-    0x50,
-    0x53,
-    0,
-}; /* const */
 static f32 IMPACT_LIGHT_RADIUS = 1000.0f;           /* const */
 
 void LiquidFX::SpawnGroundCollisionFX(LFX_Blob *arg0) {
@@ -1964,13 +1905,13 @@ void LiquidFX::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void LiquidFX::LoadDone() {
     GameProp::LoadDone();
-    this->unk3F64 = MKMaterial_Create(lit_stringBase0);
-    this->unk3F6C = MKMaterial_Create(&lit_stringBase0[0xE]);
-    this->unk3F70 = MKMaterial_Create(&lit_stringBase0[0x18]);
-    this->unk3F74 = MKMaterial_Create(&lit_stringBase0[0x26]);
+    this->unk3F64 = MKMaterial_Create("p_debris_lava");
+    this->unk3F6C = MKMaterial_Create("liquidice");
+    this->unk3F70 = MKMaterial_Create("liquidiceblob");
+    this->unk3F74 = MKMaterial_Create("fx_380");
 }
 #endif
 
@@ -2007,7 +1948,7 @@ void LiquidFX::Init() {
 #if 0 // DRAFT: undefined identifier 'unkE4'
 void LiquidFXDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = checked_cast<CrashMistPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x2D]));
+    this->unkE4 = checked_cast<CrashMistPS *, MKProp>(gMK->CreateProp("CrashMistPS"));
 }
 #endif
 
@@ -2043,7 +1984,7 @@ void LiquidFXDescriptor::Init() {
         M2C_FIELD(pFirstDesc.unk0, LiquidFXDescriptor **, 0xEC) = this;
     }
     pFirstDesc.unk0 = (s8 *) this;
-    this->unkE8 = M2C_FIELD(gMK->__vptr, s32 (**)(MKSceneManager *), 0x7C)(gMK);
+    this->unkE8 = gMK->GetWorkingChunk();
 }
 #endif
 

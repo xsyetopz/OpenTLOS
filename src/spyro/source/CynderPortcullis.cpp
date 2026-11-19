@@ -2,7 +2,6 @@
 #include "common/Source/MKBaseParticleSystem.h"
 #include "common/Source/MKIni.h"
 #include "common/Source/MKProp.h"
-#include "spyro/source/EnemyGenerator.h"
 #include "spyro/source/GameProp.h"
 #include "spyro/source/KDPropEx.h"
 #include "unplaced_templates.h"
@@ -37,17 +36,15 @@ void CynderPortcullis::LoadDone() {
     this->unkC8.LoadDone();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 s32 CynderPortcullis::LoadLine(MKIniLine *arg0) {
     s32 var_r31_155;
 
     var_r31_155 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (M2C_FIELD(this->unkC8.__vptr, u8 (**)(EnemyGenerator *, MKIniLine *), 8)(&this->unkC8, arg0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unkC8.LoadLine(arg0) != 0)) {
         var_r31_155 = 1;
     }
     return var_r31_155;
 }
-#endif
 
 void CynderPortcullis::Deinit() {
     this->unkC8.Deinit();

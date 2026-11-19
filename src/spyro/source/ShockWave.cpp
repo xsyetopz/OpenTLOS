@@ -19,100 +19,8 @@
 
 extern f32 gUpdateTimeDelta;
 extern void **gb;
-#if 0 // DRAFT: undefined identifier 'arg_sp14'
-static s8 lit_stringBase0[0x5A] = {
-    0x73,
-    0x65,
-    0x6E,
-    0x64,
-    0x20,
-    0x25,
-    0x73,
-    0x20,
-    0x25,
-    0x64,
-    0,
-    0x50,
-    0x30,
-    0x31,
-    0x38,
-    0x32,
-    0x5F,
-    0x44,
-    0x75,
-    0x73,
-    0x74,
-    0x77,
-    0x61,
-    0x76,
-    0x65,
-    0,
-    0x5A,
-    0x5F,
-    0x52,
-    0x6F,
-    0x6F,
-    0x74,
-    0,
-    0x5A,
-    0x5F,
-    0x52,
-    0x69,
-    0x6D,
-    0x5F,
-    0x4E,
-    0x6F,
-    0x72,
-    0x74,
-    0x68,
-    0,
-    0x5A,
-    0x5F,
-    0x52,
-    0x69,
-    0x6D,
-    0x5F,
-    0x45,
-    0x61,
-    0x73,
-    0x74,
-    0,
-    0x5A,
-    0x5F,
-    0x52,
-    0x69,
-    0x6D,
-    0x5F,
-    0x53,
-    0x6F,
-    0x75,
-    0x74,
-    0x68,
-    0,
-    0x5A,
-    0x5F,
-    0x52,
-    0x69,
-    0x6D,
-    0x5F,
-    0x57,
-    0x65,
-    0x73,
-    0x74,
-    0,
-    0x50,
-    0x30,
-    0x31,
-    0x39,
-    0x31,
-    0x5F,
-    0x57,
-    0x61,
-    0x72,
-    0x70,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp14'
 void ShockWave::UpdateShockWave(int arg0) {
     f32 temp_f0_115;
     f32 temp_f0_181;
@@ -497,7 +405,7 @@ void ShockWave::Update() {
                     sp68 = temp_f0_800 * 205.0f;
                     temp_ret_815 = M2C_FIELD(*gb, u8 (**)(void **, M2C_UNK, f32), 0x50)(gb, M2C_ERROR(/* unknown instruction: ps_muls0 $f1, $f1, $f31 */), temp_f2_796);
                     if (temp_ret_815 == 0) {
-                        Console_Execute(Str_Printf(lit_stringBase0, this->unk158, this->unk154, M2C_BITWISE(f32, temp_ret_815)));
+                        Console_Execute(Str_Printf("send %s %d", this->unk158, this->unk154, M2C_BITWISE(f32, temp_ret_815)));
                     }
                     if ((u8) this->unk161 != 0) {
                         sp80 = 7;
@@ -616,7 +524,7 @@ void ShockWave::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ShockWave::LoadDone() {
     Animation *temp_r3_1075;
     MKHeap **temp_r3_1102;
@@ -636,14 +544,14 @@ void ShockWave::LoadDone() {
     do {
         temp_r29_1065 = this + var_r30_1056;
         M2C_FIELD(temp_r29_1065, s8 *, 0x90) = 0;
-        M2C_FIELD(temp_r29_1065, MKModel **, 0xA0) = MKModel_Create(&lit_stringBase0[0xB], &lit_stringBase0[0xB], 2, NULL);
+        M2C_FIELD(temp_r29_1065, MKModel **, 0xA0) = MKModel_Create("P0182_Dustwave", "P0182_Dustwave", 2, NULL);
         temp_r3_1075 = MKModel_GetAnimation(M2C_FIELD(temp_r29_1065, MKModel **, 0xA0));
         temp_r3_1075->EnableCustomMatrices(1U);
-        M2C_FIELD(temp_r29_1065, s32 *, 0xA4) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x1A]);
-        M2C_FIELD(temp_r29_1065, s32 *, 0xA8) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x21]);
-        M2C_FIELD(temp_r29_1065, s32 *, 0xAC) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x2D]);
-        M2C_FIELD(temp_r29_1065, s32 *, 0xB0) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x38]);
-        M2C_FIELD(temp_r29_1065, s32 *, 0xB4) = temp_r3_1075->GetNodeIndex(&lit_stringBase0[0x44]);
+        M2C_FIELD(temp_r29_1065, s32 *, 0xA4) = temp_r3_1075->GetNodeIndex("Z_Root");
+        M2C_FIELD(temp_r29_1065, s32 *, 0xA8) = temp_r3_1075->GetNodeIndex("Z_Rim_North");
+        M2C_FIELD(temp_r29_1065, s32 *, 0xAC) = temp_r3_1075->GetNodeIndex("Z_Rim_East");
+        M2C_FIELD(temp_r29_1065, s32 *, 0xB0) = temp_r3_1075->GetNodeIndex("Z_Rim_South");
+        M2C_FIELD(temp_r29_1065, s32 *, 0xB4) = temp_r3_1075->GetNodeIndex("Z_Rim_West");
         temp_r3_1102 = MKModel_GetBoundingVolume(M2C_FIELD(temp_r29_1065, MKModel **, 0xA0), (SubObjectType) 0, -1);
         var_r28_1057 += 1;
         var_r30_1056 += 0x28;
@@ -652,6 +560,6 @@ void ShockWave::LoadDone() {
         this->unk140 = M2C_FIELD(temp_r3_1102, f64 *, 0x10);
         this->unk148 = M2C_FIELD(temp_r3_1102, f64 *, 0x18);
     } while (var_r28_1057 < 4);
-    this->unk15C = MKModel_Create(&lit_stringBase0[0x4F], NULL, 2, NULL);
+    this->unk15C = MKModel_Create("P0191_Warp", NULL, 2, NULL);
 }
 #endif

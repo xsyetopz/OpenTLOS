@@ -20,46 +20,14 @@ s32 strcmpi(s8 *);                                  /* extern */
 M2C_UNK strtok(s8 *, s8 *);                         /* extern */
 extern f32 gUpdateTimeDelta;
 static s8 subFileName_791[0x100];
-#if 0 // DRAFT: function call 'strncpy(signed char[256], const char *, unsigned int)' does
-static s8 lit_stringBase0[0x1E] = {
-    0x2E,
-    0x73,
-    0x75,
-    0x62,
-    0,
-    0x25,
-    0x73,
-    0x2E,
-    0x73,
-    0x63,
-    0x32,
-    0,
-    0x47,
-    0x45,
-    0x4E,
-    0x45,
-    0x52,
-    0x41,
-    0x4C,
-    0,
-    0x56,
-    0x65,
-    0x72,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x2E,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'strncpy(signed char[256], const char *, unsigned int)' does
 s8 *KDSynkerPlayer3::GetSubtitlesFileName(const char *arg0) {
     strncpy(subFileName_791, arg0, 6U);
     GameLanguage_GetCode(-1);
     subFileName_791[6] = (s8) *M2C_ERROR(/* Read from unset register $r3 */);
     subFileName_791[7] = (s8) M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), u8 *, 1);
-    strcpy(&subFileName_791[8], lit_stringBase0);
+    strcpy(&subFileName_791[8], ".sub");
     return subFileName_791;
 }
 #endif
@@ -80,7 +48,7 @@ void KDSynkerPlayer3::GetActorModel(int arg0) {
     ((KDSP_Actor *) (this->unk100.unk0 + (arg0 * 0x138)))->GetModel();
 }
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char *, signed char *)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void KDSynkerPlayer3::ParseSK2() {
     MKHeap *temp_r3_140;
     s32 var_r29_133;
@@ -92,7 +60,7 @@ void KDSynkerPlayer3::ParseSK2() {
     if ((MKIni *) this->unk54 == NULL) {
         operator new(0x50U, NULL, 0);
         this->unk54 = M2C_ERROR(/* Read from unset register $r3 */);
-        this->unk54->Init(Str_Printf(&lit_stringBase0[5], &this->unk28), 1, NULL);
+        this->unk54->Init(Str_Printf("%s.sc2", &this->unk28), 1, NULL);
     }
     ParseHeader();
     this->unk100.unk10.HeapAddSize(&this->unk4, this->unk54);
@@ -132,12 +100,12 @@ void KDSynkerPlayer3::ParseSK2() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: function call 'strcmpi(const char[8])' does not match
 void KDSynkerPlayer3::ParseHeader() {
     MKIniLine *temp_r3_230;
     MKIniLine *var_r30_236;
 
-    temp_r3_230 = this->unk54->GotoLine(&lit_stringBase0[0xC], NULL);
+    temp_r3_230 = this->unk54->GotoLine("GENERAL", NULL);
     if (temp_r3_230 != NULL) {
         var_r30_236 = temp_r3_230->unkC->GetSubLine(temp_r3_230);
 loop_5:
@@ -145,7 +113,7 @@ loop_5:
 
         } else {
             var_r30_236->GetFieldName();
-            if (strcmpi(&lit_stringBase0[0x14]) == 0) {
+            if (strcmpi("Version") == 0) {
                 var_r30_236->GetInt(0);
                 return;
             }
@@ -548,7 +516,7 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
         this->unk50 &= 0xFFFFFFEF;
     }
     strcpy(&this->unk28, arg0);
-    strtok(&this->unk28, &lit_stringBase0[0x1C]);
+    strtok(&this->unk28, ".");
     this->unk58 = arg3 != NULL;
     this->unk54 = arg3;
     this->unk4.unk8 = 0x40;
@@ -582,6 +550,6 @@ void KDSynkerPlayer3::Init(const char *arg0, bool arg1, bool arg2, MKIni *arg3) 
         return;
     }
     this->unk4C = 1;
-    this->unk24C = MKPackage_QLoad(Str_Printf(&lit_stringBase0[5], &this->unk28, 0.0f), 0);
+    this->unk24C = MKPackage_QLoad(Str_Printf("%s.sc2", &this->unk28, 0.0f), 0);
 }
 #endif

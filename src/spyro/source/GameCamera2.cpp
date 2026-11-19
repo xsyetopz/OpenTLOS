@@ -576,9 +576,9 @@ loop_26:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' != 'int'
 void GameCamera2::SnapToSafetySetNextMode() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(), 0x58)() != 0) {
+    if (IsUnderwater() != 0) {
         this->unk178 = 0;
         return;
     }
@@ -841,9 +841,9 @@ void GameCamera2::AdjustPitchWithFloorUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal operands 'void' == 'int'
 void GameCamera2::AdjustPitchWithFloorExit() {
-    if (M2C_FIELD(this->__vptr, u8 (**)(), 0x58)() == 0) {
+    if (IsUnderwater() == 0) {
         this->unk54->DisablePitchOverride(5.0f);
     }
     this->unk158 |= 0x20;
@@ -1268,7 +1268,7 @@ void GameCamera2::SmoothBehindHeroUpdate() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk10'
 void GameCamera2::SlowMoAirCombatUpdate() {
     f64 sp20;
     f64 sp18;
@@ -1280,7 +1280,7 @@ void GameCamera2::SlowMoAirCombatUpdate() {
     void *temp_r3_2487;
 
     if (this->unk294 != 0.0f) {
-        if (M2C_FIELD(this->__vptr, u8 (**)(), 0x5C)() != 0) {
+        if (PlayerRotatedCamera() != 0) {
             KDMath_GetYaw((Matrix *) &this->unk50->unk10);
             temp_r3_2434 = this->unk8;
             var_f2_2436 = 0.0f;
@@ -1297,7 +1297,7 @@ void GameCamera2::SlowMoAirCombatUpdate() {
         this->unk124 += M2C_ERROR(/* Read from unset register $f1 */);
         return;
     }
-    if (M2C_FIELD(this->__vptr, u8 (**)(), 0x5C)() != 0) {
+    if (PlayerRotatedCamera() != 0) {
         KDMath_GetYaw((Matrix *) &this->unk50->unk10);
         temp_r3_2487 = this->unk8;
         var_f2_2489 = 0.0f;
@@ -1339,7 +1339,7 @@ void GameCamera2::SlowMoAirCombatEnter() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: undefined identifier 'sp8'
 void GameCamera2::GlideSetYawOffset() {
     f32 sp28;
     f64 sp20;
@@ -2351,14 +2351,12 @@ f32 GameCamera2::GetIdealFieldOfView() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void GameCamera2::GetFieldOfView() {
     if (this->unk2B4 != 0.0f) {
         return;
     }
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x54)();
+    GetIdealFieldOfView();
 }
-#endif
 
 void GameCamera2::Message(MKMessage *arg0) {
     if ((u8) this->unk4C != 0) {

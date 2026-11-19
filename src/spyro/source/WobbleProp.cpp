@@ -21,67 +21,6 @@ extern s32 gViewSeed;
 extern void **gb;
 
 #if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
-static s8 lit_stringBase0[0x3A] = {
-    0x64,
-    0x5F,
-    0x77,
-    0x6F,
-    0x62,
-    0x62,
-    0x6C,
-    0x65,
-    0x72,
-    0,
-    0x48,
-    0x69,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x53,
-    0x65,
-    0x6E,
-    0x73,
-    0x69,
-    0x74,
-    0x69,
-    0x76,
-    0x69,
-    0x74,
-    0x79,
-    0,
-    0x4C,
-    0x61,
-    0x6D,
-    0x70,
-    0x46,
-    0x6C,
-    0x69,
-    0x63,
-    0x6B,
-    0x65,
-    0x72,
-    0x4D,
-    0x61,
-    0x74,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x68,
-    0x69,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
-
 void WobbleProp::Draw() {
     f64 sp20;
     f64 sp18;
@@ -269,10 +208,10 @@ void WobbleProp::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: ')' expected
 void WobbleProp::LoadDone() {
     GameProp::LoadDone();
-    this->unkC8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex(lit_stringBase0));
+    this->unkC8 = MKDynamicBone_GetDynamicBone(this->unk4, ((Animation *) (MKModel_GetAnimation(this->unk4)))->GetNodeIndex("d_wobbler"));
     this->unkCC = 0;
     this->unkD0 = 0.0f;
     this->unkD4 = Tools_GetMatchingMaterial(this->unk4, M2C_FIELD(checked_cast<WobblePropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s8 **, 0xEC));
@@ -293,7 +232,7 @@ s32 WobblePropDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_472;
 
     var_r31_472 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xA], &this->unkE8, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x1E], &this->unkEC, 0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x31], &this->unkE4) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("HitSoundSensitivity", &this->unkE8, 0) != 0) || (arg0->LoadString("LampFlickerMatName", &this->unkEC, 0) != 0) || (KDSound_LoadLine(arg0, "hitSound", &this->unkE4) != 0)) {
         var_r31_472 = 1;
     }
     return var_r31_472;

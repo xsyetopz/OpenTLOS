@@ -29,81 +29,6 @@ extern M2C_UNK gb;
 static M2C_UNK lit_672;                                /* unable to generate initializer: unknown type */
 static KDStateMachine<StalactiteCharge>::State StalactiteChargeStates; /* unable to generate initializer: confusing struct layout */
 
-static s8 lit_stringBase0[0x48] = {
-    0x57,
-    0x69,
-    0x64,
-    0x74,
-    0x68,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0x73,
-    0,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x43,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0x50,
-    0x6C,
-    0x61,
-    0x79,
-    0x65,
-    0x72,
-    0x49,
-    0x44,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x52,
-    0x75,
-    0x6D,
-    0x62,
-    0x6C,
-    0x65,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-}; /* const */
-
 void StalactiteCharge::StateSCResetExit() {
 
 }
@@ -934,17 +859,17 @@ u8 StalactiteCharge::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat(lit_stringBase0, &this->unkD0, 0) != 0) {
+    if (arg0->LoadFloat("Width", &this->unkD0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadInt(&lit_stringBase0[6], &this->unkE0, 0) != 0) {
+    if (arg0->LoadInt("NumStalactites", &this->unkE0, 0) != 0) {
         return 1U;
     }
-    if (arg0->LoadFloat(&lit_stringBase0[0x15], &this->unkD4, 0) != 0) {
+    if (arg0->LoadFloat("DropSpeed", &this->unkD4, 0) != 0) {
         this->unkD4 *= 100.0f;
         return 1U;
     }
-    if (((KDSplinePathSegment *) this->unkEC == NULL) && (arg0->IsField(&lit_stringBase0[0x1F]) != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
+    if (((KDSplinePathSegment *) this->unkEC == NULL) && (arg0->IsField("waypoints") != 0) && (arg0->GetNmbrOfSubLines() > 0)) {
         operator new(0x48U, NULL, 0);
         if ((u32) M2C_ERROR(/* Read from unset register $r3 */) != 0U) {
             M2C_FIELD(M2C_ERROR(/* Read from unset register $r3 */), s32 *, 0x30) = 0;
@@ -958,7 +883,7 @@ u8 StalactiteCharge::LoadLine(MKIniLine *arg0) {
         this->unkEC->LoadLine(arg0);
         return 1U;
     }
-    return (u8) (arg0->LoadInt(&lit_stringBase0[0x29], (s32 *) &this->unkF0, 0) != 0);
+    return (u8) (arg0->LoadInt("CutscenePlayerID", (s32 *) &this->unkF0, 0) != 0);
 }
 #endif
 
@@ -1040,12 +965,12 @@ StalactiteCharge::StalactiteCharge() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[14], long *)' does
 s32 StalactiteChargeDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1977;
 
     var_r31_1977 = 0;
-    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x3A], &this->unk60) != 0)) {
+    if ((MKPropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndRumbleLoop", &this->unk60) != 0)) {
         var_r31_1977 = 1;
     }
     return var_r31_1977;

@@ -24,27 +24,8 @@ extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 #endif
 extern MKPropDescriptor *pSonicAttackDescriptor;
-#if 0 // DRAFT: type mismatch
-static s8 lit_stringBase0[0x11] = {
-    0x66,
-    0x78,
-    0x30,
-    0x30,
-    0x33,
-    0x31,
-    0x5F,
-    0x73,
-    0x6F,
-    0x6E,
-    0x69,
-    0x63,
-    0x72,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: type mismatch
 void SonicAttack::Deinit() {
     MKHeap *temp_r0_56;
     MKHeap *temp_r0_75;
@@ -342,7 +323,6 @@ void SonicAttack::FireBurstEnd() {
     this->unk16C = 1;
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SonicAttack::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) {
     this->unk158 = 1;
     this->unk150 = arg0;
@@ -353,22 +333,17 @@ loop_2:
         this->unk15C = (MKHeap *) &this->unk15C->unk4;
         goto loop_2;
     }
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SonicAttack::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
     this->unk164 = 0.0f;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void SonicAttack::Collided(MKCollisionResult &arg0) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
 #if 0 // DRAFT: illegal implicit conversion from 'GameGlobals *' to
 void SonicAttack::Draw() {
@@ -462,11 +437,11 @@ void SonicAttack::Update() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKModel_Create(signed char[17], int, int, int)' does not
+#if 0 // DRAFT: undefined identifier 'arg_sp2C'
 void SonicAttack::LoadDone() {
     Projectile::LoadDone();
-    this->unk168 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
-    this->unk160 = Tools_GetMatchingMaterial(this->unk168, lit_stringBase0);
+    this->unk168 = MKModel_Create("fx0031_sonicring", NULL, 2, NULL);
+    this->unk160 = Tools_GetMatchingMaterial(this->unk168, "fx0031_sonicring");
     M2C_STRUCT_COPY((s32) &arg_sp2C + 4, (s32) (&identity - 4) + 4, 0x40);
     arg_sp10 = 0.01f;
     arg_sp14 = -0.01f;

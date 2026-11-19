@@ -15,36 +15,6 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(M2C_UNK);                              /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-static s8 lit_stringBase0[0x1C] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x30,
-    0x36,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x30,
-    0x37,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x30,
-    0x30,
-    0x38,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x36,
-    0x35,
-    0,
-}; /* const */
 
 void PuddleSplash::Deinit() {
     MKHeap *temp_r3_50;
@@ -310,13 +280,13 @@ void PuddleSplashDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[28])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void PuddleSplashDescriptor::Init() {
     MKPropDescriptor::Init();
-    this->unk60 = MKMaterial_Create(lit_stringBase0);
-    this->unk64 = MKMaterial_Create(&lit_stringBase0[7]);
-    this->unk68 = MKMaterial_Create(&lit_stringBase0[0xE]);
-    this->unk6C = MKMaterial_Create(&lit_stringBase0[0x15]);
+    this->unk60 = MKMaterial_Create("fx_006");
+    this->unk64 = MKMaterial_Create("fx_007");
+    this->unk68 = MKMaterial_Create("fx_008");
+    this->unk6C = MKMaterial_Create("fx_365");
 }
 #endif
 

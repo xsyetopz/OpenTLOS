@@ -46,177 +46,6 @@ extern s32 timeout;
 extern f32 videoFade;
 
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
-static s8 lit_stringBase0[0xA8] = {
-    0x50,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x67,
-    0x75,
-    0x65,
-    0x31,
-    0x56,
-    0x69,
-    0x64,
-    0x65,
-    0x6F,
-    0x4E,
-    0x6F,
-    0x54,
-    0x69,
-    0x74,
-    0x6C,
-    0x65,
-    0,
-    0x50,
-    0x72,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x67,
-    0x75,
-    0x65,
-    0x31,
-    0x56,
-    0x69,
-    0x64,
-    0x65,
-    0x6F,
-    0,
-    0x6D,
-    0x65,
-    0x6E,
-    0x75,
-    0,
-    0x66,
-    0x72,
-    0x6F,
-    0x6E,
-    0x74,
-    0x65,
-    0x6E,
-    0x64,
-    0x25,
-    0x73,
-    0,
-    0x6D,
-    0x61,
-    0x69,
-    0x6E,
-    0x6D,
-    0x65,
-    0x6E,
-    0x75,
-    0,
-    0x66,
-    0x72,
-    0x6F,
-    0x6E,
-    0x74,
-    0x65,
-    0x6E,
-    0x64,
-    0x2E,
-    0x75,
-    0x69,
-    0,
-    0x4D,
-    0x61,
-    0x69,
-    0x6E,
-    0x4D,
-    0x65,
-    0x6E,
-    0x75,
-    0,
-    0x54,
-    0x69,
-    0x74,
-    0x6C,
-    0x65,
-    0,
-    0x56,
-    0x69,
-    0x64,
-    0x65,
-    0x6F,
-    0x4D,
-    0x61,
-    0x6B,
-    0x65,
-    0x72,
-    0,
-    0x44,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x6F,
-    0x70,
-    0x65,
-    0x72,
-    0,
-    0x50,
-    0x75,
-    0x62,
-    0x6C,
-    0x69,
-    0x73,
-    0x68,
-    0x65,
-    0x72,
-    0,
-    0x43,
-    0x6F,
-    0x70,
-    0x79,
-    0x72,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x48,
-    0x65,
-    0x61,
-    0x6C,
-    0x74,
-    0x68,
-    0x53,
-    0x61,
-    0x66,
-    0x65,
-    0x74,
-    0x79,
-    0,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x6C,
-    0x53,
-    0x63,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0,
-    0x45,
-    0x78,
-    0x74,
-    0x72,
-    0x61,
-    0x73,
-    0x53,
-    0x63,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0,
-}; /* const */
-
 void FrontEnd_PlayVideo(const char *arg0) {
     bGoToVideo = 1;
     pVideoName = arg0;
@@ -356,9 +185,9 @@ void FrontEnd_Update() {
             timeout = temp_r0_344;
             if (temp_r0_344 >= 3) {
                 if ((s32) gDisplay == 0) {
-                    pFrontEndSystem->ChangeScreen(lit_stringBase0);
+                    pFrontEndSystem->ChangeScreen("Prologue1VideoNoTitle");
                 } else {
-                    pFrontEndSystem->ChangeScreen(&lit_stringBase0[0x16]);
+                    pFrontEndSystem->ChangeScreen("Prologue1Video");
                 }
                 bGoToNewGame = 0;
                 M2C_FIELD(&gb, s8 *, 0x3B5) = 0;
@@ -413,11 +242,11 @@ block_26:
 }
 #endif
 
-#if 0 // DRAFT: function call 'GameVideo_Create(signed char *, int, int)' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'long' to
 void FrontEnd_PlayBackgroundVideo(bool arg0) {
     if (arg0 != 0) {
         if ((GameVideo *) pVideo == NULL) {
-            pVideo = GameVideo_Create(&lit_stringBase0[0x25], 7, 0);
+            pVideo = GameVideo_Create("menu", 7, 0);
             FrontEnd_SetFade(1.0f);
         }
     } else {
@@ -487,7 +316,7 @@ void FrontEnd_Init() {
         if ((s32) *gGMState.GetCurrState() != 4) {
             gGMState.unk38.HeapMarkPush();
             GameLanguage_GetCode(-1);
-            var_r31_582 = MKPackage_QLoad(Str_Printf(&lit_stringBase0[0x2A], M2C_ERROR(/* Read from unset register $r3 */), lit_stringBase0), 0);
+            var_r31_582 = MKPackage_QLoad(Str_Printf("frontend%s", M2C_ERROR(/* Read from unset register $r3 */), "Prologue1VideoNoTitle"), 0);
 loop_4:
             if (MKPackage_QIsLoaded(var_r31_582, NULL, NULL) == 0) {
                 MKPackage_Update();
@@ -599,8 +428,8 @@ loop_51:
             var_r4_802 = (UIObjectDescriptor *) &temp_r3_810->unk10;
             goto loop_51;
         }
-        KDSound_Init(&lit_stringBase0[0x35]);
-        if (pFrontEndSystem->Load(&lit_stringBase0[0x3E], NULL) != 0) {
+        KDSound_Init("mainmenu");
+        if (pFrontEndSystem->Load("frontend.ui", NULL) != 0) {
             M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x28)(pFrontEndSystem);
             M2C_FIELD(*pFrontEndSystem, M2C_UNK (**)(void **), 0x20)(pFrontEndSystem);
             sp8 = 1;
@@ -611,29 +440,29 @@ loop_51:
             }
             switch ((s32) menuLoadingState) {       /* irregular */
             case 0:
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x4A]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x53]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x59]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x64]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x6E]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x78]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x82]);
+                pFrontEndSystem->PushScreen("MainMenu");
+                pFrontEndSystem->PushScreen("Title");
+                pFrontEndSystem->PushScreen("VideoMaker");
+                pFrontEndSystem->PushScreen("Developer");
+                pFrontEndSystem->PushScreen("Publisher");
+                pFrontEndSystem->PushScreen("Copyright");
+                pFrontEndSystem->PushScreen("HealthSafety");
                 break;
             case 1:
                 gameData.ClearData();
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x8F]);
+                pFrontEndSystem->PushScreen("LevelScreen");
                 break;
             case 2:
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x53]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x4A]);
+                pFrontEndSystem->PushScreen("Title");
+                pFrontEndSystem->PushScreen("MainMenu");
                 break;
             case 3:
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x53]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x4A]);
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x9B]);
+                pFrontEndSystem->PushScreen("Title");
+                pFrontEndSystem->PushScreen("MainMenu");
+                pFrontEndSystem->PushScreen("ExtrasScreen");
                 break;
             default:
-                pFrontEndSystem->PushScreen(&lit_stringBase0[0x53]);
+                pFrontEndSystem->PushScreen("Title");
                 break;
             }
         }

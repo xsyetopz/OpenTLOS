@@ -12,35 +12,8 @@
 M2C_UNK free(void **);                              /* extern */
 UIObject *malloc(void *);                           /* extern */
 extern void **gMK;
-#if 0 // DRAFT: undefined identifier 'arg_sp10'
-static s8 lit_stringBase0[0x19] = {
-    0x73,
-    0x74,
-    0x72,
-    0x69,
-    0x6E,
-    0x67,
-    0x54,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x53,
-    0x69,
-    0x7A,
-    0x65,
-    0,
-    0x66,
-    0x69,
-    0x6C,
-    0x65,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp10'
 void UIProp::Draw() {
     void **temp_r3_54;
     MKProp::Draw();
@@ -138,12 +111,12 @@ void UIProp::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[25]' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 UIProp::LoadLine(MKIniLine *arg0) {
     s32 var_r31_271;
 
     var_r31_271 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unk4C, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x10], &this->unk50, 0) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("stringTableSize", &this->unk4C, 0) != 0) || (arg0->LoadString("fileName", &this->unk50, 0) != 0)) {
         var_r31_271 = 1;
     }
     return var_r31_271;

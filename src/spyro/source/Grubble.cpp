@@ -20,52 +20,8 @@ M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern void **gb;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x2A] = {
-    0x42,
-    0x75,
-    0x72,
-    0x72,
-    0x6F,
-    0x77,
-    0x5F,
-    0x45,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x42,
-    0x75,
-    0x72,
-    0x72,
-    0x6F,
-    0x77,
-    0x5F,
-    0x49,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x42,
-    0x75,
-    0x72,
-    0x72,
-    0x6F,
-    0x77,
-    0x5F,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0,
-    0x57,
-    0x61,
-    0x6C,
-    0x6B,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void GrubbleCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -849,29 +805,29 @@ void GrubbleCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1233 = this->unk34;
-    if (temp_r30_1233->Exists(lit_stringBase0) != 0) {
-        var_r3_1243 = temp_r30_1233->GetAnim(lit_stringBase0);
+    if (temp_r30_1233->Exists("Burrow_Enter") != 0) {
+        var_r3_1243 = temp_r30_1233->GetAnim("Burrow_Enter");
     } else {
         var_r3_1243 = NULL;
     }
     this->unk74 = (s32) var_r3_1243;
     temp_r30_1251 = this->unk34;
-    if (temp_r30_1251->Exists(&lit_stringBase0[0xD]) != 0) {
-        var_r3_1261 = temp_r30_1251->GetAnim(&lit_stringBase0[0xD]);
+    if (temp_r30_1251->Exists("Burrow_Idle") != 0) {
+        var_r3_1261 = temp_r30_1251->GetAnim("Burrow_Idle");
     } else {
         var_r3_1261 = NULL;
     }
     this->unk78 = (s32) var_r3_1261;
     temp_r30_1269 = this->unk34;
-    if (temp_r30_1269->Exists(&lit_stringBase0[0x19]) != 0) {
-        var_r3_1279 = temp_r30_1269->GetAnim(&lit_stringBase0[0x19]);
+    if (temp_r30_1269->Exists("Burrow_Exit") != 0) {
+        var_r3_1279 = temp_r30_1269->GetAnim("Burrow_Exit");
     } else {
         var_r3_1279 = NULL;
     }
     this->unk7C = (s32) var_r3_1279;
     temp_r30_1287 = this->unk34;
-    if (temp_r30_1287->Exists(&lit_stringBase0[0x25]) != 0) {
-        var_r3_1297 = temp_r30_1287->GetAnim(&lit_stringBase0[0x25]);
+    if (temp_r30_1287->Exists("Walk") != 0) {
+        var_r3_1297 = temp_r30_1287->GetAnim("Walk");
     } else {
         var_r3_1297 = NULL;
     }

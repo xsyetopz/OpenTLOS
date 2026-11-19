@@ -24,26 +24,8 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
 extern MKPropDescriptor *pHotSpitDescriptor;
-#if 0 // DRAFT: undefined identifier 'arg_sp1F0'
-static s8 lit_stringBase0[0x10] = {
-    0x48,
-    0x6F,
-    0x74,
-    0x53,
-    0x70,
-    0x69,
-    0x74,
-    0x53,
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_sp1F0'
 void HotSpit::Update() {
     f32 temp_f1_230;
     f32 temp_f1_240;
@@ -508,7 +490,7 @@ void *HotSpit::CreateInstance() {
 void HotSpitDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
     pHotSpitDescriptor = (MKPropDescriptor *) this;
-    this->unkF0 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unkF0 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("HotSpitSplatter"));
 }
 #endif
 

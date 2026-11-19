@@ -29,62 +29,8 @@ extern GameGlobals gb;
 static u8 lit_651 = 1;
 
 static u8 lit_750 = 1;
-#if 0 // DRAFT: illegal explicit conversion from 'int' to
-static s8 lit_stringBase0[0x34] = {
-    0x42,
-    0x75,
-    0x72,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0x57,
-    0x69,
-    0x63,
-    0x6B,
-    0,
-    0x66,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0x53,
-    0x63,
-    0x61,
-    0x6C,
-    0x65,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x72,
-    0x5F,
-    0x77,
-    0x69,
-    0x63,
-    0x6B,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'int' to
 void ExplosiveBarrel::Ignite(float arg0) {
     f32 sp8;
 
@@ -504,7 +450,7 @@ void ExplosiveBarrel::LoadDone() {
     BurningWick *temp_r3_931;
 
     Shatterable::LoadDone();
-    temp_r3_931 = checked_cast<BurningWick *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    temp_r3_931 = checked_cast<BurningWick *, MKProp>(gMK->CreateProp("BurningWick"));
     sp10 = 0.0f;
     sp8 = 1.0f;
     spC = 0.0f;
@@ -516,17 +462,15 @@ void ExplosiveBarrel::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ExplosiveBarrel::LoadLine(MKIniLine *arg0) {
     s32 var_r31_968;
 
     var_r31_968 = 0;
-    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], (f32 *) &this->unk1A0, 0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", (f32 *) &this->unk1A0, 0) != 0)) {
         var_r31_968 = 1;
     }
     return var_r31_968;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unk1AC'
 void ExplosiveBarrel::Deinit() {
@@ -553,24 +497,22 @@ void ExplosiveBarrelDescriptor::LoadDone() {
     BoundingVolume *temp_r3_1064;
 
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x22]));
-    this->unk170 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x2D]);
+    this->unk16C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unk170 = MKModel_GetRefPointIndex(this->unk2C, "r_wick");
     temp_r3_1064 = this->unk1C;
     this->unk174 = 0.5f * (temp_r3_1064->unk10 - temp_r3_1064->unk0);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
 s32 ExplosiveBarrelDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1086;
 
     var_r31_1086 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xC], &this->unk178, 0) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("fExplosionRadiusScale", &this->unk178, 0) != 0)) {
         var_r31_1086 = 1;
     }
     return var_r31_1086;
 }
-#endif
 
 void ExplosiveBarrelDescriptor::Init() {
     ShatterableDescriptor::Init();

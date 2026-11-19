@@ -17,36 +17,6 @@ f64 fmod(f32, f64);                                 /* extern */
 extern f32 *KDSpline_PositionMixer;
 extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
-static s8 lit_stringBase0[0x1C] = {
-    0x72,
-    0x5F,
-    0x74,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0x25,
-    0x64,
-    0x5F,
-    0x25,
-    0x64,
-    0,
-    0x43,
-    0x6F,
-    0x6E,
-    0x76,
-    0x65,
-    0x79,
-    0x6F,
-    0x72,
-    0x42,
-    0x75,
-    0x63,
-    0x6B,
-    0x65,
-    0x74,
-    0,
-}; /* const */
 
 void Conveyor::Message(MKMessage *arg0) {
     GameProp::Message(arg0);
@@ -328,7 +298,7 @@ void Conveyor::Resolve() {
         var_r29_646 = 0;
 loop_2:
         temp_r0_656 = var_r29_646 + 0xC8;
-        *(temp_r27_643 + temp_r0_656) = MKModel_GetRefPointIndex(this->unk4, Str_Printf(lit_stringBase0, var_r25_637 + 1, var_r24_645 + 1));
+        *(temp_r27_643 + temp_r0_656) = MKModel_GetRefPointIndex(this->unk4, Str_Printf("r_track%d_%d", var_r25_637 + 1, var_r24_645 + 1));
         MKModel_CalculateRefPointWorldPosition(this->unk4, *(temp_r27_643 + temp_r0_656), &sp8);
         ((KDUniformSpline *) (this + (var_r31_639 + 0x118)))->AddNode(sp8);
         var_r24_645 += 1;
@@ -373,7 +343,7 @@ void Conveyor::Init() {
     var_r31_747 = 0;
     do {
         var_r29_745 += 1;
-        *(this + (var_r31_747 + 0x140)) = checked_cast<KDProp *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xD]));
+        *(this + (var_r31_747 + 0x140)) = checked_cast<KDProp *, MKProp>(gMK->CreateProp("ConveyorBucket"));
         var_r31_747 += 4;
     } while (var_r29_745 < 5);
     this->unk118.unk3C = 0.0f;

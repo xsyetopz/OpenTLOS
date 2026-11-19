@@ -8,45 +8,6 @@
 #if 0 // DRAFT: illegal type
 M2C_UNK free(void *);                               /* extern */
 void *malloc(s32);                                  /* extern */
-static s8 lit_stringBase0[0x25] = {
-    0x4D,
-    0x61,
-    0x63,
-    0x72,
-    0x6F,
-    0x73,
-    0,
-    0x4D,
-    0x61,
-    0x63,
-    0x72,
-    0x6F,
-    0,
-    0x4D,
-    0x61,
-    0x63,
-    0x72,
-    0x6F,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0x43,
-    0x6F,
-    0x6D,
-    0x6D,
-    0x61,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
 void ConsoleProp::LoadDone() {
     s32 temp_r0_57;
@@ -70,7 +31,7 @@ loop_2:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[37]' to
+#if 0 // DRAFT: pointer/array required
 s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
     MKHeap *temp_r3_100;
     MKIniLine *temp_r27_137;
@@ -84,7 +45,7 @@ s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("Macros") != 0) {
         temp_r3_94 = arg0->GetNmbrOfSubLines();
         this->unk50 = temp_r3_94;
         temp_r0_96 = this->unk50;
@@ -102,13 +63,13 @@ s32 ConsoleProp::LoadLine(MKIniLine *arg0) {
             var_r30_125 = 0;
 loop_16:
             if (var_r26_123 != NULL) {
-                if (var_r26_123->IsField(&lit_stringBase0[7]) != 0) {
+                if (var_r26_123->IsField("Macro") != 0) {
                     temp_r27_137 = var_r26_123->unkC->GetSubLine(var_r26_123);
 loop_14:
                     if (temp_r27_137 != NULL) {
-                        if (temp_r27_137->IsField(&lit_stringBase0[0xD]) != 0) {
+                        if (temp_r27_137->IsField("MacroName") != 0) {
                             strcpy(this->unk4C + var_r30_125, temp_r27_137->GetString(0));
-                        } else if (temp_r27_137->IsField(&lit_stringBase0[0x17]) != 0) {
+                        } else if (temp_r27_137->IsField("ScriptCommand") != 0) {
                             *(var_r30_125 + (this->unk4C + 0x20)) = temp_r27_137->GetString(0);
                         }
                         goto loop_14;

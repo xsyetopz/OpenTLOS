@@ -23,26 +23,8 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern GameGlobals gb;
 static u8 lit_749 = 1;
-#if 0 // DRAFT: illegal use of non-static member
-static s8 lit_stringBase0[0x10] = {
-    0x46,
-    0x78,
-    0x30,
-    0x30,
-    0x32,
-    0x34,
-    0x5F,
-    0x41,
-    0x72,
-    0x63,
-    0x68,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal use of non-static member
 void CharacterZapFX::Enable(bool arg0, float arg1, bool arg2) {
     u8 var_r31_48;
 
@@ -595,7 +577,7 @@ void CharacterZapFX::Init() {
     this->unk15 = 0;
     this->unk14 = 0;
     this->unk17 = 0;
-    this->unk4C = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+    this->unk4C = MKModel_Create("Fx0024_ArchAnim", NULL, 2, NULL);
     this->unk50 = MKModel_GetNmbrOfSubObjects(this->unk4C, (SubObjectType) 0);
 }
 #endif

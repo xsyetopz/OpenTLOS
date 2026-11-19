@@ -21,9 +21,8 @@ f64 pow(f64, f32);                                  /* extern */
 extern M2C_UNK gEmptyPtrListDL;
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
-#if 0 // DRAFT: illegal type
-static s8 lit_stringBase0[0xD] = { 0x47, 0x6F, 0x6F, 0x70, 0x4D, 0x61, 0x74, 0x65, 0x72, 0x69, 0x61, 0x6C, 0 }; /* const */
 
+#if 0 // DRAFT: illegal type
 void GoopFXDescriptor::DrawGoop(GoopFXDescriptor::Goop *arg1) {
     f64 spF0;
     f64 spE8;
@@ -755,7 +754,7 @@ s32 GoopFXDescriptor::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     sp8 = NULL;
-    if ((arg0->LoadString(lit_stringBase0, &sp8, 0) != 0) && ((MKMaterial *) this->unkE0 == NULL)) {
+    if ((arg0->LoadString("GoopMaterial", &sp8, 0) != 0) && ((MKMaterial *) this->unkE0 == NULL)) {
         this->unkE0 = MKMaterial_Create(sp8);
         return 1;
     }

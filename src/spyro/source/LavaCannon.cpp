@@ -28,185 +28,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 
 #if 0 // DRAFT: undefined identifier 'unk250'
-static s8 lit_stringBase0[0xB0] = {
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x43,
-    0x61,
-    0x6E,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x54,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x43,
-    0x61,
-    0x6E,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x54,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x43,
-    0x61,
-    0x6E,
-    0x6E,
-    0x6F,
-    0x6E,
-    0x54,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0x5F,
-    0x30,
-    0x33,
-    0,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x66,
-    0x69,
-    0x72,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x65,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x64,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x7A,
-    0x5F,
-    0x79,
-    0x61,
-    0x77,
-    0,
-    0x7A,
-    0x5F,
-    0x70,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0,
-    0x7A,
-    0x5F,
-    0x62,
-    0x61,
-    0x72,
-    0x72,
-    0x65,
-    0x6C,
-    0x31,
-    0,
-    0x72,
-    0x5F,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x34,
-    0,
-    0x66,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x66,
-    0x69,
-    0x72,
-    0x65,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x31,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x32,
-    0,
-}; /* const */
-
 void LavaCannon::Shatter(bool arg0, MKVector3 *arg1, int arg2, MKVector3 *arg3) {
     if (M2C_BITWISE(s32, this->unk250) < 4) {
         SetState(4);
@@ -646,28 +467,28 @@ void LavaCannon::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKIniLine *' to
 s32 LavaCannon::LoadLine(MKIniLine *arg0) {
     MKIniLine sp28;
     MKIniLine sp18;
     MKIniLine sp8;
     s32 var_r29_1272;
 
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("LavaCannonTarget_01") != 0) {
         sp28.GetVector3(arg0->unkC->GetSubLine(arg0));
         M2C_FIELD(this, f64 *, 0x1A8) = M2C_BITWISE(f64, sp28);
         M2C_FIELD(this, f64 *, 0x1B0) = M2C_BITWISE(f64, sp28.unk8);
-    } else if (arg0->IsField(&lit_stringBase0[0x14]) != 0) {
+    } else if (arg0->IsField("LavaCannonTarget_02") != 0) {
         sp18.GetVector3(arg0->unkC->GetSubLine(arg0));
         this->unk1A8 = M2C_BITWISE(f64, sp18);
         this->unk1B0 = M2C_BITWISE(f64, sp18.unk8);
-    } else if (arg0->IsField(&lit_stringBase0[0x28]) != 0) {
+    } else if (arg0->IsField("LavaCannonTarget_03") != 0) {
         sp8.GetVector3(arg0->unkC->GetSubLine(arg0));
         this->unk1B8 = M2C_BITWISE(f64, sp8);
         this->unk1C0 = M2C_BITWISE(f64, sp8.unk8);
     }
     var_r29_1272 = 0;
-    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3C], &this->unk248, 0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadFloat("SpeedMultiplier", &this->unk248, 0) != 0)) {
         var_r29_1272 = 1;
     }
     return var_r29_1272;
@@ -726,63 +547,63 @@ void LavaCannonDescriptor::LoadDone() {
 
     ShatterableDescriptor::LoadDone();
     temp_r30_1378 = this->unk34;
-    if (temp_r30_1378->Exists(&lit_stringBase0[0x4C]) != 0) {
-        var_r3_1390 = temp_r30_1378->GetAnim(&lit_stringBase0[0x4C]);
+    if (temp_r30_1378->Exists("idle") != 0) {
+        var_r3_1390 = temp_r30_1378->GetAnim("idle");
     } else {
         var_r3_1390 = NULL;
     }
     this->unk16C = (s32) var_r3_1390;
     temp_r30_1398 = this->unk34;
-    if (temp_r30_1398->Exists(&lit_stringBase0[0x4C]) != 0) {
-        var_r3_1408 = temp_r30_1398->GetAnim(&lit_stringBase0[0x4C]);
+    if (temp_r30_1398->Exists("idle") != 0) {
+        var_r3_1408 = temp_r30_1398->GetAnim("idle");
     } else {
         var_r3_1408 = NULL;
     }
     this->unk170 = (s32) var_r3_1408;
     temp_r30_1416 = this->unk34;
-    if (temp_r30_1416->Exists(&lit_stringBase0[0x4C]) != 0) {
-        var_r3_1426 = temp_r30_1416->GetAnim(&lit_stringBase0[0x4C]);
+    if (temp_r30_1416->Exists("idle") != 0) {
+        var_r3_1426 = temp_r30_1416->GetAnim("idle");
     } else {
         var_r3_1426 = NULL;
     }
     this->unk174 = (s32) var_r3_1426;
     temp_r30_1434 = this->unk34;
-    if (temp_r30_1434->Exists(&lit_stringBase0[0x51]) != 0) {
-        var_r3_1444 = temp_r30_1434->GetAnim(&lit_stringBase0[0x51]);
+    if (temp_r30_1434->Exists("firing") != 0) {
+        var_r3_1444 = temp_r30_1434->GetAnim("firing");
     } else {
         var_r3_1444 = NULL;
     }
     this->unk178 = (s32) var_r3_1444;
     temp_r30_1452 = this->unk34;
-    if (temp_r30_1452->Exists(&lit_stringBase0[0x58]) != 0) {
-        var_r3_1462 = temp_r30_1452->GetAnim(&lit_stringBase0[0x58]);
+    if (temp_r30_1452->Exists("exploding") != 0) {
+        var_r3_1462 = temp_r30_1452->GetAnim("exploding");
     } else {
         var_r3_1462 = NULL;
     }
     this->unk17C = (s32) var_r3_1462;
     temp_r30_1470 = this->unk34;
-    if (temp_r30_1470->Exists(&lit_stringBase0[0x4C]) != 0) {
-        var_r3_1480 = temp_r30_1470->GetAnim(&lit_stringBase0[0x4C]);
+    if (temp_r30_1470->Exists("idle") != 0) {
+        var_r3_1480 = temp_r30_1470->GetAnim("idle");
     } else {
         var_r3_1480 = NULL;
     }
     this->unk180 = (s32) var_r3_1480;
-    this->unk184 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex(&lit_stringBase0[0x62]);
-    this->unk188 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex(&lit_stringBase0[0x68]);
-    this->unk18C = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex(&lit_stringBase0[0x70]);
-    this->unk190 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x7A]);
-    this->unk19C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x84]));
-    this->unk1AC.unk0 = &lit_stringBase0[0x8F];
-    this->unk1B4 = &lit_stringBase0[0x94];
+    this->unk184 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_yaw");
+    this->unk188 = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_pitch");
+    this->unk18C = ((Animation *) (MKModel_GetAnimation(M2C_FIELD(this->unk34, MKModel **, 8))))->GetNodeIndex("z_barrel1");
+    this->unk190 = MKModel_GetRefPointIndex(this->unk2C, "r_emitter");
+    this->unk19C = checked_cast<Explosion4 *, MKProp>(gMK->CreateProp("Explosion4"));
+    this->unk1AC.unk0 = "fire";
+    this->unk1B4 = "firesound";
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[9], long *)' does
 s32 LavaCannonDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1545;
 
     var_r31_1545 = 0;
-    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x9E], &this->unk194) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xA7], &this->unk194) != 0)) {
+    if ((ShatterableDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndFire1", &this->unk194) != 0) || (KDSound_LoadLine(arg0, "sndFire2", &this->unk194) != 0)) {
         var_r31_1545 = 1;
     }
     return var_r31_1545;

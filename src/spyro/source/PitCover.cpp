@@ -15,8 +15,6 @@ extern s32 gViewSeed;
 extern GameGlobals gb;
 
 #if 0 // DRAFT: undefined identifier 'sp60'
-static s8 lit_stringBase0[0xB] = { 0x72, 0x5F, 0x66, 0x78, 0x65, 0x6D, 0x69, 0x74, 0x25, 0x64, 0 }; /* const */
-
 void PitCover::Message(MKMessage *arg0) {
     MKVector3 sp180;
     MKVector3 sp170;
@@ -141,7 +139,7 @@ block_7:
 }
 #endif
 
-#if 0 // DRAFT: function call 'Str_Printf(signed char[11], long)' does not match
+#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char *)'
 void PitCover::LoadDone() {
     s32 temp_r0_286;
     s32 var_r29_274;
@@ -153,7 +151,7 @@ void PitCover::LoadDone() {
     var_r29_274 = 0;
     var_r31_276 = 0;
     do {
-        temp_r3_284 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf(lit_stringBase0, var_r29_274));
+        temp_r3_284 = Tools_GetMatchingRefPointIndex(this->unk4, Str_Printf("r_fxemit%d", var_r29_274));
         var_r29_274 += 1;
         temp_r0_286 = var_r31_276 + 0x90;
         var_r31_276 += 4;

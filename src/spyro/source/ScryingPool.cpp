@@ -9,36 +9,8 @@
 
 extern s32 GS_PLACEHOLDER;
 extern M2C_UNK gb;
-#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
-static s8 lit_stringBase0[0x1A] = {
-    0x6E,
-    0x6F,
-    0x72,
-    0x6D,
-    0x61,
-    0x6C,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x63,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'KDSound_Stop(long *)' does not match
 void ScryingPool::Deinit() {
     KDSound_Stop(&this->unk98);
     KDPropEx::Deinit();
@@ -106,12 +78,12 @@ void ScryingPool::Init() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, signed char[26], long *)'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[12], long *)' does
 s32 ScryingPoolDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_251;
 
     var_r31_251 = 0;
-    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0, &this->unkC0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xC], &this->unkC4) != 0)) {
+    if ((KDPropExDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "normalSound", &this->unkC0) != 0) || (KDSound_LoadLine(arg0, "cutsceneSound", &this->unkC4) != 0)) {
         var_r31_251 = 1;
     }
     return var_r31_251;

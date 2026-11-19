@@ -8,26 +8,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-static s8 lit_stringBase0[0x11] = {
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x30,
-    0,
-    0x54,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0x49,
-    0x44,
-    0,
-}; /* const */
-
 void FightElevatorAnchor::Update() {
     FightElevatorAnchor *spC;
     s32 sp8;
@@ -56,19 +36,17 @@ void FightElevatorAnchor::GetZapAnchorPos() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingRefPointIndex(MKModel *, signed char[17])'
 void FightElevatorAnchor::LoadDone() {
     Shatterable::LoadDone();
-    M2C_FIELD(this, s32 *, 0x1AC) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    M2C_FIELD(this, s32 *, 0x1AC) = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 FightElevatorAnchor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_126;
 
     var_r31_126 = 0;
-    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[8], (s32 *) &this->unk198, 0) != 0)) {
+    if ((Shatterable::LoadLine(arg0) != 0) || (arg0->LoadInt("TargetID", (s32 *) &this->unk198, 0) != 0)) {
         var_r31_126 = 1;
     }
     return var_r31_126;

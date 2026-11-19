@@ -45,100 +45,6 @@ static u8 lit_735 = 1;
 static s32 lit_737 = 1;
 static u8 lit_738 = 0;
 
-static s8 lit_stringBase0[0x5B] = {
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x42,
-    0x6F,
-    0x6D,
-    0x62,
-    0x46,
-    0x58,
-    0,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x42,
-    0x72,
-    0x65,
-    0x61,
-    0x74,
-    0x68,
-    0x50,
-    0x53,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x30,
-    0x33,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x37,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x37,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x38,
-    0,
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x35,
-    0x38,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x32,
-    0,
-}; /* const */
-
 void FlameBreathFX::ResetFury() {
     this->unk260->ResetFury();
     this->unk260->ResetFury();
@@ -1966,7 +1872,7 @@ void FlameBreathFX::Resolve() {
     if (temp_r4_3583 != NULL) {
         temp_r4_3583->unk31 &= ~0x40;
     }
-    this->unk268 = M2C_BITWISE(f32, checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, lit_stringBase0)));
+    this->unk268 = M2C_BITWISE(f32, checked_cast<FireBombFXDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "FireBombFX")));
 }
 #endif
 
@@ -1984,7 +1890,7 @@ void FlameBreathFX::Init() {
     BaseBreathFX::Init();
     this->unkB4 = 0;
     this->unkA8 = NULL;
-    this->unkAC = checked_cast<FlameBreathPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB]));
+    this->unkAC = checked_cast<FlameBreathPS *, MKProp>(gMK->CreateProp("FlameBreathPS"));
     this->unk94 = 0.0f;
     this->unkBC = 0;
     this->unkC0 = 0.75f;
@@ -2000,16 +1906,16 @@ void FlameBreathFX::Init() {
     sp18 = (f64) sp8;
     sp20 = (f64) sp10;
     this->unk138 = 2.0f;
-    this->unkE0 = MKMaterial_Create(&lit_stringBase0[0x19]);
+    this->unkE0 = MKMaterial_Create("fx_303");
     this->unk144 = 0.0f;
-    this->unk148.Init(&lit_stringBase0[0x20], &lit_stringBase0[0x27], &lit_stringBase0[0x32], &lit_stringBase0[0x39]);
-    this->unk260 = checked_cast<FuryFXFire *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x44]));
-    this->unk260 = checked_cast<FuryFXFire2 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x4F]));
+    this->unk148.Init("fx_357", "fx_357Glow", "fx_358", "fx_358Glow");
+    this->unk260 = checked_cast<FuryFXFire *, MKProp>(gMK->CreateProp("FuryFXFire"));
+    this->unk260 = checked_cast<FuryFXFire2 *, MKProp>(gMK->CreateProp("FuryFXFire2"));
     var_r30_3682 = 0;
     this->unk13C = 0.0f;
     this->unk268 = 0.0f;
     do {
-        temp_r3_3689 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp(lit_stringBase0));
+        temp_r3_3689 = checked_cast<FireBombFX *, MKProp>(gMK->CreateProp("FireBombFX"));
         if (temp_r3_3689 != NULL) {
             M2C_FIELD(temp_r3_3689->__vptr, M2C_UNK (**)(), 0x34)();
         }

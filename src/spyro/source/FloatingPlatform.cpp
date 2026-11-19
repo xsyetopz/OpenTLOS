@@ -17,56 +17,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: undefined identifier '__vptr'
-static s8 lit_stringBase0[0x2F] = {
-    0x72,
-    0x5F,
-    0x66,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x77,
-    0x61,
-    0x79,
-    0x70,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0x73,
-    0,
-    0x46,
-    0x6C,
-    0x6F,
-    0x6F,
-    0x72,
-    0,
-    0x43,
-    0x65,
-    0x69,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0x41,
-    0x74,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
-
 void FloatingPlatform::UpdateMove() {
     f64 sp78;
     f64 sp70;
@@ -221,13 +171,11 @@ void FloatingPlatform::Reset() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKModel_GetRefPointIndex(MKModel *, signed char[47])' does
 void FloatingPlatform::Resolve() {
     Platform::Resolve();
     this->unk184 = M2C_FIELD(this->unk8, f32 *, 0x34);
-    this->unk190 = MKModel_GetRefPointIndex(this->unk4, lit_stringBase0);
+    this->unk190 = MKModel_GetRefPointIndex(this->unk4, "r_flame");
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'loadInfo'
 void FloatingPlatform::LoadDone() {
@@ -239,7 +187,7 @@ void FloatingPlatform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: expression syntax error
+#if 0 // DRAFT: function call 'stricmp(const char[10])' does not match
 s32 FloatingPlatform::LoadLine(MKIniLine *arg0) {
     MKVector3 sp8;
     MKIniLine *var_r30_463;
@@ -250,7 +198,7 @@ s32 FloatingPlatform::LoadLine(MKIniLine *arg0) {
         return 1;
     }
     arg0->GetFieldName();
-    if (stricmp(&lit_stringBase0[8]) == 0) {
+    if (stricmp("waypoints") == 0) {
         if ((u32) this->unk1A4 != 0U) {
             return 0;
         }
@@ -270,7 +218,7 @@ loop_9:
         return 1;
     }
     var_r30_488 = 0;
-    if ((arg0->LoadFloat(&lit_stringBase0[0x12], &this->unk188, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x18], &this->unk18C, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x20], &this->unk194, 0) != 0)) {
+    if ((arg0->LoadFloat("Floor", &this->unk188, 0) != 0) || (arg0->LoadFloat("Ceiling", &this->unk18C, 0) != 0) || (arg0->LoadBool("StartAtPathEnd", &this->unk194, 0) != 0)) {
         var_r30_488 = 1;
     }
     return var_r30_488;

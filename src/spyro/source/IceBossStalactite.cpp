@@ -44,73 +44,6 @@ static s32 lit_644 = 0;
 static u8 lit_683 = 1;
 
 #if 0 // DRAFT: undefined identifier 'sp8'
-static s8 lit_stringBase0[0x40] = {
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0,
-    0x50,
-    0x35,
-    0x30,
-    0x33,
-    0x33,
-    0x5F,
-    0x42,
-    0x6F,
-    0x73,
-    0x73,
-    0x53,
-    0x74,
-    0x61,
-    0x6C,
-    0x61,
-    0x63,
-    0x74,
-    0x69,
-    0x74,
-    0x65,
-    0,
-    0x74,
-    0x69,
-    0x70,
-    0,
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x50,
-    0x75,
-    0x66,
-    0x66,
-    0x50,
-    0x53,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x69,
-    0x74,
-    0x73,
-    0x50,
-    0x53,
-    0,
-}; /* const */
-
 void IceBossStalactiteSpawner::GetSpawnPoint(const MKVector3 &arg0, int arg1) {
     f64 sp40;
     f64 sp38;
@@ -326,7 +259,7 @@ loop_6:
     this->unk1C = 0.0f;
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[64]' to
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void IceBossStalactiteSpawner::LoadDone() {
     IceBossStalactite ***var_r31_442;
     IceBossStalactite **temp_r3_475;
@@ -338,10 +271,10 @@ loop_8:
         temp_r0_445 = this->unk20;
         switch (temp_r0_445) {                      /* irregular */
         case 2:
-            **var_r31_442 = checked_cast<IceBossStalactite *, MKProp>(gMK->CreateProp(lit_stringBase0));
+            **var_r31_442 = checked_cast<IceBossStalactite *, MKProp>(gMK->CreateProp("IceBossStalactite"));
             break;
         case 1:
-            **var_r31_442 = checked_cast<IceBossStalactite *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x12]));
+            **var_r31_442 = checked_cast<IceBossStalactite *, MKProp>(gMK->CreateProp("P5033_BossStalactite"));
             break;
         }
         M2C_FIELD(**var_r31_442, MKProp **, 0x21C) = (MKProp *) this->unk14;
@@ -723,7 +656,7 @@ void IceBossStalactite::Drop(bool arg0, bool arg1) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: undefined identifier 'unk218'
 void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     f32 temp_f0_1219;
     f32 temp_f10_1217;
@@ -731,7 +664,7 @@ void IceBossStalactite::Spawn(const MKVector3 &arg0, bool arg1, bool arg2) {
     f32 temp_f12_1218;
     f32 temp_f1_1223;
     f32 temp_f2_1225;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Reset();
     M2C_FIELD(this, f64 *, 0x208) = (f64) M2C_FIELD(&arg0, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x210) = (f64) M2C_FIELD(&arg0, f64 *, 8);
     M2C_FIELD(this, f32 *, 0x1B8) = 0.0f;
@@ -1375,18 +1308,18 @@ void IceBossStalactite::LoadDone() {
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~0x10);
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~4);
     M2C_FIELD(this, u8 *, 0x244) = (u8) (M2C_FIELD(this, u8 *, 0x244) & ~0x40);
-    this->unk230 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x27]);
-    this->unk224 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x2B]));
+    this->unk230 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "tip");
+    this->unk224 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SnowPuffPS"));
     this->unk84 = 0.5f;
     M2C_FIELD(this, s8 *, 0x245) = 0;
     M2C_FIELD(this, u8 *, 0x246) = (u8) (M2C_FIELD(this, u8 *, 0x246) | 0x80);
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'checked_cast(void *)' does not match
 void IceBossStalactiteDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x36]));
+    this->unk16C = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
 }
 #endif
 

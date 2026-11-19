@@ -131,7 +131,7 @@ s32 TriggerBoxProp::LoadLine(MKIniLine *arg0) {
 #if 0 // DRAFT: undefined identifier 'unkD0'
 void TriggerBoxProp::Init() {
     TriggerProp::Init();
-    M2C_FIELD(this->unkD0.__vptr, M2C_UNK (**)(TriggerObject *), 8)(&this->unkD0);
+    this->unkD0.Init();
     this->unkA8 = &this->unkD0;
 }
 #endif
@@ -259,7 +259,7 @@ void TriggerProp::Message(MKMessage *arg0) {
         this->unk4C = 0;
         break;
     case 0xD5:
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+        Reset();
         break;
     }
     MKProp::Message(arg0);
@@ -267,7 +267,6 @@ void TriggerProp::Message(MKMessage *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 s32 TriggerProp::CheckQueue() {
     s16 temp_r3_696;
     s16 temp_r3_708;
@@ -279,7 +278,7 @@ s32 TriggerProp::CheckQueue() {
     if (temp_r4_685 & 1) {
         var_r31_684 = 1;
         this->unk4C = temp_r4_685 & 0xFFFFFFFE;
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x38)();
+        OnEnter();
     }
     temp_r3_696 = this->unk4C;
     if (temp_r3_696 & 2) {
@@ -295,7 +294,6 @@ s32 TriggerProp::CheckQueue() {
     }
     return var_r31_684;
 }
-#endif
 
 void TriggerProp::OnAction() {
     s32 temp_r3_743;

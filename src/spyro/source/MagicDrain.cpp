@@ -45,7 +45,6 @@ void MagicDrain::FireBurstEnd() {
     Disable();
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MagicDrain::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3) {
     s32 sp8;
     MKVector3 *temp_r4_125;
@@ -56,7 +55,7 @@ void MagicDrain::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3)
     this->unk158 = 1;
     this->unk150 = arg0;
     this->unk154 = arg1;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x30)();
+    Enable();
     temp_r4_117 = this->unk15C;
     if (temp_r4_117 != NULL) {
         ((LightManager *) (M2C_FIELD(&gb, LightManager **, 0x80)))->EnableLight(temp_r4_117, 1U);
@@ -74,19 +73,14 @@ void MagicDrain::FireBurst(MKVector3 *arg0, MKVector3 *arg1, int arg2, int arg3)
     sp8 = -1;
     this->unk160.Init((MKProp *) this, 1, 0, 0, 0, 0, 0, M2C_ERROR(/* Unable to find stack arg 0x0 in block */));
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MagicDrain::Fire(const MKVector3 &arg0, const MKVector3 &arg1, MKProp *arg2, int arg3, int arg4) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MagicDrain::Collided(MKCollisionResult &arg0) {
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x34)();
+    Disable();
 }
-#endif
 
 void MagicDrain::Draw() {
 

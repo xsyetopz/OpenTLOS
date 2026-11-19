@@ -10,77 +10,6 @@
 #include <m2c_macros.h>
 
 #if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
-static s8 lit_stringBase0[0x44] = {
-    0x6D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x6C,
-    0x69,
-    0x74,
-    0,
-    0x67,
-    0x72,
-    0x61,
-    0x76,
-    0x69,
-    0x74,
-    0x79,
-    0,
-    0x66,
-    0x72,
-    0x69,
-    0x63,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x4D,
-    0x75,
-    0x6C,
-    0x74,
-    0x69,
-    0x70,
-    0x6C,
-    0x69,
-    0x65,
-    0x72,
-    0,
-    0x69,
-    0x74,
-    0x65,
-    0x72,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x73,
-    0,
-    0x63,
-    0x6C,
-    0x6F,
-    0x74,
-    0x68,
-    0x53,
-    0x75,
-    0x62,
-    0x4F,
-    0x62,
-    0x6A,
-    0x65,
-    0x63,
-    0x74,
-    0,
-}; /* const */
-
 void KDClothProperty::Resolve(KDPropertySet *arg0) {
     MKModel *temp_r4_81;
     s8 *temp_r0_69;
@@ -105,7 +34,7 @@ u8 KDClothProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_103;
 
     var_r31_103 = 0;
-    if ((this->unk14.LoadLine(arg0) != 0) || (arg0->LoadString(lit_stringBase0, &this->unk10, 0) != 0)) {
+    if ((this->unk14.LoadLine(arg0) != 0) || (arg0->LoadString("model", &this->unk10, 0) != 0)) {
         var_r31_103 = 1;
     }
     return var_r31_103;
@@ -201,12 +130,12 @@ void KDClothDescriptor::Resolve(MKModel *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 u8 KDClothDescriptor::LoadLine(MKIniLine *arg0) {
     u8 var_r31_305;
 
     var_r31_305 = 0;
-    if ((arg0->LoadInt(&lit_stringBase0[6], &this->unk10, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xA], &this->unk0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x12], &this->unk4, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1B], &this->unk8, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x2A], &this->unkC, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x35], &this->unk14, 0) != 0)) {
+    if ((arg0->LoadInt("lit", &this->unk10, 0) != 0) || (arg0->LoadFloat("gravity", &this->unk0, 0) != 0) || (arg0->LoadFloat("friction", &this->unk4, 0) != 0) || (arg0->LoadFloat("windMultiplier", &this->unk8, 0) != 0) || (arg0->LoadInt("iterations", &this->unkC, 0) != 0) || (arg0->LoadString("clothSubObject", &this->unk14, 0) != 0)) {
         var_r31_305 = 1;
     }
     return var_r31_305;

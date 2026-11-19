@@ -23,109 +23,6 @@ extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-static s8 lit_stringBase0[0x64] = {
-    0x70,
-    0x6C,
-    0x61,
-    0x74,
-    0x66,
-    0x6F,
-    0x72,
-    0x6D,
-    0x49,
-    0x44,
-    0,
-    0x62,
-    0x55,
-    0x73,
-    0x65,
-    0x44,
-    0x72,
-    0x6F,
-    0x70,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x54,
-    0x69,
-    0x6C,
-    0x74,
-    0,
-    0x62,
-    0x55,
-    0x70,
-    0x64,
-    0x61,
-    0x74,
-    0x65,
-    0x52,
-    0x6F,
-    0x74,
-    0x61,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x4D,
-    0x61,
-    0x74,
-    0x72,
-    0x69,
-    0x78,
-    0,
-    0x72,
-    0x6F,
-    0x74,
-    0x56,
-    0x65,
-    0x6C,
-    0,
-    0x6D,
-    0x61,
-    0x78,
-    0x53,
-    0x68,
-    0x61,
-    0x64,
-    0x6F,
-    0x77,
-    0x48,
-    0x65,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-    0x65,
-    0x6E,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x53,
-    0x77,
-    0x61,
-    0x79,
-    0,
-    0x65,
-    0x6E,
-    0x61,
-    0x62,
-    0x6C,
-    0x65,
-    0x42,
-    0x6F,
-    0x62,
-    0,
-}; /* const */
-
 void PlatformRider::ToWorldDir(const MKVector3 &arg0) {
     f32 sp10;
     f32 spC;
@@ -214,9 +111,9 @@ void PlatformRider::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[100]' to
+#if 0 // DRAFT: illegal implicit conversion from 'PlatformRider *' to
 void PlatformRider::LoadLine(MKIniLine *arg0) {
-    arg0->LoadInt(lit_stringBase0, this + 4, 0);
+    arg0->LoadInt("platformID", this + 4, 0);
 }
 #endif
 
@@ -432,12 +329,12 @@ void Platform::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to
 s32 Platform::LoadLine(MKIniLine *arg0) {
     s32 var_r31_688;
 
     var_r31_688 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unk150.LoadLine(arg0), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0)) || (arg0->LoadBool(&lit_stringBase0[0xB], &this->unk175, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unk150.LoadLine(arg0), (((u8) M2C_ERROR(/* Read from unset register $r3 */) == 0) == 0)) || (arg0->LoadBool("bUseDropShadow", &this->unk175, 0) != 0)) {
         var_r31_688 = 1;
     }
     return var_r31_688;
@@ -488,7 +385,7 @@ s32 PlatformDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_817;
 
     var_r31_817 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x1A], &this->unkE4, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x22], &this->unkF5, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x38], &this->unkF8, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x3F], &this->unkFC, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x4F], &this->unk104, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x5A], &this->unk118, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("maxTilt", &this->unkE4, 0) != 0) || (arg0->LoadBool("bUpdateRotationMatrix", &this->unkF5, 0) != 0) || (arg0->LoadFloat("rotVel", &this->unkF8, 0) != 0) || (arg0->LoadFloat("maxShadowHeight", &this->unkFC, 0) != 0) || (arg0->LoadBool("enableSway", &this->unk104, 0) != 0) || (arg0->LoadBool("enableBob", &this->unk118, 0) != 0)) {
         var_r31_817 = 1;
     }
     return var_r31_817;

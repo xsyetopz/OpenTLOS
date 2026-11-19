@@ -33,458 +33,6 @@ static KDSplinePathProperty classInfo__20KDSplinePathProperty;
 static KDPathFollowerProperty classInfo__22KDPathFollowerProperty; /* type too large by 0xC */
 static KDSoundAttachmentProperty classInfo__25KDSoundAttachmentProperty; /* type too large by 0xC */
 static KDAmbientSoundProperty classInfo__22KDAmbientSoundProperty; /* type too large by 0x18 */
-static s8 lit_stringBase0[0x1C2] = {
-    0x62,
-    0x4F,
-    0x6E,
-    0x42,
-    0x79,
-    0x44,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x46,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x50,
-    0x6C,
-    0x61,
-    0x63,
-    0x65,
-    0x48,
-    0x6F,
-    0x6C,
-    0x64,
-    0x65,
-    0x72,
-    0,
-    0x6F,
-    0x72,
-    0x69,
-    0x67,
-    0x69,
-    0x6E,
-    0,
-    0x73,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x65,
-    0x76,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x6C,
-    0x6F,
-    0x63,
-    0x61,
-    0x6C,
-    0x74,
-    0x6F,
-    0x77,
-    0x6F,
-    0x72,
-    0x6C,
-    0x64,
-    0,
-    0x50,
-    0x4C,
-    0x41,
-    0x43,
-    0x45,
-    0x48,
-    0x4F,
-    0x4C,
-    0x44,
-    0x45,
-    0x52,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x73,
-    0x74,
-    0x6F,
-    0x70,
-    0,
-    0x62,
-    0x46,
-    0x75,
-    0x6E,
-    0x63,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x70,
-    0x61,
-    0x74,
-    0x68,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x64,
-    0,
-    0x62,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x70,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x73,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x73,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x44,
-    0x69,
-    0x72,
-    0x65,
-    0x63,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x72,
-    0x65,
-    0x73,
-    0x65,
-    0x74,
-    0,
-    0x6D,
-    0x65,
-    0x73,
-    0x73,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x6F,
-    0x6E,
-    0x65,
-    0x53,
-    0x68,
-    0x6F,
-    0x74,
-    0,
-    0x73,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x50,
-    0x6C,
-    0x61,
-    0x79,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0,
-    0x61,
-    0x6E,
-    0x69,
-    0x6D,
-    0,
-    0x74,
-    0x77,
-    0x65,
-    0x65,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x62,
-    0x4B,
-    0x65,
-    0x65,
-    0x70,
-    0x52,
-    0x65,
-    0x6C,
-    0x50,
-    0x6F,
-    0x73,
-    0,
-    0x65,
-    0x76,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x6D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x72,
-    0x65,
-    0x66,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x4D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x6F,
-    0x73,
-    0x69,
-    0x74,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-    0x4B,
-    0x44,
-    0x4D,
-    0x61,
-    0x74,
-    0x72,
-    0x69,
-    0x78,
-    0,
-    0x4B,
-    0x44,
-    0x4D,
-    0x61,
-    0x74,
-    0x72,
-    0x69,
-    0x78,
-    0x52,
-    0x65,
-    0x66,
-    0,
-    0x4B,
-    0x44,
-    0x52,
-    0x65,
-    0x66,
-    0x50,
-    0x6F,
-    0x69,
-    0x6E,
-    0x74,
-    0,
-    0x4B,
-    0x44,
-    0x4D,
-    0x6F,
-    0x64,
-    0x65,
-    0x6C,
-    0,
-    0x4B,
-    0x44,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x53,
-    0x63,
-    0x72,
-    0x69,
-    0x70,
-    0x74,
-    0,
-    0x4B,
-    0x44,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0x45,
-    0x76,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x4B,
-    0x44,
-    0x41,
-    0x6E,
-    0x69,
-    0x6D,
-    0,
-    0x4B,
-    0x44,
-    0x4D,
-    0x65,
-    0x73,
-    0x73,
-    0x61,
-    0x67,
-    0x65,
-    0x48,
-    0x61,
-    0x6E,
-    0x64,
-    0x6C,
-    0x65,
-    0x72,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x4B,
-    0x44,
-    0x53,
-    0x70,
-    0x6C,
-    0x69,
-    0x6E,
-    0x65,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0,
-    0x4B,
-    0x44,
-    0x50,
-    0x61,
-    0x74,
-    0x68,
-    0x46,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x77,
-    0x65,
-    0x72,
-    0,
-    0x4B,
-    0x44,
-    0x43,
-    0x6C,
-    0x6F,
-    0x74,
-    0x68,
-    0,
-    0x4B,
-    0x44,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0x41,
-    0x74,
-    0x74,
-    0x61,
-    0x63,
-    0x68,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x4B,
-    0x44,
-    0x41,
-    0x6D,
-    0x62,
-    0x69,
-    0x65,
-    0x6E,
-    0x74,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
 void KDAmbientSoundProperty::Update() {
     s32 sp8;
@@ -528,7 +76,7 @@ s32 KDAmbientSoundProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_134;
 
     var_r31_134 = 0;
-    if ((KDSoundAttachmentProperty::LoadLine(arg0) != 0) || (arg0->LoadBool(lit_stringBase0, &this->unk1C, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xD], &this->unk20, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x18], &this->unk24, 0) != 0)) {
+    if ((KDSoundAttachmentProperty::LoadLine(arg0) != 0) || (arg0->LoadBool("bOnByDefault", &this->unk1C, 0) != 0) || (arg0->LoadFloat("FadeInTime", &this->unk20, 0) != 0) || (arg0->LoadFloat("FadeOutTime", &this->unk24, 0) != 0)) {
         var_r31_134 = 1;
     }
     return var_r31_134;
@@ -571,11 +119,11 @@ void KDSoundAttachmentProperty::InitInstance() {
 }
 #endif
 
-#if 0 // DRAFT: function call 'KDSound_ResolveSound(signed char *, int)' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char[12], const char[13])'
 void KDSoundAttachmentProperty::Resolve(KDPropertySet *arg0) {
     s8 *temp_r4_271;
 
-    if (stricmp(this->unk18, &lit_stringBase0[0x24], lit_stringBase0) == 0) {
+    if (stricmp(this->unk18, "PlaceHolder", "bOnByDefault") == 0) {
         this->unk10 = KDSound_ResolveSound(this->unk4, NULL);
     } else {
         this->unk10 = KDSound_ResolveSound(this->unk18, NULL);
@@ -592,7 +140,7 @@ u8 KDSoundAttachmentProperty::LoadLine(MKIniLine *arg0) {
     u8 var_r31_298;
 
     var_r31_298 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0x30], &this->unk14, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0x37], &this->unk18, 0) != 0)) {
+    if ((arg0->LoadString("origin", &this->unk14, 0) != 0) || (arg0->LoadString("soundevent", &this->unk18, 0) != 0)) {
         var_r31_298 = 1;
     }
     return var_r31_298;
@@ -602,8 +150,8 @@ u8 KDSoundAttachmentProperty::LoadLine(MKIniLine *arg0) {
 #if 0 // DRAFT: illegal implicit conversion from 'const char *' to
 void KDSoundAttachmentProperty::Init(const char *arg0) {
     this->unk4 = arg0;
-    this->unk14 = &lit_stringBase0[0x42];
-    this->unk18 = &lit_stringBase0[0x4F];
+    this->unk14 = "localtoworld";
+    this->unk18 = "PLACEHOLDER";
 }
 #endif
 
@@ -632,14 +180,14 @@ void KDSoundAttachmentProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *, signed char *)' does not match
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[5])' does not match
 s32 KDSoundAttachmentProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_412;
 
-    if (stricmp(arg0, &lit_stringBase0[0x5B]) == 0) {
+    if (stricmp(arg0, "play") == 0) {
         return 1;
     }
-    temp_r3_412 = 0 - stricmp(arg0, &lit_stringBase0[0x60]);
+    temp_r3_412 = 0 - stricmp(arg0, "stop");
     return 2 & ~((temp_r3_412 - temp_r3_412) - !M2C_CARRY);
 }
 #endif
@@ -866,12 +414,12 @@ s32 KDPathFollowerProperty::LoadLineInstance(MKIniLine *arg0) {
     s32 var_r30_835;
     void *temp_r3_824;
 
-    if (arg0->LoadBool(&lit_stringBase0[0x65], pInstanceMem.__vptr + (this->unk8 + 3), 0) != 0) {
+    if (arg0->LoadBool("bFunctioning", pInstanceMem.__vptr + (this->unk8 + 3), 0) != 0) {
         temp_r3_824 = pInstanceMem.__vptr + this->unk8;
         M2C_FIELD(temp_r3_824, u8 *, 0) = (u8) M2C_FIELD(temp_r3_824, u8 *, 3);
     }
     var_r30_835 = 0;
-    if ((arg0->LoadFloat(&lit_stringBase0[0x72], pInstanceMem.__vptr + (this->unk8 + 0x14), 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x7C], pInstanceMem.__vptr + (this->unk8 + 2), 0) != 0)) {
+    if ((arg0->LoadFloat("pathSpeed", pInstanceMem.__vptr + (this->unk8 + 0x14), 0) != 0) || (arg0->LoadBool("bLooping", pInstanceMem.__vptr + (this->unk8 + 2), 0) != 0)) {
         var_r30_835 = 1;
     }
     return var_r30_835;
@@ -911,7 +459,7 @@ void KDPathFollowerProperty::Resolve(KDPropertySet *arg0) {
 
 #if 0 // DRAFT: identifier 'KDPathFollowerProperty::LoadLine(MKIniLine *)' redeclared
 u8 KDPathFollowerProperty::LoadLine(MKIniLine *arg0) {
-    return (u8) (arg0->LoadString(&lit_stringBase0[0x85], (s8 **) &this->unk14, 0) != 0);
+    return (u8) (arg0->LoadString("path", (s8 **) &this->unk14, 0) != 0);
 }
 #endif
 
@@ -1063,20 +611,20 @@ void KDPathFollowerProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[6])' does not match
 s32 KDPathFollowerProperty::ResolveCommand(const char *arg0) const {
     s32 temp_r3_1215;
 
-    if (stricmp(arg0, &lit_stringBase0[0x8A]) == 0) {
+    if (stricmp(arg0, "start") == 0) {
         return 1;
     }
-    if (stricmp(arg0, &lit_stringBase0[0x60]) == 0) {
+    if (stricmp(arg0, "stop") == 0) {
         return 2;
     }
-    if (stricmp(arg0, &lit_stringBase0[0x90]) == 0) {
+    if (stricmp(arg0, "switchDirection") == 0) {
         return 3;
     }
-    temp_r3_1215 = 0 - stricmp(arg0, &lit_stringBase0[0xA0]);
+    temp_r3_1215 = 0 - stricmp(arg0, "reset");
     return 4 & ~((temp_r3_1215 - temp_r3_1215) - !M2C_CARRY);
 }
 #endif
@@ -1084,7 +632,7 @@ s32 KDPathFollowerProperty::ResolveCommand(const char *arg0) const {
 #if 0 // DRAFT: undefined identifier 'unk1C'
 void KDMessageHandlerProperty::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 == (s32) this->unk1C) {
-        M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x4C)();
+        Trigger();
     }
 }
 #endif
@@ -1174,17 +722,17 @@ loop_13:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'unk1C'
 s32 KDMessageHandlerProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r30_1397;
     u8 var_r31_1400;
 
     var_r30_1397 = 1;
     var_r31_1400 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0xA6], (s8 **) &this->unk1C, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0xAE], &this->unk24, 0) != 0)) {
+    if ((arg0->LoadString("message", (s8 **) &this->unk1C, 0) != 0) || (arg0->LoadBool("oneShot", &this->unk24, 0) != 0)) {
         var_r31_1400 = 1;
     }
-    if ((var_r31_1400 == 0) && (this->unk10.LoadLine(arg0, &lit_stringBase0[0xB6]) == 0)) {
+    if ((var_r31_1400 == 0) && (this->unk10.LoadLine(arg0, "script") == 0)) {
         var_r30_1397 = 0;
     }
     return var_r30_1397;
@@ -1214,20 +762,20 @@ void KDAnimProperty::Command(int arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'stricmp(const char *, const char[5], const char[13])' does
 s32 KDAnimProperty::ResolveCommand(const char *arg0) const {
-    return stricmp(arg0, &lit_stringBase0[0xBD], lit_stringBase0) == 0;
+    return stricmp(arg0, "Play", "bOnByDefault") == 0;
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'property_cast(KDPropertyCommand *)' does not match
 void KDAnimProperty::Resolve(KDPropertySet *arg0) {
     MKAnim *temp_r4_1518;
     MKAnimScript *temp_r3_1515;
     s8 *var_r0_1528;
     s8 *var_r4_1525;
 
-    this->unk10 = property_cast<KDAnimScriptProperty *, KDProperty *>(arg0->Find(&lit_stringBase0[0xC2]));
+    this->unk10 = property_cast<KDAnimScriptProperty *, KDProperty *>(arg0->Find("defaultAnimScript"));
     temp_r3_1515 = M2C_FIELD(this->unk10, MKAnimScript **, 0x10);
     if (temp_r3_1515 != NULL) {
         temp_r4_1518 = this->unk14;
@@ -1239,13 +787,13 @@ void KDAnimProperty::Resolve(KDPropertySet *arg0) {
         if (var_r4_1525 != NULL) {
             var_r0_1528 = var_r4_1525;
         } else {
-            var_r0_1528 = &lit_stringBase0[0xD4];
+            var_r0_1528 = "";
         }
         if (var_r0_1528 != NULL) {
             if (var_r4_1525 != NULL) {
 
             } else {
-                var_r4_1525 = &lit_stringBase0[0xD4];
+                var_r4_1525 = "";
             }
             this->unk14 = temp_r3_1515->GetAnim(var_r4_1525);
         }
@@ -1253,12 +801,12 @@ void KDAnimProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDAnimProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1567;
 
     var_r31_1567 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0xD5], (s8 **) &this->unk14, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0xDA], &this->unk18, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0xE4], &this->unk1C, 0) != 0)) {
+    if ((arg0->LoadString("anim", (s8 **) &this->unk14, 0) != 0) || (arg0->LoadFloat("tweenTime", &this->unk18, 0) != 0) || (arg0->LoadBool("bKeepRelPos", &this->unk1C, 0) != 0)) {
         var_r31_1567 = 1;
     }
     return var_r31_1567;
@@ -1319,7 +867,7 @@ loop_9:
         }
         goto loop_9;
     }
-    this->unk1C = property_cast<KDAnimScriptProperty *, KDProperty *>(arg0->Find(&lit_stringBase0[0xC2]));
+    this->unk1C = property_cast<KDAnimScriptProperty *, KDProperty *>(arg0->Find("defaultAnimScript"));
     temp_r3_1693 = M2C_FIELD(this->unk1C, MKAnimScript **, 0x10);
     if (temp_r3_1693 != NULL) {
         temp_r4_1696 = this->unk20;
@@ -1331,13 +879,13 @@ loop_9:
         if (var_r4_1704 != NULL) {
             var_r0_1707 = var_r4_1704;
         } else {
-            var_r0_1707 = &lit_stringBase0[0xD4];
+            var_r0_1707 = "";
         }
         if (var_r0_1707 != NULL) {
             if (var_r4_1704 != NULL) {
 
             } else {
-                var_r4_1704 = &lit_stringBase0[0xD4];
+                var_r4_1704 = "";
             }
             this->unk20 = temp_r3_1693->GetEventByName(var_r4_1704, (MKAnimScriptedEvent::EventType) 0);
         }
@@ -1350,7 +898,7 @@ s32 KDAnimEventProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1747;
 
     var_r31_1747 = 1;
-    if ((this->unk10.LoadLine(arg0, &lit_stringBase0[0xB6]) == 0) && (arg0->LoadString(&lit_stringBase0[0xF0], &this->unk20, 0) == 0)) {
+    if ((this->unk10.LoadLine(arg0, "script") == 0) && (arg0->LoadString("event", &this->unk20, 0) == 0)) {
         var_r31_1747 = 0;
     }
     return var_r31_1747;
@@ -1391,13 +939,13 @@ void KDRefPointProperty::Resolve(KDPropertySet *arg0) {
         if (var_r4_1836 != NULL) {
             var_r0_1839 = var_r4_1836;
         } else {
-            var_r0_1839 = &lit_stringBase0[0xD4];
+            var_r0_1839 = "";
         }
         if (var_r0_1839 != NULL) {
             if (var_r4_1836 != NULL) {
 
             } else {
-                var_r4_1836 = &lit_stringBase0[0xD4];
+                var_r4_1836 = "";
             }
             this->unk14 = MKModel_GetRefPointIndex(temp_r3_1826, var_r4_1836);
         }
@@ -1405,12 +953,12 @@ void KDRefPointProperty::Resolve(KDPropertySet *arg0) {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 KDRefPointProperty::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1878;
 
     var_r31_1878 = 0;
-    if ((arg0->LoadString(&lit_stringBase0[0xF6], &this->unk10, 0) != 0) || (arg0->LoadString(&lit_stringBase0[0xFC], (s8 **) &this->unk14, 0) != 0)) {
+    if ((arg0->LoadString("model", &this->unk10, 0) != 0) || (arg0->LoadString("refPoint", (s8 **) &this->unk14, 0) != 0)) {
         var_r31_1878 = 1;
     }
     return var_r31_1878;
@@ -1562,28 +1110,28 @@ void KDCommonProperties_cpp::__sinit() {
     temp_r16_3070 = &classInfo + 0x70;
     temp_r9_3073 = &classInfo + 0x50;
     temp_r6_3076 = &classInfo + 0x60;
-    classInfo.__vptr = &lit_stringBase0[0x112];
+    classInfo.__vptr = "KDPosition";
     classInfo.unk8 = NULL;
     classInfo.unk4 = &KDPropertyConstructor<KDPositionProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x10) = &lit_stringBase0[0x11D];
+    M2C_FIELD(&classInfo, s8 **, 0x10) = "KDMatrix";
     temp_r22_3059->unk8 = &classInfo;
     temp_r22_3059->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDMatrixProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x20) = &lit_stringBase0[0x126];
+    M2C_FIELD(&classInfo, s8 **, 0x20) = "KDMatrixRef";
     temp_r25_3063->unk8 = temp_r22_3059;
     temp_r25_3063->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDMatrixRefProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x30) = &lit_stringBase0[0x132];
+    M2C_FIELD(&classInfo, s8 **, 0x30) = "KDRefPoint";
     temp_r28_3065->unk8 = temp_r22_3059;
     temp_r28_3065->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDRefPointProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x40) = &lit_stringBase0[0x13D];
+    M2C_FIELD(&classInfo, s8 **, 0x40) = "KDModel";
     temp_r12_3069->unk8 = NULL;
     temp_r12_3069->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDModelProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x50) = &lit_stringBase0[0x145];
+    M2C_FIELD(&classInfo, s8 **, 0x50) = "KDAnimScript";
     temp_r9_3073->unk8 = NULL;
     temp_r9_3073->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDAnimScriptProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x60) = &lit_stringBase0[0x152];
+    M2C_FIELD(&classInfo, s8 **, 0x60) = "KDAnimEvent";
     temp_r6_3076->unk8 = (KDPositionProperty *) &classInfo;
     temp_r6_3076->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDAnimEventProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x70) = &lit_stringBase0[0x15E];
+    M2C_FIELD(&classInfo, s8 **, 0x70) = "KDAnim";
     temp_r16_3070->unk8 = NULL;
     temp_r16_3070->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDAnimProperty>::Construct;
     temp_r11_3110 = &classInfo + 0x80;
@@ -1593,25 +1141,25 @@ void KDCommonProperties_cpp::__sinit() {
     temp_r25_3122 = &classInfo + 0xC0;
     temp_r22_3125 = &classInfo + 0xD0;
     temp_r19_3128 = &classInfo + 0xE0;
-    M2C_FIELD(&classInfo, s8 **, 0x80) = &lit_stringBase0[0x165];
+    M2C_FIELD(&classInfo, s8 **, 0x80) = "KDMessageHandler";
     temp_r11_3110->unk8 = (KDPositionProperty *) &classInfo;
     temp_r11_3110->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDMessageHandlerProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0x90) = &lit_stringBase0[0x176];
+    M2C_FIELD(&classInfo, s8 **, 0x90) = "KDPath";
     temp_r8_3113->unk8 = NULL;
     temp_r8_3113->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDPathProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0xA0) = &lit_stringBase0[0x17D];
+    M2C_FIELD(&classInfo, s8 **, 0xA0) = "KDSplinePath";
     temp_r5_3116->unk8 = temp_r8_3113;
     temp_r5_3116->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDSplinePathProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0xB0) = &lit_stringBase0[0x18A];
+    M2C_FIELD(&classInfo, s8 **, 0xB0) = "KDPathFollower";
     temp_r28_3119->unk8 = NULL;
     temp_r28_3119->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDPathFollowerProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0xC0) = &lit_stringBase0[0x199];
+    M2C_FIELD(&classInfo, s8 **, 0xC0) = "KDCloth";
     temp_r25_3122->unk8 = NULL;
     temp_r25_3122->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDClothProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0xD0) = &lit_stringBase0[0x1A1];
+    M2C_FIELD(&classInfo, s8 **, 0xD0) = "KDSoundAttachment";
     temp_r22_3125->unk8 = NULL;
     temp_r22_3125->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDSoundAttachmentProperty>::Construct;
-    M2C_FIELD(&classInfo, s8 **, 0xE0) = &lit_stringBase0[0x1B3];
+    M2C_FIELD(&classInfo, s8 **, 0xE0) = "KDAmbientSound";
     temp_r19_3128->unk8 = temp_r22_3125;
     temp_r19_3128->unk4 = (void (*)(KDPropertyConstructor<KDPositionProperty> *)) &KDPropertyConstructor<KDAmbientSoundProperty>::Construct;
 }

@@ -43,118 +43,6 @@ static s32 lit_790 = 0;
 static u8 lit_791 = 1;
 
 #if 0 // DRAFT: undefined identifier 'unkC0'
-static s8 lit_stringBase0[0x6D] = {
-    0x46,
-    0x61,
-    0x6C,
-    0x6C,
-    0x69,
-    0x6E,
-    0x67,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0x4C,
-    0x65,
-    0x61,
-    0x76,
-    0x65,
-    0x73,
-    0,
-    0x70,
-    0x39,
-    0x30,
-    0x31,
-    0x33,
-    0x5F,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x4C,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0,
-    0x70,
-    0x39,
-    0x30,
-    0x31,
-    0x34,
-    0x5F,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x4D,
-    0x65,
-    0x64,
-    0x69,
-    0x75,
-    0x6D,
-    0,
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x31,
-    0x34,
-    0x5F,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x43,
-    0x68,
-    0x75,
-    0x6E,
-    0x6B,
-    0x73,
-    0,
-    0x50,
-    0x39,
-    0x30,
-    0x31,
-    0x31,
-    0x5F,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x52,
-    0x6F,
-    0x63,
-    0x6B,
-    0x4C,
-    0x61,
-    0x76,
-    0x61,
-    0x53,
-    0x6D,
-    0x61,
-    0x6C,
-    0x6C,
-    0,
-}; /* const */
-
 void FuryFXEarth2::ResetFury() {
     M2C_UNK *temp_r3_58;
     M2C_UNK *temp_r4_61;
@@ -1295,12 +1183,12 @@ void FuryFXEarth2::Init() {
     s32 var_ctr_2185;
 
     FuryFX::Init();
-    this->unk90 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unk90 = checked_cast<FallingLeaves *, MKProp>(gMK->CreateProp("FallingGlowLeaves"));
     SetDefaults();
-    this->unkB0 = MKModel_Create(&lit_stringBase0[0x12], NULL, 2, NULL);
-    this->unkB4 = MKModel_Create(&lit_stringBase0[0x2A], NULL, 2, NULL);
-    this->unkB8 = MKModel_Create(&lit_stringBase0[0x43], NULL, 2, NULL);
-    temp_r3_2163 = MKModel_Create(&lit_stringBase0[0x55], NULL, 2, NULL);
+    this->unkB0 = MKModel_Create("p9013_FireRockLavaLarge", NULL, 2, NULL);
+    this->unkB4 = MKModel_Create("p9014_FireRockLavaMedium", NULL, 2, NULL);
+    this->unkB8 = MKModel_Create("FX0014_RockChunks", NULL, 2, NULL);
+    temp_r3_2163 = MKModel_Create("P9011_FireRockLavaSmall", NULL, 2, NULL);
     this->unkBC = temp_r3_2163;
     temp_r3_2165 = temp_r3_2163->Current();
     if (temp_r3_2165 != NULL) {

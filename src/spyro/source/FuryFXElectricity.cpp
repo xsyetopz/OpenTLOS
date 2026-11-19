@@ -41,52 +41,6 @@ static u8 lit_828 = 1;
 static u8 lit_837 = 1;
 
 #if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x2B] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x37,
-    0x30,
-    0,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x79,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-    0x77,
-    0x69,
-    0x6E,
-    0x64,
-    0x79,
-    0x6D,
-    0x61,
-    0x74,
-    0x32,
-    0,
-    0x4C,
-    0x69,
-    0x74,
-    0x43,
-    0x6C,
-    0x6F,
-    0x75,
-    0x64,
-    0x50,
-    0x53,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x50,
-    0x53,
-    0,
-}; /* const */
-
 void FuryFXElectricity::ResetFury() {
     s32 spC;
     s32 sp8;
@@ -1353,17 +1307,17 @@ void FuryFXElectricity::Resolve() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void FuryFXElectricity::Init() {
     FuryFX::Init();
     this->unk90 = 0;
     M2C_FIELD(this, f32 *, 0x180) = -1.0f;
     M2C_FIELD(this, f32 *, 0x184) = 0.0f;
-    this->unkA8 = MKMaterial_Create(lit_stringBase0);
-    this->unkC8 = MKMaterial_Create(&lit_stringBase0[7]);
-    this->unkCC = MKMaterial_Create(&lit_stringBase0[0x10]);
+    this->unkA8 = MKMaterial_Create("fx_370");
+    this->unkC8 = MKMaterial_Create("windymat");
+    this->unkCC = MKMaterial_Create("windymat2");
     this->unkAC = 0.0f;
-    this->unkC0 = checked_cast<LitCloudPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x1A]));
+    this->unkC0 = checked_cast<LitCloudPS *, MKProp>(gMK->CreateProp("LitCloudPS"));
     this->unkC4 = NULL;
     this->unkD0 = 2.0943952f;
     this->unkE0 = 3.1415927f;
@@ -1374,7 +1328,7 @@ void FuryFXElectricity::Init() {
     this->unkD8 = this->unkC8;
     this->unkE8 = this->unkCC;
     this->unkF8 = this->unkC8;
-    this->unk100 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x25]));
+    this->unk100 = checked_cast<ZapPS *, MKProp>(gMK->CreateProp("ZapPS"));
     this->unk180 = nanf;
     M2C_FIELD(this, s8 *, 0x18C) = 0;
     M2C_FIELD(this, f32 *, 0x194) = 0.0f;

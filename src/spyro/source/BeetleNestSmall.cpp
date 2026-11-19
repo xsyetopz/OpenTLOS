@@ -18,28 +18,8 @@
 
 extern MKSceneManager *gMK;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'FindInteractivePropMsg'
-static s8 lit_stringBase0[0x12] = {
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x47,
-    0x6F,
-    0x6F,
-    0x70,
-    0x46,
-    0x58,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'FindInteractivePropMsg'
 void BeetleNestSmall::Message(MKMessage *arg0) {
     s32 temp_r0_47;
     void *temp_r3_60;
@@ -179,7 +159,7 @@ void BeetleNestSmall::LoadDone() {
     void *temp_r3_331;
 
     ShatterWaypointSpawn::LoadDone();
-    this->unk208 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    this->unk208 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "spawn");
     temp_r28_302 = this->unk1A8.unk44;
     this->unk1A8.unk20 = 0.0f;
     this->unk1A8.unk24 = 5.0f;
@@ -221,8 +201,8 @@ void BeetleNestSmall::Init() {
 #if 0 // DRAFT: expression syntax error
 void BeetleNestSmallDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk170 = this->unk34->GetAnim(&lit_stringBase0[6]);
-    this->unk174 = this->unk34->GetAnim(lit_stringBase0);
+    this->unk170 = this->unk34->GetAnim("idle");
+    this->unk174 = this->unk34->GetAnim("spawn");
 }
 #endif
 
@@ -231,7 +211,7 @@ void BeetleNestSmallDescriptor::Init() {
     ShatterWaypointSpawnDescriptor::Init();
     this->unk174 = 0;
     this->unk170 = 0;
-    this->unk178 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB]));
+    this->unk178 = checked_cast<GoopFX *, MKProp>(gMK->CreateProp("GoopFX"));
 }
 #endif
 

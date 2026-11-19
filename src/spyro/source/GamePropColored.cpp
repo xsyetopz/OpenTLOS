@@ -8,39 +8,6 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-static s8 lit_stringBase0[0x1E] = {
-    0x4D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6F,
-    0x72,
-    0x65,
-    0x64,
-    0x4D,
-    0x61,
-    0x74,
-    0x65,
-    0x72,
-    0x69,
-    0x61,
-    0x6C,
-    0,
-}; /* const */
-
 void GamePropColored::Draw() {
     f64 sp10;
     f64 sp8;
@@ -62,17 +29,15 @@ void GamePropColored::Draw() {
     GameProp::Draw();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[30]' to
 s32 GamePropColored::LoadLine(MKIniLine *arg0) {
     s32 var_r31_56;
 
     var_r31_56 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadVector4(lit_stringBase0, &this->unkC8, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadVector4("MaterialColor", &this->unkC8, 0) != 0)) {
         var_r31_56 = 1;
     }
     return var_r31_56;
 }
-#endif
 
 void GamePropColored::Init() {
     GameProp::Init();
@@ -94,14 +59,14 @@ void GamePropColoredDescriptor::Deinit() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'signed char **' to
 s32 GamePropColoredDescriptor::LoadLine(MKIniLine *arg0) {
     s8 *sp8;
 
     if (GamePropDescriptor::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->LoadString(&lit_stringBase0[0xE], &sp8, 0) != 0) {
+    if (arg0->LoadString("ColoredMaterial", &sp8, 0) != 0) {
         this->unkE4 = MKMaterial_Create(sp8);
         return 1;
     }

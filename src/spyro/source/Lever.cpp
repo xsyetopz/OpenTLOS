@@ -17,103 +17,6 @@
 extern s32 GS_LavaLeverPullStart;
 extern s32 GS_PLACEHOLDER;
 extern M2C_UNK gb;
-static s8 lit_stringBase0[0x5F] = {
-    0x4F,
-    0x6E,
-    0x50,
-    0x75,
-    0x6C,
-    0x6C,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x6C,
-    0x65,
-    0x61,
-    0x73,
-    0x65,
-    0,
-    0x72,
-    0x5F,
-    0x50,
-    0x30,
-    0x30,
-    0x32,
-    0x39,
-    0x5F,
-    0x53,
-    0x74,
-    0x61,
-    0x6E,
-    0x64,
-    0,
-    0x42,
-    0x69,
-    0x6E,
-    0x64,
-    0x50,
-    0x6F,
-    0x73,
-    0x65,
-    0,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x72,
-    0x50,
-    0x75,
-    0x6C,
-    0x6C,
-    0x5F,
-    0x53,
-    0x74,
-    0x61,
-    0x72,
-    0x74,
-    0,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x72,
-    0x50,
-    0x75,
-    0x6C,
-    0x6C,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x4C,
-    0x65,
-    0x76,
-    0x65,
-    0x72,
-    0x50,
-    0x75,
-    0x6C,
-    0x6C,
-    0x5F,
-    0x45,
-    0x6E,
-    0x64,
-    0,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
 
 f32 Lever::GetCollisionHeight() {
     return 200.0f;
@@ -313,17 +216,15 @@ void Lever::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[95]' to
 s32 Lever::LoadLine(MKIniLine *arg0) {
     s32 var_r31_535;
 
     var_r31_535 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (this->unkF8.LoadLine(arg0, lit_stringBase0) != 0) || (this->unkFC.LoadLine(arg0, &lit_stringBase0[7]) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (this->unkF8.LoadLine(arg0, "OnPull") != 0) || (this->unkFC.LoadLine(arg0, "OnRelease") != 0)) {
         var_r31_535 = 1;
     }
     return var_r31_535;
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'unkC8'
 void Lever::Deinit() {
@@ -363,11 +264,11 @@ void Lever::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void LeverDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, &lit_stringBase0[0x11]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0x1F]);
-    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x28]);
-    this->unkF4 = this->unk34->GetAnim(&lit_stringBase0[0x38]);
-    this->unkF8 = this->unk34->GetAnim(&lit_stringBase0[0x47]);
+    this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "r_P0029_Stand");
+    this->unkEC = this->unk34->GetAnim("BindPose");
+    this->unkF0 = this->unk34->GetAnim("LeverPull_Start");
+    this->unkF4 = this->unk34->GetAnim("LeverPull_Loop");
+    this->unkF8 = this->unk34->GetAnim("LeverPull_End");
 }
 #endif
 
@@ -376,7 +277,7 @@ s32 LeverDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_679;
 
     var_r31_679 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x55], &this->unkE4) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "LoopSound", &this->unkE4) != 0)) {
         var_r31_679 = 1;
     }
     return var_r31_679;

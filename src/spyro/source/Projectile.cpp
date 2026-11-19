@@ -17,41 +17,8 @@
 
 extern s32 GS_PLACEHOLDER;
 extern f32 gUpdateTimeDelta;
-#if 0 // DRAFT: undefined identifier 'arg_spC'
-static s8 lit_stringBase0[0x1F] = {
-    0x73,
-    0x6E,
-    0x64,
-    0x54,
-    0x72,
-    0x61,
-    0x76,
-    0x65,
-    0x6C,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x4C,
-    0x61,
-    0x75,
-    0x6E,
-    0x63,
-    0x68,
-    0,
-    0x73,
-    0x6E,
-    0x64,
-    0x43,
-    0x6F,
-    0x6C,
-    0x6C,
-    0x69,
-    0x64,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'arg_spC'
 void Projectile::SetAttachment(MKAttachment *arg0) {
     MKAttachment *temp_r3_58;
     this->unk13C = arg0;
@@ -474,7 +441,7 @@ s32 ProjectileDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_920;
 
     var_r31_920 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0, &this->unkE8) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xA], &this->unkE4) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x14], &this->unkEC) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "sndTravel", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "sndLaunch", &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "sndCollide", &this->unkEC) != 0)) {
         var_r31_920 = 1;
     }
     return var_r31_920;

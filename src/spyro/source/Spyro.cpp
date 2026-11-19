@@ -2134,7 +2134,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
     if ((var_r31_4003 != NULL) && (M2C_FIELD(*var_r31_4003, u8 (**)(void **), 0x20)(var_r31_4003) != 0)) {
         var_r31_4003 = NULL;
     }
-    if ((var_r30_4005 != NULL) && (M2C_FIELD(var_r30_4005->__vptr, u8 (**)(Targetable *), 0x18)(var_r30_4005) == 0) && (M2C_FIELD(var_r30_4005->__vptr, u8 (**)(Targetable *), 0x1C)(var_r30_4005) == 0)) {
+    if ((var_r30_4005 != NULL) && (var_r30_4005->HasHitFloor() == 0) && (var_r30_4005->HasHitWall() == 0)) {
         var_r30_4005 = NULL;
     }
     if ((((InputModifier *) (GetInput()))->GetLeftX() != 0.0f) || (((InputModifier *) (GetInput()))->GetLeftY() != 0.0f)) {
@@ -2148,7 +2148,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
         var_r29_4007 = gb.unk20->GetNearestFacingEnemy(*((MKVector3 *) &sp168), 300.0f + SPYRO_COMBAT_SCALE_MAG, *((MKVector3 *) &sp188), temp_f2_4085, 1U, 1U);
     }
     if (this->unk7C.GetState() != 2) {
-        if ((var_r30_4005 != NULL) && (M2C_FIELD(var_r30_4005->__vptr, Enemy *(**)(Targetable *), 0xC)(var_r30_4005) != NULL) && (((Enemy *) (M2C_FIELD(var_r30_4005->__vptr, Enemy *(**)(Targetable *), 0xC)(var_r30_4005)))->IsKnockedUp() != 0)) {
+        if ((var_r30_4005 != NULL) && (var_r30_4005->Deinit() != NULL) && (((Enemy *) (var_r30_4005->Deinit()))->IsKnockedUp() != 0)) {
             var_r30_4005 = NULL;
         }
         if ((var_r29_4007 != NULL) && (((u32 (*)(TargetManager **)) (*var_r29_4007)->unk8.unk4)(var_r29_4007) != 0U) && (((Enemy *) (((Enemy *(*)(TargetManager **)) (*var_r29_4007)->unk8.unk4)(var_r29_4007)))->IsKnockedUp() != 0)) {
@@ -2304,7 +2304,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
             }
             if (var_r0_4434 != 0) {
                 sp98.GetPos();
-                M2C_FIELD(var_r30_4005->__vptr, M2C_UNK (**)(Targetable *), 8)(var_r30_4005);
+                var_r30_4005->Init();
                 spA8.GetPos();
                 M2C_ERROR(/* unknown instruction: psq_lx $f1, $zero, $r0, 0x0, qr0 */);
                 M2C_ERROR(/* unknown instruction: ps_sub $f0, $f1, $f0 */);
@@ -2358,7 +2358,7 @@ s32 Spyro::ChooseCombatTarget(MKVector3 *arg0, MKVector3 *arg1) {
                 sp198 = temp_f2_4570;
                 unksp19C = temp_f1_4571;
                 sp1A0 = (f32) sp1A0 * var_f3_4560;
-                if (var_f31_4493 > (SPYRO_COMBAT_SCALE_MAG + M2C_FIELD(var_r30_4005->__vptr, f32 (**)(Targetable *, f32, f32), 0x38)(var_r30_4005, temp_f1_4571, temp_f2_4570))) {
+                if (var_f31_4493 > (SPYRO_COMBAT_SCALE_MAG + var_r30_4005->GetProp(temp_f1_4571, temp_f2_4570))) {
                     sp198 = sp148.unk40;
                     sp1A0 = sp148.unk48;
                 } else {

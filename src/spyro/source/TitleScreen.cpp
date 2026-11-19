@@ -13,14 +13,12 @@ extern s32 GS_MenuSelect;
 extern f32 gUpdateTimeDelta;
 extern M2C_UNK gb;
 extern s32 loopCount;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pVideos[1] = { lit_stringBase0 };
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+static s8 *pVideos[1] = { "AttractVideo" };
 #endif
 static s32 videoCount = 1;
 
 #if 0 // DRAFT: expression syntax error
-static s8 lit_stringBase0[0xD] = { 0x41, 0x74, 0x74, 0x72, 0x61, 0x63, 0x74, 0x56, 0x69, 0x64, 0x65, 0x6F, 0 }; /* const */
-
 void TitleScreen::Update() {
     s32 spC;
     s32 sp8;
@@ -77,7 +75,7 @@ void TitleScreen::Update() {
         M2C_FIELD(M2C_FIELD(&gb, void **, 0x354), s8 *, 5) = 0;
         UIControls_SetDevice((MKInputDevices) 0);
         KDSound_Play(GS_MenuSelect, 0U, -1);
-        ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), lit_stringBase0 + 0x19);
+        ((UISystem *) (ui_cast<P8UISystem))->PushScreen(P11UIContainer>__FP11UIContainer(GetRoot()), "");
     }
     this->unkBC.unk8 = M2C_BITWISE(f32, this->unkBC.unk8) + gUpdateTimeDelta;
     M2C_ERROR(/* unknown instruction: cror eq, gt, eq */);
@@ -123,7 +121,7 @@ void TitleScreen::OnEnter() {
     }
     temp_r3_211 = ui_cast<UISystem *, UIContainer *>(GetRoot());
     temp_r31_213 = M2C_FIELD(temp_r3_211, u32 *, 0x98);
-    if (temp_r31_213 != temp_r3_211->FindChild(lit_stringBase0 + 0x19)) {
+    if (temp_r31_213 != temp_r3_211->FindChild("")) {
         var_f1_219 = 1.0f;
     } else {
         var_f1_219 = 0.0f;
@@ -136,10 +134,10 @@ void TitleScreen::OnEnter() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal explicit conversion from 'UIObject *' to
 void TitleScreen::Resolve() {
     UIScreen::Resolve();
-    this->unkCC = M2C_BITWISE(f32, FindChild(lit_stringBase0 + 0x22));
+    this->unkCC = M2C_BITWISE(f32, FindChild(""));
     this->unk18.unk40 |= 1;
 }
 #endif

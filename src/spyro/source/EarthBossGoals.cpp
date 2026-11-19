@@ -2012,12 +2012,10 @@ block_51:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void EarthBossGoal_Think::Activate() {
     this->unk8 = 0;
-    M2C_FIELD(this->__vptr, M2C_UNK (**)(), 0x20)();
+    Arbitrate();
 }
-#endif
 
 void EarthBossGoal_Think::Reset() {
     this->unk8 = 1;

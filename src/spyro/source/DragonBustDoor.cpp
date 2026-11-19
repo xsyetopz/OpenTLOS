@@ -9,105 +9,6 @@
 #include "spyro/source/Tools.h"
 #include <m2c_macros.h>
 
-static s8 lit_stringBase0[0x60] = {
-    0x4C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x59,
-    0x65,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x4C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x52,
-    0x65,
-    0x64,
-    0,
-    0x4C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x47,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0,
-    0x4C,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x42,
-    0x6C,
-    0x75,
-    0x65,
-    0,
-    0x59,
-    0x65,
-    0x6C,
-    0x6C,
-    0x6F,
-    0x77,
-    0x53,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x52,
-    0x65,
-    0x64,
-    0x53,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x47,
-    0x72,
-    0x65,
-    0x65,
-    0x6E,
-    0x53,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x49,
-    0x44,
-    0,
-    0x42,
-    0x6C,
-    0x75,
-    0x65,
-    0x53,
-    0x77,
-    0x69,
-    0x74,
-    0x63,
-    0x68,
-    0x49,
-    0x44,
-    0,
-}; /* const */
-
 void DragonBustDoor::Deinit() {
     GameProp::Deinit();
 }
@@ -173,11 +74,11 @@ void DragonBustDoor::LoadDone() {
     s32 var_r31_186;
 
     Trap::LoadDone();
-    this->unkE8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, lit_stringBase0);
-    this->unkF0 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, &lit_stringBase0[0xC]);
-    this->unkF8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, &lit_stringBase0[0x15]);
+    this->unkE8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightYellow");
+    this->unkF0 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightRed");
+    this->unkF8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightGreen");
     var_r30_184 = 0;
-    this->unk100 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, &lit_stringBase0[0x20]);
+    this->unk100 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "LightBlue");
     var_r31_186 = 0;
     do {
         MKModel_EnableSubObject(this->unk4, (SubObjectType) 0, *(this + (var_r31_186 + 0xEC)), 0U, 1U);
@@ -187,12 +88,12 @@ void DragonBustDoor::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 DragonBustDoor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_215;
 
     var_r31_215 = 0;
-    if ((Trap::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x2A], &this->unkE8, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x39], &this->unkEC, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x45], &this->unkF4, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x53], &this->unkFC, 0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (arg0->LoadInt("YellowSwitchID", &this->unkE8, 0) != 0) || (arg0->LoadInt("RedSwitchID", &this->unkEC, 0) != 0) || (arg0->LoadInt("GreenSwitchID", &this->unkF4, 0) != 0) || (arg0->LoadInt("BlueSwitchID", &this->unkFC, 0) != 0)) {
         var_r31_215 = 1;
     }
     return var_r31_215;

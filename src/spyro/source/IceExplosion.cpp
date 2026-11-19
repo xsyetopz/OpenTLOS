@@ -7,50 +7,8 @@
 
 extern MKSceneManager *gMK;
 extern s32 gViewSeed;
-#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
-static s8 lit_stringBase0[0x28] = {
-    0x49,
-    0x63,
-    0x65,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x46,
-    0x6C,
-    0x61,
-    0x73,
-    0x68,
-    0x50,
-    0x53,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x53,
-    0x68,
-    0x6F,
-    0x63,
-    0x6B,
-    0x50,
-    0x53,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: function call 'MKRand_Float(long *, float, float)' does not match
 void IceExplosion::Trigger(const MKVector3 &arg0, float arg1) {
     f64 temp_f1_52;
     void *temp_r29_67;
@@ -112,14 +70,12 @@ void IceExplosion::Update() {
 
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[40]' to
 void IceExplosionDescriptor::Init() {
     MKPropDescriptor::Init();
     this->unk60 = NULL;
-    gMK->CreatePropDeferred(lit_stringBase0, &this->unk60);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x14], &this->unk64);
+    gMK->CreatePropDeferred("IceExplosionFlashPS", &this->unk60);
+    gMK->CreatePropDeferred("IceExplosionShockPS", &this->unk64);
 }
-#endif
 
 #if 0 // DRAFT: identifier 'checked_cast<...>(T1 *)' redeclared
 void checked_cast<IceExplosionDescriptor *, MKPropDescriptor>(MKPropDescriptor *arg0) {

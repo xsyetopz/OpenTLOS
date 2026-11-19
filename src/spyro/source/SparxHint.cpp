@@ -13,86 +13,6 @@ extern f32 SPYRO_MIN_JUMP_Y_VELOCITY;
 extern GameGlobals gb;
 #if 0 // DRAFT: ')' expected
 static BoundingVolume volume;                       /* type too large by 0x10; unable to generate initializer: not enough data */
-static s8 lit_stringBase0[0x4E] = {
-    0x50,
-    0x72,
-    0x69,
-    0x6F,
-    0x72,
-    0x69,
-    0x74,
-    0x79,
-    0,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0x4E,
-    0x6F,
-    0x74,
-    0x69,
-    0x66,
-    0x79,
-    0,
-    0x52,
-    0x61,
-    0x64,
-    0x69,
-    0x75,
-    0x73,
-    0x64,
-    0x65,
-    0x41,
-    0x63,
-    0x74,
-    0x69,
-    0x76,
-    0x61,
-    0x74,
-    0x65,
-    0,
-    0x4E,
-    0x75,
-    0x6D,
-    0x55,
-    0x73,
-    0x65,
-    0x73,
-    0,
-    0x53,
-    0x70,
-    0x65,
-    0x65,
-    0x63,
-    0x68,
-    0x4D,
-    0x6F,
-    0x64,
-    0x65,
-    0,
-    0x53,
-    0x6E,
-    0x61,
-    0x70,
-    0,
-    0x4F,
-    0x6E,
-    0x52,
-    0x65,
-    0x6C,
-    0x65,
-    0x61,
-    0x73,
-    0x65,
-    0x53,
-    0x70,
-    0x61,
-    0x72,
-    0x78,
-    0,
-}; /* const */
 
 void SparxHint::Message(MKMessage *arg0) {
     SparxHint *sp64;
@@ -328,12 +248,12 @@ void SparxHint::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SparxHint::LoadLine(MKIniLine *arg0) {
     s32 var_r31_394;
 
     var_r31_394 = 0;
-    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0, &this->unk94, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[9], &this->unkA0, 0) != 0) || (arg0->LoadFloat(&lit_stringBase0[0x16], &this->unkA4, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x27], &this->unk98, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x2F], &this->unkAC, 0) != 0) || (arg0->LoadBool(&lit_stringBase0[0x3A], &this->unkAB, 0) != 0) || (this->unk90.LoadLine(arg0, &lit_stringBase0[0x3F]) != 0)) {
+    if ((MKProp::LoadLine(arg0) != 0) || (arg0->LoadInt("Priority", &this->unk94, 0) != 0) || (arg0->LoadFloat("RadiusNotify", &this->unkA0, 0) != 0) || (arg0->LoadFloat("RadiusdeActivate", &this->unkA4, 0) != 0) || (arg0->LoadInt("NumUses", &this->unk98, 0) != 0) || (arg0->LoadInt("SpeechMode", &this->unkAC, 0) != 0) || (arg0->LoadBool("Snap", &this->unkAB, 0) != 0) || (this->unk90.LoadLine(arg0, "OnReleaseSparx") != 0)) {
         var_r31_394 = 1;
     }
     return var_r31_394;

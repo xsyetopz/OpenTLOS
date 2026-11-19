@@ -13,27 +13,6 @@
 
 extern s32 GS_MoleExtra2;
 extern MKSceneManager *gMK;
-static s8 lit_stringBase0[0x13] = {
-    0x66,
-    0x78,
-    0x65,
-    0x6D,
-    0x69,
-    0x74,
-    0x30,
-    0,
-    0x45,
-    0x6E,
-    0x65,
-    0x72,
-    0x67,
-    0x79,
-    0x42,
-    0x65,
-    0x61,
-    0x6D,
-    0,
-}; /* const */
 
 void MoleTether::SetWorldMatrix(Matrix &arg0) {
     MKModel_SetWorldMatrix(this->unk4, arg0);
@@ -147,7 +126,7 @@ void MoleTether::Update() {
 #if 0 // DRAFT: undefined identifier 'unk1F8'
 void MoleTether::LoadDone() {
     Shatterable::LoadDone();
-    this->unk1F8 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    this->unk1F8 = (u32) Tools_GetMatchingRefPointIndex(this->unk4, "fxemit0");
 }
 #endif
 
@@ -165,7 +144,7 @@ void MoleTether::Init() {
 #if 0 // DRAFT: expression syntax error
 void MoleTetherDescriptor::LoadDone() {
     ShatterableDescriptor::LoadDone();
-    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp(&lit_stringBase0[8]));
+    this->unk16C = checked_cast<EnergyBeam *, MKProp>(gMK->CreateProp("EnergyBeam"));
 }
 #endif
 

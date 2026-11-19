@@ -71,121 +71,6 @@ static u8 lit_1549 = 1;
 static u8 lit_1631 = 1;
 
 #if 0 // DRAFT: pointer/array required
-static s8 lit_stringBase0[0x70] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x33,
-    0x34,
-    0x31,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x43,
-    0x61,
-    0x67,
-    0x65,
-    0,
-    0x53,
-    0x68,
-    0x61,
-    0x70,
-    0x65,
-    0x64,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0x46,
-    0x58,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x50,
-    0x53,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x53,
-    0x68,
-    0x61,
-    0x72,
-    0x64,
-    0,
-    0x5A,
-    0x61,
-    0x70,
-    0x4D,
-    0x69,
-    0x73,
-    0x73,
-    0x69,
-    0x6C,
-    0x65,
-    0x49,
-    0x6D,
-    0x70,
-    0x61,
-    0x63,
-    0x74,
-    0x50,
-    0x53,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0x72,
-    0x69,
-    0x63,
-    0x69,
-    0x74,
-    0x79,
-    0,
-    0x46,
-    0x75,
-    0x72,
-    0x79,
-    0x46,
-    0x58,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x74,
-    0x72,
-    0x69,
-    0x63,
-    0x69,
-    0x74,
-    0x79,
-    0x32,
-    0,
-    0x53,
-    0x63,
-    0x6F,
-    0x72,
-    0x63,
-    0x68,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6C,
-    0,
-}; /* const */
-
 void ZapBreathFX::ResetFury() {
     this->unk9EC->ResetFury();
     ((FuryFXElectricity2 *) (M2C_BITWISE(FuryFXElectricity2 *, this->unk9F0)))->ResetFury();
@@ -2761,7 +2646,7 @@ void ZapBreathFX::Resolve() {
         sp34 = 1.0f;
         spA8 = (f64) sp28;
         spB0 = (f64) sp30;
-        ((ShapedTrailFX *) (*(this->unkAC + (var_r30_5704 + 0x54))))->InitData(this->unkE0, lit_951, lit_stringBase0, lit_952, *((MKVector4 *) &spA8), 2.0f, 0U, 0.4f);
+        ((ShapedTrailFX *) (*(this->unkAC + (var_r30_5704 + 0x54))))->InitData(this->unkE0, lit_951, "fx_341", lit_952, *((MKVector4 *) &spA8), 2.0f, 0U, 0.4f);
         sp20 = 0.0f;
         sp8 = 1.0f;
         spC = 1.0f;
@@ -2782,7 +2667,7 @@ void ZapBreathFX::Resolve() {
         var_r27_5703 += 1;
         var_r30_5704 += 0x90;
     } while (var_r27_5703 < 0xA);
-    this->unkFC = checked_cast<MKPropDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, &lit_stringBase0[7]));
+    this->unkFC = checked_cast<MKPropDescriptor *, MKPropDescriptor>(M2C_FIELD(*gMK, MKPropDescriptor *(**)(void **, s8 *), 0x5C)(gMK, "ZapCage"));
 }
 #endif
 
@@ -2842,7 +2727,7 @@ void ZapBreathFX::Init() {
     var_r30_5875 = 0;
     var_r28_5876 = 0;
     do {
-        gMK->CreatePropDeferred(&lit_stringBase0[0xF], this->unkAC + (var_r28_5876 + 0x54));
+        gMK->CreatePropDeferred("ShapedTrailFX", this->unkAC + (var_r28_5876 + 0x54));
         *(this->unkAC + (var_r28_5876 + 0x60)) = 0;
         *(this->unkAC + (var_r28_5876 + 0x40)) = 0.0f;
         *(this->unkAC + (var_r28_5876 + 0x50)) = 0;
@@ -2861,19 +2746,19 @@ void ZapBreathFX::Init() {
         var_r30_5875 += 1;
         var_r28_5876 += 0x90;
     } while (var_r30_5875 < 0xA);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x1D], (MKProp **) &this->unkCC);
+    gMK->CreatePropDeferred("ZapPS", (MKProp **) &this->unkCC);
     this->unkD0 = 0.0f;
     this->unkD4 = 0.0f;
     this->unkD8 = 0.0f;
-    this->unkE0 = MKModel_Create(&lit_stringBase0[0x23], NULL, 2, NULL);
+    this->unkE0 = MKModel_Create("IceShard", NULL, 2, NULL);
     M2C_FIELD(this, f32 *, 0xE8) = 1.0f;
     M2C_FIELD(this, f32 *, 0xEC) = 1.0f;
     M2C_FIELD(this, f32 *, 0xF0) = 0.0f;
     M2C_FIELD(this, f32 *, 0xF4) = 1.0f;
     this->unkF8 = 1.0f;
-    gMK->CreatePropDeferred(&lit_stringBase0[0x2C], (MKProp **) &this->unk9E0);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x3F], (MKProp **) &this->unk9EC);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x51], (MKProp **) &this->unk9F0);
+    gMK->CreatePropDeferred("ZapMissileImpactPS", (MKProp **) &this->unk9E0);
+    gMK->CreatePropDeferred("FuryFXElectricity", (MKProp **) &this->unk9EC);
+    gMK->CreatePropDeferred("FuryFXElectricity2", (MKProp **) &this->unk9F0);
     var_r28_5967 = 0;
     var_r30_5968 = 0;
     do {
@@ -2885,8 +2770,8 @@ void ZapBreathFX::Init() {
     this->unk9E8 = 0.0f;
     this->unk9E4 = NULL;
     this->unk9F4 = NULL;
-    gMK->CreatePropDeferred(&lit_stringBase0[0x64], (MKProp **) &this->unk9F8);
-    gMK->CreatePropDeferred(&lit_stringBase0[0x64], (MKProp **) &this->unk9FC);
+    gMK->CreatePropDeferred("ScorchTrail", (MKProp **) &this->unk9F8);
+    gMK->CreatePropDeferred("ScorchTrail", (MKProp **) &this->unk9FC);
     this->unkA00 = 0.0f;
     this->unkA04 = 0.0f;
 }

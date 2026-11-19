@@ -21,63 +21,6 @@ static struct _struct_boulderRampGroups_0x18 boulderRampGroups[8];
 #endif
 
 #if 0 // DRAFT: expression syntax error
-static s8 lit_stringBase0[0x36] = {
-    0x4F,
-    0x6E,
-    0x53,
-    0x65,
-    0x74,
-    0,
-    0x67,
-    0x72,
-    0x6F,
-    0x75,
-    0x70,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x4A,
-    0x75,
-    0x6D,
-    0x70,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x53,
-    0x69,
-    0x6E,
-    0x6B,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-    0x62,
-    0x61,
-    0x6C,
-    0x6C,
-    0x53,
-    0x74,
-    0x6F,
-    0x70,
-    0x53,
-    0x6F,
-    0x75,
-    0x6E,
-    0x64,
-    0,
-}; /* const */
-
 void BoulderRamp::BoulderSinkingExit() {
     this->unkF4.unk10.Send((MKProp *) this);
     ((Ball *) (M2C_BITWISE(Ball *, this->unkEC)))->SetState((Ball::State) 6);
@@ -325,10 +268,10 @@ loop_1:
 
 #if 0 // DRAFT: expression syntax error
 s32 BoulderRamp::LoadLine(MKIniLine *arg0) {
-    if ((Trap::LoadLine(arg0) != 0) || (this->unkF4.unk10.LoadLine(arg0, lit_stringBase0) != 0)) {
+    if ((Trap::LoadLine(arg0) != 0) || (this->unkF4.unk10.LoadLine(arg0, "OnSet") != 0)) {
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[6]) != 0) {
+    if (arg0->IsField("group") != 0) {
         this->unkE0 = (s32) arg0->GetInt(0);
         return 1;
     }
@@ -386,7 +329,7 @@ s32 BoulderRampDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_662;
 
     var_r31_662 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0xC], &this->unkE4) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x1A], &this->unkE8) != 0) || (KDSound_LoadLine(arg0, &lit_stringBase0[0x28], &this->unkEC) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "ballJumpSound", &this->unkE4) != 0) || (KDSound_LoadLine(arg0, "ballSinkSound", &this->unkE8) != 0) || (KDSound_LoadLine(arg0, "ballStopSound", &this->unkEC) != 0)) {
         var_r31_662 = 1;
     }
     return var_r31_662;

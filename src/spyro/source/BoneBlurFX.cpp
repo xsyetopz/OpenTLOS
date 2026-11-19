@@ -20,25 +20,8 @@ extern void **gMK;
 #if 0 // DRAFT: undefined identifier 'Pool'
 static Pool<BoneBlurFX::BlurNode> gBoneBlurFXPool;
 #endif
-#if 0 // DRAFT: expression syntax error
-static s8 lit_stringBase0[0xF] = {
-    0x66,
-    0x78,
-    0x5F,
-    0x62,
-    0x6F,
-    0x6E,
-    0x65,
-    0x62,
-    0x6C,
-    0x75,
-    0x72,
-    0x6D,
-    0x61,
-    0x74,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: expression syntax error
 void BoneBlurFX::FreePoolMem() {
     BoneBlurFX::BlurNode *temp_r4_47;
     s32 var_r3_53;
@@ -412,7 +395,7 @@ void BoneBlurFX::Update() {
     }
 }
 
-#if 0 // DRAFT: function call 'MKMaterial_Create(signed char[15])' does not match
+#if 0 // DRAFT: illegal implicit conversion from 'MKResource *' to
 void BoneBlurFX::Init() {
     MKProp::Init();
     this->unk58 = NULL;
@@ -425,7 +408,7 @@ void BoneBlurFX::Init() {
     this->unk68 = 0;
     this->unk6C = 0;
     this->unk78 = NULL;
-    this->unk70 = MKMaterial_Create(lit_stringBase0);
+    this->unk70 = MKMaterial_Create("fx_boneblurmat");
 }
 #endif
 

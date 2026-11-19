@@ -12,7 +12,6 @@ extern M2C_UNK gDisplay;
 extern f32 gUpdateTimeDelta;
 extern void (*pEventCallback)(M2C_UNK);
 static MKHeap *video = NULL;
-static s8 lit_stringBase0[0xD] = { 0x25, 0x73, 0x25, 0x73, 0, 0x5F, 0x36, 0x30, 0, 0x5F, 0x35, 0x30, 0 }; /* const */
 
 s32 GameVideo_Ready(GameVideo *arg0) {
     u8 var_r4_14;
@@ -113,11 +112,11 @@ s32 GameVideo_Create(const char *arg0, int arg1, int arg2) {
         var_r3_237 = 0;
     }
     if (M2C_FIELD(&gDisplay, f32 *, 8) > 55.0f) {
-        var_r5_253 = &lit_stringBase0[5];
+        var_r5_253 = "_60";
     } else {
-        var_r5_253 = &lit_stringBase0[9];
+        var_r5_253 = "_50";
     }
-    temp_r3_264 = Video_CreateStreaming(Str_Printf(lit_stringBase0, arg0, var_r5_253, M2C_FIELD(&gDisplay, f32 *, 8)), 1U, var_r3_237, NULL, 0);
+    temp_r3_264 = Video_CreateStreaming(Str_Printf("%s%s", arg0, var_r5_253, M2C_FIELD(&gDisplay, f32 *, 8)), 1U, var_r3_237, NULL, 0);
     M2C_FIELD(&video, MKHeap **, 0) = temp_r3_264;
     M2C_FIELD(&video, s32 *, 4) = arg1;
     if ((temp_r3_264 == NULL) && (((void (*)(M2C_UNK)) pEventCallback) != NULL)) {

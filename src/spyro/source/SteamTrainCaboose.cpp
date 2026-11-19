@@ -41,92 +41,6 @@ extern void **gb;
 extern void *gpTranslation_StringArray;
 
 #if 0 // DRAFT: undefined identifier 'unk0'
-static s8 lit_stringBase0[0x53] = {
-    0x43,
-    0x79,
-    0x6E,
-    0x64,
-    0x65,
-    0x72,
-    0x54,
-    0x69,
-    0x65,
-    0x72,
-    0x32,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x5F,
-    0x43,
-    0,
-    0x4D,
-    0x61,
-    0x67,
-    0x69,
-    0x63,
-    0x47,
-    0x65,
-    0x6D,
-    0x32,
-    0,
-    0x73,
-    0x70,
-    0x61,
-    0x77,
-    0x6E,
-    0x5F,
-    0x30,
-    0x30,
-    0,
-    0x74,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0x49,
-    0x44,
-    0,
-    0x74,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x49,
-    0x44,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x66,
-    0x6C,
-    0x69,
-    0x6E,
-    0x63,
-    0x68,
-    0,
-    0x63,
-    0x72,
-    0x61,
-    0x73,
-    0x68,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x33,
-    0,
-}; /* const */
-
 void TrainChaseSpawnPool::Destroy(Enemy *arg0) {
     s32 spC;
     s32 sp8;
@@ -271,7 +185,7 @@ loop_7:
     if ((var_r30_263 != NULL) && ((Enemy **) *var_r30_263 != NULL)) {
         temp_r4_269 = *var_r30_263;
         var_r30_263 -= 4;
-        *temp_r4_269 = gMK->CreateProp(lit_stringBase0);
+        *temp_r4_269 = gMK->CreateProp("CynderTier2Train_C");
         goto loop_7;
     }
 }
@@ -417,7 +331,7 @@ block_34:
     case 0x5:
         var_r28_532 = 0;
         do {
-            temp_r3_542 = checked_cast<Collectable2 *, MKProp>(((MKPropDescriptor *) (M2C_FIELD(gMK->__vptr, MKPropDescriptor *(**)(MKSceneManager *, s8 *), 0x5C)(gMK, &lit_stringBase0[0x13])))->CreateInstance());
+            temp_r3_542 = checked_cast<Collectable2 *, MKProp>(((MKPropDescriptor *) (gMK->FindDescriptor("MagicGem2")))->CreateInstance());
             if (temp_r3_542 != NULL) {
                 temp_f31_549 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
                 temp_f30_554 = MKRand_Float(&gViewSeed, -50.0f, 50.0f);
@@ -471,7 +385,7 @@ block_34:
         ((KDInput *) (M2C_FIELD(*gb, KDInput *(**)(void **), 0x40)(gb)))->RumblePlay(0.99f, 0.8f, 0.15f, 0, 4.0f, 0U);
         var_r27_696 = 0;
         do {
-            temp_r3_706 = checked_cast<Collectable2 *, MKProp>(((MKPropDescriptor *) (M2C_FIELD(gMK->__vptr, MKPropDescriptor *(**)(MKSceneManager *, s8 *), 0x5C)(gMK, &lit_stringBase0[0x13])))->CreateInstance());
+            temp_r3_706 = checked_cast<Collectable2 *, MKProp>(((MKPropDescriptor *) (gMK->FindDescriptor("MagicGem2")))->CreateInstance());
             if (temp_r3_706 != NULL) {
                 temp_f29_713 = MKRand_Float(&gViewSeed, 0.0f, 6.2831855f);
                 temp_f30_718 = MKRand_Float(&gViewSeed, -50.0f, 50.0f);
@@ -734,7 +648,7 @@ void SteamTrainCaboose::Reset() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SteamTrainCaboose::LoadDone() {
     M2C_UNK sp8;
     SpawnPointData *temp_r26_1450;
@@ -750,7 +664,7 @@ void SteamTrainCaboose::LoadDone() {
     this->unkE0.Show(1U);
     var_r25_1410 = 0;
     do {
-        M2C_FIELD(M2C_FIELD(gMK->CreateProp(&lit_stringBase0[0x13]), void **, 0x44), M2C_UNK (**)(), 0x34)();
+        M2C_FIELD(M2C_FIELD(gMK->CreateProp("MagicGem2"), void **, 0x44), M2C_UNK (**)(), 0x34)();
         var_r25_1410 += 1;
     } while (var_r25_1410 < 5);
     Disable();
@@ -779,7 +693,7 @@ void SteamTrainCaboose::LoadDone() {
         temp_r25_1476 = *(&sp8 + var_r28_1439);
         temp_r25_1476->Init(temp_r26_1450);
         temp_r25_1476->unk10 = (s32) this->unk4;
-        temp_r25_1476->unk14 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x1D]);
+        temp_r25_1476->unk14 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "spawn_00");
         var_r28_1439 += 4;
         temp_r25_1476->unk18 = var_r30_1438;
         var_r30_1438 += 1;
@@ -801,12 +715,12 @@ void SteamTrainCaboose::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SteamTrainCaboose::LoadLine(MKIniLine *arg0) {
     s32 var_r31_1539;
 
     var_r31_1539 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x26], (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadInt(&lit_stringBase0[0x2E], (s32 *) &this->unkD0, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unkCC, 0) != 0) || (arg0->LoadInt("trainID", (s32 *) &this->unkD0, 0) != 0)) {
         var_r31_1539 = 1;
     }
     return var_r31_1539;
@@ -844,11 +758,11 @@ void SteamTrainCaboose::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void SteamTrainCabooseDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim(&lit_stringBase0[0x36]);
-    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[0x36]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0x3B]);
-    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x42]);
-    this->unkF4 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x48]));
+    this->unkE4 = this->unk34->GetAnim("idle");
+    this->unkE8 = this->unk34->GetAnim("idle");
+    this->unkEC = this->unk34->GetAnim("flinch");
+    this->unkF0 = this->unk34->GetAnim("crash");
+    this->unkF4 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
 }
 #endif
 

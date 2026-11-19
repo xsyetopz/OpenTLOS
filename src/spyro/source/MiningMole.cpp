@@ -22,28 +22,8 @@ extern s32 GS_MoleLeaderCandleLP1;
 extern MKSceneManager *gMK;
 extern s32 gViewSeed;
 extern M2C_UNK gb;
-#if 0 // DRAFT: undefined identifier 'FreeMiningMoleBounceMessage'
-static s8 lit_stringBase0[0x12] = {
-    0x63,
-    0x61,
-    0x6E,
-    0x64,
-    0x6C,
-    0x65,
-    0,
-    0x4D,
-    0x6F,
-    0x6C,
-    0x65,
-    0x54,
-    0x65,
-    0x74,
-    0x68,
-    0x65,
-    0x72,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'FreeMiningMoleBounceMessage'
 void MiningMole::Message(MKMessage *arg0) {
     if ((s32) arg0->unk0 != 0x98) {
 
@@ -124,7 +104,7 @@ block_6:
 #if 0 // DRAFT: undefined identifier 'unkA00'
 void Exhumor::LoadDone() {
     Enemy::LoadDone();
-    this->unk110.unkA00 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    this->unk110.unkA00 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
 }
 #endif
 
@@ -312,7 +292,7 @@ block_26:
 #if 0 // DRAFT: undefined identifier 'unkA00'
 void MiningMoleLeader::LoadDone() {
     Enemy::LoadDone();
-    this->unk110.unkA00 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0);
+    this->unk110.unkA00 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "candle");
 }
 #endif
 
@@ -464,7 +444,7 @@ void MiningMole::LoadDone() {
     s32 temp_r3_972;
 
     Enemy::LoadDone();
-    this->unk110.unkA04 = checked_cast<MoleTether *, MKProp>(gMK->CreateProp(&lit_stringBase0[7]));
+    this->unk110.unkA04 = checked_cast<MoleTether *, MKProp>(gMK->CreateProp("MoleTether"));
     M2C_FIELD(this->unk110.unkA04, MiningMole **, 0x1F0) = this;
     temp_r3_972 = this->unk110.unkA04;
     M2C_FIELD(M2C_FIELD(temp_r3_972, void **, 0x44), M2C_UNK (**)(s32), 0x34)(temp_r3_972);

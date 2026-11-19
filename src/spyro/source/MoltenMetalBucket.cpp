@@ -17,13 +17,12 @@
 #include <m2c_macros.h>
 
 extern MKSceneManager *gMK;
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
-static s8 *pMoltenMetalBucketEvents[3] = { lit_stringBase0, .L_8035D0A2, NULL };
+#if 0 // DRAFT: illegal implicit conversion from 'const char *' to
+static s8 *pMoltenMetalBucketEvents[3] = { "emitStart", .L_8035D0A2, NULL };
 #endif
 static s32 lit_655 = 1;
 
 #if 0 // DRAFT: declaration syntax error
-static s8 lit_stringBase0[0xA] = { 0x65, 0x6D, 0x69, 0x74, 0x53, 0x74, 0x61, 0x72, 0x74, 0 }; /* const */
 static s8 .L_8035D0A2[0xB4] = {
     0x65,
     0x6D,
@@ -513,7 +512,7 @@ void MoltenMetalBucket::Resolve() {
 void MoltenMetalBucket::LoadDone() {
     GameProp::LoadDone();
     this->unk80->InitEvents(pMoltenMetalBucketEvents);
-    this->unk17C = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0x13));
+    this->unk17C = checked_cast<LiquidFX *, MKProp>(gMK->CreateProp(""));
 }
 #endif
 
@@ -549,23 +548,23 @@ void MoltenMetalBucketDescriptor::Deinit() {
 #if 0 // DRAFT: undefined identifier 'unkE4'
 void MoltenMetalBucketDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, lit_stringBase0 + 0x21);
-    this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, lit_stringBase0 + 0x2B);
-    this->unkEC = MKMaterial_Create(lit_stringBase0 + 0x37);
-    this->unkF0 = this->unk34->GetAnim(lit_stringBase0 + 0x3E);
-    this->unkF4 = this->unk34->GetAnim(lit_stringBase0 + 0x43);
-    this->unkF8 = this->unk34->GetAnim(lit_stringBase0 + 0x48);
-    this->unkFC = this->unk34->GetAnim(lit_stringBase0 + 0x4E);
-    this->unk100 = this->unk34->GetAnim(lit_stringBase0 + 0x54);
+    this->unkE4 = MKModel_GetRefPointIndex(this->unk2C, "");
+    this->unkE8 = MKModel_GetRefPointIndex(this->unk2C, "");
+    this->unkEC = MKMaterial_Create"";
+    this->unkF0 = this->unk34->GetAnim("");
+    this->unkF4 = this->unk34->GetAnim("");
+    this->unkF8 = this->unk34->GetAnim("");
+    this->unkFC = this->unk34->GetAnim("");
+    this->unk100 = this->unk34->GetAnim("");
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'KDSound_LoadLine(MKIniLine *, const char[1], long *)' does
 s32 MoltenMetalBucketDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_818;
 
     var_r31_818 = 0;
-    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0x59, &this->unk104) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0x63, &this->unk108) != 0) || (KDSound_LoadLine(arg0, lit_stringBase0 + 0x6E, &this->unk10C) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x79, &this->unk110, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x84, &this->unk114, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x90, &this->unk118, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0x9B, &this->unk11C, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0xA7, &this->unk120, 0) != 0) || (arg0->LoadFloat(lit_stringBase0 + 0xB2, &this->unk124, 0) != 0)) {
+    if ((GamePropDescriptor::LoadLine(arg0) != 0) || (KDSound_LoadLine(arg0, "", &this->unk104) != 0) || (KDSound_LoadLine(arg0, "", &this->unk108) != 0) || (KDSound_LoadLine(arg0, "", &this->unk10C) != 0) || (arg0->LoadFloat("", &this->unk110, 0) != 0) || (arg0->LoadFloat("", &this->unk114, 0) != 0) || (arg0->LoadFloat("", &this->unk118, 0) != 0) || (arg0->LoadFloat("", &this->unk11C, 0) != 0) || (arg0->LoadFloat("", &this->unk120, 0) != 0) || (arg0->LoadFloat("", &this->unk124, 0) != 0)) {
         var_r31_818 = 1;
     }
     return var_r31_818;

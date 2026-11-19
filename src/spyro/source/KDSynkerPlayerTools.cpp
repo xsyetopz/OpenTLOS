@@ -11,24 +11,6 @@
 #if 0 // DRAFT: illegal implicit conversion from 'long' to
 s32 stricmp(u8 *, s8 *);                            /* extern */
 
-static s8 lit_stringBase0[0xF] = {
-    0x45,
-    0x4E,
-    0x56,
-    0x45,
-    0x4C,
-    0x4F,
-    0x50,
-    0x45,
-    0x5F,
-    0x54,
-    0x41,
-    0x42,
-    0x4C,
-    0x45,
-    0,
-}; /* const */
-
 s32 *KDSP_EnvelopeList::GetEnvelope(int arg0) {
     s32 *temp_r3_13;
 
@@ -102,13 +84,12 @@ loop_4:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char[15]' to
 void KDSP_EnvelopeList::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
     MKIniLine *temp_r3_154;
     s32 temp_r0_159;
     s32 temp_r3_165;
 
-    this->unk8 = arg1->GotoLine(lit_stringBase0, NULL);
+    this->unk8 = arg1->GotoLine("ENVELOPE_TABLE", NULL);
     temp_r3_154 = this->unk8;
     if (temp_r3_154 != NULL) {
         this->unk0 = temp_r3_154->GetNmbrOfSubLines();
@@ -119,7 +100,6 @@ void KDSP_EnvelopeList::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
         }
     }
 }
-#endif
 
 void KDSP_EnvelopeList::Init() {
     this->unk0 = 0;

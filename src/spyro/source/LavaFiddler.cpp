@@ -22,69 +22,8 @@ void *malloc(s32);                                  /* extern */
 extern f32 gUpdateTimeDelta;
 extern s32 gViewSeed;
 extern void **gb;
-#if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x3B] = {
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x30,
-    0x31,
-    0,
-    0x48,
-    0x69,
-    0x64,
-    0x65,
-    0x5F,
-    0x45,
-    0x6E,
-    0x74,
-    0x65,
-    0x72,
-    0,
-    0x48,
-    0x69,
-    0x64,
-    0x65,
-    0x5F,
-    0x4C,
-    0x6F,
-    0x6F,
-    0x70,
-    0,
-    0x48,
-    0x69,
-    0x64,
-    0x65,
-    0x5F,
-    0x45,
-    0x78,
-    0x69,
-    0x74,
-    0,
-    0x57,
-    0x61,
-    0x6C,
-    0x6B,
-    0x5F,
-    0x4C,
-    0x65,
-    0x66,
-    0x74,
-    0,
-    0x57,
-    0x61,
-    0x6C,
-    0x6B,
-    0x5F,
-    0x52,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier 'unk170'
 void LavaFiddlerCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -1094,43 +1033,43 @@ void LavaFiddlerCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1634 = this->unk34;
-    if (temp_r30_1634->Exists(lit_stringBase0) != 0) {
-        var_r3_1644 = temp_r30_1634->GetAnim(lit_stringBase0);
+    if (temp_r30_1634->Exists("idle01") != 0) {
+        var_r3_1644 = temp_r30_1634->GetAnim("idle01");
     } else {
         var_r3_1644 = NULL;
     }
     this->unk70 = (s32) var_r3_1644;
     temp_r30_1652 = this->unk34;
-    if (temp_r30_1652->Exists(&lit_stringBase0[7]) != 0) {
-        var_r3_1662 = temp_r30_1652->GetAnim(&lit_stringBase0[7]);
+    if (temp_r30_1652->Exists("Hide_Enter") != 0) {
+        var_r3_1662 = temp_r30_1652->GetAnim("Hide_Enter");
     } else {
         var_r3_1662 = NULL;
     }
     this->unk74 = (s32) var_r3_1662;
     temp_r30_1670 = this->unk34;
-    if (temp_r30_1670->Exists(&lit_stringBase0[0x12]) != 0) {
-        var_r3_1680 = temp_r30_1670->GetAnim(&lit_stringBase0[0x12]);
+    if (temp_r30_1670->Exists("Hide_Loop") != 0) {
+        var_r3_1680 = temp_r30_1670->GetAnim("Hide_Loop");
     } else {
         var_r3_1680 = NULL;
     }
     this->unk78 = (s32) var_r3_1680;
     temp_r30_1688 = this->unk34;
-    if (temp_r30_1688->Exists(&lit_stringBase0[0x1C]) != 0) {
-        var_r3_1698 = temp_r30_1688->GetAnim(&lit_stringBase0[0x1C]);
+    if (temp_r30_1688->Exists("Hide_Exit") != 0) {
+        var_r3_1698 = temp_r30_1688->GetAnim("Hide_Exit");
     } else {
         var_r3_1698 = NULL;
     }
     this->unk7C = (s32) var_r3_1698;
     temp_r30_1706 = this->unk34;
-    if (temp_r30_1706->Exists(&lit_stringBase0[0x26]) != 0) {
-        var_r3_1716 = temp_r30_1706->GetAnim(&lit_stringBase0[0x26]);
+    if (temp_r30_1706->Exists("Walk_Left") != 0) {
+        var_r3_1716 = temp_r30_1706->GetAnim("Walk_Left");
     } else {
         var_r3_1716 = NULL;
     }
     this->unk80 = (s32) var_r3_1716;
     temp_r30_1724 = this->unk34;
-    if (temp_r30_1724->Exists(&lit_stringBase0[0x30]) != 0) {
-        var_r3_1734 = temp_r30_1724->GetAnim(&lit_stringBase0[0x30]);
+    if (temp_r30_1724->Exists("Walk_Right") != 0) {
+        var_r3_1734 = temp_r30_1724->GetAnim("Walk_Right");
     } else {
         var_r3_1734 = NULL;
     }

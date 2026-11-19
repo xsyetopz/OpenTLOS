@@ -40,32 +40,8 @@ static f32 HornDiveZSpeed = 2400.0f;
 #if 0 // DRAFT: identifier 'HornDiveYSpeed' redeclared
 static f32 HornDiveYSpeed = -1600.0f;
 #endif
-#if 0 // DRAFT: undefined identifier '__vptr'
-static s8 lit_stringBase0[0x16] = {
-    0x49,
-    0x6E,
-    0x20,
-    0x44,
-    0x65,
-    0x62,
-    0x75,
-    0x67,
-    0x20,
-    0x4F,
-    0x6E,
-    0x6C,
-    0x79,
-    0,
-    0x4E,
-    0x6F,
-    0x53,
-    0x74,
-    0x61,
-    0x74,
-    0x65,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: undefined identifier '__vptr'
 void SpyroAirCombatState::EnableSmoothBehindCamera(bool arg0) {
     s32 sp1C;
     s32 sp18;

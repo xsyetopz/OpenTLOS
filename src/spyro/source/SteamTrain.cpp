@@ -47,488 +47,13 @@ extern void *gpTranslation_StringArray;
 #if 0 // DRAFT: illegal use of abstract class ('SteamTrain::pure_slot16()')
 static M2C_UNK lit_743;                                /* unable to generate initializer: unknown type */
 static SteamTrain states__10SteamTrain;             /* type too large by 0x320; unable to generate initializer: confusing struct layout */
-static s8 *pSteamAnimEvents = lit_stringBase0;
+static s8 *pSteamAnimEvents = "SteamPuff";
 #endif
 
 static s32 lit_1019 = 0;
 static u8 lit_1020 = 1;
 
 #if 0 // DRAFT: expression syntax error
-static s8 lit_stringBase0[0x1D8] = {
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x50,
-    0x75,
-    0x66,
-    0x66,
-    0,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0x33,
-    0,
-    0x73,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x42,
-    0x72,
-    0x61,
-    0x6B,
-    0x65,
-    0x47,
-    0x6C,
-    0x6F,
-    0x77,
-    0,
-    0x74,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0x49,
-    0x44,
-    0,
-    0x63,
-    0x61,
-    0x62,
-    0x6F,
-    0x6F,
-    0x73,
-    0x65,
-    0x49,
-    0x44,
-    0,
-    0x53,
-    0x70,
-    0x79,
-    0x72,
-    0x6F,
-    0x43,
-    0x61,
-    0x72,
-    0x74,
-    0x49,
-    0x44,
-    0,
-    0x69,
-    0x64,
-    0x6C,
-    0x65,
-    0x30,
-    0x31,
-    0,
-    0x45,
-    0x6E,
-    0x67,
-    0x69,
-    0x6E,
-    0x65,
-    0x5F,
-    0x64,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x64,
-    0,
-    0x47,
-    0x75,
-    0x61,
-    0x72,
-    0x64,
-    0x5F,
-    0x46,
-    0x5F,
-    0x52,
-    0x5F,
-    0x64,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x64,
-    0,
-    0x50,
-    0x69,
-    0x70,
-    0x65,
-    0x5F,
-    0x64,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x64,
-    0,
-    0x50,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x52,
-    0x5F,
-    0x64,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x64,
-    0,
-    0x73,
-    0x70,
-    0x69,
-    0x6B,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0x5F,
-    0x64,
-    0x61,
-    0x6D,
-    0x61,
-    0x67,
-    0x65,
-    0x64,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x5F,
-    0x25,
-    0x2E,
-    0x32,
-    0x64,
-    0,
-    0x50,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x42,
-    0x5F,
-    0x52,
-    0,
-    0x50,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x46,
-    0x5F,
-    0x52,
-    0,
-    0x50,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x42,
-    0x5F,
-    0x4C,
-    0,
-    0x50,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x46,
-    0x5F,
-    0x4C,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x5F,
-    0x30,
-    0x34,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x5F,
-    0x30,
-    0x33,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x46,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x53,
-    0x6D,
-    0x6F,
-    0x6B,
-    0x65,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x50,
-    0x53,
-    0,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x54,
-    0x72,
-    0x61,
-    0x69,
-    0x6E,
-    0x53,
-    0x74,
-    0x65,
-    0x61,
-    0x6D,
-    0x50,
-    0x75,
-    0x66,
-    0x66,
-    0x50,
-    0x53,
-    0,
-    0x63,
-    0x61,
-    0x62,
-    0x6F,
-    0x6F,
-    0x73,
-    0x65,
-    0,
-    0x66,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x66,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x66,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x5F,
-    0x30,
-    0x33,
-    0,
-    0x66,
-    0x6C,
-    0x61,
-    0x6D,
-    0x65,
-    0x5F,
-    0x30,
-    0x34,
-    0,
-    0x73,
-    0x6D,
-    0x6F,
-    0x6B,
-    0x65,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x5F,
-    0x30,
-    0x30,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x5F,
-    0x30,
-    0x32,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x5F,
-    0x30,
-    0x33,
-    0,
-    0x77,
-    0x68,
-    0x65,
-    0x65,
-    0x6C,
-    0x73,
-    0x70,
-    0x61,
-    0x72,
-    0x6B,
-    0x73,
-    0x5F,
-    0x30,
-    0x34,
-    0,
-    0x70,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x30,
-    0x30,
-    0,
-    0x70,
-    0x69,
-    0x73,
-    0x74,
-    0x6F,
-    0x6E,
-    0x5F,
-    0x30,
-    0x31,
-    0,
-    0x74,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0x74,
-    0,
-}; /* const */
-
 void SteamTrain::Stop(bool arg0) {
     if (arg0 != 0) {
         this->unk378.SetState(this, 3, 0U);
@@ -1594,11 +1119,11 @@ void SteamTrain::LoadDone() {
 
     GameProp::LoadDone();
     this->unk80->InitEvents(&pSteamAnimEvents);
-    M2C_FIELD(this, s32 *, 0x134) = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0xA));
+    M2C_FIELD(this, s32 *, 0x134) = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
     this->unk134.Init((Matrix *) this->unk8, this->unk4, this->unk80);
     this->unk138.unk8 = (MKAnimScript *) this;
-    this->unk100 = MKMaterial_Create(lit_stringBase0 + 0x15);
+    this->unk100 = MKMaterial_Create"steamBrakeGlow";
     this->unkD0.Init(this->unk4, (MKProp *) this, 2000.0f, NULL, 1500.0f);
     this->unkD0.Show(1U);
     var_r30_2501 = 0;
@@ -1614,12 +1139,12 @@ void SteamTrain::LoadDone() {
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'long *' to
 s32 SteamTrain::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2549;
 
     var_r31_2549 = 0;
-    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x24, (s32 *) &this->unk120, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x2C, (s32 *) &this->unk124, 0) != 0) || (arg0->LoadInt(lit_stringBase0 + 0x36, (s32 *) &this->unk128, 0) != 0)) {
+    if ((GameProp::LoadLine(arg0) != 0) || (arg0->LoadInt("trackID", (s32 *) &this->unk120, 0) != 0) || (arg0->LoadInt("cabooseID", (s32 *) &this->unk124, 0) != 0) || (arg0->LoadInt("SpyroCartID", (s32 *) &this->unk128, 0) != 0)) {
         var_r31_2549 = 1;
     }
     return var_r31_2549;
@@ -1657,12 +1182,12 @@ void SteamTrain::Init() {
 #if 0 // DRAFT: illegal use of non-static member
 void SteamTrainDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim(lit_stringBase0 + 0x42);
-    this->unkE8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, lit_stringBase0 + 0x49);
-    this->unkEC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, lit_stringBase0 + 0x58);
-    this->unkF0 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, lit_stringBase0 + 0x6A);
-    this->unkF4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, lit_stringBase0 + 0x77);
-    this->unkF8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, lit_stringBase0 + 0x88);
+    this->unkE4 = this->unk34->GetAnim("idle01");
+    this->unkE8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Engine_damaged");
+    this->unkEC = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Guard_F_R_damaged");
+    this->unkF0 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Pipe_damaged");
+    this->unkF4 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "Piston_R_damaged");
+    this->unkF8 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk2C, "spike_01_damaged");
 }
 #endif
 
@@ -2079,7 +1604,7 @@ void SteamTrainEffects::Reset() {
     this->unk90 = 0;
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: function call 'Tools_GetMatchingNodeIndex(MKModel *, signed char *)' does
 void SteamTrainEffects::Resolve() {
     Animation sp28;
     f64 sp18;
@@ -2095,7 +1620,7 @@ void SteamTrainEffects::Resolve() {
     var_r26_3557 = 0;
     var_r30_3560 = 0;
     do {
-        temp_r25_3569 = Tools_GetMatchingNodeIndex(this->unk4, Str_Printf(lit_stringBase0 + 0x99, var_r26_3557));
+        temp_r25_3569 = Tools_GetMatchingNodeIndex(this->unk4, Str_Printf("wheel_%.2d", var_r26_3557));
         sp28.GetNodeOrigin(MKModel_GetAnimation(this->unk4));
         temp_r27_3577 = this + var_r30_3560;
         M2C_FIELD(temp_r27_3577, f64 *, 0x18) = M2C_BITWISE(f64, sp28);
@@ -2104,14 +1629,14 @@ void SteamTrainEffects::Resolve() {
         var_r26_3557 += 1;
         var_r30_3560 += 0x18;
     } while (var_r26_3557 < 5);
-    this->unk98 = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xA4);
-    this->unkE8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xAF);
-    this->unk138 = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xBA);
-    this->unk188 = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xC5);
-    this->unk9C = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xD0);
-    this->unkEC = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xD9);
-    this->unk13C = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xE2);
-    this->unk18C = (s32) Tools_GetMatchingNodeIndex(this->unk4, lit_stringBase0 + 0xEB);
+    this->unk98 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Piston_B_R");
+    this->unkE8 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Piston_F_R");
+    this->unk138 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Piston_B_L");
+    this->unk188 = (s32) Tools_GetMatchingNodeIndex(this->unk4, "Piston_F_L");
+    this->unk9C = (s32) Tools_GetMatchingNodeIndex(this->unk4, "wheel_04");
+    this->unkEC = (s32) Tools_GetMatchingNodeIndex(this->unk4, "wheel_02");
+    this->unk13C = (s32) Tools_GetMatchingNodeIndex(this->unk4, "wheel_03");
+    this->unk18C = (s32) Tools_GetMatchingNodeIndex(this->unk4, "wheel_01");
     var_r25_3650 = 0;
     var_r30_3652 = 0;
     this->unkA0 = this->unkE8;
@@ -2177,25 +1702,25 @@ void SteamTrainEffects::Init(const Matrix *arg0, MKModel *arg1, MKAnimScript *ar
         var_ctr_3731 -= 1;
     } while (var_ctr_3731 != 0);
     this->unk8->InitEvents(&pSteamAnimEvents);
-    this->unk1D8 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0xF4));
-    this->unk1DC = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0x106));
-    this->unk1E0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0x118));
-    this->unk1E4 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0x12A));
-    this->unk1E8 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp(lit_stringBase0 + 0xA));
-    this->unk1EC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x140);
-    this->unk1F0 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x148);
-    this->unk1F4 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x151);
-    this->unk1F8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x15A);
-    this->unk1FC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x163);
-    this->unk200 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x16C);
-    this->unk204 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x172);
-    this->unk208 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x181);
-    this->unk20C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x190);
-    this->unk210 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x19F);
-    this->unk214 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x1AE);
-    this->unk218 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x1BD);
-    this->unk21C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x1C7);
-    this->unk220 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, lit_stringBase0 + 0x1D1);
+    this->unk1D8 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainFlamePS"));
+    this->unk1DC = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainSmokePS"));
+    this->unk1E0 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainSteamPS"));
+    this->unk1E4 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SteamTrainSteamPuffPS"));
+    this->unk1E8 = checked_cast<Explosion3 *, MKProp>(gMK->CreateProp("Explosion3"));
+    this->unk1EC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "caboose");
+    this->unk1F0 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "flame_01");
+    this->unk1F4 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "flame_02");
+    this->unk1F8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "flame_03");
+    this->unk1FC = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "flame_04");
+    this->unk200 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "smoke");
+    this->unk204 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "wheelsparks_00");
+    this->unk208 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "wheelsparks_01");
+    this->unk20C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "wheelsparks_02");
+    this->unk210 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "wheelsparks_03");
+    this->unk214 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "wheelsparks_04");
+    this->unk218 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "piston_00");
+    this->unk21C = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "piston_01");
+    this->unk220 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "target");
     ((Animation *) (MKModel_GetAnimation(this->unk4)))->EnableCustomMatrices(1U);
     this->unk228 = 0.0f;
     this->unk224 = 0.5f;

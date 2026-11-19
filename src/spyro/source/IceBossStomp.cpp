@@ -48,69 +48,6 @@ static u8 lit_643 = 1;
 static u8 lit_845 = 1;
 #if 0 // DRAFT: pointer/array required
 static M2C_UNK lit_715;                                /* unable to generate initializer: unknown type; const */
-static s8 lit_stringBase0[0x3D] = {
-    0x53,
-    0x6E,
-    0x6F,
-    0x77,
-    0x50,
-    0x75,
-    0x66,
-    0x66,
-    0x50,
-    0x53,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x42,
-    0x69,
-    0x74,
-    0x73,
-    0x50,
-    0x53,
-    0,
-    0x43,
-    0x72,
-    0x79,
-    0x73,
-    0x74,
-    0x61,
-    0x6C,
-    0x4E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x6D,
-    0x65,
-    0x6E,
-    0x74,
-    0,
-    0x70,
-    0x33,
-    0x30,
-    0x31,
-    0x38,
-    0x5F,
-    0x62,
-    0x6F,
-    0x73,
-    0x73,
-    0x69,
-    0x63,
-    0x65,
-    0x63,
-    0x68,
-    0x61,
-    0x72,
-    0x67,
-    0x65,
-    0,
-}; /* const */
 
 void IceBossStomp::Deinit() {
     MKHeap *temp_r0_106;
@@ -1447,7 +1384,7 @@ void IceBossStomp::LoadDone() {
     temp_r5_2536 = this->unk164;
     this->unk164 = (MKHeap *) &temp_r5_2536->unk4;
     temp_r5_2536->unk4 = 0;
-    this->unk170 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp(lit_stringBase0));
+    this->unk170 = checked_cast<KDEnvParticleSystem *, MKProp>(gMK->CreateProp("SnowPuffPS"));
 }
 #endif
 
@@ -1477,10 +1414,10 @@ block_8:
 }
 #endif
 
-#if 0 // DRAFT: undefined identifier '__vptr'
+#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to
 void IceBossStompDescriptor::Resolve() {
     MKPropDescriptor::Resolve();
-    this->unkF0 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(M2C_FIELD(gMK->__vptr, MKPropDescriptor *(**)(MKSceneManager *, s8 *), 0x5C)(gMK, this->unkF8));
+    this->unkF0 = checked_cast<ShatterableDescriptor *, MKPropDescriptor>(gMK->FindDescriptor(this->unkF8));
 }
 #endif
 
@@ -1492,7 +1429,7 @@ void IceBossStompDescriptor::LoadDone() {
 
     GamePropDescriptor::LoadDone();
     pIceBossStompDescriptor = (MKPropDescriptor *) this;
-    this->unkF4 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp(&lit_stringBase0[0xB]));
+    this->unkF4 = checked_cast<IceBitsPS *, MKProp>(gMK->CreateProp("IceBitsPS"));
     var_r31_2640 = 0;
     do {
         temp_r3_2645 = checked_cast<PooledShatterProp *, MKProp>(gMK->CreateProp(this->unkF8));
@@ -1518,7 +1455,7 @@ s32 IceBossStompDescriptor::LoadLine(MKIniLine *arg0) {
     s32 var_r31_2685;
 
     var_r31_2685 = 0;
-    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString(&lit_stringBase0[0x15], &this->unkF8, 0) != 0) || (DataMap_LoadLine(arg0, &lit_stringBase0[0x21], &ElementTypeDataMap, (u32 *) &this->unkFC) != 0)) {
+    if ((ProjectileDescriptor::LoadLine(arg0) != 0) || (arg0->LoadString("CrystalName", &this->unkF8, 0) != 0) || (DataMap_LoadLine(arg0, "Element", &ElementTypeDataMap, (u32 *) &this->unkFC) != 0)) {
         var_r31_2685 = 1;
     }
     return var_r31_2685;
@@ -1535,7 +1472,7 @@ void IceBossStompDescriptor::Deinit() {
 #if 0 // DRAFT: illegal use of non-static member
 void IceBossStompDescriptor::Init() {
     ProjectileDescriptor::Init();
-    this->unkF8 = &lit_stringBase0[0x29];
+    this->unkF8 = "p3018_bossicecharge";
 }
 #endif
 

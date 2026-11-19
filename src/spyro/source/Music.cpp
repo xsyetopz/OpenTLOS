@@ -23,142 +23,6 @@ extern s32 trackCount;
 static s8 **stack[4];
 static s8 pDelayedTrackBuffer[0x22];
 
-static s8 lit_stringBase0[0x85] = {
-    0,
-    0x6D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x2E,
-    0x69,
-    0x6E,
-    0x69,
-    0,
-    0x64,
-    0x65,
-    0x66,
-    0x61,
-    0x75,
-    0x6C,
-    0x74,
-    0x73,
-    0,
-    0x66,
-    0x69,
-    0x6C,
-    0x65,
-    0x6E,
-    0x61,
-    0x6D,
-    0x65,
-    0,
-    0x6D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x54,
-    0x79,
-    0x70,
-    0x65,
-    0,
-    0x73,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x76,
-    0x6F,
-    0x6C,
-    0x75,
-    0x6D,
-    0x65,
-    0,
-    0x66,
-    0x61,
-    0x64,
-    0x65,
-    0x49,
-    0x6E,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x66,
-    0x61,
-    0x64,
-    0x65,
-    0x4F,
-    0x75,
-    0x74,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x73,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0x4D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x54,
-    0x69,
-    0x6D,
-    0x65,
-    0,
-    0x64,
-    0x75,
-    0x63,
-    0x6B,
-    0x44,
-    0x75,
-    0x72,
-    0x69,
-    0x6E,
-    0x67,
-    0x43,
-    0x75,
-    0x74,
-    0x73,
-    0x63,
-    0x65,
-    0x6E,
-    0x65,
-    0,
-    0x70,
-    0x6C,
-    0x61,
-    0x79,
-    0x47,
-    0x61,
-    0x6D,
-    0x65,
-    0x4D,
-    0x75,
-    0x73,
-    0x69,
-    0x63,
-    0x41,
-    0x66,
-    0x74,
-    0x65,
-    0x72,
-    0x53,
-    0x74,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-}; /* const */
-
 void Music_Clear() {
     Music_Stop(0.0f);
     KDSound_ResetMusic();
@@ -166,10 +30,10 @@ void Music_Clear() {
     Music_ClearDelayedPlayBuffer();
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], signed char[133])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match
 void Music_ClearDelayedPlayBuffer() {
     pDelayedTrackBuffer[0x20] = 0;
-    strcpy(pDelayedTrackBuffer, lit_stringBase0);
+    strcpy(pDelayedTrackBuffer, "");
     pDelayedTrackBuffer[0x21] = 0;
 }
 #endif
@@ -280,7 +144,6 @@ u8 Music_IsPaused() {
     return 0U;
 }
 
-#if 0 // DRAFT: function call 'Music_SetDelayedPlay(signed char[133], unsigned int)' does
 void Music_Resume() {
     s8 **var_r0_268;
     s8 **var_r0_306;
@@ -298,7 +161,7 @@ void Music_Resume() {
             var_r30_280 = NULL;
         }
         if ((stricmp(M2C_FIELD(var_r30_280, s8 **, 4), KDSound_GetCurrentMusicTrackName()) != 0) && (KDSound_MusicIsStopping() != 0)) {
-            Music_SetDelayedPlay(lit_stringBase0, 1U);
+            Music_SetDelayedPlay("", 1U);
             return;
         }
         goto block_10;
@@ -310,10 +173,9 @@ block_10:
         var_r0_306 = NULL;
     }
     if ((var_r0_306 != NULL) && (Music_IsPaused() != 0)) {
-        Music_Play(lit_stringBase0, 1U);
+        Music_Play("", 1U);
     }
 }
-#endif
 
 #if 0 // DRAFT: undefined identifier 'KDStateMachine'
 void Music_Pause(bool arg0) {
@@ -423,7 +285,7 @@ block_22:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcmp(const char *, signed char[133])' does not match
+#if 0 // DRAFT: function call 'stricmp(signed char *, const char *)' does not match
 s32 Music_Play(const char *arg0, bool arg1) {
     MusicTrack *temp_r3_751;
     f32 var_f31_665;
@@ -442,7 +304,7 @@ s32 Music_Play(const char *arg0, bool arg1) {
     if ((u8) pDelayedTrackBuffer[0x21] == 0) {
         KDSound_IsMusicPlaying();
         if ((u8) M2C_ERROR(/* Read from unset register $r3 */) != 0) {
-            if (strcmp(arg0, lit_stringBase0) != 0) {
+            if (strcmp(arg0, "") != 0) {
                 if ((s32) stack[3] > -1) {
                     var_r0_578 = stack[(s32) stack[3]];
                 } else {
@@ -475,7 +337,7 @@ block_12:
     if ((s32) M2C_FIELD(&gb, s32 *, 0x340) != 0) {
         return 0;
     }
-    if (strcmp(arg0, lit_stringBase0) == 0) {
+    if (strcmp(arg0, "") == 0) {
         if ((s32) stack[3] > -1) {
             var_r0_639 = stack[(s32) stack[3]];
         } else {
@@ -674,7 +536,7 @@ loop_3:
 }
 #endif
 
-#if 0 // DRAFT: function call 'strcpy(signed char[34], signed char[133])' does not match
+#if 0 // DRAFT: function call 'strcpy(signed char[34], const char[1])' does not match
 void Music_Init() {
     MKIni sp30;
     s8 sp2C;
@@ -700,20 +562,20 @@ void Music_Init() {
     pHeldTrack = NULL;
     pDelayedTrackBuffer[0x20] = 0;
     pDelayedTrackBuffer[0x21] = 0;
-    ((MKHeap *) (strcpy(pDelayedTrackBuffer, lit_stringBase0)))->ActivateTempMemOverride();
-    ((MKHeap *) (sp30.Init(&lit_stringBase0[1], 0, NULL)))->DeactivateTempMemOverride();
+    ((MKHeap *) (strcpy(pDelayedTrackBuffer, "")))->ActivateTempMemOverride();
+    ((MKHeap *) (sp30.Init("music.ini", 0, NULL)))->DeactivateTempMemOverride();
     var_r28_1098 = 0;
     var_r27_1101 = sp30.GetFirstLine();
 loop_9:
     if (var_r27_1101 != NULL) {
-        if (var_r27_1101->IsField(&lit_stringBase0[0xB]) == 0) {
+        if (var_r27_1101->IsField("defaults") == 0) {
             trackCount += 1;
         }
         var_r28_1098 = strlen(var_r27_1101->GetFieldName()) + var_r28_1098 + 1;
         var_r29_1122 = var_r27_1101->unkC->GetSubLine(var_r27_1101);
 loop_7:
         if (var_r29_1122 != NULL) {
-            if (var_r29_1122->IsField(&lit_stringBase0[0x14]) != 0) {
+            if (var_r29_1122->IsField("filename") != 0) {
                 var_r28_1098 = strlen(var_r29_1122->GetString(0)) + var_r28_1098 + 1;
             }
             var_r29_1122 = var_r29_1122->unkC->GetNextLine(var_r29_1122);
@@ -736,7 +598,7 @@ loop_7:
     var_r29_1178 = sp30.GetFirstLine();
 loop_33:
     if (var_r29_1178 != NULL) {
-        if (var_r29_1178->IsField(&lit_stringBase0[0xB]) != 0) {
+        if (var_r29_1178->IsField("defaults") != 0) {
             var_r28_1188 = &sp8;
             sp28 = 0;
             sp2C = 0;
@@ -751,18 +613,18 @@ loop_33:
         var_r27_1213 = var_r29_1178->unkC->GetSubLine(var_r29_1178);
 loop_31:
         if (var_r27_1213 != NULL) {
-            if (var_r27_1213->IsField(&lit_stringBase0[0x14]) != 0) {
+            if (var_r27_1213->IsField("filename") != 0) {
                 M2C_FIELD(var_r28_1188, s32 *, 4) = stringTable.Add(var_r27_1213->GetString(0));
-            } else if (var_r27_1213->IsField(&lit_stringBase0[0x1D]) != 0) {
+            } else if (var_r27_1213->IsField("musicType") != 0) {
                 var_r27_1213->GetString(0);
-                M2C_FIELD(var_r28_1188, s32 *, 0x14) = (s32) (stricmp(&lit_stringBase0[0x27]) == 0);
+                M2C_FIELD(var_r28_1188, s32 *, 0x14) = (s32) (stricmp("sting") == 0);
             } else {
                 var_r31_1254 = 0;
-                if ((var_r27_1213->LoadInt(&lit_stringBase0[0x2D], var_r28_1188 + 8, 0) != 0) || (var_r27_1213->LoadFloat(&lit_stringBase0[0x34], var_r28_1188 + 0xC, 0) != 0) || (var_r27_1213->LoadFloat(&lit_stringBase0[0x3F], var_r28_1188 + 0x10, 0) != 0) || (var_r27_1213->LoadFloat(&lit_stringBase0[0x4B], var_r28_1188 + 0x18, 0) != 0) || (var_r27_1213->LoadBool(&lit_stringBase0[0x5A], var_r28_1188 + 0x1C, 0) != 0)) {
+                if ((var_r27_1213->LoadInt("volume", var_r28_1188 + 8, 0) != 0) || (var_r27_1213->LoadFloat("fadeInTime", var_r28_1188 + 0xC, 0) != 0) || (var_r27_1213->LoadFloat("fadeOutTime", var_r28_1188 + 0x10, 0) != 0) || (var_r27_1213->LoadFloat("stingMusicTime", var_r28_1188 + 0x18, 0) != 0) || (var_r27_1213->LoadBool("duckDuringCutscene", var_r28_1188 + 0x1C, 0) != 0)) {
                     var_r31_1254 = 1;
                 }
                 if (var_r31_1254 == 0) {
-                    var_r27_1213->LoadBool(&lit_stringBase0[0x6D], var_r28_1188 + 0x1D, 0);
+                    var_r27_1213->LoadBool("playGameMusicAfterSting", var_r28_1188 + 0x1D, 0);
                 }
             }
             var_r27_1213 = var_r27_1213->unkC->GetNextLine(var_r27_1213);

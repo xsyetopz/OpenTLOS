@@ -32,38 +32,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: illegal explicit conversion from 'float' to
-static s8 lit_stringBase0[0x1D] = {
-    0x46,
-    0x58,
-    0x30,
-    0x30,
-    0x32,
-    0x37,
-    0x5F,
-    0x49,
-    0x63,
-    0x65,
-    0x53,
-    0x70,
-    0x65,
-    0x61,
-    0x72,
-    0,
-    0x49,
-    0x63,
-    0x65,
-    0x45,
-    0x78,
-    0x70,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6F,
-    0x6E,
-    0,
-}; /* const */
-
 void FuryFXIce2::ResetFury() {
     Matrix **temp_r3_60;
     Matrix **var_r6_55;
@@ -953,7 +921,7 @@ void FuryFXIce2::Resolve() {
     FuryFX::Resolve();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: illegal implicit conversion from 'MKModel *' to
 void FuryFXIce2::Init() {
     MKHeap *temp_r3_1592;
     MKHeap *temp_r3_1625;
@@ -972,7 +940,7 @@ void FuryFXIce2::Init() {
 
     FuryFX::Init();
     SetDefaults();
-    temp_r3_1590 = MKModel_Create(lit_stringBase0, NULL, 2, NULL);
+    temp_r3_1590 = MKModel_Create("FX0027_IceSpear", NULL, 2, NULL);
     this->unk100 = temp_r3_1590;
     temp_r3_1592 = temp_r3_1590->Current();
     if (temp_r3_1592 != NULL) {
@@ -1017,6 +985,6 @@ void FuryFXIce2::Init() {
     temp_r4_1653 = this->unk104;
     this->unk104 = (MKModel *) &temp_r4_1653->unk4;
     M2C_FIELD(temp_r4_1653, MKModel **, 4) = NULL;
-    this->unk110 = M2C_BITWISE(f32, checked_cast<IceExplosion *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x10])));
+    this->unk110 = M2C_BITWISE(f32, checked_cast<IceExplosion *, MKProp>(gMK->CreateProp("IceExplosion")));
 }
 #endif

@@ -21,74 +21,8 @@ extern MKSceneManager *gMK;
 extern f32 gUpdateTimeDelta;
 static s32 lit_616 = 2;
 static s32 lit_618 = 0x05F5E0FF;
-#if 0 // DRAFT: illegal explicit conversion from 'float' to
-static s8 lit_stringBase0[0x40] = {
-    0x4C,
-    0x65,
-    0x66,
-    0x74,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x52,
-    0x69,
-    0x67,
-    0x68,
-    0x74,
-    0x54,
-    0x72,
-    0x61,
-    0x63,
-    0x6B,
-    0,
-    0x4D,
-    0x6F,
-    0x6C,
-    0x74,
-    0x65,
-    0x6E,
-    0x4D,
-    0x65,
-    0x74,
-    0x61,
-    0x6C,
-    0x42,
-    0x75,
-    0x63,
-    0x6B,
-    0x65,
-    0x74,
-    0,
-    0x70,
-    0x30,
-    0x30,
-    0x31,
-    0x37,
-    0x5F,
-    0x46,
-    0x69,
-    0x72,
-    0x65,
-    0x53,
-    0x74,
-    0x65,
-    0x65,
-    0x6C,
-    0x4C,
-    0x65,
-    0x64,
-    0x67,
-    0x65,
-    0x52,
-    0x61,
-    0x69,
-    0x6C,
-    0,
-}; /* const */
 
+#if 0 // DRAFT: illegal explicit conversion from 'float' to
 void MoltenMetalBucketTrack::Message(MKMessage *arg0) {
     f32 temp_r3_54;
     s32 temp_r0_47;
@@ -504,7 +438,7 @@ void MoltenMetalBucketTrack::Resolve() {
     Update();
 }
 
-#if 0 // DRAFT: undefined identifier 'lit_stringBase0'
+#if 0 // DRAFT: undefined identifier 'Init'
 s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
     f64 sp80;
     f64 sp78;
@@ -528,7 +462,7 @@ s32 MoltenMetalBucketTrack::LoadLine(MKIniLine *arg0) {
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->IsField(lit_stringBase0) != 0) {
+    if (arg0->IsField("LeftTrack") != 0) {
         var_r30_942 = arg0->unkC->GetSubLine(arg0);
         temp_r3_943 = arg0->GetNmbrOfSubLines();
         if (temp_r3_943 != 0) {
@@ -561,7 +495,7 @@ loop_9:
         }
         return 1;
     }
-    if (arg0->IsField(&lit_stringBase0[0xA]) != 0) {
+    if (arg0->IsField("RightTrack") != 0) {
         var_r30_1016 = arg0->unkC->GetSubLine(arg0);
         temp_r3_1017 = arg0->GetNmbrOfSubLines();
         if (temp_r3_1017 != 0) {
@@ -611,7 +545,7 @@ void MoltenMetalBucketTrack::Init() {
     MKProp::Init();
     M2C_STRUCT_COPY((s32) &this->unk4C.unk50 + 4, (s32) (&identity - 4) + 4, 0x40);
     this->unk8 = &this->unk4C.unk54;
-    this->unk4C.unk28 = M2C_BITWISE(f32, checked_cast<MoltenMetalBucket *, MKProp>(gMK->CreateProp(&lit_stringBase0[0x15])));
+    this->unk4C.unk28 = M2C_BITWISE(f32, checked_cast<MoltenMetalBucket *, MKProp>(gMK->CreateProp("MoltenMetalBucket")));
     this->unk4C.unk2C = 0.0f;
     M2C_FIELD(this, f64 *, 0x80) = (f64) M2C_FIELD(&zero, f64 *, 0);
     M2C_FIELD(this, f64 *, 0x88) = (f64) M2C_FIELD(&zero, f64 *, 8);
@@ -637,7 +571,7 @@ void MoltenMetalBucketTrackDescriptor::Init() {
     this->unk70 = M2C_FIELD(&zero, f64 *, 0);
     this->unk78 = M2C_FIELD(&zero, f64 *, 8);
     this->unk1C = (BoundingVolume *) &this->unk60;
-    this->unk80 = MKMaterial_Create(&lit_stringBase0[0x27]);
+    this->unk80 = MKMaterial_Create("p0017_FireSteelLedgeRail");
 }
 #endif
 

@@ -22,26 +22,6 @@ extern s32 gViewSeed;
 extern void **gb;
 
 #if 0 // DRAFT: undefined identifier 'unk170'
-static s8 lit_stringBase0[0x11] = {
-    0x62,
-    0x6F,
-    0x75,
-    0x6E,
-    0x63,
-    0x65,
-    0,
-    0x72,
-    0x75,
-    0x6E,
-    0,
-    0x61,
-    0x6C,
-    0x65,
-    0x72,
-    0x74,
-    0,
-}; /* const */
-
 void IceSnoatCritter::Deinit() {
     MKHeap *temp_r3_57;
     void *temp_r31_54;
@@ -973,22 +953,22 @@ void IceSnoatCritterDescriptor::LoadDone() {
 
     KDPropDescriptor::LoadDone();
     temp_r30_1589 = this->unk34;
-    if (temp_r30_1589->Exists(lit_stringBase0) != 0) {
-        var_r3_1599 = temp_r30_1589->GetAnim(lit_stringBase0);
+    if (temp_r30_1589->Exists("bounce") != 0) {
+        var_r3_1599 = temp_r30_1589->GetAnim("bounce");
     } else {
         var_r3_1599 = NULL;
     }
     this->unk70 = (s32) var_r3_1599;
     temp_r30_1607 = this->unk34;
-    if (temp_r30_1607->Exists(&lit_stringBase0[7]) != 0) {
-        var_r3_1617 = temp_r30_1607->GetAnim(&lit_stringBase0[7]);
+    if (temp_r30_1607->Exists("run") != 0) {
+        var_r3_1617 = temp_r30_1607->GetAnim("run");
     } else {
         var_r3_1617 = NULL;
     }
     this->unk74 = (s32) var_r3_1617;
     temp_r30_1625 = this->unk34;
-    if (temp_r30_1625->Exists(&lit_stringBase0[0xB]) != 0) {
-        var_r3_1635 = temp_r30_1625->GetAnim(&lit_stringBase0[0xB]);
+    if (temp_r30_1625->Exists("alert") != 0) {
+        var_r3_1635 = temp_r30_1625->GetAnim("alert");
     } else {
         var_r3_1635 = NULL;
     }

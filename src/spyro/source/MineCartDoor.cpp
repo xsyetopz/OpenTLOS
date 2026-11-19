@@ -6,37 +6,6 @@
 #include "unplaced_templates.h"
 #include <m2c_macros.h>
 
-static s8 lit_stringBase0[0x1C] = {
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x4F,
-    0x70,
-    0x65,
-    0x6E,
-    0,
-    0x43,
-    0x6C,
-    0x6F,
-    0x73,
-    0x69,
-    0x6E,
-    0x67,
-    0,
-    0x43,
-    0x6C,
-    0x6F,
-    0x73,
-    0x65,
-    0x64,
-    0,
-}; /* const */
-
 void MineCartDoor::SetState(int arg0) {
     this->unkC8 = arg0;
     this->unk80->SetAnim(M2C_FIELD((checked_cast<MineCartDoorDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0) + (this->unkC8 * 4)), MKAnim **, 0xE4), 1.0f, 0.0f, 0, -1);
@@ -90,10 +59,10 @@ void MineCartDoor::Reset() {
 #if 0 // DRAFT: illegal use of non-static member
 void MineCartDoorDescriptor::LoadDone() {
     GamePropDescriptor::LoadDone();
-    this->unkE4 = this->unk34->GetAnim(lit_stringBase0);
-    this->unkE8 = this->unk34->GetAnim(&lit_stringBase0[8]);
-    this->unkEC = this->unk34->GetAnim(&lit_stringBase0[0xD]);
-    this->unkF0 = this->unk34->GetAnim(&lit_stringBase0[0x15]);
+    this->unkE4 = this->unk34->GetAnim("Opening");
+    this->unkE8 = this->unk34->GetAnim("Open");
+    this->unkEC = this->unk34->GetAnim("Closing");
+    this->unkF0 = this->unk34->GetAnim("Closed");
 }
 #endif
 

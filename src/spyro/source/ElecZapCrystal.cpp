@@ -23,40 +23,6 @@ extern s32 gViewSeed;
 extern M2C_UNK gb;
 
 #if 0 // DRAFT: undefined identifier 'unkB0'
-static s8 lit_stringBase0[0x1F] = {
-    0x42,
-    0x6C,
-    0x75,
-    0x65,
-    0x43,
-    0x72,
-    0x79,
-    0x73,
-    0x74,
-    0x61,
-    0x6C,
-    0,
-    0x45,
-    0x6C,
-    0x65,
-    0x63,
-    0x25,
-    0x64,
-    0,
-    0x53,
-    0x74,
-    0x72,
-    0x69,
-    0x6B,
-    0x65,
-    0x25,
-    0x64,
-    0,
-    0x46,
-    0x58,
-    0,
-}; /* const */
-
 void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
     M2C_UNK *temp_r3_51;
     M2C_UNK *temp_r5_45;
@@ -313,13 +279,13 @@ void ElecZapCrystal::LoadDone() {
     KDProp::LoadDone();
     M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x70);
     M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&loadInfo, f64 *, 0x78);
-    temp_ret_464 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, lit_stringBase0);
+    temp_ret_464 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "BlueCrystal");
     var_f1_464 = M2C_BITWISE(f32, temp_ret_464);
     this->unk90 = (s32) temp_ret_464;
     var_r28_469 = 0;
     var_r30_470 = 0;
     do {
-        temp_ret_479 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, Str_Printf(&lit_stringBase0[0xC], var_r28_469 + 1, var_f1_464));
+        temp_ret_479 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, Str_Printf("Elec%d", var_r28_469 + 1, var_f1_464));
         var_f1_464 = M2C_BITWISE(f32, temp_ret_479);
         var_r28_469 += 1;
         temp_r0_481 = var_r30_470 + 0x94;
@@ -329,14 +295,14 @@ void ElecZapCrystal::LoadDone() {
     var_r28_488 = 0;
     var_r30_490 = 0;
     do {
-        temp_ret_499 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, Str_Printf(&lit_stringBase0[0x13], var_r28_488 + 1, var_f1_464));
+        temp_ret_499 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, Str_Printf("Strike%d", var_r28_488 + 1, var_f1_464));
         var_f1_464 = M2C_BITWISE(f32, temp_ret_499);
         var_r28_488 += 1;
         temp_r0_501 = var_r30_490 + 0xA0;
         var_r30_490 += 4;
         *(this + temp_r0_501) = (s32) temp_ret_499;
     } while (var_r28_488 < 4);
-    this->unkB8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, &lit_stringBase0[0x1C]);
+    this->unkB8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "FX");
 }
 #endif
 

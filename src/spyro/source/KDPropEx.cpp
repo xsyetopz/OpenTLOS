@@ -5,7 +5,6 @@
 #include "common/Source/MKProp.h"
 #include "spyro/source/KDCommonProperties.h"
 #include "spyro/source/KDMatrixProperty.h"
-#include "spyro/source/KDMatrixRefProperty.h"
 #include "spyro/source/KDProp.h"
 #include "spyro/source/KDProperty.h"
 #include "unplaced_templates.h"
@@ -265,13 +264,13 @@ void KDPropExDescriptor::Init() {
     this->unk74.unkC = 0;
     this->unk74.AllocInstanceMem(this->unk70, 0x40);
     this->unk84 = 0;
-    M2C_FIELD(this->unkB0.__vptr, M2C_UNK (**)(KDMatrixRefProperty *, M2C_UNK *), 8)(&this->unkB0, pLocalToWorldPropertyName);
+    this->unkB0.Init(pLocalToWorldPropertyName);
     this->unkB0.unk8 = 8;
     this->unk74.AddPublished((KDProperty *) &this->unkB0);
-    M2C_FIELD(this->unk9C.__vptr, M2C_UNK (**)(KDProperty *, M2C_UNK *), 8)(&this->unk9C, pModelPropertyName);
+    this->unk9C.Init(pModelPropertyName);
     this->unk9C.unk8 = 4;
     this->unk74.AddPublished(&this->unk9C);
-    M2C_FIELD(this->unk88.__vptr, M2C_UNK (**)(KDProperty *, M2C_UNK *), 8)(&this->unk88, pAnimScriptPropertyName);
+    this->unk88.Init(pAnimScriptPropertyName);
     this->unk88.unk8 = 0x80;
     this->unk74.AddPublished(&this->unk88);
     this->unkC |= 1;
