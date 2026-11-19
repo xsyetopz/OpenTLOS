@@ -53,211 +53,159 @@ void ElecZapCrystal::TriggerSubObjFader(int arg0, float arg1) {
     }
 }
 
-#if 0 // DRAFT: illegal type
 void ElecZapCrystal::Deinit() {
-    u32 temp_r0_78;
-    void *temp_r0_73;
-    void *temp_r0_92;
-    void *var_r31_69;
-    void *var_r3_70;
-    void *var_r4_68;
+    void **cursor;
+    void **scan;
+    void *lowest;
+    void *entry;
 
-    var_r4_68 = this->unkB0;
-    var_r31_69 = var_r4_68;
-    var_r3_70 = var_r4_68;
-loop_3:
-    temp_r0_78 = M2C_FIELD(var_r3_70, u32 *, -4);
-    var_r3_70 -= 4;
-    if (temp_r0_78 != 0U) {
-        temp_r0_73 = *var_r3_70;
-        if (temp_r0_73 < var_r31_69) {
-            var_r31_69 = temp_r0_73;
+    cursor = (void **) this->unkB0;
+    lowest = cursor;
+    cursor -= 1;
+    entry = *cursor;
+    while (entry != NULL) {
+        if ((u32) entry < (u32) lowest) {
+            lowest = entry;
         }
-        goto loop_3;
+        cursor -= 1;
+        entry = *cursor;
     }
-    if (var_r3_70 != &gEmptyPtrListDL) {
-loop_9:
-        temp_r0_92 = *var_r4_68;
-        if (temp_r0_92 != NULL) {
-            if (temp_r0_92 < var_r31_69) {
-                var_r31_69 = temp_r0_92;
+    if ((void *) cursor != (void *) &gEmptyPtrListDL) {
+        scan = (void **) this->unkB0;
+        entry = *scan;
+        while (entry != NULL) {
+            if ((u32) entry < (u32) lowest) {
+                lowest = entry;
             }
-            var_r4_68 += 4;
-            goto loop_9;
+            scan += 1;
+            entry = *scan;
         }
         if (MKHeap::Current() != NULL) {
-            ((MKHeap *) (MKHeap::Current()))->Free(var_r31_69, NULL, 0);
+            MKHeap::Current()->Free(lowest, NULL, 0);
         } else {
-            free(var_r31_69);
+            free(lowest);
         }
     }
     this->unkB0 = NULL;
     KDProp::Deinit();
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void ElecZapCrystal::Draw() {
-    f64 sp20;
-    f64 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 spC;
-    f32 sp8;
-    f32 temp_f1_149;
-    void *temp_r31_172;
-    void *var_r30_141;
+    MKVector4 color;
+    f32 ratio;
+    void **entry;
+    void *fader;
 
     MKModel_SetColor(this->unk4, this->unkC8);
     MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, this->unk90, 1U, 1U);
     MKModel_Draw(this->unk4, NULL);
-    var_r30_141 = this->unkB0;
-loop_2:
-    if (var_r30_141 != NULL) {
-        temp_r31_172 = *var_r30_141;
-        if (temp_r31_172 != NULL) {
-            sp14 = 1.0f;
-            temp_f1_149 = M2C_FIELD(temp_r31_172, f32 *, 8) / M2C_FIELD(temp_r31_172, f32 *, 4);
-            sp10 = temp_f1_149;
-            sp8 = temp_f1_149;
-            spC = temp_f1_149;
-            sp20 = (f64) sp10;
-            sp18 = (f64) sp8;
-            MKModel_SetColor(this->unk4, *((MKVector4 *) &sp18));
-            MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(temp_r31_172, s32 *, 0), 1U, 1U);
-            MKModel_Draw(this->unk4, NULL);
-            var_r30_141 += 4;
-            goto loop_2;
+    entry = (void **) this->unkB0;
+    while (entry != NULL) {
+        fader = *entry;
+        if (fader == NULL) {
+            break;
         }
+        ratio = M2C_FIELD(fader, f32 *, 8) / M2C_FIELD(fader, f32 *, 4);
+        color.unk0 = ratio;
+        color.unk4 = ratio;
+        color.unk8 = ratio;
+        color.unkC = 1.0f;
+        MKModel_SetColor(this->unk4, color);
+        MKModel_EnableOnlySubObject(this->unk4, (SubObjectType) 0, M2C_FIELD(fader, s32 *, 0), 1U, 1U);
+        MKModel_Draw(this->unk4, NULL);
+        entry += 1;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'void' to 'void *'
 void *ElecZapCrystal::Update() {
-    f64 spB8;
-    f64 spB0;
-    f64 spA8;
-    f64 spA0;
-    MKVector3 sp90;
-    f64 sp88;
-    f64 sp80;
-    f64 sp78;
-    f64 sp70;
-    f64 sp68;
-    f64 sp60;
-    f32 sp5C;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    f64 sp20;
-    f32 sp1C;
-    f32 sp18;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    f32 temp_f27_266;
-    f32 temp_f27_391;
-    f32 temp_f3_209;
-    f32 var_f1_210;
-    f64 temp_f0_340;
-    s32 temp_r0_249;
-    s32 var_r28_316;
-    void *temp_r3_229;
-    void *temp_r3_241;
-    void *temp_r4_232;
-    void *var_r5_204;
+    MKVector3 velRand;
+    MKVector3 velMin;
+    MKVector3 velMax;
+    MKVector3 velocity;
+    MKVector4 burstColor;
+    MKVector4 sparkColor;
+    f32 life;
+    f32 lifeMax;
+    f32 fader;
+    f32 lifetime;
+    f32 alpha;
+    s32 index;
+    s32 i;
+    void **slot;
+    void **head;
+    void *entry;
+    void *temp;
 
-    var_r5_204 = this->unkB0;
-loop_10:
-    if (var_r5_204 != NULL) {
-        temp_r3_241 = *var_r5_204;
-        if (temp_r3_241 != NULL) {
-            temp_f3_209 = M2C_FIELD(temp_r3_241, f32 *, 4);
-            var_f1_210 = M2C_FIELD(temp_r3_241, f32 *, 8) - gUpdateTimeDelta;
-            if (var_f1_210 < temp_f3_209) {
-
-            } else {
-                var_f1_210 = temp_f3_209;
-            }
-            if (var_f1_210 > 0.0f) {
-
-            } else {
-                var_f1_210 = 0.0f;
-            }
-            M2C_FIELD(temp_r3_241, f32 *, 8) = var_f1_210;
-            if (M2C_FIELD(temp_r3_241, f32 *, 8) <= 0.0f) {
-                temp_r3_229 = this->unkB0;
-                this->unkB0 = ((u8 *) temp_r3_229) + 4;
-                temp_r4_232 = *temp_r3_229;
-                *temp_r3_229 = (void *) *var_r5_204;
-                *var_r5_204 = temp_r4_232;
-            }
-            var_r5_204 += 4;
-            goto loop_10;
+    slot = (void **) this->unkB0;
+    while (slot != NULL) {
+        entry = *slot;
+        if (entry == NULL) {
+            break;
         }
+        life = M2C_FIELD(entry, f32 *, 8) - gUpdateTimeDelta;
+        lifeMax = M2C_FIELD(entry, f32 *, 4);
+        if (life < lifeMax) {
+        } else {
+            life = lifeMax;
+        }
+        if (life <= 0.0f) {
+            life = 0.0f;
+        }
+        M2C_FIELD(entry, f32 *, 8) = life;
+        if (M2C_FIELD(entry, f32 *, 8) <= 0.0f) {
+            head = (void **) this->unkB0;
+            this->unkB0 = (void *) ((u8 *) head + 4);
+            temp = *head;
+            *head = *slot;
+            *slot = temp;
+        }
+        slot += 1;
     }
-    this->unkBC -= gUpdateTimeDelta;
-    temp_r0_249 = this->unkB4;
-    switch (temp_r0_249) {                          /* irregular */
+    this->unkBC = this->unkBC - gUpdateTimeDelta;
+    switch (this->unkB4) {
     case 0:
         if (this->unkBC <= 0.0f) {
-            temp_f27_266 = MKRand_Float((int *) &gViewSeed, 0.2f, 0.5f);
-            TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, 4) * 4)), s32 *, 0xA0), temp_f27_266);
+            fader = MKRand_Float((int *) &gViewSeed, 0.2f, 0.5f);
+            index = MKRand_Int((int *) &gViewSeed, 0, 4);
+            this->TriggerSubObjFader(((s32 *) ((u8 *) this + 0xA0))[index], fader);
             this->unkB4 = 1;
             this->unkBC = 0.5f;
             MKModel_CalculateRefPointWorldPosition(this->unk4, this->unkB8, &this->unkD8);
             KDSound_Play3d(GS_LightningCrystal1, &this->unkD8, 0U, -1, 0.0f, 0U);
-            sp54 = 0.8f;
-            sp50 = 1.0f;
-            sp58 = 0.9f;
-            sp5C = 1.0f;
-            spB0 = (f64) sp50;
-            spB8 = (f64) sp58;
-            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(this->unkD8, MKVector3::zero, 60.0f, *((MKVector4 *) &spB0), 0.0f);
-            var_r28_316 = 0;
+            burstColor.unk0 = 1.0f;
+            burstColor.unk4 = 0.8f;
+            burstColor.unk8 = 0.9f;
+            burstColor.unkC = 1.0f;
+            ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(this->unkD8, MKVector3::zero, 60.0f, burstColor, 0.0f);
+            i = 0;
             do {
-                sp48 = -1.0f;
-                sp38 = 1.0f;
-                sp40 = -1.0f;
-                sp44 = 0.0f;
-                sp30 = 1.0f;
-                sp34 = 1.0f;
-                sp80 = (f64) sp40;
-                sp88 = (f64) sp48;
-                sp70 = (f64) sp30;
-                sp78 = (f64) sp38;
-                sp90 = KDRand_Vector(*((MKVector3 *) &sp80), *((MKVector3 *) &sp70));
-                temp_f0_340 = sp90 * 5.717499035e-315;
-                sp20 = temp_f0_340;
-                spA0 = temp_f0_340;
-                sp28 = sp90.unk8 * 2000.0f;
-                spA8 = (f64) sp28;
-                sp8 = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
-                sp18 = MKRand_Float((int *) &gViewSeed, 0.4f, 1.0f);
-                sp1C = 1.0f;
-                sp10 = 1.0f;
-                sp14 = 0.4f;
-                sp68 = (f64) sp18;
-                sp60 = (f64) sp10;
-                ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(this->unkD8, *((MKVector3 *) &spA0), sp8, *((MKVector4 *) &sp60), -2000.0f);
-                var_r28_316 += 1;
-            } while (var_r28_316 < 0x14);
-            return;
+                velMin.unk0 = -1.0f;
+                velMin.unk4 = 0.0f;
+                velMin.unk8 = -1.0f;
+                velMax.unk0 = 1.0f;
+                velMax.unk4 = 1.0f;
+                velMax.unk8 = 1.0f;
+                velRand = KDRand_Vector(velMin, velMax);
+                velocity.unk0 = velRand.unk0 * 2000.0f;
+                velocity.unk4 = velRand.unk4 * 2000.0f;
+                velocity.unk8 = velRand.unk8 * 2000.0f;
+                lifetime = MKRand_Float((int *) &gViewSeed, 10.0f, 20.0f);
+                alpha = MKRand_Float((int *) &gViewSeed, 0.4f, 1.0f);
+                sparkColor.unk0 = 1.0f;
+                sparkColor.unk4 = 0.4f;
+                sparkColor.unk8 = alpha;
+                sparkColor.unkC = 1.0f;
+                ((EmbersPS *) (M2C_FIELD(&gb, EmbersPS **, 0x74)))->Emit(this->unkD8, velocity, lifetime, sparkColor, -2000.0f);
+                i += 1;
+            } while (i < 0x14);
         }
-        return;
+        break;
     case 1:
-        this->unkC0 -= gUpdateTimeDelta;
+        this->unkC0 = this->unkC0 - gUpdateTimeDelta;
         if (this->unkC0 <= 0.0f) {
-            temp_f27_391 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.4f);
-            TriggerSubObjFader(M2C_FIELD((this + (MKRand_Int((int *) &gViewSeed, 0, 3) * 4)), s32 *, 0x94), temp_f27_391);
+            fader = MKRand_Float((int *) &gViewSeed, 0.1f, 0.4f);
+            index = MKRand_Int((int *) &gViewSeed, 0, 3);
+            this->TriggerSubObjFader(((s32 *) ((u8 *) this + 0x94))[index], fader);
             KDSound_Play3d(GS_LightningCrystal2, &this->unkD8, 0U, -1, 0.0f, 0U);
             this->unkC0 = MKRand_Float((int *) &gViewSeed, 0.1f, 0.2f);
         }
@@ -268,80 +216,53 @@ loop_10:
         break;
     }
 }
-#endif
 
-#if 0 // DRAFT: function call 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel *, signed char *)' does not match 'Tools_GetMatchingSubObjectIndex(SubObjectType, MKModel 
 s32 ElecZapCrystal::LoadDone() {
-    f32 var_f1_464;
-    s32 temp_r0_481;
-    s32 temp_r0_501;
-    s32 var_r28_469;
-    s32 var_r28_488;
-    s32 var_r30_470;
-    s32 var_r30_490;
-    u16 temp_ret_464;
-    u16 temp_ret_479;
-    u16 temp_ret_499;
+    const char *name;
+    s32 i;
 
     KDProp::LoadDone();
-    M2C_FIELD(this, f64 *, 0xC8) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
-    M2C_FIELD(this, f64 *, 0xD0) = (f64) M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
-    temp_ret_464 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "BlueCrystal");
-    var_f1_464 = M2C_BITWISE(f32, temp_ret_464);
-    this->unk90 = (s32) temp_ret_464;
-    var_r28_469 = 0;
-    var_r30_470 = 0;
-    do {
-        temp_ret_479 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, Str_Printf("Elec%d", var_r28_469 + 1, var_f1_464));
-        var_f1_464 = M2C_BITWISE(f32, temp_ret_479);
-        var_r28_469 += 1;
-        temp_r0_481 = var_r30_470 + 0x94;
-        var_r30_470 += 4;
-        *(this + temp_r0_481) = (s32) temp_ret_479;
-    } while (var_r28_469 < 3);
-    var_r28_488 = 0;
-    var_r30_490 = 0;
-    do {
-        temp_ret_499 = Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, Str_Printf("Strike%d", var_r28_488 + 1, var_f1_464));
-        var_f1_464 = M2C_BITWISE(f32, temp_ret_499);
-        var_r28_488 += 1;
-        temp_r0_501 = var_r30_490 + 0xA0;
-        var_r30_490 += 4;
-        *(this + temp_r0_501) = (s32) temp_ret_499;
-    } while (var_r28_488 < 4);
+    M2C_FIELD(this, f64 *, 0xC8) = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x70);
+    M2C_FIELD(this, f64 *, 0xD0) = M2C_FIELD(&MKProp::loadInfo, f64 *, 0x78);
+    this->unk90 = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, "BlueCrystal");
+    for (i = 0; i < 3; i++) {
+        name = (const char *) Str_Printf("Elec%d", i + 1);
+        ((s32 *) ((u8 *) this + 0x94))[i] = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, name);
+    }
+    for (i = 0; i < 4; i++) {
+        name = (const char *) Str_Printf("Strike%d", i + 1);
+        ((s32 *) ((u8 *) this + 0xA0))[i] = (s32) Tools_GetMatchingSubObjectIndex((SubObjectType) 0, this->unk4, name);
+    }
     this->unkB8 = (s32) Tools_GetMatchingRefPointIndex(this->unk4, "FX");
 }
-#endif
 
-#if 0 // DRAFT: illegal type
 void ElecZapCrystal::Init() {
-    s32 var_ctr_550;
-    void *temp_r3_552;
-    void *temp_r3_558;
-    void *var_r3_537;
-    void *var_r5_546;
+    s32 var_ctr;
+    void *block;
+    void *cursor;
+    void *slot;
 
     KDProp::Init();
     if (MKHeap::Current() != NULL) {
-        var_r3_537 = ((MKHeap *) (MKHeap::Current()))->Alloc(0x88, NULL, 0);
+        block = MKHeap::Current()->Alloc(0x88, NULL, 0);
     } else {
-        var_r3_537 = malloc(0x88);
+        block = malloc(0x88);
     }
-    this->unkB0 = var_r3_537;
-    var_r5_546 = this->unkB0;
-    this->unkB0 = ((u8 *) var_r5_546) + 0x60;
-    M2C_FIELD(var_r5_546, s32 *, 0x60) = 0;
-    var_ctr_550 = 8;
+    this->unkB0 = block;
+    cursor = block;
+    this->unkB0 = (void *) ((u8 *) cursor + 0x60);
+    M2C_FIELD(cursor, void **, 0x60) = NULL;
+    var_ctr = 8;
     do {
-        temp_r3_552 = this->unkB0;
-        this->unkB0 = ((u8 *) temp_r3_552) + 4;
-        M2C_FIELD(temp_r3_552, void **, 4) = var_r5_546;
-        var_r5_546 += 0xC;
-        var_ctr_550 -= 1;
-    } while (var_ctr_550 != 0);
-    temp_r3_558 = this->unkB0;
-    this->unkB0 = ((u8 *) temp_r3_558) + 4;
-    M2C_FIELD(temp_r3_558, void **, 4) = NULL;
+        slot = this->unkB0;
+        this->unkB0 = (void *) ((u8 *) slot + 4);
+        M2C_FIELD(slot, void **, 4) = cursor;
+        cursor = (void *) ((u8 *) cursor + 0xC);
+        var_ctr -= 1;
+    } while (var_ctr != 0);
+    slot = this->unkB0;
+    this->unkB0 = (void *) ((u8 *) slot + 4);
+    M2C_FIELD(slot, void **, 4) = NULL;
     this->unkBC = 0.0f;
     this->unkB4 = 0;
     this->unkC0 = 0.0f;
@@ -353,4 +274,3 @@ void ElecZapCrystal::Init() {
     this->unkC8.unk8 = 1.0f;
     this->unkC8.unkC = 1.0f;
 }
-#endif

@@ -201,27 +201,20 @@ void ElementalCombatController::Message(MKMessage *arg0) {
     MKProp::Message(arg0);
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'ElementalCombatController' to 'unsigned long'
 f32 ElementalCombatController::Resolve() {
-    s32 temp_r30_381;
-    s32 var_r29_378;
-    s32 var_r31_379;
-    u32 temp_r3_382;
+    s32 *slots;
+    s32 value;
+    s32 i;
 
-    var_r29_378 = 0;
-    var_r31_379 = 0;
-    do {
-        temp_r30_381 = var_r31_379 + 0x360;
-        temp_r3_382 = *(this + temp_r30_381);
-        if (temp_r3_382 != 0U) {
-            *(this + temp_r30_381) = checked_cast<SpawnPoint *, MKProp>(MKSceneManager::PropResolver_Resolve((s32) temp_r3_382));
+    slots = (s32 *) ((u8 *) this + 0x360);
+    for (i = 0; i < 0x10; i++) {
+        value = slots[i];
+        if (value != 0) {
+            slots[i] = (s32) checked_cast<SpawnPoint *, MKProp>(MKSceneManager::PropResolver_Resolve(value));
         }
-        var_r29_378 += 1;
-        var_r31_379 += 4;
-    } while (var_r29_378 < 0x10);
-    MKProp::Resolve();
+    }
+    return MKProp::Resolve();
 }
-#endif
 
 s32 ElementalCombatController::LoadDone() {
     s32 temp_r0_440;
