@@ -57,6 +57,12 @@ def ref_arg(arg: str) -> str:
     return f"*{arg}" if re.fullmatch(r"[\w.>-]+|\(.*\)", arg) else f"*({arg})"
 
 
+def int_ptr_arg(arg: str, typ: str) -> str:
+    """An address argument cast to an `int *` or `unsigned int *` parameter."""
+    bare = re.sub(r"^\((?:s32|u32) \*\) ?", "", arg)
+    return f"({typ}) {bare}" if bare.startswith("&") and not bare.startswith("&&") else arg
+
+
 class Symbol:
     """A parsed mangled name: owning class (or None), C++ member name, param kinds."""
 
@@ -74,6 +80,9 @@ class Symbol:
         fn = terms[-1] if self.is_func else None
         params = [p for p in (fn.function_params or [])] if fn else []
         self.refs = [bool(p.terms) and p.terms[0].kind == K.REFERENCE for p in params]
+        # m2c spells `int` as `s32`, which is `long` under MWCC, so `&s32` does not
+        # convert to an `int *` parameter; the explicit cast emits no code.
+        self.int_ptrs = [render(p) if render(p) in ("int *", "unsigned int *") else None for p in params]
         self.nparams = len([p for p in params if render(p) != "void"])
         if self.raw in OPERATORS:
             self.name = OPERATORS[self.raw]
@@ -104,6 +113,8 @@ class CallRewriter:
         member = sym.cls and sym.raw not in OPERATORS and tok not in self.statics
         params = args[1:] if member else args
         params = [ref_arg(a) if i < len(sym.refs) and sym.refs[i] else a for i, a in enumerate(params)]
+        params = [int_ptr_arg(a, sym.int_ptrs[i]) if i < len(sym.int_ptrs) and sym.int_ptrs[i] else a
+                  for i, a in enumerate(params)]
         tail = f"({', '.join(params)})"
         if not member:
             return (f"{sym.cls}::" if sym.cls and sym.raw not in OPERATORS else "") + sym.name + tail
