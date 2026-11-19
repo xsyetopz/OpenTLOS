@@ -60,11 +60,9 @@ static MKWidgetSystem *pSystemStack[0x10] = {
 };
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char[736]' to 'float'
 f32 MKWidget_GetMetricF(int arg0) {
-    return *(&gMKWidgetMetrics + (arg0 * 0x10));
+    return *(f32 *) (gMKWidgetMetrics + (arg0 * 0x10));
 }
-#endif
 
 void *MKWidget_GetMetric(int arg0) {
     return &gMKWidgetMetrics + (arg0 * 0x10);
@@ -78,18 +76,9 @@ void MKWidget_SetCustomMessageHook(MKWidget *arg0, int (*arg1)(MKWidget *, unsig
     MKWidget_SendMessage(arg0, 0xEU, (u32) arg1);
 }
 
-#if 0 // DRAFT: undefined identifier '__vptr'
 void MKWidget_GetWidgetUnderPoint(MKWidgetSystem *arg0, const MKVector3 &arg1) {
-    f64 sp10;
-    f64 sp8;
-    f64 temp_f1_63;
-
-    temp_f1_63 = M2C_FIELD(&arg1, f64 *, 0);
-    sp8 = temp_f1_63;
-    sp10 = M2C_FIELD(&arg1, f64 *, 8);
-    M2C_FIELD(arg0->__vptr, M2C_UNK (**)(f64 *, f64), 0x24)(&sp8, temp_f1_63);
+    arg0->GetWidgetUnderPoint(arg1);
 }
-#endif
 
 #if 0 // DRAFT: illegal explicit conversion from 'Matrix' to 'double'
 f32 MKWidget_GetLocalMousePos(MKWidget *arg0, MKVector3 *arg1) {
@@ -249,7 +238,6 @@ loop_3:
     goto loop_3;
 }
 
-#if 0 // DRAFT: function call 'strcmp(const char *, signed char *)' does not match 'strcmp(const char *, const char *)'
 s32 MKWidget_IsType(MKWidget *arg0, const char *arg1) {
     void *var_r31_595;
 
@@ -258,13 +246,12 @@ loop_4:
     if (var_r31_595 == NULL) {
         return 0;
     }
-    if (strcmp(arg1, M2C_FIELD(var_r31_595, s8 **, 0)) == 0) {
+    if (strcmp(arg1, (const char *) M2C_FIELD(var_r31_595, s8 **, 0)) == 0) {
         return 1;
     }
     var_r31_595 = M2C_FIELD(var_r31_595, void **, 8);
     goto loop_4;
 }
-#endif
 
 void MKWidget_GetSystem(MKWidget *arg0) {
     MKWidget *temp_r0_626;
@@ -367,7 +354,6 @@ void MKWidget_CreateEditable(const char *arg0, const char *arg1, const MKWidgetA
 }
 #endif
 
-#if 0 // DRAFT: illegal operand
 void MKWidget_Destroy(MKWidget *arg0) {
     MKWidget *temp_r29_815;
     MKWidget *temp_r3_814;
@@ -380,7 +366,7 @@ void MKWidget_Destroy(MKWidget *arg0) {
         var_r31_818 = 1;
     }
     if (var_r31_818 != 0) {
-        if ((u32) temp_r29_815->unk20 == arg0) {
+        if (temp_r29_815->unk20 == (u32) arg0) {
             temp_r29_815->unk20 = 0;
         }
         MKWidget_SendMessage(temp_r3_814, 0x20U, 0U);
@@ -388,7 +374,6 @@ void MKWidget_Destroy(MKWidget *arg0) {
     }
     MKWidget_SendMessage(arg0, 3U, 0U);
 }
-#endif
 
 #if 0 // DRAFT: identifier 'arg5' redeclared
 MKWidget *MKWidget_Create(const char *arg0, const char *arg1, const MKWidgetAttributes *arg2, MKWidget *arg3, int (*arg5)(MKWidget *, unsigned int, unsigned int, void *), void *arg5) {
