@@ -54,63 +54,61 @@ static M2C_UNK modInfo;                             /* unable to generate initia
 static u8 gUpdateCameraAlpha = 1;
 #endif
 
-#if 0 // DRAFT: function call 'stricmp(const char *)' does not match 'stricmp(signed char *)'
+extern "C" s32 stricmp(s8 *, s8 *);
 u8 KDProp_LoadMaterialID(MKIniLine *arg0, const char *arg1, int *arg2) {
     s32 temp_r3_25;
     s32 temp_r3_39;
     s32 var_r31_32;
 
-    arg0->GetFieldName();
-    if (stricmp(arg1) == 0) {
+    if (stricmp(arg0->GetFieldName(), (s8 *) arg1) == 0) {
         temp_r3_25 = arg0->GetInt(0);
         if (temp_r3_25 != 0) {
             *arg2 = temp_r3_25;
         } else {
             var_r31_32 = 0;
             *arg2 = 0;
-loop_5:
-            if (var_r31_32 < (s16) arg0->unk0) {
-                temp_r3_39 = MKMaterial_GetMaterialIDMask(arg0->GetString(var_r31_32));
+            while (var_r31_32 < (s16) arg0->unk0) {
+                temp_r3_39 = MKMaterial_GetMaterialIDMask((const char *) arg0->GetString(var_r31_32));
                 var_r31_32 += 1;
                 *arg2 |= temp_r3_39;
-                goto loop_5;
             }
         }
         return 1U;
     }
     return 0U;
 }
-#endif
 
-#if 0 // DRAFT: ')' expected
 void KDProp::UpdateCameraAlpha() {
+    void *temp_r3_91;
     f32 temp_f0_91;
     f32 temp_f2_81;
     f32 var_f1_89;
 
-    if (!(((u8) this->unk88 >> 7U) & 1) && ((u8) M2C_FIELD(checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), u8 *, 0x6C) != 0) && ((u8) gUpdateCameraAlpha != 0)) {
-        temp_f2_81 = this->unk84;
-        if (temp_f2_81 != 1.0f) {
-            var_f1_89 = (1.5f * gUpdateTimeDelta) + temp_f2_81;
-            temp_f0_91 = *M2C_FIELD(&modInfo, f32 **, 0xC);
-            if (var_f1_89 < 1.0f) {
+    if (!(((u8) this->unk88 >> 7U) & 1)) {
+        temp_r3_91 = checked_cast<KDPropDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+        if (((u8) M2C_FIELD(temp_r3_91, u8 *, 0x6C) != 0) && (gUpdateCameraAlpha[0] != 0)) {
+            temp_f2_81 = this->unk84;
+            if (temp_f2_81 != 1.0f) {
+                var_f1_89 = (1.5f * gUpdateTimeDelta) + temp_f2_81;
+                temp_f0_91 = *M2C_FIELD(&modInfo, f32 **, 0xC);
+                if (var_f1_89 < 1.0f) {
 
-            } else {
-                var_f1_89 = 1.0f;
-            }
-            if (var_f1_89 > temp_f0_91) {
+                } else {
+                    var_f1_89 = 1.0f;
+                }
+                if (var_f1_89 > temp_f0_91) {
 
-            } else {
-                var_f1_89 = temp_f0_91;
-            }
-            this->unk84 = var_f1_89;
-            if (this->unk84 == 1.0f) {
-                this->unk10 = (this->unk10 & ~0x4004) | (M2C_FIELD(this->unk0, s32 *, 0x14) & 0x4004);
+                } else {
+                    var_f1_89 = temp_f0_91;
+                }
+                this->unk84 = var_f1_89;
+                if (this->unk84 == 1.0f) {
+                    this->unk10 = (this->unk10 & ~0x4004) | (M2C_FIELD(this->unk0, s32 *, 0x14) & 0x4004);
+                }
             }
         }
     }
 }
-#endif
 
 void KDProp::AddCollisionSubObject(int arg0, MKCollisionInfo *arg1) {
     M2C_UNK var_r31_139;
@@ -460,24 +458,22 @@ loop_49:
 }
 #endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
 s32 KDProp::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
     if (MKProp::LoadLine(arg0) != 0) {
         return 1;
     }
-    if (arg0->LoadBool("bDrawAtFullAlpha", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bDrawAtFullAlpha", (bool *) &sp8, 0) != 0) {
         this->unk88 = (this->unk88 & ~0x80) | ((sp8 << 7) & 0x80);
         return 1;
     }
-    if (arg0->LoadBool("bUseCollisionColor", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bUseCollisionColor", (bool *) &sp8, 0) != 0) {
         this->unk88 = (this->unk88 & ~0x20) | ((sp8 << 5) & 0x20);
         return 1;
     }
     return arg0->LoadVector4("collisionColor", (MKVector4 *) &this->unk60, 0);
 }
-#endif
 
 void KDProp::Init() {
     MKProp::Init();
@@ -501,14 +497,14 @@ void KDPropDescriptor::LoadDone() {
     MKPropDescriptor::LoadDone();
 }
 
-#if 0 // DRAFT: illegal implicit conversion from 'unsigned char *' to 'bool *'
+u8 KDProp_LoadMaterialID(MKIniLine *, const char *, int *);
 s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
     u8 sp8;
 
     if ((MKPropDescriptor::LoadLine(arg0) != 0) || (arg0->LoadFloat("defaultScale", &this->unk68, 0) != 0) || (KDProp_LoadMaterialID(arg0, "materialID", (int *) &this->unk64) != 0)) {
         return 1U;
     }
-    if (arg0->LoadBool("bUseGroundColor", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bUseGroundColor", (bool *) &sp8, 0) != 0) {
         if (sp8 != 0) {
             this->unk60 |= 1;
         } else {
@@ -516,7 +512,7 @@ s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    if (arg0->LoadBool("bInteractive", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bInteractive", (bool *) &sp8, 0) != 0) {
         if (sp8 != 0) {
             this->unk60 |= 4;
         } else {
@@ -524,7 +520,7 @@ s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    if (arg0->LoadBool("bRandomAnimOffset", &sp8, 0) != 0) {
+    if (arg0->LoadBool("bRandomAnimOffset", (bool *) &sp8, 0) != 0) {
         if (sp8 != 0) {
             this->unk60 |= 8;
         } else {
@@ -532,9 +528,8 @@ s32 KDPropDescriptor::LoadLine(MKIniLine *arg0) {
         }
         return 1U;
     }
-    return (bool *) ((u8) (arg0->LoadBool("bUpdateCameraAlpha", &this->unk6C, 0) != 0));
+    return (u8) (arg0->LoadBool("bUpdateCameraAlpha", (bool *) &this->unk6C, 0) != 0);
 }
-#endif
 
 void KDPropDescriptor::Init() {
     MKPropDescriptor::Init();
