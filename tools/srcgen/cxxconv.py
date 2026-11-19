@@ -224,6 +224,7 @@ class Converter:
             body = drop_generated(body, cls, ancestors)
         body = CallRewriter(self.virtuals, self.statics, cls, ancestors).rewrite(body)
         name = member_name(cls, raw)[0] if cls else quals[-1]
+        ret = self.model.decl_rets().get(mangled, ret)
         head = "" if special else ret + (" " if not ret.endswith("*") else "")
         qual = f"{cls}::" if cls else ""
         text = f"{head}{qual}{name}({', '.join(decl_params)}){' const' if const else ''} {body}"

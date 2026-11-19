@@ -273,6 +273,22 @@ class Model:
                     self._slot_rets[k] = votes.most_common(1)[0][0]
         return self._slot_rets.get((self.slot_root(cls, slot), slot))
 
+    def decl_rets(self) -> dict[str, str]:
+        """Mangled virtual -> the return type its class declaration carries (slot_ret).
+
+        Definitions must repeat it: m2c's per-function guess disagrees with the
+        slot's shared type for 160 virtuals, a redeclaration error in C++.
+        """
+        if not hasattr(self, "_decl_rets"):
+            self._decl_rets = {}
+            for n, c in self.classes.items():
+                own = {m["mangled"] for m in c["methods"]}
+                for i, fn in enumerate(c.get("vtable") or []):
+                    ret = self.slot_ret(n, i) if fn in own else None
+                    if ret:
+                        self._decl_rets.setdefault(fn, ret)
+        return self._decl_rets
+
     def slot_fn(self, cls: str, slot: int) -> str | None:
         """Mangled function that names vtable `slot` of `cls`, or None.
 
