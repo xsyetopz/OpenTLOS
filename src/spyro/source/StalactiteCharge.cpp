@@ -984,10 +984,10 @@ s32 StalactiteCharge::LoadLine(MKIniLine *arg0) {
     return (u8) (arg0->LoadInt("CutscenePlayerID", (int *) &this->unkF0, 0) != 0);
 }
 
-#if 0 // DRAFT: ')' expected
 void StalactiteCharge::Deinit() {
     IceBossStalactiteSpawner *temp_r31_1841;
     KDSplinePathSegment *temp_r3_1855;
+    StalactiteChargeDescriptor *desc;
 
     this->unk50.Deinit(this);
     this->unk4C->Deinit();
@@ -1002,12 +1002,12 @@ void StalactiteCharge::Deinit() {
         temp_r3_1855->Deinit();
         operator delete(this->unkEC);
     }
-    if ((s32) M2C_FIELD(checked_cast<StalactiteChargeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0), s32 *, 0x60) != 0) {
+    desc = checked_cast<StalactiteChargeDescriptor *, MKPropDescriptor>((MKPropDescriptor *) this->unk0);
+    if (desc->unk60 != 0) {
         KDSound_Stop((int *) &this->unk144);
     }
     MKProp::Deinit();
 }
-#endif
 
 #if 0 // DRAFT: ')' expected
 void StalactiteCharge::Init() {
