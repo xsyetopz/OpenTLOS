@@ -22,150 +22,109 @@ s32 strcmpi(s32, s8 *);                             /* extern */
 s32 stricmp(s32, s8 *);                             /* extern */
 s8 *strtok(s8 *, M2C_UNK *);                        /* extern */
 
-#if 0 // DRAFT: illegal operand
 void KDSP_Subtitles::Update(KDSP_ActorList *arg0, int arg1) {
-    s32 temp_r0_14;
-    s32 temp_r12_30;
-    s32 temp_r12_74;
-    s32 temp_r31_27;
-    s32 var_ctr_111;
-    s32 var_ctr_15;
-    s32 var_r10_21;
-    s32 var_r4_110;
-    s32 var_r5_109;
-    s32 var_r6_108;
-    s32 var_r7_20;
-    s32 var_r9_12;
-    u8 var_r11_31;
-    u8 var_r11_75;
-    void *temp_r6_22;
-    void *temp_r8_26;
+    s32 actorOff;
+    s32 entryOff;
+    s32 count;
+    s32 i;
+    s32 j;
+    s32 hit;
+    s32 slot;
+    s32 last;
+    void *actor;
+    void *entry;
 
-    var_r9_12 = 0;
-    temp_r0_14 = arg0->unk0;
-    var_ctr_15 = temp_r0_14;
-    if (temp_r0_14 > 0) {
-        do {
-            var_r7_20 = 0;
-            var_r10_21 = 0;
-            temp_r6_22 = (void *) (arg0->unk4 + var_r9_12);
-loop_14:
-            if (var_r7_20 < (s32) M2C_FIELD(temp_r6_22, s32 *, 0x54)) {
-                temp_r8_26 = (void *) (M2C_FIELD(temp_r6_22, s32 *, 0x58) + var_r10_21);
-                temp_r31_27 = M2C_FIELD(temp_r8_26, s32 *, 0x1C);
-                if (temp_r31_27 == -1) {
-                    temp_r12_30 = M2C_FIELD(temp_r8_26, s32 *, 0);
-                    var_r11_31 = 0;
-                    if ((arg1 >= temp_r12_30) && (arg1 < (s32) (temp_r12_30 + M2C_FIELD(temp_r8_26, s32 *, 4)))) {
-                        var_r11_31 = 1;
-                    }
-                    if (var_r11_31 != 0) {
-                        M2C_FIELD(temp_r8_26, s32 *, 0x1C) = (s32) this->unkA8;
-                        *(this + ((this->unkA8 * 8) + 0xAC)) = *(this + (M2C_FIELD(temp_r8_26, s32 *, 8) * 4));
-                        *(this + ((this->unkA8 * 8) + 0xB0)) = 0.033f * (f32) M2C_FIELD(temp_r8_26, s32 *, 4);
-                        this->unkA8 = (this->unkA8 + 1) % 3;
-                    }
-                } else {
-                    temp_r12_74 = M2C_FIELD(temp_r8_26, s32 *, 0);
-                    var_r11_75 = 0;
-                    if ((arg1 >= temp_r12_74) && (arg1 < (s32) (temp_r12_74 + M2C_FIELD(temp_r8_26, s32 *, 4)))) {
-                        var_r11_75 = 1;
-                    }
-                    if (var_r11_75 == 0) {
-                        *(this + ((temp_r31_27 * 8) + 0xAC)) = 0;
-                        *(this + ((M2C_FIELD(temp_r8_26, s32 *, 0x1C) * 8) + 0xB0)) = 0.0f;
-                        M2C_FIELD(temp_r8_26, s32 *, 0x1C) = -1;
-                    }
-                }
-                var_r7_20 += 1;
-                var_r10_21 += 0x24;
-                goto loop_14;
+    actorOff = 0;
+    count = arg0->unk0;
+    for (i = 0; i < count; i++) {
+        actor = (void *) (arg0->unk4 + actorOff);
+        entryOff = 0;
+        for (j = 0; j < M2C_FIELD(actor, s32 *, 0x54); j++) {
+            entry = (void *) (M2C_FIELD(actor, s32 *, 0x58) + entryOff);
+            slot = M2C_FIELD(entry, s32 *, 0x1C);
+            hit = 0;
+            if (arg1 >= M2C_FIELD(entry, s32 *, 0) && arg1 < (s32) (M2C_FIELD(entry, s32 *, 0) + M2C_FIELD(entry, s32 *, 4))) {
+                hit = 1;
             }
-            var_r9_12 += 0x138;
-            var_ctr_15 -= 1;
-        } while (var_ctr_15 != 0);
-    }
-    var_r6_108 = 0;
-    var_r5_109 = 0;
-    var_r4_110 = 0;
-    var_ctr_111 = 3;
-    do {
-        if ((u32) *(this + (var_r4_110 + 0xAC)) != 0U) {
-            var_r6_108 = var_r5_109 + 1;
+            if (slot == -1) {
+                if (hit != 0) {
+                    M2C_FIELD(entry, s32 *, 0x1C) = this->unkA8;
+                    *(void **) ((u8 *) this + this->unkA8 * 8 + 0xAC) = *(void **) ((u8 *) this + M2C_FIELD(entry, s32 *, 8) * 4);
+                    *(f32 *) ((u8 *) this + this->unkA8 * 8 + 0xB0) = 0.033f * (f32) M2C_FIELD(entry, s32 *, 4);
+                    this->unkA8 = (this->unkA8 + 1) % 3;
+                }
+            } else {
+                if (hit == 0) {
+                    *(void **) ((u8 *) this + slot * 8 + 0xAC) = NULL;
+                    *(f32 *) ((u8 *) this + slot * 8 + 0xB0) = 0.0f;
+                    M2C_FIELD(entry, s32 *, 0x1C) = -1;
+                }
+            }
+            entryOff += 0x24;
         }
-        var_r5_109 += 1;
-        var_r4_110 += 8;
-        var_ctr_111 -= 1;
-    } while (var_ctr_111 != 0);
-    this->unkA4 = var_r6_108;
-    if (var_r6_108 == 0) {
+        actorOff += 0x138;
+    }
+
+    last = 0;
+    for (i = 0; i < 3; i++) {
+        if (*(u32 *) ((u8 *) this + i * 8 + 0xAC) != 0) {
+            last = i + 1;
+        }
+    }
+    this->unkA4 = last;
+    if (last == 0) {
         this->unkA8 = 0;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal operand
 void KDSP_Subtitles::Parse(KDSynkerHeap *arg0, const char *arg1) {
-    s8 spA;
-    u8 sp9;
-    u8 sp8;
-    s32 temp_r0_141;
-    s32 temp_r3_185;
-    s32 temp_r5_146;
-    s32 temp_r6_147;
-    s32 var_r29_157;
-    s32 var_r5_158;
-    u8 *var_r30_159;
-    u8 temp_r3_163;
+    u8 sp8[3];
+    s32 align;
+    s32 base;
+    s32 size;
+    s32 idx;
+    s32 spaces;
+    s32 field;
+    u8 *cur;
+    s32 c;
 
-    temp_r0_141 = this->unkA0;
-    if (temp_r0_141 > 0) {
-        temp_r5_146 = arg0->unk0;
-        temp_r6_147 = arg0->unk8 - 1;
-        arg0->unk0 = temp_r5_146 + ((temp_r0_141 + temp_r6_147) & ~temp_r6_147);
-        this->unk98 = (unsigned char *) (MKArchive_Load(arg1, NULL, (void *) temp_r5_146, this->unkA0));
-        var_r29_157 = 0;
-        var_r5_158 = 0;
-        var_r30_159 = this->unk98;
-        spA = 0;
-loop_19:
-        if (((s32) (var_r30_159 - this->unk98) < (s32) this->unkA0) && ((s32) this->unk9C < 0x26)) {
-            temp_r3_163 = *var_r30_159;
-            switch ((s8) temp_r3_163) {             /* irregular */
-            case 13:
-            case 10:
-                var_r29_157 = 0;
-                *var_r30_159 = 0;
-                var_r5_158 = 0;
-                break;
-            case 32:
-            case 9:
-                var_r29_157 += 1;
-                if (var_r29_157 == 1) {
-                    temp_r3_185 = atoi(&sp8);
-                    var_r5_158 = 0;
-                    if (temp_r3_185 < 0x26) {
-                        *(this + (temp_r3_185 * 4)) = var_r30_159 + 1;
+    size = this->unkA0;
+    if (size > 0) {
+        align = arg0->unk8 - 1;
+        base = arg0->unk0;
+        arg0->unk0 = base + ((size + align) & ~align);
+        this->unk98 = (u8 *) MKArchive_Load(arg1, NULL, (void *) base, size);
+        spaces = 0;
+        field = 0;
+        cur = this->unk98;
+        sp8[2] = 0;
+        while (((s32) (cur - this->unk98) < size) && (this->unk9C < 0x26)) {
+            c = (s8) *cur;
+            if (c == 13 || c == 10) {
+                spaces = 0;
+                *cur = 0;
+                field = 0;
+            } else if (c == 32 || c == 9) {
+                spaces += 1;
+                if (spaces == 1) {
+                    idx = atoi(sp8);
+                    field = 0;
+                    if (idx < 0x26) {
+                        ((u8 **) this)[idx] = cur + 1;
                     }
                 }
-                break;
-            default:
-                if ((var_r29_157 == 0) && ((s8) temp_r3_163 > 0x20) && ((s8) temp_r3_163 <= 0x7A)) {
-                    if (var_r5_158 == 8) {
-                        sp8 = temp_r3_163;
-                    } else if (var_r5_158 == 9) {
-                        sp9 = temp_r3_163;
-                    }
-                    var_r5_158 += 1;
+            } else if (spaces == 0 && c > 0x20 && c <= 0x7A) {
+                if (field == 8) {
+                    sp8[0] = (u8) c;
+                } else if (field == 9) {
+                    sp8[1] = (u8) c;
                 }
-                break;
+                field += 1;
             }
-            var_r30_159 += 1;
-            goto loop_19;
+            cur += 1;
         }
     }
 }
-#endif
 
 void KDSP_Subtitles::HeapAddSize(KDSynkerHeap *arg0, const char *arg1) {
     s32 temp_r4_245;
@@ -202,25 +161,21 @@ void KDSP_Subtitles::Init() {
     this->unkA0 = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
 s32 KDSP_ActorList::GetActorId(const char *arg0) {
-    s32 var_r30_312;
-    s32 var_r31_313;
+    s32 i;
+    s32 off;
+    s32 name;
 
-    var_r30_312 = 0;
-    var_r31_313 = 0;
-loop_4:
-    if (var_r30_312 >= (s32) this->unk0) {
-        return -1;
+    off = 0;
+    for (i = 0; i < this->unk0; i++) {
+        name = M2C_FIELD(this->unk4, s32 *, off + 0x5C);
+        if (strcmpi((s32) name, (s8 *) arg0) == 0) {
+            return i;
+        }
+        off += 0x138;
     }
-    if (strcmpi(*(this->unk4 + (var_r31_313 + 0x5C)), arg0) == 0) {
-        return var_r30_312;
-    }
-    var_r30_312 += 1;
-    var_r31_313 += 0x138;
-    goto loop_4;
+    return -1;
 }
-#endif
 
 void KDSP_ActorList::Update(float arg0, KDSP_EnvelopeList *arg1, const MKVector3 &arg2, bool arg3) {
     s32 var_r30_356;
@@ -249,61 +204,43 @@ loop_5:
     }
 }
 
-#if 0 // DRAFT: function call 'strcpy(signed char *, signed char *)' does not match 'strcpy(char *, const char *)'
+extern "C" char *strtok(char *, const char *);
 void KDSP_ActorList::ResolveLookAt() {
-    s8 sp28;
-    s8 sp8;
-    s32 temp_r3_404;
-    s32 var_r24_443;
-    s32 var_r25_410;
-    s32 var_r27_412;
-    s32 var_r27_445;
-    s32 var_r28_399;
-    s32 var_r31_398;
-    void *temp_r24_417;
-    void *temp_r25_450;
-    void *temp_r30_403;
+    s8 sp8[0x20];
+    s8 sp28[0x20];
+    KDSP_Actor *actor;
+    s8 *entry;
+    s32 i;
+    s32 j;
+    s32 off;
+    s32 roff;
 
-    var_r31_398 = 0;
-    var_r28_399 = 0;
-loop_10:
-    if (var_r31_398 < (s32) this->unk0) {
-        temp_r30_403 = (void *) (this->unk4 + var_r28_399);
-        temp_r3_404 = M2C_FIELD(temp_r30_403, s32 *, 0x40);
-        if (!(temp_r3_404 & 4) && !(temp_r3_404 & 8)) {
-            var_r25_410 = 0;
-            var_r27_412 = 0;
-loop_5:
-            if (var_r25_410 < (s32) M2C_FIELD(temp_r30_403, s32 *, 0x44)) {
-                temp_r24_417 = (void *) (M2C_FIELD(temp_r30_403, s32 *, 0x48) + var_r27_412);
-                strcpy(&sp28, M2C_FIELD(temp_r24_417, s8 **, 8));
-                strtok(&sp28, ":");
-                M2C_FIELD(temp_r24_417, KDSP_Actor **, 0xC) = (const char *) (FindActor(&sp28));
-                var_r27_412 += 0x14;
-                M2C_FIELD(temp_r24_417, s32 *, 0x10) = (s32) ((KDSP_Actor *) (M2C_FIELD(temp_r24_417, KDSP_Actor **, 0xC)))->GetMatchingNodeIndex(strtok(NULL, "\n"));
-                var_r25_410 += 1;
-                goto loop_5;
+    off = 0;
+    for (i = 0; i < this->unk0; i++) {
+        actor = (KDSP_Actor *) (this->unk4 + off);
+        if (!(actor->unk40 & 4) && !(actor->unk40 & 8)) {
+            roff = 0;
+            for (j = 0; j < actor->unk44; j++) {
+                entry = (s8 *) actor->unk48 + roff;
+                strcpy((char *) sp28, (const char *) M2C_FIELD(entry, s8 **, 8));
+                strtok((char *) sp28, ":");
+                M2C_FIELD(entry, KDSP_Actor **, 0xC) = FindActor((const char *) sp28);
+                roff += 0x14;
+                M2C_FIELD(entry, s32 *, 0x10) = (u16) M2C_FIELD(entry, KDSP_Actor **, 0xC)->GetMatchingNodeIndex(strtok(NULL, "\n"));
             }
-            var_r24_443 = 0;
-            var_r27_445 = 0;
-loop_8:
-            if (var_r24_443 < (s32) M2C_FIELD(temp_r30_403, s32 *, 0x4C)) {
-                temp_r25_450 = (void *) (M2C_FIELD(temp_r30_403, s32 *, 0x50) + var_r27_445);
-                strcpy(&sp8, M2C_FIELD(temp_r25_450, s8 **, 8));
-                strtok(&sp8, ":");
-                M2C_FIELD(temp_r25_450, KDSP_Actor **, 0xC) = (const char *) (FindActor(&sp8));
-                var_r27_445 += 0x14;
-                M2C_FIELD(temp_r25_450, s32 *, 0x10) = (s32) ((KDSP_Actor *) (M2C_FIELD(temp_r25_450, KDSP_Actor **, 0xC)))->GetMatchingNodeIndex(strtok(NULL, "\n"));
-                var_r24_443 += 1;
-                goto loop_8;
+            roff = 0;
+            for (j = 0; j < actor->unk4C; j++) {
+                entry = (s8 *) actor->unk50 + roff;
+                strcpy((char *) sp8, (const char *) M2C_FIELD(entry, s8 **, 8));
+                strtok((char *) sp8, ":");
+                M2C_FIELD(entry, KDSP_Actor **, 0xC) = FindActor((const char *) sp8);
+                roff += 0x14;
+                M2C_FIELD(entry, s32 *, 0x10) = (u16) M2C_FIELD(entry, KDSP_Actor **, 0xC)->GetMatchingNodeIndex(strtok(NULL, "\n"));
             }
         }
-        var_r31_398 += 1;
-        var_r28_399 += 0x138;
-        goto loop_10;
+        off += 0x138;
     }
 }
-#endif
 
 void KDSP_ActorList::SendMessageToActorProp(bool arg0) {
     KDS_Message_PropEnd sp10;
@@ -356,115 +293,79 @@ loop_2:
     this->unk0 = 0;
 }
 
-#if 0 // DRAFT: pointer/array required
 KDSP_Actor *KDSP_ActorList::FindActor(const char *arg0) {
-    s32 var_r30_590;
-    s32 var_r31_591;
+    s32 i;
+    s32 off;
 
-    var_r30_590 = 0;
-    var_r31_591 = 0;
-loop_4:
-    if (var_r30_590 >= (s32) this->unk0) {
-        return NULL;
+    off = 0;
+    for (i = 0; i < this->unk0; i++) {
+        if (stricmp((s32) M2C_FIELD(this->unk4, s32 *, off + 0x5C), (s8 *) arg0) == 0) {
+            return (KDSP_Actor *) (this->unk4 + off);
+        }
+        off += 0x138;
     }
-    if (stricmp(*(this->unk4 + (var_r31_591 + 0x5C)), arg0) == 0) {
-        return (KDSP_Actor *) (this->unk4 + var_r31_591);
-    }
-    var_r30_590 += 1;
-    var_r31_591 += 0x138;
-    goto loop_4;
+    return NULL;
 }
-#endif
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void KDSP_ActorList::Load(MKIni *arg0, int &arg1, bool arg2, bool arg3) {
-    MKIniLine *temp_r4_647;
-    MKIniLine *var_r29_654;
-    s32 temp_r0_644;
-    s32 var_r29_631;
-    s32 var_r29_674;
-    s32 var_r30_632;
-    s32 var_r30_675;
+    s32 i;
+    s32 off;
+    MKIniLine *line;
 
-    var_r29_631 = 0;
-    var_r30_632 = 0;
-loop_2:
-    temp_r0_644 = this->unk0;
-    if (var_r29_631 < temp_r0_644) {
-        ((KDSP_Actor *) (this->unk4 + var_r30_632))->Resolve(arg2, this->unk8, arg3);
-        var_r29_631 += 1;
-        var_r30_632 += 0x138;
-        goto loop_2;
+    off = 0;
+    for (i = 0; i < this->unk0; i++) {
+        ((KDSP_Actor *) (this->unk4 + off))->Resolve(arg2, M2C_FIELD(this, void (**)(const char *, MKModel **, MKAnimScript **), 0x8), arg3);
+        off += 0x138;
     }
-    temp_r4_647 = this->unk10;
-    if ((temp_r4_647 != NULL) && (temp_r0_644 != 0)) {
-        var_r29_654 = temp_r4_647->unkC->GetSubLine(temp_r4_647);
-loop_7:
-        if (var_r29_654 != NULL) {
-            ((KDSP_Actor *) (FindActor(var_r29_654->GetFieldName())))->LoadActorSectionPostResolve(var_r29_654, arg2, arg1);
-            var_r29_654 = var_r29_654->unkC->GetNextLine(var_r29_654);
-            goto loop_7;
+    line = this->unk10;
+    if (line != NULL && this->unk0 != 0) {
+        line = line->unkC->GetSubLine(line);
+        while (line != NULL) {
+            FindActor((const char *) line->GetFieldName())->LoadActorSectionPostResolve(line, arg2, arg1);
+            line = line->unkC->GetNextLine(line);
         }
     }
-    var_r29_674 = 0;
-    var_r30_675 = 0;
-loop_10:
-    if (var_r29_674 < (s32) this->unk0) {
-        ((KDSP_Actor *) (this->unk4 + var_r30_675))->HideSpecialSubObjects();
-        var_r29_674 += 1;
-        var_r30_675 += 0x138;
-        goto loop_10;
+    off = 0;
+    for (i = 0; i < this->unk0; i++) {
+        ((KDSP_Actor *) (this->unk4 + off))->HideSpecialSubObjects();
+        off += 0x138;
     }
 }
-#endif
 
-#if 0 // DRAFT: illegal implicit conversion from 'signed char *' to 'const char *'
 void KDSP_ActorList::Parse(KDSynkerHeap *arg0, MKIni *arg1, int &arg2, KDInput *arg3) {
-    MKIniLine *temp_r28_706;
-    MKIniLine *temp_r3_729;
-    MKIniLine *temp_r4_751;
-    MKIniLine *var_r27_759;
-    MKIniLine *var_r28_733;
-    s32 temp_r0_709;
-    s32 temp_r3_716;
-    s32 var_r27_726;
-    void *temp_r5_714;
+    MKIniLine *line;
+    MKIniLine *sub;
+    void *buf;
+    s32 off;
+    s32 align;
 
     KDSP_Actor::SetInput(arg3);
-    temp_r28_706 = this->unkC;
-    if (temp_r28_706 != NULL) {
-        temp_r0_709 = this->unk0;
-        if (temp_r0_709 != 0) {
-            temp_r5_714 = arg0->unkC;
-            temp_r3_716 = arg0->unk14 - 1;
-            arg0->unkC = ((u8 *) temp_r5_714) + (((temp_r0_709 * 0x138) + temp_r3_716) & ~temp_r3_716);
-            this->unk4 = (s32) temp_r5_714;
-            memset((void *) this->unk4, 0, this->unk0 * 0x138);
-            var_r27_726 = this->unk4;
-            temp_r3_729 = temp_r28_706->unkC->GetSubLine(temp_r28_706);
-            var_r28_733 = temp_r3_729->unkC->GetNextLine(temp_r3_729);
-loop_4:
-            if (var_r28_733 != NULL) {
-                ((KDSP_Actor *) var_r27_726)->Init();
-                ((KDSP_Actor *) var_r27_726)->LoadActorDataSection(arg0, var_r28_733);
-                var_r27_726 += 0x138;
-                var_r28_733 = var_r28_733->unkC->GetNextLine(var_r28_733);
-                goto loop_4;
-            }
+    line = this->unkC;
+    if (line != NULL && this->unk0 != 0) {
+        align = arg0->unk14 - 1;
+        buf = arg0->unkC;
+        arg0->unkC = (u8 *) buf + (((this->unk0 * 0x138) + align) & ~align);
+        this->unk4 = (s32) buf;
+        memset((void *) this->unk4, 0, this->unk0 * 0x138);
+        off = this->unk4;
+        sub = line->unkC->GetSubLine(line);
+        sub = sub->unkC->GetNextLine(sub);
+        while (sub != NULL) {
+            ((KDSP_Actor *) off)->Init();
+            ((KDSP_Actor *) off)->LoadActorDataSection(arg0, sub);
+            off += 0x138;
+            sub = sub->unkC->GetNextLine(sub);
         }
     }
-    temp_r4_751 = this->unk10;
-    if ((temp_r4_751 != NULL) && ((s32) this->unk0 != 0)) {
-        var_r27_759 = temp_r4_751->unkC->GetSubLine(temp_r4_751);
-loop_9:
-        if (var_r27_759 != NULL) {
-            ((KDSP_Actor *) (FindActor(var_r27_759->GetFieldName())))->LoadActorSection(arg0, var_r27_759, arg2);
-            var_r27_759 = var_r27_759->unkC->GetNextLine(var_r27_759);
-            goto loop_9;
+    line = this->unk10;
+    if (line != NULL && this->unk0 != 0) {
+        sub = line->unkC->GetSubLine(line);
+        while (sub != NULL) {
+            FindActor((const char *) sub->GetFieldName())->LoadActorSection(arg0, sub, arg2);
+            sub = sub->unkC->GetNextLine(sub);
         }
     }
 }
-#endif
 
 void KDSP_ActorList::HeapAddSize(KDSynkerHeap *arg0, MKIni *arg1) {
     KDSP_Actor sp8;
@@ -510,12 +411,10 @@ loop_8:
     }
 }
 
-#if 0 // DRAFT: undefined identifier 'unk8'
 void KDSP_ActorList::Init() {
     this->unk0 = 0;
     this->unk4 = 0;
-    this->unk8 = NULL;
+    M2C_FIELD(this, void **, 0x8) = NULL;
     this->unkC = NULL;
     this->unk10 = NULL;
 }
-#endif
