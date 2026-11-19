@@ -48,15 +48,13 @@ public:
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).
 
-#include <m2c_macros.h>
-
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline SpikeTrap::SpikeTrap() {
     this->unkC8 = &__vt + 0x48;
-    M2C_FIELD(this, s32 *, 0xE8) = 0;
-    this->unkE4.Init();
     this->unkE8.unk0 = 0;
     this->unkE8.Init();
+    this->unkEC.unk0 = 0;
+    this->unkEC.Init();
     return this;
 }
 #endif
@@ -64,11 +62,11 @@ inline SpikeTrap::SpikeTrap() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline SpikeTrap::~SpikeTrap() {
     this->unkC8 = &__vt.unk48;
+    if (&this->unkEC != NULL) {
+        this->unkEC.Deinit();
+    }
     if (&this->unkE8 != NULL) {
         this->unkE8.Deinit();
-    }
-    if (&this->unkE4 != NULL) {
-        this->unkE4.Deinit();
     }
 }
 #endif

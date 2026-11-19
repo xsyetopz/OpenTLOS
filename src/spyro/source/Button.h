@@ -45,11 +45,11 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline Button::~Button() {
     this->unkC8 = &__vt.unk48;
+    if (&this->unkE8 != NULL) {
+        this->unkE8.Deinit();
+    }
     if (&this->unkE4 != NULL) {
         this->unkE4.Deinit();
-    }
-    if (&this->unkE0 != NULL) {
-        this->unkE0.Deinit();
     }
 }
 #endif
@@ -57,10 +57,10 @@ inline Button::~Button() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline Button::Button() {
     this->unkC8 = &__vt + 0x48;
-    this->unkE0 = 0;
-    this->unkE0.Init();
     this->unkE4.unk0 = 0;
     this->unkE4.Init();
+    this->unkE8.unk0 = 0;
+    this->unkE8.Init();
     return this;
 }
 #endif

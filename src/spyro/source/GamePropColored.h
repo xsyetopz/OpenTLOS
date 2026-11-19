@@ -10,6 +10,7 @@ class GamePropColored;
 class GamePropColoredDescriptor;
 class GamePropDescriptor;
 class MKIniLine;
+class MKMaterial;
 class MKVector4;
 
 class GamePropColored : public GameProp {  // base: vtable prefix
@@ -29,6 +30,7 @@ public:
     virtual s32 LoadLine(MKIniLine *);
     virtual void Deinit(void);
     GamePropColoredDescriptor(void);
+    /* 0x0e4 */ MKMaterial* unkE4;
 };
 
 // Inline member definitions: weak copies MWCC emitted out of line (tools/srcgen/inlines.py).

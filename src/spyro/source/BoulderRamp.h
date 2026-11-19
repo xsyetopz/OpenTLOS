@@ -68,8 +68,8 @@ void BoulderRamp_InitModule(void);
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline BoulderRamp::~BoulderRamp() {
     this->unkC8 = &__vt.unk48;
-    if (&this->unkF4.unk10 != NULL) {
-        this->unkF4.unk10.Deinit();
+    if (&this->unkF4.unk14 != NULL) {
+        this->unkF4.unk14.Deinit();
     }
 }
 #endif
@@ -77,16 +77,16 @@ inline BoulderRamp::~BoulderRamp() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline BoulderRamp::BoulderRamp() {
     this->unkC8 = &__vt + 0x48;
-    this->unkF0 = NULL;
     this->unkF4.unk0 = 0.0f;
     this->unkF4.unk4 = 0.0f;
     this->unkF4.unk8 = 0.0f;
-    this->unkF4.unk10 = 0.0f;
-    this->unkF4.unk10.Init();
-    this->unkF4.unk14 = nanf;
+    this->unkF4.unkC = 0.0f;
+    this->unkF4.unk14 = 0.0f;
+    this->unkF4.unk14.Init();
     this->unkF4.unk18 = nanf;
-    this->unkF4.unk1C = 0.0f;
+    this->unkF4.unk1C = nanf;
     this->unkF4.unk20 = 0.0f;
+    this->unkF4.unk24 = 0.0f;
     return this;
 }
 #endif

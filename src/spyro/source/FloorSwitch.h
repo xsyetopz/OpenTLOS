@@ -79,10 +79,10 @@ public:
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline FloorSwitch::FloorSwitch() {
     this->unkC8 = &__vt + 0x48;
-    this->unk118 = NULL;
-    this->unk118.Init();
-    this->unk11C = NULL;
-    this->unk11C.Init();
+    this->unk120.unk0 = 0;
+    this->unk120.Init();
+    this->unk124.unk0 = 0;
+    this->unk124.Init();
     return this;
 }
 #endif
@@ -90,11 +90,11 @@ inline FloorSwitch::FloorSwitch() {
 #if 0 // DRAFT: undefined identifier 'unkC8'
 inline FloorSwitch::~FloorSwitch() {
     this->unkC8 = &__vt.unk48;
-    if (&this->unk11C != NULL) {
-        this->unk11C.Deinit();
+    if (&this->unk124 != NULL) {
+        this->unk124.Deinit();
     }
-    if (&this->unk118 != NULL) {
-        this->unk118.Deinit();
+    if (&this->unk120 != NULL) {
+        this->unk120.Deinit();
     }
 }
 #endif

@@ -58,7 +58,7 @@ public:
     virtual void Deinit(void);
     virtual void Resolve(void);
     MoltenMetalBucketDescriptor(void);
-    /* 0x0e5 */ u8 padE5[0x3];
+    /* 0x0e4 */ s32 unkE4;
     /* 0x0e8 */ s32 unkE8;
     /* 0x0ec */ MKMaterial* unkEC;
     /* 0x0f0 */ s32 unkF0;

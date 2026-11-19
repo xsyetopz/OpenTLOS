@@ -54,8 +54,8 @@ public:
     /* 0x030 */ u32 unk30;
     /* 0x034 */ s8 unk34;
     /* 0x035 */ s8 unk35;
-    /* 0x036 */ s32 unk36;
-    /* 0x03a */ u8 pad3A[0x2];
+    /* 0x036 */ u16 unk36;
+    /* 0x038 */ s8* unk38;
     /* 0x03c */ s8* unk3C;
     /* 0x040 */ MKModel* unk40;
     /* 0x044 */ MKModel* unk44;
