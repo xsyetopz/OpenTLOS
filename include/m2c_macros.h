@@ -31,4 +31,13 @@ typedef s64 M2C_UNK64;
 #define M2C_MEMCPY_UNALIGNED(d, s, n) memcpy((void*)(d), (const void*)(s), (n))
 #define M2C_STRUCT_COPY(d, s, n) memcpy((void*)(d), (const void*)(s), (n))
 
+/* MSL math constants in .sdata (config/G6SE7D/symbols.txt). m2c names them
+ * where the source used MSL's inline sqrtf or NAN/HUGE_VAL macros. */
+extern f32 __float_nan;
+extern f32 __float_huge;
+extern f32 __float_max;
+extern f64 __double_min;
+extern f64 __double_max;
+extern f64 __double_huge;
+
 #endif  // M2C_MACROS_H
