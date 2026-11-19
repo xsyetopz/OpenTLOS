@@ -224,23 +224,21 @@ void MaterialEditor::CreateWidgets() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand 'MKWidget *'
 s32 MaterialEditor::MaterialEditorHook(MKWidget *arg0, unsigned int arg1, unsigned int arg2, void *arg3) {
-    switch (arg0) {                                 /* irregular */
+    switch ((u32) arg0) {
     case 0x3E8:
         M2C_FIELD(arg2, MKMaterial **, 0) = (MKMaterial *) arg1;
         MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 8), 0x46U, (u32) M2C_FIELD(arg2, MKMaterial **, 0));
-        MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0xC), 0x64U, (u32) (M2C_FIELD(arg2, MKMaterial **, 0)->unk24 + 0x30));
+        MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0xC), 0x64U, (u32) ((u8 *) M2C_FIELD(arg2, MKMaterial **, 0)->unk24 + 0x30));
         break;
     case 0x39:
-        if (((u32) M2C_FIELD(arg1, u32 *, 0) == (MKWidget *) M2C_FIELD(arg2, MKWidget **, 0xC)) && ((u16) M2C_FIELD(arg1, u16 *, 4) == 1)) {
+        if (((u32) M2C_FIELD(arg1, u32 *, 0) == (u32) M2C_FIELD(arg2, MKWidget **, 0xC)) && ((u16) M2C_FIELD(arg1, u16 *, 4) == 1)) {
             MKMaterial_SetColor(M2C_FIELD(arg2, MKMaterial **, 0), *(M2C_FIELD(arg1, MKVector4 **, 8)));
         }
         break;
     }
     return 1;
 }
-#endif
 
 void ColorEditor::Show(const MKVector4 &arg0, MKWidget *arg1) {
     MKWidget_SendMessage(this->unk10, 0x3E8U, (u32) &arg0);
@@ -343,16 +341,14 @@ void ColorEditor::CreateWidgets() {
 }
 #endif
 
-#if 0 // DRAFT: illegal operand 'MKWidget *'
 s32 ColorEditor::ColorEditorHook(MKWidget *arg0, unsigned int arg1, unsigned int arg2, void *arg3) {
     MKWidget *temp_r3_813;
     u16 temp_r6_804;
     u32 temp_r3_825;
 
-    switch (arg0) {                                 /* irregular */
+    switch ((u32) arg0) {
     case 0x3E8:
-        gColorEditor.unk0 = M2C_BITWISE(f64, M2C_FIELD(arg1, u32 *, 0));
-        gColorEditor.unk8 = M2C_BITWISE(f64, M2C_FIELD(arg1, f32 **, 8));
+        M2C_STRUCT_COPY(&gColorEditor, (void *) arg1, 16);
         MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x1C), 0x64U, arg2);
         MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x20), 0x64U, arg2 + 4);
         MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x24), 0x64U, arg2 + 8);
@@ -370,16 +366,16 @@ s32 ColorEditor::ColorEditorHook(MKWidget *arg0, unsigned int arg1, unsigned int
             }
         } else if (temp_r6_804 == 1) {
             temp_r3_825 = M2C_FIELD(arg1, u32 *, 0);
-            if (temp_r3_825 == (MKWidget *) M2C_FIELD(arg2, MKWidget **, 0x1C)) {
+            if (temp_r3_825 == (u32) M2C_FIELD(arg2, MKWidget **, 0x1C)) {
                 M2C_FIELD(arg2, f32 *, 0) = (f32) *M2C_FIELD(arg1, f32 **, 8);
                 MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x18), 0x64U, arg2);
-            } else if (temp_r3_825 == (MKWidget *) M2C_FIELD(arg2, MKWidget **, 0x20)) {
+            } else if (temp_r3_825 == (u32) M2C_FIELD(arg2, MKWidget **, 0x20)) {
                 M2C_FIELD(arg2, f32 *, 4) = (f32) *M2C_FIELD(arg1, f32 **, 8);
                 MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x18), 0x64U, arg2);
-            } else if (temp_r3_825 == (MKWidget *) M2C_FIELD(arg2, MKWidget **, 0x24)) {
+            } else if (temp_r3_825 == (u32) M2C_FIELD(arg2, MKWidget **, 0x24)) {
                 M2C_FIELD(arg2, f32 *, 8) = (f32) *M2C_FIELD(arg1, f32 **, 8);
                 MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x18), 0x64U, arg2);
-            } else if (temp_r3_825 == (MKWidget *) M2C_FIELD(arg2, MKWidget **, 0x28)) {
+            } else if (temp_r3_825 == (u32) M2C_FIELD(arg2, MKWidget **, 0x28)) {
                 M2C_FIELD(arg2, f32 *, 0xC) = (f32) *M2C_FIELD(arg1, f32 **, 8);
                 MKWidget_SendMessage(M2C_FIELD(arg2, MKWidget **, 0x18), 0x64U, arg2);
             }
@@ -389,7 +385,6 @@ s32 ColorEditor::ColorEditorHook(MKWidget *arg0, unsigned int arg1, unsigned int
         return 1;
     }
 }
-#endif
 
 void MKWidgetContextMenu::PurgeItems() {
     u32 var_r5_893;
