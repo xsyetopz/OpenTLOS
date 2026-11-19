@@ -34,12 +34,14 @@ from asmdata import bindings, objects  # noqa: E402
 from cxxtypes import K, parse, render  # noqa: E402
 from hmodel import Model, header_key, load_model, type_names  # noqa: E402
 from hrender import member_name  # noqa: E402
-from m2ccalls import CallRewriter, devirtualize, split_args  # noqa: E402
+from m2ccalls import CallRewriter, devirtualize, split_args, type_this_vcalls  # noqa: E402
 
 FUNC = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<params>.*)\) \{$")
 LOCAL_PROTO = re.compile(r"^(?P<ret>[^\s/#].*?)\s*\b(?P<name>[A-Za-z_][\w<>,@$]*)\((?P<params>.*)\);\s*/\* static \*/$")
 LITERAL = re.compile(r"^static (f32|f64) (@\d+) = (.+?);.*$", re.M)
-STRING = re.compile(r"^static (?:const )?s8 (@stringBase\d+)\[\d+\] = \{ (.*?) \};.*$", re.M)
+# m2c sizes pools in decimal or hex and prints bytes on one line or one per line.
+STRING = re.compile(r"^static (?:const )?s8 (@stringBase\d+)\[(?:0x[0-9A-Fa-f]+|\d+)\] = \{\s*(.*?),?\s*\};[^\n]*$",
+                    re.M | re.S)
 UNTYPED = re.compile(r"^static M2C_UNK (@stringBase\d+);", re.M)
 MANGLED_EXTERN = re.compile(r"^[^\n]*\b[\w<>,]+__[\w<>,]*[(;][^\n]*/\* extern \*/\n|^extern [^\n]*\b[\w<>,]*__[\w<>,]+[^\n]*;\n", re.M)
 TEMPLATE_FN = re.compile(r"^[A-Za-z_]\w*<")
@@ -112,7 +114,7 @@ def fold_literals(text: str, pools: dict[str, bytes]) -> str:
     for typ, name, val in LITERAL.findall(text):
         floats[name] = val if typ == "f64" or val.endswith("f") else val + "f"
     text = LITERAL.sub("", text)
-    raws = {n: bytes(int(b, 0) & 0xFF for b in d.split(", ")) for n, d in STRING.findall(text)}
+    raws = {n: bytes(int(b, 0) & 0xFF for b in re.split(r",\s*", d)) for n, d in STRING.findall(text)}
     text = STRING.sub("", text)
     for n in UNTYPED.findall(text):
         if n in pools:
@@ -171,7 +173,6 @@ class Converter:
         headers = set(free.values()) | {o.rsplit(".", 1)[0] + ".h" for o in owner_of.values()}
         self.has_header = lambda stem: stem + ".h" in headers
         self.virtuals, self.statics, self.method_cls = set(), set(), {}
-        self.vtables = {n: c["vtable"] for n, c in model.classes.items() if c.get("vtable")}
         for n, c in model.classes.items():
             for m in c["methods"]:
                 self.method_cls[m["mangled"]] = n
@@ -266,6 +267,8 @@ class Converter:
             while j < len(lines) and lines[j] != "}":
                 j += 1
             body = "{\n" + "\n".join(lines[i + 1:j]) + "\n}"
+            if m.group("name") in self.method_cls:
+                body = type_this_vcalls(body, self.method_cls[m.group("name")])
             fn, names = self.function(m.group("ret"), m.group("name"), m.group("params"), body)
             if out and out[-1].startswith("/* ") and out[-1].endswith(" */"):
                 out.pop()  # m2c's demangled-name comment repeats the signature
@@ -276,7 +279,7 @@ class Converter:
                 used |= names
                 out.append(fn)
             i = j + 1
-        body = devirtualize(self.cxx_names("\n".join(out)), self.vtables)
+        body = devirtualize(self.cxx_names("\n".join(out)), self.model.slot_fn)
         body = re.sub(r"\n{3,}", "\n\n", body).strip() + "\n"
         code = re.sub(r'"(?:\\.|[^"\\])*"', '""', body)
         used |= {n for n in re.findall(r"\b([A-Z]\w*(?:::\w+)*?)(?=\s*\*|::|\s+\w+;)", code) if n in self.owner_of}

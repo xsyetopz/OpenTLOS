@@ -273,6 +273,23 @@ class Model:
                     self._slot_rets[k] = votes.most_common(1)[0][0]
         return self._slot_rets.get((self.slot_root(cls, slot), slot))
 
+    def slot_fn(self, cls: str, slot: int) -> str | None:
+        """Mangled function that names vtable `slot` of `cls`, or None.
+
+        A pure slot (CodeWarrior leaves it null) takes the name of the first
+        descendant that fills it, the same name its declaration gets.
+        """
+        vt = self.classes.get(cls, {}).get("vtable") or []
+        if slot >= len(vt):
+            return None
+        if vt[slot] != "0x00000000":
+            return vt[slot]
+        for other, o in self.classes.items():
+            ovt = o.get("vtable") or []
+            if slot < len(ovt) and ovt[slot] != "0x00000000" and self.derives(other, cls):
+                return ovt[slot]
+        return None
+
     def slot_root(self, cls: str, slot: int) -> str:
         """Topmost ancestor (or the class itself) whose vtable has the slot."""
         root = cls

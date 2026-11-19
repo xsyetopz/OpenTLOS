@@ -54,12 +54,11 @@ def method_decl(model: Model, cls: str, m: dict, refs: Refs, ret: str | None = N
 
 def pure_decl(model: Model, cls: str, slot: int, refs: Refs) -> str:
     """Pure virtual named after the first descendant that fills the slot."""
-    for other, o in model.classes.items():
-        vt = o.get("vtable") or []
-        if slot < len(vt) and vt[slot] != PURE and model.derives(other, cls):
-            for m in o["methods"]:
-                if m["mangled"] == vt[slot]:
-                    return method_decl(model, cls, {**m, "virtual": True}, refs, model.slot_ret(cls, slot))[:-1] + " = 0;"
+    fn = model.slot_fn(cls, slot)
+    for o in model.classes.values():
+        for m in o["methods"]:
+            if fn and m["mangled"] == fn:
+                return method_decl(model, cls, {**m, "virtual": True}, refs, model.slot_ret(cls, slot))[:-1] + " = 0;"
     return f"virtual void pure_slot{slot}() = 0;  // name unknown: no descendant fills this slot"
 
 

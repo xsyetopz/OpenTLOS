@@ -142,35 +142,59 @@ class CallRewriter:
 
 VCALL = re.compile(r"\(\*\((?P<ret>[^()]*?) ?\(\*\*\)\((?P<cls>[\w:<>, ]+?) \*[^;]*?\)\)\(\(s8\*\)\((?P<obj>[^()]*?)->__vptr\) \+ \((?P<off>0x[0-9A-Fa-f]+|\d+)\)\)\)\(")
 
-VFIELD = re.compile(r"M2C_FIELD\((?P<obj>[^()]*?)->__vptr, (?P<ret>[^()]*?) ?\(\*\*\)\((?P<cls>[\w:<>, ]+?) \*[^;]*?\), (?P<off>0x[0-9A-Fa-f]+|\d+)\)\(")
+VFIELD = re.compile(r"M2C_FIELD\((?P<obj>[^()]*?)(?P<acc>->|\.)__vptr, (?P<ret>[^()]*?) ?\(\*\*\)\((?P<cls>[\w:<>, ]+?) \*[^;]*?\), (?P<off>0x[0-9A-Fa-f]+|\d+)\)\(")
 
 
-def devirtualize(body: str, vtables: dict) -> str:
+THIS_VFIELD = re.compile(r"M2C_FIELD\(this->__vptr, (?P<ret>[^()]*?) ?\(\*\*\)\((?P<params>[^()]*)\), "
+                         r"(?P<off>0x[0-9A-Fa-f]+|\d+)\)\((?P<arg>this\b|\))")
+
+
+def type_this_vcalls(body: str, cls: str) -> str:
+    """Retype `this`'s vtable calls in a method of `cls` to take `cls *`.
+
+    m2c types the receiver from register use, often as M2C_UNK or a wrong
+    pointer, but a call on `this` with `this` as first argument dispatches
+    through the enclosing method's class. A call m2c printed with no
+    arguments at all (`(**)()`, `()`) left r3 untouched, so it holds `this`.
+    """
+    def fix(m: re.Match) -> str:
+        if m.group("arg") == ")":
+            if m.group("params").strip():
+                return m.group(0)
+            return f"M2C_FIELD(this->__vptr, {m.group('ret')} (**)({cls} *), {m.group('off')})(this)"
+        rest = split_args(m.group("params"))[1:]
+        params = ", ".join([f"{cls} *", *rest])
+        return f"M2C_FIELD(this->__vptr, {m.group('ret')} (**)({params}), {m.group('off')})(this"
+    return THIS_VFIELD.sub(fix, body)
+
+
+def devirtualize(body: str, slot_fn) -> str:
     """Turn m2c's vtable-slot calls back into virtual member calls.
 
     MWCC vtables hold the RTTI pointer and this-offset first, so slot `i`
-    sits at 8 + 4*i; the slot's function names the method. Calls whose
-    class or slot is unknown stay as they are.
+    sits at 8 + 4*i; `slot_fn(class, i)` names the slot's function. Calls
+    whose class or slot is unknown stay as they are.
     """
     out, pos = [], 0
     for m in sorted([*VCALL.finditer(body), *VFIELD.finditer(body)], key=lambda m: m.start()):
         if m.start() < pos:
             continue
-        slots = vtables.get(m.group("cls").strip())
         i = (int(m.group("off"), 0) - 8) // 4
-        if not slots or i < 0 or i >= len(slots):
+        fn = slot_fn(m.group("cls").strip(), i) if i >= 0 else None
+        if not fn:
             continue
         end = close_paren(body, m.end() - 1)
         if end < 0:
             continue
         try:
-            sym = Symbol(slots[i])
+            sym = Symbol(fn)
         except Exception:  # noqa: BLE001 - slot holds a non-method (pure virtual stub)
             continue
         args = split_args(body[m.end():end])[1:]
         args = [ref_arg(a) if k < len(sym.refs) and sym.refs[k] else a for k, a in enumerate(args)]
         obj = m.group("obj")
         call = f"{sym.name}({', '.join(args)})"
-        out += [body[pos:m.start()], call if obj == "this" else f"{obj}->{call}"]
+        acc = m.groupdict().get("acc") or "->"
+        out += [body[pos:m.start()], call if obj == "this" else f"{obj}{acc}{call}"]
         pos = end + 1
     return "".join(out) + body[pos:]
