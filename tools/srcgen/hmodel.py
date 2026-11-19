@@ -415,12 +415,18 @@ class Model:
             return 0
         c = self.classes.get(name, {})
         vp = self.vptr_of(name)
-        best = self.sizeof(c["base"], (*seen, name)) if c.get("base") else 0
-        best = max(best, c.get("size") or 0)
+        pos = self.sizeof(c["base"], (*seen, name)) if c.get("base") else 0
+        best = max(pos, c.get("size") or 0)
+        # Walked like hrender.fields_text: a field starting inside an earlier
+        # one is a conflicting vote the header leaves out, so it adds no size.
+        rows = [(int(o), self.type_size(f["type"][0], (*seen, name)))
+                for o, f in self.fields.get(name, {}).get("fields", {}).items()]
         if vp is not None:
-            best = max(best, vp + 4)
-        for off, f in self.fields.get(name, {}).get("fields", {}).items():
-            best = max(best, int(off) + self.type_size(f["type"][0], (*seen, name)))
+            rows.append((vp, 4))
+        for off, size in sorted(rows):
+            if off >= pos:
+                pos = off + size
+                best = max(best, pos)
         self.size_cache[name] = best
         return best
 
