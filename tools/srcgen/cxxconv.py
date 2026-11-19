@@ -44,6 +44,9 @@ STRING = re.compile(r"^static (?:const )?s8 (@stringBase\d+)\[(?:0x[0-9A-Fa-f]+|
                     re.M | re.S)
 UNTYPED = re.compile(r"^static M2C_UNK (@stringBase\d+);", re.M)
 MANGLED_EXTERN = re.compile(r"^[^\n]*\b[\w<>,]+__[\w<>,]*[(;][^\n]*/\* extern \*/\n|^extern [^\n]*\b[\w<>,]*__[\w<>,]+[^\n]*;\n", re.M)
+# `@N@name` is a this-adjusting thunk MWCC makes for a secondary base; not source.
+THUNK = re.compile(r"^(?:/\* [^\n]*@\d+@[^\n]*\*/\n)?[^\n/]*(?<![\w@])@\d+@\w*\((?:[^\n]*\) \{\n.*?^\}\n|[^\n]*;[^\n]*\n)",
+                   re.M | re.S)
 TEMPLATE_FN = re.compile(r"^[A-Za-z_]\w*<")
 UNPLACED = re.compile(r"\b(?:checked_cast|ui_cast|ui_cast_ptr|property_cast|property_cast_ptr|safe_delete|Clamp|Min|"
                       r"KDMath_Smooth|KDMath_CriticalDamp|KDMath_Dampen|ByteReverse|Endian|Model_RenderChunkGC)\s*<")
@@ -237,7 +240,7 @@ class Converter:
         inlines that MWCC emitted into this TU; they belong in headers, so
         they are returned separately instead of being defined here.
         """
-        text = fold_literals(drop_types(text), pools)
+        text = fold_literals(drop_types(THUNK.sub("", text)), pools)
         text = MANGLED_EXTERN.sub("", text)
         # The 16-byte stack realignment MWCC emits for aligned locals is not source.
         text = ALIGNED_STACK.sub("", text)
